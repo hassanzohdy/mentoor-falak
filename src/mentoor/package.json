@@ -6,7 +6,6 @@
         "collect.js",
         "@flk/shareable",
         "@flk/markdown",
-        "plyr",
         "@flk/copy2clipboard",
         "socket.io-client",
         "howler",
@@ -32,9 +31,7 @@
         "@flk/seo",
         "pluralize",
         "@flk/message",
-        "sortablejs",
-        "pikaday-time",
-        "flatpickr"
+        "sortablejs"
     ],
     "vendor": {
         "css": {

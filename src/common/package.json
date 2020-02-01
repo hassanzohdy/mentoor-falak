@@ -21,17 +21,12 @@
         "@flk/random",
         "@flk/tooltip",
         "@flk/mdbootstrap",
-        "rfs",
         "compass-mixins",
         "@flk/scss",
         "@flk/meta",
-        "tippy.js",
         "@flk/file-input",
         "@flk/markdown-input"
     ],
-    "mainFiles": {
-        "rfs": null
-    },
     "assets": [
         "images"
     ],
