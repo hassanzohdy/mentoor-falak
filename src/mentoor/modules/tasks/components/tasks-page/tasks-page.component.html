@@ -1,0 +1,35 @@
+<layout>
+    <h1 class="heading">
+        <fa icon="tasks mr-2"></fa>
+        Tasks
+        <small class="teal-text bold" [html]="this.title"></small>
+    </h1>
+    <div *if="! this.user.isLoggedIn()" class="m-t-2">
+        <p>Manage your mind, and time in sequence of tasks set for you based on your needs!</p>
+        <p>Each task you complete before the date time, you ean more <gold-icon></gold-icon>, but also you <strong
+                class="mx-2 red-text">pay</strong> if you didn't deliver in time.</p>
+        <p>That approach helps you to manage your time more and will help you to increase the habit of delivering in
+            time.</p>
+        <div class="text-center m-t-3">
+            <a href="/login" class="btn bold btn-danger text-uppercase">
+                <fa icon="lock mr-2"></fa>
+                Login!
+            </a>
+            <strong class="mx-4">OR</strong>
+
+            <a href="/register" class="btn bold btn-info text-uppercase">
+                <fa icon="unlock mr-2"></fa>
+                Create new account!
+            </a>
+        </div>
+    </div>
+    <else>
+        <button *if="this.user.id == 1" class="btn btn-success bold" (click)="this.openTaskModal('add')">
+            <fa icon="plus mr-2"></fa>
+            Task
+        </button>
+        <tasks-board></tasks-board>
+    </else>
+</layout>
+
+<task-modal *if="this.modalType" (close)="this.closeModal()" [task]="this.getTaskObject()"></task-modal>

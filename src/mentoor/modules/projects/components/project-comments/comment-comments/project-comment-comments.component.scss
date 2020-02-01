@@ -1,0 +1,25 @@
+.project-comments-list {
+    .comment-comments {
+        padding-left: 11rem;
+
+        .files {
+            margin: 1rem 0;
+
+            .file-input {
+                margin-right: 1rem;
+                vertical-align: 3px;
+            }
+
+            .audio-input,
+            .file-input {
+                display: inline-block;
+            }
+
+            .audio-input {
+                .icon {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+}

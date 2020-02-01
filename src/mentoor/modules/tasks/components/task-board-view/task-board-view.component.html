@@ -1,0 +1,125 @@
+<div *for="let status of this.statuses" class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="tasks-group {{ status }}">
+        <h3 class="m-b-2">
+            <span [trans]="status"></span>
+            <span class="ml-2">({{ this.tasksBoardView[status] ? this.tasksBoardView[status].toArray().length : 0 }})</span>
+
+            <span class="material-icons float-right" tooltip [title]="this.statusIconTitle(status)"
+                [html]="this.statusIcon(status)"></span>
+        </h3>
+
+        <div class="tasks-list" data-status="{{ status }}" (ready)="this.draggable($el)">
+            <div *if="this.tasksBoardView[status]" *for="let task, index of this.tasksBoardView[status].toArray()"
+                *key="task.id + status" class="task simple-card m-b-1" data-id="{{ task.id }}"
+                [class]="{item: task.canUserControl, undraggable: ! task.canUserControl}">
+
+                <a *if="task.isParticipant || task.isSupervisor || task.project && task.project.is.higherAuthority"
+                    [href]="URLS.task(task)" class="bold" [html]="'#' + task.id + ' ' + task.title"></a>
+                <div *else [html]="task.title" class="bold"></div>
+                <button
+                    *if="['completed', 'autoFailed', 'failed'].includes(status) && (this.user.id == 1 || task.isSupervisor || this.project && this.project.isProjectManager) "
+                    tooltip title="Archive Task" class="float-right pink-text" (click)="this.confirmArchiving(task)">
+                    <fa icon="archive"></fa>
+                </button>
+                <button
+                    *if="this.user.id  == 1 || task.isSupervisor || task.isParticipant || (this.project && this.project.isProjectManager)"
+                    type="button" (click)="task.dropdown = ! task.dropdown; this.detectChanges();" class=" float-right">
+                    <fa spin="cog" tooltip title="Actions"></fa>
+                </button>
+
+                <div class="participant bold" [class]="{'green-text': task.participant.id == this.user.id}" tooltip
+                    title="Participant" [html]="task.participant.name"></div>
+                <!-- <span *if="task.startsAt" tooltip title="Task Duration" class="duration"
+                                    [html]="task.startsAt + '-' + task.endsAt"></span> -->
+
+                <div class="action-btns m-t-1" *if="task.dropdown">
+                    <button type="button" (click)="this.openModal('edit', task, index)" class="btn btn-circle btn-cyan"
+                        tooltip title="Edit Tasks-board">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(task, index)" class="btn btn-circle btn-danger"
+                        tooltip title="Delete Tasks-board">
+                        <fa icon="trash"></fa>
+                    </button>
+                </div>
+
+                <section class="footer">
+                    <fa icon="user-secret" 
+                        [class]="{'green-text': task.isSupervisor}" 
+                        tooltip
+                        [title]="'<strong>Supervisors</strong><br>' + task.supervisors.map(supervisor => supervisor.name).join('<br/>')">
+                    </fa>
+
+                    <fa *if="status == 'completed'" icon="check-double green-text ml-2"></fa>
+                    <flk-time-remaining 
+                        *if="task.endsAt && ! ['completed'].includes(status)" 
+                        class="ml-4 bold"
+                        [tooltip]="true"
+                        [title]="task.endsAtTimestamp - task.startsAtTimestamp <= 0 ? 'Time up' : 'Remaining Time'"
+                        [ends-at]="task.endsAtTimestamp" [starts-at]="this.now">
+                    </flk-time-remaining>
+
+                    <span *if="! Is.empty(task.comments)" tooltip title="Task Comments" class="ml-3">
+                        <fa icon="comments gray-text mr-2"></fa>
+                        <strong [html]="task.comments.length"></strong>
+                    </span>
+
+                    <a 
+                        *if="(this.project || task.project) && ! this.isInProjectPage"
+                        [href]="URLS.project(this.project || task.project)" class="ml-3 teal-text" tooltip
+                        [title]="this.project ? this.project.name : task.project.name" class="mx-3"
+                    >
+                        <img *if="task.project.image" class="small circle" [src]="task.project.image" />
+                        <fa *else icon="suitcase"></fa>
+                    </a>
+
+                    <span *if="! Is.empty(task.module)" tooltip title="Module" class="ml-3">
+                        <fa icon="cog lime-text mr-2"></fa>
+                        <span [html]="task.module.name"></span>
+                    </span>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <section *if="(this.project || this.user.id == 1) && this.project?.isHigherAuthority  && status != 'autoFailed'"
+        class="footer text-right m-b-2">
+        <button type="button" *if="! this.openQuickForm[status]" tooltip (click)="this.openQuickForm[status] = true"
+            title="Quick add" class="btn btn-info btn-circle">
+            <fa icon="plus"></fa>
+        </button>
+
+        <form *if="this.openQuickForm[status]" (submit)="this.quickAdd($el)">
+            <input type="hidden" name="status" [value]="status" />
+            <input *if="this.project" type="hidden" name="project" [value]="this.project.id" />
+
+            <form-input type="text" name="title" placeholder="Task Title" required class="form-control">
+            </form-input>
+
+            <input type="hidden" name="supervisors[]" [value]="this.user.id" />
+
+            <flk-dropdown-list *if="this.project" [value]="this.participantId" [required]="true" name="participant" heading="Assignee"
+                [items]="this.participants">
+            </flk-dropdown-list>
+            <flk-dropdown-list *else [remote-search]="true" [value]="this.participantId" [required]="true" query="name" [lazy-loading]="true"
+                heading="Assignee" [service]="this.usersService" required name="participant">
+            </flk-dropdown-list>
+
+            <div class="text-right m-t-1">
+                <button type="button" [disabled]="this.isSubmitting" (click)="this.openQuickForm[status] = false;"
+                    class="btn btn-circle btn-warning" tooltip title="cancel">
+                    <fa icon="times"></fa>
+                </button>
+                <button class="btn btn-circle btn-success" [disabled]="this.isSubmitting" tooltip title="Create">
+                    <fa icon="check"></fa>
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<button *if="! Is.empty(this.archivedTasks)" (click)="this.isViewingArchivedTasks = true"
+    class="col-12 col-sm-4 col-md-3 bold pink-text view-archived-btn">
+    View Archived Tasks ({{ this.archivedTasks.length.format() }})
+</button>

@@ -1,0 +1,33 @@
+<div *if="record.testCasesList[type]" class="table-responsive test-cases-list">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Test Case</th>
+                <th>Priority</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let testCase, testCaseIndex of record.testCasesList[type]">
+                <td [html]="testCase.id"></td>
+                <td>
+                    <a [href]="URLS.project(this.project, 'test-cases', testCase)" [html]="testCase.title"></a>
+                </td>
+                <td [html]="testCase.priority"></td>
+                <td>
+                    <if condition="testCase.canBeModified">
+                        <button type="button" (click)="this.openTestCase(type, record, testCase, testCaseIndex, index)"
+                            class="btn btn-purple btn-sm btn-circle" tooltip title="Edit Test case">
+                            <fa icon="edit"></fa>
+                        </button>
+                        <button type="button" (click)="this.confirmRemovingTestCase(testCase, testCaseIndex, index)"
+                            class="btn btn-sm btn-circle btn-danger" tooltip title="Delete Test case">
+                            <fa icon="trash"></fa>
+                        </button>
+                    </if>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

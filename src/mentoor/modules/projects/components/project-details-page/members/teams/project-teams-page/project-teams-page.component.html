@@ -1,0 +1,57 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button *if="this.project.maxTeams > this.project.teams.length && this.project.isHigherAuthority" [disabled]="this.project.maxTeams <= this.project.teams.length && this.project.fund < FLAGS.projects.pricing.extra.team" (click)="this.openTeamModal = true" class="float-right btn btn-pink bold">
+        <fa icon="plus mr-1"></fa>
+        TEAM
+    </button>
+    <button *elseif="this.project.isHigherAuthority" class="float-right btn btn-success bold" (click)="this.openTeamModal = true">
+        <fa icon="plus mr-1"></fa>
+        TEAM
+        <br>
+        <gold-icon [coins]="FLAGS.projects.pricing.extra.team"></gold-icon>
+    </button>
+
+    <h1 class="m-y-1">Project Teams ({{ this.project.teams.length }})</h1>
+
+    <table class="m-t-2 table table-bordered">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Members</th>
+                <th>Team Leader</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.teams)">
+                <td class="text-center" colspan="4">No teams yet.</td>
+            </tr>
+            <tr *for="let team of this.project.teams">
+                <td>
+                    <a [href]="URLS.project(this.project, 'teams/' + team.type + '/members')" [html]="team.type"></a>
+                </td>
+                <td [html]="team.members.length + '/' + team.maxMembers"></td>
+                <td [html]="this.getTeamLeaderName(team)"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.openTeamModal" *as="teamModal" (close)="this.openTeamModal = null" size="small" header="Add New Team">
+    <form (submit)="this.submit($el, 'add')">
+        <flk-dropdown-list name="type" [items]="this.teamsList()" required label="Team Type"></flk-dropdown-list>
+        
+        <flk-dropdown-list     
+            name="teamLeader" 
+            label="Team Leader"
+            [items]="this.availableTeamLeaders"
+            heading="Select Team Leader"
+            placeholder="Enter username to select"
+        >
+        </flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.isSending" class="btn btn-success bold">Create</button>
+        </div>
+    </form>
+</flk-modal>

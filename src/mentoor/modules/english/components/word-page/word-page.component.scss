@@ -1,0 +1,166 @@
+#word-page {
+
+    // Picasso is ready to draw :)
+    .login-btn {
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .purchase-btn {
+        font-size: 3rem;
+    }
+
+    #word-wrapper {
+        clear: both;
+        .image {
+            max-width: 250px;
+            max-height: 300px;
+            vertical-align: top;
+        }
+
+        #meta {
+            position: relative;
+            .pep {
+
+                color: #FFF;
+                padding: 1rem;
+                display: block;
+                font-weight: bold;
+                margin: 0.5rem auto 1rem; // border: 1px solid #0d8e43;
+                // background: $green-accent-4;
+                // @include box-shadow(0px 0px 2px 1px #14c65e);
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                // background-color: $green-accent-4;
+                border: 1px solid $green-darken-2;
+                background-image: -moz-linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+                background-image: -o-linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+                background-image: -webkit-linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+                background-image: linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+                border-radius: 5px;
+                text-shadow: 0px -1px 0px rgba(0, 0, 0, .5);
+                box-shadow: 0px 2px 0px $green-darken-4, 0px 3px 15px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+
+                &:active,
+                &:focus {
+                    outline: none;
+                    background-image: -webkit-linear-gradient(bottom, $green-darken-3 0%, $green-accent-2 100%);
+                }
+
+            }
+
+            #suggest-btn {
+                font-size: 3rem;
+                text-shadow: 0px 0px 2px #000;
+            }
+
+            .heading {
+                @include responsive((0: (text-align: center,
+                            font-size: 3rem),
+                        1024: (text-align: left,
+                            font-size: 4rem,
+                        )));
+
+                #word {}
+
+                #translation {
+                    font-family: $arabic-font;
+                    direction: rtl;
+
+                    .pronunciation {
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+
+            #description {
+                margin-top: 2rem;
+
+                p {
+                    font-weight: bold;
+                    color: #888 !important;
+                }
+
+                .ar {
+                    text-align: left;
+                }
+            }
+
+            #action-btn {
+                margin-top: 3rem;
+                text-align: center;
+                font-size: 3rem;
+
+                @include responsive((0: (margin-bottom: 2rem,
+                        ),
+                        1024: (position: absolute,
+                            right: 2rem,
+                            top: 2rem,
+                        ),
+                    ));
+            }
+        }
+
+    }
+
+    .words-lst {
+        text-align: center;
+        font-weight: bold;
+        font-size: 3rem;
+        border-top: 1px solid #eee;
+    }
+
+    .word-item {
+        margin-top: 2rem;
+        // height: 100px;
+
+        .word-image {
+            display: none;
+            height: calc(100px - 2rem);
+            width: 100px;
+            vertical-align: top;
+        }
+
+        .meta {
+            // display: inline-block;
+            // margin-left: 1rem;
+            // width: calc(100% - 100px - 2rem);
+
+            .translation {
+                direction: rtl;
+                text-align: right;
+                font-family: $arabic-font;
+            }
+
+        }
+    }
+
+    table {
+        margin-top: 1rem;
+
+        // tbody tr:nth-of-type(odd) {
+        tbody tr {
+            // background: #FFF;
+        }
+
+        img {
+            height: 50px;
+        }
+
+        .word-wrapper {
+            text-align: left;
+
+            .word {
+                font-weight: bold;
+            }
+
+            .translation {
+                direction: rtl;
+                font-weight: bold;
+                text-align: right;
+                font-family: $arabic-font;
+            }
+        }
+    }
+}

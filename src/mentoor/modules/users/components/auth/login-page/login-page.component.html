@@ -1,0 +1,31 @@
+<div class="authLayout">
+    <div class="auth">
+        <h1 class="text-center bold">Mentoor!</h1>
+        <h3 class="text-center m-b-2 mt-2" trans="login"></h3>
+        <p class="text-center">
+            Hello again
+            <img [src]="assets('images/smile.svg')" class="loginImg" alt="Login">
+        </p>
+        <form class="authForm" id="my-form" class="card" (submit)="this.login($el)">
+            <div *if="this.errorMsg" class="alert alert-danger" [html]="this.errorMsg"></div>
+            <form-input type="email" autofocus name="email" placeholder="email" required class="form-control">
+            </form-input>
+            <form-input type="password" minlength="8" name="password" placeholder="password" required class="form-control">
+            </form-input>
+            <button class="btn btn-primary btn-block" [disabled]="! this.isValidForm || this.isLoggingIn">
+                <span *if="! this.isLoggingIn" trans="login"></span>
+                <div *else class="text-center">
+                    <fa spin="spinner fa-1x"></fa>
+                </div>
+            </button>
+            <div class="d-flex justify-content-between authLink m-1">
+                <p>
+                    Don't have an account?
+                    <a href="/register" class="mainColor ml-1">
+                        Create new account</a>
+                </p>
+                <a class="forgetLink" href="/forget-password">Forget password !</a>
+            </div>
+        </form>
+    </div>
+</div>

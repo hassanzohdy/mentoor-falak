@@ -1,0 +1,24 @@
+<li class="panel-item" [class]="{unseen: notification.seen === false}">
+    <a href="/chat-rooms" (click)="this.markAsSeen(notification)">
+        <fa icon="comments bold mr-2 fa-2x v-middle" 
+        [class]="{'orange-text': notification.extra.newRequest === true, 'green-text': notification.extra.status == 'approved', 'red-text': notification.extra.status == 'declined'}"
+            [title]="notification.extra.status"></fa>
+        <if condition="notification.extra.status">
+            <fa *if="notification.extra.status == 'approved'" icon="check green-text"></fa>
+            <fa *elseif="notification.extra.status == 'decline'" icon="times red-text"></fa>
+            Your request to
+            <strong class="grey-text mx-2" [html]="notification.extra.chatRoom.name"></strong>
+            has been .
+        </if>
+        <elseif condition="notification.extra.newRequest">
+            <strong class="mx-2 purple-text" [html]="notification.extra.member.name"></strong>
+            asked to join 
+            <strong class="mx-2 green-text" [html]="notification.extra.chatRoom.name"></strong> room.
+        </elseif>
+        <strong
+            [class]="{'red-text': notification.extra.status == 'declined', 'green-text': notification.extra.status == 'approved'}"
+            [html]="notification.extra.status"></strong>
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+    <remove-notification-btn></remove-notification-btn>
+</li>

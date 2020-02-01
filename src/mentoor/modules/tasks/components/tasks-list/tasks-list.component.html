@@ -1,0 +1,50 @@
+<table class="table table.bordered table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Participant</th>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th>Starts at</th>
+            <th>Ends at</th>
+            <th>Reward</th>
+            <th>Penalty ratio</th>
+            <th>Control</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *for="let task, index of this.tasks">
+            <td [html]="task.id"></td>
+            <td [html]="task.participant.name"></td>
+            <td [html]="task.title"></td>
+            <td>
+                <flk-time-ago [timestamp]="task.createdAt.timestamp"></flk-time-ago>
+            </td>
+            <td>
+                <span [html]="task.status" class="task-status badge" [class]="taskStatus(task)"></span>
+            </td>
+            <td [html]="task.startsAt"></td>
+            <td [html]="task.endsAt"></td>
+            <td>
+                <gold-icon [coins]="task.reward"></gold-icon>
+            </td>
+            <td class="bold red-text" [html]="task.penaltyRatio + 'x'"></td>
+            <td>
+                <a href="/tasks/{{ task.id }}" class="btn btn-sm btn-primary bold">
+                    <fa icon="eye"></fa>
+                </a>
+                <button *if="this.taskCanBeEdited(task)" type="button" (click)="this.editingTask = task;"
+                    class="btn btn-teal btn-sm">
+                    <fa icon="edit"></fa>
+                </button>
+                <button *if="this.user.id == 1" type="button" (click)="this.deleteTask(task, index)"
+                    class="btn btn-danger btn-sm">
+                    <fa icon="trash"></fa>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<task-modal *if="this.editingTask" [task]="this.editingTask" (close)="this.editingTask = null"></task-modal>

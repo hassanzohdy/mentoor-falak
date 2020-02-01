@@ -1,0 +1,262 @@
+@import 'panel-wrapper.scss';
+
+@import 'colors';
+@import 'dropdown';
+@import 'grid';
+@import 'table';
+@import 'accordion';
+
+$latest-news-bar-size: 50px;
+
+button:focus {
+    outline: none !important;
+}
+
+.relative {
+    position: relative;
+}
+
+// import your app files instead of writing code directly here!
+// special variable
+// $direction: rtl|ltr >> the current direction of the application
+// $right: `right` on ltr and `left` or rtl
+// $left: `left` on ltr and `right` or rtl
+@if $direction==ltr {
+    // 
+}
+
+@else {
+    // 
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+// $lock-icon-color: $deep-orange-accent-4;
+$lock-icon-color: #0cc7ff;
+
+.can-unlock {
+    color: yellow;
+    font-weight: bold;
+    font-size: 2rem;
+    background: #ff5200;
+    padding: 0px 10px;
+    height: 29px;
+    text-shadow: 4px 3px 11px blue;
+    border-radius: 50%;
+    box-shadow: 0px 0px 7px 3px yellow;
+}
+
+.lock-icon {
+    color: $lock-icon-color;
+}
+
+li {
+    list-style-position: inside;
+}
+
+body {
+    font-weight: normal;
+}
+
+.purchased-icon {
+    font-size: 3rem;
+    color: $green-base;
+}
+
+// @import url(https://fonts.googleapis.com/css?family=Ranchers);
+
+$comic-font: 'Comics';
+$versus-font: 'Versus';
+
+@include font-face($comic-font, url('./../fonts/Space-Comics.ttf'));
+@include font-face($versus-font, url('./../fonts/Sheeping-Cats.otf'));
+
+.comic-font {
+    font-family: $comic-font;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0px 3px 3px #000;
+}
+
+.nav-item {
+    position: relative;
+
+    .badge {
+        position: absolute;
+        bottom: 73%;
+        #{$right}: 40%;
+        border-radius: 50%;
+    }
+}
+
+.dark-theme {
+    $dark-color: #343a40;
+    background-color: #343a40 !important;
+    color: #FFF !important;
+
+    .sidebar .navbar-brand a {
+        color: #FFF !important;
+    }
+
+
+    a.text-body.bold {
+        color: #d1d0d0 !important;
+    }
+
+    .list-group-item {
+        box-shadow: 0px 0px 1px 0px #363737 !important;
+    }
+
+    .flk-accordion .accordion-heading {
+        color: #EEE !important;
+    }
+
+    .table {
+        background: $dark-color !important;
+    }
+
+    p {
+        color: #eee !important;
+    }
+
+    .sidebar .nav-item .nav-link {
+        color: #FFF;
+    }
+
+    .content {
+        border-color: $dark-color;
+    }
+
+    .nav-tabs .nav-item .nav-link {
+        color: #36bcf2 !important;
+    }
+
+    button.nav-link.rejected.active {
+        color: #32acc9 !important;
+    }
+
+    .latest-news {
+        border: 1px solid #232222 !important;
+        background: #343a40 !important;
+    }
+
+    .list-group-item,
+    .bg-light,
+    .card,
+    .card .trackInfo {
+        background-color: #343a40 !important;
+    }
+}
+
+img,
+.target-icon {
+    &.small {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.circle {
+        border-radius: 50%;
+    }
+
+    &.medium {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+.level {
+    background: url(../images/shield.png);
+    width: 30px;
+    height: 40px;
+    background-size: 100% 100%;
+    z-index: 1;
+    color: #FFF;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    padding-top: 0.5rem;
+    display: inline-block;
+    margin: 1rem auto 0;
+}
+
+
+.mdContent {
+    li {
+        margin-bottom: 1rem;
+
+        &:first-child {
+            margin-top: 1rem;
+        }
+
+        p {
+            display: inline-block;
+            margin-bottom: 0;
+            margin-left: -1rem;
+        }
+
+        ul {
+            // display: list-item;
+        }
+
+    }
+
+    p,
+    li {
+        code {
+            background: #FFF;
+            color: #000;
+            border: solid 1px #f2ebde;
+            padding: 0.2rem 0.5rem;
+        }
+    }
+    a {
+        font-weight: bold;
+        text-decoration: underline;
+
+        code {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.btn-circle {
+    padding: 1rem 1.4rem;
+    border-radius: 50%;
+
+    &.btn-sm {
+        padding: 0.5rem 0.9rem;
+    }
+}
+
+// Arabic
+
+$arabic-font: Cairo;
+
+.ar {
+    direction: rtl;
+    font-family: $arabic-font;
+    text-align: right;
+}
+
+.simple-card {
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, .13);
+    background: #FFF;
+    padding: 1rem;
+}
+
+
+@mixin color-grd {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    display: inline-block;
+}

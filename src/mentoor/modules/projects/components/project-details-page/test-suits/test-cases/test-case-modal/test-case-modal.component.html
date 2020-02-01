@@ -1,0 +1,84 @@
+<form *if="this.testCaseIsOpened" (submit)="this.submitTestCase($el)">
+    <input type="hidden" name="type" [value]="this.testCaseType" />
+    <input type="hidden" name="testSuit" [value]="this.testSuit.id" />
+    <input type="hidden" name="project" [value]="this.project.id" />
+    <h1 [html]="this.testCaseHeading"></h1>
+    <div class="row">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form-input type="text" name="title" [value]="this.testCase.title" label="Test case title" required
+                class="form-control"></form-input>
+        </div>
+        <div class="col-sm-12">
+            <form-input type="textarea" name="description" [value]="this.testCase.description"
+                label="Test case description" required class="form-control"></form-input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+
+            <form-input type="textarea" name="preconditions" [value]="this.testCase.preconditions"
+                label="Test case Preconditions" class="form-control"></form-input>
+        </div>
+        <div class="col-sm-6">
+            <form-input type="textarea" name="notes" [value]="this.testCase.notes" label="Test case notes"
+                class="form-control"></form-input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <flk-dropdown-list
+                name="preConditionsTestCases[]"
+                [multiple]="true"
+                [lazy-loading]="true"
+                [except]="this.testCase.id"
+                [value]="this.preConditionsTestCasesIds"
+                [request]="this.requestTestCases.bind(this)"
+                label="Pre Conditions Test Cases"
+            ></flk-dropdown-list>
+        </div> 
+
+        <div class="col-sm-6">
+            <flk-dropdown-list name="priority" label="Priority" required [items]="PRIORITIES"
+                [value]="this.testCase.priority"></flk-dropdown-list>
+        </div>               
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form-input type="textarea" name="postConditions" [value]="this.testCase.postConditions"
+                label="Test case PostConditions" class="form-control"></form-input>
+        </div>
+        <div class="col-sm-6">
+            <form-input type="textarea" name="data" [value]="this.testCase.data" label="Test case data" required
+                class="form-control"></form-input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <form-input type="textarea" name="stepsToReproduce" [value]="this.testCase.stepsToReproduce"
+                label="Steps To Reproduce" placeholder="Steps To Reproduce (Each step in one line without numbering the line)" required
+                class="form-control"></form-input>
+        </div>
+        <div class="col-sm-4">
+            <form-input type="textarea" name="expectedBehavior" [value]="this.testCase.expectedBehavior"
+                label="Expected Behavior" required class="form-control"></form-input>
+        </div>
+        <div class="col-sm-4">
+            <form-input type="textarea" name="actualResult" [value]="this.testCase.actualResult"
+                label="Actual Result" class="form-control"></form-input>
+        </div>
+    </div>
+    <div class="m-t-2">            
+        <flk-file-input name="attachment" class="btn btn-cyan bold" label="Test Case Automation File">
+                <fa icon="cloud-upload-alt"></fa>
+                <strong class="ml-1">Upload Test Case Automation File</strong>
+        </flk-file-input>
+    </div>
+    <div class="m-t-1 text-center">
+        <button type="button" [disabled]="this.isSending" (click)="this.testCaseIsOpened = false" class="btn btn-danger bold">Cancel</button>
+        <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+    </div>
+</form>

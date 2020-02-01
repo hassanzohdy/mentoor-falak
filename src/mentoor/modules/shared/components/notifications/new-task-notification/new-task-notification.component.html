@@ -1,0 +1,12 @@
+<li class="panel-item task-item" [class]="{unseen: notification.seen === false}">
+    <a href="/tasks/{{ notification.extra.id }}" (click)="this.markAsSeen(notification)">
+        <fa icon="tasks green-text bold mr-2 fa-2x v-top" tooltip title="New Task"></fa>
+        <div class="d-inline-block task-meta">
+            <!-- <span class="green-text bold mr-2">[NEW]</span> -->
+            <span [html]="notification.title" class="task-title"></span>
+            <small class="d-block" [html]="notification.description"></small>
+            <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+        </div>
+    </a>
+    <remove-notification-btn></remove-notification-btn>
+</li>

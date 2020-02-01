@@ -1,0 +1,74 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let record, index of this.items">
+        <td>{{ record.id }}</td>
+        <td [html]="record.name"></td>
+        <td [html]="record.category.name"></td>
+        <td><img class="small-image" [src]="record.icon" [alt]="record.name" /></td>
+        <td [html]="record.cost.format()"></td>
+        <td>
+            <div *for="let tag of record.tags" class="m-b-1">
+                <tag-badge [small]="true" [tag]="tag"></tag-badge>
+            </div>
+        </td>
+        <td [html]="record.sortOrder"></td>
+        <td [html]="record.display"></td>
+        <td>
+            <table-actions (edit)="this.editItem(record)" (delete)="this.deleteItem(record.id, index)">
+            </table-actions>
+        </td>
+    </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+    <form (submit)="this.submit($el)">
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.name" placeholder="Cocktail name"
+                class="form-control" name="name"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input type="textarea" rows="6" required name="description" [value]="this.formObject.description"
+                placeholder="Description" class="form-control"></form-input>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <form-input type="number" name="sortOrder" [value]="this.formObject.sortOrder" label="Sort order"
+                        class="form-control"></form-input>
+                </div>
+                <div class="col-md-4">
+                    <form-input class="form-control" required label="cost" type="number" name="cost"
+                        [value]="this.formObject.cost"></form-input>
+                </div>
+                <div class="col-md-3">
+                    <flk-checkbox label="Display" name="display" value="1" [checked]="this.formObject.display">
+                    </flk-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <flk-dropdown-list [service]="this.tagsService" [lazy-loading]="true" [multiple]="true"
+                    [imageable]="true" label="Tags" placeholder="Tag" [value]="this.formObject.tags" name="tags[]">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-4">
+                <flk-dropdown-list [lazy-loading]="true" [service]="this.adminCocktailsCategoriesService"
+                    label="Category"[imageable]="true" placeholder="Category" [value]="this.formObject.category.id" name="categoryId">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-4">
+                <flk-dropdown-list [service]="this.service" [lazy-loading]="true" [multiple]="true" [imageable]="true"
+                    label="Requires cocktails" placeholder="Cocktails" [value]="this.formObject.requiredCocktails"
+                    name="requiredCocktails[]"></flk-dropdown-list>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="image">Icon</label>
+            <flk-image-input id="icon" [src]="this.formObject.icon" required name="icon"></flk-image-input>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

@@ -1,0 +1,63 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let user, index of this.items">
+        <td>{{user.id}}</td>
+        <td>
+            <span [html]="user.name"></span>
+            <user-online [id]="user.id"></user-online>
+            <div *if="user.username" [html]="'@' + user.username"></div>
+        </td>
+        <td [html]="user.gold.format()"></td>
+        <td [html]="user.total?.academy?.answers?.approved"></td>
+        <td [html]="user.email"></td>
+        <td [html]="user.accountType"></td>
+        <td>
+            <table-actions (edit)="this.editItem(user)" (delete)="this.deleteItem(user.id, index)"></table-actions>
+            <button *if="this.user.id == 1" class="btn btn-sm btn-primary" (click)="this.openAsUser(user)">Open as</button>
+            <button class="btn btn-sm btn-success" (click)="this.rewardedUser = user;">
+                <gold-icon></gold-icon>
+            </button>
+        </td>
+    </tr>
+</admin-table>
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal();">
+    <form (submit)="this.submit($el)">
+        <div class="form-group">
+            <form-input required type="email" [value]="this.formObject.email" placeholder="Email" class="form-control"
+                name="email"></form-input>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <form-input required type="text" name="name" [value]="this.formObject.name" placeholder="User name"
+                        class="form-control"></form-input>
+                </div>
+                <div class="col-md-6">
+                    <select required class="form-control" name="accountType" [value]="this.formObject.accountType">
+                        <option *for="let type of this.accountTypes" [value]="type">{{type}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <form-input type="password" [value]="this.formObject.password" minlength="8" name="password" placeholder="Password"
+                class="form-control"></form-input>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-modal *if="this.rewardedUser" (close)="this.rewardedUser = null" header="Give a complement">
+    <form (submit)="this.giveReward($el)">
+        <form-input type="number" required class="form-control" label="Reward" name="gold"></form-input>
+        <flk-dropdown-list label="For" name="for" [items]="this.rewardsReasons" required></flk-dropdown-list>
+        <!-- <form-input type="text" required class="form-control" label="For" name="for"></form-input> -->
+        <form-input type="textarea" required class="form-control" label="Description" name="description"></form-input>
+        <button class="btn btn-success bold" [disabled]="this.disableSubmit">
+            Give 
+            <gold-icon></gold-icon>
+        </button>
+    </form>
+</flk-modal>

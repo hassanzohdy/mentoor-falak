@@ -1,0 +1,104 @@
+{
+    "name": "mentoor",
+    "favicon": "",
+    "packages": [
+        "@flk/fa",
+        "collect.js",
+        "@flk/shareable",
+        "@flk/markdown",
+        "plyr",
+        "@flk/copy2clipboard",
+        "socket.io-client",
+        "howler",
+        "@flk/modal",
+        "@flk/youtube-video",
+        "@flk/spinner",
+        "@flk/time-ago",
+        "@flk/audio-player",
+        "@flk/audio-recorder",
+        "@flk/number-counter",
+        "@flk/dropdown-list",
+        "@flk/datepicker",
+        "@flk/session",
+        "@flk/mdb-checkbox",
+        "markdown-it-emoji",
+        "@flk/animator",
+        "@flk/checkbox",
+        "@flk/image-input",
+        "@flk/multiple-inputs",
+        "@flk/alert",
+        "@flk/time-ago",
+        "@flk/accordion",
+        "@flk/seo",
+        "pluralize",
+        "@flk/message",
+        "sortablejs",
+        "pikaday-time",
+        "flatpickr"
+    ],
+    "vendor": {
+        "css": {
+            "common": [
+                "bootstrap/dist/css/bootstrap.min.css"
+            ]
+        }
+    },
+    "externals": {
+        "css": {
+            "ltr": [
+                "https://fonts.googleapis.com/css?family=Raleway"
+            ],
+            "common": [
+                "https://fonts.googleapis.com/icon?family=Material+Icons"
+            ]
+        },
+        "js": [
+            "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        ]
+    },
+    "mainFiles": {
+        "collect.js": "build/collect.min.js",
+        "socket.io-client": "dist/socket.io.slim.js",
+        "markdown-it-emoji": "dist/markdown-it-emoji-light.min.js"
+    },
+    "assets": [
+        "fonts",
+        "media"
+    ],
+    "modules": [
+        "shared",
+        "home",
+        "users",
+        "static-pages",
+        "einstein-chamber",
+        "academy",
+        "chat-rooms",
+        "users",
+        "flk-facebook-share",
+        "tags",
+        "training-ground",
+        "cocktails",
+        "tasks",
+        "users",
+        "facebook-cover-page",
+        "einstein-chamber",
+        "dashboard",
+        "posts",
+        "tutorial-maker",
+        "change-log",
+        "english",
+        "projects",
+        "shopping-mall",
+        "misc",
+        "calendar",
+        "courses",
+        "flk-time-remaining",
+        "flk-timer",
+        "timeline",
+        "record-audio-input",
+        "polls",
+        "offline-courses",
+        "resources"
+    ]
+}

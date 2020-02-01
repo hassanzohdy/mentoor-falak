@@ -1,0 +1,8 @@
+<layout>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <else>
+        <h1 [html]="this.resource.title"></h1>
+    </else>
+</layout>

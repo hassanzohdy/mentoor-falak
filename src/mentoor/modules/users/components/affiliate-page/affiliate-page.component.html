@@ -1,0 +1,27 @@
+<layout>
+    <h1 class="m-b-1">Affiliate Program</h1>
+    <p>
+        You can earn extra
+        <gold-icon></gold-icon>
+        by inviting your friend to register to the application through an invitation link. 
+    </p>
+
+    <h1 class="m-b-1">Where to get my affiliate url</h1>
+    <p>
+        Your affiliate link is
+        <a class="bold teal-text mx-2" target="_blank" href="{{ this.affiliateUrl }}" [html]="this.affiliateUrl"></a>
+
+        <button *if="Is.null(this.copied)" class="text-primary" type="button" title="Copy" (click)="this.copyUrl()">
+            (<fa icon="object-ungroup"></fa>)
+        </button>
+        <strong *if="this.copied" class="green-text ml-2" title="Copied">
+            <fa icon="check"></fa>
+        </strong>
+    </p>
+    <h1 class="m-b-1">What do i get in return</h1>
+    <p>For every active user you invite who answers at least 
+        <strong class="ml-2 pink-text">{{ this.requiredAnswers }} answers</strong>,
+        You get 
+        <gold-icon [coins]="this.affiliateReward"></gold-icon>
+    </p>
+</layout>

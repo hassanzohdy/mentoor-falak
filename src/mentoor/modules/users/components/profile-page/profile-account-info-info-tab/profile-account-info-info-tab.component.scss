@@ -1,0 +1,24 @@
+#profile-settings-tab {
+    // Picasso is ready to draw :)
+
+    .username-input {
+        display: inline-block;
+        width: calc(100% - 15px);
+    }
+
+    table {
+        border-left: none;
+
+        th,
+        td {
+            border-left: none !important;
+            border-right: none !important;
+        }
+
+        td {
+            font-weight: bold;
+            color: #999;
+            position: relative;
+        }
+    }
+}   

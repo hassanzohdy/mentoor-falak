@@ -1,0 +1,85 @@
+.einstein-category {
+    position: relative;
+
+    .can-unlock {
+        position: absolute;
+        top: -1.2rem;
+        right: 0.5rem;
+        z-index: 1;
+    }
+
+    .image {
+        height: 250px;
+    }
+
+    .lock-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+
+        .lock-icon {
+            font-size: 3rem;
+            color: $lock-icon-color;
+        }
+    }
+
+    .name {
+        font-weight: bold;
+        text-align: center;
+        margin: 1rem 0;
+        color: #666;
+    }
+
+    .requirements {
+        overflow: hidden;
+        padding: 0.5rem 1rem;
+
+        .answers {
+            .icon {
+                margin-right: 0.5rem;
+            }
+        }
+
+        .cost {
+            float: right;
+        }
+    }
+
+    .purchased-wrapper {
+        position: absolute;
+        top: -1rem;
+        right: 0;
+    }
+
+    .back-card {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        padding: 1rem;
+        width: 100%;
+        // height: 100%;
+        background: #FFF;
+        box-shadow: 0px 0px 4px 1px #bbb;
+        transition: all 0.5s ease-in-out;
+
+        .description {
+            font-weight: normal;
+        }
+
+        .purchase-btn {
+            text-transform: uppercase;
+            width: 100%;
+        }
+    }
+
+    &:hover .back-card {
+        opacity: 1;
+        visibility: visible;
+    }
+}

@@ -1,0 +1,178 @@
+<layout>
+    <flk-spinner *if="Is.empty(this.topic)"></flk-spinner>
+    <div class="row topicDetails" *if="! Is.empty(this.topic)">
+        <div class="col-lg-9 col-md-8">
+            <section>
+                <header class="topicTitle">
+                    <h2 class="text-capitalize bold trackImage">
+                        <a [href]="URLS.track(this.topic.track)">
+                            <img [src]="this.topic.track.image" class="mr-2 v-top" [alt]="this.topic.track.name" />
+                        </a>
+                        <div class="d-inline-block">
+                            {{ this.topic.title }}
+                            <div class="text-muted dateFont mt-1 font-weight-normal">
+                                <!-- <fa icon="calendar"></fa> {{this.topic.createdAt.format}} -->
+                                <fa icon="calendar mx-2"></fa>
+                                <flk-time-ago [timestamp]="this.topic.createdAt.timestamp"></flk-time-ago>
+                                <div class="m-t-1">
+                                    <flk-facebook-share></flk-facebook-share>
+                                </div>
+                            </div>
+                        </div>
+                    </h2>
+                </header>
+                <p class="topicDesc">{{ this.topic.shortDescription }}</p>
+
+                <footer class="card p-2 m-b-1" *if="this.topic.userAnswer && this.topic.userAnswer.status == 'rejected' && (this.topic.userAnswer.comment || this.topic.userAnswer.recordNote)">
+                    <h3 class="red-text bold m-b-1">Your answer has been rejected :(</h3>
+                    <span class="d-inline-block">Note by:</span> <strong class="d-inline-block" [html]="this.topic.userAnswer.commentBy.name"></strong>
+                    <p class="notes">
+                        <markdown *if="this.topic.userAnswer.comment" [content]="this.topic.userAnswer.comment"></markdown>
+                    </p>
+                    <flk-audio-player *if="this.topic.userAnswer.recordNote" [src]="this.topic.userAnswer.recordNote"></flk-audio-player>
+                </footer>
+                <div class="metaInfo">
+                    <h3 class="infoTitle bold">Quest</h3>
+                </div>
+                <p class="topicQuest m-b-2">
+                    <markdown *if="this.topic.quest" [content]="this.topic.quest"></markdown>
+                </p>
+            </section>
+            <div *if="this.openAnswerText" class="answerForm">
+                <h3 class="bold mb-3">Please be aware of the following notes when you submit your answer</h3>
+                <ul id="notes-list">
+                    <li>
+                        Don't forget to read about <a href="/writing-notes" class="bold mx-2 teal-text">writing
+                            notes</a> before starting the quest.
+                    </li>
+                    <li class="bold">DO NOT copy/paste the answer, write it with your own words and understanding.</li>
+                    <li>Your answer is not meant to be ideal, so read about the quest and write what you know.</li>
+                    <li>Make your answer simple and understandable.</li>
+                    <li>You can use markdown syntax in your answer, so use it especially in writing code.</li>
+                    <li>Always put references at the bottom of your answer from the articles/books you used in your
+                        answer.</li>
+                    <li>Stick to the quest requirements, don't explain anything else.</li>
+                    <li>Your answer will be reviewed before publishing it to public, still write what you only know for
+                        the quest.</li>
+                    <li>
+                        Once the answer is posted, you can't change it while it is pending., so don't forget to
+                        <button type="button" class="btn btn-sm btn-success"
+                            (click)="this.preview = ! this.preview">preview</button>
+                        it before posting.
+                    </li>
+                    <li>If the answer is rejected, you can edit it and try again.</li>
+                </ul>
+                <if condition="this.preview">
+                    <h1>Answer preview</h1>
+                    <markdown [content]="this.answerData"></markdown>
+                    <button class="btn btn-purple" (click)="this.preview = false">Back to code</button>
+                </if>
+                <flk-alert *if="this.form" (confirm)="this.submitAnswer(this.form)" (close)="this.form = null">
+                </flk-alert>
+                <form *if="this.openAnswerText" (submit)="this.form = $el;">
+                    <form-input (input)="this.storeAnswer($el.value)" type="textarea" [value]="this.answerData" required
+                        rows="8" name="answer" placeholder="Write your answer ;)" class="form-control mb-4" dir="auto">
+                    </form-input>
+                    <button class="btn btn-primary float-right" [disabled]="!this.isValidForm || this.isSending">
+                        Send
+                    </button>
+                    <button type="button" class="btn btn-success float-right"
+                        (click)="this.preview = true">Preview</button>
+                </form>
+                <button *if="this.cancelBtn" class="btn btn-danger float-right mr-2"
+                    (click)="this.openAnswerText = !this.openAnswerText; this.cancelBtn = false">
+                    Cancel
+                </button>
+            </div>
+
+            <div *elseif="! Is.empty(this.topic.answers)">
+                <h4 class="answersTitle bold m-b-2">Answers ( {{ this.topic.answers.length }} )</h4>
+                <h2 *if="! this.topic.public && !this.topic.answered && this.user.id != 1"
+                    class="text-center bold teal-text">You need to answer first to see other's answers!</h2>
+                <else>
+                    <div class="card m-b-2" *for="let answer of this.topic.answers">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="answerMeta w-100">
+                                    <span class="mainColor text-capitalize mr-2 pointer bold d-block"
+                                        (click)="this.handleAnswerDisplay(answer);">
+                                        <span
+                                            [class]="{'green-text': answer.by.id == this.user.id, 'blue-text': answer.by.id != this.user.id}"
+                                            [html]="answer.by.name"></span>
+                                        <user-online [id]="answer.by.id"></user-online>
+
+                                        <span *if="answer.by.id == this.user.id && answer.status != 'approved'"
+                                            class="text-capitalize badge align-bottom ml-3 mb-1"
+                                            [class]="answerStatusClass(answer.status)">
+                                            {{ answer.status }}
+                                        </span>
+
+                                        <fa *if="answer.display == SEMI_DISPLAYED" title="Display"
+                                            icon="angle-down float-right fa-2x"></fa>
+                                        <fa *elseif="answer.display == DISPLAYED" title="Hide"
+                                            icon="minus float-right fa-2x"></fa>
+                                        <fa *elseif="answer.display == HIDDEN" title="Semi display"
+                                            icon="plus float-right fa-2x"></fa>
+                                    </span>
+                                    <small class="text-muted d-block">
+                                        {{ answer.createdAt.format }}
+                                    </small>
+                                </div>
+                            </div>
+                            <if condition="answer.display == SEMI_DISPLAYED">
+                                <markdown [content]="answer.answer.split('\n').slice(0, 10).join('\n')"></markdown>
+                                <p *if="answer.answer.split('\n').length > 10" class="pointer bold pink-text"
+                                    (click)="this.handleAnswerDisplay(answer)">Read more...</p>
+                            </if>
+                            <markdown *elseif="answer.display == DISPLAYED" [content]="answer.answer"></markdown>
+                        </div>
+                    </div>
+                </else>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <div *if="this.approveMsg.show" class="mb-3">
+                        <span class="badge text-uppercase"
+                            [class]="answerStatusClass(this.approveMsg.status)">{{this.approveMsg.status}}
+                        </span>
+                        <span *if="this.approveMsg.status === 'rejected'">{{this.approveMsg.msg}}</span>
+                    </div>
+                    <div class="topicEsTime">
+                        <!-- <span class="d-block bold">Reward</span> -->
+                        <if condition="this.topic.userAnswer && this.topic.userAnswer.status == 'approved'">
+                            <span class="reward-status" *if="this.topic.userAnswer.prize != this.topic.prize"
+                                [class]="{'up': this.topic.userAnswer.prize > this.topic.prize, down: this.topic.userAnswer.prize < this.topic.prize}"></span>
+                            <gold-icon></gold-icon>
+                            <span class="bold"
+                                [class]="{'green-text': this.topic.userAnswer.prize > this.topic.prize, 'red-text': this.topic.userAnswer.prize < this.topic.prize}"
+                                [html]="this.topic.userAnswer.prize.format()"></span>
+                            <div *if="this.topic.userAnswer && this.topic.userAnswer.prize != this.topic.prize" class="bold p-l-4" [class]="{'red-text': this.topic.userAnswer.prize < this.topic.prize, 'green-text': this.topic.userAnswer.prize > this.topic.prize}">
+                                <span [html]="this.topic.userAnswer.prize > this.topic.prize ? '+' : '-'"></span>
+                                <span [html]="Math.abs(this.topic.userAnswer.prize - this.topic.prize).format()"></span>
+                            </div>
+                        </if>
+                        <gold-icon *else [coins]="this.topic.prize"></gold-icon>
+                        <div *if="this.startQuest">
+                            <a *if="! this.topic.subscribed" href="/academy" class="btn btn-sm btn-danger bold">
+                                Subscribe to answer!
+                                <fa icon="lock icon ml-2"></fa>
+                            </a>
+                            <button *else class="btn text-uppercase" [class]="this.btns"
+                                (click)="this.showQuestAnswer()" [disabled]="this.disableQuestBtn">
+                                {{ this.openAnswerText ? 'Cancel' : 'Start quest' }}
+                                <fa *if="! this.user.isLoggedIn()" icon="lock icon ml-2"></fa>
+                            </button>
+                        </div>
+                        <div *if="this.approveMsg.status === 'rejected'" class="text-info cursor text-center"
+                            title="Edit your answer"
+                            (click)="this.editAnswer(this.currentUserAnswer.id, this.currentUserAnswer.answer)">
+                            <fa icon="edit"></fa>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</layout>

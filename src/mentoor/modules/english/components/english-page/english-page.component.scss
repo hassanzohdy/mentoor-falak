@@ -1,0 +1,105 @@
+#english-page {
+
+    // Picasso is ready to draw :)
+    .category {
+        .image {
+            @include responsive((0: (height: auto,
+                        margin-top: 3rem,
+                    ),
+                    768: (height: auto,
+                        // width: 100px,
+                        // max-width: none,
+                    ),
+                    1024: (margin-top: 0,
+                        height: 100px,
+                    ),
+                ));
+        }
+
+        .simple-card {
+            min-height: 150px;
+        }
+
+        .word {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .pronunciation {
+            font-size: 1.4rem;
+            margin-left: 0.5rem;
+
+            &.translation {
+                margin-right: .5rem;
+            }
+        }
+
+        .description {
+            font-size: 1.3rem;
+            height: 30px;
+            color: #888 !important;
+
+            &.ar {
+                font-size: 1.1rem;
+            }
+        }
+
+        .footer {
+            margin-top: 1rem;
+            overflow: hidden;
+
+            .cost {
+                display: inline-block;
+                margin-top: 0.4rem;
+            }
+
+            .btn {
+                box-shadow: 0px 0px 3px 2px #eee;
+                // border: 1px solid #ccc; 
+            }
+        }
+    }
+
+    #top-participants {
+        margin-left: 1rem;
+        background: linear-gradient(95deg, rgb(250, 202, 23) 20%, rgb(255, 156, 72) 80%);
+        @include color-grd();
+
+        .icon {
+            background: linear-gradient(95deg, rgb(250, 202, 23) 20%, rgb(255, 156, 72) 80%);
+            @include color-grd();
+        }
+    }
+
+    .total-words {
+        text-align: center;
+        font-size: 3rem;
+        border: 4px solid $lime-color;
+        display: inline-block;
+        // padding: 3rem;
+        width: 20rem;
+        height: 20rem;
+        padding-top: 5rem;
+        border-radius: 50%;        
+        .value {
+            font-size: 5rem;
+        }
+    }
+}
+
+.words-sort-wrapper {
+    width: 100%;
+    margin-bottom: 1rem;
+    .dropdown {
+        display: inline-block;
+
+        @include responsive((
+            0: (
+                width: 60%,
+            ),
+            768: (
+                width: 20%,
+            ),
+        ));
+    }
+}

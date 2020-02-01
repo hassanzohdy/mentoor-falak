@@ -1,0 +1,34 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div class="float-right m-b-1">
+        <a [href]="URLS.project(this.project, 'change-requests')" class="btn bold btn-purple">
+            <fa icon="arrow-left mr-2"></fa>
+            Back to
+            Change Requests
+            List
+        </a>
+    </div>
+
+    <h1 class="heading" [html]="this.changeRequest.title"></h1>
+
+    <div class="row m-t-3">
+        <div class="col-9">
+            <div class="simple-card">
+                <markdown [content]="this.changeRequest.description"></markdown>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card p-1">
+                <h3 class="text-center m-b-2">Change Request Details</h3>
+                <div class="m-b-1">
+                    <span class="mr-3">Type</span>
+                    <strong [html]="CHANGE_REQUEST_TYPES[this.changeRequest.type]"></strong>
+                </div>
+                <div class="m-b-1">
+                    <span class="mr-3">Request Date</span>
+                    <span [html]="this.changeRequest.requestDate"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</project-layout>

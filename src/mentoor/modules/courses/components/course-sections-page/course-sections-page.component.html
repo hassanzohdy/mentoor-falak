@@ -1,0 +1,68 @@
+<layout>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <div *else>            
+        <course-video-form 
+            *if="this.newVideo" 
+            (close)="this.newVideo = false" 
+            (save)="this.currentSection.videos.push(e)"
+            [course]="this.course"
+            [section]="this.currentSection"
+        ></course-video-form>
+
+        <course-video-form 
+            *elseif="this.updateVideo" 
+            (close)="this.updateVideo = false" 
+            (save)="this.currentSection[index] = e"
+            [video]="this.currentVideo"
+            [course]="this.course"
+            [section]="this.currentSection"
+        ></course-video-form>
+
+        <else>            
+            <h1 [html]="this.course.title"></h1>
+
+            <div class="simple-card p-0 m-t-1">
+                <flk-accordion *for="let section, index of this.course.sections" *key="section.id"
+                    [heading]="section.title">
+                    <button type="button" tooltip title="Edit"
+                        (click)="this.editSection = true; this.currentSection = section; this.index = index;"
+                        class="btn btn-circle btn-info btn-sm">
+                        <fa icon="edit"></fa>
+                    </button>
+                    <button type="button" tooltip title="Delete"
+                        (click)="this.deleteSection = true; this.currentSection = section; this.index = index;"
+                        class="btn btn-circle btn-danger btn-sm">
+                        <fa icon="trash"></fa>
+                    </button>
+
+                    <hr>
+
+                    <h4 class="m-t-1">Content</h4>
+
+                    <course-section-videos-list [videos]="section.videos"></course-section-videos-list>
+
+                    <button type="button" (click)="this.newVideo = true; this.currentSection = section" class="m-y-2 btn btn-sm btn-purple" tooltip
+                        title="New Video">
+                        <fa icon="plus" 2x></fa>
+                    </button>
+                </flk-accordion>
+
+                <button type="button" (click)="this.newSection = true" class="m-y-2 btn btn-sm btn-success" tooltip
+                    title="New Section">
+                    <fa icon="plus" 2x></fa>
+                </button>
+            </div>
+        </else>
+    </div>
+</layout>
+
+<course-section-form *if="this.newSection" (close)="this.newSection = false" 
+    (save)="this.course.sections.push(e)"
+    [course]="this.course"></course-section-form>
+
+<course-section-form *if="this.editSection" (close)="this.editSection = false"
+    (save)="this.course.sections[this.index] = e" [course]="this.course" [section]="this.currentSection">
+</course-section-form>
+
+<flk-alert *if="this.deleteSection" (close)="this.deleteSection = false" (confirm)="this.removeSection()"></flk-alert>

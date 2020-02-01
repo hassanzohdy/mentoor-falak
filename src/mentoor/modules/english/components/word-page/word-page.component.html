@@ -1,0 +1,137 @@
+<layout>
+    <h1 class="m-y-1 p-r-2">
+        English As A Foreigner
+        <a href="/english" class="float-right mr-3 d-inline-block btn btn-purple bold">
+            <fa icon="angle-left mr-2"></fa>
+            Back to Topics list
+        </a>
+    </h1>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <div *else id="word-wrapper">
+        <div class="text-left row m-0">
+            <img [src]="this.word.image" [alt]="this.word.word" class="image col-sm-2" />
+            <div id="meta" class="col-sm-10">
+                <h1 class="heading">
+                    <div id="word">
+                        <span [html]="this.word.word"></span>
+                        <span *if="this.word?.total?.words" class="ml-2"
+                            [html]="'(' + this.word.total.words.format() + ')'"></span>
+                    </div>
+                    <div id="translation" [html]="this.word.translation.word"></div>
+                    <div>
+                        <flk-facebook-share></flk-facebook-share>
+                    </div>
+
+                    <button type="button" *if="this.user.accountType == 'admin'" (click)="this.togglePublishedWords()"
+                        class="btn bold btn-primary">Needs preview only</button>
+                </h1>
+
+                <div *if="this.word.description" id="description">
+                    <p [html]="this.word.description"></p>
+                    <p class="ar" [html]="this.word.translation.description"></p>
+                </div>
+
+                <div *if="this.requiresLogin" class="text-center">
+                    <a class="btn btn-danger btn-sm login-btn" id="action-btn" href="/login">
+                        <fa icon="lock mr-2"></fa>
+                        Login to proceed.
+                    </a>
+                </div>
+                <div *elseif="! this.word.isUnlocked" id="action-btn">
+                    <div class="cost">
+                        <gold-icon color="green" [coins]="this.word.cost"></gold-icon>
+                        <strong class="pink-text" *if="this.word.cost == 0">FREE!</strong>
+                    </div>
+                    <button type="button" (click)="this.confirmPurchase = true"
+                        class="btn purchase-btn btn-sm bold btn-danger">
+                        <fa icon="lock mr-2"></fa>
+                        Purchase to unlock
+                    </button>
+                </div>
+                <div *elseif="Object.get(FLAGS, 'english.newWord')" id="action-btn">
+                    <button (click)="this.openModal('add')" type="button" class="btn btn-success" id="suggest-btn">
+                        <fa icon="plus"></fa>
+                        <gold-icon [coins]="FLAGS.english.newWord"></gold-icon>
+                        <div class="bold">New word</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div *if="this.word.isUnlocked && this.word.type == 'category' && ! Is.empty(this.word.words)" class="m-t-2">
+            <h3 class="words-lst">
+                Words list
+                -
+                <span class="ml-1 translation">الكلمات</span>
+            </h3>
+            <div class="words-sort-wrapper">
+                <label class="mr-2 bold teal-text">Sort</label>
+                <flk-dropdown-list class="dropdown" (select)="this.sortBy(e.value)"
+                    [items]="['Chronologically', 'Alphabetically']" [searchable]="false" [value]="this.defaultSort">
+                </flk-dropdown-list>
+            </div>
+
+            <!-- <div class="row">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2" *for="let word, index of this.word.words">
+                    <div class="simple-card word-item">
+                        <img *if="word.image" [src]="word.image" class="word-image" [alt]="word.word" />
+
+                        <fa *if="this.user.accountType == 'admin' && word.published" icon="check-circle blue-text"></fa>
+
+                        <button *if="this.user.accountType == 'admin'"
+                            (click)="this.currentWord = word; this.openModal('edit');" type="button"
+                            class="btn btn-circle float-right btn-primary">
+                            <fa icon="edit"></fa>
+                        </button>
+                        <button *if="this.user.accountType == 'admin'" (click)="this.delete(word, index)" type="button"
+                            class="btn btn-circle float-right btn-danger">
+                            <fa icon="trash"></fa>
+                        </button>
+                        <section class="meta">
+                            <div class="word text-capitalize" [html]="word.word"></div>
+                            <div class="translation" [html]="word.translation.word"></div>
+                        </section>
+                    </div>
+                </div>
+            </div> -->
+
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr *for="let words of Array.chunk(this.word.words, this.wordsPerLine)">
+                        <for loop="let word, index of words">
+                            <td class="word-wrapper">
+                                <div class="word">
+                                    <img *if="word.image" [src]="word.image" [alt]="word.word" />
+                                    <span [html]="word.word"></span>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="translation" [html]="word.translation.word"></td>
+
+                            <td *if="this.user.accountType == 'admin'">
+                                <fa *if="word.published" tooltip title="Published" icon="check-circle blue-text"></fa>                                
+                                <button (click)="this.delete(word, index)" type="button"
+                                    class="btn btn-circle btn-danger">
+                                    <fa icon="trash"></fa>
+                                </button>
+                                <button 
+                                    (click)="this.currentWord = word; this.openModal('edit');" type="button"
+                                    class="btn btn-circle btn-primary">
+                                    <fa icon="edit"></fa>
+                                </button>
+                            </td>
+                        </for>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</layout>
+
+<word-modal *if="this.modalShouldBeOpened" (validate)="return this.validateAsUnique(e)" [record]="this.getWordRecord()"
+    [category]="this.word" (save)="this.adjustRecord(e)" (close)="this.modalShouldBeOpened = null">
+</word-modal>
+
+<flk-alert *if="this.confirmPurchase" (close)="this.confirmPurchase = false" (confirm)="this.purchaseCategory()">
+</flk-alert>

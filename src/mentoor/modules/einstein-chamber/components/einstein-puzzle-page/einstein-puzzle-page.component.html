@@ -1,0 +1,144 @@
+<layout>
+    <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
+    <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
+    <a href="/einstein-chamber/shop" class="m-l-1" title="Shop">
+        <span class="shopping-cart"></span>
+    </a>
+
+    <a href="/einstein-chamber/unlock" title="Help">
+        <fa icon="question-circle fa-2x ml-2 v-middle"></fa>
+    </a>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <else>
+        <span *if="this.puzzle.public" class="ml-2 badge badge-primary">Public</span>
+
+        <div *if="this.puzzle && this.puzzle.public" class="m-y-1">
+            <flk-facebook-share></flk-facebook-share>
+        </div>
+        <div *if="this.puzzle.status && this.puzzle.status == 'approved'">
+            <a href="/einstein-chamber/puzzles/{{ this.puzzle.id }}/answers" class="btn btn-pink bold">See how others
+                solved it!</a>
+        </div>
+        <div class="puzzle row">
+            <!-- Left section -->
+            <div class="col-9">
+                <h1 class="m-v-1">
+                    {{ this.puzzle.title }}
+                    <strong class="green-text ml-2" [html]="this.puzzle.category.name"></strong>
+                </h1>
+                <div *if="this.puzzle.status == 'rejected'" class="card p-1 m-b-1">
+                    <div class="bold red-text">You're previous answer had some issues, please check the following
+                        comment and act accordingly.</div>
+                    <div class="m-y-1">
+                        <span>By:</span>
+                        <strong class="ml-2" [html]="this.puzzle.commentBy.name"></strong>
+                        <markdown *if="this.puzzle.comment" [content]="this.puzzle.comment"></markdown>
+                        <flk-audio-player *if="this.puzzle.recordNote" [src]="this.puzzle.recordNote">
+                        </flk-audio-player>
+                    </div>
+                </div>
+                <markdown [content]="this.puzzle.quest"></markdown>
+
+                <if condition="this.puzzle.answer">
+                    <h1 class="m-v-1 teal-text">Your previous answer</h1>
+                    <hr />
+                    <markdown [content]="this.puzzle.answer"></markdown>
+                </if>
+
+                <!-- Form -->
+                <div *if="this.startQuest" class="m-t-1" [class]="{'d-none': this.hideForm}">
+                    <h1 class="m-v-1">Notes before answering.</h1>
+                    <ul class="font-weight-normal">
+                        <li class="red-text bold">Any code without comments makes your answer get rejected!</li>
+                        <li class="pink-text bold">the code MUST BE WORKING or it will get rejected!</li>
+                        <li>You can use markdown syntax in your answer, so use it especially in writing code.</li>
+                        <li>Add the code in the answer box then put it on
+                            <a href="https://codepen.io/" class="bold m-h-1 teal-text" target="_blank">Codepen</a>
+                            if your challenge is
+                            about <strong class="mx-2">HTML, CSS, Javascript, Typescript or SCSS</strong>
+                            and put it on
+                            <a href="https://tehplayground.com" class="bold m-h-1 green-text"
+                                target="_blank">Tehplayground</a>
+                            If your challenge is about
+                            <strong class="mx-2">PHP</strong>
+                            after that put the link at the bottom of the answer or it will get
+                            <span class="ml-1 red-text bold">rejected</span>.
+                        </li>
+                        <li>Stick to the puzzle requirements.</li>
+                        <li>Your answer will be reviewed, you can not edit it again it if it gets
+                            <span class="ml-1 red-text bold">rejected</span>.
+                        </li>
+                        <li>
+                            <strong class="mr-1">Double</strong>
+                            check the answer before submitting it, you can't change it again, so don't forget to
+                            <button type="button" (click)="this.preview = ! this.preview"
+                                class="btn btn-sm btn-success">preview</button>
+                            it.
+                        </li>
+                        <li>
+                            If the puzzle is about creating a <strong class="mx-2">built in function</strong> in programming language, <strong class="mx-2">DO NOT</strong> use it, but implement it.
+                        </li>
+                        <li>
+                            If the answer is
+                            <span class="mx-1 red-text bold">rejected</span>,
+                            the puzzle may appear again later.
+                        </li>
+                    </ul>
+                    <p class="orange-text bold">If the answer got<span class="mx-1 red-text bold">rejected</span>,
+                        you will lose the reward of the puzzle from your gold, thus try to understand the quest
+                        properly.</p>
+
+                    <div class="row">
+                        <form class="col" (submit)="this.submitAnswer($el)">
+                            <form-input type="textarea" rows="10" class="form-control mb-4" name="answer"
+                                placeholder="Write your answer ;)" required [value]="this.answerData"
+                                (keyup)="this.storeAnswer($el.value)"></form-input>
+                            <button class="btn btn-primary float-right">Send</button>
+                            <button class="btn btn-success float-right" type="button"
+                                (click)="this.preview = ! this.preview">Preview</button>
+                            <button class="btn btn-danger float-right mr-2" type="button"
+                                (click)="this.startQuest = false">Cancel</button>
+                        </form>
+                        <div *if="this.preview && this.answerData" class="col-6">
+                            <markdown [content]="this.answerData"></markdown>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Form -->
+            </div>
+            <!-- Right section -->
+            <div class="col">
+                <div class="card m-t-0">
+                    <div class="text-center level" [html]="this.puzzle.level" title="Level {{ this.puzzle.level }}">
+                    </div>
+
+                    <div *if="this.puzzle.status == 'active'" class="text-center bold status active"></div>
+                    <div *elseif="this.puzzle.status" class="text-center bold status">
+                        <span class="badge" [class]="this.getProperBadge(this.puzzle.status)"
+                            [html]="this.puzzle.status"></span>
+                    </div>
+                    <div class="bold text-center m-v-1">
+                        <div>Reward</div>
+                        <gold-icon [coins]="this.puzzle.reward"></gold-icon>
+                    </div>
+                    <fa *if="this.puzzle.status == 'approved'" icon="check green-text fa-2x text-center" title="Solved">
+                    </fa>
+                    <div class="text-center m-b-1">
+                        <button *if="this.user.isLoggedIn() && ['active', 'rejected'].includes(this.puzzle.status)"
+                            class="btn text-uppercase"
+                            [class]="{'btn-primary': ! this.startQuest, 'btn-danger': this.startQuest}"
+                            (click)="this.startQuest = ! this.startQuest" [disabled]="this.isSending">
+                            {{ this.startQuest ? 'Cancel' : 'Start quest' }}
+                        </button>
+
+                        <a *if="! this.user.isLoggedIn()" href="/login" class="btn bold btn-danger text-uppercase">
+                            Login to solve!
+                        </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </else>
+</layout>

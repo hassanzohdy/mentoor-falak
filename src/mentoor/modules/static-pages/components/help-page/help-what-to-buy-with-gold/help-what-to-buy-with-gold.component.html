@@ -1,0 +1,27 @@
+<section class="font-weight-normal">
+    <h3 class="bold m-b-1 m-t-4">What can you buy with gold</h3>
+
+    <p>You can obtain any of the following for gold:</p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let item of this.purchasableItems">
+                <td class="bold">
+                    <if condition="Is.null(item.price)">
+                        ?
+                    </if>
+                    <else>
+                        {{ Number(item.price).format() }}
+                    </else>
+                    <gold-icon></gold-icon>
+                </td>
+                <td class="font-weight-normal" [html]="item.description"></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

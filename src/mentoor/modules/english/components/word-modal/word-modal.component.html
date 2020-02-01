@@ -1,0 +1,69 @@
+<flk-modal (close)="this.close()" *as="modal" [header]="this.heading" size="small">
+    <form *as="form" (submit)="this.submit($el)">
+        <p class="bold teal-text">Your word will be previewed after submitting and you'll rewarded once approved.</p>
+        <div *if="this.sent === true" class="alert alert-success bold">Word has been submitted successfully.</div>
+        <div *elseif="this.sent === false" class="alert alert-danger bold">Word already exists.</div>
+        <input type="hidden" name="type" [value]="this.type" />
+        <input *if="this.category" type="hidden" name="categoryId" [value]="this.category.id" />
+        <input type="hidden" name="slug" [value]="this.slug" />
+        <!-- Category details -->
+        <div *if="this.type == 'category'" class="m-b-1">
+            <h2 class="m-b-1">Category options</h2>
+            <hr />
+            <form-input class="form-control" type="text" name="cost" [value]="this.data.cost" required label="Cost">
+            </form-input>
+            <flk-checkbox name="incrementalCost" [checked]="this.data.incrementalCost" (change)="this.data.incrementalCost = $el.checked" label="Incremental Cost"></flk-checkbox>
+        </div>
+        <!-- Word details -->
+        <h2 class="m-b-1">Word</h2>
+        <hr />
+        <form-input type="text" (input)="this.slug = seo($el.value); this.data.word = $el.value.capitalize();" class="form-control" name="word"
+            [value]="this.data.word" required label="Word">
+        </form-input>
+
+        <form-input type="text" class="form-control ar" name="translation.word" [value]="this.data.translation.word"
+            required label="Translation">
+        </form-input>
+        <!-- <div class="col-6">
+                <form-input type="text" class="form-control" name="pronunciation" [value]="this.data.pronunciation"
+                    required label="Pronunciation"></form-input>
+            </div> -->
+
+        <form-input *if="this.type == 'category'" required type="textarea" name="description" class="form-control"
+            [value]="this.data.description" label="Description">
+        </form-input>
+        <form-input *if="this.type == 'category'" type="textarea" name="translation.description" class="form-control"
+            [value]="this.data.translation.description" required label="Translation Description">
+        </form-input>
+        <div *if="this.type == 'category'" class="form-group">
+            <label for="image">Image</label>
+            <flk-image-input *as="imageInput" [src]="this.data.image" name="image" id="image" required>
+            </flk-image-input>
+        </div>
+
+        <!-- <div class="col-6">
+            <form-input type="textarea" name="description" class="form-control" [value]="this.data.description"
+                [required]="this.type == 'category'" label="Description">
+            </form-input>
+        </div> 
+
+        <hr />
+        <h2 class="m-b-1">Translation</h2>
+        <hr />
+        <div class="col-6">
+                <form-input type="text" class="form-control" name="translation.pronunciation"
+                    [value]="this.data.translation.pronunciation" required label="Pronunciation"></form-input>
+            </div>
+        <form-input type="textarea" name="translation.description" class="form-control"
+            [value]="this.data.translation.description" [required]="this.type == 'category'" label="Description">
+        </form-input>
+-->
+        <div class="form-group">
+            <flk-checkbox *if="this.user.accountType == 'admin'" label="Published" name="published"
+                [checked]="! this.data.id && this.user.id == 1 ? true : this.data.published" (change)="this.data.published = $el.checked" value="1"></flk-checkbox>
+        </div>
+        <button *if="! this.data.id" [disabled]="! this.isValidForm || this.isSending" (click)="this.submitThenClear()"
+            class="btn btn-purple bold">SAVE & RESET</button>
+        <button *else [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">SAVE</button>
+    </form>
+</flk-modal>

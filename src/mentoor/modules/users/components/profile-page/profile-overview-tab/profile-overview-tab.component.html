@@ -1,0 +1,150 @@
+<section id="profile-overview-tab">
+    <div *if="this.requireNameChange()" class="overlay"></div>
+    <div class="text-center m-b-2">
+        <div class="relative">
+            <flk-image-input [disabled]="this.isUpdating" (mouseover)="this.editMode = 'image'"
+                (mouseout)="this.editMode = null" name="image" (change)="this.updateProfile(this.form);"
+                [src]="this.getUserImage()"></flk-image-input>
+            <span *if="this.user.username" class="grey-text" [html]="'@' + this.user.username"></span>
+
+            <span *if="this.editMode == 'image'" class="new-tooltip">Click to edit</span>
+        </div>
+        
+        <div class="m-t-2 relative name-change-wrapper" (mouseover)="this.editMode = 'name'; this.editMode"
+            (mouseout)="this.editMode = null">
+                <span class="new-tooltip" *if="this.requireNameChange()">
+                    Add your last name
+                </span> 
+                <h1 *if="this.inEditMode != 'name' && ! this.requireNameChange()" class="d-inline-block" [html]="this.user.name"></h1>
+            <elseif condition="this.inEditMode == 'name' || this.requireNameChange()">                
+                <div class="m-auto" id="name-change">
+                    <form-input type="text" required class="form-control d-inline-block" name="firstName"
+                        placeholder="First name" [value]="this.user.firstName">
+                    </form-input>
+                    <form-input type="text" required class="form-control d-inline-block" name="lastName"
+                        placeholder="Last name" [value]="this.user.lastName">
+                    </form-input>
+                    <input type="hidden"
+                        value="{{ (this.user.firstName + ' ' + this.user.lastName) || this.user.name }}" name="name" />
+                </div>
+                <div class="m-y-1">
+                    <button [disabled]="this.isUpdating" class="btn blue bold save-btn">Save changes</button>
+                    <button [disabled]="this.isUpdating" type="button" (click)="this.inEditMode = false"
+                        class="btn white black-text bold">Close</button>
+                </div>
+            </elseif>
+            <button [disabled]="this.isUpdating" *if="this.editMode == 'name' && ! this.inEditMode && ! this.requireNameChange()" type="button"
+                (click)="this.inEditMode = 'name'" class="edit-btn">
+                <fa icon="pen"></fa>
+                Edit
+            </button>
+        </div>
+        <gold-icon [coins]="this.user.gold"></gold-icon>
+    </div>
+    <!-- Totals -->
+    <div id="totals" class="text-center">
+        <!-- General -->
+        <section class="profile-box pb-5 mb-5">
+            <header class="col-12 profile-box-header m-b-5">
+                <h1 class="pl-5 my-0">General Overview</h1>
+                <span class="profile-box-header-line"></span>
+            </header>
+            <div class="row m-t-5 mx-0">
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.tracks" class="total-summary bold teal-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-teal bold">Academy tracks</div>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.academy?.answers?.all" class="total-summary bold navy-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-navy bold">Academy answers</div>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.einstein?.puzzles?.all"
+                        class="total-summary bold purple-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-purple bold">Einstein puzzles</div>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.invitations || 0" class="total-summary bold lime-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-lime bold">Invitations</div>
+                </div>
+            </div>
+            <!--/ General -->
+
+        </section>
+
+        <!-- Academy -->
+        <section class="profile-box py-5 my-5">
+            <header class="col-12 m-b-5 profile-box-header">
+                <h1 class="pl-5 my-0">Academy</h1>
+                <span class="profile-box-header-line"></span>
+            </header>
+            <div class="row m-t-5">
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.tracks" class="total-summary bold light-gray-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-light-gray bold">Unlocked tracks</div>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.academy?.answers?.approved"
+                        class="total-summary bold success-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-success bold">Approved answers</div>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.academy?.answers?.pending"
+                        class="total-summary bold warning-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-warning bold">Pending answers</div>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <flk-number-counter [number]="this.user.total?.academy?.answers?.rejected"
+                        class="total-summary bold danger-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-danger bold">Rejected answers</div>
+                </div>
+            </div>
+        </section>
+        <!--/ Academy -->
+
+        <!-- Einstein -->
+        <section class="profile-box py-5 my-5">
+            <header class="col-12 m-b-5 profile-box-header">
+                <h1 class="pl-5 my-0">Einstein Chamber</h1>
+                <span class="profile-box-header-line"></span>
+            </header>
+            <div class="row m-t-5">
+                <div class="col-sm-3">
+                    <flk-number-counter [number]="Object.get(this.user.total, 'einstein.categories', 0)"
+                        class="total-summary bold pencil-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-pencil bold">Unlocked categories</div>
+                </div>
+                <div class="col-sm-3">
+                    <flk-number-counter [number]="Object.get(this.user.total, 'einstein.puzzles.approved', 0)"
+                        class="total-summary bold emerald-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-emerald bold">Approved</div>
+                </div>
+                <div class="col-sm-3">
+                    <flk-number-counter [number]="Object.get(this.user.total, 'einstein.puzzles.pending', 0)"
+                        class="total-summary bold dark-warning-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-dark-warning bold">Pending</div>
+                </div>
+                <div class="col-sm-3">
+                    <flk-number-counter [number]="Object.get(this.user.total, 'einstein.puzzles.rejected', 0)"
+                        class="total-summary bold dark-danger-border">
+                    </flk-number-counter>
+                    <div class="btn btn-sm btn-dark-danger bold">Rejected</div>
+                </div>
+            </div>
+        </section>
+        <!--/ Einstein -->
+
+    </div>
+    <!--/ Totals -->
+</section>

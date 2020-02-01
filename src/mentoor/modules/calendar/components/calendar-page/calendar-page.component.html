@@ -1,0 +1,68 @@
+<layout>
+    <h1>Calendar</h1>
+    <p>Calendar will help you schedule your todo items into certain dates.</p>
+    <p>This will massively increase your productivity.</p>
+    <p>Calendar can be used to check what you've to do in certain day(s) for todo items, tasks, projects dates and
+        so on.</p>
+
+    <if condition="! this.user.isLoggedIn() || ! this.user.shoppingMall.includes('calendar')">
+        <div *if="! Is.empty(FLAGS.shoppingMall)" class="m-t-4 text-center">
+            <button (click)="this.confirm = true" class="btn btn-success">
+                <gold-icon [coins]="FLAGS.shoppingMall.calendar"></gold-icon>
+                <div class="bold p-l-1">Unlock</div>
+            </button>
+        </div>
+    </if>
+    <else>
+        <calendar-options></calendar-options>
+        <calendar></calendar>
+    </else>
+</layout>
+
+<flk-alert *if="this.confirm" (confirm)="this.unlock();" (close)="this.confirm = false;"></flk-alert>
+
+<flk-modal *if="this.add == 'basic'" *as="scheduleModal" (close)="this.add = null" header="Add new schedule"
+    size="small">
+    <form (submit)="this.submit($el)">
+        <flk-datepicker label="date" *as="date" class="form-control" name="deadline" [date-time]="true">
+        </flk-datepicker>
+        <form-input type="text" required name="subject" label="Subject" class="form-control"></form-input>
+        <form-input type="textarea" name="notes" label="Notes" class="form-control"></form-input>
+        <input type="hidden" name="type" value="basic" />
+        <button class="btn btn-pink">Schedule</button>
+    </form>
+</flk-modal>
+
+<flk-modal *if="this.add == 'task'" *as="scheduleModal" (close)="this.add = null" header="Add new task schedule"
+    size="small">
+    <form (submit)="this.submit($el)">
+        <flk-dropdown-list name="typeId" [lazy-loading]="true" [service]="this.meService" service-method="tasks" response-key="tasks" heading="Select Task"
+            (select)="this.data.subject = e.text"></flk-dropdown-list>
+
+        <flk-datepicker label="date" *as="date" class="form-control" name="deadline" [date-time]="true">
+        </flk-datepicker>
+        <form-input type="text" required name="subject" [value]="this.data.subject" label="Subject"
+            class="form-control"></form-input>
+        <form-input type="textarea" name="notes" label="Notes" class="form-control"></form-input>
+        <input type="hidden" name="type" value="{{ this.data.type }}" />
+        <button class="btn btn-cyan">Schedule</button>
+    </form>
+</flk-modal>
+
+<flk-modal *if="this.add == 'todo'" *as="scheduleModal" (close)="this.add = null" header="Add new todo schedule"
+    size="small">
+    <form (submit)="this.submit($el)">
+        <flk-dropdown-list name="typeId" *as="todoDropdownList" heading="Select Todo" [items]="this.todoItems" (select)="this.data.subject = e.text"></flk-dropdown-list>
+
+        <flk-datepicker label="date" *as="date" class="form-control" name="deadline" [date-time]="true">
+        </flk-datepicker>
+        <form-input type="text" required name="subject" [value]="this.data.subject" label="Subject"
+            class="form-control"></form-input>
+        <form-input type="textarea" name="notes" label="Notes" class="form-control"></form-input>
+        <input type="hidden" name="type" value="{{ this.data.type }}" />
+        <button class="btn btn-success">Schedule</button>
+    </form>
+</flk-modal>
+
+<!-- Comes from calendar-schedule-item component -->
+<flk-alert *if="this.newStatus" (close)="this.newStatus = null" (confirm)="this.changeScheduleStatus()" message="Are you sure you want to change the status to {{ this.newStatus }}, it can not be undone?"></flk-alert>

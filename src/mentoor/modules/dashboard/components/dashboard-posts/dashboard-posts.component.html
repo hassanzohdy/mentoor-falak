@@ -1,0 +1,14 @@
+<div id="dashboard-posts" class="p-t-2" *if="! Is.null(this.isLoadingPosts)">
+    <flk-spinner *if="this.isLoadingPosts"></flk-spinner>
+    <div *else>
+        <h1 *if="Is.empty(this.posts)" class="text-center" >No posts yet for you!</h1>
+        <div *else>
+            <div *for="let post of this.posts" class="m-b-1">
+                <div class="post p-2">
+                    <a [href]="URLS.post(post)" [html]="post.title"></a>
+                    <span class="badge" [class]="{'badge-success': post.status == 'approved', 'badge-warning': post.status == 'pending', 'badge-danger': post.status == 'rejected'}" [html]="post.status"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<layout>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <div *elseif="!Is.empty(this.tracks)" class="row allTracks">
+        <h1 class="col-12">My tracks</h1>
+        <track-card [track]="track" class="col-lg-3 col-md-6" *for="let track of this.tracks"></track-card>
+    </div>
+    <else>
+        <h1>No tracks yet!</h1>
+        <p class="m-t-1 font-weight-normal">
+            Go to
+            <a href="/academy">Academy page</a> and subscribe to some tracks!
+        </p>
+    </else>
+</layout>

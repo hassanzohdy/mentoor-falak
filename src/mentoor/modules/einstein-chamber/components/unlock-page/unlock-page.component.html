@@ -1,0 +1,79 @@
+<layout>
+    <div>
+        <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
+        <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
+    </div>
+
+    <h1 class="m-v-1">What is Einstein Chamber?</h1>
+    <article>
+        <p><strong>Einstein Chamber</strong> is a challenging section that measures how you think in your code.</p>
+        <p>In <strong class="ml-1">Einstein Chamber</strong> you'll face some very familiar challenges that you crossed
+            by, and other are totally brand new for you.</p>
+        <p>Here you will start writing what you use but never wrote in your entire career life.</p>
+
+        <!-- <h1 class="m-v-1">Requirements</h1>
+        <ul class="requirements-list">
+            <li>
+                <gold-icon></gold-icon>
+                <strong>FREE</strong>    
+            </li>
+            <li>
+                <a href="/academy" class="blue-text bold">{{ this.requiredAnswers }} answers</a>
+            </li>
+        </ul> -->
+
+        <h1 class="m-v-1">So how it works?</h1>
+        <p>
+            First thing to do is to <strong class="ml-1">unlock</strong> the chamber.
+        </p>
+        <p>Once it is unlocked, you can now select what categories from <strong>The Shop</strong> you want to be
+            challenged in.</p>
+        <!-- <p>The questions will be randomly changed each 3 hours to get new one.</p> -->
+        <!-- <p>When you read the question details, you can register to it to solve it.</p> -->
+        <p>
+            Each puzzle has a reward, but
+            <strong class="ml-1">be careful, the rewards may backfire on you</strong>
+            if you couldn't solve the puzzle therefore you will pay the same amount of gold for the reward.
+        </p>
+        <p>When your answer is previewed, you can now check the other's answers for the same puzzle and start new
+            <strong>puzzle.</strong>
+        </p>
+        <!-- <p class="purple-text bold">
+            Before you unlock the chamber, you need at least 
+            <span class="m-r-1"></span>
+            <gold-icon></gold-icon>
+            <strong>300,000</strong> 
+             to unlock at least one category.
+        </p> -->
+    </article>
+    <h1 class="m-v-1">Shop</h1>
+    <article>
+        <p>
+            When you enter <strong>Einstein Chamber Shop</strong>, you'll find all available categories that you did or
+            didn't unlock.
+        </p>
+
+        <p>
+            Any category has <fa icon="lock lock-icon mx-3"></fa> means you didn't unlock it yet.
+        </p>
+
+        <p>
+            Any category has <span class="can-unlock mx-3">!</span> means you have its requirements thus it could be unlocked.            
+        </p>
+
+    </article>
+    <div class="text-center m-t-3">
+        <a *if="! this.user.isLoggedIn()" href="/login" class="btn bold btn-sm btn-danger">
+            Login to unlock
+            <fa icon="lock ml-2"></fa>
+        </a>
+        <div *elseif="! Is.empty(this.user.einsteinChamber)" class="text-center bold green-text">Einstein Chamber is UNLOCKED</div>
+        <button *else class="btn btn-success bold" (click)="this.unlock()" [disabled]="this.disabledButton">
+            <gold-icon></gold-icon>
+            <strong>FREE!</strong>
+            <div>
+                Unlock
+            </div>
+        </button>
+    </div>
+</layout>

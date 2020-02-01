@@ -1,0 +1,162 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div class="text-right m-b-1">
+        <a [href]="URLS.project(this.project, 'test-suits')" class="btn bold btn-purple">
+            <fa icon="arrow-left mr-2"></fa>
+            Back to
+            test suits
+        </a>
+    </div>
+    <div *if="this.testCase" class="testCase row">
+        <div class="col col-sm-9 order-12 order-sm-1">
+            <h1 [html]="'#' + this.testCase.id + ' ' + this.testCase.title" class="title"></h1>
+            <img [src]="this.testCase.createdBy.image" [alt]="this.testCase.createdBy.name" class="user-image" />
+            <div class="d-inline-block">
+                <div [html]="this.testCase.createdBy.name"></div>
+                <div>
+                    <flk-time-ago class="ago" [timestamp]="this.testCase.createdAt.timestamp"></flk-time-ago>
+                </div>
+            </div>
+
+            <div class="simple-card p-1 m-y-1">
+                <div class="result-heading">Description</div>
+                <markdown [content]="this.testCase.description"></markdown>
+            </div>
+
+            <div class="simple-card p-1 m-y-1">
+                <div class="result-heading">Data</div>
+                <markdown [content]="this.testCase.data"></markdown>
+            </div>
+
+            <div *if="this.testCase.preconditions" class="simple-card p-1 m-y-1">
+                <div class="result-heading">Pre Conditions</div>
+                <markdown [content]="this.testCase.preconditions"></markdown>
+            </div>
+            
+
+            <div *if="! Is.empty(this.testCase.preConditionsTestCases)" class="simple-card p-1 m-y-1">
+                    <div class="result-heading">Pre Conditions (Test Cases)</div>
+                    <a 
+                        *for="let testCase of this.testCase.preConditionsTestCases" 
+                        [href]="URLS.project(this.project, 'test-cases', testCase)" 
+                        class="btn bold btn-sm btn-pink"
+                        [html]="testCase.title">
+                    </a>
+                </div>
+                
+            <div *if="this.testCase.postConditions" class="simple-card p-1 m-y-1">
+                <div class="result-heading">Post Conditions</div>
+                <markdown [content]="this.testCase.postConditions"></markdown>
+            </div>
+            
+            <div class="simple-card p-1 m-b-1">
+                <div class="result-heading">Steps To Reproduce</div>
+                <ol class="steps-list">
+                    <li *for="let step of this.testCase.stepsToReproduce.split('\n')" [html]="step"></li>
+                </ol>
+            </div>
+
+            <div class="simple-card p-1 m-b-1">
+                <div class="result-heading">Expected Result</div>
+                <markdown [content]="this.testCase.expectedBehavior"></markdown>
+            </div>
+
+            <div class="simple-card p-1 m-b-1">
+                <div class="result-heading">Actual Result</div>
+                <markdown [content]="this.testCase.actualResult"></markdown>
+            </div>
+
+            <comments [project]="this.project" type="testCase" [comments]="this.testCase.comments"
+                [type-id]="this.testCase.id">
+            </comments>
+
+            <h3 class="bold m-t-2 m-b-1">Test Case Status Change Log</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Created By</th>
+                        <th>Created</th>
+                        <th>Extra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *for="let status of this.testCase.statuses">
+                        <td [html]="status.status.capitalize()"></td>
+                        <td [html]="status.createdBy.name"></td>
+                        <td>
+                            <flk-time-ago [timestamp]="status.createdAt.timestamp"></flk-time-ago>
+                        </td>
+                        <td>
+                            <strong *if="status.reason" [html]="status.reason"></strong>
+                            <a *if="status.bug?.id" [href]="URLS.project(this.project, 'bugs', status.bug)">
+                                Bug #{{ status.bug.id }}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col col-sm-3 order-1">
+            <div class="simple-card">
+                <h2 class="text-center">Test Case Information</h2>
+                <table class="table m-t-2">
+                    <tbody>
+                        <tr>
+                            <td>Type</td>
+                            <th 
+                            class="bold {{ this.testCase.type }} text-capitalize"
+                            [class]="{'green-text': this.testCase.type == 'positive', 'red-text': this.testCase.type == 'negative'}" 
+                            [html]="this.testCase.type">
+                        </th>
+                        </tr>
+                        <tr *if="this.testCase.status">
+                            <td>Status</td>
+                            <th 
+                            class="bold status {{ this.testCase.status }} text-capitalize"
+                            [class]="{'orange-text': this.testCase.status == 'blocked', 'green-text': this.testCase.status == 'passed', 'red-text': this.testCase.status == 'failed'}" 
+                            [html]="this.testCase.status">
+                        </th>
+                        </tr>
+                        <tr>
+                            <td>Priority</td>
+                            <th class="bold priority {{ this.testCase.priority }}" [html]="this.testCase.priority">
+                            </th>
+                        </tr>
+                        <tr *if="this.testCase.status == 'failed'">
+                            <td>Bug</td>
+                            <th>
+                                <a [href]="URLS.project(this.project, 'bugs', this.testCase.bug)" [html]="'#' + this.testCase.bug.id"></a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Test Suit</td>
+                            <th [html]="this.testCase.testSuit.name"></th>
+                        </tr>
+                        <tr *if="this.testCase.attachment">
+                            <td>Automation File</td>
+                            <th>
+                                <a [href]="this.testCase.attachment" class="btn btn-sm btn-bold btn-pink" target="_blank">
+                                    <fa icon="cloud-download-alt mr-2"></fa>
+                                    Download
+                                </a>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="simple-card mt-2" *if="this.testCaseStatusCanBeChanged">
+                <h2 class="text-center m-b-1">Test Case Status</h2>
+                <flk-dropdown-list *as="statusChanger" [value]="this.testCase.status" heading="Change test case Status"
+                    [items]="['passed', 'failed', 'blocked', 'dead']" (select)="this.openStatusChangeConfirm(e.value)">
+                </flk-dropdown-list>
+            </div>
+        </div>
+    </div>
+
+</project-layout>
+
+<flk-alert *if="this.confirmStatusChange" [with-input]="this.reasonIsRequired" [message]="this.getConfirmingMessage()"
+    [required]="this.reasonIsRequired" (close)="this.statusChanger.currentValue = this.testCase.status; this.confirmStatusChange = null" (confirm)="this.updateStatus(e)">
+</flk-alert>

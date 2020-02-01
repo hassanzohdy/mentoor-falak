@@ -1,0 +1,126 @@
+.user-story {
+    background: url(../images/user-stories-board.png);
+    width: 100%;
+    min-height: 100vh;
+    padding: 1rem;
+    padding-top: 2rem;
+
+    #no-stories {
+        font-size: 5rem;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+        background-image: -webkit-linear-gradient(#e8da00, #fdc424 50%, #A86800 60%, #A86800);
+        // text-shadow: -2px -2px 1px rgba(255, 255, 0, 0.56);
+        text-shadow: -2px -2px 1px rgba(213, 164, 59, 0.56);
+    }
+
+    .note {
+        display: block;
+        position: relative;
+        padding: 1em;
+        border: none;
+        min-height: 300px;
+        margin-bottom: 3rem;
+        box-shadow: 5px 5px 10px -2px rgba(33, 33, 33, .4);
+        transform: skew(-1deg, 2deg);
+        transition: transform .35s;
+        z-index: 1;
+
+        .action-btns {
+            position: absolute;
+            top: 0.1rem;
+            right: 0.4rem;
+            color: #FFF !important;
+        }
+
+        .pin-icon {
+            position: absolute;
+            top: -1rem;
+            font-size: 3rem;
+            color: orange;
+            text-shadow: 0px 0px 3px #000;
+        }
+
+        &:hover {
+            cursor: move;
+            transform: scale(1.1);
+        }
+
+        .title {
+            font-size: 24px;
+            line-height: 1.2;
+            min-height: 64px;
+            margin-top: 2rem;
+            margin-bottom: 0;
+
+            .created-at {
+                margin-top: 0.4rem;;
+                display: block;
+                font-size: 0.9rem;
+            }
+        }
+
+        .cnt {
+            margin-top: 1rem;
+            min-height: 200px;
+        }
+
+        .details-btn {
+            color: inherit;
+        }
+    }
+
+}
+
+.btn-color {
+    width: 150px;
+    height: 150px;
+    transform: skew(-1deg, 2deg);
+
+    &.selected {
+        border: 3px solid #000;
+
+        &.dark-note {
+            border-color: rgb(241, 223, 199);
+        }
+    }
+}
+
+.skyblue-note {
+    background: #2ed1f1;
+}
+
+.yellow-note {
+    background: #F7E98D;
+}
+
+.pistage-note {
+    background: #29F09f;
+}
+
+.purple-note {
+    background: #f78ddd;
+}
+
+.orangered-note {
+    background: #f33b03;
+    color: #FFF;
+}
+
+.lime-note {
+    background: #afdc35;
+}
+
+.dark-note {
+    background: #333;
+    color: #FFF;
+}
+
+.tan-note {
+    background: tan;
+}
+
+.gray-note {
+    background: #ddd;
+}

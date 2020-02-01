@@ -1,0 +1,148 @@
+#calendar-page {
+    .schedule {
+        @mixin details-shadow {
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+
+        @keyframes IfadeInUp {
+            from {
+                transform: translate3d(0, 40px, 0)
+            }
+
+            to {
+                transform: translate3d(0, 0, 0);
+                opacity: 1
+            }
+        }
+
+        color: #FFF;
+        font-weight: bold;
+        padding: 0.1rem 0.5rem;
+        // the following two lines are for the padding in the parent block
+        margin-left: -1rem;
+        margin-right: -1rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+
+        .icon {
+            float: right;
+            margin-top: 0.3rem;
+        }
+
+        &.task {
+            background: $cyan-color;
+        }
+
+        &.basic {
+            background: $pink-color;
+        }
+
+        &.todo {
+            background: $green-color;
+        }
+
+        &:hover {
+            .details:not(.open) {
+                visibility: visible;
+                animation-name: IfadeInUp;
+                animation-duration: 0.4s;
+                animation-fill-mode: both;
+            }
+        }
+
+        .details {
+            margin-top: 1.9rem;
+            color: #333;
+            position: absolute;
+            min-width: 200%;
+            left: -40%;
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+
+            &.open {
+                transition: all 0.4s ease-in-out;
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .info {
+                padding: 1rem;
+                position: relative;
+                background: #FFF;
+                border-top: 1px solid #f1f1f1;
+                box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.2);
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    margin-left: -0.5em;
+                    top: 0em;
+                    left: 50%;
+                    box-sizing: border-box;
+                    border: 1em solid black;
+                    border-color: transparent transparent #FFF #FFF;
+                    transform-origin: 0 0;
+                    transform: rotate(135deg);
+                    box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            .detail {
+                margin-top: 0.5rem;
+
+                strong {
+                    font-weight: 900;
+                    color: #999;
+                    margin-right: 0.5rem;
+                    display: inline-block;
+                    width: 5rem;
+                }
+
+                span {
+                    font-weight: 500;
+                }
+            }
+
+            .type {
+                span {
+                    padding-right: 7rem;
+                    padding-left: 0.5rem;
+                }
+            }
+
+            .subject {
+                text-align: center;
+            }
+
+            .notes {
+                font-style: italic;
+                margin-top: 1rem;
+                color: #999 !important;
+                font-size: 1.1rem;
+                margin-bottom: 0px !important;
+
+                span {
+                    padding-left: 0.5rem;
+                    padding-right: 0.2rem;
+                }
+            }
+
+            .custom-type {
+                margin-top: 1rem;
+            }
+
+            .task-details {
+                .ends-at {
+                    strong {
+                        width: 6rem;
+                    }
+                }
+            }
+        }
+    }
+}

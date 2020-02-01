@@ -1,0 +1,56 @@
+#post-page {
+    #post-wrapper {
+        margin-top: 3rem;
+        background: #FFF;
+        box-shadow: 0px 0px 4px 1px #eee;
+        border: 1px solid #ddd;
+        padding: 1rem;
+
+        .user-image {
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .post-edit-btn {
+            float: right;
+            font-weight: bold;
+            color: $mainColor;
+        }
+
+        .meta {
+            display: inline-block;
+            margin-left: 1rem;
+
+            .title {
+                font-size: 3rem;
+                font-weight: bold;
+            }
+
+            .meta-info {
+                color: #888;
+                font-weight: bold;
+
+                .created-at {
+                    margin-left: 0.5rem;
+                    color: #ccc;
+                }
+            }
+        }
+
+        article {
+            margin: 1rem auto;
+
+            .tags {
+                margin: 2rem auto 0;
+            }
+        }
+
+        .image {
+            margin-top: 1rem;
+        }
+
+    }
+}

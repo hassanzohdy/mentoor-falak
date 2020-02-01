@@ -1,0 +1,79 @@
+<div class="schedule {{ scheduleItem.type }}" (click)="scheduleItem.viewDetails = ! scheduleItem.viewDetails"
+    [title]="scheduleItem.type">
+    <div class="label pointer">
+        <span [html]="scheduleItem.subject.readMoreChars(13)"></span>
+        <fa *if="scheduleItem.status == 'active'" [title]="scheduleItem.status" icon="hourglass-half icon"></fa>
+        <fa *elseif="scheduleItem.status == 'completed'" [title]="scheduleItem.status" icon="check icon"></fa>
+        <fa *elseif="scheduleItem.status == 'failed'" [title]="scheduleItem.status" icon="frown-open icon"></fa>
+        <fa *elseif="scheduleItem.status == 'autoFailed'" [title]="scheduleItem.status" icon="frown icon"></fa>
+    </div>
+
+    <div class="details" [class]="{open: scheduleItem.viewDetails}">
+        <div class="info">
+            <div class="subject" [html]="scheduleItem.subject"></div>
+            <div class="date detail">
+                <strong>Ends at:</strong>
+                <span [html]="scheduleItem.deadline"></span>
+            </div>
+
+            <div class="type detail">
+                <strong>Type:</strong>
+                <span [html]="scheduleItem.type" class="bold {{scheduleItem.type}}"></span>
+            </div>
+            <div class="status detail">
+                <strong>Status:</strong>
+                <fa *if="scheduleItem.status == 'active'" [title]="scheduleItem.status" icon="hourglass-half v-middle">
+                </fa>
+                <fa *elseif="scheduleItem.status == 'completed'" [title]="scheduleItem.status" icon="check v-middle">
+                </fa>
+                <fa *elseif="scheduleItem.status == 'failed'" [title]="scheduleItem.status" icon="frown-open v-middle">
+                </fa>
+                <fa *elseif="scheduleItem.status == 'autoFailed'" [title]="scheduleItem.status" icon="frown v-middle">
+                </fa>
+                <span class="ml-2" [html]="scheduleItem.status"></span>
+            </div>
+
+            <p *if="scheduleItem.notes" class="notes">
+                &#10077;
+                <span [html]="scheduleItem.notes"></span>
+                &#10078;
+            </p>
+
+            <div *if="scheduleItem.task" class="custom-type task-details">
+                <h4 class="bold text-center">Task details</h4>
+                <div class="detail title">
+                    <strong>Title:</strong>
+                    <span [html]="scheduleItem.task.title"></span>
+                </div>
+                <div class="detail ends-at">
+                    <strong>Ends at:</strong>
+                    <span [html]="scheduleItem.task.endsAt"></span>
+                </div>
+                <div class="detail reward">
+                    <strong>Reward:</strong>
+                    <gold-icon [coins]="scheduleItem.task.reward"></gold-icon>
+                    <span class="bold red-text" [html]="scheduleItem.task.penaltyRatio + 'x'"
+                        title="Penalty Ratio"></span>
+                </div>
+
+                <a [href]="URLS.task(scheduleItem.task)" class="btn btn-cyan bold d-block text-center">View Task</a>
+            </div>
+            <div *elseif="scheduleItem.todo" class="custom-type todo-details">
+                <h4 class="bold text-center">Todo details</h4>
+                <div class="detail title">
+                    <strong class="m-r-2">Item:</strong>
+                    <span [html]="scheduleItem.todo.item"></span>
+                </div>
+                <div class="detail category">
+                    <strong class="m-r-2">Category:</strong>
+                    <span [html]="scheduleItem.todo.category.name"></span>
+                </div>
+            </div>
+
+            <div *if="['active', 'autoFailed'].includes(scheduleItem.status)" class="text-center m-t-1">
+                <button type="button" (click)="this.currentScheduleItem = scheduleItem; this.newStatus = 'completed'" title="Mark as Completed" class="btn bold btn-success">Complete</button>
+                <button type="button" (click)="this.currentScheduleItem = scheduleItem; this.newStatus = 'failed'" title="Mark as Failed" class="btn bold btn-danger">Failed</button>
+            </div>
+        </div>
+    </div>
+</div>

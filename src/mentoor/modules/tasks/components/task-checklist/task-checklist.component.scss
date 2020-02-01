@@ -1,0 +1,19 @@
+.checklists-wrapper {
+    // Picasso is ready to draw :)
+
+    .checklist {
+        .items {
+            padding: 0;
+
+            .item {
+                list-style: none;
+                margin-left: 1rem;
+                position: relative;
+
+                .flk-mdb-checkbox {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}

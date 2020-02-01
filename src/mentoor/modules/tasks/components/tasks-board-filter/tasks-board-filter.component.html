@@ -1,0 +1,73 @@
+<div class="simple-card m-b-2 col-12 tasks-list-filter">
+    <div class="row">
+        <div *if="! Is.empty(this.filterOptions.participants)" class="col-sm-3 filter-container">
+            <div class="filter-list">
+                <flk-dropdown-list
+                    [items]="this.filterOptions.participants"
+                    heading="Participants"
+                    [value]="this.filteredData.participants"
+                    (select)="this.filterBy('participants', e);"
+                    [imageable]="true"
+                    [multiple]="true"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+        <div *if="! Is.empty(this.filterOptions.supervisors)" class="col-sm-3 filter-container">            
+            <div class="filter-list">
+                <flk-dropdown-list
+                    [items]="this.filterOptions.supervisors"
+                    heading="Supervisors"
+                    [value]="this.filteredData.supervisors"
+                    (select)="this.filterBy('supervisors', e);"
+                    [imageable]="true"
+                    [multiple]="true"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+        <div *if="! this.isInProjectPage && ! Is.empty(this.filterOptions.projects)" class="col-sm-3 filter-container">            
+            <div class="filter-list">
+                <flk-dropdown-list
+                    [items]="this.filterOptions.projects"
+                    heading="Projects"
+                    [value]="this.filteredData.projects"
+                    (select)="this.filterBy('projects', e);"
+                    [imageable]="true"
+                    [multiple]="true"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+        <div *if="! Is.empty(this.filterOptions.statuses)" class="col-sm-3 filter-container">            
+            <div class="filter-list">
+                <flk-dropdown-list
+                    [items]="this.filterOptions.statuses"
+                    heading="Task Status"
+                    [value]="this.filteredData.statuses"
+                    (select)="this.filterBy('statuses', e);"
+                    [multiple]="true"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+        <div *if="! Is.empty(this.filterOptions.modules)" class="col-sm-3 filter-container">            
+            <div class="filter-list">
+                <flk-dropdown-list
+                    [items]="this.filterOptions.modules"
+                    heading="Project Module"
+                    [value]="this.filteredData.modules"
+                    (select)="this.filterBy('modules', e);"
+                    [multiple]="true"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+        <div *if="! Is.empty(this.filterOptions.userStories)" class="col-sm-3 filter-container">            
+            <div class="filter-list">
+                <flk-dropdown-list
+                    [items]="this.filterOptions.userStories"
+                    heading="User Stories"
+                    [value]="this.filteredData.userStories"
+                    (select)="this.filterBy('userStories', e);"
+                    [multiple]="true"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+    </div>
+</div>

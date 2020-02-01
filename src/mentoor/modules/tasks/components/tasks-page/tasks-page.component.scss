@@ -1,0 +1,20 @@
+#tasks-page {
+    // Picasso is ready to draw :)
+    .heading {
+        small {
+            font-size: 1.3rem !important;
+            margin-left: 1rem;
+            vertical-align: middle;
+        }
+    }
+
+    .nav-item {
+        overflow: visible;
+    }
+
+    .nav-tabs .nav-link.active,
+    .nav-tabs .nav-item.show .nav-link {
+        background: $primary-color;
+        color: #FFF;
+    }
+}

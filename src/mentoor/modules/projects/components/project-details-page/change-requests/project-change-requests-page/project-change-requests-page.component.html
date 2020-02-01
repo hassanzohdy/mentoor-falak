@@ -1,0 +1,74 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Change-request
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} Change requests
+        ({{ this.project.changeRequests?.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Request Date</th>
+                <th>Request Type</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.changeRequests)">
+                <td colspan="4" text-center>No Change requests Yet</td>
+            </tr>
+            <tr *else *for="let record, index of this.project.changeRequests" *key="record.id">
+                <td>
+                    <a [href]="URLS.project(this.project, 'change-requests', record)" [html]="record.title"></a>
+                </td>
+                <td [html]="record.requestDate"></td>
+                <td class="bold" [html]="this.changeRequestTypes[record.type]"></td>
+                <td>
+                    <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan"
+                        tooltip title="Edit Change-request">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)"
+                        class="btn btn-danger" tooltip title="Delete Change-request">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="title" [value]="this.record.title" label="Change request Title" required
+            class="form-control"></form-input>
+        <form-input type="textarea" name="description"  [value]="this.record.description" label="Change request Description (Markdown Support)" required
+            class="form-control"></form-input>
+
+            <flk-datepicker name="requestDate" required [value]="this.record.requestDate" label="Request Date" [date-time]="true"
+            class="form-control"></flk-datepicker>
+
+            <flk-dropdown-list 
+                name="type" 
+                [required]="true"
+                label="Change Request Type" 
+                [value]="this.record.type"
+                [items]="this.changeRequestTypes" 
+            >
+            </flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

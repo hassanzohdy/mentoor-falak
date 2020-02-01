@@ -1,0 +1,44 @@
+<layout>
+    <post-placeholder *if="this.isLoading"></post-placeholder>
+    <div *else id="post-wrapper">
+        <button *if="this.post.createdBy.id == this.user.id || this.user.id == 1" (click)="this.editMode = true"
+            class="post-edit-btn">
+            <fa icon="edit"></fa>
+            Edit
+        </button>
+        <img [src]="this.post.createdBy.image" [alt]="this.post.createdBy.name" class="user-image">
+        <div class="meta">
+            <h1 class="title m-b-1">
+                <span [html]="this.post.title"></span>
+                <span *if="this.post.status == 'pending'" class="m-l-1 v-middle badge badge-warning">Pending</span>
+                <span *if="this.post.status == 'rejected'" class="m-l-1 v-middle badge badge-danger">Rejected</span>
+            </h1>
+            <div class="meta-info">
+                <span class="user-name" [html]="this.post.createdBy.name"></span>
+                <user-online [id]="this.post.createdBy.id"></user-online>
+                <flk-time-ago *if="this.lastP && this.lastP.id == this.post.id"
+                    [timestamp]="this.lastP.createdAt.timestamp" class="created-at"></flk-time-ago>
+                <flk-time-ago *else [timestamp]="this.post.createdAt.timestamp" class="created-at mr-2"></flk-time-ago>
+                <flk-facebook-share></flk-facebook-share>
+            </div>
+        </div>
+        <article>
+            <!-- Content -->
+            <markdown [content]="this.post.content"></markdown>
+
+            <!-- Tags list -->
+            <section class="tags">
+                <span *for="let tag of this.post.tags" class="tag">
+                    <img [src]="tag.image" [alt]="tag.name" />
+                    <span [html]="'#' + tag.name"></span>
+                </span>
+            </section>
+        </article>
+
+        <img *if="this.post.image" [src]="this.post.image" class="image" [alt]="this.post.title" />
+        <post-comments [post]="this.post"></post-comments>
+    </div>
+</layout>
+
+<new-post-modal *if="this.editMode" [post]="this.post" (save)="this.post = e" (close)="this.editMode = false">
+</new-post-modal>

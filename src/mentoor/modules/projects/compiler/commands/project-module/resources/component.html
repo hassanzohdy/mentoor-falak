@@ -1,0 +1,52 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        SINGLE_NAME
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} PLURAL_NAME
+        ({{ this.project.ITEM_KEY.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.ITEM_KEY)">
+                <td colspan="3" text-center>No PLURAL_NAME Yet</td>
+            </tr>
+            <tr *else *for="let record, index of this.project.ITEM_KEY" *key="record.id">
+                <td>
+                    <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan"
+                        tooltip title="Edit SINGLE_NAME">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)"
+                        class="btn btn-danger" tooltip title="Delete SINGLE_NAME">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="SINGLE_NAME Name" required
+            class="form-control"></form-input>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

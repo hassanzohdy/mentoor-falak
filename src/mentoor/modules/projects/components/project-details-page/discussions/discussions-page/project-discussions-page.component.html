@@ -1,0 +1,75 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <if condition="! this.modalIsOpened">
+        <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+            <fa icon="plus mr-1"></fa>
+            Discussion
+        </button>
+        <h1 class="m-y-1">
+            {{ this.project.name }} Discussions
+            ({{ this.project.discussions.length }})
+        </h1>
+
+        <h1 *if="Is.empty(this.project.discussions)" class="text-center orange-text">No Discussions.</h1>
+
+        <div *else *for="let discussion, index of this.project.discussions" class="discussion m-t-2 simple-card row">
+            <div class="col-1 text-right">
+                <img [src]="discussion.createdBy.image" [alt]="discussion.createdBy.name" class="user-image" />
+            </div>
+            <span class="col">
+                <span class="action-btns float-right"
+                    *if="this.project.isHigherAuthority || discussion.createdBy.id == this.user.id">
+                    <button type="button" (click)="this.openModal('edit', discussion, index)">
+                        <fa icon="edit"></fa>
+                        Edit
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(discussion, index)">
+                        <fa icon="times mr-2"></fa>
+                        Delete
+                    </button>
+                </span>
+
+                <div class="clearfix"></div>
+
+                <span *if="discussion.comments.length > 0" class="petrol-text float-right">
+                    <span [html]="discussion.comments.length"></span>
+                    <fa icon="comments ml-2"></fa>
+                </span>
+
+                <h3 class="title">
+                    <a [href]="URLS.project(this.project, 'discussions', discussion)">
+                        <span [html]="discussion.title"></span>
+                        <strong *if="discussion.team.type" [html]="discussion.team.type + ' team'"
+                            class="ml-2 teal-text"></strong>
+                    </a>
+                </h3>
+
+                <div class="petrol-text bold">
+                    <span [html]="discussion.createdBy.name"></span>
+                    <span [html]="discussion.status"
+                        [class]="{'badge-success': discussion.status == 'opened', 'badge-danger': discussion.status == 'closed'}"
+                        class="badge text-capitalize ml-2"></span>
+                </div>
+                <div>
+                    <flk-time-ago class="ago" [timestamp]="discussion.createdAt.timestamp"></flk-time-ago>
+                </div>
+
+
+                <div class="m-t-1">
+                    <a [href]="URLS.project(this.project, 'discussions', discussion)" class="btn btn-purple bold">OPEN
+                        DISCUSSION</a>
+                </div>
+        </div>
+
+        <!-- <markdown [content]="discussion.discussion"></markdown> -->
+
+        </div>
+    </if>
+    <project-discussion-form *else [project]="this.project" [discussion]="this.record"
+        (close)="this.modalIsOpened = null">
+    </project-discussion-form>
+
+</project-layout>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

@@ -1,0 +1,40 @@
+#topic-page {
+    .topicDetails {
+        .dateFont {
+            font-size: $fontSm;
+        }
+        .topicTitle {
+            h2 {
+                color: $black;
+                margin: 0;
+            }
+        }
+        .topicDesc {
+            margin: $margin-20 0;
+        }
+    }
+    .answersTitle {
+        font-size: 16px;
+    }
+    .answerStatus {
+        background: $white;
+        padding: 12px;
+        max-height: 200px;
+        border-radius: 5px;
+        overflow-y: auto;
+        position: relative;
+        p {
+            word-break: break-word
+        }
+    }
+    .metaInfo {
+        margin-bottom: $margin-20;
+        .infoTitle {
+            margin: 0;
+        }
+    }
+
+    #notes-list {
+        font-weight: normal;
+    }
+}

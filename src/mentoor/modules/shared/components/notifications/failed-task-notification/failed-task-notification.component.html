@@ -1,0 +1,11 @@
+<li class="panel-item" [class]="{unseen: notification.seen === false}">
+    <a href="/tasks/{{ notification.extra.id }}"
+        (click)="this.markAsSeen(notification)">
+        <span class="red-text bold mr-2">[Failed]</span>
+        You didn't deliver <strong class="teal-text mx-2">
+            {{ notification.extra.title }}
+        </strong> in time, thus you lost <gold-icon [coins]="notification.extra.lostGold"></gold-icon>
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+    <remove-notification-btn></remove-notification-btn>
+</li>

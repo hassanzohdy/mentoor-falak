@@ -1,0 +1,91 @@
+<flk-modal [overlay]="false" [esc]="false" *as="modal" (close)="this.inputs.getEvent('close')()"
+    size="medium" [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+
+        <form-input type="text" name="title" [value]="this.record.title" label="Title" required class="form-control">
+        </form-input>
+
+        <form-input type="textarea" name="description" [value]="this.record.description" label="Description (Markdown)"
+            required class="form-control"></form-input>
+
+        <form-input type="textarea" name="stepsToReproduce" [value]="this.record.stepsToReproduce"
+            label="Steps To Reproduce (Each step in one line without numbering the line)" required class="form-control">
+        </form-input>
+
+        <form-input type="textarea" name="expectedBehavior" [value]="this.record.expectedBehavior"
+            label="Expected Behavior" required class="form-control"></form-input>
+
+        <form-input type="textarea" name="actualResult" [value]="this.record.actualResult" label="Actual Result"
+            required class="form-control"></form-input>
+
+        <form-input type="text" name="testingUrl" [value]="this.record.testingUrl"
+            label="Testing Url" class="form-control"></form-input>
+
+        <div class="row">
+            <div class="col">
+                <flk-dropdown-list name="assignee[]" label="Assign To" [multiple]="true"
+                    [items]="this.project.membersList" [value]="this.record.assignee"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="priority" label="Priority" required [items]="this.priorities"
+                    [value]="this.record.priority"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list 
+                    name="sprint" 
+                    label="Sprint" 
+                    [value]="this.record.sprint?.id" 
+                    [lazy-loading]="true"
+                    [request]="this.loadSprints.bind(this)">
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row m-y-1">
+            <div class="col">
+                <flk-datepicker name="dueDate" [value]="this.record.dueDate" label="Due Date" [date-time]="true"
+                    class="form-control"></flk-datepicker>
+            </div>
+
+            <!-- <div class="col">
+                <flk-dropdown-list name="department" required label="Department" [items]="this.departments"
+                    [value]="this.record.department"></flk-dropdown-list>
+            </div> -->
+            <div class="col">
+                <flk-dropdown-list name="module" [required]="true" label="Module" [value]="this.record.module?.id" [lazy-loading]="true"
+                    [request]="this.loadModules.bind(this)"></flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row m-y-1">
+            <div class="col">
+                <flk-dropdown-list name="severity" label="severity" [items]="this.severities"
+                    [value]="this.record.severity"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="classification" label="classification" [items]="this.classifications"
+                    [value]="this.record.classification"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="reproducible" label="How Much Reproducible It Is" heading="Reproducible"
+                    [items]="this.reproducibleOptions" [value]="this.record.reproducible"></flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="m-t-2">
+            <flk-file-input name="attachments[]" [multiple]="true" class="btn btn-cyan bold" label="Meeting">
+                <fa icon="cloud-upload-alt"></fa>
+                <strong class="ml-1">Add Attachments</strong>
+            </flk-file-input>
+
+            <span class="ml-3">
+                <record-audio-input [data]="this.record" *as="recordAudio"></record-audio-input>
+            </span>
+        </div>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>

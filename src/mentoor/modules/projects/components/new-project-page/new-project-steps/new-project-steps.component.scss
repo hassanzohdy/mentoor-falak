@@ -1,0 +1,224 @@
+.clear {
+    height: 1px;
+}
+
+#project-steps {
+    position: relative;
+    $active-color: #57aed1;
+    $done-color: #8bc53f;
+    $next-color: #EcEcEc;
+
+    @mixin gray-stripe {
+        background-size: 35px 35px;
+        background-color: #EcEcEc;
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent);
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent);
+    }
+
+    @mixin active-stripe {
+        background-size: 35px 35px;
+        background-color: $active-color;
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    }
+
+    @mixin done-stripe {
+        background-size: 35px 35px;
+        background-color: $done-color;
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    }
+
+    @mixin inner-shadow {
+        -webkit-box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, .2);
+        box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, .2);
+    }
+
+    @-webkit-keyframes myanimation {
+        from {
+            left: 0%;
+        }
+
+        to {
+            left: 50%;
+        }
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'PT Sans Caption', sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        padding: 20px 0;
+
+        color: #777;
+    }
+
+    .checkout-wrap {
+        color: #444;
+        font-family: 'PT Sans Caption', sans-serif;
+        margin: 40px auto;
+    }
+
+    ul.checkout-bar {
+        margin: 0 20px;
+
+        li {
+            color: #ccc;
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 10px 14px 40px;
+            position: relative;
+
+            &:before {
+                @include inner-shadow;
+                background: #ddd;
+                border: 2px solid #FFF;
+                border-radius: 50%;
+                color: #fff;
+                font-size: 16px;
+                font-weight: 700;
+                left: 20px;
+                line-height: 37px;
+                height: 35px;
+                position: absolute;
+                text-align: center;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+                top: 4px;
+                width: 35px;
+                // z-index: 999;
+            }
+
+            &.active {
+                color: $active-color;
+                font-weight: bold;
+
+                &:before {
+                    background: $active-color;
+                    // z-index: 99999;
+                }
+            }
+
+            &.visited {
+                background: #ECECEC;
+                color: $done-color;
+                // z-index: 99999;
+
+                a {
+                    color: $done-color;
+                }
+
+                &:before {
+                    background: $done-color;
+                    // z-index: 99999;
+                }
+            }
+
+            @for $i from 1 to 10 {
+                &:nth-child(#{$i}) {
+                    &:before {
+                        content: "#{$i}";
+                    }
+                }
+            }
+        }
+
+        a {
+            color: $active-color;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+
+
+
+    @media all and (min-width: 800px) {
+        .checkout-bar li.active:after {
+            -webkit-animation: myanimation 3s 0;
+            @include active-stripe;
+            @include inner-shadow;
+            content: "";
+            height: 15px;
+            width: 100%;
+            left: 65%;
+            position: absolute;
+            // transition: all 4.5s ease-in-out;
+            top: -50px;
+            // z-index: 0;
+        }
+
+        .checkout-wrap {
+            margin: 80px auto;
+        }
+
+        ul.checkout-bar {
+            @include inner-shadow;
+            @include gray-stripe;
+            border-radius: 15px;
+            height: 15px;
+            margin: 0 auto;
+            padding: 0;
+            position: absolute;
+            width: 100%;
+
+            &:before {
+                @include inner-shadow;
+                border-radius: 15px;
+                content: " ";
+                height: 15px;
+                left: 0;
+                position: absolute;
+                width: 10%;
+            }
+
+            &.active {
+                &:before {
+                    @include active-stripe;
+                }
+            }
+
+            &.visited {
+                &:before {
+                    @include done-stripe;
+                }
+            }
+
+            li {
+                display: inline-block;
+                margin: 50px 0 0;
+                padding: 0;
+                padding-left: 2rem;
+                text-align: center;
+                width: 14%;
+
+                &:before {
+                    height: 45px;
+                    left: 40%;
+                    line-height: 45px;
+                    position: absolute;
+                    top: -65px;
+                    width: 45px;
+                    // z-index: 99;
+                }
+
+                &.visited {
+                    background: none;
+
+                    &:after {
+                        @include done-stripe;
+                        @include inner-shadow;
+                        content: "";
+                        height: 15px;
+                        left: 65%;
+                        position: absolute;
+                        top: -50px;
+                        width: 89%;
+                        // z-index: 99;
+                    }
+                }
+            }
+        }
+    }
+}

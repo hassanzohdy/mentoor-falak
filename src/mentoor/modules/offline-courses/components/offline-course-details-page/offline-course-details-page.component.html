@@ -1,0 +1,119 @@
+<layout>
+    <flk-spinner *if="Is.empty(this.course)"></flk-spinner>
+    <div *else class="row oneCourse">
+        <section class="col-lg-9 col-md-8 col-12">
+            <header class="courseImage">
+                <div class="media">
+                    <img class="align-self-center mr-3 course-image" [src]="this.course.image" alt="course.name" />
+                    <div class="media-body">
+                        <h2 class="mt-0 text-capitalize bold" [trans]="this.course.name"></h2>
+                        <small [html]="this.course.description"></small>
+                        <small class="text-muted d-block mt-2">
+                            <i class="ti ti-time"></i>
+                            <!-- <flk-time-ago [timestamp]="this.course.createdAt.timestamp"></flk-time-ago> -->
+                        </small>
+                    </div>
+                </div>
+            </header>
+            <!-- General info -->
+            <section id="general-info" class="m-t-3 m-b-2">
+                <div class="m-y-1 alert alert-success">
+                    The course will start in July 2019.
+                </div>
+                <div class="m-y-1 alert alert-info contact-info">
+                    For more information or inquiries please contact the instructor on
+                    <a href="https://fb.me/hassan.zohdy" class="blue-text mx-1 bold">Facebook</a>
+                    or contact him on <span class="mx-2 blue-text bold">+2 0114 5145 824 (Whatsapp only).</span>
+                </div>
+                <div *if="! this.user.isLoggedIn()" class="m-y-1 alert alert-warning">
+                    Please
+                    <a href="/login" class="bold blue-text mx-1">Login</a>
+                    or
+                    <a href="/register" class="bold blue-text mx-1">Signup</a>
+                    to subscribe.
+                </div>
+                <h2>General information about the course</h2>
+                <table class="m-t-2 table table-bordered table-striped">
+                    <tr>
+                        <th>Course level</th>
+                        <td>For {{ this.course.level == 'Beginner' ? 'Beginners' : this.course.level }}</td>
+                        <th>Instructor</th>
+                        <td [html]="this.course.instructor.name"></td>
+                    </tr>
+                    <tr>
+                        <th>Total sessions</th>
+                        <if condition="this.course.time.startDate">
+                            <td>{{ this.course.time.length }} weeks</td>        
+                                <th>Starting date</th>
+                            <td>{{ this.course.time.startDate }}</td>        
+                        </if>
+                        <else>
+                            <td colspan="3">{{ this.course.time.length }} weeks</td>        
+                        </else>
+                    </tr>
+                    <tr>
+                        <th>Sessions per week</th>
+                        <td>{{ this.course.time.sessionsPerWeek }} session(s)</td>
+                        <th>Hours per session</th>
+                        <td>{{ this.course.time.duration }} hours</td>
+                    </tr>
+                    <tr>
+                        <th>Cost</th>
+                        <td class="bold green-text">{{ this.course.cost.format() }} EGP</td>
+                        <th>Total hours</th>
+                        <td class="bold orange-text">{{ this.course.time.duration * this.course.time.length }} hours
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td colspan="3" [html]="this.course.address"></td>
+                    </tr>
+                </table>
+            </section>
+            <section id="course-info-details">
+                <!-- Course requirements -->
+                <flk-accordion heading="Course requirements">
+                    <markdown [content]="this.course.requirements"></markdown>
+                </flk-accordion>
+                <!-- Course when To -->
+                <flk-accordion heading="Why you would join this course?">
+                    <markdown [content]="this.course.whenTo.subscribe"></markdown>
+                </flk-accordion>
+                <flk-accordion heading="Why you would not join this course?">
+                    <markdown [content]="this.course.whenTo.notSubscribe"></markdown>
+                </flk-accordion>
+                <!-- Course content -->
+                <flk-accordion heading="Course content">
+                    <markdown [content]="this.course.content"></markdown>
+                </flk-accordion>
+            </section>
+        </section>
+        <div class="col-lg-3 col-md-4 col-12">
+            <div class="courseApply card">
+                <div class="card-body">
+                    <div class="card-title bold">Course summary</div>
+                    <div class="courseMeta d-flex justify-content-between pt-4 pb-4">
+                        <span class="courseSingleMeta bold orange-text">
+                            {{ this.course.time.length * this.course.time.duration }} hrs
+                        </span>
+                        <span class="courseSingleMeta bold green-text" title="Cost">
+                            {{ this.course.cost.format() }} EGP
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <button *if="! this.user.isLoggedIn() || ! this.course.subscribed && ! this.isSubscribing" class="btn text-uppercase"
+                            [class]="{'btn-success': this.user.isLoggedIn(), 'btn-danger': ! this.user.isLoggedIn()}"
+                            (click)="this.subscribeToCourse()">
+                            Subscribe now!
+                            <fa *if="! this.user.isLoggedIn()" icon="lock ml-1"></fa>
+                        </button>
+                        <flk-spinner *elseif="this.isSubscribing"></flk-spinner>
+                        <div *else class="text-center" title="subscribed">
+                            <fa icon="check subscribed-icon"></fa>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</layout>

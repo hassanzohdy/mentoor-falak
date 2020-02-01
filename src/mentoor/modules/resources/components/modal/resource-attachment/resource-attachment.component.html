@@ -1,0 +1,9 @@
+<div class="m-t-2">
+<flk-file-input 
+        [accept]="this.type == 'pdf' ? 'pdf' : null" 
+        name="attachment" 
+        class="btn btn-cyan bold" 
+    >
+    <fa icon="cloud-upload-alt"></fa>
+    <strong class="ml-2">Upload {{ this.type == 'pdf' ? 'PDF File' : 'Attachment' }}</strong>
+</flk-file-input>

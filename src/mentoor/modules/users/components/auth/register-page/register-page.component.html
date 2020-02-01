@@ -1,0 +1,48 @@
+<div class="authLayout">
+    <div class="auth">
+        <h1 class="text-center bold">Mentoor!</h1>
+        <h3 class="text-center m-b-2 mt-2" trans="Create new account"></h3>
+        <form class="authForm" *as="form" id="my-form" class="card" (submit)="this.register($el)">
+            <input *if="this.invitationCode" name="invitationCode" type="hidden" [value]="this.invitationCode" />
+            <div *if="this.errors.invitationCode" class="alert alert-danger" [html]="this.errors.invitationCode"></div>
+            <form-input placeholder="First Name" type="text" name="firstName" [value]="this.firstName" autofocus
+                required class="form-control">
+            </form-input>
+            <form-input placeholder="Last Name" type="text" name="lastName" [value]="this.lastName" required
+                class="form-control">
+            </form-input>
+            <input type="hidden" name="name" value="{{ this.firstName + ' ' + this.lastName }}">
+            <form-input placeholder="Email" type="email" name="email" required class="form-control"></form-input>
+
+            <div class="row">
+                <div class="col-11 p-r-0">
+                    <form-input 
+                        type="text" 
+                        placeholder="Username" 
+                        (input)="this.validateUserName($el.value)" 
+                        name="username" 
+                        class="form-control">
+                    </form-input>
+                    <div *if="this.errors.username" class="alert alert-danger" [html]="this.errors.username"></div>
+                </div>
+                <fa icon="question-circle col-1 username-help gray-text" tooltip [title]="this.usernameRules.join('<br />- ')"></fa>
+            </div>
+
+            <form-input placeholder="Password" type="password" minlength="8" name="password" required
+                class="form-control"></form-input>
+            
+            <form-input placeholder="Confirm password" type="password" match="password" name="confirmPassword" required
+                class="form-control"></form-input>
+            
+            <button class="btn btn-primary btn-block" [disabled]="! this.isValidForm || this.isRegistering">
+                <span *if="!this.isRegistering" trans="create-account"></span>
+                <span *else>
+                    <fa spin="spinner"></fa>
+                    <span trans="loading"></span>
+                </span>
+            </button>
+            <p class="text-center authLink">Already have an account? <a href="/login" class="mainColor ml-1"> Log in</a>
+            </p>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<section class="font-weight-normal">
+    <h3 class="bold m-b-1 m-t-4">How to obtain gold</h3>
+    <p>You can get gold by the following:</p>
+    <ul>
+        <!-- <li>Become a mentoor.</li> -->
+        <li>Answering topics in <a href="/academy" class="bold m-l-1">Academy</a>. </li>
+        <li>Solving puzzles in <a href="/einstein-chamber" class="bold m-l-1">Einstein Chamber</a>. </li>
+        <li>
+            <a href="/affiliate" class="bold" [class]="{'green-text': this.user.invitationCode, 'orange-text': ! this.user.invitationCode}">
+                Affiliate Program.
+            </a>
+            <if condition="! this.user.invitationCode">
+                <fa icon="lock lock-icon mx-2"></fa>
+                <strong class="red-text">(Unlocked when you get 10 approved answers)</strong>
+            </if>
+        </li>
+        <li>Suggesting topics in <a href="/academy" class="bold m-l-1">tracks</a>. </li>
+    </ul>
+</section>

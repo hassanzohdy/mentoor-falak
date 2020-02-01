@@ -1,0 +1,9 @@
+#new-course-page {
+    // Picasso is ready to draw :)
+    .phase {
+        display: none;
+        &.visible {
+            display: block;
+        }
+    }
+}

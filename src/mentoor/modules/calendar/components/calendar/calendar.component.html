@@ -1,0 +1,31 @@
+<section id="calendar">
+    <!-- Current Month -->
+    <div class="columns">
+        <h3 class="column column-1 bold text-center block m-b-0">
+            <fa icon="chevron-left mr-2 pointer" (click)="this.displayPreviousMonth()" title="Previous month"></fa>
+            <div [html]="this.calendarOptions.current.yearMonth" class="current-month"></div>
+            <fa icon="chevron-right ml-2 pointer" (click)="this.displayNextMonth()" title="Next month"></fa>
+        </h3>
+    </div>
+    <div class="columns">
+        <!-- Heading Days names -->
+        <div class="block column column-8 heading">Weeks</div>
+        <div *for="let day of this.calendarOptions.days"
+            [class]="{current: this.calendarOptions.current.day == day && this.calendarOptions.isCalendarOfThisMonth}"
+            class="block column column-8 heading" [html]="day"></div>
+        <!-- Days -->
+        <div *for="let week, days in this.calendarOptions.weeks" class="columns">
+            <!-- Weeks numbers -->
+            <div class="block column column-8 heading week-num"
+                [class]="{current: week == this.calendarOptions.current.week && this.calendarOptions.isCalendarOfThisMonth}">
+                Week {{ week }}</div>
+            <!-- Days -->
+            <div *for="let day of days" [class]="{locked: !day.editable}" class="block column column-8 day">
+                <span class="number" [class]="{current: day.date == this.calendarOptions.today.date}"
+                    [html]="day.number"></span>
+                <span *if="day.month != this.calendarOptions.current.monthName" [html]="day.month" class="month"></span>
+                <calendar-schedule-item *for="let scheduleItem of day.schedule"></calendar-schedule-item>
+            </div>
+        </div>
+    </div>
+</section>

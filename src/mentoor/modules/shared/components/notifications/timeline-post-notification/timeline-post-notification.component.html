@@ -1,0 +1,15 @@
+<li class="panel-item" [class]="{unseen: notification.seen === false}">
+    <a [href]="URLS.post(notification.extra.post)" (click)="this.markAsSeen(notification)">
+        <fa icon="mug-hot bold mr-2 fa-2x v-middle" [title]="notification.extra.status.capitalize()"
+            [class]="{'green-text': notification.extra.status == 'approved', 'red-text': notification.extra.status == 'rejected'}">
+        </fa>
+        <span class="mr-2 teal-text" [html]="notification.extra.post.title"></span>
+        has been
+        <strong class="ml-2"
+            [class]="{'green-text': notification.extra.status == 'approved', 'red-text': notification.extra.status == 'rejected'}"
+            [html]="notification.extra.status"></strong>
+
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+    <remove-notification-btn></remove-notification-btn>
+</li>

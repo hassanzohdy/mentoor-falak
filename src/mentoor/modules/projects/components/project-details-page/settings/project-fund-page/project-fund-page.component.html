@@ -1,0 +1,43 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openModal()">
+        <fa icon="plus mr-1"></fa>
+        <gold-icon [coins]="0"></gold-icon>
+    </button>
+
+    <h1 class="m-y-1">
+        {{ this.project.name }} Project Fund
+        {{ this.project.fund.format() }}
+    </h1>
+
+    <table class="m-t-2 table table-bordered">
+        <thead>
+            <tr>
+                <th>Fund</th>
+                <th>By</th>
+                <th>Donated</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.fundList)">
+                <td colspan="3" text-center>No found yet</td>
+            </tr>
+            <tr *else *for="let fund of this.project.fundList">
+                <td [html]="fund.fund.format()" class="bold"></td>
+                <td [html]="fund.createdBy.name"></td>
+                <td>
+                    <flk-time-ago [timestamp]="fund.createdAt.timestamp"></flk-time-ago>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    header="Donate to the project">
+    <form (submit)="this.submit($el)">
+        <form-input type="number" [value]="this.fundValue" name="fund" required label="Fund Amount" class="form-control"></form-input>
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.fundValue > this.user.gold || ! this.isValidForm || this.isSending" class="btn btn-success bold">Donate</button>
+        </div>
+    </form>
+</flk-modal>

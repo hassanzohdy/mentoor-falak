@@ -1,0 +1,153 @@
+<div class="simple-card resource">
+    <fa *if="this.resource.pinned" icon="bookmark pinned"></fa>
+    <div class="row">
+        <div class="col">
+            <div class="float-right">
+                <button type="button" class="gray-text bold" *if="this.resource.canBeModified"
+                    (click)="this.parent.openModal(this.resource, this.index);">
+                    <fa icon="pen mr-2"></fa>
+                    Edit
+                </button>
+                <button type="button" class="gray-text bold" *if="this.resource.canBeModified"
+                    (click)="this.isAboutToRemove = true">
+                    <fa icon="times mr-2"></fa>
+                    Delete
+                </button>
+                <div>
+                    <button class="btn bold type" [class]="this.resourceStyle()"
+                    [html]="this.resourcesTypes[this.resource.type]"></button>                            
+                </div>
+            </div>
+            <img [src]="this.resource.createdBy.image" [alt]="this.resource.createdBy.name"
+                class="img-thumbnail circle creator-image" />
+
+            <div class="meta">
+                <h3 class="title">
+                    <a [href]="'resources/' + this.resource.id" [html]="this.resource.title"></a>
+                </h3>
+                <div class="created">
+                    <span class="by">
+                        By
+                        <span [html]="this.resource.createdBy.name"></span>
+                    </span>
+                    <flk-time-ago class="at" [timestamp]="this.resource.createdAt.timestamp"></flk-time-ago>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <markdown *if="this.resource.description" class="description" [content]="this.resource.description"></markdown>
+
+    <div *if="this.resource.attachment" class="attachment">
+        <h4 class="attachment-heading">Attachment</h4>
+        <a *if="this.resource.type == 'image'" [href]="this.resource.attachment" target="_blank">
+            <img [src]="this.resource.attachment" class="img-thumbnail" [alt]="this.resource.title" />
+        </a>
+        <a 
+            *if="['attachment', 'pdf'].includes(this.resource.type)" 
+            class="btn btn-teal bold" 
+            [href]="this.resource.attachment" 
+            target="_blank" 
+            [html]="Array.end(this.resource.attachment.split('/'))">                                        
+        </a>
+    </div>
+    <a *elseif="this.resource.type == 'link'" target="_blank" class="btn btn-cyan bold" [href]="this.resource.settings.link">Open Link</a>
+    
+    <div *if="this.resource.type == 'youtube'" class="text-center">
+        <flk-youtube-video  width="100%" height="400px" [src]="this.resource.settings.youtube"></flk-youtube-video>
+    </div>
+
+    <button *if="['ftp', 'website', 'email'].includes(this.resource.type)" (click)="this.viewResource = true;" class="btn bold" [class]="this.resourceStyle()">View Details</button>
+</div>
+
+<flk-alert 
+    *if="this.isAboutToRemove" 
+    id="view-resource-info" 
+    (close)="this.isAboutToRemove = false" 
+    (confirm)="this.parent.remove(this.resource)"></flk-alert>
+
+<flk-modal
+    size="small"
+    id="view-resource-info"
+    *if="this.viewResource"
+    (close)="this.viewResource = null"
+>
+<if condition="this.resource.type == 'email'">    
+    <h1>
+        Email Account Info 
+        (<span [html]="this.resource.title"></span>)
+    </h1>
+
+    <table class="table table-bordered table-striped resource-table">   
+        <tbody>
+            <tr>
+                <th>Webmail url</th>
+                <th [html]="this.resource.settings.email.url"></th>
+            </tr>
+            <tr>
+                <th>Email Address</th>
+                <th [html]="this.resource.settings.email.email"></th>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <th [html]="this.resource.settings.email.password"></th>
+            </tr>
+        </tbody>
+    </table>
+</if>
+<elseif condition="this.resource.type == 'website'">
+    <h1>
+        {{this.resource.settings.website.name}} Website
+        (<span [html]="this.resource.title"></span>)
+    </h1>
+
+    <table class="table table-bordered table-striped resource-table">
+        <tbody>
+            <tr>
+                <th>Website</th>
+                <th [html]="this.resource.settings.website.name"></th>
+            </tr>
+            <tr>
+                <th>Website Url</th>
+                <th [html]="this.resource.settings.website.url"></th>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <th [html]="this.resource.settings.website.username"></th>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <th [html]="this.resource.settings.website.password"></th>
+            </tr>
+        </tbody>
+    </table>
+</elseif>
+<elseif condition="this.resource.type == 'ftp'">
+    <h1 class="m-t-0">
+        FTP Account Info
+
+        (<span [html]="this.resource.title"></span>)
+    </h1>
+
+    <table class="table table-bordered table-striped resource-table">
+        <tbody>
+            <tr>
+                <th>FTP Host</th>
+                <th [html]="this.resource.settings.ftp.host"></th>
+            </tr>
+            <tr>
+                <th>FTP Username</th>
+                <th [html]="this.resource.settings.ftp.username"></th>
+            </tr>
+            <tr>
+                <th>FTP password</th>
+                <th [html]="this.resource.settings.ftp.password"></th>
+            </tr>
+            <tr>
+                <th>FTP Port</th>
+                <th [html]="this.resource.settings.ftp.port"></th>
+            </tr>
+        </tbody>
+    </table>
+</elseif>
+</flk-modal>

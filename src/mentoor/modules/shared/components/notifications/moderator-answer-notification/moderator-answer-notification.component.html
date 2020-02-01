@@ -1,0 +1,16 @@
+<li class="panel-item" [class]="{unseen: notification.seen === false}">
+    <a href="/admin/academy/answers"
+        (click)="this.markAsSeen(notification)">
+        <fa icon="university bold mr-2 fa-2x v-middle" [title]="notification.extra.status.capitalize()" [class]="{'blue-text': notification.extra.status == 'update', 'green-text': notification.extra.status == 'new'}"></fa>
+        <span class="mx-1 mr-3 pink-text" [html]="notification.extra.by.name"></span>
+        <span class="mr-2">has</span> 
+        <span *if="notification.extra.status == 'new'" class="mr-2">submitted new </span>
+        <span *elseif="notification.extra.status == 'update'" class="mr-2">updated </span>
+        answer to <strong class="teal-text mx-2">
+            {{ notification.extra.topic.title }}
+            [{{ notification.extra.topic.track.name }}]
+        </strong>.
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+    <remove-notification-btn></remove-notification-btn>
+</li>

@@ -1,0 +1,69 @@
+#training-ground-details-page {
+
+    // Picasso is ready to draw :)
+    #image {
+        max-height: 600px;
+        margin: auto;
+    }
+
+    #heading {
+        small {
+            display: block;
+            // font-weight: bold;
+            font-size: 1rem;
+        }
+    }
+
+    .status {
+        padding: 0.4rem 0.5rem 0.6rem;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+    }
+
+    .btns-list {
+        text-align: center;
+
+        .live-preview-btn {
+            margin: 2rem auto;
+            width: auto;
+        }
+
+        .open-form-btn {
+            display: inline-block;
+            width: auto;
+            color: #FFF;
+            font-weight: bold;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+
+    }
+
+
+    #technologies-list {
+        margin: 1rem auto;
+    }
+}
+
+.btn-grd:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.grd-dark {
+    // width: 140px;    
+    padding: 0 1.4rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}

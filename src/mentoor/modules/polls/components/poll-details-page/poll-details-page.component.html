@@ -1,0 +1,63 @@
+<layout>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <else>
+        <h1>
+            <span [html]="this.poll.title"></span>
+            <span class="btn btn-sm bold ml-2 v-middle"
+                [class]="{'btn-success': this.poll.closed === false, 'btn-danger': this.poll.closed === true}">
+                {{ this.poll.closed ? 'Closed' : 'Voting' }}
+                </div>
+        </h1>
+
+        <markdown [content]="this.poll.description"></markdown>
+
+        <form *as="form" class="m-t-2">
+            <ul class="answers-list">
+                <li *for="let answer of this.poll.answers" class="answer">
+                    <span *if="answer.votes.length > 0" class="bg"
+                        [style]="{width: (answer.votes.length * 100 / this.poll.totalVotes) + '%'}"></span>
+                    <span *if="this.poll.userHasVoted || this.poll.closed" class="text" [html]="answer.answer"></span>
+                    <else>
+                        <flk-mdb-checkbox *if="this.poll.allowMultipleVotes"
+                            [checked]="this.answersIds.includes(answer.id)" [label]="answer.answer"
+                            (change)="this.voteAnswer(answer)" type="checkbox" name="answersIds[]" [value]="answer.id">
+                        </flk-mdb-checkbox>
+                        <flk-mdb-checkbox *else [checked]="this.currentAnswer == answer.id" [label]="answer.answer"
+                            (change)="this.voteAnswer(answer)" type="radio" name="answersIds" [value]="answer.id">
+                        </flk-mdb-checkbox>
+                    </else>
+
+                    <div class="voters">
+                        <div *for="let voter of answer.displayedVotes" class="voter">
+                            <img class="circle" [src]="voter.createdBy.image" [title]="voter.createdBy.name" tooltip />
+                        </div>
+                        <div *if="answer.remainingVotes > 0" class="remaining">
+                            <fa icon="plus"></fa>
+                            {{ answer.remainingVotes }}
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+
+            <button class="btn btn-info bold" *if="! this.poll.userHasVoted" type="button"
+                (click)="this.votingConfirm = true;"
+                [disabled]="! this.user.isLoggedIn() || Is.empty(this.answersIds) && ! this.currentAnswer">
+                <span *if="this.user.isLoggedIn()">Vote</span>
+                <span *else>Login to vote</span>
+            </button>
+        </form>
+
+        <button 
+            *if="this.user.isLoggedIn() && ! this.poll.closed && [this.poll.createdBy.id, 1].includes(this.user.id)" 
+            class="btn btn-danger bold"
+            (click)="this.confirmClosingPoll = true"
+            >
+            Close Poll
+        </button>
+    </else>
+</layout>
+
+<flk-alert *if="this.votingConfirm" (close)="this.votingConfirm = false;" (confirm)="this.vote()"></flk-alert>
+<flk-alert *if="this.confirmClosingPoll" (close)="this.confirmClosingPoll = false;" (confirm)="this.closePoll()"></flk-alert>

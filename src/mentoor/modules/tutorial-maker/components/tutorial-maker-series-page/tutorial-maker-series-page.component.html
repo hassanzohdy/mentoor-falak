@@ -1,0 +1,39 @@
+<div class="dark">
+    <div class="fb-page">
+        <fa icon="facebook"></fa>
+        <span class="">/mentoor.io</span>
+    </div>
+
+    <!-- <h1 class="text-center white-text">What I      s The Difference</h1> -->
+    <h1 class="text-center white-text m-b-4" id="main-text">
+        Functional Programming
+    </h1>
+    <div class="m-t-1"></div>
+    <h1 class="master">
+        <fa icon="tint icon"></fa>
+        <!-- <img [src]="'https://freeiconshop.com/wp-content/uploads/edd/shield-flat.png'" class="image" /> -->
+        <div class="m-t-8"></div>
+        Pure functions
+        <fa icon="shield"></fa>
+    </h1>
+    <!-- <h1 class="ar">ايه هو مبدأ</h1> -->
+
+    <ul id="series-list">
+        <li *for="let item of this.series" [class]="{active: item == this.current, done: this.done.includes(item)}">
+            <fa *if="this.done.includes(item)" icon="check-circle"></fa>
+            <fa *if="item == this.current" icon="hand-point-right"></fa>
+            {{ item }}
+        </li>
+    </ul>
+
+    <div class="overlay"></div>
+
+    <h4 class="hashtag">
+        <div>#mentoor_what_does_it_mean</div>
+    </h4>
+
+    <div id="logo">
+        <h1 id="m">M</h1>
+        <h1 id="name" class="inline">mentoor.io</h1>
+    </div>
+</div>

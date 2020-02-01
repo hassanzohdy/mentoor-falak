@@ -1,0 +1,76 @@
+<section class="simple-card project-section" id="new-project-members" [class]="{active: this.currentStep == 1}">
+    <div class="row m-b-1">
+        <div class="col-sm-2">Project Manger</div>
+        <div class="bold col">
+            You
+            <br />
+            <small>Can be changed later with additional cost.</small>
+        </div>
+    </div>
+    <div class="row m-t-1 m-b-1">
+        <div class="col-sm-2 m-t-1">Supervisors</div>
+        <div class="bold col">
+            <flk-dropdown-list 
+                [multiple]="true" 
+                name="supervisors[]" 
+                heading="Supervisors" 
+                [lazy-loading]="true" 
+                [remote-search]="true" 
+                query="username"
+                [service]="this.usersService" 
+                [value]="this.data.supervisors"
+                (map)="return this.mapUser(e)"
+                (select)="this.setSupervisors(e)"
+                placeholder="Enter @username to add" 
+            ></flk-dropdown-list>
+            <small>
+                <fa icon="plus"></fa>
+                <gold-icon [coins]="FLAGS.projects.pricing.extra.supervisor"></gold-icon>
+                <span class="ml-2">per supervisor</span>
+                
+                <small class="bold ml-2">Can be changed later.</small>
+            </small>
+        </div>
+    </div>
+
+    <div class="row m-b-1">
+        <div class="col-sm-2 m-t-1">Project members size</div>
+        <div class="bold col">
+            <flk-dropdown-list 
+                *if="this.currentStep >= 1"
+                *as="sizesDropdown"
+                name="membersSize" 
+                [required]="true"
+                [value]="this.data.size" 
+                [items]="this.sizes"
+                placeholder="Select project members size" 
+                heading="Project Members Size" 
+                (select)="this.selectSize(e)">
+            </flk-dropdown-list>
+            <small>Project Manager and Supervisor(s) are Not Inclusive.</small>
+            <div *if="this.totalCost.MembersSize > 0">
+                <small>
+                    <fa icon="plus"></fa>
+                    <gold-icon [coins]="this.totalCost.MembersSize"></gold-icon>
+                </small>
+            </div>
+            <small class="bold ml-2">Can be changed later.</small>
+
+            <div *if="this.maxTeamsPerSize" class="teal-text">
+                <span class="bold mr-1" [html]="this.maxTeamsPerSize"></span>
+                Free Teams
+            </div>
+        </div>
+    </div>
+
+    <div class="m-t-1">
+        <button type="button" (click)="this.prev()" class="btn btn-gray bold">
+            <fa icon="arrow-left"></fa>
+            Back
+        </button>
+        <button type="button" (click)="this.next()" class="btn float-right btn-purple bold">
+            NEXT
+            <fa icon="arrow-right"></fa>
+        </button>
+    </div>
+</section>

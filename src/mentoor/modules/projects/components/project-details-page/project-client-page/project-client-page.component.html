@@ -1,0 +1,121 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <h1 class="m-y-1">
+        {{ this.project.name }} Client Information
+    </h1>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#" data-toggle="tab" data-target="#company-profile-tab">Company Profile</a>
+        </li>
+        <li class="nav-item" *if="this.project.client.id">
+            <a class="nav-link" data-toggle="tab" href="#" data-target="#client-representatives-tab">Client
+                Representatives</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane fade show active p-1" id="company-profile-tab">
+            <form (submit)="this.updateClientInfo($el)">                
+                <input type="hidden" name="project" [value]="this.project.id" />
+                <form-input type="text" name="name" label="Company Name" [value]="this.project.client.name" required
+                    class="form-control"></form-input>
+                <form-input type="text" name="address" label="Company Address" [value]="this.project.client.address"
+                    required class="form-control"></form-input>
+                <form-input type="email" name="email" label="Company Official Email" [value]="this.project.client.email"
+                    required class="form-control"></form-input>
+                <form-input type="text" name="telephones" label="Company Official telephones"
+                    [value]="this.project.client.telephones" required class="form-control"></form-input>
+
+                <div class="form-group">
+                    <label for="logo">Company logo</label>
+                    <flk-image-input [src]="this.project.client.logo" name="logo" id="logo"></flk-image-input>
+                </div>
+
+                <div class="m-t-1">
+                    <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="client-representatives-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Representative</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Position</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *if="Is.empty(this.project.client.representatives)">
+                        <td colspan="5" text-center>No Representative Yet</td>
+                    </tr>
+                    <tr *else *for="let representative, index of this.project.client.representatives">
+                        <td>
+                            <img *if="representative.image" [src]="representative.image" [alt]="representative.name"
+                                class="medium mr-2 circle" />
+                            <span [html]="representative.name"></span>
+                        </td>
+                        <td [html]="representative.email"></td>
+                        <td [html]="representative.mobile"></td>
+                        <td [html]="representative.position"></td>
+                        <td>
+                            <button type="button" (click)="this.openModal('edit', representative, index)"
+                                class="btn btn-cyan" tooltip title="Edit Representative">
+                                <fa icon="edit"></fa>
+                            </button>
+
+                            <button type="button" (click)="this.confirmRemoving(representative, index)"
+                                class="btn btn-danger" tooltip title="Delete Representative">
+                                <fa icon="trash"></fa>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" text-right>
+                            <button class="float-right btn btn-success bold"
+                                (click)="this.openModal('add')">
+                                <fa icon="plus mr-1"></fa>
+                                Representative
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <input type="hidden" name="client" [value]="this.project.client.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="Representative Name" required
+            class="form-control"></form-input>
+        <form-input type="email" name="email" [value]="this.record.email" label="Representative Email Address"
+            required class="form-control">
+        </form-input>
+        <form-input type="text" name="mobile" [value]="this.record.mobile" label="Representative Mobile Number"
+            required class="form-control">
+        </form-input>
+        <form-input type="text" name="position" [value]="this.record.position" label="Representative Position"
+            required class="form-control"></form-input>
+
+        <div class="form-group">
+            <label for="image">Representative Image</label>
+            <flk-image-input [src]="this.record.image" name="image" id="image"></flk-image-input>
+        </div>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

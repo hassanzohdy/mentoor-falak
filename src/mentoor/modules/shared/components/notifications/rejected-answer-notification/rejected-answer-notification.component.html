@@ -1,0 +1,12 @@
+<li class="panel-item" [class]="{unseen: notification.seen === false}">
+    <a [href]="URLS.topic(notification.extra.topic)" (click)="this.markAsSeen(notification)">
+        <fa icon="university red-text bold mr-2 fa-2x v-middle" title="Rejected"></fa>
+        Your answer to <strong class="teal-text mx-2">
+            {{ notification.extra.topic.title }}
+            [{{ notification.extra.topic.track.name }}]
+        </strong>
+        has been rejected.
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+    <remove-notification-btn></remove-notification-btn>
+</li>

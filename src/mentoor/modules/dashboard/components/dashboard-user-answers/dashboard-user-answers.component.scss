@@ -1,0 +1,84 @@
+$border-width: 2px;
+
+#dashboard-page {
+    #user-answers {
+        .nav-tabs {
+            margin-top: 2rem;
+            border: none;
+
+            .nav-item {
+                margin-#{$right}: 1rem;
+
+                .nav-link {
+                    position: relative;
+                    font-size: 1.3rem;
+                    // padding: 0.5rem;
+                    text-transform: capitalize;
+
+                    &:focus {
+                        outline: none !important;
+                    }
+
+                    &.active {
+                        font-weight: bold;
+                        border-width: $border-width;
+                        border-bottom-color: #FFF !important;
+
+                        &.rejected {
+                            border-color: $danger-color;
+                        }
+
+                        &.pending {
+                            border-color: $warning-color;
+                        }
+
+                        &.approved {
+                            border-color: $success-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tab-content {
+            margin-top: -3px;
+
+            .tab-pane {
+                &.pending {
+                    border: $border-width solid $warning-color;
+                }
+
+                &.approved {
+                    border: $border-width solid $success-color;
+                }
+
+                &.rejected {
+                    border: $border-width solid $danger-color;
+                }
+
+                .card {
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.reward-status {
+    background-size: 100% 100%;
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+
+    &.up {
+        background-image: url(../images/arrow-up.png);
+    }
+
+    &.down {
+        background-image: url(../images/arrow-down.png);
+    }
+}

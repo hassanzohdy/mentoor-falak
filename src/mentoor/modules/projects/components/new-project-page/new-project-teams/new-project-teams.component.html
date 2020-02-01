@@ -1,0 +1,23 @@
+<section class="simple-card project-section" [class]="{active: this.currentStep == 2}">
+    <div class="m-b-1">
+        <h3 class="text-center bold">Main Team</h3>
+        <flk-dropdown-list
+            name="team.type"
+            [value]="this.data.team.type"
+            heading="Select your team"
+            [items]="this.projectInfo.teams"
+        ></flk-dropdown-list>
+        <p class="m-t-1">Please set your main team configurations, you can add more teams later.</p>
+    </div>
+
+    <div class="m-t-1">
+        <button type="button" (click)="this.prev()" class="btn btn-gray bold">
+            <fa icon="arrow-left"></fa>
+            Back
+        </button>
+        <button type="button" (click)="this.next()" class="btn float-right btn-purple bold">
+            NEXT
+            <fa icon="arrow-right"></fa>
+        </button>
+    </div>
+</section>

@@ -1,0 +1,85 @@
+@mixin color($name, $color, $dark-color: null, $fore-color: #FFF) {
+    .btn-#{$name} {
+        background: $color !important;
+        color: $fore-color;
+    }
+
+    .badge-#{$name} {
+        background: $color !important;
+        color: $fore-color;
+    }
+
+    @if $dark-color == null {
+        .btn-#{$name}:hover {
+            background: $color !important;
+            color: $fore-color;
+        }
+    
+    } @else {
+        .btn-#{$name}:hover {
+            background: $dark-color !important;
+            color: $fore-color;
+        }
+    }
+    
+
+    .#{$name}-border {
+        border-color: $color !important;
+    }
+
+    .#{$name}-text {
+        color: $color !important;
+    }
+}
+
+$navy-color: #34495e;
+$navy-dark-color: #2c3e50;
+
+@include color(navy, $navy-color, $navy-dark-color);
+
+$lime-color: #badc58;
+$lime-color-dark: #6ab04c;
+
+@include color(lime, $lime-color, $lime-color-dark);
+
+$pencil-color: #596275;
+$pencil-color-dark: #303952;
+
+@include color(pencil, $pencil-color, $pencil-color-dark);
+@include color(purple, #9b59b6, #8e44ad);
+// @include color(primary, #3498db, #2980b9);
+// @include color(teal, #3498db, #2980b9);
+
+@include color(gray, #576574, #222f3e, #FFF);
+@include color(light-gray, #dfe4ea, #ced6e0, #333);
+@include color(emerald, #2ecc71, #27ae60);
+@include color(dark-warning, #e67e22, #d35400);
+@include color(dark-danger, #e74c3c, #c0392b);
+
+@include color(petrol, #5e808e, #ced6e0, #333);
+
+.success-border {
+    border-color: #00c851 !important;
+}
+
+.teal-border {
+    border-color: #009382 !important;
+}
+
+.danger-border {
+    border-color: #ff4f5e !important;
+}
+
+.warning-border {
+    border-color: #ffc44d !important;
+}
+
+$cyan-color: #17a2b8;
+$pink-color: #e83e8c;
+$teal-color: #20c997;
+$orange-color: #fd7e14;
+$yellow-color: #ffc107;
+$green-color: #28a745;
+$red-color: #dc3545;
+$purple-color: #6f42c1;
+$blue-color: #007bff;

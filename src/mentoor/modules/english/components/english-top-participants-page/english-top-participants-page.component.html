@@ -1,0 +1,41 @@
+<layout>
+    <h1 class="p-r-2 text-center text-sm-left">
+        English As A Foreigner
+        <a href="/english" class="float-sm-right mt-sm-0 mt-4 mr-3 d-inline-block btn btn-purple bold">
+            <fa icon="angle-left mr-2"></fa>
+            Back to Topics list
+        </a>
+    </h1>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <div *else class="m-t-2">
+        <h1 class="text-center m-b-2 bold">Top Participants</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Participant</th>
+                    <th>Total words</th>
+                    <th>Total rewards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *for="let participant, index of this.participants">
+                    <td>
+                        <span class="mr-1">
+                            <span [html]="Number(Number(index) + 1).format()"></span>
+                            -
+                        </span>
+                        <img [src]="userImage(participant.user)" class="u-image img-thumbnail" [alt]="userName(participant.user)" />
+                        <span [html]="userName(participant.user)" class="mr-1"></span>
+                        <user-online [id]="participant.user.id"></user-online>
+                    </td>
+                    <td class="total-words" [html]="participant.total.word.format()"></td>
+                    <td class="total-reward">
+                        <gold-icon [coins]="participant.reward.word"></gold-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</layout>

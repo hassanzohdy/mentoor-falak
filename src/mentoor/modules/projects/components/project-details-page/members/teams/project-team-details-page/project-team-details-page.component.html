@@ -1,0 +1,91 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <!-- this.teamMembers.length > 0 as we excluded the current team leader so there might not be another members to be selected -->
+    <button *if="this.project.isProjectManager && this.teamMembersExceptTeamLeader.length > 0"
+        (click)="this.openAssignTeamLeader = true" class="float-right btn btn-cyan bold">
+        <fa icon="user-secret mr-1"></fa>
+        Assign Team Leader
+    </button>
+
+    <button *if="this.project.isProjectManager" (click)="this.addNewTeamMember = true" class="float-right btn bold"
+        [disabled]="this.teamExceededMaxFreeMembers && this.project.fund < FLAGS.projects.pricing.extra.teamMember"
+        [class]="{'btn-pink': ! this.teamExceededMaxFreeMembers, 'btn-success': this.teamExceededMaxFreeMembers}">
+        <fa icon="plus mr-1"></fa>
+        <span *if="! this.teamExceededMaxFreeMembers" class="mr-2">Free</span>
+        Member
+        <if condition="this.teamExceededMaxFreeMembers">
+            <div>
+                <gold-icon [coins]="FLAGS.projects.pricing.extra.teamMember"></gold-icon>
+            </div>
+        </if>
+    </button>
+
+    <h1 class="m-y-1">
+        {{ this.currentTeam.type.toStudlyCase() }} Team
+        <span tooltip title="Team members" class="ml-1">
+            ({{ this.currentTeam.members.length + '/' + this.currentTeam.maxVisibleMembers }})</span>
+    </h1>
+
+    <table class="m-t-2 table table-bordered">
+        <thead>
+            <tr>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let member of this.currentTeam.members">
+                <td [html]="member.member.name"></td>
+                <td [html]="member.role"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.openAssignTeamLeader" *as="teamModal" (close)="this.openAssignTeamLeader = null" size="small"
+    header="Assign Team Leader">
+    <form (submit)="this.assignTeamLeader($el, 'add')">
+        <flk-dropdown-list 
+            name="teamLeader" 
+            [required]="true"
+            [value]="this.currentTeamLeaderId" 
+            label="Team Leader"
+            [items]="this.teamMembersExceptTeamLeader" 
+            heading="Select Team Leader" 
+            placeholder="Enter name to select">
+        </flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.isSending" class="btn btn-success bold">Assign</button>
+        </div>
+    </form>
+</flk-modal>
+
+<!-- <flk-modal *if="this.openAssignTeamLeader" *as="teamModal" (close)="this.openAssignTeamLeader = null" size="small"
+    header="Assign Team Leader">
+    <form (submit)="this.assignTeamLeader($el)">
+        <flk-dropdown-list name="teamLeader" label="Team Leader" [items]="this.currentTeam.members"
+            heading="Select Team Leader" [value]="this.currentTeamLeaderId" placeholder="Enter name to select">
+        </flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.isSending" class="btn btn-success bold">Assign</button>
+        </div>
+    </form>
+</flk-modal> -->
+
+
+<flk-modal *if="this.addNewTeamMember" *as="teamMemberModal" (close)="this.addNewTeamMember = null" size="small"
+    header="Add new member">
+    <form (submit)="this.addTeamMember($el)">
+        <flk-dropdown-list name="memberId" label="Member" [items]="this.projectMembersExceptTeamMembers"
+            heading="Select Member from the project to add" placeholder="Enter name to select"
+            (select)="this.newMember = e.value">
+        </flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.isSending || ! this.newMember" class="btn btn-success bold">Add</button>
+        </div>
+    </form>
+</flk-modal>

@@ -1,0 +1,51 @@
+.tasks-list-view {
+    width: 100%;
+    table {
+        th {
+            font-weight: bold !important;
+            // text-align: center;
+        }
+
+        .title {
+            background: #576574;
+            color: #FFF !important;
+            border-radius: 5px;
+            padding: 0.2rem 1rem;
+        }
+    }
+
+    .status-column {
+        position: relative;
+        .status-changer {
+            position: absolute;
+            z-index: 1000;
+            top: 100%;
+            width: 150px;
+        }
+    } 
+
+    .task-progress {
+        position: relative;
+        background: #eee;
+        color: #FFF;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 5px;
+        text-shadow: 0px 0px 3px #000;
+
+        .completed {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            border-radius: 5px;
+            background: goldenrod;
+            background: #a0e025;
+        }
+
+        .value {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}

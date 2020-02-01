@@ -1,0 +1,159 @@
+<div class="dark" [class]="{items: this.hasItems}">
+    <div *if="this.hasItems" class="fb-page">
+        <fa icon="facebook"></fa>
+        <span class="">/mentoor.io</span>
+    </div>
+    <div *if="this.hasItems" class="items-heading bold text-center white-text">
+        <img [src]="assets('images/en.png')" class="sm" [class]="{gray: this.currentStep != this.finalStep}" />
+        <h1>Problem Solving</h1>
+        <p>Find the missing number</p>
+        <img src="https://restful.mentoor.io/einstein-categories/esURtDIQPmMvZRVVFMI7DwMW7EeQKDWmKDqjqRFt.png"
+            class="big" />
+
+            <div class="overlay"></div>
+
+        <div id="logo">
+            <h1 id="m">M</h1>
+            <h1 id="name" class="inline">mentoor.io</h1>
+        </div>
+
+
+        <h4 class="hashtag">
+            <!-- <div>#mentoor</div>-->
+            <!-- <div>#best_practice</div>  -->
+            <!-- <div>#mentoor_clean_code</div> -->
+            <!-- <div>#mentoor_smackdown</div> -->
+            <!-- <div>#mentoor_best_practices</div> -->
+            <div>#mentoor_einstein</div>
+            <!-- <div>#mentoor_think_twice_code_once</div> -->
+            <!-- <div>#mentoor_what_does_it_mean</div> -->
+        </h4>
+    </div>
+    <if condition="! this.hasItems">
+        <!-- <h1 class="text-center white-text">What Is The Difference</h1> -->
+        <h1 class="text-center white-text">What Is</h1>
+        <!-- <h1 class="ar">ايه هو مبدأ</h1> -->
+        <!-- <div id="img">
+            <img [src]="'https://images.pond5.com/eco-atmosphere-pollution-chimney-animated-footage-058433139_prevstill.jpeg'"
+                [alt]="'Einstein Chamber'" />
+            <div id="overlay"></div>
+        </div> -->
+
+        <!-- <h1>
+            <img [src]="assets('images/en.png')" />
+        </h1> -->
+
+        <div class="m-t-1"></div>
+        <h1 class="master">Unit testing</h1>
+        <!-- <h1 class="ar">ايه هو مبدأ</h1> -->
+        <h1 class="ar">يعني إيه</h1>
+
+        <!-- <h1 class="master">Don't Reinvent The Wheel</h1> -->
+        <!-- <div>
+       <h1 class="vs">VS</h1>
+       </div> -->
+        <!-- <div class="vs triple">
+           <div class="challenger challenger-1">floor</div>
+           <div class="versus">VS</div>
+           <div class="challenger challenger-2">round</div>
+           <div class="challenger challenger-3">ceil</div>
+       </div> -->
+        <!-- <img style="transform: rotateX(45deg);" src="https://o.remove.bg/downloads/d0d438bf-d1cf-44fa-a44c-9627adea899c/don-t-reinvent-the-wheel-refine-the-heck-out-of-it-1296-XL-removebg-preview-removebg-preview.png" /> -->
+        <!-- <h1 class="master m-1-5">PSR-1</h1> -->
+        <!-- <h1 class="master new-c">VS</h1>
+        <h1 class="master">DRY</h1> -->
+        <!-- <div class="row compare">
+            <div class="col-6">
+                <div class="text-center">
+                    <fa icon="times icon wrong"></fa>
+                </div>
+                <markdown>
+                    ```js
+function user_ids() {
+    ...
+}
+
+function upd_t() {
+    ...
+}
+                    ```
+                </markdown>
+            </div>
+            <div class="col-6">
+                <div class="text-center">
+                    <fa icon="check icon ok"></fa>
+                </div>
+                <markdown>
+                    ```js
+function getEnabledUsersIds() {
+    ...
+}
+
+function updateTitle() {
+    ...
+}
+                    ```
+                </markdown>
+            </div>
+        </div> -->
+        <!-- <h1 class="ar">يعنيظ ايه؟</h1> -->
+        <!-- <h1 class="text-center white-text">PHP Code styling</h1> -->
+
+        <div class="overlay"></div>
+
+        <h4 class="hashtag">
+            <!-- <div>#mentoor</div>-->
+            <!-- <div>#best_practice</div>  -->
+            <!-- <div>#mentoor_clean_code</div> -->
+            <!-- <div>#mentoor_smackdown</div> -->
+            <!-- <div>#mentoor_best_practices</div> -->
+            <!-- <div>#mentoor_einstein</div>
+            <div>#mentoor_think_twice_code_once</div> -->
+            <div>#mentoor_what_does_it_mean</div>
+        </h4>
+
+        <div id="logo">
+            <h1 id="m">M</h1>
+            <h1 id="name" class="inline">mentoor.io</h1>
+        </div>
+    </if>
+
+    <div *if="this.hasItems" class="p-1 text-left tutorial-content">
+        <!-- <if condition="this.currentStep <= this.texts.length"> -->
+        <!-- <h3 class="bold m-b-1">Follow the {{ this.texts.length }} steps below.</h3> -->
+        <div class="">
+            <for loop="let page, texts in this.texts">
+                <div class="page" *if="page == this.currentPage">
+                    <for loop="let statement of texts">
+                        <div *if="! statement.type && this.currentStep >= statement.step" class="p-x-2">
+                            <div class="list">
+                                <div class="animate" [animate]="statement.animation">
+                                    <markdown [content]="statement.text.trim()"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                        <elseif condition="statement.type == 'h1' && this.currentStep >= statement.step">
+                            <h1 class="animate {{ statement.className || '' }}" [animate]="statement.animation">
+                                <fa *if="statement.icon" [icon]="statement.icon"></fa>
+                                <img *if="statement.image" [src]="statement.image" />
+                                {{ statement.text }}
+                            </h1>
+                        </elseif>
+                        <elseif condition="statement.type == 'p' && this.currentStep >= statement.step">
+                            <p class="animate" [animate]="statement.animation" [html]="statement.text"></p>
+                        </elseif>
+                    </for>
+                </div>
+            </for>
+
+            <if condition="this.currentStep == this.finalStep">
+                <h1 animate="fadeIn" class="bold animate text-center m-t-3">Thank you!</h1>
+            </if>
+        </div>
+        <!-- </if> -->
+
+        <!-- <if condition="this.currentStep > this.texts.length">
+                <h1 animate="fadeIn" class="bold animate text-center m-t-3">Thank you!</h1>
+            </if> -->
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let record, index of this.items">
+        <td>{{record.id}}</td>
+        <td [html]="record.title"></td>
+        <td [html]="record.level"></td>
+        <td [html]="Boolean(record.public)"></td>
+        <td>{{ Number(record.reward).format() }}</td>
+        <td [html]="record.duration"></td>
+        <td>
+            <table-actions (edit)="this.editItem(record)" (delete)="this.deleteItem(record.id, index)"></table-actions>
+        </td>
+    </tr>
+</admin-table>
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal();">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="categoryId" [value]="this.categoryId" />
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.title" placeholder="Title" class="form-control"
+                name="title"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input type="textarea" rows="6" required name="quest" [value]="this.formObject.quest" placeholder="Quest"
+                class="form-control"></form-input>
+        </div>
+
+        <div class="form-group">
+            <form-input type="number" name="level" [value]="this.formObject.level" placeholder="level"
+                class="form-control"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input class="form-control" required placeholder="reward" type="number" name="reward"
+                [value]="this.formObject.reward"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input class="form-control" placeholder="Duration in seconds" type="number" name="duration"
+                [value]="this.formObject.duration"></form-input>
+        </div>
+        <div class="form-group">
+            <flk-checkbox name="public" label="Public puzzle" value="1"
+                (change)="this.formObject.public = ! this.formObject.public" [checked]="this.formObject.public">
+            </flk-checkbox>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

@@ -1,0 +1,37 @@
+#profile-page {
+    // Picasso is ready to draw :)
+    .nav-tabs {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+
+        .nav-item {
+            // width: 100%;
+            // display: block;
+            position: relative;
+            overflow: visible;
+
+            .nav-link {
+                &:hover,
+                &.active {
+                    background: #f8f8f8;
+                    background: #233;
+                    color: #eee;
+                }
+            }
+        }
+
+    }
+
+    .tab-content {
+        .tab-pane {
+            padding: 1rem;
+        }
+    }
+}
+
+
+.edit-btn {
+    color: $primary-color;
+    position: absolute;
+    margin-left: 0.5rem;
+}

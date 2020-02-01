@@ -1,0 +1,53 @@
+<div *primary>
+    <div class="track-card">
+        <div class="card">
+            <span *if="this.isSubscriable()" class="can-unlock top-right" title="Unlockable">
+                !
+            </span>
+            <div *elseif="this.track.subscribed" class="purchased-wrapper top-right" title="Subscribed">
+                <fa icon="check-circle purchased-icon"></fa>
+            </div>
+            <div *else class="unlocked top-right" title="can-not-unlock">
+                <fa icon="lock lock-icon"></fa>
+            </div>
+            <div>
+                <img class="imgTrack" [src]="this.track.image" />
+            </div>
+            <div class="trackInfoTitle card-body">
+                <a>
+                    <h4 class="text-capitalize" [html]="this.track.name"></h4>
+                </a>
+                <div class="trackInfoMeta d-flex justify-content-between pt-4 border-top">
+                    <span class="trackSingleMeta">
+                        <i class="ti ti-list"></i> {{this.track.topics.length}} Topics</span>
+                    <span class="trackSingleMeta">
+                        <strong class="pink-text" *if="this.track.cost ==0">FREE</strong>
+                        <gold-icon [coins]="this.track.cost"></gold-icon>
+                    </span>
+                </div>
+            </div>
+            <div class="trackInfo">
+                <div class="trackInfoTitle">
+                    <a [href]="URLS.track(this.track)">
+                        <h4 class="text-capitalize" [html]="this.track.name"></h4>
+                    </a>
+                </div>
+                <div class="trackInfoDescription">
+                    <p class="pt-4" [html]="this.track.description"></p>
+                </div>
+                <div class="trackInfoMeta d-flex justify-content-between pt-4 pb-4">
+                    <span class="trackSingleMeta">
+                        <i class="ti ti-list"></i>{{ this.track.topics.length }} Topics </span>
+                    <span class="trackSingleMeta">
+                        <strong class="pink-text" *if="this.track.cost ==0">FREE</strong>
+                        <gold-icon [coins]="this.track.cost"></gold-icon>
+                    </span>
+                </div>
+                <div class="trackPreview">
+                    <a [href]="URLS.track(this.track)" class="btn btn-primary btn-block"
+                        trans="Preview this track"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

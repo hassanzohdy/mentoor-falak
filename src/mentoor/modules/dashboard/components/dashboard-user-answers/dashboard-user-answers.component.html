@@ -1,0 +1,71 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item" *for="let answersCollection, index of this.answers">
+        <button class="nav-link {{ answersCollection.status }}" [class]="{active: index == this.activeTab}"
+            data-target="#{{ answersCollection.status }}-answers" (click)="this.activeTab = index;">
+            {{ answersCollection.status }}
+            <span class="badge total-answers" [class]="answerStatusClass(answersCollection.status)"
+                [html]="answersCollection.answers.length"></span>
+        </button>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div *for="let answersCollection, index of this.answers" [class]="{active: index == this.activeTab}"
+        class="tab-pane {{ answersCollection.status }}" id="{{ answersCollection.status }}-answers">
+        <section class="card p-3 border-0" *for="let answer of answersCollection.answers">
+            <header>
+                <div class="d-flex justify-content-between mb-2 flex-wrap">
+                    <div class="answerMeta">
+                        <h2>
+                            <span class="mr-2">Topic </span>
+                            <a [href]="URLS.topic(answer.topic, answer.track)" [html]="answer.topic.title"></a>
+                        </h2>
+                        <div class="answerMetaTrack">
+                            <span class="text-muted mr-2">Track </span>
+                            <a [href]="URLS.track(answer.track)" [html]="answer.track.name"></a>
+                        </div>
+                    </div>
+                    <div
+                        [class]="{'green-text': answer.status == 'approved' && answer.prize > answer.topic.prize, 'red-text': answer.status == 'approved' && answer.prize < answer.topic.prize}">
+                        <span class="reward-status up"
+                            *if="answer.status == 'approved' && answer.prize > answer.topic.prize">
+                        </span>
+                        <span class="reward-status down"
+                            *if="answer.status == 'approved' && answer.prize < answer.topic.prize">
+                        </span>
+                        <gold-icon [coins]="answer.prize || answer.topic.prize"></gold-icon>
+                        <div *if="answer.status == 'approved' && answer.prize != answer.topic.prize"
+                            class="bold text-right">
+                            <span *if="answer.prize > answer.topic.prize">+</span>
+                            <!-- The minus will be added automatically from the math operation -->
+                            {{ (answer.prize - answer.topic.prize).format() }}
+                        </div>
+                    </div>
+            </header>
+            <div class="content m-b-2">
+                <small class="text-muted date"><i class="ti ti-time"></i> {{ answer.createdAt.format }}</small>
+                <button type="button" class="d-block bold blue-text" (click)="answer.display = ! answer.display">
+                    Display your answer
+                    <span class="ml-2">
+                        <fa *if="answer.display" icon="arrow-up"></fa>
+                        <fa *else icon="arrow-down"></fa>
+                    </span>
+                </button>
+                <markdown *if="answer.display" [content]="answer.answer"></markdown>
+            </div>
+            <button type="button" *if="answer.display" class="text-left bold green-text"
+                (click)="answer.display = false">
+                Hide your answer
+                <fa *if="answer.display" icon="arrow-up ml-2"></fa>
+            </button>
+            <footer *if="answer.status == 'rejected' && (answer.comment || answer.recordNote)">
+                Note by: <strong [html]="answer.commentBy.name"></strong>
+                <p class="note">
+                    <markdown *if="answer.comment" [content]="answer.comment"></markdown>
+                </p>
+                <flk-audio-player *if="answer.recordNote" [src]="answer.recordNote"></flk-audio-player>
+            </footer>
+        </section>
+    </div>
+</div>

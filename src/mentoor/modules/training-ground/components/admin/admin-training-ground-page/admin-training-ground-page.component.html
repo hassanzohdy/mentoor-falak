@@ -1,0 +1,94 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let record, index of this.items">
+        <td>{{ record.id }}</td>
+        <td [html]="record.title"></td>
+        <td><img class="small-image" [src]="record.image" [alt]="record.title" /></td>
+        <td>
+            <a *if="record.livePreview" href="{{ record.livePreview }}">Live preview</a>
+            <span *else>N/a</span>
+        </td>
+        <td [html]="record.prize.format()"></td>
+        <td [html]="record.cocktail.name"></td>
+        <td [html]="record.dependsOn?.title"></td>
+        <td>
+            <div *for="let tag of record.tags">
+                <div class="m-b-1">
+                    <tag-badge [small]="true" [tag]="tag"></tag-badge>
+                </div>
+            </div>
+        </td>
+        <td [html]="record.level"></td>
+        <td [html]="record.sortOrder"></td>
+        <td [html]="record.display"></td>
+        <td>
+            <table-actions (edit)="this.editItem(record)" (delete)="this.deleteItem(record.id, index)"></table-actions>
+        </td>
+    </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+    <form (submit)="this.submit($el)">
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.title" placeholder="Title" class="form-control"
+                name="title"></form-input>
+        </div>
+        <div class="form-group">
+            <flk-dropdown-list name="level" [items]="this.levels" placeholder="Level" [value]="this.formObject.level">
+            </flk-dropdown-list>
+        </div>
+        <div class="form-group">
+            <form-input type="textarea" rows="6" required name="description" [value]="this.formObject.description"
+                placeholder="Description" class="form-control"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input type="textarea" rows="6" required name="shortDescription"
+                [value]="this.formObject.shortDescription" placeholder="Short description" class="form-control">
+            </form-input>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <form-input type="number" name="sortOrder" label="Sort order" [value]="this.formObject.sortOrder"
+                        placeholder="Sort order" class="form-control"></form-input>
+                </div>
+                <div class="col-md-3">
+                    <form-input type="text" name="livePreview" label="live preview url"
+                        [value]="this.formObject.livePreview" class="form-control"></form-input>
+                </div>
+                <div class="col-md-3">
+                    <form-input class="form-control" required placeholder="prize" label="Prize" type="number"
+                        name="prize" [value]="this.formObject.prize"></form-input>
+                </div>
+                <div class="col-md-3">
+                    <flk-checkbox label="Display" name="display" value="1" [checked]="this.formObject.display">
+                    </flk-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <flk-dropdown-list [service]="this.adminCocktailService" [lazy-loading]="true" [imageable]="true"
+                    label="Cocktail" placeholder="Cocktail" [value]="this.formObject.cocktail.id" name="cocktailId">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-4">
+                <flk-dropdown-list [service]="this.service" [except]="this.formObject.id" [lazy-loading]="true" [imageable]="true"
+                    label="depends On" placeholder="Depends on" [value]="this.formObject.dependsOn.id" name="dependsOnId">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-4">
+                <flk-dropdown-list [service]="this.tagsService" [lazy-loading]="true" [multiple]="true"
+                    [imageable]="true" label="tags" placeholder="Additional tags"
+                    [value]="this.formObject.tags" name="tags[]"></flk-dropdown-list>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <flk-image-input id="image" [src]="this.formObject.image" required name="image"></flk-image-input>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

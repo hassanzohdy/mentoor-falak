@@ -1,0 +1,55 @@
+{
+    "env": "development",
+    "production": {
+        "baseUrl": "https://mentoor.io",
+        "https": true,
+        "prerender": true,
+        "sitemap": {
+            "route": "feed/sitemap.xml",
+            "location": "../static-files/sitemap.xml"
+        }
+    },
+    "webNotificationKey": {
+        "public": "BLUpM01-CwH-jBLr7TS3TuvgkSR1lk5_jCcv0nlrME_zVqd9nlXRVIsRZ107YFaEAL_Htz19lXN_7aGZapf9cTM",
+        "private": "LkolbV_3ezKfiOECvqKMK760H8YN_RdrjVk1SX1e2No"
+    },
+    "port": 81,
+    "baseApp": "mentoor",
+    "apps": {
+        "mentoor": {
+            "path": "/",
+            "locale": "en",
+            "meta": {
+                "image": true,
+                "title": {
+                    "en": "Mentoor"
+                },
+                "description": {
+                    "en": "Mentor is a web application that focuses on self study with sharing knowledge among participants with a simple and encouraging way."
+                },
+                "keywords": {
+                    "en": "Mentor,Self education, Self study"
+                },
+                "twitter": true,
+                "twitterCard": "summary",
+                "graph": true,
+                "facebookAppId": 2076000436036481,
+                "url": true,
+                "siteName": true
+            },
+            "locales": [
+                "en"
+            ]
+        }
+    },
+    "locales": {
+        "en": {
+            "direction": "ltr",
+            "name": "English"
+        },
+        "ar": {
+            "direction": "rtl",
+            "name": "العربية"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<h1>
+    <img [src]="assets('images/target.png')" class="v-top target-icon medium mr-2" />
+    <div class="d-inline-block">
+        Training ground
+        <button *if="this.user.isLoggedIn()" (click)="this.openCocktailsModal = true;" class="new bold m-l-1">Careers list</button>
+    </div>
+</h1>
+
+<cocktail-modal *if="this.openCocktailsModal" (unlock)="this.onUnlock(e)" (close)="this.openCocktailsModal = null"></cocktail-modal>

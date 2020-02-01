@@ -1,0 +1,9 @@
+<layout>
+    <h1 class="m-b-2 clearfix">
+        <add-project-btn></add-project-btn>
+        My Projects
+        <span *if="! this.isLoading" class="ml-2" [html]="'(' + this.projects.length + ')'"></span>
+    </h1>
+
+    <projects-list></projects-list>
+</layout>

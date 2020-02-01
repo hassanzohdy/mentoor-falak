@@ -1,0 +1,13 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">    
+    <h1 class="m-y-1 purple-text">
+        {{ this.project.name }} Resources
+        ({{ this.project.resources.length }})
+    </h1>
+
+    <resources-list
+        [resources]="this.project.resources"
+        [can-add]="true"
+        [project]="this.project"
+        (remove)="this.project.resources = e"
+    ></resources-list>
+</project-layout>

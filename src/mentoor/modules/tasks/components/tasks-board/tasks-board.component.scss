@@ -1,0 +1,80 @@
+.tasks-board {
+    // Picasso is ready to draw :)
+
+    .tasks-group {
+        background: rgba(205, 215, 223, 0.15);
+        padding: 1rem;
+        border: 1px solid #ccc;
+        height: 300px;
+
+        .tasks-list {
+            height: 244px;
+            overflow: auto;
+            @include responsive((
+                1024: (
+                    padding: 1rem 3rem,
+                )
+            ), max)
+        }
+
+        .task {
+            // border: 1px solid #c5c5c5;
+            // background: #f6f6f6;
+            // font-weight: normal;
+            // color: #454545;
+            padding-bottom: 0.5rem;
+
+            &.item {
+                cursor: move;                
+            }
+
+            .participant {
+                font-size: 1.2rem;
+            }
+
+            .duration {
+                font-size: 1rem;
+                margin: 0.5rem 0;
+            }
+
+            .footer {
+                margin-top: 1rem;
+                padding: 0.5rem;
+                background: #f9f9f9 !important;
+                border: 1px solid #ccc;
+            }
+        }
+
+        margin-bottom: 2rem;
+
+        &.inProgress {
+            border-top: 3px solid #9b59b6;
+        }
+
+        &.completed {
+            border-top: 3px solid #00c851;
+        }
+
+        &.notStarted {
+            border-top: 3px solid skyblue;
+        }
+
+        &.inReview {
+            border-top: 3px solid #fa0;
+        }
+
+        &.failed {
+            border-top: 3px solid #ff4f5e;
+        }
+
+        &.autoFailed {
+            border-top: 3px solid red;
+        }
+    }
+
+    .view-archived-btn {
+        // margin-top: 1rem;
+        font-weight: bold;
+        font-size: 3rem;
+    }
+}

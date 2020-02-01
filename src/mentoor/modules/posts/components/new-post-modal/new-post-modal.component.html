@@ -1,0 +1,33 @@
+<flk-modal (close)="this.onClose()" *as="modal" id="new-post-modal" [header]="this.heading">
+    <form (submit)="this.submit($el)">
+        <form-input type="text" class="form-control" (input)="this.data.slug = seo($el.value);" name="title" required
+            [value]="this.data.title" placeholder="Post title"></form-input>
+        <input type="hidden" name="slug" [value]="this.data.slug" />
+        <form-input type="textarea" (input)="this.cache.set('t-post', $el.value)" rows="20" class="form-control m-y-2"
+            name="content" required [value]="this.data.content" placeholder="Write post content (Markdown)">
+        </form-input>
+        <div class="row">
+            <div class="col-6">
+                <flk-dropdown-list label="Tags" (select)="echo(e);this.data.tags = e.map(tag => tag.value)" [imageable]="true" position="top"
+                    [multiple]="true" required name="tagsIds[]" [lazy-loading]="true" [service]="this.tagsService"
+                    [value]="this.data.tags"></flk-dropdown-list>
+            </div>
+            <div class="col-6">
+                <label for="image">Post image (Optional)</label>
+                <flk-image-input id="image" name="image" [src]="this.data.image"></flk-image-input>
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="button" [disabled]="! this.data.content || Is.empty(this.data.tags) || ! this.data.title"
+                class="btn btn-purple bold" (click)="this.preview = true">Next</button>
+        </div>
+
+        <flk-modal *if="this.preview" (close)="this.preview = null" header="Post Preview">
+            <markdown [content]="this.data.content"></markdown>
+
+            <div class="text-right">
+                <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Post</button>
+            </div>
+        </flk-modal>
+    </form>
+</flk-modal>

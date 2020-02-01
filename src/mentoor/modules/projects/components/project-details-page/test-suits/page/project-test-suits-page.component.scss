@@ -1,0 +1,13 @@
+#project-test-suits-page {
+    // Picasso is ready to draw :)
+}
+
+.test-case-type {
+    &.positive {
+        // text-align: right !important;
+        // border-right: 1px solid #ccc;
+    }
+    &.negative {
+        text-align: left !important;
+    }
+}

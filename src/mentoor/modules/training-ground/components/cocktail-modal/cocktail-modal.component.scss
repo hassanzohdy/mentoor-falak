@@ -1,0 +1,164 @@
+#cocktail-modal {
+    $yok-color: #ffe9b6;
+    $yok-color: #eee3ca;
+    $brown-color: #7d6339;
+
+    // $yok-color: #ffe2a0;
+    // Picasso is ready to draw :)
+
+    .flk-alert {
+        z-index: 10000;
+    }
+
+    .flk-modal {
+        .modal_content {
+            background: #f0e7d9;
+            // background: #ece5d5;
+
+            .unlocked {
+                display: block;
+                font-size: 3rem;
+                text-align: center;
+            }
+
+            .modal_heading {
+                text-align: center;
+                // background: #f6d281;
+                // background: #ffe2a0;
+                // background: $yok-color;
+                // background: #ece5d5;
+                background: #f2e3bf;
+                border: 1px solid #c19957;
+            }
+
+            .modal_body {
+                padding: 0;
+            }
+
+            aside {
+                // background: #f6d281;
+                background: $yok-color;
+
+                .category-btn {
+                    width: 100%;
+                    display: block;
+                    // margin-bottom: 1rem;
+                    // border-left: 1px solid #c19957;
+                    border: 1px solid #c19957;
+                    border-top: none;
+                    padding: 0.5rem;
+                    text-align: left;
+
+                    &:first-child {
+                        // border-bottom: none;
+                    }
+
+                    &:focus,
+                    &:active {
+                        outline: none !important;
+                    }
+
+                    &.active {
+                        background: #f0e7d9;
+                        border-right-color: #ece7df;
+                    }
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 1.5rem;
+                    }
+
+                    strong {
+                        color: $brown-color;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+
+            .body {
+
+                // border-left: 1px solid #c19957;
+                border-bottom: 1px solid #c19957;
+                border-right: 1px solid #c19957;
+
+                // border-top: none;
+                .cocktail {
+                    margin-bottom: 2rem;
+
+                    .name {
+                        margin-top: 1rem;
+                    }
+
+                    .description {
+                        margin-bottom: 0;
+                        font-size: 1.2rem;
+                    }
+
+                    .tags {
+                        background: #f6f0e7;
+                        padding: 1rem;
+                        overflow: hidden;
+                        padding-top: 1.5rem;
+
+                        .tag-icon {
+                            // margin-right: 1rem;
+                            display: inline-block;
+                            // width: 65px;
+
+                            img {
+                                width: 40px;
+                                height: 40px;
+                            }
+
+                            .plus {
+                                margin: 0 0.7rem;
+                                color: $brown-color;
+                            }
+                        }
+
+                        .cost {
+                            float: right;
+                            margin-top: -1rem;
+
+                            .unlock-btn {
+                                font-weight: bold;
+                                display: block;
+                                margin-left: 1.5rem;
+                                background: #222 url(http://whisperstorm.com/tests/rotating_buttons/alert-overlay.png) repeat-x;
+                                // background-color: #ffb515;
+                                background-color: #91bd09;
+                                color: #FFF;
+                                padding: 0.3rem 0.6rem;
+                                @include border-radius(5px);
+                                text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+                                @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+
+                                &:hover {
+                                    // background-color: #fc9200;
+                                    background-color: #749a02;
+                                }
+
+                                &:disabled {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+
+                    }
+
+                    .required-cocktail {
+                        // color: $brown-color;
+                        color: #b8b8b8;
+                        // margin-top: 0.5rem;
+                        font-weight: bold;
+
+                        span {
+                            margin-left: -1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

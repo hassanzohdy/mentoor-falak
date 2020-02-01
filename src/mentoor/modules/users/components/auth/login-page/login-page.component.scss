@@ -1,0 +1,56 @@
+#login-page {
+    // Picasso is ready to draw :)
+}
+
+.authLayout {
+    .loginImg {
+        width: 30px;
+        margin: 0 10px;
+    }
+
+    .authLink {
+        font-size: 1.2rem;
+
+        .forgetLink {
+            color: $secondColor;
+        }
+    }
+
+    padding: 2.5rem 4rem;
+
+    .auth {
+        min-height: 89vh;
+        padding: 8rem 1.5rem;
+        background-color: #fff;
+        overflow-y: auto; // border: 1px solid $borderColor;
+        @include border-radius(5px);
+
+        input {
+            margin-bottom: 2rem;
+            font-family: Roboto, sans-serif !important;
+            outline: 0 !important;
+            border-width: 1px;
+            padding: 1.5rem;
+            transition: all .5s ease-in-out;
+            border-color: #dadfe6;
+        }
+
+        button,
+        button:active {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #5dcfe3 !important;
+            border-color: #5dcfe3 !important;
+        }
+
+        .authForm {
+            max-width: 45rem;
+            margin: auto;
+        }
+
+        .authTitle {
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+    }
+}

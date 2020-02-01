@@ -1,0 +1,27 @@
+<h1 *if="! this.record.id">
+    Open New Discussion
+</h1>
+<button type="button" class="btn btn-pink float-right bold m-b-2" (click)="this.close()">Cancel</button>
+
+<div class="clearfix"></div>
+<form (submit)="this.submit($el)">
+    <input type="hidden" name="project" [value]="this.project.id" />
+
+    <form-input type="text" name="title" [value]="this.record.title" label="Discussion Title" required
+        class="form-control"></form-input>
+
+    <flk-dropdown-list
+        name="team"
+        [value]="this.record.team?.id"
+        label="Team"
+        [items]="this.getTeamsList()"
+        [none]="true"
+    ></flk-dropdown-list>
+    
+    <form-input type="textarea" name="discussion" rows="15" [value]="this.record.discussion" label="Discussion Content"
+        required class="form-control"></form-input>
+
+    <div class="m-t-1 text-right">
+        <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+    </div>
+</form>

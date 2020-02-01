@@ -1,0 +1,8 @@
+<table *if="! Is.empty(this.videos)" class="table table-bordered">
+    <tbody>
+        <tr *for="let video of this.videos">
+            <td [html]="video.title"></td>
+            <td [html]="String(video.duration.minutes).padStart(2, '0') + ':' + String(video.duration.seconds).padStart(2, '0')"></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,91 @@
+<section class="panel-wrapper dark" id="rewards-panel">
+    <span class="arrow-up"></span>
+    <flk-spinner theme="white" *if="this.isLoading"></flk-spinner>
+    <else>
+        <if condition="! Is.empty(this.rewards)">
+            <ul class="list">
+                <for loop="let reward, index of this.rewards">
+                    <li class="panel-item row m-0">
+                        <div class="col-10 p-l-0">
+                            <div *if="reward.type == 'complement'">
+                                <span class="reward-type" *if="reward.for == 'complement'">[Complement]</span>
+                                <span class="reward-type purple-text" *if="reward.for == 'reportingIssue'">[Reporting
+                                    Issue]</span>
+                                <span class="auto mx-1">This is a small complement for </span>
+                                <span class="description bold orange-text" [html]="reward.description"></span>.
+                                <div>
+                                    <gold-icon [coins]="reward.gold"></gold-icon>
+                                    <flk-time-ago [timestamp]="reward.createdAt.timestamp" class="created-at">
+                                    </flk-time-ago>
+                                </div>
+                            </div>
+                            <div *elseif="reward.type == 'reward' && reward.for == 'puzzle'" class="einstein">
+                                <img [src]="assets('images/en.png')" class="einstein-img" />
+                                <div class="d-inline-block">
+                                    <span class="description bold ml-2 teal-text">
+                                        <span class="orange-text">[{{ reward.settings.puzzle.category.name }}]</span>
+                                        <span [html]="reward.settings.puzzle.title" class="ml-2"></span>
+                                    </span>
+                                    <fa icon="check green-text success-icon"></fa>
+                                    <div>
+                                        <gold-icon [coins]="reward.gold"></gold-icon>
+                                        <flk-time-ago [timestamp]="reward.createdAt.timestamp" class="created-at">
+                                        </flk-time-ago>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *elseif="reward.type == 'reward' && reward.for == 'academy'" class="academy">
+                                <fa icon="university fa-2x v-top"></fa>
+                                <div class="d-inline-block">
+                                    <span class="description bold ml-2 teal-text">
+                                        <span class="yellow-text">[{{ reward.settings.track.name }}]</span>
+                                        <span [html]="reward.settings.topic.title" class="ml-2"></span>
+                                    </span>
+                                    <fa icon="check green-text success-icon"></fa>
+                                    <div>
+                                        <gold-icon [coins]="reward.gold"></gold-icon>
+                                        <flk-time-ago [timestamp]="reward.createdAt.timestamp" class="created-at">
+                                        </flk-time-ago>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *elseif="reward.type == 'reward' && reward.for == 'post'" class="post">
+                                <fa icon="mug-hot fa-2x v-top"></fa>
+                                <div class="d-inline-block">
+                                    <span class="description bold ml-2 teal-text">
+                                        <span [html]="reward.settings.post.title" class="mx-2"></span>
+                                        <span> post.</span>
+                                    </span>
+                                    <fa icon="check green-text success-icon"></fa>
+                                    <div>
+                                        <gold-icon [coins]="reward.gold"></gold-icon>
+                                        <flk-time-ago [timestamp]="reward.createdAt.timestamp" class="created-at">
+                                        </flk-time-ago>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *else>
+                                <div [html]="reward.description"></div>
+                                <div>
+                                    <gold-icon [coins]="reward.gold"></gold-icon>
+                                    <flk-time-ago [timestamp]="reward.createdAt.timestamp" class="created-at">
+                                    </flk-time-ago>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 m-t-1">
+                            <button class="collect-btn" (click)="this.redeemReward(reward, index)">Collect</button>
+                        </div>
+                    </li>
+                    <hr class="separator" />
+                </for>
+            </ul>
+            <div class="rewards-footer">
+                <button (click)="this.redeemAll()" class="collect-btn redeem-all-btn">
+                    Redeem All
+                </button>
+            </div>
+        </if>
+        <div *else class="no-results">You rewards yet.</div>
+    </else>
+</section>

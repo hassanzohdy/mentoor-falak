@@ -1,0 +1,37 @@
+<div class="row m-t-2 tasks-board">
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <else>
+        <div class="style-switcher text-right m-y-2 col-12">
+            <button (click)="this.switchTo('board')" class="btn btn-sm btn-cyan" title="Board Mode" tooltip>
+                <fa icon="th-large" 2x></fa>
+            </button>
+            <button (click)="this.switchTo('list')" class="btn btn-sm btn-purple" title="List Mode" tooltip>
+                <fa icon="th-list" 2x></fa>
+            </button>
+        </div>
+        <div *if="! this.isViewingArchivedTasks" class="row w-100">
+            <tasks-board-filter *if="this.displayMode == 'list'"></tasks-board-filter>
+            <task-board-view *if="this.displayMode == 'board'"></task-board-view>
+            <task-list-view *elseif="this.displayMode == 'list'"></task-list-view>
+        </div>
+
+        <task-archived-list *else></task-archived-list>
+    </else>
+</div>
+
+<task-modal *if="this.modalIsOpened" 
+            *as="modal" 
+            [display-status-list]="this.record.id"
+            (close)="this.modalIsOpened = null" 
+            [participants]="this.participants" 
+            [supervisors]="this.supervisors"
+            [project]="this.project" 
+            (save)="this.adjustTaskResponse(e)" 
+            [task]="this.record">
+</task-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>
+
+<flk-alert *if="this.confirmingArchiving" (close)="this.confirmingArchiving = null" (confirm)="this.archive()">
+</flk-alert>

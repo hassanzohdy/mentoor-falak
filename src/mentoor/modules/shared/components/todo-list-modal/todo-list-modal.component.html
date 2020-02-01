@@ -1,0 +1,88 @@
+<flk-modal id="todo-list-modal" (close)="this.onClose()" header="Todo list">
+    <div *if="! this.isUnlocked()">
+        <div>
+            <p>
+                Todo list will give you a quick list for accomplishment progress based on your todo list items
+                completion.
+            </p>
+            <p>You can easily check/uncheck your finished todo items with a single click.</p>
+        </div>
+        <div *if="! Is.empty(FLAGS.shoppingMall)" class="m-t-4 text-center">
+            <button (click)="this.confirm = true" class="btn btn-sm btn-success">
+                <gold-icon [coins]="FLAGS.shoppingMall.todo"></gold-icon>
+                <div class="bold p-l-1">Unlock</div>
+            </button>
+        </div>
+    </div>
+    <flk-spinner *elseif="this.isLoading" theme="black"></flk-spinner>
+    <else>
+        <if condition="! Is.empty(this.todo.categories)">
+            <span (click)="this.filterBy(TodoListModal.ALL)" [class]="{active: TodoListModal.ALL == this.currentStatus}"
+                class="badge badge-purple">All
+                ({{ this.totalItems() }})</span>
+            <span (click)="this.filterBy(TodoListModal.PENDING)"
+                [class]="{active: TodoListModal.PENDING == this.currentStatus}" class="badge badge-primary">Pending
+                ({{ this.totalPending() }})</span>
+            <span (click)="this.filterBy(TodoListModal.COMPLETED)"
+                [class]="{active: TodoListModal.COMPLETED == this.currentStatus}" class="badge badge-success">Completed
+                ({{ this.totalCompleted() }})</span>
+
+            <div class="categories-filter">
+                <flk-dropdown-list *as="categoriesDropdown" [items]="this.getCategories()" heading="Categories"
+                    placeholder="Filter by category" [multiple]="true" (select)="this.filterBy(this.currentStatus, e.map(cat => cat.text))">
+                </flk-dropdown-list>
+            </div>
+
+            <div class="items-list">
+                <!-- Categories list -->
+                <div class="category-wrapper" *for="let category, index of this.todoItems" *key="category.id">
+                    <!-- Category name -->
+                    <h1 class="category m-y-2">
+                        <span [html]="category.name"></span>
+                        <span *if="category.items.length > 0" [html]="'(' + category.items.length + ')'"></span>
+                    </h1>
+                    <!-- Items list -->
+                    <if condition="! Is.empty(category.items)">
+                        <div *for="let item of category.items" *key="item.id + item.done + category.id" class="row item">
+                            <div class="col-9" [html]="item.item"></div>
+                            <div class="col check-item">
+                                <label>
+                                    <input [class]="{checked: item.done}" class="cb pristine"
+                                        (ready)="this.readyInput($el)"
+                                        (change)="this.changeStatus(category, item.id, $el.checked)"
+                                        [checked]="item.done" type="checkbox">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                    </if>
+                    <h1 *else class="m-y-2 text-center">No items here.</h1>
+                    <!-- Add todo item button -->
+                    <button class="btn btn-circle btn-success m-y-2"
+                        (click)="this.isAdding = true; this.currentCategoryIndex = index;" tooltip title="Add todo item">
+                        <fa icon="plus mr-1"></fa>
+                        <!-- <strong>Todo</strong> -->
+                    </button>
+                </div>
+            </div>
+        </if>
+        <h1 *else class="text-center bold p-y-3">No items yet.</h1>
+
+        <div class="btns-list">
+            <button class="btn btn-circle btn-pink float-right" (click)="this.isAddingCategory = true;"
+                title="Add new category" tooltip>
+                <fa icon="folder-plus mr-1"></fa>
+                <!-- <strong>Category</strong> -->
+            </button>
+        </div>
+    </else>
+</flk-modal>
+<flk-alert *if="this.isAdding" (confirm)="this.addItem(e)" [with-input]="true" placeholder="Todo item."
+    [heading-theme]="'primary'" heading="Adding new Todo Item" message="Add todo item."
+    (close)="this.isAdding = false;"></flk-alert>
+
+<flk-alert *if="this.isAddingCategory" (confirm)="this.addCategory(e)" [with-input]="true" placeholder="Todo category."
+    heading="Adding Todo category" message="Add new todo category." (close)="this.isAddingCategory = false;">
+</flk-alert>
+
+<flk-alert *if="this.confirm" (confirm)="this.unlock();" (close)="this.confirm = false;"></flk-alert>

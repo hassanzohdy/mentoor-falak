@@ -1,0 +1,21 @@
+<li class="panel-item einstein-chamber" [class]="{unseen: notification.seen === false}">
+    <a href="/admin/einstein/answers" (click)="this.markAsSeen(notification)">
+        <span class="red-text bold mr-2">
+            <img [src]="assets('images/en.png')" class="einstein-img" />
+        </span>
+        <span class="notification-text">
+            <strong class="mx-2 teal-text">
+                [{{ notification.extra.puzzle.category.name }}]
+            </strong>
+            <strong class="mx-2">
+                {{ notification.extra.by.name }} has answered
+            </strong>
+            <strong class="teal-text mx-2">
+                {{ notification.extra.puzzle.title }}
+            </strong>
+            <span class="blue-text">and waiting for preview.</span>
+        </span>
+        <!-- <p *if="notification.extra.puzzle.comment" [html]="notification.extra.puzzle.comment"></p> -->
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+</li>

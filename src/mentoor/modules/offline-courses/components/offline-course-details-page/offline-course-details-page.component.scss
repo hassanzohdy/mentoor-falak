@@ -1,0 +1,43 @@
+#offline-course-page {
+
+    // Picasso is ready to draw :)
+    .media {
+        .course-image {
+            width: 250px;
+            margin-bottom: 0;
+            @include responsive((
+                0: (
+                    margin-bottom: 1rem,
+                ),
+            ));
+        }    
+        @include responsive((
+            0: (
+                width: 100%,
+                display: block,
+                text-align: center,
+            ),
+            768: (
+                text-align: $left,
+                display: flex,
+            )
+        ));
+}
+
+    table {
+        th {
+            font-weight: bold;
+        }
+    }
+
+    .contact-info {
+        @include font-size(1.2rem);
+    }
+
+    #course-info-details {
+        li {
+            list-style: upper-roman;
+            list-style-position: inside;
+        }
+    }
+}

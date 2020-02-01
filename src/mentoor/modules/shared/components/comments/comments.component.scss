@@ -1,0 +1,118 @@
+.comments-list {
+    &.child {
+        padding-left: 2rem;
+
+        .heading {
+            cursor: pointer;
+            color: $primary-color;
+        }
+    }
+
+    .meta-comment {
+        // display: inline-block;
+        // width: calc(100% - 24rem);
+        // overflow: auto;
+        display: inline-block;
+        padding: 0 1rem;
+        @include responsive((0: (width: 100%,
+                ),
+                1024: (width: calc(100% - 60px),
+                )));
+    }
+
+    .closed-comments {
+        background: #dfe4e6;
+        padding: 1rem;
+        border: 1px solid #c8d4da;
+    }
+
+    .sub-comments-heading {
+        padding-left: 2rem;
+        cursor: pointer;
+        color: $primary-color;
+        display: inline-block;
+    }
+
+    .files {
+        margin: 1rem 0;
+
+        .file-input {
+            margin-right: 1rem;
+            vertical-align: 3px;
+        }
+
+        .audio-input,
+        .file-input {
+            display: inline-block;
+        }
+
+        .audio-input {
+            .icon {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .comment {
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        background: #FFF;
+        border: 1px solid #f1f1f1;
+        box-shadow: 0px 0px 3px 1px #eee;
+
+        // border: 1px solid #ddd;
+        .user-image {
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            // width: 75px;
+            // height: 75px;
+            border-radius: 50%;
+            // margin-right: 0;
+            border: 1px solid #ccc;
+            // padding: 0.2rem;
+            vertical-align: top;
+            margin: 0;
+            width: 50px;
+            height: 50px;
+        }
+
+
+        .comment-text {
+            ul {
+                padding-left: 0;
+            }
+        }
+
+        .action-btns {
+            position: absolute;
+            right: 2rem;
+            top: 1rem;
+
+            button {
+                color: #97b2bd;
+                font-weight: bold;
+
+                transition: all 0.4s ease-in-out;
+
+                .icon {
+                    margin-right: 0.2rem;
+                }
+
+                &:hover {
+                    color: #5e808e;
+                }
+            }
+        }
+
+        .ago {
+            color: gray;
+            font-size: 1.2rem;
+        }
+
+        &.active {
+            background: #f8e3a4;
+            box-shadow: 0px 0px 2px 1px #f8e3a4;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<layout>
+    <h1>
+        Change Log
+        <button *if="this.user.id == 1" type="button" (click)="this.openModal('add')"
+            class="btn btn-circle btn-success">
+            <fa icon="plus"></fa>
+        </button>
+    </h1>
+
+    <p class="m-b-4 m-t-1">All changes happen in <strong class="mx-2">Mentoor.io</strong> are listed here
+        chronologically.</p>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <div *else *for="let version, index of this.changeLogs" class="version">
+        <h1 class="m-b-1">
+            <span [html]="'Version ' + version.version"></span>
+
+            <button *if="this.user.id == 1" (click)="this.openModal('edit', version, index)"
+                class="btn btn-circle btn-primary ml-2">
+                <fa icon="edit"></fa>
+            </button>
+
+            <!-- <small class="ml-3 bold" [html]="'( ' + version.releaseDate + ' )'"></small> -->
+        </h1>
+
+        <h3 [html]="version.releaseDate" class="release-date"></h3>
+
+        <markdown [content]="version.log"></markdown>
+    </div>
+</layout>
+
+<flk-modal *if="this.modalShouldBeOpened" *as="modal" size="small" (close)="this.modalShouldBeOpened = null"
+    [header]="this.heading">
+    <form (submit)="this.submit($el)">
+        <form-input type="text" name="version" class="form-control" [value]="this.data.version" required
+            label="Version"></form-input>
+        <flk-datepicker label="Release date" placeholder="Release date" name="releaseDate"
+            [value]="this.data.releaseDate" required class="form-control"></flk-datepicker>
+        <form-input type="textarea" name="log" class="form-control" [value]="this.data.log" required label="Changes">
+        </form-input>
+
+        <div class="form-group">
+            <flk-checkbox name="published" [checked]="this.data.published" (change)="this.data.published = $el.checked"
+                label="Published" value="1"></flk-checkbox>
+        </div>
+
+        <button class="btn btn-success">Save</button>
+    </form>
+</flk-modal>

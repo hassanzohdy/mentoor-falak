@@ -1,0 +1,9 @@
+.coin-img {
+    margin: 0.5rem;
+    width: 15px;
+    &.large {        
+        width: 30px;
+        margin-top: -3px;
+        margin-right: 1rem;
+    }
+}

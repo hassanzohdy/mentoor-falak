@@ -1,0 +1,129 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+  [table-heading]="this.tableHeading">
+  <tr *for="let course, index of this.items">
+    <td [html]="course.id"></td>
+    <td><img class="image" [src]="course.image" alt="" /></td>
+    <td [html]="course.name"></td>
+    <td>{{ Number(course.cost).format() }}</td>
+    <td [html]="course.level"></td>
+    <td [html]="course.sortOrder"></td>
+    <td [html]="course.display"></td>
+    <td>
+      <table-actions (edit)="this.editItem(course)" (delete)="this.deleteItem(course.id, index)"></table-actions>
+    </td>
+  </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+  <form (submit)="this.submit($el)">
+    <!-- Course name, level, instructor, address, description and content -->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <form-input required type="text" [value]="this.formObject.name" placeholder="Course name" class="form-control"
+            name="name"></form-input>
+        </div>
+      </div>
+      <div class="col">
+        <flk-dropdown-list [items]="this.levels" [value]="this.formObject.level" name="level" required
+          placeholder="Level"></flk-dropdown-list>
+      </div>
+    </div>
+    <!-- Instructor -->
+    <div class="form-group">
+      <label class="d-block my-1">Instructor</label>
+      <flk-dropdown-list [service]="this.adminUsersService" [lazy-loading]="true" [value]="this.formObject.instructor.id"
+        name="instructorId" required placeholder="Instructor"></flk-dropdown-list>
+    </div>
+    <div class="form-group">
+      <form-input required type="text" [value]="this.formObject.address" placeholder="Course Address"
+        class="form-control" name="address"></form-input>
+    </div>
+    <div class="form-group">
+      <form-input type="textarea" rows="6" required name="description" [value]="this.formObject.description"
+        placeholder="Description" class="form-control"></form-input>
+    </div>
+    <div class="form-group">
+      <form-input type="textarea" rows="6" required name="content" [value]="this.formObject.content"
+        placeholder="Content (Markdown syntax)" class="form-control"></form-input>
+    </div>
+    <div class="form-group">
+      <form-input type="textarea" rows="6" required name="requirements" [value]="this.formObject.requirements"
+        placeholder="Requirements (Markdown syntax)" class="form-control"></form-input>
+    </div>
+    <!-- Sort order, Cost and Display -->
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <form-input type="number" name="sortOrder" [value]="this.formObject.sortOrder" placeholder="Sort order"
+            class="form-control"></form-input>
+        </div>
+        <div class="col-md-4">
+          <form-input class="form-control" required placeholder="cost" type="number" name="cost"
+            [value]="this.formObject.cost"></form-input>
+        </div>
+        <div class="col-md-4">
+          <div class="form-check m-t-1">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input"
+                (change)="this.formObject.display = ! this.formObject.display" value="1" id="display" name="display"
+                [checked]="this.formObject.display" />
+              <label class="custom-control-label" for="display">Display</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Course time -->
+    <div class="row">
+      <div class="col-4">
+        <flk-datepicker name="time.startDate" [value]="this.formObject.time.startDate"
+          (change)="this.formObject.time.startDate = e" placeholder="Starting date" class="form-control">
+        </flk-datepicker>
+      </div>
+      <div class="col-4">
+        <form-input required type="number" [value]="this.formObject.time.sessionsPerWeek" placeholder="Sessions per week"
+          class="form-control" name="time.sessionsPerWeek"></form-input>
+      </div>
+      <div class="col-2">
+        <form-input required type="number" [value]="this.formObject.time.length" placeholder="Course length (In weeks)"
+          class="form-control" name="time.length"></form-input>
+      </div>
+      <div class="col-2">
+        <form-input required type="number" [value]="this.formObject.time.duration"
+          placeholder="Session duration (In hours)" class="form-control" name="time.duration"></form-input>
+      </div>
+    </div>
+    <!-- Days list -->
+    <div *for="let day in this.formObject.time.days" class="row">
+      <label class="col-12 m-t-1" [html]="day"></label>
+      <div class="col-6">
+        <form-input type="text" [value]="this.formObject.time.days[day].from" placeholder="{{ day }} (HH:MM)"
+          class="form-control" name="time.days.{{ day }}.from"></form-input>
+      </div>
+      <div class="col-6">
+        <form-input type="text" [value]="this.formObject.time.days[day].to" placeholder="{{ day }} (HH:MM)"
+          class="form-control" name="time.days.{{ day }}.to"></form-input>
+      </div>
+    </div>
+
+    <!-- When to -->
+
+    <div class="form-group">
+      <form-input type="textarea" rows="6" required name="whenTo.subscribe" [value]="this.formObject.whenTo.subscribe"
+        placeholder="When to subscribe (Markdown syntax)" class="form-control"></form-input>
+    </div>
+    <div class="form-group">
+        <form-input type="textarea" rows="6" required name="whenTo.notSubscribe" [value]="this.formObject.whenTo.notSubscribe"
+          placeholder="When to not subscribe (Markdown syntax)" class="form-control"></form-input>
+    </div>
+    <!-- Course image -->
+    <div class="form-group">
+      <label for="image" class="d-block m-t-1">Course image</label>
+      <input type="file" id="image" name="image" />
+    </div>
+    <div class="form-btns d-flex justify-content-end">
+      <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+    </div>
+  </form>
+</flk-modal>

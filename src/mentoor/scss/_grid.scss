@@ -1,0 +1,27 @@
+$columns: (1: 100%,
+    2: 50%,
+    3: 33.33334%,
+    4: 25%,
+    5: 20%,
+    6: 16.6666%,
+    7: 14.285%,
+    8: 12.5%,
+);
+
+.columns {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    .column {
+        @each $class,$width in $columns {
+            &.column-#{$class} {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 #{$width} !important;
+                flex: 0 0 #{$width} !important;
+                max-width: #{$width};
+            }
+        }
+    }
+}

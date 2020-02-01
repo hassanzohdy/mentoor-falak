@@ -1,0 +1,86 @@
+<div class="comment-comments">
+        <div *for="let comment, commentIndex of this.comment.comments" *key="comment.id" class="comment simple-card p-1 m-b-1">
+            <img [src]="comment.createdBy.image" [alt]="comment.createdBy.name" class="user-image" />
+            <span class="action-btns float-right"
+                *if="this.project.isHigherAuthority || comment.createdBy.id == this.user.id">
+                <button type="button" *if="! this.comment || this.comment.id != comment.id"
+                    (click)="this.comment = comment; this.index = index; this.editMode = true">
+                    <fa icon="edit"></fa>
+                    Edit
+                </button>
+                <button type="button" *elseif="this.comment && this.comment.id == comment.id"
+                    (click)="this.comment = null; this.editMode = false">
+                    Cancel
+                </button>
+    
+                <button type="button" *if="! this.comment || this.comment.id != comment.id"
+                    (click)="this.confirmRemoving(comment, index)">
+                    <fa icon="times mr-2"></fa>
+                    Delete
+                </button>
+    
+            </span>
+            <div class="d-inline-block">
+                <div>
+                    <span [html]="comment.createdBy.name"></span>
+                </div>
+                <div class="m-b-1">
+                    <flk-time-ago class="ago" [timestamp]="comment.createdAt.timestamp"></flk-time-ago>
+                </div>
+                <markdown *if="! this.editMode" class="comment-text" [content]="comment.comment"></markdown>
+    
+                <div *if="comment.record" class="m-t-1">
+                    <flk-audio-player [src]="comment.record"></flk-audio-player>
+                </div>
+    
+            </div>
+            <div *if="! Is.empty(comment.attachments)">
+                <h4 class="bold">Attachments ({{ comment.attachments.length }})</h4>
+    
+                <a *for="let attachment of comment.attachments" [href]="attachment" target="_blank">
+                    <img *if="isImage(attachment)" [src]="attachment" [alt]="comment.comment" width="100px" height="100px"
+                        class="img-thumbnail m-l-1" />
+                    <button *else class="btn btn-pink">Open Attachment</button>
+                </a>
+            </div>
+    
+            <form *if="this.comment && this.comment.id == comment.id && this.editMode" class="m-t-1"
+                (submit)="this.submitComment($el)">
+                <input type="hidden" name="project" [value]="this.project.id" />
+                <input type="hidden" name="typeId" [value]="this.typeId" />
+                <input type="hidden" name="type" [value]="this.type" />
+                <input type="hidden" name="id" [value]="this.commentId" />
+                <form-input type="textarea" class="form-control" [value]="this.comment.comment" required
+                    placeholder="Write a comment... (Markdown Support)" name="comment"></form-input>
+                <flk-file-input name="attachments[]" *as="fileInput" *as-array="false" class="btn btn-info bold"
+                    [multiple]="true" label="Attachments">
+                    <fa icon="cloud-upload-alt"></fa>
+                    <strong class="ml-2">Attachments</strong>
+                </flk-file-input>
+                <record-audio-input *if="! this.isSending" *as="editRecordAudio" *as-array="false"></record-audio-input>
+    
+                <button class="btn btn-pink bold m-t-1" [disabled]="this.isSending || ! this.isValidForm">Comment</button>
+            </form>
+        </div>
+    
+        <!-- New Comment -->
+        <form (submit)="this.submitComment($el)" class="m-t-4">
+            <input type="hidden" name="project" [value]="this.project.id" />
+            <input type="hidden" name="project" [value]="this.project.id" />
+            <input type="hidden" name="typeId" [value]="this.typeId" />
+            <input type="hidden" name="type" [value]="this.type" />
+            <form-input type="textarea" class="form-control" [value]="this.newComment" required
+                placeholder="Write a comment... (Markdown Support)" name="comment">
+            </form-input>
+            <div class="files">
+                <flk-file-input name="attachments[]" *as="fileInput" class="btn btn-info bold" [multiple]="true"
+                    label="Attachments">
+                    <fa icon="cloud-upload-alt"></fa>
+                    <strong class="ml-2">Attachments</strong>
+                </flk-file-input>
+    
+                <record-audio-input *if="! this.isSending" class="audio-input" *as="recordAudio"></record-audio-input>
+            </div>
+            <button class="btn btn-pink bold m-t-1" [disabled]="this.isSending || ! this.isValidForm">Comment</button>
+        </form>
+    </div>

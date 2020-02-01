@@ -1,0 +1,68 @@
+<section id="calendar-options" class="row">
+    <div class="col m-t-4">
+        <button type="button" (click)="this.openAddModal('basic')" class="d-block btn btn-pink bold"
+            title="new Schedule">
+            <fa icon="plus mr-2"></fa>
+            Basic
+        </button>
+        <button type="button" (click)="this.openAddModal('todo')" class="d-block m-y-2 btn btn-success bold"
+            title="new Schedule">
+            <fa icon="plus mr-2"></fa>
+            Todo
+            <fa *if="this.user.isLoggedIn() && ! this.user.shoppingMall.includes('todo')" icon="lock ml-2"></fa>
+        </button>
+        <button type="button" (click)="this.openAddModal('task')" class="d-block m-b-1 btn btn-cyan bold"
+            title="new Schedule">
+            <fa icon="plus mr-2"></fa>
+            Task
+        </button>
+    </div>
+
+    <div class="col m-t-4 checkbox-group">
+        <span class="m-l-2">Show</span>
+        <flk-mdb-checkbox label="Active" (change)="this.updateStatus($el.checked,'active');" [checked]="this.statusList.active"></flk-mdb-checkbox>
+        <flk-mdb-checkbox label="Completed" (change)="this.updateStatus($el.checked,'completed');" [checked]="this.statusList.completed"></flk-mdb-checkbox>
+        <flk-mdb-checkbox label="Failed" (change)="this.updateStatus($el.checked,'failed');" [checked]="this.statusList.failed"></flk-mdb-checkbox>
+        <flk-mdb-checkbox label="AutoFailed" (change)="this.updateStatus($el.checked,'autoFailed');" [checked]="this.statusList.autoFailed"></flk-mdb-checkbox>
+    </div>
+
+    <div class="col">
+        <div class="float-right" id="symbols-list">
+            <div class="symbol">
+                <i class="circle basic"></i>
+                <span class="text">Basic</span>
+                <strong *if="this.user.total.calendar.basic" class="ml-1" [html]="'(' + this.user.total.calendar.basic + ')'"></strong>
+            </div>
+            <div class="symbol">
+                <i class="circle todo"></i>
+                <span class="text">Todo</span>
+                <strong *if="this.user.total.calendar.todo" class="ml-1" [html]="'(' + this.user.total.calendar.todo + ')'"></strong>
+            </div>
+            <div class="symbol">
+                <i class="circle task"></i>
+                <span class="text">Task</span>
+                <strong *if="this.user.total.calendar.task" class="ml-1" [html]="'(' + this.user.total.calendar.task + ')'"></strong>
+            </div>
+            <div class="symbol">
+                <fa icon="hourglass-half"></fa>
+                <span class="text">Active</span>
+                <strong *if="this.user.total.calendar.active" class="ml-1" [html]="'(' + this.user.total.calendar.active + ')'"></strong>
+            </div>
+            <div class="symbol">
+                <fa icon="check"></fa>
+                <span class="text">Completed</span>
+                <strong *if="this.user.total.calendar.completed" class="ml-1" [html]="'(' + this.user.total.calendar.completed + ')'"></strong>
+            </div>
+            <div class="symbol">
+                <fa icon="frown-open"></fa>
+                <span class="text">Failed</span>
+                <strong *if="this.user.total.calendar.failed" class="ml-1" [html]="'(' + this.user.total.calendar.failed + ')'"></strong>
+            </div>
+            <div class="symbol">
+                <fa icon="frown"></fa>
+                <span class="text">Auto Failed</span>
+                <strong *if="this.user.total.calendar.autoFailed" class="ml-1" [html]="'(' + this.user.total.calendar.autoFailed + ')'"></strong>
+            </div>
+        </div>
+    </div>
+</section>

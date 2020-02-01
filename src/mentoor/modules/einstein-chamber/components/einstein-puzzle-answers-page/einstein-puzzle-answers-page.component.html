@@ -1,0 +1,32 @@
+<layout>
+    <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
+    <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
+    <a href="/einstein-chamber/shop" class="m-l-1" title="Shop">
+        <span class="shopping-cart"></span>
+    </a>
+
+    <h1 *if="this.hasSomethingWentWrong" class="text-center bold m-y-2" [html]="this.hasSomethingWentWrong"></h1>
+
+    <flk-spinner *elseif="this.isLoading"></flk-spinner>
+    <else>
+        <div class="puzzle row">
+            <!-- Left section -->
+            <div class="col-9">
+                <h1 class="m-v-1">
+                    {{ this.puzzle.title }}
+                    <strong class="green-text ml-2" [html]="this.puzzle.category.name"></strong>
+                </h1>
+                <h1 class="teal-text m-t-1 m-b-2">Answers ({{ this.puzzle.answers.length }})</h1>
+                <div class="card p-2 m-b-3" *for="let answer of this.puzzle.answers">
+                    <h3 [html]="answer.by.name"></h3>
+                    <flk-time-ago [timestamp]="answer.createdAt.timestamp" class="mt-1 grey-text"></flk-time-ago>
+                    <markdown *if="answer.answer" [content]="answer.answer"></markdown>
+                </div>
+            </div>
+            <div class="col-3 card p-t-1 m-t-10">
+                <h3>Puzzle</h3>
+                <markdown [content]="this.puzzle.quest"></markdown>
+            </div>
+        </div>
+    </else>
+</layout>

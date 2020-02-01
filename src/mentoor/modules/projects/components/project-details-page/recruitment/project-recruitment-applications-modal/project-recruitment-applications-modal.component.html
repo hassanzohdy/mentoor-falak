@@ -1,0 +1,20 @@
+<flk-modal 
+    *if="this.openApplicationsModal && this.currentRecruitment.applications.length > 0"
+    *as="recruitmentApplicationsModal" 
+    (close)="this.openApplicationsModal = null" 
+    header="Recruitment Applications"
+    size="small">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Title</th>
+                <th>Role</th>
+                <th>Experience</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</flk-modal>

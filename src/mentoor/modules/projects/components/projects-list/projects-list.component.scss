@@ -1,0 +1,87 @@
+.projects-list {
+    // Picasso is ready to draw :)
+
+    .project-image {
+        // max-height: 100px;
+        // vertical-align: middle;
+    }
+
+    .metadata {
+        @include responsive((
+            767: (
+                text-align: center,
+            )
+        ), max);
+    }
+
+    .name {
+        @include responsive((
+            767: (
+                margin-top: 1rem,
+            )
+        ), max);        
+    }
+
+    .tags-list {
+        @include responsive((
+            767: (
+                display: flex,
+                flex-wrap: wrap,
+                align-items: center,
+                justify-content: center,
+                flex-direction: row,
+                width: 100%,
+                padding: 0,
+            )
+        ), max);
+        .tag {
+            padding: 0.4rem 0;
+            display: inline-block;
+            width: 140px;
+            text-align: center;
+            img {
+                width: 20px;
+                height: 20px;
+                @include responsive((
+                    767: (
+                        // width: 10px,
+                        // height: 10px,
+                        display: block,
+                        margin: auto,
+                    )
+                ), max);
+            }
+
+            .name {
+                @include responsive((
+                    767: (
+                        font-size: 1.3rem,                        
+                    )
+                ), max);
+            }
+
+            @include responsive((
+                767: (
+                    // flex-grow: 1,
+                    display: flex,
+                    flex-direction: column,
+                    flex-basis: 100%,
+                    flex: 0 0 30%,
+                    max-width: 30%,
+                    margin-bottom: 1rem,
+                    padding: 0.5rem !important,
+                )
+            ), max);
+        }
+    }
+
+    .summary {
+        text-align: right;
+        @include responsive((
+            767: (
+                margin-top: 1rem,
+                text-align: center,
+            )
+        ), max);
+    }
+}

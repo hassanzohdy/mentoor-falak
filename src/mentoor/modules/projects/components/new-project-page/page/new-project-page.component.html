@@ -1,0 +1,36 @@
+<layout>
+    <h3 class="bold text-sm-left text-center">
+        <span class="d-block d-sm-inline">Projects Management System [PMS]</span>
+    </h3>
+
+    <h1 class="text-center m-y-2">Create new project</h1>
+
+    <form *if="! Is.empty(FLAGS.projects)" *as="form" (submit)="this.createProject($el)">
+        <new-project-steps></new-project-steps>
+        <div class="m-t-10"></div>
+
+        <h1 *if="! this.user.isLoggedIn()" class="text-center">
+            <a href="/login" class="d-inline-block m-t-3 bold btn btn-danger">You need to login first dude!</a>
+        </h1>
+
+        <div *else>
+            <div *if="! this.user.username">
+                You need to set your @username and your project mates as well, 
+                <a href="/me#account-info-tab" class="bold purple-text ml-2">Edit your username from here.</a>  
+            </div>
+            <div *else class="row">
+                <div class="col-9">
+                    <new-project-initiation></new-project-initiation>
+                    <new-project-members></new-project-members>
+                    <!-- <new-project-teams></!--> 
+                    <!-- <new-project-task-board></new-project-task-board> -->
+                    <new-project-extras></new-project-extras>
+                    <new-project-finish></new-project-finish>
+                </div>
+                <div class="col">
+                    <project-total-cost></project-total-cost>
+                </div>
+            </div>
+        </div>
+    </form>
+</layout>

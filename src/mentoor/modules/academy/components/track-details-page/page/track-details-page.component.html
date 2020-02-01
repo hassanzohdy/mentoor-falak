@@ -1,0 +1,112 @@
+<layout>
+    <flk-spinner *if="Is.empty(this.track)"></flk-spinner>
+    <div *else class="row oneTrack">
+        <section class="col-lg-9 col-md-8 order-12 order-sm-1">
+            <header class="trackImage">
+                <div class="media">
+                    <img class="align-self-center mr-3" [src]="this.track.image" alt="track.name" />
+                    <div class="media-body">
+                        <h2 class="mt-0 text-capitalize bold" [trans]="this.track.name"></h2>
+                        <small class="text-muted d-block mt-2">
+                            <i class="ti ti-time"></i>
+                            <flk-time-ago [timestamp]="this.track.createdAt.timestamp"></flk-time-ago>
+                        </small>
+
+                        <flk-facebook-share></flk-facebook-share>
+                    </div>
+                </div>
+            </header>
+            <section class="trackTasks">
+                <if condition="this.suggestTopic === false">
+                    <p *if="this.topicSuggestionHasBeenSent" class="green-text bold m-t-1">
+                        Thank you for your efforts, we'll check it and see what you sent!.
+                    </p>
+                    <div class="trackDescription">
+                        <p [trans]="this.track.description"></p>
+                    </div>
+                    <header class="metaInfo" *if="this.track.topics.length > 0">
+                        <h3 class="text-muted bold">
+                            <fa icon="list mr-2"></fa>
+                            Topics list
+                        </h3>
+                    </header>
+                    <ul class="list-group">
+                        <li class="list-group-item" *for="let topic of this.track.topics"
+                            [class]="this.styleTopicBasedOnUserAnswer(topic)">
+                            <fa icon="file font-weight-normal topicIcon"></fa>
+                            <!-- <h3 class="topicTitle" *if="! this.track.subscribed" [html]="topic.title"></h3> -->
+                            <a class="topicTitleLink" [href]="URLS.topic(topic, this.track)">
+                                <h3 class="topicTitle">
+                                    <span class="title">{{ topic.title }}</span>
+                                    <span *if="topic.answered && topic.userAnswer"
+                                        class="text-capitalize badge align-bottom ml-3 mb-1"
+                                        [class]="answerStatusClass(this.myTopicAnswer(topic).status)">
+                                        {{ this.myTopicAnswer(topic).status }}
+                                    </span>
+                                </h3>
+                            </a>
+                            <p class="description" [html]="topic.shortDescription"></p>
+                            <!-- topic.answered -->
+                            <span class="topicPrize">
+                                <!-- <span class="d-block text-muted d-none d-">Reward</span> -->
+                                <gold-icon [coins]="this.getTopicReward(topic)"></gold-icon>
+                                <div *if="! Is.empty(topic.answers)" title="Answers">
+                                    <span class="bold mr-2" [html]="topic.answers.length"></span>
+                                    <i class="far fa-comments"></i>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </if>
+                <suggest-topic *else></suggest-topic>
+            </section>
+        </section>
+        <div class="col-lg-3 col-md-4 order-1 order-sm-12">
+            <moderate-track [track]="this.track"></moderate-track>
+            <div *if="this.track.subscribed" class="text-center bold">
+                Suggest a topic
+                <button *if="this.suggestTopic === false" (click)="this.openSuggestionSection()" type="button"
+                    class="suggest-topic-btn">
+                    <gold-icon class="suggest-gold-icon"></gold-icon>
+                    <strong class="number-font">
+                        +{{ this.track.suggestTopic.reward.format() }}
+                    </strong>
+                    <if condition="this.userCanSuggestNewTopics === false">
+                        <small class="d-block yellow-text">
+                            <fa icon="lock mr-2"></fa>
+                            Requires {{ this.track.suggestTopic.requires }} approved answers.
+                        </small>
+                    </if>
+                </button>
+                <button class="d-block blue-text bold m-auto" type="button" *else
+                    (click)="this.suggestTopic = false">Back</button>
+            </div>
+            <div class="trackApply card">
+                <div class="card-body">
+                    <div class="card-title bold">Track summary</div>
+                    <div class="trackMeta d-flex justify-content-between pt-4 pb-4">
+                        <span class="trackSingleMeta">
+                            <i class="ti ti-list"></i> {{this.track.topics.length}}
+                            <span class="m-l-1" *if="this.track.topics.length === 1">Topic</span>
+                            <span class="m-l-1" *else>Topics</span>
+                        </span>
+                        <span class="trackSingleMeta" title="Cost">
+                            <gold-icon [coins]="this.track.cost"></gold-icon>
+                            <strong class="pink-text" *if="this.track.cost ==0">FREE!</strong>
+                        </span>
+                    </div>
+                    <flk-alert *if="this.confirmSubscribe" message="Are you sure you want to subscribe to {{ this.track.name }}" (confirm)="this.subscribeToTrack()" (close)="this.confirmSubscribe = false;"></flk-alert>
+                    <div class="text-center">
+                        <button *if="! this.track.subscribed && ! this.isSubscribing"
+                            class="btn btn-primary text-uppercase" (click)="this.confirmSubscribe = true"
+                            trans="subscribe"></button>
+                        <flk-spinner *elseif="this.isSubscribing"></flk-spinner>
+                        <div *else class="text-center" title="subscribed">
+                            <fa icon="check subscribed-icon"></fa>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</layout>

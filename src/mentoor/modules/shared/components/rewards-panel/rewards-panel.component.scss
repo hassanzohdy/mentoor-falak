@@ -1,0 +1,124 @@
+$smaller-device: 375;
+// $414: 414  
+#rewards-panel {
+    // Picasso is ready to draw :)
+    // width: 42rem;
+    margin-left: 0;
+
+    @include responsive((
+        0: (
+            width: 100%,
+            left: 0,
+        ),
+        360: (
+            // left: 16rem,
+        ),
+        425: (
+            // width: 42rem,
+            // left: 16rem,
+        ),
+        600: (
+            width: 100%,
+            left: 0,
+        ),
+        768: (
+            width: 42rem,
+            left: 33rem,
+            // left: -29rem
+        ),
+        1024: (
+            width: 55rem,
+            left: auto,
+            right: 0,
+        ),
+    ));
+
+    .arrow-up {
+        @include responsive((
+            0: (
+                left: 64.5%,
+            ),
+            375: (
+                left: 63%,
+            ),
+            411: (
+                left: 25.5rem,
+            ),
+            425: (
+                left: 61%,
+            ),
+            600: (
+                left: 70%,
+            ),
+            768: (
+                left: 72%,
+            ),
+            1024: (
+                left: 68%,
+            ),
+        ));    
+    }
+
+    .success-icon {
+        font-size: 1.8rem;
+        margin-left: 0.5rem;
+    }
+
+    .teal-text {
+        color: #0dc7b6 !important;
+    }
+
+    .created-at {
+        display: block;
+        font-size: 1.1rem;
+        padding-left: 0.5rem;
+        color: #b7b7b7;
+    }
+
+    .collect-btn {
+        color: #FFF;
+        background-color: #1593aa !important;
+        padding: 0.1rem 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        border: 1px solid #23acc4;
+        box-shadow: 0px 0px 2px 2px #08505e;
+    }
+
+    .einstein {
+        .einstein-img {
+            width: 40px;
+            vertical-align: top;
+        }
+    }
+
+    .list {
+        padding-right: 4rem;
+    }
+
+    .no-results {
+        padding-left: 10rem;
+    }
+
+    .reward-type {
+        font-weight: bold;
+        color: #0bb9b9;
+        // margin-right: 0.5rem;
+    }
+
+    .spinner {
+        padding-left: 11rem;
+        width: 100%;
+    }
+
+    .rewards-footer {
+        padding: 1rem;
+        text-align: right;
+        .redeem-all-btn {
+            font-weight: 900;
+            border: 1px solid #ff7b0a;
+            background: orangered !important;
+            box-shadow: 0px 0px 2px 2px #5e1c08;        
+        }
+    }
+}

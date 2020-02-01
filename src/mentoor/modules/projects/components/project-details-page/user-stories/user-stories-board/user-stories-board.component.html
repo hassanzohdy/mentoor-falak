@@ -1,0 +1,48 @@
+<div class="user-story">
+    <div class="row m-0" *if="! Is.empty(this.userStories)" (ready)="this.draggable($el)">
+
+        <div class="col-12" [class]="this.getResponsiveClasses()" *for="let userStory, index of this.userStories" *key="userStory.id">
+            <div class="note item {{ userStory.color }}-note" [id]="'user-story-' + userStory.id">
+                <div class="note_cnt">
+                    <div *if="userStory.createdBy.id == this.user.id || this.project.isProjectManager" class="m-b-3">
+                        <div class="action-btns">
+                            <a [href]="URLS.project(this.project, 'user-stories', userStory) + '/edit'" (click)="this.share(userStory)" tooltip title="Edit"
+                                (click)="this.inputs.parent.openModal('edit', userStory, index)"
+                                class="btn btn-info btn-circle">
+                                <fa icon="edit"></fa>
+                            </a>
+                            <button type="button" tooltip title="Delete"
+                                (click)="this.confirmRemoving(userStory, index)"
+                                class="btn btn-danger btn-circle">
+                                <fa icon="times"></fa>
+                            </button>
+                        </div>
+                    </div>
+                    <fa icon="thumbtack pin-icon"></fa>
+                    <div class="title">
+                        <span [html]="userStory.title"></span>
+                        
+                        <small class="created-at">
+                            <flk-time-ago [timestamp]="userStory.createdAt.timestamp"></flk-time-ago>
+                            <img [src]="userStory.createdBy.image" [alt]="userStory.createdBy.name" tooltip [title]="userStory.createdBy.name" class="ml-2 small circle" />
+                        </small>
+                    </div>
+
+                    <markdown class="cnt" [content]="userStory.scenario.readMoreWords(40)"></markdown>
+
+                    <div>
+                        <small [html]="userStory.type"></small>
+                        <a [href]="URLS.project(this.project, 'user-stories', userStory)"
+                            class="float-right details-btn">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 *else class="m-t-3 text-center" id="no-stories">No Stories yet</h1>
+</div>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

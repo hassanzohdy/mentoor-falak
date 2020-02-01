@@ -1,0 +1,104 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button *if="this.currentSprintIsRunning" [disabled]="true" class="float-right btn btn-danger bold">
+        Can't add new sprints until current running sprint is completed.
+    </button>
+    <button *else class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Sprint
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} Sprints
+        ({{ this.project.sprints.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Current Sprint</th>
+                <th>Starts At</th>
+                <th>Ends At</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.sprints)">
+                <td colspan="5" text-center>No Sprints Yet</td>
+            </tr>
+            <tr *else *for="let record, index of this.project.sprints" *key="record.id">
+                <td>
+                    <a [href]="URLS.project(this.project, 'sprints', record)" [html]="record.name"></a>
+                </td>
+                <td class="bold" [html]="record.status.capitalize()"></td>
+                <td>
+                    <fa *if="this.project.currentSprint && this.project.currentSprint.id == record.id" icon="check green-text"></fa>
+                </td>
+                <td [html]="record.startsAt"></td>
+                <td [html]="record.endsAt"></td>
+                <td>
+                    <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan"
+                        tooltip title="Edit Sprint">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)"
+                        class="btn btn-danger" tooltip title="Delete Sprint">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" [esc]="false" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="Sprint Name" required
+            class="form-control"></form-input>
+
+        <form-input type="textarea" rows="10" name="goal" [value]="this.record.goal" label="Sprint Goal" required
+            class="form-control"></form-input>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <flk-datepicker
+                    name="startsAt"
+                    [value]="this.record.startsAt"
+                    [required]="true"
+                    label="Starts At"
+                    class="form-control"
+            ></flk-datepicker>
+            </div>
+            <div class="col-sm-6">
+                <flk-datepicker
+                    name="endsAt"
+                    [value]="this.record.endsAt"
+                    [required]="true"
+                    label="Ends At"
+                    class="form-control"
+            ></flk-datepicker>
+            </div>
+        </div>
+
+        <flk-dropdown-list
+            *if="this.record.status != 'completed'"
+            name="status"
+            [value]="this.record.status"
+            label="Sprint Status"
+            [required]="true"
+            [items]="['running', 'completed', 'canceled', 'notStarted']"
+        ></flk-dropdown-list>
+
+        <div *else class="bold green-text">Completed Sprint</div>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

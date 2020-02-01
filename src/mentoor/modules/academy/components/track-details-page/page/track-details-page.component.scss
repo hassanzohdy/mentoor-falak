@@ -1,0 +1,143 @@
+#track-page {
+    .suggest-topic-btn {
+        color: #FFF;
+        padding: 1rem;
+        display: block;
+        font-weight: bold;
+        margin: 0.5rem auto 1rem; // border: 1px solid #0d8e43;
+        // background: $green-accent-4;
+        // @include box-shadow(0px 0px 2px 1px #14c65e);
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        // background-color: $green-accent-4;
+        border: 1px solid $green-darken-2;
+        background-image: -moz-linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+        background-image: -o-linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+        background-image: -webkit-linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+        background-image: linear-gradient(bottom, $green-darken-4 0%, $green-accent-3 100%);
+        border-radius: 5px;
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, .5);
+        box-shadow: 0px 2px 0px $green-darken-4, 0px 3px 15px rgba(0, 0, 0, .4), inset 0px 1px 0px rgba(255, 255, 255, .3), inset 0px 0px 3px rgba(255, 255, 255, .5);
+
+        &:active,
+        &:focus {
+            outline: none;
+            background-image: -webkit-linear-gradient(bottom, $green-darken-3 0%, $green-accent-2 100%);
+        }
+    }
+
+    .suggest-gold-icon {
+        margin: 0.5rem;
+        width: 23px;
+        margin-top: 0;
+    }
+}
+
+.number-font {
+    font-family: $comic-font;
+    font-weight: bold;
+    letter-spacing: 3px;
+    @include text-shadow(0px 0px 3px #111, 0px 1px 1px #000);
+}
+
+.trackImage {
+    img {
+        width: 100px;
+        height: auto;
+    }
+}
+
+.metaInfo {
+    margin-bottom: $margin-20;
+
+    .infoTitle {
+        margin: 0;
+        color: #000;
+    }
+}
+
+.topicIcon {
+    display: inline-block;
+    background: $secondColor;
+    padding: 6px;
+    border-radius: 50%;
+    margin-right: 5px;
+    color: $white;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.topicPrize {
+    @include responsive((767: (position: absolute, top: 0, right: 0, padding: 0.75rem 1.25rem, font-size: 12px, font-weight: bold, text-align: right)));
+}
+
+.topicTitle {
+    font-size: 20px;
+    display: inline-block;
+
+    .title {
+    }
+}
+
+.topicTitleLink {
+    color: $secondColor !important;
+}
+
+.trackImage {
+
+    // margin-bottom: 20px;
+    .media {
+        .media-body {
+            small {
+                display: block;
+            }
+        }
+    }
+}
+
+.trackDescription {
+    margin: $margin-20 0;
+}
+
+.subscribed-icon {
+    font-size: 4rem;
+    color: $mainColor;
+}
+
+.list-group-item {
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 2px 3px #eee;
+
+    .badge {
+        border-radius: 0%;
+        position: static;
+        
+        @include responsive((
+          540: (
+              display: none,
+          ),  
+        ), max);
+    }
+
+    .description {
+        width: 70%;
+    }
+
+    &.status {
+        border-width: 2px;
+    }
+
+    &.pending {
+        border-color: $warning-color;
+    }
+
+    &.rejected {
+        border-color: $danger-color;
+    }
+
+    &.approved {
+        border-color: $success-color;
+    }
+}

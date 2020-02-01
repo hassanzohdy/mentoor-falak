@@ -1,0 +1,8 @@
+<span 
+    *skip
+    class="remaining-time {{ this.inputs.getAttr('class') }}" 
+    [tooltip]="this.tooltip" 
+    [title]="this.title"
+    [class]="{'time-up': this.timeUp}" 
+    *as="timer"
+></span>

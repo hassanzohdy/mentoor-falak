@@ -1,0 +1,23 @@
+<div class="w-100">
+    <button (click)="this.isViewingArchivedTasks = false" class="m-b-2 bold btn btn-success float-right">Back To
+        Board</button>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Participant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let task of this.archivedTasks">
+                <td>
+                    <a [href]="URLS.task(task)" [html]="task.title"></a>
+                </td>
+                <td>
+                    <img [src]="task.participant.image" [alt]="task.participant.name" class="circle small" />
+                    <span class="ml-2 bold" [html]="task.participant.name"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

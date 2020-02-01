@@ -1,0 +1,56 @@
+#project-sidebar {
+    background: #ecf0f3;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    z-index: 100;
+    padding-top: 1rem;
+    padding-bottom: 50px;
+    color: #2d3e50;
+
+    @include responsive((
+        768: (
+            top: 50px,
+            position: fixed,
+        )
+    ));
+
+    .project-name {
+        @include responsive((
+            1024: (
+                padding-top: 3rem,
+            )
+        ), max);
+    }
+
+    ul {
+        padding: 0;
+        li {
+            list-style: none;
+            a {
+                padding-top: 1rem;
+                color: inherit;
+                display: block;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid #ccc;
+
+                span {
+                    padding-left: 0.5rem;
+                }
+
+                .fa {
+                    vertical-align: middle;
+                }
+
+                &:hover,
+                &.active {
+                    color: $lime-color-dark;
+                }
+            }
+        }
+    }
+
+    #srs-text {
+        font-size: 1.0rem;
+    }
+}

@@ -1,0 +1,78 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+  [table-heading]="this.tableHeading">
+  <tr *for="let track, index of this.items" id="{{ track.id }}">
+    <td>{{ track.id }}</td>
+    <td><img class="trackImg small-image" [src]="track.image" alt="" /></td>
+    <td [html]="track.name"></td>
+    <td>
+      <div>
+        <fa icon="edit"></fa>
+        <strong class="mx-2" [html]="track.suggestTopic.requires.format()"></strong>
+      </div>
+      <div>
+        <gold-icon [coins]="track.suggestTopic.reward"></gold-icon>
+      </div>
+    </td>
+    <td [html]="track.sortOrder"></td>
+    <td [html]="track.display"></td>
+    <td>
+      <a href="/admin/academy/tracks/{{ track.id }}/topics">
+        {{ track.topics.length.format() }}
+        topics
+      </a>
+    </td>
+    <td>{{ Number(track.cost).format() }}</td>
+    <td>
+      <table-actions (edit)="this.editItem(track)" (delete)="this.deleteItem(track.id, index)"></table-actions>
+    </td>
+  </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+  <form (submit)="this.submit($el)">
+    <div class="form-group">
+      <form-input required type="text" [value]="this.formObject.name" (input)="this.formObject.slug = seo($el.value);" placeholder="Track name" class="form-control"
+        name="name"></form-input>
+    </div>
+    <div class="form-group">
+      <form-input required type="text" [value]="this.formObject.slug" placeholder="Url slug" class="form-control"
+        name="slug"></form-input>
+    </div>
+    <div class="form-group">
+      <form-input type="textarea" rows="6" required name="description" [value]="this.formObject.description"
+        placeholder="Description" class="form-control"></form-input>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <form-input type="number" name="sortOrder" [value]="this.formObject.sortOrder" placeholder="Sort order"
+            class="form-control"></form-input>
+        </div>
+        <div class="col-md-4">
+          <form-input class="form-control" required placeholder="cost" type="number" name="cost"
+            [value]="this.formObject.cost"></form-input>
+        </div>
+        <div class="col-md-4">
+          <flk-checkbox name="display" [checked]="this.formObject.display" (change)="this.formObject.display = ! this.formObject.display"  value="1" label="display"></flk-checkbox>
+        </div>
+      </div>
+      <h3 class="m-v-1 bold">Suggest Topics</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <form-input class="form-control" required placeholder="Required answers for suggest topic" type="number"
+            name="suggestTopic.requires" [value]="this.formObject.suggestTopic.requires"></form-input>
+        </div>
+        <div class="col-md-4">
+          <form-input class="form-control" required placeholder="Reward for suggest topic" type="number"
+            name="suggestTopic.reward" [value]="this.formObject.suggestTopic.reward"></form-input>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="file" name="image" />
+    </div>
+    <div class="form-btns d-flex justify-content-end">
+      <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+    </div>
+  </form>
+</flk-modal>

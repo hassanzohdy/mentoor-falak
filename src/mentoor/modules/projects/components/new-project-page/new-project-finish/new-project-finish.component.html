@@ -1,0 +1,45 @@
+<section class="simple-card project-section" id="new-project-finish" [class]="{active: this.currentStep == 3}">
+    <h1 class="m-b-1">Project Fund</h1>
+
+    <p>
+        Project fund is quite necessary to be filled with
+        <gold-icon></gold-icon>
+        as it will be used later to:
+        <ul>
+            <li>Create tasks and give rewards</li>
+            <li>make contracts with freelancers</li>
+            <li>Purchase more teams</li>
+            <li>Upgrade project members size</li>
+            <li>Purchase extras</li>
+            <li>Add more supervisors</li>
+        </ul>
+    </p>
+
+
+    <div class="row text-center">
+        <div class="offset-sm-3 col-sm-6">
+            <form-input type="number" (input)="this.calculateTotal()" name="fund" class="form-control"
+                label="Project Fund" [value]="this.data.fund">
+            </form-input>
+            <p class="bold">Can be incremented later.</p>
+        </div>
+    </div>
+
+    <div class="text-center m-t-2">
+        <button class="btn btn-success bold" [disabled]="this.isCreating || this.finalCost > this.user.gold">
+            <fa icon="plus mr-2"></fa>
+            Create
+            <br />
+            <gold-icon [coins]="this.finalCost"></gold-icon>
+        </button>
+
+        <div *if="this.finalCost > this.user.gold" class="red-text bold">Insufficient gold</div>
+    </div>
+
+    <div class="m-t-1">
+        <button type="button" (click)="this.prev()" class="btn btn-gray bold">
+            <fa icon="arrow-left"></fa>
+            Back
+        </button>
+    </div>
+</section>

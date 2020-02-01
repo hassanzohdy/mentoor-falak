@@ -1,0 +1,14 @@
+main {
+    padding: 4rem 2.25rem 1rem;
+    @include responsive((768: (padding-top: 8rem !important, )))
+}
+
+.latest-news {
+    main {
+        margin-top: $latest-news-bar-size;
+    }
+}
+
+#wrapper {
+    position: relative;
+}

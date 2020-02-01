@@ -1,0 +1,21 @@
+#timeline-page {
+    // Picasso is ready to draw :)
+}
+
+.posts-list {
+    .post {
+        margin-bottom: 2rem;
+        @extend .simple-card;
+        text-align: center;
+
+        div {
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        img {
+            height: 200px;
+        }
+    }
+}

@@ -1,0 +1,116 @@
+<section class="simple-card project-section" id="new-project-extras" [class]="{active: this.currentStep == 2}">
+    <div class="m-2">
+        <h3 class="bold m-b-2">You can get additional features to your project, which will increase its productivity.
+        </h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Cost</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <flk-mdb-checkbox name="extra.privacy" (change)="this.setExtra('privacy', $el.checked)"
+                            [checked]="this.data.extra.privacy" [value]="true" label="Private project">
+                        </flk-mdb-checkbox>
+                    </td>
+                    <td>
+                        <fa icon="plus"></fa>
+                        <gold-icon [coins]="this.projectInfo.pricing.privacy"></gold-icon>
+                    </td>
+                    <td>
+                        Public projects will be listed in the <strong class="mx-2">PMS</strong> page.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <flk-mdb-checkbox name="extra.tasksBoard" value="true"
+                            (change)="this.setExtra('tasksBoard', $el.checked)" [checked]="this.data.extra.tasksBoard"
+                            label="Project Tasks Board">
+                        </flk-mdb-checkbox>
+                    </td>
+                    <td>
+                        <fa *if="this.projectInfo.pricing.tasksBoard > 0" icon="plus"></fa>
+                        <gold-icon [coins]="this.projectInfo.pricing.tasksBoard"></gold-icon>
+                        <span *if="this.projectInfo.pricing.tasksBoard == 0" class="bold pink-text">FREE!</span>
+                    </td>
+                    <td>
+                        Tasks Board will be your game changer setting in the project as project manager/team leaders can
+                        assign tasks to any member in the project/team with un/scheduled tasks.
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>
+                        <flk-mdb-checkbox name="extra.todoList" (change)="this.setExtra('todoList', $el.checked)"
+                            [checked]="this.data.extra.todoList" label="Project todoList">
+                        </flk-mdb-checkbox>
+                    </td>
+                    <td>
+                        <fa icon="plus"></fa>
+                        <gold-icon [coins]="this.projectInfo.pricing.todoList"></gold-icon>
+                    </td>
+                    <td>
+                        todoList will help Project Manager to set list of undone items before scheduling it to tasks.
+                    </td>
+                </tr> -->
+                <!-- <tr>
+                    <td>
+                        <flk-mdb-checkbox name="extra.calendar" (change)="this.setExtra('calendar', $el.checked)"
+                            [checked]="this.data.extra.calendar" label="Project calendar">
+                        </flk-mdb-checkbox>
+                    </td>
+                    <td>
+                        <fa icon="plus"></fa>
+                        <gold-icon [coins]="this.projectInfo.pricing.calendar"></gold-icon>
+                    </td>
+                    <td>
+                        You can moderate all of your project tasks and todo list in that calendar.
+                    </td>
+                </tr> -->
+                <tr>
+                    <td>
+                        <flk-mdb-checkbox name="extra.softwareTesting"
+                            (change)="this.setExtra('softwareTesting', $el.checked)"
+                            [checked]="this.data.extra.softwareTesting" [value]="true" label="Project Software testing">
+                        </flk-mdb-checkbox>
+                    </td>
+                    <td>
+                        <fa icon="plus"></fa>
+                        <gold-icon [coins]="this.projectInfo.pricing.softwareTesting"></gold-icon>
+                    </td>
+                    <td>
+                        If enabled, a full debugging|issues|bugs system will be injected to your project.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <flk-mdb-checkbox name="extra.milestones" (change)="this.setExtra('milestones', $el.checked)"
+                            [checked]="this.data.extra.milestones" [value]="true" label="Project Milestones">
+                        </flk-mdb-checkbox>
+                    </td>
+                    <td>
+                        <fa icon="plus"></fa>
+                        <gold-icon [coins]="this.projectInfo.pricing.milestones"></gold-icon>
+                    </td>
+                    <td>
+                        This will increase project productivity and enhance it to the next level, read more about
+                        <strong class="ml-1">Agile Methodology Scrum</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="m-t-1">
+        <button type="button" (click)="this.prev()" class="btn btn-gray bold">
+            <fa icon="arrow-left"></fa>
+            Back
+        </button>
+        <button type="button" (click)="this.next()" class="btn float-right btn-purple bold">
+            NEXT
+            <fa icon="arrow-right"></fa>
+        </button>
+    </div>
+</section>

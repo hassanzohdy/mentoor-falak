@@ -1,0 +1,83 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div class="row">
+        <div class="col-12">
+            <button class="float-right btn btn-purple bold" (click)="this.goBack()">Back To The Board</button>
+        </div>
+        <!-- <h1>User Stories</h1> -->
+        <div class="col-sm-6">
+            <h1 class="font-weight-light m-b-2">What is a User Story?</h1>
+            User stories are short, simple descriptions of a feature told from the perspective of the person who desires
+            the new capability, usually a user or customer of the system. They typically follow a simple template:
+
+            <div class="m-y-1">
+                <div>As a <strong class="ml-1">[ type of user ]</strong>,</div>
+                <div>I want <strong class="ml-1">[ some goal ]</strong>,</div>
+                <div>So that <strong class="ml-1">[ do something ]</strong>,</div>
+            </div>
+            <p>A user story is a tool used in Agile software development to capture a description of a software
+                feature from an end-user perspective. The user story describes the type of user, what they want
+                and why. A user story helps to create a simplified description of a requirement.
+            </p>
+
+            <h3 class="font-weight-light">Types Of User Stories</h3>
+            <ul class="p-0">
+                <li><strong>Stories</strong>: ” are short requirements or requests written from the perspective of an
+                    end user.</li>
+                <li><strong>Epics</strong>: are large bodies of work that can be broken down into a number of smaller
+                    tasks (called stories).</li>
+                <li><strong>Initiatives</strong>: are collections of epics that drive toward a common goal</li>
+            </ul>
+        </div>
+        <form class="col" (submit)="this.submit($el)">
+            <input type="hidden" name="project" [value]="this.project?.id" />
+            <form-input type="text" name="title" [value]="this.record.title" label="User story" required
+                class="form-control"></form-input>
+
+            <flk-dropdown-list name="priority" label="Priority" class="m-b-1" [value]="this.record.priority"
+                [items]="this.priorities" [required]="true"></flk-dropdown-list>
+
+            <flk-dropdown-list name="type" label="Type" (select)="this.onUserStoryTypeChange(e)" class="m-b-1"
+                [value]="this.record.type" [items]="this.types" [required]="true"></flk-dropdown-list>
+
+            <flk-dropdown-list *if="this.hasParent && this.parentType == 'epic'" name="parent" label="Parent (Epic)"
+                [value]="this.record?.parent?.id" [lazy-loading]="true" [request]="this.loadParents.bind(this)">
+            </flk-dropdown-list>
+
+            <flk-dropdown-list *if="this.hasParent && this.parentType == 'initiative'" name="parent"
+                label="Parent (Initiative)" [value]="this.record?.parent?.id" [lazy-loading]="true"
+                [request]="this.loadParents.bind(this)"></flk-dropdown-list>
+
+            <flk-dropdown-list name="sprint" label="Sprint" [value]="this.record.sprint?.id" [lazy-loading]="true"
+                [request]="this.loadSprints.bind(this)"></flk-dropdown-list>
+
+            <flk-dropdown-list name="who" label="As a" class="m-b-1" [value]="this.record.who"
+                [items]="this.playersList" [required]="true"></flk-dropdown-list>
+
+            <form-input type="textarea" name="what" [value]="this.record.what" label="I Want to" required
+                class="form-control"></form-input>
+
+            <form-input type="textarea" name="why" [value]="this.record.why" label="So that" required
+                class="form-control">
+            </form-input>
+
+            <form-input type="textarea" maxlength="500" name="scenario" rows="10" [value]="this.record.scenario"
+                label="Scenario (Acceptance Criteria)" required class="form-control"></form-input>
+
+            <!-- <flk-dropdown-list name="taskMember" [value]="this.record.task?.participant?.id" [items]="this.projectMembers" label="Assign as a task to">
+            </flk-dropdown-list> -->
+
+            <div class="colors row">
+                <div class="col-12 bold m-b-1">Sticky Note Color</div>
+                <input type="hidden" name="color" [value]="this.record.color" />
+                <div *for="let color of this.colors" class="col m-b-1">
+                    <button (click)="this.record.color = color;" type="button" class="btn btn-color {{ color }}-note"
+                        [class]="{selected: color == this.record.color}"></button>
+                </div>
+            </div>
+
+            <div class="m-t-1 text-right">
+                <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-info bold">Confirm</button>
+            </div>
+        </form>
+    </div>
+</project-layout>

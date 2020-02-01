@@ -1,0 +1,18 @@
+<!-- Affiliate -->
+<div id="affiliate">
+    <h1>Affiliate URL</h1>
+    <div class="m-t-1">
+        <a class="bold teal-text mx-2" target="_blank" href="{{ this.affiliateUrl }}">Click on the
+            following
+            icon to copy your affiliate url.</a>
+
+        <button *if="! this.copied" class="text-primary" type="button" title="Copy"
+            (click)="copyToClipboard(this.affiliateUrl); this.copied = true;">
+            (<fa icon="object-ungroup"></fa>)
+        </button>
+        <strong *if="this.copied" class="green-text ml-2" title="Copied">
+            <fa icon="check"></fa>
+        </strong>
+    </div>
+</div>
+<!--/ Affiliate -->

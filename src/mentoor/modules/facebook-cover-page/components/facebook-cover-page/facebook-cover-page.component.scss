@@ -1,0 +1,209 @@
+#facebook-cover-page {
+    background: #2d3e50;
+
+    .dark {
+        background: #1e1e1e;
+        padding: 2rem;
+        color: #a6a6a6;
+        height: 100vh;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 8rem;
+    }
+
+    img {
+        width: 500px;
+        margin-top: 10rem;
+    }
+
+    h2 {
+        margin-top: 3rem;
+        font-size: 6rem;
+        font-weight: bold;
+    }
+
+    .list {
+        list-style: decimal;
+        display: list-item;
+        //   list-style-position: inside;
+    }
+
+    li {
+        list-style: none;
+
+        &:before {
+            // content: "-";
+            margin-right: 0.5rem;
+            //   text-indent: -1rem;
+            display: inline-block;
+        }
+    }
+
+    #facebook-cover-page {
+        background: #2c3e50;
+        font-family: 'Montserrat', sans-serif;
+
+        text-shadow: 0px 0px 4px #020505;
+    }
+
+    #icons {
+        margin-top: 3rem;
+
+        .icon {
+            color: #FFF;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: auto 4rem;
+
+            div {
+                font-size: 4rem;
+            }
+        }
+    }
+
+
+    $size: 150;
+
+
+    $images: ( // js
+    1: (width: #{$size * 0.7}px,
+    height: #{$size * 0.7}px,
+    left: 0,
+    top: 0,
+    ),
+    // html
+    2: (width: #{$size * 0.7}px,
+    height: #{$size * 0.7}px,
+    left: #{$size - 40}px,
+    top: 11rem,
+    ),
+    // css
+    3: (left: #{$size * 1.3}px,
+    top: 19rem,
+    ),
+    // php
+    4: (left: #{$size * 2.3}px,
+    top: 29rem,
+    ),
+    // node
+    5: (left: #{$size * 3.6}px,
+    top: 29rem,
+    ),
+    // mysql
+    6: (left: #{$size * 5}px,
+    top: 24rem,
+    ),
+    // mongo
+    7: (width: #{$size * 1.4}px,
+    height: #{$size * 1.4}px,
+    left: #{$size * 6}px,
+    top: 21rem,
+    ),
+    // brain
+    8: (left: #{$size * 1.5 }px,
+    top: -3rem,
+    ),
+    // einstein
+    9: (left: #{$size * 2.5 }px,
+    top: 6rem,
+    ),
+    // sass
+    10: (width: #{$size * .7}px,
+    height: #{$size * .7}px,
+    left: #{$size * 7}px,
+    top: 13rem,
+    ),
+    // training 
+    11: ( // width: #{$size * 1.4}px,
+    // height: #{$size * 1.4}px,
+    left: #{$size * 4.6}px,
+    top: 5rem,
+    ),
+    // Reading 
+    12: ( // width: #{$size * 1.4}px,
+    // height: #{$size * 1.4}px,
+    left: #{$size * 4.2}px,
+    top: -14rem,
+    display: none,
+    ),
+    // Earn 
+    13: ( // width: #{$size * 0.8}px,
+    height: #{$size * 1.2}px,
+    left: #{$size * 3.7}px,
+    top: -9rem,
+    ),
+    // typescript 
+    14: (width: #{$size * .8}px,
+    height: #{$size * .8}px,
+    left: #{$size * 7.2}px,
+    top: -1rem,
+    ),
+    // programming 
+    15: ( // width: #{$size * .8}px,
+    // height: #{$size * .8}px,
+    left: #{$size * 5.7}px,
+    top: -3rem,
+    ),
+    // tasks 
+    16: ( // background: #FFF,
+    left: #{$size * 3.7}px,
+    top: 13rem,
+    ),
+    );
+
+    #techs {
+        position: relative;
+        width: 53%;
+        margin: auto;
+        margin-top: 3rem;
+
+        img {
+            width: #{$size}px;
+            height: #{$size}px;
+            position: absolute;
+
+            @each $number,
+            $style in $images {
+                &:nth-child(#{$number}) {
+
+                    @each $property,
+                    $value in $style {
+                        #{$property}: $value;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+#logo {
+    #m {
+        font-weight: 700;
+        font-size: 16rem !important;
+        color: #11dbdb;
+        border: 12px solid #11dbdb;
+        border-radius: 50%;
+        display: inline-block;
+        // padding: 0 2rem;
+        height: 200px;
+        width: 200px;
+        line-height: 1;
+        box-shadow: 0px 0px 4px 1px #000505;
+        text-shadow: 0px 1px 1px #134e4e;
+    }
+
+    #name {
+        color: #11dbdb;
+        text-shadow: 0px 0px 4px #020505;
+
+        &.inline {
+            display: inline-block;
+            margin-left: 2rem;
+            vertical-align: 3rem;
+        }
+    }
+}

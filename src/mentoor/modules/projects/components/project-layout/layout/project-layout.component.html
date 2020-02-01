@@ -1,0 +1,11 @@
+<layout>
+    <div class="row">
+        <project-sidebar *if="this.sidebarIsVisible" [project]="this.project"></project-sidebar>
+        <div class="col-12" [class]="{'offset-md-2': this.sidebarIsVisible, 'col-md-10': this.sidebarIsVisible}">
+            <div *if="! this.project" class="m-t-5">
+                <flk-spinner></flk-spinner>
+            </div>
+            <content *else></content>
+        </div>
+    </div>
+</layout>

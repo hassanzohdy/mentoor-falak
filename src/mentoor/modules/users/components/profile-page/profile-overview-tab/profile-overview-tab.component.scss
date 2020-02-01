@@ -1,0 +1,104 @@
+#profile-overview-tab {
+    #image {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .relative {
+        position: relative;
+    }
+
+    .image-holder {
+        margin: auto;
+        border-radius: 50%;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+
+    .new-tooltip {
+        position: absolute;
+        background: black !important;
+        color: #FFF;
+        top: 6rem;
+        z-index: 100;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        margin-left: 8rem;
+        display: inline-block;
+    }
+
+    .overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .name-change-wrapper {
+        position: relative;
+        z-index: 1000;
+        .new-tooltip {
+            top: 0.5rem;
+            margin-left: -10rem;
+            &:after {
+                $width: 12px;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 100%;
+                border-left: $width solid black;
+                border-top: $width solid transparent;
+                border-bottom: $width solid transparent;
+            }
+        }
+    }
+
+    #name-change {
+        display: inline-block;
+        width: 35%;
+
+        .form-control {
+            width: 40%;
+        }
+    }
+
+    $size: 100px;
+
+    .total-summary {
+        border-radius: 50%;
+        width: $size;
+        height: $size;
+        line-height: $size - 10px;
+        border: 5px solid purple;
+        font-size: 3rem;
+        margin: 2rem auto;
+    }
+
+    .profile-box {
+        box-shadow: 2px 2px 5px #D4D4D4;
+        border-radius: 4px
+    }
+
+    .profile-box-header {
+        text-align: center;
+
+        h1 {
+            font-family: Raleway;
+        }
+
+        .profile-box-header-line {
+            text-align: left;
+            height: 5px;
+            width: 35px;
+            border-radius: 5px;
+            background: purple;
+            display: inline-block
+        }
+    }
+}

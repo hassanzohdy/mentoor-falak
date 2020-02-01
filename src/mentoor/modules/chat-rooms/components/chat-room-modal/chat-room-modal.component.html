@@ -1,0 +1,75 @@
+<flk-modal header="Chat room" *as="modal" (close)="this.close()">
+    <form (submit)="this.submit($el)" (ready)="this.formHandler = $el.formHandler">
+        <form-input type="text" class="form-control" name="name" label="Chat room name" required
+            [value]="this.room.name"></form-input>
+        <form-input type="textarea" class="form-control" name="description" label="Chat description" required
+            [value]="this.room.description"></form-input>
+        <form-input type="textarea" class="form-control" name="rules" label="Chat rules (Markdown)" required
+            [value]="this.room.rules">
+        </form-input>
+        <form-input type="textarea" class="form-control" name="acceptanceCriteria"
+            label="Chat acceptanceCriteria (Markdown)"
+            placeholder="Write chat criteria as it will be appeared to any applicants to answer what you want from him/her to allow joining the room."
+            [value]="this.room.acceptanceCriteria"></form-input>
+        <div class="row">
+            <div class="col-4">
+                <form-input type="number" class="form-control" name="acceptanceCost" label="Acceptance Cost"
+                    [value]="this.room.acceptanceCost">
+                </form-input>
+            </div>
+            <div class="col-4">
+                <flk-dropdown-list position="top" (select)="this.setCurrentSize(e.value)" label="Size" class="form-control"
+                    name="size" [value]="this.room.size" [items]="this.sizes">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-2">
+                <label class="bold" for="Cost">Cost</label>
+                <div>
+                    <gold-icon *if="this.cost" [coins]="this.cost"></gold-icon>
+                </div>
+                <div *if="this.errors.cost" class="red-text bold" [html]="this.errors.cost"></div>
+            </div>
+            <div class="col-2">
+                <label class="bold" for="Cost">Max members</label>
+                <div *if="this.maxMembers" [html]="this.maxMembers" class="bold"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <flk-dropdown-list position="top" label="Category" class="form-control" name="category"
+                    [value]="this.room.category" [items]="FLAGS.chatRooms.categories">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-4">
+                <flk-dropdown-list position="top" label="Language" class="form-control" name="language"
+                    [value]="this.room.language" [items]="FLAGS.chatRooms.languages">
+                </flk-dropdown-list>
+            </div>
+
+            <div class="col-4">
+                <flk-dropdown-list position="top" label="Type" required class="form-control" name="type" [value]="this.room.type"
+                    [items]="FLAGS.chatRooms.types">
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row m-t-2">
+            <div class="col-6">
+                <label for="image">Room image</label>
+                <flk-image-input [value]="this.room.image" name="image" id="image"></flk-image-input>
+            </div>
+
+            <div class="col-6 bold">
+                <flk-checkbox name="isPublic" label="Public room" value="1"
+                    (change)="this.room.isPublic = ! this.formObject.isPublic" [checked]="this.room.isPublic">
+                </flk-checkbox>
+            </div>
+        </div>
+
+        <div class="text-right">
+            <button [disabled]="! this.isValidForm || this.isLoading" class="btn btn-sm btn-success bold">
+                Create
+            </button>
+        </div>
+    </form>
+</flk-modal>

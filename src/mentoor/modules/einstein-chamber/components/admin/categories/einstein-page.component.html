@@ -1,0 +1,50 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let record, index of this.items">
+        <td>{{ record.id }}</td>
+        <td [html]="record.name"></td>
+        <td><img class="small-image" [src]="record.image" [alt]="record.name" /></td>
+        <td>
+            <a href="/admin/einstein/{{ record.id }}/puzzles">
+                {{ record.puzzles.length.format() }}
+                puzzles
+            </a>
+        </td>
+        <td>{{ Number(record.cost).format() }}</td>
+        <td [html]="record.requiredAnswers"></td>
+        <td>
+            <table-actions (edit)="this.editItem(record)" (delete)="this.deleteItem(record.id, index)"></table-actions>
+        </td>
+    </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+    <form (submit)="this.submit($el)">
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.name" placeholder="category" class="form-control"
+                name="name"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input type="textarea" rows="6" required name="description" [value]="this.formObject.description"
+                placeholder="Description" class="form-control"></form-input>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <form-input class="form-control" required placeholder="cost" type="number" name="cost"
+                        [value]="this.formObject.cost"></form-input>
+                </div>
+                <div class="col-md-4">
+                    <form-input class="form-control" required placeholder="required answers" type="number"
+                        name="requiredAnswers" [value]="this.formObject.requiredAnswers"></form-input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="file" [required]="Is.empty(this.formObject)" name="image" />
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

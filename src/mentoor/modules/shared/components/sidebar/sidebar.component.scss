@@ -1,0 +1,183 @@
+.latest-news {
+    .sidebar {
+        top: $latest-news-bar-size;
+    }
+}
+
+.nw {
+    background: linear-gradient(to right, orange, yellow, green, cyan, blue, violet);
+    float: right;
+    color: #FFF;
+}
+
+.sidebar-sticky {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 100%;
+    padding-top: .5rem;
+
+    .overlay {
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+
+    &.opened {
+        display: block;
+    }
+
+    .sidebar-heading {
+        img {
+            width: 100%;
+        }
+    }
+
+
+    #sidebar-content {
+        overflow-y: auto;
+        padding-top: 1rem;
+        position: relative;
+        overflow-x: hidden;
+        background: $body-background;
+        @include responsive(
+            (0: (
+                width: 60%,
+                top: 60px,
+                height: calc(100vh - 65px),
+            ),
+            768: (width: 20%,
+                top: 50px,
+                height: calc(100vh - 50px),
+            )
+        ));
+        
+        a {
+            color: #333;
+
+            &.active {
+                color: #fff !important;
+                background-color: #5dcfe3;
+            }
+
+            .icon {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
+.latest-news {
+    #sidebar-content {
+        
+    @include responsive(
+        (0: (
+            width: 60%,
+            top: calc(60px + #{$latest-news-bar-size}) !important,
+            height: calc(100vh - 65px - #{$latest-news-bar-size}),
+        ),
+        768: (width: 20%,
+            top: calc(50px + #{$latest-news-bar-size}) !important,
+            height: calc(100vh - 50px - #{$latest-news-bar-size}),
+        )
+    ));
+    }
+}
+// @supports ((position: -webkit-sticky) or (position: sticky)) {
+//     .sidebar-sticky {
+//         position: -webkit-sticky;
+//         position: sticky;
+//     }
+// }
+
+.bg-light {
+    background-color: #f8f9fa !important
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+[role="main"] {
+    // padding-top: 133px;
+    /* Space for fixed navbar */
+}
+
+@media (min-width: 768px) {
+}
+
+
+[role="main"] {
+    @include responsive((
+        0: (            
+            padding-top: 100px,
+        ),
+        768: (            
+            padding-top: 48px,
+        )
+    ));
+    /* Space for fixed navbar */
+}
+
+
+.new {
+    color: #FFF !important;
+    float: right;
+
+    a {
+        color: inherit;
+    }
+
+    $color-start : #822a76;
+    $color-end : #e82d6b;
+
+    font-size: 1.3rem;
+    padding: 0.3rem 0.8rem;
+    // background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+.new,
+.new:before {
+    background: rgba(231, 72, 234, 1) !important;
+    background: -moz-linear-gradient(45deg, rgba(231, 72, 234, 1) 0%, rgba(75, 26, 188, 1) 100%) !important;
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(231, 72, 234, 1)), color-stop(100%, rgba(75, 26, 188, 1))) !important;
+    background: -webkit-linear-gradient(45deg, rgba(231, 72, 234, 1) 0%, rgba(75, 26, 188, 1) 100%);
+    background: -o-linear-gradient(45deg, rgba(231, 72, 234, 1) 0%, rgba(75, 26, 188, 1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(231, 72, 234, 1) 0%, rgba(75, 26, 188, 1) 100%);
+    background: linear-gradient(45deg, rgba(231, 72, 234, 1) 0%, rgba(75, 26, 188, 1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e748ea', endColorstr='#4b1abc', GradientType=1);
+}
+
+.alpha {
+    background: linear-gradient(45deg, red 0%, orange 100%) !important;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    font-size: 1.1rem;
+    float: right;
+    display: inline-block;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+}
+
+
+.beta {
+    background: linear-gradient(95deg, rgb(250, 202, 23) 20%, rgb(255, 156, 72) 80%);
+    background: linear-gradient(45deg, rgb(250, 202, 23) 0%, rgb(255, 156, 72) 100%) !important;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0.2rem 1rem;
+    font-size: 1.3rem;
+    float: right;
+    display: inline-block;
+    margin-top: 0rem;
+    text-transform: uppercase;
+}

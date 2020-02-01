@@ -1,0 +1,27 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let tag, index of this.items">
+        <td>{{ tag.id }}</td>
+        <td><img class="tagImg small-image" [src]="tag.image" [alt]="tag.name" /></td>
+        <td [html]="tag.name"></td>
+        <td>
+            <table-actions (edit)="this.editItem(tag)" (delete)="this.deleteItem(tag.id, index)"></table-actions>
+        </td>
+    </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+    <form (submit)="this.submit($el)">
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.name" placeholder="Tag name"
+                class="form-control" name="name"></form-input>
+        </div>
+        <div class="form-group">
+            <label for="image">Tag image</label>
+            <flk-image-input name="image" id="image" required [src]="this.formObject.image"></flk-image-input>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

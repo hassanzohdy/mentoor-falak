@@ -1,0 +1,129 @@
+$primaryColor: #1d67b1;
+$mainColor: $primaryColor;
+$darkPrimaryColor: #133d6a;
+$secondaryColor: #e37730;
+$second-color: #5ecfe3;
+$dangerColor: #ff6766;
+$successColor: #24cf5f;
+$grayColor: #b9b9b9;
+$darkColor2: #232f3e;
+$bodyBackground: #fafafa;
+$pinkColor: #e91e63;
+$primaryLightColor: #19c9e6;
+$lightDark: #333;
+$darkColor: #2c2f3b;
+$margin-20: 20px;
+$white: #fff;
+$mainColor: #5dcfe3;
+$secondColor: #73a1ff;
+$fontSm: 1.2rem;
+
+$primaryColor: $mainColor;
+$primary-color: $mainColor;
+
+@mixin rounded($bgColor, $padd, $radius) {
+    display: inline-block;
+    background: $bgColor;
+    padding: $padd;
+    border-radius: $radius;
+    margin-right: 5px;
+    color: #fff;
+}
+
+// Falak scss helpers, mixins and functions 
+@import '@flk/scss/dist/all';
+// Responsive font size, @see https://github.com/twbs/rfs 
+@import "rfs/scss";
+// CSS3 mixins
+@import 'compass-mixins/lib/compass';
+
+.hiddenLg {
+    @include responsive((768: (display: none !important)));
+}
+
+.hiddenSm {
+    @include responsive((767: (display: none !important)), max);
+}
+
+$body-background: #f1f5f8;
+
+body {
+    background-color: $body-background;
+}
+
+table th,
+table td,
+.btn {
+    @include font-size(1.5rem);
+
+    &.btn-sm {
+        @include font-size(1rem);
+    }
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: $mainColor !important;
+}
+
+.userCoins {
+    width: 35px;
+}
+
+$main-color: #2d3e50;
+
+$main-font: Roboto;
+
+.alert {
+    margin: 10px 0;
+    padding: .25rem .5rem;
+    border-color: transparent;
+    font-family: $main-font, sans-serif !important;
+    @include font-size(1.5rem);
+}
+
+select.form-control {
+    padding: 0;
+    height: 42px;
+}
+
+.form-control {
+    font-size: inherit;
+    // padding-top: 0 !important;
+    // padding-top: 0 !important;
+    // height: 46px !important;
+    padding: 0.75rem 1.5rem !important;
+    height: auto;
+    // line-height: 46px;
+    // @include box-sizing(content-box);
+}
+
+a {
+    color: $mainColor;
+}
+
+p {
+    // color: #4b4b4b !important;
+}
+
+.table {
+    &.table a {
+        color: $mainColor;
+        font-weight: bold;
+    }
+}
+
+.card {
+    height: auto !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}

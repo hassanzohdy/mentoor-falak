@@ -1,0 +1,24 @@
+<section class="post-comments">
+    <div *if="! Is.empty(this.comments)" class="comments-list">
+        <div *for="let comment of this.comments" class="comment">
+            <img [src]="comment.createdBy.image" class="comment-image" />
+            <div class="comment-content">
+                <div class="by">
+                    <span [html]="comment.createdBy.name"></span>
+                    <user-online [id]="comment.createdBy.id"></user-online>
+                </div>
+                <p>
+                    <markdown [content]="comment.comment"></markdown>
+                </p>
+                <flk-time-ago class="created-at" [timestamp]="comment.createdAt.timestamp"></flk-time-ago>
+            </div>
+        </div>
+        <button *if="this.comments.length < this.originalComments.length" (click)="this.loadMoreComments()" [disabled]="this.isLoadingComments" class="btn btn-sm btn-primary bold m-l-6 m-b-2">Load more comments</button>
+    </div>
+    <if condition="this.user.isLoggedIn()">
+        <img [src]="this.user.image" class="user-image-input" [alt]="this.user.name" />
+        <form-input type="textarea" (keyup)="this.setComment($el, event)" [value]="this.comment"
+            [disabled]="this.isPostingComment" placeholder="Write a comment... (markdown supported)" class="comment-input">
+        </form-input>
+    </if>
+</section>

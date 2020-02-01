@@ -1,0 +1,104 @@
+<layout>
+    <training-ground-header></training-ground-header>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <div *else>
+        <h1 class="m-y-2" id="heading">
+            <span class="mr-2" [html]="this.trainingGround.title"></span>
+            <small class="teal-text" [html]="this.trainingGround.cocktail.name"></small>
+        </h1>
+        <div class="row">
+            <div class="col">
+                <div class="text-center">
+                    <a href="{{ this.trainingGround.image }}" target="_blank">
+                        <img [src]="this.trainingGround.image" id="image" [alt]="this.trainingGround.title" />
+                    </a>
+                </div>
+
+                <section class="description m-y-2">
+                    <markdown [content]="this.trainingGround.description"></markdown>
+                </section>
+            </div>
+            <div class="col-5">
+                <section>
+                    <h3 class="bold">Technologies you should use</h3>
+                    <div id="technologies-list">
+                        <div *for="let tag of this.trainingGround.tags" class="technology">
+                            <img [src]="tag.image" [alt]="tag.name" />
+                            <div [html]="tag.name" class="bold indigo-text"></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="general-notes m-y-2">
+                        <markdown>
+# General rules
+- Always **categorize** your files based on the file type.
+- Encapsulate related files in one place.
+- Comments Comments Comments everywhere.
+- **Think** before coding, write what should be done before doing it.
+                        </markdown>
+                    </section>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="text-center m-t-1">
+                        <div class="pink-text bold">Reward</div>
+                        <gold-icon [coins]="this.trainingGround.prize"></gold-icon>
+                    </div>
+                    <div class="text-center level" [html]="this.trainingGround.level[0]"
+                        title="{{ this.trainingGround.level }} level">
+                    </div>
+                    <div class="text-center m-t-1">
+                        <span class="badge status" [class]="getStatusBadge(this.trainingGround.status)"
+                            [html]="this.trainingGround.status"></span>
+                    </div>
+                    <div class="btns-list">
+                        <a *if="this.trainingGround.livePreview" href="{{ this.trainingGround.livePreview }}"
+                            target="_blank" class="btn btn-sm live-preview-btn btn-success bold">
+                            <fa icon="eye mr-2"></fa>
+                            <span>Live preview</span>
+                        </a>
+                        <button type="button" *if="! this.trainingGround.repositoryUrl"
+                            (click)="this.confirmWithInput = true" class="btn btn-sm open-form-btn">
+                            <fa icon="plus mr-2"></fa>
+                            <fa fab="github fa-1x mr-2"></fa>
+                            <span>Repository</span>
+                        </button>
+                        <a *else href="{{ this.trainingGround.repositoryUrl }}" target="_blank"
+                            class="btn btn-sm open-form-btn">
+                            <fa fab="github fa-1x mr-2"></fa>
+                            <span>Repository</span>
+                        </a>
+                    </div>
+                    <a *if="! Is.empty(this.trainingGround.dependsOn)"
+                        href="/training-ground/{{ this.trainingGround.dependsOn.id }}">
+                        Sequence of {{ this.trainingGround.dependsOn.title }}
+                    </a>
+                </div>
+                <div class="card m-t-1 p-2">
+                    <button class="btn-grd grd-dark m-t-1" (click)="this.githubNotes = true">
+                        <fa fab="github mr-2"></fa>
+                        <span>GITHUB NOTES</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</layout>
+
+<flk-alert *if="this.confirmWithInput" [with-input]="true" (close)="this.confirmWithInput = null"
+    placeholder="Github repository url" (confirm)="this.setGithubRepositoryUrl(e)"
+    message="PLease paste the Github repository url."></flk-alert>
+
+<flk-modal *if="this.githubNotes" (close)="this.githubNotes = false" header="GITHUB notes">
+    <h3 class="m-y-1">Please consider the following notes when pushing to Github.</h3>
+    <ul>
+        <li>Make sure you organize your files in its proper folder, i.e don't put different types in folder.</li>
+        <li>Always commit the changes you made in the file and write a proper commit message based on your change, i.e
+            DO not use <code class="ml-2">git add .</code> but use <code class="mx-2">git add my-file.html</code>
+            instead.
+        </li>
+        <li>Always write a <strong class="mx-2">Change Log</strong> at the end of the readme.md file to define what updates have you done in the repository.</li>
+    </ul>
+</flk-modal>

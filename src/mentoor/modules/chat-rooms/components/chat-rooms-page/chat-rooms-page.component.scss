@@ -1,0 +1,37 @@
+#chat-rooms-page {
+
+    // Picasso is ready to draw :)
+    table {
+        margin-top: 2rem;
+
+        .room-row {
+            .image {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                vertical-align: text-bottom;
+            }
+
+            .meta {
+                display: inline-block;
+                margin-left: 1rem;
+
+                .name {
+                    font-weight: bold;
+                    color: #333;
+                }
+
+                .description {
+                    color: #999 !important;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    #confirming-btns {
+        button {    
+          font-size: 1.7rem;
+        }
+    }
+}

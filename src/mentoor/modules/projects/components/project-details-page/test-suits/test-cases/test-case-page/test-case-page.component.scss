@@ -1,0 +1,23 @@
+#project-test-case-details-page {
+    // Picasso is ready to draw :)
+
+    .result-heading {
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    .title {
+        word-break: break-all;
+    }
+
+    .steps-list {
+        padding: 0;
+        margin-top: 0.5rem;
+    }
+
+    table {
+        th {
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [hide-add-btn]="true"
+    [add-heading]="this.crudOptions.heading" [table-heading]="this.tableHeading">
+    <tr *for="let topic, index of this.items">
+        <td>{{topic.id}}</td>
+        <td [html]="topic.track.name"></td>
+        <td [html]="topic.by.name"></td>
+        <td [html]="topic.title"></td>
+        <td>{{ topic.reward.format() }}</td>
+        <td>
+            <table-actions (edit)="this.editItem(topic)" (delete)="this.deleteItem(topic.id, index)"></table-actions>
+        </td>
+    </tr>
+</admin-table>
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal();">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="trackId" [value]="this.formObject.track.id" />
+        <input type="hidden" name="slug" [value]="this.formObject.slug" />
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.title" (input)="this.formObject.slug = seo($el.value)"
+                placeholder="Title" class="form-control" name="title"></form-input>
+        </div>
+        <div class="form-group">
+            <textarea [value]="this.formObject.shortDescription" class="form-control"
+                placeholder="Write a short description" name="shortDescription" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea rows="6" required name="quest"
+                [value]="this.formObject.quest" placeholder="Quest" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <form-input class="form-control" required placeholder="Reward" type="number" name="reward"
+                [value]="this.formObject.reward"></form-input>
+        </div>
+        <div class="form-group">
+            <select required class="form-control" name="status" [value]="this.formObject.status">
+                <option *for="let type of this.statusesList" [value]="type" [html]="type"></option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <form-input type="number" name="sortOrder" [value]="this.formObject.sortOrder" placeholder="Sort order"
+                    class="form-control"></form-input>
+            </div>
+            <div class="col-md-4">
+                <div class="form-check m-t-1">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input"
+                            (change)="this.formObject.display = ! this.formObject.display" value="1" id="display"
+                            name="display" [checked]="true" />
+                        <label class="custom-control-label" for="display" trans="display"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

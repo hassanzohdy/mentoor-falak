@@ -1,0 +1,105 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Meeting
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} meetings
+        ({{ this.project.meetings.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Meeting</th>
+                <th>Type</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.meetings)">
+                <td colspan="3" text-center>No Meetings Yet</td>
+            </tr>
+            <tr *else *for="let meeting, index of this.project.meetings">
+                <td>
+                    <a [href]="URLS.project(this.project, 'meetings', meeting)" [html]="meeting.title"></a>
+                </td>
+                <td [html]="meeting.type"></td>
+                <td>
+                    <if condition="this.project.isHigherAuthority || meeting.createdBy.id == this.user.id">
+                        <button type="button" (click)="this.openModal('edit', meeting, index)" class="btn btn-cyan"
+                            tooltip title="Edit meeting">
+                            <fa icon="edit"></fa>
+                        </button>
+                        <button type="button" (click)="this.confirmRemoving(meeting, index)"
+                            class="btn btn-danger" tooltip title="Delete meeting">
+                            <fa icon="trash"></fa>
+                        </button>
+                    </if>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="title" [value]="this.record.title" label="Meeting Title" required
+            class="form-control"></form-input>
+        <form-input type="textarea" name="mom" required [value]="this.record.mom" label="MoM"
+            class="form-control"></form-input>
+
+            <div class="row">
+                <div class="col">                    
+                    <flk-dropdown-list
+                        label="Meeting Type"
+                        name="type"
+                        [value]="this.record.type"
+                        (select)="this.record.type = e.value"
+                        [items]="['internal', 'external', 'voiceCall']"
+                    ></flk-dropdown-list>
+                </div>
+
+                <div class="col">
+                    <flk-datepicker [value]="this.record.date" [date-time]="true" name="date" label="Meeting Date" placeholder="Meeting Date" class="form-control" [required]="true"></flk-datepicker>
+                </div>
+            </div>
+
+        <div class="row m-t-1">
+            <div class="col">                
+                <flk-dropdown-list
+                    label="Participating Members"
+                    [required]="true"
+                    name="members[]"
+                    [value]="this.meetingMembers()"
+                    [multiple]="true"
+                    [items]="this.membersList"
+                ></flk-dropdown-list>
+            </div>
+            <div *if="['external', 'voiceCall'].includes(this.record.type)" class="col">                
+                <flk-dropdown-list
+                    label="Client Representatives"
+                    name="clientRepresentatives[]"
+                    [required]="true"
+                    [value]="this.meetingRepresentatives()"
+                    [multiple]="true"
+                    [items]="this.project.client.representatives"
+                ></flk-dropdown-list>
+            </div>
+        </div>
+        <div class="m-t-2">            
+            <flk-file-input name="attachment" class="btn btn-cyan bold" label="Meeting">
+                    <fa icon="cloud-upload-alt"></fa>
+                    <strong class="ml-1">Upload Attachment</strong>
+            </flk-file-input>
+        </div>
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

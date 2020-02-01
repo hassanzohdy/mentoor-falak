@@ -1,0 +1,14 @@
+<li class="panel-item einstein-chamber" [class]="{unseen: notification.seen === false}">
+    <a href="/einstein-chamber/puzzles/{{ notification.extra.puzzle.id }}" (click)="this.markAsSeen(notification)">
+        <span class="red-text bold mr-2">
+            <img [src]="assets('images/en.png')" class="einstein-img" />
+        </span>
+        <strong class="teal-text mx-2">
+            [{{ notification.extra.puzzle.category.name }}]
+            {{ notification.extra.puzzle.title }}
+        </strong>
+        <span class="red-text">has been rejected.</span>
+        <!-- <p *if="notification.extra.puzzle.comment" [html]="notification.extra.puzzle.comment"></p> -->
+        <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
+    </a>
+</li>

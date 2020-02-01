@@ -1,0 +1,67 @@
+<section class="simple-card p-3 project-section" [class]="{active: this.currentStep == 0}">
+    <form-input type="text" name="name" [value]="this.data.name" [required]="true" class="form-control"
+        label="Project name">
+    </form-input>
+    <form-input type="textarea" name="about" [value]="this.data.about" required class="form-control"
+        label="About the project"
+        placeholder="About the project (Markdown support), if the project is not private, this content will be visible to everyone.">
+    </form-input>
+    <div class="row">
+        <div class="col-sm-6">
+            <flk-dropdown-list name="type[]" [multiple]="true" label="This project contains" heading="types"
+                [value]="this.data.types" required [items]="FLAGS.projects.types">
+            </flk-dropdown-list>
+        </div>
+        <div class="col-sm-6">
+            <flk-dropdown-list name="for" label="This project is for" heading="For" [value]="this.data.for" required
+                [items]="FLAGS.projects.for">
+            </flk-dropdown-list>
+        </div>
+    </div>
+
+    <div class="row m-t-1">
+        <div class="col-sm-6">
+            <flk-datepicker name="startDate" [value]="this.data.startDate" label="Starting Date"
+                placeholder="Starting Date" class="form-control" required></flk-datepicker>
+        </div>
+        <div class="col-sm-6">
+            <flk-datepicker name="endDate" [value]="this.data.endDate" label="End Date" placeholder="End Date"
+                class="form-control" required></flk-datepicker>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <flk-dropdown-list name="status" label="Current Project Status" heading="Status" [value]="this.data.status"
+                required [items]="FLAGS.projects.status">
+            </flk-dropdown-list>
+        </div>
+        <div class="col-sm-6">
+                <flk-dropdown-list 
+                    name="tags[]" 
+                    [multiple]="true" 
+                    label="Tags" 
+                    [imageable]="true"
+                    heading="Tags List" 
+                    [value]="this.data.tags"
+                    [lazy-loading]="true"
+                    service="tagsService" 
+                    >
+                </flk-dropdown-list>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="image">
+            Project Image
+            <span class="required">*</span>
+        </label>
+        <flk-image-input [required]="true" name="image" id="image"></flk-image-input>
+    </div>
+    <div class="text-right">
+        <button type="button" (click)="this.next()" class="btn btn-purple bold">
+            NEXT
+            <fa icon="arrow-right"></fa>
+        </button>
+    </div>
+</section>

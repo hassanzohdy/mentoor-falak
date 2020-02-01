@@ -1,0 +1,57 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <h1 class="heading" [html]="this.meeting.title"></h1>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="simple-card">
+                <markdown [content]="this.meeting.mom"></markdown>
+            </div>
+
+            <comments [project]="this.project" type="meeting" [comments]="this.meeting.comments" [type-id]="this.meeting.id"></comments>
+        </div>
+
+        <div class="col">
+            <div class="card p-1">
+                <h3 class="text-center m-b-1">Meeting Details</h3>
+                <div class="m-b-1">
+                    <span class="mr-3">Meeting Type</span>
+                    <strong [html]="this.meeting.type.capitalize()"></strong>
+                </div>
+                <div class="m-b-1">
+                    <span class="mr-3">Meeting Date</span>
+                    <strong [html]="this.meeting.date"></strong>
+                </div>
+            </div>
+            <div class="card p-1">
+                <h3 class="text-center m-b-1">Participants</h3>
+
+                <div *for="let member of this.meeting.members" class="bold m-b-1">
+                    <img [src]="member.image" [alt]="member.name" class="rounded-circle m-r-1"
+                        width="50px" height="50px" />
+                    <string [html]="member.name"></string>
+                </div>
+            </div>
+            <div *if="! Is.empty(this.meeting.clientRepresentatives)" class="card p-1">
+                <h3 class="text-center">Client Representatives</h3>
+
+                <div *for="let representatives of this.meeting.clientRepresentatives" class="bold m-b-1">
+                    <img [src]="representatives.image || FAVICON" [alt]="representatives.name"
+                        class="rounded-circle m-r-1" width="50px" height="50px" />
+                    <string [html]="representatives.name"></string>
+                </div>
+            </div>
+            <div *if="this.meeting.attachment" class="card p-1 text-center">
+                <h3 class="m-b-1">Attachment</h3>
+
+                <a *if="isImage(this.meeting.attachment)" [href]="this.meeting.attachment" [href] target="_blank">
+                    <img [src]="this.meeting.attachment" [alt]="this.meeting.title" />
+                </a>
+
+                <a *else [href]="this.meeting.attachment" class="btn btn-cyan bold" target="_blank">
+                    <fa icon="download"></fa>
+                    <span class="ml-1">Download</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</project-layout>

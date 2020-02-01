@@ -1,0 +1,40 @@
+#change-log-page {
+    // Picasso is ready to draw :)
+
+    .version {
+        margin-bottom: 4rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid $primary-color;
+
+        h1 {
+            border-bottom: 1px dotted #000;
+            padding-bottom: 1rem;
+        }
+
+        .release-date {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .mdContent {
+            li {
+                padding-left: 1rem;
+                font-weight: bold;
+
+                a {
+                    font-weight: bold;
+                }
+
+                ul {
+                    margin-left: 0rem;
+
+                    li {
+                        font-weight: normal;
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+
+    }
+}

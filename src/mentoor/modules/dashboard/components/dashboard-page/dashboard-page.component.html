@@ -1,0 +1,46 @@
+<layout>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <else>
+        <h1 class="m-b-1">Dashboard</h1>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" data-target="#academy-tab">
+                    <fa icon="university mr-1"></fa>
+                    Academy
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" (click)="this.loadPosts()" data-target="#posts-tab">
+                    <fa icon="mug-hot mr-1"></fa>
+                    Timeline Posts
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="academy-tab">
+                <dashboard-academy></dashboard-academy>
+            </div>
+            <div class="tab-pane fade" id="posts-tab" role="tabpanel" aria-labelledby="posts-tab">
+                <dashboard-posts></dashboard-posts>
+            </div>
+        </div>
+        <!-- <div *else>
+                <h1 class="text-center bold">Welcome to {{ this.siteName }}</h1>
+                <p>
+                    <a href="/help" class="bold red-text">What is {{ this.siteName }} application?</a>
+                </p>
+                <p>
+                    <a href="/academy" class="bold orange-text">Want to learn? Get started with the available tracks.</a>
+                </p>
+                <p>
+                    <a href="/offline-courses" class="bold blue-text">Can't learn online? checkout our offline tracks.</a>
+                </p>
+                <p>
+                    <a href="/einstein-chamber" class="bold green-text">Want practical examples for programming? See our Einstein Chamber section.</a>
+                </p>
+                <p>
+                    <a href="/chat-rooms" class="bold pink-text">Want to chat with other programmers in same career? Check the chat rooms. </a>
+                </p>
+            </div> -->
+    </else>
+</layout>

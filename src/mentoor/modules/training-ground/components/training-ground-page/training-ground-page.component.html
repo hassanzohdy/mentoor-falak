@@ -1,0 +1,46 @@
+<layout>
+    <training-ground-header (unlock)="this.unlockedCocktail(e)" [auto-open]="this.autoOpenCocktailsModal">
+    </training-ground-header>
+
+    <a href="/login" *if="! this.user.isLoggedIn()" class="bold text-center m-y-2 btn btn-danger">
+        <fa icon="lock mr-2"></fa>
+        Login to get started!
+    </a>
+    <h1 *elseif="Is.empty(this.user.trainingGround) || Is.empty(this.user.trainingGround.cocktailsIds)"
+        class="bold text-center m-y-2">Please select a career first.</h1>
+    <flk-spinner *elseif="this.isLoading"></flk-spinner>
+    <div class="row" *else>
+        <div *for="let trainingGround of this.trainingGrounds" class="training-ground col col-sm-6 col-md-4 col-lg-3">
+            <div class="card">
+                <h3 class="card-header text-center">
+                    <img [src]="trainingGround.cocktail.icon" class="cocktail-image" />
+                    <span [html]="trainingGround.cocktail.name"></span>
+                </h3>
+                <div class="card-body">
+                    <div class="text-center image-wrapper">
+                        <img [src]="trainingGround.image" class="image" [alt]="trainingGround.title" />
+                    </div>
+                    <div class="text-center m-t-1">
+                        <div title="Prize" class="pink-text prize">
+                            <gold-icon [coins]="trainingGround.prize"></gold-icon>
+                        </div>
+                        <a href="/training-ground/{{ trainingGround.id }}" class="bold btn view-btn"
+                            [html]="trainingGround.title"></a>
+                    </div>
+                </div>
+                <div class="card-hover">
+                    <span class="arrow"></span>
+                    <p [html]="trainingGround.shortDescription"></p>
+                    <div class="text-center">
+                        <div *for="let tag of trainingGround.tags" class="technology">
+                            <img [src]="tag.image" [alt]="tag.name" />
+                            <div [html]="tag.name" class="bold indigo-text"></div>
+                        </div>
+                        <!-- <a href="/training-ground/{{ trainingGround.id }}" class="bold d-inline-block m-t-2 btn view-btn"
+                            [html]="trainingGround.title"></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</layout>

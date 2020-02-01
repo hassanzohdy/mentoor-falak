@@ -1,0 +1,32 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Task
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} Tasks Board
+        ({{ this.totalTasks }})
+    </h1>
+
+    <tasks-board
+        *as="tasksBoard"
+        [project]="this.project"
+        [tasks]="this.project.tasks"
+        [supervisors]="this.supervisors"
+        [participants]="this.participants"
+        (change)="this.updateTasksList(e)"
+    ></tasks-board>
+    
+</project-layout>
+
+<task-modal 
+    *if="this.modalIsOpened" 
+    *as="modal" 
+    [statuses]="this.statuses"
+    (close)="this.modalIsOpened = null" 
+    [participants]="this.participants"
+    [supervisors]="this.supervisors" 
+    [project]="this.project" 
+    (save)="this.adjustTaskResponse(e)" 
+>
+</task-modal>

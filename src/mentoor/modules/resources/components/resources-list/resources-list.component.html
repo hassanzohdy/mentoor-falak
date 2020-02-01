@@ -1,0 +1,44 @@
+<section id="resources-list">
+    <div *if="this.canAdd" class="float-right new-resource-wrapper">
+        <flk-dropdown-list [searchable]="false" [value]="this.resourceType" [items]="this.availableResources"
+            heading="+ Resource" (select)="this.setNewResource(e.value)"></flk-dropdown-list>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div *if="Is.empty(this.resourcesList)" class="m-t-2 text-center simple-card bold">No Resources Yet</div>
+
+    <div *else class="m-t-2">
+        <section *if="! Is.empty(this.resourcesList.pinned)" class="pinned-resources">
+            <h3 class="heading">Pinned</h3>
+            
+            <resource-list-item 
+                *for="let resource, index of this.resourcesList.pinned" 
+                *key="resource.id" 
+                [resources-types]="this.resourcesTypes"
+                [project]="this.project"
+                [resource]="resource" 
+                [index]="index"
+            ></resource-list-item>
+        </section>
+        <if condition="! Is.empty(this.resourcesList.normal)">    
+            <resource-list-item 
+                *for="let resource, index of this.resourcesList.normal" 
+                *key="resource.id" 
+                [resources-types]="this.resourcesTypes"
+                [project]="this.project"
+                [resource]="resource" 
+                [index]="index"
+            ></resource-list-item>
+        </if>
+    </div>
+</section>
+
+<resource-modal 
+    *if="this.openResourceModal" 
+    [type]="this.resourceType" 
+    [resource]="this.resource"
+    [project]="this.project" 
+    (close)="this.onClose()"
+    (save)="this.adjustResource(e)">
+</resource-modal>

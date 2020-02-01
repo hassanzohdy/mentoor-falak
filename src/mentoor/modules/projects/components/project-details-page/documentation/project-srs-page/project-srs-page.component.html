@@ -1,0 +1,16 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <h1>
+        Software Requirements Specifications [SRS]
+        <button *if="this.project.isProjectManager" (click)="this.inEditMode = !!!this.inEditMode" type="button" class="btn btn-sm btn-teal bold">Edit</button>
+    </h1>
+
+    <form *if="this.inEditMode" (submit)="this.submit($el)">
+        <form-input type="textarea" name="srs" [value]="this.projectSrs" class="form-control" label="SRS" placeholder="Write project Software Requirements Specifications      "></form-input>
+        <div class="text-center m-t-3">
+            <button type="button" (click)="this.inEditMode = false" class="btn btn-danger bold">Cancel</button>
+            <button class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+    <markdown [content]="this.projectSrs"></markdown>
+
+</project-layout>

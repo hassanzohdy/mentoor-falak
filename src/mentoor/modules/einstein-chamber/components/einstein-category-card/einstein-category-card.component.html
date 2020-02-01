@@ -1,0 +1,51 @@
+<div class="einstein-category">
+    <div class="card">
+        <span *if="this.canUnlock()" class="can-unlock">
+            !
+        </span>
+
+        <div *elseif="this.categoryIsUnlocked()" class="purchased-wrapper" title="Purchased">
+            <fa icon="check-circle purchased-icon"></fa>
+        </div>
+        <button *if="! this.categoryIsUnlocked()" (click)="this.purchase()" class="lock-wrapper">
+            <fa icon="lock lock-icon"></fa>
+        </button>
+        <img class="image" [src]="this.category.image" [alt]="this.category.name" />
+        <div class="name" [html]="this.category.name"></div>
+        <div class="requirements bold">
+            <span class="answers" title="Required answers">
+                <fa icon="edit icon"></fa>
+                {{ this.category.requiredAnswers.format() }}
+            </span>
+            <span class="cost" title="Required gold">     
+                <span *if="this.category.cost == 0" class="bold pink-text">FREE!</span>           
+                <gold-icon [coins]="this.category.cost"></gold-icon>
+            </span>
+        </div>
+    </div>
+
+    <div class="back-card">
+        <h3 class="name" [html]="this.category.name"></h3>
+        <p class="description" [html]="this.category.description"></p>
+        <div class="requirements bold">
+            <span class="answers" title="Required answers">
+                <fa icon="edit icon"></fa>
+                {{ this.category.requiredAnswers.format() }}
+            </span>
+            <span class="cost" title="Required gold">
+                <span *if="this.category.cost == 0" class="bold pink-text">FREE!</span>           
+                <gold-icon [coins]="this.category.cost"></gold-icon>
+            </span>
+        </div>
+        <div class="text-center m-v-1">
+            <span class="level" [html]="this.category.level" title="Level {{ this.category.level }}"></span>
+        </div>
+        <div *if="this.canUnlock()" class="text-center">
+            <button [disabled]="this.isPurchasing" (click)="this.purchase()"
+                class="btn btn-success purchase-btn">Purchase</button>
+        </div>
+        <div *elseif="this.categoryIsUnlocked()" class="text-center" title="Purchased">
+            <fa icon="check-circle purchased-icon"></fa>
+        </div>
+    </div>
+</div>

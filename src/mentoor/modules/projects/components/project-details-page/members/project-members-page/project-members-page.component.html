@@ -1,0 +1,60 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button *if="this.project.isProjectManager" (click)="this.openAddMember = true; this.isSending = false;" class="float-right btn bold"
+        [class]="{'btn-success': this.project.maxMembers <= this.project.members.length, 'btn-pink': this.project.maxMembers > this.project.members.length}">
+        <fa icon="plus mr-1"></fa>
+        Member
+    </button>
+
+    <h1 class="m-y-1">
+        Project members
+        <span tooltip title="Project members" class="ml-1">
+            ({{ this.project.members.length + '/' + this.project.maxVisibleMembers }})</span>
+    </h1>
+
+    <table class="m-t-2 table table-bordered">
+        <thead>
+            <tr>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Added By</th>
+                <th>Added At</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let member, index of this.project.members">
+                <td [html]="member.member.name"></td>
+                <td [html]="member.role"></td>
+                <td [html]="member.createdBy.name"></td>
+                <td>
+                    <flk-time-ago [timestamp]="member.createdAt.timestamp"></flk-time-ago>
+                </td>
+                <td>
+                    <if condition="this.project.is.higherAuthority">
+                        <button type="button" (click)="this.confirmRemoving(member, index)"
+                            class="btn btn-sm btn-danger" tooltip title="Dismiss Member">
+                            <fa icon="trash"></fa>
+                        </button>
+                    </if>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.openAddMember" *as="addMemberModal" (close)="this.openAddMember = null" size="small"
+    header="Add New Member">
+    <form (submit)="this.addNewMember($el)">
+        <flk-dropdown-list name="memberId" heading="Member" [lazy-loading]="true" [remote-search]="true"
+            query="username" [except]="this.exceptMembers" [service]="this.usersService"
+            (map)="return this.mapUser(e)" placeholder="Enter @username to add"></flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.isSending" class="btn btn-success bold">Add</button>
+        </div>
+    </form>
+</flk-modal>
+
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

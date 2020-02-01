@@ -1,0 +1,55 @@
+<layout>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <else>
+        <h1>Courses list</h1>
+        <p>Please choose what course you need based on the provided information in each course.</p>
+        <div *if="! Is.empty(this.courses)" class="row allCourses">
+            <div *for="let course of this.courses" class="track-card col-md-4 col-sm-6 col-12">
+                <div class="card">
+                    <div>
+                        <img class="imgTrack" [src]="course.image" />
+                    </div>
+                    <div class="trackInfoTitle card-body">
+                        <a>
+                            <h4 class="text-capitalize" [html]="course.name"></h4>
+                        </a>
+                        <div class="trackInfoMeta d-flex justify-content-between pt-4 border-top">
+                            <span class="bold orange-text">
+                                <i class="ti ti-list"></i> {{course.time.length}} Weeks</span>
+                            <span class="bold green-text">
+                                {{ course.cost.format() }} EGP
+                            </span>
+                        </div>
+                        <small>
+                            By: <span class="bold" [html]="course.instructor.name"></span>
+                            <div class="float-right mt-1" [html]="course.level"></div>
+                        </small>
+                    </div>
+                    <div class="trackInfo">
+                        <div class="trackInfoTitle">
+                            <a href="/offline-courses/{{course.id}}">
+                                <h4 class="text-capitalize" [html]="course.name"></h4>
+                            </a>
+                        </div>
+                        <div class="trackInfoDescription">
+                            <p class="pt-4" [html]="course.description"></p>
+                        </div>
+                        <!-- Back cover -->
+                        <div class="trackInfoMeta d-flex justify-content-between pt-4 pb-4">
+                            <span class="trackSingleMeta">
+                                <i class="ti ti-list"></i>{{ course.time.duration }} hrs/session </span>
+                            <span class="trackSingleMeta">
+                                {{ course.cost.format() }} EGP
+                            </span>
+                        </div>
+                        <div class="trackPreview">
+                            <a href="/offline-courses/{{course.id}}" class="btn btn-primary btn-block"
+                                trans="Preview this course"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 *else class="bold text-center">No courses yet!</h1>
+    </else>
+</layout>

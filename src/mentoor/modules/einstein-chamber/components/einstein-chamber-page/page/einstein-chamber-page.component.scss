@@ -1,0 +1,30 @@
+#einstein-chamber-page {
+    article {
+        font-weight: normal;
+        strong {
+            margin: 0.5rem;
+        }
+    }
+    .puzzle {
+        .status {
+            text-transform: capitalize;
+            &.active {
+                color: $green-base;
+            }
+        }
+    }
+}
+
+.einstein-image {
+    width: 7vh;
+    height: 7vh;
+}
+
+.shopping-cart {
+    background: url(../images/shopping-cart.png);
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 100% 100%;
+}

@@ -1,0 +1,161 @@
+<section id="profile-settings-tab">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Account id</th>
+                <td [html]="this.user.id"></td>
+            </tr>
+            <tr (mouseover)="this.editMode = 'email'" (mouseout)="this.editMode = null">
+                <th>Email address</th>
+                <td>
+                    <span *if="this.inEditMode != 'email'" [html]="this.user.email"></span>
+                    <div *else class="row">
+                        <div class="col-9">
+                            <form-input type="email" required placeholder="Email address" name="email"
+                                [value]="this.user.email" class="form-control"></form-input>
+                        </div>
+                        <div class="col-3 p-0 mt-2">
+                            <button [disabled]="this.isUpdating" class="btn btn-info bold save-btn btn-sm">Save
+                                changes</button>
+                            <button [disabled]="this.isUpdating" type="button" (click)="this.inEditMode = false"
+                                class="btn gray black-text bold btn-sm">Close</button>
+                        </div>
+                    </div>
+                    <button [disabled]="this.isUpdating" *if="this.editMode == 'email' && ! this.inEditMode"
+                        type="button" (click)="this.inEditMode = 'email'" class="edit-btn">
+                        <fa icon="pen"></fa>
+                        Edit
+                    </button>
+                </td>
+            </tr>
+
+            <tr (mouseover)="this.editMode = 'username'" (mouseout)="this.editMode = null">
+                <th>Username</th>
+                <td>
+                    <span *if="this.inEditMode != 'username'" [html]="this.user.username || 'N/a'"></span>
+                    <div *else class="row">
+                        <div class="col-9">
+                            @
+                            <form-input type="text" class="username-input" autocomplete="off" placeholder="username"
+                                (input)="this.validateUserName($el.value)" name="username" [value]="this.user.username"
+                                class="form-control"></form-input>
+                            <span class="red-text bold" *if="this.errors.username" [html]="this.errors.username"></span>
+                        </div>
+                        <div class="col-3 p-0">
+                            <button [disabled]="this.isUpdating" class="btn btn-info bold save-btn btn-sm">Save
+                                changes</button>
+                            <button [disabled]="this.isUpdating" type="button" (click)="this.inEditMode = false"
+                                class="btn gray black-text bold btn-sm">Close</button>
+                        </div>
+                        <div class="row m-0">
+                            <div class="col">
+                                <div class="bold">Username creation criteria</div>
+                                <small>
+                                    Must starts with English letter (lowercase).
+                                    <br>
+                                    Can contain only English letters, Numbers, dot or underscore.
+                                    <br>
+                                    No more than one dot or underscore can be written after each other.
+                                    <br>
+                                    No whitespaces allowed.
+                                    <br>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="this.isUpdating" *if="this.editMode == 'username' && ! this.inEditMode"
+                        type="button" (click)="this.inEditMode = 'username'" class="edit-btn">
+                        <fa icon="pen"></fa>
+                        Edit
+                    </button>
+                </td>
+            </tr>
+
+
+            <tr (mouseover)="this.editMode = 'gender'" (mouseout)="this.editMode = null">
+                <th>Gender</th>
+                <td>
+                    <span *if="this.inEditMode != 'gender'" class="text-capitalize"
+                        [html]="this.user.gender || 'N/a'"></span>
+                    <div *else class="row">
+                        <div class="col-9">
+                            <flk-dropdown-list name="gender" [value]="this.user.gender" [items]="['male', 'female']"
+                                [required]="true"></flk-dropdown-list>
+                            <span class="red-text bold" *if="this.errors.gender" [html]="this.errors.gender"></span>
+                        </div>
+                        <div class="col-3 p-0 mt-2">
+                            <button [disabled]="this.isUpdating" class="btn btn-info bold save-btn btn-sm">Save
+                                changes</button>
+                            <button [disabled]="this.isUpdating" type="button" (click)="this.inEditMode = false"
+                                class="btn gray black-text bold btn-sm">Close</button>
+                        </div>
+                    </div>
+                    <button [disabled]="this.isUpdating" *if="this.editMode == 'gender' && ! this.inEditMode"
+                        type="button" (click)="this.inEditMode = 'gender'" class="edit-btn">
+                        <fa icon="pen"></fa>
+                        Edit
+                    </button>
+                </td>
+            </tr>
+
+            <tr (mouseover)="this.editMode = 'homePage'" (mouseout)="this.editMode = null">
+                <th>Home Page</th>
+                <td>
+                    <span *if="this.inEditMode != 'homePage'" class="text-capitalize"
+                        [html]="this.user.homePage ? this.homePages[this.user.homePage] : 'N/a'"></span>
+                    <div *else class="row">
+                        <div class="col-9">
+                            <flk-dropdown-list name="homePage" [value]="this.user.homePage" [items]="this.homePages"
+                                [required]="true"></flk-dropdown-list>
+                            <span class="red-text bold" *if="this.errors.homePage" [html]="this.errors.homePage"></span>
+                        </div>
+                        <div class="col-3 p-0 mt-2">
+                            <button [disabled]="this.isUpdating" class="btn btn-info bold save-btn btn-sm">Save
+                                changes</button>
+                            <button [disabled]="this.isUpdating" type="button" (click)="this.inEditMode = false"
+                                class="btn gray black-text bold btn-sm">Close</button>
+                        </div>
+                    </div>
+                    <button [disabled]="this.isUpdating" *if="this.editMode == 'homePage' && ! this.inEditMode"
+                        type="button" (click)="this.inEditMode = 'homePage'" class="edit-btn">
+                        <fa icon="pen"></fa>
+                        Edit
+                    </button>
+                </td>
+            </tr>
+            <!-- <tr>
+                <th>Invitation code</th>
+                <td [html]="this.user.invitationCode"></td>
+            </!-->
+            <tr>
+                <th>Joined</th>
+                <td>
+                    <flk-time-ago [timestamp]="this.user.createdAt.timestamp"></flk-time-ago>
+                </td>
+            </tr>
+            <tr (mouseover)="this.editMode = 'mobile'" (mouseout)="this.editMode = null">
+                <th>Mobile number</th>
+                <td>
+                    <span *if="this.inEditMode != 'mobile'" [html]="this.user.mobile || 'N/a'"></span>
+                    <div *else class="row">
+                        <div class="col-9">
+                            <form-input type="text" required placeholder="Mobile number" name="mobile"
+                                [value]="this.user.mobile" class="form-control"></form-input>
+                        </div>
+                        <div class="col-3 p-0 mt-2">
+                            <button [disabled]="this.isUpdating" class="btn btn-info bold save-btn btn-sm">Save
+                                changes</button>
+                            <button [disabled]="this.isUpdating" type="button" (click)="this.inEditMode = false"
+                                class="btn gray black-text bold btn-sm">Close</button>
+                        </div>
+                    </div>
+                    <button [disabled]="this.isUpdating" *if="this.editMode == 'mobile' && ! this.inEditMode"
+                        type="button" (click)="this.inEditMode = 'mobile'" class="edit-btn">
+                        <fa icon="pen"></fa>
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

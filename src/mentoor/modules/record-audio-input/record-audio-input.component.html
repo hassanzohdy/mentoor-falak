@@ -1,0 +1,10 @@
+<div class="form-group {{ this.inputs.getAttr('class') }}">
+    <flk-audio-player *if="this.recordSrc || this.data[this.recordKey]" [src]="this.recordSrc || this.data[this.recordKey]">
+    </flk-audio-player>
+    <flk-audio-recorder (record)="this.captureRecord(e)" (start)="this.onRecording()">
+    </flk-audio-recorder>
+    <button type="button" *if="this.recordData" (click)="this.clearRecord(true)"
+        class="btn btn-danger btn-sm remove-record-btn" title="Remove record">
+        <fa icon="trash"></fa>
+    </button>
+</div>

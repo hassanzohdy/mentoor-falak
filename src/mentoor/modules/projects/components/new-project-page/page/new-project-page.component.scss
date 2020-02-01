@@ -1,0 +1,19 @@
+#new-project-page {
+    // Picasso is ready to draw :)
+
+    .project-section {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .dropdown-list {
+        .list-item {
+            i {
+                text-transform: capitalize;
+            }
+        }
+    }
+}

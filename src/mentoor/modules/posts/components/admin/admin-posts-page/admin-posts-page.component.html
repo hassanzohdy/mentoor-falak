@@ -1,0 +1,64 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [table-heading]="this.tableHeading">
+    <tr *for="let post, index of this.items" id="{{ post.id }}">
+        <td>{{ post.id }}</td>
+        <td [html]="post.title"></td>
+        <td><img class="small-image" [src]="post.image" alt="" /></td>
+        <td>
+            <gold-icon [coins]="post.prize"></gold-icon>
+        </td>
+        <td [html]="post.status"></td>
+        <td>
+            <div *for="let tag of post.tags" class="m-b-1">
+                <tag-badge [small]="true" [tag]="tag"></tag-badge>
+            </div>
+        </td>
+        <td>
+            <table-actions (edit)="this.editItem(post)" (delete)="this.deleteItem(post.id, index)"></table-actions>
+        </td>
+    </tr>
+</admin-table>
+
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+    <form (submit)="this.submit($el)">
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.title"
+                (input)="this.formObject.slug = seo($el.value);" placeholder="post title" class="form-control"
+                name="title"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input required type="text" [value]="this.formObject.slug" placeholder="Url slug" class="form-control"
+                name="slug"></form-input>
+        </div>
+        <div class="form-group">
+            <form-input type="textarea" rows="6" required name="content" [value]="this.formObject.content"
+                placeholder="Content" class="form-control"></form-input>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <form-input class="form-control" required placeholder="prize" type="number" name="prize"
+                        [value]="this.formObject.prize"></form-input>
+                </div>
+                <div class="col-md-6">
+                    <flk-dropdown-list class="form-control" [items]="this.answerStatus" name="status" [value]="this.formObject.status"></form-input>
+                </div>
+                <div class="col-md-6">
+                    <flk-dropdown-list [service]="this.tagsService" [lazy-loading]="true" [multiple]="true"
+                        [imageable]="true" label="Tags" placeholder="Tag" [value]="this.formObject.tags" name="tags[]">
+                    </flk-dropdown-list>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <flk-image-input id="image" name="image" [src]="this.formObject.image"></flk-image-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

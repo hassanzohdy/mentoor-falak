@@ -1,0 +1,96 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <if condition="! this.testCaseIsOpened">
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Test suit
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} Test suits
+        ({{ this.project.testSuits.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>User Story</th>
+                <th>Test Cases</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.testSuits)">
+                <td colspan="5" text-center>No Test suits Yet</td>
+            </tr>
+            <for loop="let record, index of this.project.testSuits" *key="record.id">
+                <tr>
+                    <td [html]="record.id"></td>
+                    <td [html]="record.name"></td>
+                    <td [html]="record.userStory.title.readMoreChars(20)" tooltip [title]="record.userStory.title"></td>
+                    <td>
+                        <a href="#" (click)="record.viewTestCases = ! record.viewTestCases; this.detectChanges()">
+                            <span [html]="record.testCases.length"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <if condition="record.canBeModified">
+                            <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan"
+                                tooltip title="Edit Test suit">
+                                <fa icon="edit"></fa>
+                            </button>
+
+                            <button type="button" (click)="this.confirmRemoving(record, index)" class="btn btn-danger"
+                                tooltip title="Delete Test suit">
+                                <fa icon="trash"></fa>
+                            </button>
+                        </if>
+                    </td>
+                </tr>
+                <tr *if="record.viewTestCases">
+                    <td *for="let type of ['positive', 'negative']" colspan="2"
+                        class="test-case-type v-top text-center {{ type }}">
+                        <h4 class="bold text-capitalize"
+                            [class]="{'green-text': type == 'positive', 'red-text': type == 'negative'}">
+                            {{ type }}
+                            ({{ record.testCasesList[type] ? record.testCasesList[type].length : 0 }})
+                            <button type="button" class="btn btn-sm btn-circle"
+                                [class]="{'btn-success': type == 'positive', 'btn-danger': type == 'negative'}" tooltip
+                                title="Add new {{ type }} test case"
+                                (click)="this.openTestCase(type, record, {}, null, index)">
+                                <fa icon="plus"></fa>
+                            </button>
+                        </h4>
+                        <test-cases-list></test-cases-list>
+                    </td>
+                </tr>
+            </for>
+        </tbody>
+    </table>
+</if>
+<test-case-modal></test-case-modal>
+
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="Test suit Name" required
+            class="form-control"></form-input>
+
+        <flk-dropdown-list name="userStory" [required]="true" label="User Story" [value]="this.record.userStory?.id"
+            [lazy-loading]="true" [request]="loadUserStories.bind(this)"></flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+
+<flk-alert *if="this.confirmDelete" message="Are you sure you want to delete this test suit? This will delete also all related test cases." (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>
+<flk-alert *if="this.confirmDeletingTestCase" (close)="this.confirmDeletingTestCase = null"
+    (confirm)="this.removeTestCase()">
+</flk-alert>

@@ -1,0 +1,53 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div *if="this.discussion && ! this.isInEditMode" class="discussion">
+        <div *if="this.discussion.canBeModified" class="status">
+            <button *if="this.discussion.status == 'opened'" type="button" class="btn bold badge badge-danger"
+                (click)="this.confirmStatusChange()">
+                <fa icon="lock mr-2"></fa>
+                Close
+            </button>
+            <button *else class="btn badge badge-primary bold" (click)="this.confirmStatusChange()">
+                <fa icon="unlock mr-2"></fa>
+                Reopen
+            </button>
+
+            <button (click)="this.isInEditMode = true" class="btn badge badge-success bold">
+                Edit
+            </button>
+        </div>
+        <h1 class="m-b-1 title">
+            <span [html]="this.discussion.title"></span>
+            <small *if="this.discussion.team.type" class="teal-text bold ml-2"
+                [html]="this.discussion.team.type + ' team'"></small>
+            <span *if="this.discussion.status == 'opened'" class="badge ml-2 badge-success">Opened</span>
+            <span *elseif="this.discussion.status == 'closed'" class="badge ml-2 badge-danger">Closed</span>
+        </h1>
+        <img [src]="this.discussion.createdBy.image" [alt]="this.discussion.createdBy.name" class="user-image" />
+        <div class="d-inline-block">
+            <div [html]="this.discussion.createdBy.name"></div>
+            <div>
+                <flk-time-ago class="ago" [timestamp]="this.discussion.createdAt.timestamp"></flk-time-ago>
+            </div>
+        </div>
+
+        <div class="simple-card m-y-1">
+            <markdown [content]="this.discussion.discussion"></markdown>
+        </div>
+
+        <comments [disable-comments]="this.discussion.status == 'closed'" [project]="this.project" type="discussion"
+            [comments]="this.discussion.comments" [type-id]="this.discussion.id"></comments>
+    </div>
+
+    <project-discussion-form 
+        *if="this.isInEditMode" 
+        [project]="this.project" 
+        [discussion]="this.discussion"
+        (close)="this.isInEditMode = null">
+    </project-discussion-form>
+</project-layout>
+
+<flk-alert *if="this.confirmStatusChanging" (close)="this.confirmStatusChanging = null" (confirm)="this.changeStatus()">
+</flk-alert>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

@@ -1,0 +1,76 @@
+#notifications-list {
+    @include responsive((0: (width: 32rem,
+                margin-left: 16rem,
+            ),
+            375: (width: 37rem,
+                margin-left: 16rem,
+            ),
+            425: (width: 42rem,
+                margin-left: 16rem,
+            ),
+            768: (width: 50rem,
+                margin-left: -29rem),
+            1024: (margin-left: -26rem),
+        ));
+
+    .arrow-up {
+        @include responsive((0: (left: 38%,
+                ),
+                375: (left: 40%,
+                ),
+                425: (left: 42%,
+                ),
+                768: (left: 59%,
+                ),
+                1024: (left: 52%,
+                ),
+            ));
+    }
+
+    .notification-text {
+        display: inline-block;
+        width: calc(100% - 100px);
+        vertical-align: middle;
+    }
+
+    .image {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
+
+    .content {
+        display: inline-block;
+        width: calc(100% - 55px);
+        vertical-align: middle;
+        border: none;
+    }
+
+    .panel-item {
+        position: relative;
+
+        .remove-btn {
+            position: absolute;
+            top: -0.5rem;
+            right: 0.5rem;
+
+            .icon {
+                color: #124a45;
+            }
+        }
+    }
+
+    .footer {
+        text-align: right;
+        margin-right: 1rem;
+        border-top: 1px solid #eee;
+        padding: 0.5rem;
+        .remove-all-btn {
+            font-weight: bold;
+            color: rgb(172, 37, 37);
+            .icon {
+                color: inherit;
+            }
+        }
+    }
+}

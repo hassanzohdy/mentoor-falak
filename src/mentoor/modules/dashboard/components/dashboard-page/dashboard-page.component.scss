@@ -1,0 +1,29 @@
+#dashboard-page {
+    .note {
+        color: #999 !important;
+        padding-#{$left}: 2rem;
+        border-left-color: #eee;
+        max-height: 30vh;
+        overflow: auto;
+        margin-top: 1rem;
+    }
+
+    .content {
+        max-height: 50vh;
+        overflow: auto;
+    }
+
+    .topics-list {
+        max-height: 400px;
+        overflow: auto; 
+
+        ul {
+            padding: 0;
+        }
+    }
+
+
+    .tab-pane {
+        // padding: 1rem;
+    }
+}

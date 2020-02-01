@@ -1,0 +1,32 @@
+<section class="card" id="dashboard-user-topics">
+    <header class="card-header">
+        <div class="media align-items-center">
+            <div class="text-center" id="total-topics">
+                <span class="badge purple rounded-circle"
+                    [html]="this.topics.length > 99 ? '99+' : this.topics.length"></span>
+            </div>
+            <div class="media-body">
+                <h4 class="card-title">Topics</h4>
+                <p class="card-subtitle">you didn't answer yet.</p>
+            </div>
+        </div>
+    </header>
+    <ul class="list-group list-group-fit topics-list mb-0">
+        <ul>
+            <li class="list-group-item border-left-0 border-right-0" *for="let topic of this.topics">
+                <div class="media align-items-center">
+                    <div class="media-body">
+                        <a class="text-body bold" [href]="URLS.topic(topic)">
+                            {{ topic.title }}
+                            <span class="float-right">
+                                <gold-icon [coins]="topic.prize"></gold-icon>
+                            </span>
+                        </a>
+                        <br />
+                        <a class="d-block" [href]="URLS.track(topic.track)">{{ topic.track.name }}</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </ul>
+</section>

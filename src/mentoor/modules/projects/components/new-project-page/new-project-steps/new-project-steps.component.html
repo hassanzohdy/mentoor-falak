@@ -1,0 +1,12 @@
+<div id="project-steps">
+    <div class="checkout-wrap">
+        <ul class="checkout-bar" [class]="{visited: this.user.isLoggedIn(), active: ! this.user.isLoggedIn()}">
+            <li class="first" [class]="{visited: this.user.isLoggedIn()}">
+                <a href="/login">Login</a>
+            </li>
+            <li *for="let step, index of this.steps" [class]="{visited: this.currentStep > index, previous: this.currentStep > index, active: this.currentStep == index, next: this.currentStep < index }" [html]="step"></li>
+            <li [class]="{visited: this.currentStep > this.steps.length, active: this.currentStep == this.steps.length}">Finish</li>
+        </ul>
+    </div>
+</div>
+<div class="clear"></div>

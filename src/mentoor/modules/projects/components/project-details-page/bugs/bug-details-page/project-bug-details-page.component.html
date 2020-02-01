@@ -1,0 +1,200 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div class="text-right m-b-1">
+        <a [href]="URLS.project(this.project, 'bugs')" class="btn bold btn-purple">
+            <fa icon="arrow-left mr-2"></fa>
+            Back to
+            <span class="mx-2">
+                <img [src]="assets('images/bug.jpg')" style="width: 20px; height: 30px; border-radius: 50%;" />
+                <span class="bold red-text">s</span>
+            </span>
+            List
+        </a>
+    </div>
+    <div *if="this.bug" class="bug row">
+        <div class="col col-sm-9 order-12 order-sm-1">
+            <!-- <h1 [html]="this.bug.title + ' #' + this.bug.id"></h1> -->
+            <h1 [html]="'#' + this.bug.id + ' ' + this.bug.title" class="title"></h1>
+            <img [src]="this.bug.createdBy.image" [alt]="this.bug.createdBy.name" class="user-image" />
+            <div class="d-inline-block">
+                <div [html]="this.bug.createdBy.name"></div>
+                <div>
+                    <flk-time-ago class="ago" [timestamp]="this.bug.createdAt.timestamp"></flk-time-ago>
+                </div>
+            </div>
+
+            <div class="simple-card p-1 m-y-1">
+                <div class="result-heading">Description</div>
+                <markdown [content]="this.bug.description"></markdown>
+                <flk-audio-player *if="this.bug.record" [src]="this.bug.record"></flk-audio-player>
+            </div>
+
+            <div *if="this.bug.stepsToReproduce" class="simple-card p-1 m-b-1">
+                <div class="result-heading">Steps To Reproduce</div>
+                <ol class="steps-list">
+                    <li *for="let step of this.bug.stepsToReproduce.split('\n')" [html]="step"></li>
+                </ol>
+            </div>
+
+            <div *if="this.bug.expectedBehavior" class="simple-card p-1 m-b-1">
+                <div class="result-heading">Expected Result</div>
+                <markdown [content]="this.bug.expectedBehavior"></markdown>
+            </div>
+
+            <div *if="this.bug.actualResult" class="simple-card p-1 m-b-1">
+                <div class="result-heading">Actual Result</div>
+                <markdown [content]="this.bug.actualResult"></markdown>
+            </div>
+
+            <div *if="! Is.empty(this.bug.attachments)" class="m-b-2">
+                <h2>Attachments ({{ this.bug.attachments.length }})</h2>
+
+                <a *for="let attachment of this.bug.attachments" [href]="attachment" target="_blank">
+                    <img *if="isImage(attachment)" [src]="attachment" [alt]="this.bug.title" width="100px"
+                        height="100px" class="img-thumbnail m-l-1" />
+                    <button *else class="btn btn-pink">Open Attachment</button>
+                </a>
+            </div>
+
+            <comments [project]="this.project" type="bug" [comments]="this.bug.comments" [type-id]="this.bug.id">
+            </comments>
+
+            <h3 class="bold m-t-2 m-b-1">Bug Status Change Log</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Created By</th>
+                        <th>Created</th>
+                        <th>Extra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *for="let status of this.bug.statuses">
+                        <td [html]="status.status.capitalize()"></td>
+                        <td [html]="status.createdBy.name"></td>
+                        <td>
+                            <flk-time-ago [timestamp]="status.createdAt.timestamp"></flk-time-ago>
+                        </td>
+                        <td>
+                            <if condition="status.extra">
+                                <span *if="['notBug', 'deferred', 'rejected', 'reopened'].includes(status.status)"
+                                    [html]="status.extra"></span>
+
+                                <a *elseif="status.status == 'Duplicated'"
+                                    [href]="URLS.project(this.project, 'bugs', {id: status.extra})">Duplicated Bug
+                                    #{{ status.extra }}</a>
+                            </if>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col col-sm-3 order-1">
+            <div class="simple-card">
+                <h2 class="text-center">Bug Information</h2>
+                <div *if="this.bugCanBeEdited" class="text-center">
+                    <button type="button" (click)="this.editBug = true" class="btn btn-sm btn-success bold">Edit</button>
+                </div>
+                <table class="table m-t-2">
+                    <tbody>
+                        <tr>
+                            <td>Status</td>
+                            <th class="bold status {{ this.bug.status }}" [html]="this.bug.status"></th>
+                        </tr>
+                        <tr *if="this.bug.priority">
+                            <td>Priority</td>
+                            <th class="bold priority {{ this.bug.priority }}" [html]="this.bug.priority"></th>
+                        </tr>
+                        <tr *if="this.bug.dueDate">
+                            <td>Due Date</td>
+                            <th class="bold" [trans]="this.bug.dueDate"></th>
+                        </tr>
+                        <!-- <tr *if="this.bug.department">
+                            <td>Department</td>
+                            <th class="bold" [html]="this.bug.department"></th>
+                        </tr> -->
+                        <tr *if="this.bug.classification">
+                            <td>Classification</td>
+                            <th class="bold" [trans]="this.bug.classification"></th>
+                        </tr>
+                        <tr *if="this.bug.severity">
+                            <td>Severity</td>
+                            <th class="bold" [trans]="this.bug.severity"></th>
+                        </tr>
+                        <tr *if="this.bug.reproducible">
+                            <td>Reproducible</td>
+                            <th class="bold" [trans]="this.bug.reproducible"></th>
+                        </tr>
+                        <tr *if="this.bug.testingUrl">
+                            <th>Testing Url</th>
+                            <td>
+                                <a class="btn btn-sm bold btn-orange" [href]="this.bug.testingUrl" target="_blank">Open Link</a>
+                            </td>
+                        </tr>
+                        <tr *if="this.bug.sprint">
+                            <td>Sprint</td>
+                            <th>
+                                <a [href]="URLS.project(this.project, 'sprints', this.bug.sprint)" class="bold"
+                                    [html]="this.bug.sprint.name"></a>
+                            </th>
+                        </tr>
+                        <tr *if="this.bug.testCase?.id">
+                            <td>Test Case</td>
+                            <th>
+                                <a [href]="URLS.project(this.project, 'test-cases', this.bug.testCase)" class="bold"
+                                    [html]="this.bug.testCase.title"></a>
+                            </th>
+                        </tr>
+                        <tr *if="this.bug.module">
+                            <td>Module</td>
+                            <th>
+                                <!-- <a href="#" class="bold" -->
+                                <a [href]="URLS.project(this.project, 'modules', this.bug.module)" class="bold"
+                                    [html]="this.bug.module.name"></a>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *if="! Is.empty(this.bug.assignee)" class="simple-card mt-2">
+                <h2 class="text-center">Assigned To</h2>
+                <div *for="let member of this.bug.assignee" class="m-t-1">
+                    <img [src]="member.image" [alt]="member.name" width="60px" height="60px" class="rounded-circle" />
+                    <strong class="ml-3 teal-text" [html]="member.name"></strong>
+                </div>
+            </div>
+
+            <div *if="this.bugStatusCanBeChanged()" class="simple-card mt-2">
+                <h2 class="text-center m-b-1">Bug Status</h2>
+                <div 
+                    *if="this.bug.status == 'fixed' && this.project.currentSprint?.id && this.bug.sprint?.id && this.bug.sprint?.id == this.project.currentSprint?.id" 
+                    class="red-text text-center bold">
+                    Can not retest bug in same project sprint.
+                </div>
+                <flk-dropdown-list 
+                    *else 
+                    [value]="this.bug.status" 
+                    heading="Change Bug Status"
+                    [items]="this.getProperStatuses()"
+                    (select)="this.oldStatus = this.bug.status; this.confirmStatusChange = e.value != this.bug.status; this.newStatus = e.value">
+                </flk-dropdown-list>
+            </div>
+        </div>
+    </div>
+
+</project-layout>
+
+<flk-alert *if="this.confirmStatusChange" [with-input]="this.isRequiringValue()" [message]="this.getConfirmingMessage()"
+    [required]="this.isRequiringValue()" (close)="this.confirmStatusChange = null;" (confirm)="this.updateStatus(e)">
+</flk-alert>
+
+
+<bug-modal
+    *if="this.editBug"
+    [record]="this.bug"
+    [project]="this.project"
+    (close)="this.editBug = null;"
+    (save)="this.prepareBug(e)"
+></bug-modal>

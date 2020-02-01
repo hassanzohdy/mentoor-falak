@@ -1,0 +1,211 @@
+<nav class="col-12 col-sm-3 col-lg-2 d-md-block" id="project-sidebar">
+    <if condition="this.project">
+        <h1 class="project-name" [html]="this.project.name"></h1>
+        <ul>
+            <li>
+                <a [href]="URLS.project(this.project)" [class]="this.isActiveLink('')">
+                    <fa icon="tachometer-alt"></fa>
+                    <span>Overview</span>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'resources')" [class]="this.isActiveLink('resources')">
+                    <fa icon="bezier-curve"></fa>
+                    <span>Resources</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'attachments')" [class]="this.isActiveLink('attachments')">
+                    <fa icon="paperclip"></fa>
+                    <span>Attachments</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li> -->
+            <li>
+                <a [href]="URLS.project(this.project, 'members')" [class]="this.isActiveLink('members')">
+                    <fa icon="users"></fa>
+                    <span>Members</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'sprints')" [class]="this.isActiveLink('sprints')">
+                    <fa icon="running"></fa>
+                    <span>Sprints</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'user-stories')" [class]="this.isActiveLink('user-stories')">
+                    <fa icon="sticky-note"></fa>
+                    <span>User Stories</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'tasks-board')" [class]="this.isActiveLink('tasks-board')">
+                    <fa icon="tasks"></fa>
+                    <span>Tasks Board</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'polls')" [class]="this.isActiveLink('polls')">
+                    <fa icon="poll"></fa>
+                    <span>Polls</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li> -->          
+            <li>
+                <a [href]="URLS.project(this.project, 'test-suits')" [class]="this.isActiveLink('test-suits')">
+                    <fa icon="toolbox"></fa>
+                    <span>Test Suits</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>  
+            <li>
+                <a [href]="URLS.project(this.project, 'bugs')" class="pt-0" tooltip title="Bugs"
+                    [class]="this.isActiveLink('bugs')">
+                    <img [src]="assets('images/bug.jpg')" style="width: 20px; height: 30px; border-radius: 50%;" />
+                    <span class="bold red-text" style="font-size: 3rem">s</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'meetings')" [class]="this.isActiveLink('meetings')">
+                    <fa icon="handshake"></fa>
+                    <span>Meetings</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'reminders')" [class]="this.isActiveLink('reminders')">
+                    <fa icon="business-time"></fa>
+                    <span>Reminders</span>
+                    <fa icon="lock float-right mt-2"></fa>
+                </a>
+            </li> -->
+            <li *if="this.project.isHigherAuthority">
+                <a [href]="URLS.project(this.project, 'recruitment')" [class]="this.isActiveLink('recruitment')">
+                    <fa icon="suitcase"></fa>
+                    <span>Recruitment</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'teams')" [class]="this.isActiveLink('teams')">
+                    <fa icon="people-carry"></fa>
+                    <span>Teams</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li *if="this.project.isHigherAuthority">
+                <a [href]="URLS.project(this.project, 'supervisors')" [class]="this.isActiveLink('supervisors')">
+                    <fa icon="user-secret"></fa>
+                    <span>Supervisors</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li *if="this.project.isHigherAuthority">
+                <a [href]="URLS.project(this.project, 'client')" [class]="this.isActiveLink('client')">
+                    <fa icon="user-secret"></fa>
+                    <span>Client</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'modules')" [class]="this.isActiveLink('modules')">
+                    <fa icon="cogs"></fa>
+                    <span>Modules</span>
+                </a>
+            </li>
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'milestones')" [class]="this.isActiveLink('milestones')">
+                    <fa icon="archway"></fa>
+                    <span>Milestones</span>
+                    <fa icon="lock float-right mt-2"></fa>
+                </a>
+            </li> -->
+            <li>
+                <a [href]="URLS.project(this.project, 'change-requests')"
+                    [class]="this.isActiveLink('change-requests')">
+                    <fa icon="exchange-alt"></fa>
+                    <span>Change Requests (CR)</span>
+                    <fa *if="! this.project.isMember" icon="lock float-right mt-2"></fa *if="! this.project.isMember">
+                </a>
+            </li>   
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'todo-list')" [class]="this.isActiveLink('todo-list')">
+                    <fa icon="check-double"></fa>
+                    <span>Todo List</span>
+                    <fa *if="! this.project.isMember" icon="lock float-right mt-2"></fa>
+                </a>
+            </li> -->
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'calendar')" [class]="this.isActiveLink('calendar')">
+                    <fa icon="calendar-alt"></fa>
+                    <span>Calendar</span>
+                    <fa *if="! this.project.isMember" icon="lock float-right mt-2"></fa>
+                </a>
+            </!--> 
+            <li>
+                <a [href]="URLS.project(this.project, 'srs')" tooltip title="Software Requirements Specifications"
+                    [class]="this.isActiveLink('srs')">
+                    <fa icon="book"></fa>
+                    <span>(SRS)</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'documentation')" [class]="this.isActiveLink('documentation')">
+                    <fa icon="book-dead"></fa>
+                    <span>Documentation</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'discussions')" [class]="this.isActiveLink('discussions')">
+                    <fa fab="rocketchat"></fa>
+                    <span>Discussions</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <!-- <li>
+                <a [href]="URLS.project(this.project, 'shopping-mall')" [class]="this.isActiveLink('shopping-mall')">
+                    <fa icon="shopping-cart"></fa>
+                    <span>Shopping Mall</span>
+                    <fa icon="lock float-right mt-2"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'activities')" [class]="this.isActiveLink('activities')">
+                    <fa icon="snowboarding"></fa>
+                    <span>Activities</span>
+                    <fa icon="lock float-right mt-2"></fa>
+                </a>
+            </li>
+            <li>
+                <a [href]="URLS.project(this.project, 'top-participants')"
+                    [class]="this.isActiveLink('top-participants')">
+                    <fa icon="chart-line"></fa>
+                    <span>Top Participants</span>
+                    <fa icon="lock float-right mt-2"></fa>
+                </a>
+            </li>  -->
+            <li>
+                <a [href]="URLS.project(this.project, 'fund')" [class]="this.isActiveLink('fund')">
+                    <fa icon="coins"></fa>
+                    <span>Fund</span>
+                    <fa *if="! this.project.isMember" icon="lock ml-2 float-right mt-2" tooltip title="You're not a project member"></fa>
+                </a>
+            </li>
+            <li *if="this.project.isHigherAuthority">
+                <a [href]="URLS.project(this.project, 'settings')" [class]="this.isActiveLink('settings')">
+                    <fa icon="cog"></fa>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    </if>
+</nav>

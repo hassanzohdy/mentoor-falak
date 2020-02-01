@@ -1,0 +1,63 @@
+<flk-modal *if="this.modalIsOpened" *as="recruitmentModal" (close)="this.modalIsOpened = null" size="small"
+    header="Open Recruitment">
+    <form *as="form" (submit)="this.confirmFirst = true">
+        <div class="row">
+            <div class="col-sm-6">
+                <flk-dropdown-list name="team" [value]="this.currentRecruitment.team" [items]="this.teamsList()"
+                    required label="Team">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-sm-6">
+                <flk-dropdown-list name="role" [value]="this.currentRecruitment.role" label="Role" required
+                    [items]="['teamLeader', 'member']" placeholder="Role">
+                </flk-dropdown-list>
+            </div>
+        </div>
+        <div class="row m-y-1">
+            <div class="col-sm-6">
+                <flk-dropdown-list name="title" [value]="this.currentRecruitment.title" label="Title" required
+                    [items]="this.titlesList()">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-sm-6">
+                <flk-dropdown-list name="experience" [value]="this.currentRecruitment.experience" label="Experience"
+                    required [items]="FLAGS.projects.experience">
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <input type="hidden" name="fundPercentage" [value]="this.currentRecruitment.fundPercentage" />
+
+                <form-input type="number" [value]="this.currentRecruitment.cost" name="cost" class="form-control"
+                    placeholder="Acceptance cost to join the project team" required
+                    [label]="this.acceptanceFundPercentageNote">
+                </form-input>
+            </div>
+            <div class="col-sm-6">
+                <form-input type="number" name="reward.onFinish" [value]="this.currentRecruitment.reward.onFinish"
+                    class="form-control" required label="On Project Finish Reward"></form-input>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <form-input type="number" name="reward.onDismiss" [value]="this.currentRecruitment.reward.onDismiss"
+                    class="form-control" required label="Reward On Dismiss (On Firing)"></form-input>
+            </div>
+            <div class="col-sm-6">
+                <form-input type="number" name="reward.taskAverage" [value]="this.currentRecruitment.reward.taskAverage"
+                    class="form-control" required label="Task Average reward"></form-input>
+            </div>
+        </div>
+
+        <form-input type="textarea" name="description" class="form-control"
+            [value]="this.currentRecruitment.description" label="Recruitment details (Markdown)">
+        </form-input>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="this.isSending" class="btn btn-success bold">Perform</button>
+        </div>
+    </form>
+</flk-modal>

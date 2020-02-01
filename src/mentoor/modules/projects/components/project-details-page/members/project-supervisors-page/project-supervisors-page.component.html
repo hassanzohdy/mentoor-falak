@@ -1,0 +1,61 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button 
+        class="float-right btn btn-success bold" 
+        (click)="this.openModal('add')"
+        [disabled]="this.newSupervisorCost > this.project.fund"
+        >
+        <fa icon="plus mr-1"></fa>
+        <gold-icon [coins]="this.newSupervisorCost"></gold-icon>
+        <br>
+        Supervisor
+    </button>
+
+    <h1 class="m-y-1">
+        {{ this.project.name }} Supervisors
+        ({{ this.totalSupervisors.format() }})
+    </h1>
+
+    <table class="m-t-2 table table-bordered">
+        <thead>
+            <tr>
+                <th>Supervisor</th>
+                <th>Added By</th>
+                <th>Added At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.supervisors)">
+                <td colspan="3" text-center>No supervisors yet</td>
+            </tr>
+            <tr *else *for="let supervisor of this.supervisors">
+                <td [html]="supervisor?.member?.name" class="bold"></td>
+                <td [html]="supervisor?.createdBy?.name"></td>
+                <td>
+                    <flk-time-ago [timestamp]="supervisor.createdAt.timestamp"></flk-time-ago>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small" header="Add new supervisor">
+    <form (submit)="this.submit($el)">
+        <flk-dropdown-list 
+            name="supervisorId" 
+            label="Select supervisor"
+            [required]="true"
+            heading="Supervisor" 
+            [lazy-loading]="true" 
+            [remote-search]="true" 
+            [except]="this.membersIds"
+            query="username"
+            [service]="this.usersService" 
+            (map)="return this.mapUser(e)"
+            placeholder="Enter @username to add" 
+        ></flk-dropdown-list>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Add</button>
+        </div>
+    </form>
+</flk-modal>

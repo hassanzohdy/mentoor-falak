@@ -1,0 +1,17 @@
+#dashboard-posts {
+    // Picasso is ready to draw :)
+
+    .post {
+        background: #FFF;
+        box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+
+        a {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .badge {
+            margin-left: 1rem;
+        }
+    }
+}

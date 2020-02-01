@@ -1,0 +1,25 @@
+.tag {
+    background: #E1ECF4;
+    padding: 1rem;
+
+    $size: 10px;
+
+    span {
+        color: #39739d;
+    }
+
+    img {
+        width: 35px;
+        height: 35px;
+        margin-right: 0.5rem;
+    }
+
+    &.small {
+        font-size: 0.8rem;
+
+        img {
+            width: 10px;
+            height: 10px;
+        }
+    }
+}

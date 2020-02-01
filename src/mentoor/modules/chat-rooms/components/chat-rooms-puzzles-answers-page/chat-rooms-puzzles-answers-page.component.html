@@ -1,0 +1,39 @@
+<admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
+    [hide-add-btn]="true" [table-heading]="this.tableHeading">
+    <tr *for="let user of this.items">
+        <td>{{user.id}}</td>
+        <td [html]="user.name"></td>
+        <td>
+            <flk-time-ago [timestamp]="user.chatRooms.sentAt.timestamp"></flk-time-ago>
+        </td>
+        <td><a trans="view-answers" (click)="this.editItem(user)"></a></td>
+    </tr>
+</admin-table>
+<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.hading" (close)="this.closeModal();">
+    <h1>Answer URL</h1>
+    <a href="{{ this.formObject.chatRooms.answerUrl }}" target="_blank">View answer</a>
+
+    <form (submit)="this.submit($el)" class="m-t-1">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <select required class="form-control" name="status" [value]="this.formObject.chatRooms.status">
+                        <option *for="let type of this.answerStatus" [value]="type">{{type}}</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <form-input type="number" name="reward" [value]="this.formObject.chatRooms.reward"
+                        placeholder="reward"
+                        class="form-control"></form-input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea type="password" [value]="this.formObject.chatRooms.notes" name="notes" placeholder="Notes"
+                class="form-control"></textarea>
+        </div>
+        <div class="form-btns d-flex justify-content-end">
+            <button class="btn btn-primary" trans="save" [disabled]="!this.isValidForm || this.submitting"></button>
+        </div>
+    </form>
+</flk-modal>

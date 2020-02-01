@@ -1,0 +1,128 @@
+<div class="project-comments-list" [class]="{child: this.parentComment}">
+    <h2 class="bold m-y-2 heading" (click)="this.toggleParentComments()">
+        <span *if="! this.parentComment">Comments</span>
+        <span *else>Replies</span>
+        ({{ this.commentsList.length }})</h2>
+    <div *for="let comment, index of this.commentsList" *key="comment.id" [id]="'cmnt' + comment.id"
+        class="comment simple-card p-1 m-b-1">
+        <span class="action-btns float-right"
+            *if="this.project.isHigherAuthority || comment.createdBy.id == this.user.id">
+            <button type="button" *if="! this.comment || this.comment.id != comment.id"
+                (click)="this.comment = comment; this.index = index; this.editMode = true; this.detectChanges();">
+                <fa icon="edit"></fa>
+                Edit
+            </button>
+            <button type="button" *elseif="this.comment && this.comment.id == comment.id"
+                (click)="this.comment = null; this.editMode = false; this.detectChanges();">
+                Cancel
+            </button>
+
+            <button type="button" *if="! this.comment || this.comment.id != comment.id"
+                (click)="echo(comment); this.confirmRemoving(comment, index); this.detectChanges();">
+                <fa icon="times mr-2"></fa>
+                Delete
+            </button>
+        </span>
+        <div class="row w-100">
+            <div class="col-sm-1 col-12">
+                <img [src]="comment.createdBy.image" [alt]="comment.createdBy.name" class="user-image" />
+            </div>
+
+            <div class="col p-0 meta-comment">
+                <div>
+                    <span [html]="comment.createdBy.name"></span>
+                </div>
+                <div class="m-b-1">
+                    <flk-time-ago class="ago" [timestamp]="comment.createdAt.timestamp"></flk-time-ago>
+                </div>
+                <div *if="! this.editMode">
+                    <markdown class="comment-text"
+                        *if="comment.comment.split('\n').length <= this.maxCommentLines || comment.isExpanded"
+                        [content]="comment.comment"></markdown>
+                    <else>
+                        <markdown class="comment-text"
+                            [content]="comment.comment.split('\n').slice(0, this.maxCommentLines).join('\n')">
+                        </markdown>
+
+                        <div>...</div>
+                        <button type="button" class="bold orange-text"
+                            (click)="comment.isExpanded = true; this.detectChanges();">Continue Reading...</button>
+                    </else>
+                </div>
+
+                <div *if="comment.record" class="m-t-1">
+                    <flk-audio-player [src]="comment.record"></flk-audio-player>
+                </div>
+            </div>
+        </div>
+        <div *if="! Is.empty(comment.attachments)">
+            <h4 class="bold">Attachments ({{ comment.attachments.length }})</h4>
+
+            <a *for="let attachment of comment.attachments" [href]="attachment" target="_blank">
+                <img *if="isImage(attachment)" [src]="attachment" [alt]="comment.comment" width="100px" height="100px"
+                    class="img-thumbnail m-l-1" />
+                <button *else class="btn btn-pink">Open Attachment</button>
+            </a>
+        </div>
+
+        <form *if="this.comment && this.comment.id == comment.id && this.editMode" class="m-t-1"
+            (submit)="this.submitComment($el)">
+            <input type="hidden" *if="this.parentComment" name="parent" [value]="this.parentComment.id" />
+            <input type="hidden" name="project" [value]="this.project.id" />
+            <input type="hidden" name="typeId" [value]="this.typeId" />
+            <input type="hidden" name="type" [value]="this.type" />
+            <input type="hidden" name="id" [value]="this.commentId" />
+            <form-input type="textarea" class="form-control" [value]="this.comment.comment" required
+                placeholder="Write a comment... (Markdown Support)" name="comment"></form-input>
+            <flk-file-input name="attachments[]" *as="fileInput" *as-array="false" class="btn btn-info bold"
+                [multiple]="true" label="Attachments">
+                <fa icon="cloud-upload-alt"></fa>
+                <strong class="ml-2">Attachments</strong>
+            </flk-file-input>
+            <record-audio-input *if="! this.isSending" *as="editRecordAudio" *as-array="false"></record-audio-input>
+
+            <button class="btn btn-pink bold m-t-1" [disabled]="this.isSending || ! this.isValidForm">Comment</button>
+        </form>
+
+        <h2 class="sub-comments-heading" (click)="comment.commentsAreOpened = true; this.detectChanges();"
+            *if="! comment.commentsAreOpened">
+            <span>Replies</span>
+            ({{ comment.comments.length }})
+        </h2>
+
+        <project-comments *elseif="comment.commentsAreOpened" [disable-comments]="this.disableComments"
+            [parent]="comment" [comments]="comment.comments" [type]="this.type" [type-id]="this.typeId"
+            [project]="this.project"></project-comments>
+    </div>
+
+    <!-- New Comment -->
+
+    <div *if="this.disableComments && ! this.parentComment" class="text-center bold petrol-text closed-comments">
+        Comments Are Closed
+    </div>
+    <div *elseif="this.disableComments && this.parentComment"></div>
+    <form *else (submit)="this.submitComment($el)" class="m-t-4">
+        <input type="hidden" *if="this.parentComment" name="parent" [value]="this.parentComment.id" />
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <input type="hidden" name="typeId" [value]="this.typeId" />
+        <input type="hidden" name="type" [value]="this.type" />
+        <form-input type="textarea" class="form-control" [value]="this.newComment" required="true"
+            placeholder="Write a comment... (Markdown Support)" name="comment">
+        </form-input>
+
+        <div class="files">
+            <flk-file-input name="attachments[]" *as="fileInput" class="btn btn-info bold" [multiple]="true"
+                label="Attachments">
+                <fa icon="cloud-upload-alt"></fa>
+                <strong class="ml-2">Attachments</strong>
+            </flk-file-input>
+
+            <record-audio-input *if="! this.isSending" class="audio-input" *as="recordAudio"></record-audio-input>
+        </div>
+        <button class="btn btn-pink bold m-t-1" [disabled]="this.isSending || ! this.isValidForm">Comment</button>
+    </form>
+</div>
+
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

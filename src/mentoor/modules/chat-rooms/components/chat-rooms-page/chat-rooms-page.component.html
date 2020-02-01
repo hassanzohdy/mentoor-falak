@@ -1,0 +1,147 @@
+<layout>
+    <h1>Chat Rooms</h1>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <div *else>
+        <button *if="this.user.id === 1" (click)="this.openChatRoom = true" class="btn btn-success bold btn-sm">
+            <fa icon="plus mr-2"></fa>
+            Room
+        </button>
+
+        <h1 *if="Is.empty(this.chatRooms)" class="text-center m-t-3">No chat rooms at the moment.</h1>
+        <span *else>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr *for="let room, index of this.chatRooms" class="room-row">
+                        <td>
+                            <img [src]="room.image || FAVICON" class="image" [alt]="room.name" />
+                            <div class="meta">
+                                <span class="name" [html]="room.name"></span>
+                                <p class="description" [html]="room.description"></p>
+                            </div>
+                        </td>
+                        <td class="text-center bold v-middle text-capitalize">
+                            <div class="teal-text" [html]="room.category"></div>
+                            <div title="Speaking|writing Language">
+                                <fa icon="comments mr-2 v-middle grey-text"></fa>
+                                <small class="bold pink-text"
+                                    [html]="room.language == 'all' ? 'All languages' : room.language"></small>
+                            </div>
+                        </td>
+                        <td class="text-center v-middle">
+                            <fa icon="users fa-2x"></fa>
+                            <div class="members bold">
+                                <span [html]="room.members.length.format()"></span> /
+                                <span *if="room.type != 'global'" [html]="room.maxMembers"></span>
+                                <fa *else icon="infinity"></fa>
+                            </div>
+                        </td>
+                        <td class="v-middle">
+                            <fa *if="room.type == 'global'" icon="globe-americas fa-2x blue-text" title="Global room">
+                            </fa>
+                            <fa *if="room.type == 'custom'" icon="globe-asia fa-2x pink-text" title="Custom room">
+                            </fa>
+                        </td>
+                        <td class="text-center v-middle" title="Requires">
+                            <span *if="room.acceptanceCost == 0" class="bold pink-text">FREE!</span>
+                            <else>
+                                <gold-icon [coins]="room.acceptanceCost"></gold-icon>
+                            </else>
+                        </td>
+                        <td class="text-center v-middle">
+                            <if condition="this.user.isLoggedIn()">
+                                <if condition="! this.userIsMemberOf(room) && ! this.userIsRequestingToJoin(room)">
+                                    <fa *if="room.acceptanceCriteria && this.user.gold > room.acceptanceCost"
+                                        title="Has an acceptance criteria"
+                                        icon="question-circle mr-2 fa-2x v-middle grey-text"></fa>
+
+                                    <button [disabled]="this.user.gold < room.acceptanceCost" type="button"
+                                        class="btn btn-info btn-sm bold"
+                                        (click)="this.confirmingRoom(room, index)">Join</button>
+                                    <div *if="this.user.gold < room.acceptanceCost" class="bold red-text">Insufficient
+                                        gold!</div>
+                                </if>
+                                <div *elseif="this.userIsRequestingToJoin(room)" class="bold orange-text">Waiting for
+                                    approval</div>
+                                <fa *else icon="check fa-2x green-text" title="Joined"></fa>
+                            </if>
+                            <a *else href="/login" class="btn btn-sm btn-danger bold">
+                                <fa icon="lock fa-1x mr-2" title="Login to join"></fa>
+                                Login to join
+                            </a>
+                        </td>
+                        <td *if="this.userIsModeratorOf(room)" class="text-center">
+                            <span *if="room.requests.length > 0" class="can-unlock">
+                                !
+                            </span>
+                            <br *if="room.requests.length > 0">
+                            <button type="button" (click)="this.getRoomRequests(room, index)" class="btn bold" [class]="{'btn-info': room.requests.length  == 0, 'btn-warning': room.requests.length > 0}">
+                                    Requests
+                                    <span *if="room.requests.length > 0" class="ml-2" [html]="'(' + room.requests.length + ')'"></span> 
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</layout>
+
+<chat-room-modal *if="this.openChatRoom" (close)="this.openChatRoom = null" (save)="this.chatRooms.push(e)">
+</chat-room-modal>
+
+<flk-modal *if="this.openRoomRequests" (close)="this.openRoomRequests = false" header="Room Requests ({{ this.currentRoom.name }})">
+    <flk-spinner *if="this.isLoadingRequests"></flk-spinner>
+    <table *else class="table table-bordered m-t-2">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>acceptance Criteria Answer</th>
+                <th>Action</th>
+            </tr>
+            <tr *for="let roomRequest, index of this.roomRequests">
+                <td [html]="roomRequest.member.name"></td>
+                <td>
+                    <button type="button" *if="roomRequest.acceptanceCriteriaAnswer" (click)="this.openCurrentRequestAnswer = !!! this.openCurrentRequestAnswer; this.currentRequest = roomRequest" class="btn btn-info btn-sm bold">View</button>
+                    <strong *else>N/a</strong>
+                </td>
+                <td>
+                    <button type="button" (click)="this.approveRequest(roomRequest, index)" class="btn btn-success btn-sm bold">Approve</button>
+                    <button type="button" (click)="this.declineRequest(roomRequest, index)" class="btn btn-danger btn-sm bold">Decline</button>
+                </td>
+            </tr>
+            <tr *if="this.openCurrentRequestAnswer">
+                <td colspan="3">
+                    <markdown [content]="this.currentRequest.acceptanceCriteriaAnswer"></markdown> 
+                </td>
+            </tr>
+        </thead>
+    </table>
+</flk-modal>
+
+<flk-modal *if="this.openAcceptanceCriteriaModal" (close)="this.openAcceptanceCriteriaModal = false"
+    *as="acceptanceModal" header="Acceptance criteria">
+    <h3 class="bold m-b-2">Please read the acceptance criteria and act accordingly.</h3>
+    <markdown [content]="this.joiningRoom.acceptanceCriteria"></markdown>
+
+    <form (submit)="this.submitAcceptanceCriteria($el)">
+        <form-input name="acceptanceCriteriaAnswer" type="textarea" class="form-control"
+            placeholder="Submit your answer (Markdown)" required></form-input>
+
+        <button class="btn btn-success bold m-t-1">Submit</button>
+    </form>
+</flk-modal>
+
+<flk-modal *as="confirmingModal" *if="this.confirmJoin" (close)="this.confirmJoin = null; this.joiningRoom = null" header="{{ this.joiningRoom.name }} room rules">
+    <h1 class="m-b-1">Please read carefully the rules below to avoid any unhappy actions.</h1>
+    <markdown [content]="this.joiningRoom.rules"></markdown>
+
+    <div class="text-center m-t-1" id="confirming-btns">
+        <button type="button" (click)="this.confirmingModal.close(); this.joinRoom();" class="btn btn-success btn-sm bold">I Agree</button>
+        <button type="button" (click)="this.confirmingModal.close()" class="btn btn-danger btn-sm bold">Cancel</button>
+    </div>
+</flk-modal>
+
+<!-- <flk-alert *if="this.confirmJoin" (close)="this.confirmJoin = null; this.joiningRoom = null" (confirm)="this.joinRoom()"
+    message="Are you sure you want to join ' + this.joiningRoom.name + ' room?"></flk-alert> -->

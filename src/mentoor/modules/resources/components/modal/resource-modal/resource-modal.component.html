@@ -1,0 +1,32 @@
+<flk-modal (close)="this.inputs.getEvent('close')()" *as="modal" [heading]="this.heading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="type" [value]="this.resourceType" />
+        <input *if="this.project" type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="title" label="Resource Title" [value]="this.record.title" required
+            class="form-control"></form-input>
+        <form-input type="textarea" name="description" label="Description" [value]="this.record.description"
+            class="form-control"></form-input>
+            
+        <div class="pl-2">
+            <flk-mdb-checkbox
+                name="pinned"
+                value="1"
+                [checked]="this.record.pinned"
+                (change)="this.record.pinned = $el.checked"
+                label="Pin Resource"
+            ></flk-mdb-checkbox>            
+        </div>
+
+        <resource-image *if="this.resourceType == 'image'"></resource-image>
+        <resource-attachment *elseif="['attachment', 'pdf'].includes(this.resourceType)"></resource-attachment>
+        <resource-email-account *elseif="this.resourceType == 'email'"></resource-email-account>
+        <resource-ftp-account *elseif="this.resourceType == 'ftp'"></resource-ftp-account>
+        <resource-website-account *elseif="this.resourceType == 'website'"></resource-website-account>
+        <resource-youtube *elseif="this.resourceType == 'youtube'"></resource-youtube>
+        <resource-link *elseif="this.resourceType == 'link'"></resource-link>
+
+        <div>
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>

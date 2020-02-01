@@ -1,0 +1,33 @@
+<div class="simple-card" id="project-total-cost">
+    <h3 class="text-center bold m-b-1">Project Cost</h3>
+    <for loop="let costKey, cost in this.totalCost">
+        <div class="row">
+            <div class="col" [html]="costKey"></div>
+            <div class="col">
+                <gold-icon [coins]="cost"></gold-icon>
+                <span *if="cost == 0" class="bold pink-text">FREE!</span>
+            </div>
+        </div>
+    </for>
+    <div *if="this.firstProjectDiscount > 0" class="row">
+        <div class="col">First Project Discount</div>
+        <div class="col">
+            <fa icon="minus"></fa>
+            <gold-icon [coins]="this.firstProjectDiscount"></gold-icon>
+        </div>
+    </div>
+    <div *if="this.data.fund > 0" class="row">
+        <div class="col">Project Fund</div>
+        <div class="col">
+            <gold-icon [coins]="this.data.fund"></gold-icon>
+        </div>
+    </div>
+
+    <div id="total-cost" class="row">
+        <strong class="col">Total:</strong>
+    <div class="col">
+            <gold-icon [coins]="this.finalCost"></gold-icon>
+            <span *if="this.finalCost == 0" class="bold pink-text">FREE!</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<h1 class="m-v-1 bold">Topic suggestion</h1>
+<p>You can suggest a topic to be included in the track topics list.</p>
+
+<p>
+    Once the form is submitted, it will be previewed and checked.
+    If the suggestion is approved, you'll receive
+    <gold-icon [coins]="this.track.suggestTopic.reward"></gold-icon>  
+</p>
+
+<h3 class="m-b-1 bold">Notes before writing.</h3>
+<ul>
+    <li>Make sure the topic is not listed in the topics list.</li>
+    <li>The topic MUST BE related to the track objectives only.</li>
+    <li>The topic MUST BE the same level as the track, for example if the track is for beginners DO NOT add an advanced topic..</li>
+</ul>
+
+<form (submit)="this.suggestNewTopic($el)">
+    <form-input type="text" class="form-control" [value]="this.suggestTopicTitle" label="Title" name="title" required></form-input>
+    <input type="hidden" name="slug" value="{{ seo(this.suggestTopicTitle) }}" />
+    <input type="hidden" name="display" value="1" />
+    <form-input type="textarea" class="form-control" label="Short description about the topic (Appears in the topics list)" name="shortDescription" required></form-input>
+    <form-input type="textarea" class="form-control" label="Quest info (markdown is supported)" name="quest" required></form-input>
+    <form-input type="number" class="form-control" label="Suggesting reward" placeholder="i.e 15000" name="reward" required></form-input>
+    <button class="btn btn-secondary" [disabled]="! this.isValidForm || this.isSubmittingTopicSuggestion">Send</button>
+</form>

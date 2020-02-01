@@ -1,0 +1,147 @@
+<layout>
+    <flk-spinner *if="! this.task"></flk-spinner>
+    <div *else class="row">
+        <div class="col order-12 order-sm-1">
+            <h1 class="m-b-1" [html]="'#' + this.task.id + ' ' + this.task.title"></h1>
+            <div class="teal-text bold" *if="this.task.startsAt">
+                {{ this.task.startsAt }}
+                <if condition="this.task.endsAt">
+                    -
+                    {{ this.task.endsAt }}        
+                </if>
+            </div>
+            
+            <span [tooltip]="true" title="Created At">
+                <flk-time-ago [timestamp]="this.task.createdAt.timestamp"></flk-time-ago>
+            </span>
+    
+            <if condition="this.task.description">
+                <h2 class="bold m-y-2">Details</h2>
+                <p class="description card p-1">
+                    <markdown [content]="this.task.description"></markdown>
+                    <flk-audio-player *if="this.task.descriptionRecord" [src]="this.task.descriptionRecord"></flk-audio-player>
+                </p>        
+            </if>
+
+            <div *if="this.task.participantNotes" class="card p-1 m-y-2">
+                <h3 class="bold pink-text">{{ this.task.participant.name }}</h3>
+
+                <flk-time-ago [timestamp]="this.task.submittedAt.timestamp" class="brown-text bold">
+                </flk-time-ago>
+
+                <p class="description m-y-2">
+                    <markdown [content]="this.task.participantNotes"></markdown>
+                </p>
+
+                <flk-audio-player *if="this.task.participantRecord" [src]="this.task.participantRecord">
+                </flk-audio-player>
+            </div>
+
+            <task-checklist [task]="this.task"></task-checklist>
+
+            <comments [comments]="this.task.comments" [project]="this.task.project" type="task" [type-id]="this.task.id"></comments>
+
+            <h3 class="bold m-t-2 m-b-1">Task Status Change Log</h3>
+
+            <table class="table table-bordered" id="status-table">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Created By</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *for="let status of this.task.statusLog">
+                        <td>
+                            <span [trans]="status.status" class="bold btn btn-sm status" [class]="taskStatus(status)"></span>
+                        </td>
+                        <td [html]="status.status != 'autoFailed' ? status.createdBy.name : 'System'"></td>
+                        <td>
+                            <flk-time-ago [timestamp]="status.createdAt.timestamp"></flk-time-ago>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Sidebar -->
+        <div class="col-sm-3 order-1">
+            <a *if="this.task.project?.id" class="btn bold btn-purple m-b-1" [href]="URLS.project(this.task.project, 'tasks-board')">Back to Tasks Board</a>
+            <div class="card">
+                <div class="text-center">
+                    <div class="task-status badge" [class]="this.getTaskStatus()" [trans]="this.task.status"></div>
+                    <div tooltip title="Task Reward">
+                        <gold-icon [coins]="this.task.reward"></gold-icon>
+                    </div>
+                    <div class="m-b-1" title="Penalty ratio" tooltip>
+                        <strong class="red-text" [html]="this.task.penaltyRatio + 'x'"></strong>
+                    </div>
+
+                    <div *if="this.task.endsAtTimestamp" 
+                         class="m-b-2" 
+                         [tooltip]="true" 
+                         [title]="this.task.endsAtTimestamp - this.task.startsAtTimestamp <= 0 ? 'Time up' : 'Remaining Time'"
+                    >
+                        <fa icon="clock mr-2"></fa>
+                        <flk-time-remaining                          
+                            class="bold" 
+                            [starts-at]="this.task.startsAtTimestamp" 
+                            [ends-at]="this.task.endsAtTimestamp">
+                        </flk-time-remaining>
+                    </div>
+                </div>
+            </div>
+            <div *if="! Is.empty(this.task.parent)" class="card p-1">
+                <div class="bold text-center m-b-1">
+                    <fa icon="folder-open mr-2"></fa>
+                    Parent Task
+                </div>
+                <a [href]="URLS.task(this.task.parent)" class="btn btn-cyan bold" [html]="this.task.parent.title"></a>
+            </div>
+            <div class="card p-1">
+                <div class="bold text-center m-b-1">
+                    <fa icon="user mr-2"></fa>
+                    Participant
+                </div>
+                <div class="bold teal-text" [html]="this.task.participant.name"></div>
+            </div>
+            <div class="card p-1">
+                <div class="bold text-center m-b-1">
+                    <fa icon="user-secret mr-2"></fa>
+                    Supervisors
+                </div>
+                <div *for="let supervisor of this.task.supervisors" class="bold green-text" [html]="supervisor.name">
+                </div>
+            </div>
+
+            <div *if="this.task.project" class="card p-1">
+                <div class="bold text-center m-b-1">
+                    <fa icon="suitcase mr-2"></fa>
+                    Project
+                </div>  
+                <div *if="this.task.module">
+                    <span class="mr-2">Module:</span>
+                    <if condition="this.task.module.parent.id">
+                        <strong>{{ this.task.module.parent.name }} » </strong>
+                    </if>
+                    <strong [html]="this.task.module.name"></strong>
+                </div>
+                <a [href]="URLS.project(this.task.project)" class="btn btn-teal bold" [html]="this.task.project.name"></a>
+            </div>
+
+            <div *if="this.task.userStory" class="card p-1">
+                <div class="bold text-center m-b-1">
+                    <fa icon="sticky-note mr-2"></fa>
+                    User Story
+                </div>
+                <a [href]="URLS.project(this.task.project, 'user-stories', this.task.userStory)" class="btn btn-pink bold" [html]="this.task.userStory.title"></a>
+            </div>
+
+            <div *if="this.taskStatusCanBeChanged()" class="card p-1">
+                <div class="text-center bold m-b-1 purple-text">Mark task as</div>
+                <flk-dropdown-list [items]="this.getAllowedTaskStatuses()" heading="Mark Task As.." (select)="this.updateTaskStatus(e.value)"
+                    [value]="this.task.status"></flk-dropdown-list>
+            </div>
+        </div>
+    </div>
+</layout>

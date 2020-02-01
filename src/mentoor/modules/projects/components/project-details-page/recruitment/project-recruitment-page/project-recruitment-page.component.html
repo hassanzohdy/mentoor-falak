@@ -1,0 +1,74 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openAddModal()">
+        <fa icon="plus mr-1"></fa>
+    </button>
+
+    <h1>
+        {{ this.project.name }}
+        Project
+        Recruitment
+    </h1>
+
+    <p>
+        <small>
+            When enabling new Recruitment, it will switch the project to <strong class="teal-text mx-1">Public</strong> if it is <strong class="mx-1">Private</strong>,
+            You can switch it back to <strong class="mx-1">Private</strong> from <a class="bold pink-text" [href]="URLS.project(this.project, 'settings')">settings page</a>.
+        </small>        
+    </p>
+
+    <table class="m-t-2 table table-bordered buttoned">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Role</th>
+                <th>Title</th>
+                <th>Experience</th>
+                <th>Applications</th>
+                <th>Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.recruitment)">
+                <td colspan="6" text-center>No recruitment yet.</td>
+            </tr>
+            <tr *else *for="let recruitment, index of this.project.recruitment">
+                <td [html]="recruitment.team"></td>
+                <td [html]="recruitment.role"></td>
+                <td [html]="this.getTitle(recruitment.title)"></td>
+                <td [html]="recruitment.experience"></td>
+                <td>
+                    <button  
+                        class="bold"
+                        [class]="{'orange-text': recruitment.applications.length > 0}" 
+                        (click)="this.openApplications(recruitment)"
+                        [html]="recruitment.applications.length"
+                    ></button>
+                </td>
+                <td>
+                    <button 
+                        class="btn btn-circle btn-info"
+                        tooltip 
+                        title="Edit recruitment settings"
+                        (click)="this.editRecruitment(recruitment)"
+                        >
+                        <fa icon="edit"></fa>
+                    </button>
+                    <button
+                        class="btn btn-circle btn-danger"
+                        tooltip
+                        title="Delete Recruitment"
+                        (click)="this.currentIndex = index; this.currentRecruitment = recruitment; this.confirmDelete = true"
+                        >
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<project-recruitment-modal></project-recruitment-modal>
+<project-recruitment-applications-modal></project-recruitment-applications-modal>
+
+<flk-alert *if="this.confirmFirst" (close)="this.confirmFirst = false" (confirm)="this.submit()"></flk-alert>
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = false" message="Are you sure you want to terminate the recruitment process? All related applications will be removed as well." (confirm)="this.deleteRecruitment()"></flk-alert>

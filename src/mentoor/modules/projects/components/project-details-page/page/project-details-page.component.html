@@ -1,0 +1,28 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div class="row">
+        <div class="col-sm-3">
+            <img [src]="this.project.image" [alt]="this.project.name">
+
+            <div *if="! Is.empty(this.project.tags)" class="tags-list">
+                <h4 class="bold m-t-2 m-b-1">Technologies and Techniques used in this project</h4>
+                <div *for="let tags of Array.chunk(this.project.tags, 2)" class="row m-b-2 text-justify">
+                    <span *for="let tag of tags" class="tag col-sm-6">
+                        <img [src]="tag.image" [alt]="tag.name" />
+                        <span [html]="tag.name" class="name"></span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <h1 [html]="this.project.name"></h1>
+            <markdown [content]="this.project.about" class="m-t-2"></markdown>
+        </div>
+    </div>
+
+    <div class="m-t-3" *if="this.project.isMember">
+        <h3>Tasks Board</h3>
+        <tasks-board [project]="this.project" [tasks]="this.project.tasks" [supervisors]="this.supervisors"
+            [participants]="this.participants"></tasks-board>
+    </div>
+</project-layout>

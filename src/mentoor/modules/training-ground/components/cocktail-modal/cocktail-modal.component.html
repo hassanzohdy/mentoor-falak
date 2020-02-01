@@ -1,0 +1,69 @@
+<div id="cocktail-modal">
+    <flk-modal (close)="this.close()" header="Choose your position">
+        <flk-spinner *if="this.isLoading" theme="black"></flk-spinner>
+        <div *else class="row m-0">
+            <aside class="col-sm-3 p-0">
+                <!-- Available cocktails categories -->
+                <button *for="let category of this.cocktailsCategories"
+                    [class]="{active: this.currentCategory.id == category.id}" type="button" class="category-btn"
+                    (click)="this.display(category)">
+                    <img [src]="category.icon" [alt]="category.name" />
+                    <strong [html]="category.name"></strong>
+                    <span *if="this.categoryHasCocktailsToUnlock(category)" class="can-unlock top-right ml-2"
+                        title="Unlockable">
+                        !
+                    </span>
+                </button>
+            </aside>
+            <div class="col-sm-9 body">
+                <div *for="let cocktail of this.displayedCocktails" class="cocktail">
+                    <!-- Cocktail name -->
+                    <h3 class="name">
+                        <img [src]="cocktail.icon" class="small mr-2" />
+                        <span [html]="cocktail.name"></span>
+                        <span *if="cocktail.canBeUnlocked && ! cocktail.unlocked" class="can-unlock top-right ml-2"
+                            title="Unlockable">
+                            !
+                        </span>
+                    </h3>
+                    <!-- Cocktail description -->
+                    <p [html]="cocktail.description" class="description m-b-1"></p>
+                    <!-- Cocktail tags, unlock and requirements -->
+                    <div class="tags">
+                        <!-- Cocktail tags -->
+                        <span class="tag-icon" *for="let tag, i of cocktail.tags">
+                            <img [src]="tag.image" [class]="{gray: this.isLocked(cocktail) }" [alt]="tag.name" />
+                            <fa *if="(Number(i) + 1) != cocktail.tags.length" icon="plus plus"></fa>
+                        </span>
+                        <!-- Cocktails unlock and cost -->
+                        <div class="cost" [class]="{gray: this.isLocked(cocktail) }">
+                            <gold-icon [coins]="cocktail.cost"></gold-icon>
+                            <span *if="cocktail.cost == 0" class="pink-text bold">FREE!</span>
+                            <button class="unlock-btn" *if="! cocktail.unlocked" [disabled]="! cocktail.canBeUnlocked"
+                                (click)="this.hasCocktailToBeUnlocked = cocktail;">Unlock</button>
+                            <fa *else title="Unlocked" icon="check green-text unlocked"></fa>
+                        </div>
+                        <!-- Cocktail requirements -->
+                        <!-- <div *if="this.isLocked(cocktail)" class="m-t-1"> -->
+                        <div *if="! Is.empty(cocktail.requiredCocktails)" class="m-t-1">
+                            <small class="d-block m-t-2 bold red-text">You should be a:</small>
+                            <li *for="let requiredCocktail of cocktail.requiredCocktails"
+                                class="required-cocktail bold">
+                                <span [class]="{'brown-text': ! this.isLocked(requiredCocktail) }"
+                                    [html]="requiredCocktail.name"></span>
+                                <fa *if="! this.isLocked(requiredCocktail)" icon="check green-text ml-2"></fa>
+                                <button type="button"
+                                    *if="this.isLocked(requiredCocktail) && this.currentCategory.id != requiredCocktail.category.id"
+                                    class="ml-2 teal-text" (click)="this.display(requiredCocktail.category)"
+                                    [html]="requiredCocktail.category.name"></button>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </flk-modal>
+
+    <flk-alert *if="this.hasCocktailToBeUnlocked" (close)="this.hasCocktailToBeUnlocked = null;"
+        (confirm)="this.unlockCocktail();"></flk-alert>
+</div>

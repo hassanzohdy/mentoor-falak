@@ -1,0 +1,17 @@
+<div id="fb-root"></div>
+<div id="wrapper" [class]="{'latest-news': Object.get(this.user, 'seen.latest')}">
+    <latest-news-top-bar *if="Object.get(this.user, 'seen.latest')"></latest-news-top-bar>
+    <header-section></header-section>
+    <sidebar></sidebar>
+    <main role="main" class="{{ this.inputs.getOption('class', '') }}">
+        <div class="container-fluid">
+            <content></content>
+        </div>
+    </main>
+    <footer-section></footer-section>
+</div>
+<!-- <chat-rooms-panel *if="this.user.isLoggedIn()"></chat-rooms-panel> -->
+
+<daily-rewards-modal *if="this.user.dailyReward"></daily-rewards-modal>
+
+<live-notifications></live-notifications>

@@ -1,0 +1,26 @@
+#calendar-options {
+    // Picasso is ready to draw :)
+
+    #symbols-list {
+        .symbol {
+            margin-bottom: 1rem;
+
+            i {
+                display: inline-block;
+                min-width: 20px;
+                vertical-align: middle;
+            }
+
+            .circle {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+            }
+
+            .text {
+                margin-left: 0.5rem;
+                color: #777;
+            }
+        }
+    }
+}

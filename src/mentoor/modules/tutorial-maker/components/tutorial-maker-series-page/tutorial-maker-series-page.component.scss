@@ -1,0 +1,193 @@
+#tutorial-maker-series-page {
+    background: #2d3e50;
+
+    $blue-gradient: -webkit-gradient(linear, left top, left bottom, from(#0eb9ff), to(#1fe0ff));
+    $yellow-gradient: linear-gradient(to right, #ffa602, yellow);
+    $green-gradient: linear-gradient(to right, #7bff9e, #0df3af);
+
+    .image {
+        transform: scale(1.6);
+        margin-top: 8rem;
+    }
+
+    .fb-page {
+        font-size: 3rem;
+        text-align: left;
+        margin-top: 1rem;
+        position: absolute;
+
+        .fab {
+            font-size: 4rem;
+            color: #4267b2;
+            background-image: linear-gradient(to bottom, transparent 20%, white 20%, white 93%, transparent 93%);
+            background-size: 55%;
+            background-position: 70% 0;
+            background-repeat: no-repeat;
+
+            text-shadow: none !important;
+            // box-shadow: none !important;
+        }
+
+        span {
+            font-weight: bold;
+            text-shadow: 0px 4px 4px #000;
+        }
+    }
+
+    @import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        // z-index: 1000;
+        top: 0;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%,
+                from(rgba(255, 255, 255, .15)),
+                to(rgba(0, 0, 0, .25))),
+            -webkit-gradient(linear, left top, right bottom,
+                color-stop(0, rgba(255, 255, 255, 0)),
+                color-stop(0.5, rgba(255, 255, 255, .1)),
+                color-stop(0.501, rgba(255, 255, 255, 0)),
+                color-stop(1, rgba(255, 255, 255, 0)));
+    }
+
+    .dark {
+        position: relative;
+        // background: #1e1e1e;
+        padding: 2rem;
+        color: #eee;
+        // height: 100vh;
+        text-align: center;
+        // padding-bottom: 7rem;
+    }
+
+    h1 {
+        font-size: 8rem;
+        text-shadow: 0px 4px 3px #000;
+    }
+
+    @mixin color-grd {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-box-decoration-break: clone;
+        // display: inline-block;
+        text-shadow: none;
+    }
+
+    /* Mixins */
+    @mixin gradientBg($startColor, $endColor) {
+        background: $startColor;
+        background: -moz-linear-gradient(left, $startColor 0%, $endColor 80%, $endColor 100%);
+        background: -webkit-linear-gradient(left, $startColor 0%, $endColor 80%, $endColor 100%);
+        background: linear-gradient(to right, $startColor 0%, $endColor 80%, $endColor 100%);
+    }
+
+    .master {
+        // color: red;
+        @import url('https://fonts.googleapis.com/css?family=Modak&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+        font-family: Rubik, Lato, lucida grande, lucida sans unicode, Tahoma, Sans-Serif;
+        font-family: Modak;
+        font-weight: 900;
+        text-transform: uppercase;
+        // font-family: Versus;
+        // letter-spacing: 6px;
+        // background: linear-gradient(to right top, #ff2f55, #d61c6e, #a22579, #6a2b74, #342961, #021f44);
+        // background: linear-gradient(to right, #00ccff, #07ec8d);
+        background: $yellow-gradient;
+        // font-family: Rubik, Lato, "lucida grande", "lucida sans unicode", Tahoma, sans-serif;
+        font-size: 20rem;
+        font-weight: 100;
+        margin: 1rem 0 0;
+
+        display: inline-block;
+        text-shadow: 0px 10px 14px #000;
+
+        // @include gradientBg(#44ea76, #39fad7);
+
+        // text-shadow: 0px 1px 1px black;
+        @include color-grd();
+
+        // margin: 5rem auto 4rem;
+
+        .icon {
+            margin-top: 12rem;
+            font-size: 50rem;
+            background: $blue-gradient;
+
+            @include color-grd();
+        }
+    }
+
+    #main-text {
+        margin-top: -1rem;
+    }
+
+    #series-list {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+
+        li {
+            list-style: none;
+            font-size: 6rem;
+            color: #061423;
+            font-weight: 900;
+            position: relative;
+
+            &.active {
+                color: $teal-color;
+                background: $yellow-gradient;
+                @include color-grd();
+                font-weight: 900;
+            }
+
+            &.done {
+                // background: $green-gradient;
+                color: $teal-color;
+            
+                .fa {
+                    // background: $green-gradient;
+                    background: $teal-color;
+                    @include color-grd();
+                }
+            }
+
+            .fa {
+                margin-right: 1rem;
+                background: inherit;
+                @include color-grd();
+            }
+        }
+
+    }
+
+
+    #logo {
+        transform: scale(0.5);
+        position: absolute;
+        right: -12rem;
+        top: 110%;
+
+        #name {
+            text-shadow: 0px 0px 4px #040707;
+            font-weight: 900;
+        }
+
+        #m {
+            box-shadow: 0px 0px 4px 1px #137373;
+            text-shadow: 0px 1px 1px #134e4e;
+        }
+    }
+
+    .hashtag {
+        font-size: 4rem;
+        margin-top: 18rem;
+        position: absolute;
+        left: 2rem;
+        top: 102%;
+        text-align: left;
+    }
+}

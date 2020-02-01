@@ -1,0 +1,453 @@
+#tutorial-maker-what-is-it-page {
+
+    background: #2d3e50;
+
+    .items-heading {
+
+        #logo {
+            transform: scale(0.5) !important;
+            position: absolute !important;
+            right: -17rem !important;
+            // display: none;
+            // top: 361%;
+            top: 77rem;
+            // margin-top: 23rem;
+
+            #name {
+                text-shadow: 0px 0px 4px #040707;
+                font-weight: 900;
+            }
+
+            #m {
+                box-shadow: 0px 0px 4px 1px #137373;
+                text-shadow: 0px 1px 1px #134e4e;
+            }
+        }
+
+        .hashtag {
+            font-size: 4rem;
+            margin-top: 18rem;
+            position: absolute !important;
+            left: 2rem;
+            // top: 320%;
+            top: 219%;
+            text-align: left;
+        }
+
+        margin-top: -7rem;
+
+        .sm {
+            vertical-align: -1rem;
+        }
+
+        h1 {
+            margin-left: 1rem;
+            font-size: 10rem;
+            display: inline-block;
+        }
+
+        .big {
+            width: 400px;
+            height: 400px;
+            // background: #eee;
+            border-radius: 50%;
+            // padding-bottom: 2rem;
+            padding-left: 2rem;
+            position: absolute;
+            top: 32rem;
+            right: 77rem;
+        }
+
+        p {
+            font-size: 5rem;
+            margin-top: 7rem;
+        }
+    }
+
+
+    .fb-page {
+        font-size: 3rem;
+        text-align: left;
+        margin-top: 1rem;
+        position: absolute;
+
+        .fab {
+            font-size: 4rem;
+            color: #4267b2;
+            background-image: linear-gradient(to bottom, transparent 20%, white 20%, white 93%, transparent 93%);
+            background-size: 55%;
+            background-position: 70% 0;
+            background-repeat: no-repeat;
+
+            text-shadow: none !important;
+            // box-shadow: none !important;
+        }
+
+        span {
+            font-weight: bold;
+            text-shadow: 0px 4px 4px #000;
+        }
+    }
+
+    @import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        // z-index: 1000;
+        top: 0;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%,
+                from(rgba(255, 255, 255, .15)),
+                to(rgba(0, 0, 0, .25))),
+            -webkit-gradient(linear, left top, right bottom,
+                color-stop(0, rgba(255, 255, 255, 0)),
+                color-stop(0.5, rgba(255, 255, 255, .1)),
+                color-stop(0.501, rgba(255, 255, 255, 0)),
+                color-stop(1, rgba(255, 255, 255, 0)));
+
+    }
+
+    #img {
+        display: none;
+        position: relative;
+
+        #overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            // background: darkblue;
+        }
+    }
+
+    .dark {
+        position: relative;
+        // background: #1e1e1e;
+        padding: 2rem;
+        color: #eee;
+        // height: 100vh;
+        text-align: center;
+        // padding-bottom: 7rem;
+    }
+
+    .ar {
+        // font-size: 41rem;
+        font-weight: 900;
+        font-family: Cairo;
+        // margin-top: 60rem;
+        margin-top: 2rem;
+        // margin-left: -10rem;
+    }
+
+    h1 {
+        font-size: 8rem;
+        text-shadow: 0px 4px 3px #000;
+    }
+
+    @mixin color-grd {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-box-decoration-break: clone;
+        display: inline-block;
+        text-shadow: none;
+    }
+
+    /* Mixins */
+    @mixin gradientBg($startColor, $endColor) {
+        background: $startColor;
+        background: -moz-linear-gradient(left, $startColor 0%, $endColor 80%, $endColor 100%);
+        background: -webkit-linear-gradient(left, $startColor 0%, $endColor 80%, $endColor 100%);
+        background: linear-gradient(to right, $startColor 0%, $endColor 80%, $endColor 100%);
+    }
+
+    .master {
+        // color: red;
+        @import url('https://fonts.googleapis.com/css?family=Modak&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+        font-family: Rubik, Lato, lucida grande, lucida sans unicode, Tahoma, Sans-Serif;
+        font-family: Modak;
+        font-weight: 900;
+        text-transform: uppercase;
+        // font-family: Versus;
+        // letter-spacing: 6px;
+        // background: linear-gradient(to right top, #ff2f55, #d61c6e, #a22579, #6a2b74, #342961, #021f44);
+        background: linear-gradient(to right, #00ccff, #07ec8d);
+        // font-family: Rubik, Lato, "lucida grande", "lucida sans unicode", Tahoma, sans-serif;
+        font-size: 20rem;
+        font-weight: 100;
+        margin: 1rem 0 0;
+
+        display: inline-block;
+        text-shadow: 0px 10px 14px #000;
+
+        // @include gradientBg(#44ea76, #39fad7);
+
+        // text-shadow: 0px 1px 1px black;
+        @include color-grd();
+
+        // margin: 5rem auto 4rem;
+    }
+
+    .description {
+        text-shadow: 0px 10px 14px #000;
+    }
+
+    .Roboto {
+        // font-family: Roboto;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .compare {
+        text-align: left;
+        font-size: 2.5rem;
+        // margin-bottom: 0rem;
+        text-shadow: 0px 4px 18px #000;
+
+        * {
+            font-weight: bold !important;
+        }
+
+        .hljs {
+            height: 600px;
+
+            * {
+                font-size: 4rem;
+            }
+
+
+            *:not(span) {
+                // color: #FFF;
+            }
+        }
+
+        .icon {
+            font-size: 10rem;
+        }
+
+        .wrong {
+            color: red;
+        }
+
+        .ok {
+            color: greenyellow;
+        }
+    }
+
+    .vs {
+        margin-top: 3rem;
+        position: relative;
+
+        .challenger {
+            font-family: Modak;
+            @include gradientBg(#44ea76, #39fad7);
+            @include color-grd();
+            position: absolute;
+            font-size: 20rem;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .versus {
+            font-family: Versus;
+            background: linear-gradient(to right, #ff8a00, #da1b60);
+            position: absolute;
+            left: 75rem;
+            top: 15rem;
+            font-size: 20rem;
+            // font-weight: 900;
+            // background: linear-gradient(45deg, #e748ea 0%, #4b1abc 100%);
+            // background: linear-gradient(45deg, #ea6e48 0%, #bc1a63 100%);
+            background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+
+            // background: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+            @include color-grd();
+            // display: block;
+        }
+
+        .challenger-1 {
+            left: 15rem;
+            top: -7rem;
+        }
+
+        .challenger-2 {
+            left: 110rem;
+            top: -7rem;
+        }
+
+        .challenger-3 {
+            left: 73rem;
+            top: 40rem;
+        }
+    }
+
+    #main-text {
+        #what-is {
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+            .fa {
+                font-size: 18rem;
+                position: absolute;
+                margin-top: -6rem;
+                margin-left: -1.5rem;
+            }
+        }
+        #top-logo {
+            transform: scale(0.7);
+            position: absolute;
+            // margin-top: 23rem;
+            left: 36%; 
+            margin-top: -7rem;   
+
+            .name {
+                text-shadow: 0px 4px 4px #000;
+                font-weight: 900;
+                position: absolute;
+                margin-top: -2rem;
+                margin-left: 2.5rem;
+            }
+        }
+    }
+
+
+    #logo {
+        transform: scale(0.5);
+        position: absolute;
+        right: -15rem;
+        // top: 361%;
+        top: 110%;
+        // margin-top: 23rem;
+
+        #name {
+            text-shadow: 0px 0px 4px #040707;
+            font-weight: 900;
+        }
+
+        #m {
+            box-shadow: 0px 0px 4px 1px #137373;
+            text-shadow: 0px 1px 1px #134e4e;
+        }
+    }
+
+    .hashtag {
+        font-size: 4rem;
+        margin-top: 18rem;
+        position: absolute;
+        left: 2rem;
+        // top: 320%;
+        top: 100%;
+        text-align: left;
+    }
+
+    img {
+        // width: 500px;
+        margin-top: 0rem;
+    }
+
+    h2 {
+        margin-top: 3rem;
+        font-size: 6rem;
+        font-weight: bold;
+    }
+}
+
+
+.dark.items {
+    .tutorial-content {
+        margin-top: 1rem;
+        font-size: 4rem;
+
+        .list {
+            list-style: dot;
+            display: list-item;
+            //   list-style-position: inside;
+        }
+
+    }
+
+    li {
+        list-style: none;
+
+        &:before {
+            // content: "-";
+            margin-right: 0.5rem;
+            //   text-indent: -1rem;
+            display: inline-block;
+        }
+    }
+
+    #logo {
+        transform: scale(1) !important;
+        // margin-top: 0 !important;
+        position: static !important;
+        margin-left: -13rem !important;
+    }
+
+    .tutorial-content {
+        // font-size: 4rem !important;
+
+    }
+
+    * {
+        text-shadow: 0px 4px 4px #000;
+    }
+
+    #what {
+        position: absolute;
+        left: 40%;
+        margin-top: -2rem;
+    }
+
+    #question {
+        position: absolute;
+        font-size: 26rem;
+        font-weight: 900;
+        top: -7rem;
+        left: 76%;
+    }
+
+    #mins {
+        margin-top: 4rem;
+        font-size: 9.5rem !important;
+    }
+
+    p {
+        color: #FFF !important;
+    }
+
+    img {
+        width: 90px;
+    }
+}
+
+
+.logo {
+    .m {
+        font-weight: 700;
+        font-size: 16rem !important;
+        color: #11dbdb;
+        border: 12px solid #11dbdb;
+        border-radius: 50%;
+        display: inline-block;
+        // padding: 0 2rem;
+        height: 200px;
+        width: 200px;
+        line-height: 1;
+        box-shadow: 0px 0px 4px 1px #000505;
+        text-shadow: 0px 1px 1px #134e4e;
+    }
+
+    .name {
+        color: #11dbdb;
+        text-shadow: 0px 0px 4px #020505;
+
+        &.inline {
+            display: inline-block;
+            margin-left: 2rem;
+            vertical-align: 3rem;
+        }
+    }
+}

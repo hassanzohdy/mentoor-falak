@@ -1,0 +1,31 @@
+<layout>
+    <h1 class="bold" [trans]="this.title"></h1>
+
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+
+    <table *else class="table table-bordered m-t-2">
+        <thead>
+            <tr>
+                <th class="text-left">User</th>
+                <th>Gold</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let user, index of this.users">
+                <td>
+                    <span class="mr-1">
+                        <span [html]="Number(Number(index) + 1).format()"></span>
+                        -
+                    </span>
+                    <img [src]="userImage(user)" class="u-image img-thumbnail" [alt]="userName(user)" />
+                    <span [html]="userName(user)" [class]="{'orange-text': user.id == this.user.id}"
+                        class="bold mr-1"></span>
+                    <user-online [id]="user.id"></user-online>
+                </td>
+                <td class="total-reward">
+                    <gold-icon [coins]="user.gold"></gold-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</layout>

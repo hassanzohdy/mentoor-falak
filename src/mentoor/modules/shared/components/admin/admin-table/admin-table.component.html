@@ -1,0 +1,34 @@
+<layout>
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+        <h2 class="tableHeading bold" [trans]="this.tableHeading"></h2>
+        <button *if="!this.hideAddBtn" class="btn btn-info" (click)="this.addNewItem()">
+            <fa icon="plus"></fa>
+            {{trans('add-new-item', trans(this.addHeading))}}
+        </button>
+    </div>
+    <small class="m-b-1 d-block" *if="! Is.empty(this.records)">
+        Displaying
+        <strong class="mx-2" [html]="this.records.length.format()"></strong>
+        Records.
+    </small>
+    <div class="table-responsive">
+        <table class="table table-hover admin-table">
+            <thead class="thead-light">
+                <tr>
+                    <th *for="let col of this.columns" [trans]="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *if="this.inputs.parent.isLoading">
+                    <td colspan="{{ this.columns.length }}">
+                        <flk-spinner></flk-spinner>
+                    </td>
+                </tr>
+                <content *elseif="!Is.empty(this.records)"></content>
+                <!-- <tr *else>
+                    <td colspan="{{ this.columns.length }}" class="text-center" trans="no-records"></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</layout>

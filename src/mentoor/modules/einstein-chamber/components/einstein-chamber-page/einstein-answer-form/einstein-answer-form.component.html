@@ -1,0 +1,55 @@
+<div *if="this.startQuest" class="m-t-1">
+    <h1 class="m-v-1">Notes before answering.</h1>
+    <ul class="font-weight-normal">
+        <li class="red-text bold">Any code without comments makes your answer get rejected!</li>
+        <li class="pink-text bold">the code MUST BE WORKING or it will get rejected!</li>
+        <li>You can use markdown syntax in your answer, so use it especially in writing code.</li>
+        <li>
+            Add the code in the answer box then put it on
+            <a href="https://codepen.io/" class="bold m-h-1 teal-text" target="_blank">Codepen</a> 
+            if your challenge is about 
+            <strong class="mx-2">HTML, CSS, Javascript, Typescript or SCSS</strong> and put it on 
+            <a href="https://tehplayground.com" class="bold m-h-1 green-text" target="_blank">Tehplayground</a> 
+            If your challenge is about <strong class="mx-2">PHP</strong>
+            after that put the link at the bottom of the answer or it will get <span
+                class="ml-1 red-text bold">rejected</span>.
+        </li>
+        <li>Stick to the puzzle requirements.</li>
+        <li>Your answer will be reviewed, you can not edit it again it if it gets <span
+                class="ml-1 red-text bold">rejected</span>.</li>
+        <li>
+            <strong class="mr-1">Double</strong> check the answer before submitting it, you can't
+            change it again, so don't forget to
+            <button type="button" class="btn btn-sm btn-success"
+                (click)="this.preview = ! this.preview">preview</button>
+            it.
+        </li>
+        <li>If the answer is <span class="mx-1 red-text bold">rejected</span>, the puzzle may appear again later.</li>
+    </ul>
+    <p class="orange-text bold">If the answer got <span class="mx-1 red-text bold">rejected</span>,
+        you will lose the reward of the puzzle from your gold, thus try to understand the quest
+        properly.</p>
+    <if condition="this.preview">
+        <h1>Answer preview</h1>
+        <markdown [content]="this.answerData"></markdown>
+        <button class="btn btn-purple" (click)="this.preview = false">Back to code</button>
+    </if>
+    <form *else (submit)="this.submitAnswer($el)">
+        <form-input  (input)="this.storeAnswer($el.value)" type="textarea" [value]="this.answerData" required rows="8" required
+            name="answer" placeholder="Write your answer ;)" class="form-control mb-4" dir="auto">
+        </form-input>
+        <button class="btn btn-primary float-right"
+            [disabled]="!this.isValidForm || this.isSending">
+            Send
+        </button>
+        <button type="button" class="btn btn-success float-right"
+            (click)="this.preview = true">Preview</button>
+        <button class="btn btn-danger float-right mr-2" (click)="this.startQuest = false">
+            Cancel
+        </button>
+    </form>
+    <button *if="this.cancelBtn" class="btn btn-danger float-right mr-2"
+        (click)="this.openAnswerText = !this.openAnswerText; this.cancelBtn = false">
+        Cancel
+    </button>
+</div>

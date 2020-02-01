@@ -1,0 +1,1 @@
+const BASE_URL = "http://localhost:81"; const APP_NAME = 'mentoor'; const _C = ['development','mentoor','http://localhost:81','/'];var LANGUAGES = {"en":{"direction":"ltr","name":"English"},"ar":{"direction":"rtl","name":"العربية"}};

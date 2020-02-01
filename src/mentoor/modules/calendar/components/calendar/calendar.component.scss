@@ -1,0 +1,58 @@
+#calendar {
+    $block-height: 130px;
+    box-shadow: 0 0px 3px rgba(0,0,0,0.13);
+
+    .current {
+        font-weight: bold !important;
+        color: $pinkColor !important;
+    }
+
+    .current-month {
+        display: inline-block;
+        width: 15rem;
+    }
+
+    // Picasso is ready to draw :)
+    .block {
+        position: relative;
+        background: #FFF;
+        padding: 1rem;
+        border-top: 1px solid #eee;
+        // border-bottom: none;
+        border-right: 1px solid #eee;
+        
+        &.locked {
+            background: #fbf9f9;
+            cursor: not-allowed;
+        }
+
+        &.day {
+            height: $block-height;
+            // overflow: auto;
+            .number {
+                font-size: 1.0rem;
+                color: #999;
+                vertical-align: top;
+            }
+
+            .month {
+                font-size: 1.0rem;
+                vertical-align: top;
+                margin-left: 0.4rem;
+                color: #ccc;
+            }
+        }
+
+        &.heading {
+            border-top: 1px solid #eee;
+            border-bottom: none;
+            font-size: 1.3rem;
+        }
+
+        &.week-num {
+            height: $block-height;
+            font-weight: lighter;
+            line-height: 120px;
+        }
+    }
+}

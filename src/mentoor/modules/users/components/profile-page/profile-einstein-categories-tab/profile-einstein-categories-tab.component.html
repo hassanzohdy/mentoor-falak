@@ -1,0 +1,9 @@
+<flk-spinner *if="this.isLoading"></flk-spinner>
+<div *else>
+    <h1 class="text-center m-y-1">Einstein Chamber categories</h1>
+    <div class="row">
+        <div class="col-3" *for="let category of this.einsteinCategories">
+            <einstein-category-card [category]="category"></einstein-category-card>
+        </div>
+    </div>
+</div>

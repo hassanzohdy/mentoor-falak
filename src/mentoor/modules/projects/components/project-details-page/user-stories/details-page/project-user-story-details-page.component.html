@@ -1,0 +1,64 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <div class="row">
+        <div class="col-sm-9" *if="! Is.empty(this.userStories)">
+            <user-stories-board [user-stories]="this.userStories" (change)="this.userStories = e" [project]="this.project"></user-stories-board>
+        </div>
+
+        <div class="col-sm">
+            <div class="simple-card">
+                <h3 [html]="this.userStory.title"></h3>
+                <div class="m-t-1">
+                    <span>Type:</span>
+                    <strong class="ml-2" [html]="this.userStory.type"></strong>
+                </div>
+                <div class="m-t-1">
+                    <span>Priority:</span>
+                    <strong class="ml-2" [html]="this.userStory.priority"></strong>
+                </div>
+                <div *if="this.userStory.parent" class="m-t-1">
+                    <span>Parent:</span>
+                    <a [href]="URLS.project(this.project, 'user-stories', this.userStory.parent)"
+                        class="ml-2 bold pink-text" [html]="this.userStory.parent.title"></a>
+                </div>
+
+                <div *if="this.userStory.sprint" class="m-t-1">
+                    <span>Sprint:</span>
+                    <a [href]="URLS.project(this.project, 'sprints', this.userStory.sprint)" class="ml-2 bold badge pink"
+                        [html]="this.userStory.sprint.name"></a>
+                </div>
+
+
+                <div *if="this.userStory.task" class="m-t-1">
+                    <span>Task:</span>
+                    <a [href]="URLS.task(this.userStory.task)" class="ml-2 bold badge green"
+                        [html]="this.userStory.task.title"></a>
+                </div>
+
+                <div *if="this.userStory.status" class="m-t-1">
+                    <span>Status:</span>
+                    <span class="badge ml-2" [class]="taskStatus(this.userStory)" [trans]="this.userStory.status"></span>                        
+                </div> 
+
+                <div class="m-t-1">
+                    <span>As a:</span>
+                    <strong class="ml-2" [html]="this.userStory.who"></strong>
+                </div>
+                
+                <div class="m-t-1">
+                    <strong>I want to:</strong>
+                    <markdown class="ml-2" [content]="this.userStory.what"></markdown>
+                </div>
+                
+                <div class="m-t-1">
+                    <strong>So that:</strong>
+                    <markdown class="ml-2" [content]="this.userStory.why"></markdown>
+                </div>
+                
+                <div class="m-t-1">
+                    <strong class="teal-text">Scenario (Acceptance Criteria):</strong>
+                    <markdown [content]="this.userStory.scenario"></markdown>
+                </div>
+            </div>
+        </div>
+    </div>
+</project-layout>

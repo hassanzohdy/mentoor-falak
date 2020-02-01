@@ -1,0 +1,71 @@
+<flk-spinner *if="this.isLoading"></flk-spinner>
+<else>
+    <h3 *if="Is.empty(this.projects)" class="pink-text bold text-center">No Projects Yet</h3>
+    <else>
+        <div class="projects-list">
+
+            <div *for="let project of this.projects" class="row simple-card m-b-2 project">
+                <div class="col-sm-2 text-center">
+                    <img [src]="project.image || FAVICON" class="project-image" [alt]="project.name" />
+                </div>
+                <div class="col-sm-6 metadata">
+                    <h3 [html]="project.name" class="name"></h3>
+
+                    <p class="short-description">
+                        <markdown [content]="project.about.readMoreChars(100)"></markdown>
+                    </p>
+
+                    <div *if="! Is.empty(project.tags)">
+                        <h6 class="bold m-t-2 m-b-1">Technologies and Techniques used in this project</h6>
+                        <div *for="let tags of Array.chunk(project.tags.slice(0, 6), 4)" class="tags-list m-t-2 text-justify">
+                            <span *for="let tag of tags" class="tag mr-2">
+                                <img [src]="tag.image" [alt]="tag.name" />
+                                <span [html]="tag.name" class="name"></span>
+                            </span>
+                        </div>
+
+                        <small *if="project.tags.length > 6">
+                            And {{ project.tags.length - 6 }} more...
+                        </small>
+
+                    </div>
+
+                    <a [href]="URLS.project(project, '')" class="btn btn-gray bold m-t-2">VIEW DETAILS</a>
+                </div>
+                <div class="col summary">
+                    <div class="gray-text bold m-b-1">
+                        <span tooltip title="Project Members">
+                            <fa icon="users mr-2"></fa>
+                            <span>{{ project.members.length }}/{{ project.maxMembers }}</span>
+                        </span>
+                    </div>
+                    <div class="gray-text bold m-b-1">
+                        <span tooltip title="Project Teams">
+                            <fa icon="people-carry mr-2"></fa>
+                            <span>{{ project.teams.length }}/{{ project.maxTeams }}</span>
+                        </span>
+                    </div>
+                    <div class="gray-text bold m-b-1">
+                        <span tooltip title="Recruiting">
+                            <fa icon="briefcase mr-2"></fa>
+                            <fa *if="project.settings.openRecruitment" icon="check green-text mr-2"></fa>
+                            <fa *if="! project.settings.openRecruitment" icon="times red-text mr-2"></fa>
+                        </span>
+                    </div>
+                    <div class="gray-text bold m-b-1">
+                        <span tooltip title="Project Status">
+                            <fa icon="chart-line mr-2"></fa>
+                            <span class="text-capitalize" [html]="project.status"></span>
+                        </span>
+                    </div>
+                    <div class="gray-text bold m-b-1">
+                        <span tooltip title="Project Fund">
+                            <fa icon="coins mr-2"></fa>
+                            <span>{{ project.fund.format() }}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </else>
+</else>

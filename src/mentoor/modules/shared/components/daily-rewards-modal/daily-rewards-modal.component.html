@@ -1,0 +1,20 @@
+<flk-modal theme="dark" *as="dailyRewardModal" [esc]="false" [backdrop]="false" [close-btn]="false">
+    <section class="text-center comic-font daily-login-reward">
+        <h1 class="m-t-1 m-b-2">Daily login Reward</h1>
+        <p class="reward-note">Every day you login to the application, you'll receive a good random reward!</p>
+        <div class="m-t-0 m-b-2">
+            <!-- <object data="{{ assets('images/many-coins.svg') }}" style="width: 20rem; display: block; margin: auto;"
+                type="image/svg+xml">
+            </object> -->
+            <gold-icon [large]="true"></gold-icon>
+
+            <flk-number-counter (finish)="this.redeem = true" [number]="this.user.dailyReward" class="d-inline-block">
+            </flk-number-counter>
+        </div>
+        <button *if="! this.isSending" [disabled]="this.redeem === false" class="btn comic-btn green"
+            (click)="this.redeemDailyLoginReward()">
+            Redeem
+        </button>
+        <fa *else spin="spinner"></fa>
+    </section>
+</flk-modal>

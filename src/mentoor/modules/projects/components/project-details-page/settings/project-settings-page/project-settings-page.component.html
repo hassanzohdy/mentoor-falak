@@ -1,0 +1,88 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <h1>
+        <fa spin="cog mr-2"></fa>
+        {{ this.project.name }} Settings
+    </h1>
+
+    <h1 *if="! this.project.isProjectManager" class="text-center m-y-3 red-text">
+        You don't have permissions to access this area of the project!
+    </h1>
+
+    <form *else (submit)="this.updateSettings($el)">
+        <form-input type="text" name="name" [value]="this.project.name" [required]="true" class="form-control"
+            label="Project name">
+        </form-input>
+        <form-input type="textarea" name="about" [value]="this.project.about" required class="form-control"
+            label="About the project"
+            placeholder="About the project (Markdown support), if the project is not private, this content will be visible to everyone.">
+        </form-input>
+        <div class="row">
+            <div class="col-sm-6">
+                <flk-dropdown-list name="type[]" [multiple]="true" label="This project contains" heading="types"
+                    [value]="this.project.type" required [items]="FLAGS.projects.types">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-sm-6">
+                <flk-dropdown-list name="for" label="This project is for" heading="For" [value]="this.project.for"
+                    required [items]="FLAGS.projects.for">
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row m-t-1">
+            <div class="col-sm-6">
+                <flk-datepicker name="startDate" [value]="this.project.startDate" label="Starting Date"
+                    placeholder="Starting Date" class="form-control" required></flk-datepicker>
+            </div>
+            <div class="col-sm-6">
+                <flk-datepicker name="endDate" [value]="this.project.endDate" label="End Date" placeholder="End Date"
+                    class="form-control" required></flk-datepicker>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <flk-dropdown-list name="status" label="Current Project Status" heading="Status"
+                    [value]="this.project.status" required [items]="FLAGS.projects.status">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-sm-6">
+                <flk-dropdown-list name="tags[]" [multiple]="true" label="Tags" [imageable]="true" heading="Tags List"
+                    [value]="this.project.tags" required [lazy-loading]="true" service="tagsService">
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <flk-mdb-checkbox name="settings.private" [disabled]="! this.project.extra.includes('privacy')"
+                    [checked]="this.project.settings.private" label="Private Project">
+                    <small *if="! this.project.extra.includes('privacy')" class="pink-text bold ml-2">
+                        You need to unlock project privacy from
+                        <a [href]="URLS.project(this.project, 'shopping-mall')" class="ml-2">Shopping Mall</a>
+                    </small>
+                </flk-mdb-checkbox>
+            </div>
+            <div class="col-sm-6">
+                <flk-mdb-checkbox name="settings.openRecruitment" (change)="this.project.settings.openRecruitment = $el.checked" [checked]="this.project.settings.openRecruitment"
+                    label="Open Public Recruitment">
+                    <small class="bold teal-text ml-2">
+                        If enabled, this will automatically turn the project to be public.
+                    </small>
+                </flk-mdb-checkbox>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="image">Project Image</label>
+                    <flk-image-input [src]="this.project.image" name="image" id="image"></flk-image-input>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn bold btn-cyan">UPDATE</button>
+            </div>
+        </div>
+    </form>
+</project-layout>
