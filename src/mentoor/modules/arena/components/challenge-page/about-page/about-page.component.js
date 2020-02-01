@@ -1,11 +1,11 @@
-class ArenaPage {
+class AboutPage {
     /**
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
     constructor() {
-        this.name = 'arena';
-        this.title = trans('arena');
+        this.name = 'about';
+        this.title = trans('about');
     }
     
     /**
