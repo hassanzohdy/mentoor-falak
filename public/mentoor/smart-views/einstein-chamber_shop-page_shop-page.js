@@ -4,30 +4,30 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','categories'],
-                children: {cn6WTAZwB:'flk-spinner',c57kXE99G:'einstein-category-card',c3RmXZHRa:'layout'},
+                children: {cnW9WazsB:'flk-spinner',cyMEGRysO:'einstein-category-card',cv6weuoIV:'layout'},
                 render: function (component) {
-                    let cmp30Ag = this._lc('c3RmXZHRa', {parent:component,content:(layout) => {let cndgOJF = component.isLoading;
-this.setState('stOwOlS', cndgOJF);
-let cndA6cX = !(cndgOJF);
-this.setState('stoN5ap', cndA6cX);
-if (cndgOJF) { 
-let cmpr1do = this._lc('cn6WTAZwB', {parent:component,parentTop:layout,state:'stOwOlS'});
+                    let cmp0RVr = this._lc('cv6weuoIV', {parent:component,content:(layout) => {let cndv6xU = component.isLoading;
+this.setState('stnszRu', cndv6xU);
+let cndKEj9 = !(cndv6xU);
+this.setState('stG5o2e', cndKEj9);
+if (cndv6xU) { 
+let cmpPCtW = this._lc('cnW9WazsB', {parent:component,parentTop:layout,state:'stnszRu'});
 }else { 
-let elNvBb4 = eo('div',null,null,`class`,`m-b-2`);
-let elprZnj = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
-let eliGwJc = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
+let elc0OBD = eo('div',null,null,`class`,`m-b-2`);
+let elYa8KL = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
+let el0X6HO = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
 text(`Einstein Chamber`);
 ec('h3');
-let elWrno4 = eo('span',null,null,`class`,`shop badge badge-default m-l-1`);
+let elsDpSA = eo('span',null,null,`class`,`shop badge badge-default m-l-1`);
 text(`Shop`);
 ec('span');
 ec('div');
-let elKdC0B = eo('div',null,null,`class`,`row`);
+let el6jBnq = eo('div',null,null,`class`,`row`);
 for (let i in component.categories) {
 let category = component.categories[i]; 
- let iikC2k = '_OBEuG8' + i;
-let elrdEAM = eo('div','tGFxsybrGDyk' + i+iikC2k,null,`class`,`col-6 col-sm-4 col-md-3 m-b-2`);
-let cmpCxV7 = this._lc('c57kXE99G', {parent:component,parentTop:layout,props:{category:category},state:'stoN5ap',insideLoop:true,index:"" +iikC2k});
+ let iiriAb = 'D4uHXGx' + i;
+let elDUqXU = eo('div','7puw6RLt3hqb' + i+iiriAb,null,`class`,`col-6 col-sm-4 col-md-3 m-b-2`);
+let cmp3f1W = this._lc('cyMEGRysO', {parent:component,parentTop:layout,props:{category:category},state:'stG5o2e',insideLoop:true,index:"" +iiriAb});
 ec('div');
 }
 ec('div');

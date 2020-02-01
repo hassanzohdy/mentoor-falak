@@ -4,160 +4,160 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['event','submit','course','section','video','videoTypes','calculateVideoLength','isSending'],
-                children: {cdUzakrnI:'flk-dropdown-list'},
+                children: {cLmSdDsKJ:'flk-dropdown-list'},
                 render: function (component) {
-                    let elVjXRy = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.event('close')()}]},`title`,``,`type`,`button`);
-let elRMdBu = eo('i',null,null,`class`,`${fas('arrow-left') + ' icon'}`);
+                    let elmfAvE = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.event('close')()}]},`title`,``,`type`,`button`);
+let elQRimB = eo('i',null,null,`class`,`${fas('arrow-left') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elVjXRy;
+                        let $el = elmfAvE;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Back')}`});
         ;
                     }, 20);                
-                let el3EJWS = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+                let elsJ7yd = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! el3EJWS.formHandler) {
-                    window.cfrmdlr = el3EJWS.formHandler = new FormHandler(el3EJWS, component);
+                if (! elsJ7yd.formHandler) {
+                    window.cfrmdlr = elsJ7yd.formHandler = new FormHandler(elsJ7yd, component);
                 } else {
-                    window.cfrmdlr = el3EJWS.formHandler;
+                    window.cfrmdlr = elsJ7yd.formHandler;
                 }
-            let elVEnb8 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.course.id = this.value;}]},`value`,`${fval(component.course.id)}`,`name`,`${(`course`).toInputName()}`,`type`,`hidden`);
-elVEnb8.value = fval(component.course.id);
-let elwMvh3 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.section.id = this.value;}]},`value`,`${fval(component.section.id)}`,`name`,`${(`section`).toInputName()}`,`type`,`hidden`);
-elwMvh3.value = fval(component.section.id);
-let elViQRh = eo('div',null,null,`class`,`form-group`);
-elViQRh.cls = {'group-error': !!el3EJWS.formHandler.getError(`title`) };
+            let el8H4NC = ev('input',null,null, eventListeners, {oninput:[function(e) {component.course.id = this.value;}]},`value`,`${fval(component.course.id)}`,`name`,`${(`course`).toInputName()}`,`type`,`hidden`);
+el8H4NC.value = fval(component.course.id);
+let elJ3Hrn = ev('input',null,null, eventListeners, {oninput:[function(e) {component.section.id = this.value;}]},`value`,`${fval(component.section.id)}`,`name`,`${(`section`).toInputName()}`,`type`,`hidden`);
+elJ3Hrn.value = fval(component.section.id);
+let elsQ8Li = eo('div',null,null,`class`,`form-group`);
+elsQ8Li.cls = {'group-error': !!elsJ7yd.formHandler.getError(`title`) };
 
-            for (let className in elViQRh.cls) {
-                elViQRh.classList.toggle(className, elViQRh.cls[className]);
+            for (let className in elsQ8Li.cls) {
+                elsQ8Li.classList.toggle(className, elsQ8Li.cls[className]);
             }  
-            let elTQlqr = eo('label',null,null,`for`,`title`);
+            let elZ476y = eo('label',null,null,`for`,`title`);
 text(trans('Video Title'));
-let cndn2xm = true;
-this.setState('stJaiNG', cndn2xm);
-if (cndn2xm) { 
-let elhtFS6 = eo('span','NKPf',null,`title`,`${trans(`required`)}`,`class`,`required`);
+let cndXrNC = true;
+this.setState('stsg65h', cndXrNC);
+if (cndXrNC) { 
+let el5HUXM = eo('span','Jitf',null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 }ec('label');
-let elTPpQX = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.title = this.value;},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return el3EJWS.formHandler.addError(`title`, 'required', trans('validation.required'));}return el3EJWS.formHandler.removeError(`title`);}]},`value`,`${fval(component.video.title)}`,`name`,`${(`title`).toInputName()}`,`placeholder`,`${trans(`Video Title`)}`,`type`,`text`,`class`,`form-control`,`id`,`title`);
-elTPpQX.value = fval(component.video.title);
-let cndvQTD = el3EJWS.formHandler.getError(`title`);
-this.setState('stNpFIY', cndvQTD);
-if (cndvQTD) { 
-let elElvW_ = eo('div','rYOf',null,`class`,`alert alert-danger`);
-text(el3EJWS.formHandler.getError(`title`));
+let elgZn0c = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.title = this.value;},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return elsJ7yd.formHandler.addError(`title`, 'required', trans('validation.required'));}return elsJ7yd.formHandler.removeError(`title`);}]},`value`,`${fval(component.video.title)}`,`name`,`${(`title`).toInputName()}`,`placeholder`,`${trans(`Video Title`)}`,`type`,`text`,`class`,`form-control`,`id`,`title`);
+elgZn0c.value = fval(component.video.title);
+let cndzyjx = elsJ7yd.formHandler.getError(`title`);
+this.setState('stoW_0n', cndzyjx);
+if (cndzyjx) { 
+let elZyYJ7 = eo('div','nkMf',null,`class`,`alert alert-danger`);
+text(elsJ7yd.formHandler.getError(`title`));
 ec('div');
 }ec('div');
-let elDNIz_ = eo('div',null,null,`class`,`form-group`);
-elDNIz_.cls = {'group-error': !!el3EJWS.formHandler.getError(`description`) };
+let elRoJcv = eo('div',null,null,`class`,`form-group`);
+elRoJcv.cls = {'group-error': !!elsJ7yd.formHandler.getError(`description`) };
 
-            for (let className in elDNIz_.cls) {
-                elDNIz_.classList.toggle(className, elDNIz_.cls[className]);
+            for (let className in elRoJcv.cls) {
+                elRoJcv.classList.toggle(className, elRoJcv.cls[className]);
             }  
-            let elWXfky = eo('label',null,null,`for`,`description`);
+            let elgMcn0 = eo('label',null,null,`for`,`description`);
 text(trans('Video Descrition'));
 ec('label');
-let el96KMH = eo('textarea',null,null, eventListeners, {oninput:[function(e) {component.video.description = this.value;}]},`value`,`${fval(component.video.description)}`,`name`,`${(`description`).toInputName()}`,`placeholder`,`${trans(`Video Descrition`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`description`);
-el96KMH.value = fval(component.video.description);
+let elxscy2 = eo('textarea',null,null, eventListeners, {oninput:[function(e) {component.video.description = this.value;}]},`value`,`${fval(component.video.description)}`,`name`,`${(`description`).toInputName()}`,`placeholder`,`${trans(`Video Descrition`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`description`);
+elxscy2.value = fval(component.video.description);
 ec('textarea');
 ec('div');
-let cmpPy1z = this._lc('cdUzakrnI', {parent:component,props:{items:component.videoTypes,value:component.video.type,required:true},events:{onselect:function(e) {let $el = this; component.video.type = e.value}},attrs:{name:`${(`type`).toInputName()}`,label:'Video Type',heading:'Video Type'}});
-let cndtOz_ = component.video.type == 'youtubeUrl';
-this.setState('stKK8WE', cndtOz_);
-if (cndtOz_) { 
-let el1vxUO = eo('div','R0tf',null,`class`,`m-t-1`);
-let elc6Fm1 = eo('div','9nvf',null,`class`,`form-group`);
-elc6Fm1.cls = {'group-error': !!el3EJWS.formHandler.getError(`youtubeUrl`) };
+let cmphWeo = this._lc('cLmSdDsKJ', {parent:component,props:{items:component.videoTypes,value:component.video.type,required:true},events:{onselect:function(e) {let $el = this; component.video.type = e.value}},attrs:{name:`${(`type`).toInputName()}`,label:'Video Type',heading:'Video Type'}});
+let cndVd9R = component.video.type == 'youtubeUrl';
+this.setState('stTzCBN', cndVd9R);
+if (cndVd9R) { 
+let elMDC09 = eo('div','rvIf',null,`class`,`m-t-1`);
+let elTnxrd = eo('div','Xctf',null,`class`,`form-group`);
+elTnxrd.cls = {'group-error': !!elsJ7yd.formHandler.getError(`youtubeUrl`) };
 
-            for (let className in elc6Fm1.cls) {
-                elc6Fm1.classList.toggle(className, elc6Fm1.cls[className]);
+            for (let className in elTnxrd.cls) {
+                elTnxrd.classList.toggle(className, elTnxrd.cls[className]);
             }  
-            let el94spY = eo('label','qqIf',null,`for`,`youtubeUrl`);
+            let elGYLKw = eo('label','Pj7f',null,`for`,`youtubeUrl`);
 text(trans('Youtube Url'));
-let cnd9Yqn = true;
-this.setState('st1jO6h', cnd9Yqn);
-if (cnd9Yqn) { 
-let elM0CC1 = eo('span','jhtf',null,`title`,`${trans(`required`)}`,`class`,`required`);
+let cndQkah = true;
+this.setState('stDfMyc', cndQkah);
+if (cndQkah) { 
+let elR8C_q = eo('span','2IVf',null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 }ec('label');
-let elEmPWa = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.youtubeUrl = this.value;},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return el3EJWS.formHandler.addError(`youtubeUrl`, 'required', trans('validation.required'));}return el3EJWS.formHandler.removeError(`youtubeUrl`);}]},`value`,`${fval(component.video.youtubeUrl)}`,`name`,`${(`youtubeUrl`).toInputName()}`,`placeholder`,`${trans(`Youtube Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`youtubeUrl`);
-elEmPWa.value = fval(component.video.youtubeUrl);
-let cndKIjP = el3EJWS.formHandler.getError(`youtubeUrl`);
-this.setState('stWr_aF', cndKIjP);
-if (cndKIjP) { 
-let elNLCXN = eo('div','kPRf',null,`class`,`alert alert-danger`);
-text(el3EJWS.formHandler.getError(`youtubeUrl`));
+let el8jRxT = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.youtubeUrl = this.value;},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return elsJ7yd.formHandler.addError(`youtubeUrl`, 'required', trans('validation.required'));}return elsJ7yd.formHandler.removeError(`youtubeUrl`);}]},`value`,`${fval(component.video.youtubeUrl)}`,`name`,`${(`youtubeUrl`).toInputName()}`,`placeholder`,`${trans(`Youtube Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`youtubeUrl`);
+el8jRxT.value = fval(component.video.youtubeUrl);
+let cndVqik = elsJ7yd.formHandler.getError(`youtubeUrl`);
+this.setState('stFaQ17', cndVqik);
+if (cndVqik) { 
+let elHBorr = eo('div','fEef',null,`class`,`alert alert-danger`);
+text(elsJ7yd.formHandler.getError(`youtubeUrl`));
 ec('div');
 }ec('div');
 ec('div');
-}let elOSqYF = eo('h3',null,null,`class`,`m-t-1`);
+}let elJk1rF = eo('h3',null,null,`class`,`m-t-1`);
 text(`Video Length`);
 ec('h3');
-let elo4abm = eo('div',null,null,`class`,`row`);
-let elicnWa = eo('div',null,null,`class`,`col`);
-let elMzpMD = eo('div',null,null,`class`,`form-group`);
-elMzpMD.cls = {'group-error': !!el3EJWS.formHandler.getError(`duration.minutes`) };
+let eluSKzW = eo('div',null,null,`class`,`row`);
+let el9qVe1 = eo('div',null,null,`class`,`col`);
+let elLCW6e = eo('div',null,null,`class`,`form-group`);
+elLCW6e.cls = {'group-error': !!elsJ7yd.formHandler.getError(`duration.minutes`) };
 
-            for (let className in elMzpMD.cls) {
-                elMzpMD.classList.toggle(className, elMzpMD.cls[className]);
+            for (let className in elLCW6e.cls) {
+                elLCW6e.classList.toggle(className, elLCW6e.cls[className]);
             }  
-            let elAQYWp = eo('label',null,null,`for`,`duration-minutes`);
+            let el7LLxu = eo('label',null,null,`for`,`duration-minutes`);
 text(trans('Minutes'));
-let cndJ39H = true;
-this.setState('st0dTtU', cndJ39H);
-if (cndJ39H) { 
-let el9FtPy = eo('span','Bv8f',null,`title`,`${trans(`required`)}`,`class`,`required`);
+let cndyMYM = true;
+this.setState('stXABVO', cndyMYM);
+if (cndyMYM) { 
+let ellDkUw = eo('span','NLkf',null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 }ec('label');
-let elm5QYQ = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.duration.minutes = this.value;},function(e) {var $el = this;component.calculateVideoLength()},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return el3EJWS.formHandler.addError(`duration.minutes`, 'required', trans('validation.required'));}else if (value && Number(value) < 0) {return el3EJWS.formHandler.addError(`duration.minutes`, 'min', trans('validation.min', 0));}else if (value && Number(value) > 59) {return el3EJWS.formHandler.addError(`duration.minutes`, 'max', trans('validation.max', 59));}return el3EJWS.formHandler.removeError(`duration.minutes`);}]},`value`,`${fval(component.video.duration.minutes)}`,`name`,`${(`duration.minutes`).toInputName()}`,`placeholder`,`${trans(`Minutes`)}`,`type`,`number`,`class`,`form-control`,`id`,`duration-minutes`);
-elm5QYQ.value = fval(component.video.duration.minutes);
-let cndyM6u = el3EJWS.formHandler.getError(`duration.minutes`);
-this.setState('stWsOZa', cndyM6u);
-if (cndyM6u) { 
-let elrIZtY = eo('div','z79f',null,`class`,`alert alert-danger`);
-text(el3EJWS.formHandler.getError(`duration.minutes`));
+let elC6MGu = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.duration.minutes = this.value;},function(e) {var $el = this;component.calculateVideoLength()},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return elsJ7yd.formHandler.addError(`duration.minutes`, 'required', trans('validation.required'));}else if (value && Number(value) < 0) {return elsJ7yd.formHandler.addError(`duration.minutes`, 'min', trans('validation.min', 0));}else if (value && Number(value) > 59) {return elsJ7yd.formHandler.addError(`duration.minutes`, 'max', trans('validation.max', 59));}return elsJ7yd.formHandler.removeError(`duration.minutes`);}]},`value`,`${fval(component.video.duration.minutes)}`,`name`,`${(`duration.minutes`).toInputName()}`,`placeholder`,`${trans(`Minutes`)}`,`type`,`number`,`class`,`form-control`,`id`,`duration-minutes`);
+elC6MGu.value = fval(component.video.duration.minutes);
+let cndxp8m = elsJ7yd.formHandler.getError(`duration.minutes`);
+this.setState('stjzEAF', cndxp8m);
+if (cndxp8m) { 
+let el6LOTT = eo('div','Zmgf',null,`class`,`alert alert-danger`);
+text(elsJ7yd.formHandler.getError(`duration.minutes`));
 ec('div');
 }ec('div');
 ec('div');
-let elIsv3w = eo('div',null,null,`class`,`col`);
-let eluPqLp = eo('div',null,null,`class`,`form-group`);
-eluPqLp.cls = {'group-error': !!el3EJWS.formHandler.getError(`duration.seconds`) };
+let elrdVZZ = eo('div',null,null,`class`,`col`);
+let elAbbwO = eo('div',null,null,`class`,`form-group`);
+elAbbwO.cls = {'group-error': !!elsJ7yd.formHandler.getError(`duration.seconds`) };
 
-            for (let className in eluPqLp.cls) {
-                eluPqLp.classList.toggle(className, eluPqLp.cls[className]);
+            for (let className in elAbbwO.cls) {
+                elAbbwO.classList.toggle(className, elAbbwO.cls[className]);
             }  
-            let elR_Rqg = eo('label',null,null,`for`,`duration-seconds`);
+            let elxrB2_ = eo('label',null,null,`for`,`duration-seconds`);
 text(trans('Seconds'));
-let cndtPiP = true;
-this.setState('stSbDi3', cndtPiP);
-if (cndtPiP) { 
-let elRsMu0 = eo('span','FD2f',null,`title`,`${trans(`required`)}`,`class`,`required`);
+let cndUK8w = true;
+this.setState('stqfm9D', cndUK8w);
+if (cndUK8w) { 
+let elCenuc = eo('span','nBQf',null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 }ec('label');
-let elW9Fv9 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.duration.seconds = this.value;},function(e) {var $el = this;component.calculateVideoLength()},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return el3EJWS.formHandler.addError(`duration.seconds`, 'required', trans('validation.required'));}else if (value && Number(value) < 0) {return el3EJWS.formHandler.addError(`duration.seconds`, 'min', trans('validation.min', 0));}else if (value && Number(value) > 59) {return el3EJWS.formHandler.addError(`duration.seconds`, 'max', trans('validation.max', 59));}return el3EJWS.formHandler.removeError(`duration.seconds`);}]},`value`,`${fval(component.video.duration.seconds)}`,`name`,`${(`duration.seconds`).toInputName()}`,`placeholder`,`${trans(`Seconds`)}`,`type`,`number`,`class`,`form-control`,`id`,`duration-seconds`);
-elW9Fv9.value = fval(component.video.duration.seconds);
-let cndTAVU = el3EJWS.formHandler.getError(`duration.seconds`);
-this.setState('stH_adv', cndTAVU);
-if (cndTAVU) { 
-let elD9b29 = eo('div','hcWf',null,`class`,`alert alert-danger`);
-text(el3EJWS.formHandler.getError(`duration.seconds`));
+let elHz4DN = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.duration.seconds = this.value;},function(e) {var $el = this;component.calculateVideoLength()},function(e) {let value = this.value.trim();if (true && Is.empty(value)) {return elsJ7yd.formHandler.addError(`duration.seconds`, 'required', trans('validation.required'));}else if (value && Number(value) < 0) {return elsJ7yd.formHandler.addError(`duration.seconds`, 'min', trans('validation.min', 0));}else if (value && Number(value) > 59) {return elsJ7yd.formHandler.addError(`duration.seconds`, 'max', trans('validation.max', 59));}return elsJ7yd.formHandler.removeError(`duration.seconds`);}]},`value`,`${fval(component.video.duration.seconds)}`,`name`,`${(`duration.seconds`).toInputName()}`,`placeholder`,`${trans(`Seconds`)}`,`type`,`number`,`class`,`form-control`,`id`,`duration-seconds`);
+elHz4DN.value = fval(component.video.duration.seconds);
+let cndj9QF = elsJ7yd.formHandler.getError(`duration.seconds`);
+this.setState('st3Vpox', cndj9QF);
+if (cndj9QF) { 
+let el44u3O = eo('div','hEPf',null,`class`,`alert alert-danger`);
+text(elsJ7yd.formHandler.getError(`duration.seconds`));
 ec('div');
 }ec('div');
 ec('div');
 ec('div');
-let elq6bFq = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.duration.length = this.value;}]},`value`,`${fval(component.video.duration.length)}`,`name`,`${(`duration.length`).toInputName()}`,`type`,`hidden`);
-elq6bFq.value = fval(component.video.duration.length);
-let elkT_Ha = eo('div',null,null,`class`,`m-t-1`);
-let elSOSsn = eo('button',null,null, boolAttrs, {disabled:component.isSending},`class`,`btn bold btn-primary`);
+let elyp5ve = ev('input',null,null, eventListeners, {oninput:[function(e) {component.video.duration.length = this.value;}]},`value`,`${fval(component.video.duration.length)}`,`name`,`${(`duration.length`).toInputName()}`,`type`,`hidden`);
+elyp5ve.value = fval(component.video.duration.length);
+let el7mfFO = eo('div',null,null,`class`,`m-t-1`);
+let elCLTmh = eo('button',null,null, boolAttrs, {disabled:component.isSending},`class`,`btn bold btn-primary`);
 text(`Save`);
 ec('button');
 ec('div');

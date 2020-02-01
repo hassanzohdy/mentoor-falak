@@ -4,88 +4,88 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isSubscriable','track'],
-                children: {cq_UeCOn9:'gold-icon',c6jskldH6:'gold-icon'},
+                children: {cPI5O9ikV:'gold-icon',cx5ANyZ_V:'gold-icon'},
                 render: function (component) {
-                    let elDJ2vF = eo('div',null,null, 'style', this.__info.style || {}, eventListeners, mergeEvents({}, this.__info.events), boolAttrs, Object.merge({}, this.__info.boolAttrs || {}),...normalAttrs(Object.merge({}, this.__info.attrs || {})));
-let elzxc1x = eo('div',null,null,`class`,`track-card`);
-let elEtt3k = eo('div',null,null,`class`,`card`);
-let cndeFOe = component.isSubscriable();
-this.setState('stKRKE6', cndeFOe);
-let cndRGz3 = component.track.subscribed;
-this.setState('stmUq5Y', cndRGz3);
-let cndtBdx = !(cndeFOe||cndRGz3);
-this.setState('stk98xR', cndtBdx);
-if (cndeFOe) { 
-let el7Vacw = eo('span','o41f',null,`title`,`${trans(`Unlockable`)}`,`class`,`can-unlock top-right`);
+                    let ela_AHw = eo('div',null,null, 'style', this.__info.style || {}, eventListeners, mergeEvents({}, this.__info.events), boolAttrs, Object.merge({}, this.__info.boolAttrs || {}),...normalAttrs(Object.merge({}, this.__info.attrs || {})));
+let elZbecz = eo('div',null,null,`class`,`track-card`);
+let el2SSng = eo('div',null,null,`class`,`card`);
+let cnd8F0a = component.isSubscriable();
+this.setState('stnUUTj', cnd8F0a);
+let cndfCXX = component.track.subscribed;
+this.setState('st92y73', cndfCXX);
+let cndkx9U = !(cnd8F0a||cndfCXX);
+this.setState('stwhFzg', cndkx9U);
+if (cnd8F0a) { 
+let elZxX_3 = eo('span','WkQf',null,`title`,`${trans(`Unlockable`)}`,`class`,`can-unlock top-right`);
 text(`!`);
 ec('span');
-}else if (cndRGz3) { 
-let elKipaf = eo('div',null,null,`title`,`${trans(`Subscribed`)}`,`class`,`purchased-wrapper top-right`);
-let elKW0bC = eo('i',null,null,`class`,`${fas('check-circle') + ' purchased-icon icon'}`);
+}else if (cndfCXX) { 
+let elu991U = eo('div',null,null,`title`,`${trans(`Subscribed`)}`,`class`,`purchased-wrapper top-right`);
+let elSBJS2 = eo('i',null,null,`class`,`${fas('check-circle') + ' purchased-icon icon'}`);
 ec('i');
 ec('div');
 }else { 
-let elFHj3h = eo('div',null,null,`title`,`${trans(`can-not-unlock`)}`,`class`,`unlocked top-right`);
-let elgsYL1 = eo('i',null,null,`class`,`${fas('lock') + ' lock-icon icon'}`);
+let elgnAhE = eo('div',null,null,`title`,`${trans(`can-not-unlock`)}`,`class`,`unlocked top-right`);
+let elNg4gb = eo('i',null,null,`class`,`${fas('lock') + ' lock-icon icon'}`);
 ec('i');
 ec('div');
-}let elr3y0r = eo('div');
-let elItkFk = ev('img',null,null,`src`,`${component.track.image}`,`class`,`imgTrack`);
+}let elnP1R2 = eo('div');
+let elY0W9k = ev('img',null,null,`src`,`${component.track.image}`,`class`,`imgTrack`);
 ec('div');
-let elAZuHr = eo('div',null,null,`class`,`trackInfoTitle card-body`);
-let eliNiIP = eo('a');
-let elnQoLZ = eo('h4',null,null,`class`,`text-capitalize`);
+let elE53lL = eo('div',null,null,`class`,`trackInfoTitle card-body`);
+let elvuVVi = eo('a');
+let elePJiO = eo('h4',null,null,`class`,`text-capitalize`);
 text(component.track.name);
 ec('h4');
 ec('a');
-let elKc92v = eo('div',null,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 border-top`);
-let el_7Pir = eo('span',null,null,`class`,`trackSingleMeta`);
-let eleNUPg = eo('i',null,null,`class`,`ti ti-list`);
+let el_T9uP = eo('div',null,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 border-top`);
+let el9zUjz = eo('span',null,null,`class`,`trackSingleMeta`);
+let elCqK4F = eo('i',null,null,`class`,`ti ti-list`);
 ec('i');
 text(`${component.track.topics.length} Topics`);
 ec('span');
-let elc9R5K = eo('span',null,null,`class`,`trackSingleMeta`);
-let cndNGrZ = component.track.cost ==0;
-this.setState('stMUVsq', cndNGrZ);
-if (cndNGrZ) { 
-let el33uqc = eo('strong','d84f',null,`class`,`pink-text`);
+let el3fXaH = eo('span',null,null,`class`,`trackSingleMeta`);
+let cnd5qA1 = component.track.cost ==0;
+this.setState('stcTyp0', cnd5qA1);
+if (cnd5qA1) { 
+let elsL3MX = eo('strong','QbFf',null,`class`,`pink-text`);
 text(`FREE`);
 ec('strong');
-}let cmpZ31Q = this._lc('cq_UeCOn9', {parent:component,props:{coins:component.track.cost}});
+}let cmp2cKm = this._lc('cPI5O9ikV', {parent:component,props:{coins:component.track.cost}});
 ec('span');
 ec('div');
 ec('div');
-let elACJyS = eo('div',null,null,`class`,`trackInfo`);
-let elol1Ml = eo('div',null,null,`class`,`trackInfoTitle`);
-let elLoo_5 = eo('a',null,null,`href`,`${URLS.track(component.track)}`);
-let el7qxEv = eo('h4',null,null,`class`,`text-capitalize`);
+let el7rVxT = eo('div',null,null,`class`,`trackInfo`);
+let eleKRCO = eo('div',null,null,`class`,`trackInfoTitle`);
+let elun56v = eo('a',null,null,`href`,`${URLS.track(component.track)}`);
+let elJV4ku = eo('h4',null,null,`class`,`text-capitalize`);
 text(component.track.name);
 ec('h4');
 ec('a');
 ec('div');
-let elnW4oe = eo('div',null,null,`class`,`trackInfoDescription`);
-let eldLaRr = eo('p',null,null,`class`,`pt-4`);
+let elt9Nh8 = eo('div',null,null,`class`,`trackInfoDescription`);
+let elOjJND = eo('p',null,null,`class`,`pt-4`);
 text(component.track.description);
 ec('p');
 ec('div');
-let elVByV_ = eo('div',null,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 pb-4`);
-let eldtAgP = eo('span',null,null,`class`,`trackSingleMeta`);
-let elDabg9 = eo('i',null,null,`class`,`ti ti-list`);
+let elDpnvr = eo('div',null,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 pb-4`);
+let elGyQUZ = eo('span',null,null,`class`,`trackSingleMeta`);
+let el8wroF = eo('i',null,null,`class`,`ti ti-list`);
 ec('i');
 text(`${ component.track.topics.length } Topics`);
 ec('span');
-let elRZ2C4 = eo('span',null,null,`class`,`trackSingleMeta`);
-let cndQkuj = component.track.cost ==0;
-this.setState('stJUhSh', cndQkuj);
-if (cndQkuj) { 
-let elx8zc3 = eo('strong','OQIf',null,`class`,`pink-text`);
+let elKS3sM = eo('span',null,null,`class`,`trackSingleMeta`);
+let cndZETJ = component.track.cost ==0;
+this.setState('stobudp', cndZETJ);
+if (cndZETJ) { 
+let elCQARh = eo('strong','6Ljf',null,`class`,`pink-text`);
 text(`FREE`);
 ec('strong');
-}let cmp7ix3 = this._lc('c6jskldH6', {parent:component,props:{coins:component.track.cost}});
+}let cmpNm5c = this._lc('cx5ANyZ_V', {parent:component,props:{coins:component.track.cost}});
 ec('span');
 ec('div');
-let eld6Mdm = eo('div',null,null,`class`,`trackPreview`);
-let elyeB09 = eo('a',null,null,`href`,`${URLS.track(component.track)}`,`class`,`btn btn-primary btn-block`);
+let elm1wgX = eo('div',null,null,`class`,`trackPreview`);
+let elSlM_B = eo('a',null,null,`href`,`${URLS.track(component.track)}`,`class`,`btn btn-primary btn-block`);
 text(trans('Preview this track'));
 ec('a');
 ec('div');

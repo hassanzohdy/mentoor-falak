@@ -6,25 +6,25 @@ _Component({
                 observe: ['tooltip','title','timeUp'],
                 children: {},
                 render: function (component) {
-                    let el_0LGd = eo('span',null,null,`title`,``,`class`,`remaining-time ${ component.inputs.getAttr('class') }`);
-component.timer = el_0LGd;
-el_0LGd.cls = {'time-up': component.timeUp};
+                    let eltHOnY = eo('span',null,null,`title`,``,`class`,`remaining-time ${ component.inputs.getAttr('class') }`);
+component.timer = eltHOnY;
+eltHOnY.cls = {'time-up': component.timeUp};
 
-            for (let className in el_0LGd.cls) {
-                el_0LGd.classList.toggle(className, el_0LGd.cls[className]);
+            for (let className in eltHOnY.cls) {
+                eltHOnY.classList.toggle(className, eltHOnY.cls[className]);
             }  
             
-                // let el_0LGd = currentElement();
+                // let eltHOnY = currentElement();
 
-                if (! el_0LGd.__rendered) {
-                    el_0LGd.__rendered = true;
+                if (! eltHOnY.__rendered) {
+                    eltHOnY.__rendered = true;
                 } else {
                     skip();
                 }
             ec('span');
 
                     setTimeout(function () {
-                        let $el = el_0LGd;
+                        let $el = eltHOnY;
                         
             component.tooltip && tippyTooltip($el, {arrow:true,content:`${component.title}`});
         ;

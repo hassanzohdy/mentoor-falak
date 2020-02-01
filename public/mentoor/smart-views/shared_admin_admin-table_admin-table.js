@@ -4,56 +4,56 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['tableHeading','hideAddBtn','addNewItem','addHeading','records','columns'],
-                children: {ccLNU2QO6:'flk-spinner',csTAGmcPQ:'layout'},
+                children: {c4jJ1Q_oG:'flk-spinner',cV_bAxZFY:'layout'},
                 render: function (component) {
-                    let cmpSHNt = this._lc('csTAGmcPQ', {parent:component,content:(layout) => {let el4qtdw = eo('div',null,null,`class`,`d-flex justify-content-between align-items-center flex-wrap mb-3`);
-let elddJvT = eo('h2',null,null,`class`,`tableHeading bold`);
+                    let cmpbRhR = this._lc('cV_bAxZFY', {parent:component,content:(layout) => {let elB9AdD = eo('div',null,null,`class`,`d-flex justify-content-between align-items-center flex-wrap mb-3`);
+let elwgovw = eo('h2',null,null,`class`,`tableHeading bold`);
 text(trans(component.tableHeading));
 ec('h2');
-let cndqhJW = !component.hideAddBtn;
-this.setState('stoxy6D', cndqhJW);
-if (cndqhJW) { 
-let elai5Pb = eo('button','ZKFf',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewItem()}]},`class`,`btn btn-info`);
-let elH6Xy3 = eo('i','k5Yf',null,`class`,`${fas('plus') + ' icon'}`);
+let cnd1eji = !component.hideAddBtn;
+this.setState('std9S49', cnd1eji);
+if (cnd1eji) { 
+let elKDMgT = eo('button','kc5f',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewItem()}]},`class`,`btn btn-info`);
+let elq9epy = eo('i','N1Cf',null,`class`,`${fas('plus') + ' icon'}`);
 ec('i');
 text(trans('add-new-item', trans(component.addHeading)));
 ec('button');
 }ec('div');
-let cndTAjI = ! Is.empty(component.records);
-this.setState('st7QBae', cndTAjI);
-if (cndTAjI) { 
-let elXiFcl = eo('small','B3Hf',null,`class`,`m-b-1 d-block`);
+let cndbls2 = ! Is.empty(component.records);
+this.setState('stWluo3', cndbls2);
+if (cndbls2) { 
+let elxbAiT = eo('small','5Osf',null,`class`,`m-b-1 d-block`);
 text(`Displaying`);
-let elZJtmH = eo('strong','kk3f',null,`class`,`mx-2`);
+let ellOLSv = eo('strong','ufAf',null,`class`,`mx-2`);
 text(component.records.length.format());
 ec('strong');
 text(`Records.`);
 ec('small');
-}let elh8hon = eo('div',null,null,`class`,`table-responsive`);
-let elh00GE = eo('table',null,null,`class`,`table table-hover admin-table`);
-let elWisDO = eo('thead',null,null,`class`,`thead-light`);
-let elsoOdg = eo('tr');
+}let elr4Tlo = eo('div',null,null,`class`,`table-responsive`);
+let el63SPq = eo('table',null,null,`class`,`table table-hover admin-table`);
+let elyPaaK = eo('thead',null,null,`class`,`thead-light`);
+let elF5nTZ = eo('tr');
 for (let i in component.columns) {
 let col = component.columns[i]; 
- let ii8rQR = 'NaL1m_V' + i;
-let elEp7B_ = eo('th','CKZ0Q_a5phSR' + i+ii8rQR);
+ let ii31F_ = 'jNZeDjt' + i;
+let elq0aZz = eo('th','x8s4O_MmirBj' + i+ii31F_);
 text(trans(col));
 ec('th');
 }
 ec('tr');
 ec('thead');
-let elHOwIX = eo('tbody');
-let cnd2vAO = component.inputs.parent.isLoading;
-this.setState('stngJgz', cnd2vAO);
-let cndvWV0 = !Is.empty(component.records);
-this.setState('st9bUf4', cndvWV0);
-if (cnd2vAO) { 
-let elv1t0U = eo('tr','rhof');
-let elTB_os = eo('td','YCEf',null,`colspan`,`${ component.columns.length }`);
-let cmphSQu = this._lc('ccLNU2QO6', {parent:component,parentTop:layout,state:'stngJgz'});
+let elUWTlu = eo('tbody');
+let cnd8e9w = component.inputs.parent.isLoading;
+this.setState('stYWme1', cnd8e9w);
+let cndLDuq = !Is.empty(component.records);
+this.setState('stFQd26', cndLDuq);
+if (cnd8e9w) { 
+let eldVyAY = eo('tr','hZKf');
+let elB2ymq = eo('td','8k8f',null,`colspan`,`${ component.columns.length }`);
+let cmpSPLP = this._lc('c4jJ1Q_oG', {parent:component,parentTop:layout,state:'stYWme1'});
 ec('td');
 ec('tr');
-}else if (cndvWV0) { 
+}else if (cndLDuq) { 
 
         if (this.hasContent()) {
             this.content();

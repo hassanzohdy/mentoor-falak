@@ -4,60 +4,60 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','openModal','confirmRemoving','modalIsOpened','modalHeading','submit','record','isValidForm','isSending','confirmDelete','remove'],
-                children: {cNrgiBqRy:'project-layout',czR48ol8p:'flk-modal',cuzHV_lpt:'flk-alert'},
+                children: {cBQJenUvY:'project-layout',cP7LJAoMb:'flk-modal',cW2bltC4M:'flk-alert'},
                 render: function (component) {
-                    let cmpf2Kc = this._lc('cNrgiBqRy', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let el6K2b2 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('add')}]},`class`,`float-right btn btn-success bold`);
-let elDNWQp = eo('i',null,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
+                    let cmp0dDl = this._lc('cBQJenUvY', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elkNOrl = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('add')}]},`class`,`float-right btn btn-success bold`);
+let elMl4LZ = eo('i',null,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
 ec('i');
 text(`Poll`);
 ec('button');
-let elLVQmC = eo('h1',null,null,`class`,`m-y-1`);
+let elWiYKB = eo('h1',null,null,`class`,`m-y-1`);
 text(`${ component.project.name } Polls
         (${ component.project.polls.length })`);
 ec('h1');
-let elGz2hm = eo('table',null,null,`class`,`table table-striped buttoned`);
-let elan0Aa = eo('thead');
-let el3nsaI = eo('tr');
-let elcaoCn = eo('th');
+let elEbTPP = eo('table',null,null,`class`,`table table-striped buttoned`);
+let elQu_DX = eo('thead');
+let ely7hJ0 = eo('tr');
+let elFf0G4 = eo('th');
 text(`Control`);
 ec('th');
 ec('tr');
 ec('thead');
-let elhhJsh = eo('tbody');
-let cndZmD2 = Is.empty(component.project.polls);
-this.setState('stXkEix', cndZmD2);
-let cndxQpA = !(cndZmD2);
-this.setState('stj8TIp', cndxQpA);
-if (cndZmD2) { 
-let elobBSa = eo('tr','Kjpf');
-let elfEKZx = eo('td','TMyf',null, 'style', {textAlign:'center'},`colspan`,`3`);
+let elmeyh1 = eo('tbody');
+let cndbJvt = Is.empty(component.project.polls);
+this.setState('stvkArR', cndbJvt);
+let cndhvwk = !(cndbJvt);
+this.setState('stg3JKE', cndhvwk);
+if (cndbJvt) { 
+let elpaezp = eo('tr','0Mrf');
+let elzdY5O = eo('td','0H3f',null, 'style', {textAlign:'center'},`colspan`,`3`);
 text(`No Polls Yet`);
 ec('td');
 ec('tr');
 }else { 
 for (let index in component.project.polls) {
 let record = component.project.polls[index]; 
- let iiV77M = 'vwDGEBn' + index;
-let elUzu6H = eo('tr','qMSudGG0GQYi' + index+iiV77M);
-let elrLHZ8 = eo('td','_vFff'+iiV77M);
-let elEeMPK = eo('button','pRMff'+iiV77M,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('edit', record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-cyan`);
-let elihusF = eo('i','T6mff'+iiV77M,null,`class`,`${fas('edit') + ' icon'}`);
+ let iiKD0F = '8kYRxZN' + index;
+let eldUqg9 = eo('tr','WAPbH8bE2Iph' + index+iiKD0F);
+let el97Lpa = eo('td','HHYff'+iiKD0F);
+let elR3kct = eo('button','_CSff'+iiKD0F,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('edit', record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-cyan`);
+let el1mak6 = eo('i','Ke7ff'+iiKD0F,null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elEeMPK;
+                        let $el = elR3kct;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Edit Poll')}`});
         ;
                     }, 20);                
-                let el2zkql = eo('button','6ctff'+iiV77M,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-danger`);
-let elU3eBu = eo('i','kBTff'+iiV77M,null,`class`,`${fas('trash') + ' icon'}`);
+                let elAOciE = eo('button','Ku_ff'+iiKD0F,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-danger`);
+let elSTSwM = eo('i','WIPff'+iiKD0F,null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = el2zkql;
+                        let $el = elAOciE;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Delete Poll')}`});
         ;
@@ -68,52 +68,52 @@ ec('tr');
 }ec('tbody');
 ec('table');
 }});
-let cnd789t = component.modalIsOpened;
-this.setState('stJtCNA', cnd789t);
-if (cnd789t) { 
-component.modal = this._lc('czR48ol8p', {parent:component,props:{heading:component.modalHeading},events:{onclose:function(e) {let $el = this; component.modalIsOpened = null}},content:(flkModal) => {let elSDAQt = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cndKjbQ = component.modalIsOpened;
+this.setState('stqOnvF', cndKjbQ);
+if (cndKjbQ) { 
+component.modal = this._lc('cP7LJAoMb', {parent:component,props:{heading:component.modalHeading},events:{onclose:function(e) {let $el = this; component.modalIsOpened = null}},content:(flkModal) => {let elMJiqF = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elSDAQt.formHandler) {
-                    window.cfrmdlr = elSDAQt.formHandler = new FormHandler(elSDAQt, component);
+                if (! elMJiqF.formHandler) {
+                    window.cfrmdlr = elMJiqF.formHandler = new FormHandler(elMJiqF, component);
                 } else {
-                    window.cfrmdlr = elSDAQt.formHandler;
+                    window.cfrmdlr = elMJiqF.formHandler;
                 }
-            let elp59OA = ev('input',null,null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
-elp59OA.value = fval(component.project.id);
-let eli_S1T = eo('div',null,null,`class`,`form-group`);
-eli_S1T.cls = {'group-error': !!elSDAQt.formHandler.getError(`name`) };
+            let elYqVGW = ev('input',null,null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
+elYqVGW.value = fval(component.project.id);
+let el4eczW = eo('div',null,null,`class`,`form-group`);
+el4eczW.cls = {'group-error': !!elMJiqF.formHandler.getError(`name`) };
 
-            for (let className in eli_S1T.cls) {
-                eli_S1T.classList.toggle(className, eli_S1T.cls[className]);
+            for (let className in el4eczW.cls) {
+                el4eczW.classList.toggle(className, el4eczW.cls[className]);
             }  
-            let el5OfET = eo('label',null,null,`for`,`name`);
+            let el46ff5 = eo('label',null,null,`for`,`name`);
 text(trans('Poll Name'));
-let el_XSFd = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elKVCDt = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elhqj7X = ev('input',null,null, eventListeners, {oninput:[function(e) {component.record.name = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elSDAQt.formHandler.addError(`name`, 'required', trans('validation.required'));}return elSDAQt.formHandler.removeError(`name`);}]},`value`,`${fval(component.record.name)}`,`name`,`${(`name`).toInputName()}`,`placeholder`,`${trans(`Poll Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`name`);
-elhqj7X.value = fval(component.record.name);
-let cndsXfh = elSDAQt.formHandler.getError(`name`);
-this.setState('sttwFqY', cndsXfh);
-if (cndsXfh) { 
-let elsioX2 = eo('div','Ynff',null,`class`,`alert alert-danger`);
-text(elSDAQt.formHandler.getError(`name`));
+let elODmYi = ev('input',null,null, eventListeners, {oninput:[function(e) {component.record.name = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elMJiqF.formHandler.addError(`name`, 'required', trans('validation.required'));}return elMJiqF.formHandler.removeError(`name`);}]},`value`,`${fval(component.record.name)}`,`name`,`${(`name`).toInputName()}`,`placeholder`,`${trans(`Poll Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`name`);
+elODmYi.value = fval(component.record.name);
+let cndneFx = elMJiqF.formHandler.getError(`name`);
+this.setState('st6KfXD', cndneFx);
+if (cndneFx) { 
+let elOZskV = eo('div','T1nf',null,`class`,`alert alert-danger`);
+text(elMJiqF.formHandler.getError(`name`));
 ec('div');
 }ec('div');
-let elfTEoT = eo('div',null,null,`class`,`m-t-1 text-center`);
-let elE4yAs = eo('button',null,null, boolAttrs, {disabled:! component.isValidForm || component.isSending},`class`,`btn btn-success bold`);
+let elrfj8B = eo('div',null,null,`class`,`m-t-1 text-center`);
+let elEx9mT = eo('button',null,null, boolAttrs, {disabled:! component.isValidForm || component.isSending},`class`,`btn btn-success bold`);
 text(`Save`);
 ec('button');
 ec('div');
 ec('form');
-},attrs:{size:'small'},state:'stJtCNA'});
-}let cnd10qi = component.confirmDelete;
-this.setState('stCyPKv', cnd10qi);
-if (cnd10qi) { 
-let cmpPkMQ = this._lc('cuzHV_lpt', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stCyPKv'});
+},attrs:{size:'small'},state:'stqOnvF'});
+}let cndGIRC = component.confirmDelete;
+this.setState('stur8T_', cndGIRC);
+if (cndGIRC) { 
+let cmpwQKu = this._lc('cW2bltC4M', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stur8T_'});
 }
                     this.isReadyToGo();
                 }

@@ -4,99 +4,99 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['tasks','taskCanBeEdited','editingTask','user','deleteTask'],
-                children: {c3OEWNDG6:'flk-time-ago',cGDl0ipVe:'gold-icon',cWwBvKe8_:'task-modal'},
+                children: {c15q5DaLj:'flk-time-ago',ckYzHDCVr:'gold-icon',cslgECLQV:'task-modal'},
                 render: function (component) {
-                    let el1pnlp = eo('table',null,null,`class`,`table table.bordered table-striped`);
-let el_CxXR = eo('thead');
-let elgvEE_ = eo('tr');
-let el_GD_P = eo('th');
+                    let eluquQ2 = eo('table',null,null,`class`,`table table.bordered table-striped`);
+let elIHJJF = eo('thead');
+let elh8EFf = eo('tr');
+let el3L2Qe = eo('th');
 text(`#`);
 ec('th');
-let elhubsF = eo('th');
+let elLa8G5 = eo('th');
 text(`Participant`);
 ec('th');
-let el25IGA = eo('th');
+let elmzCV1 = eo('th');
 text(`Title`);
 ec('th');
-let elR1Gzj = eo('th');
+let elyeYmS = eo('th');
 text(`Created`);
 ec('th');
-let elC1uEJ = eo('th');
+let elL8YxF = eo('th');
 text(`Status`);
 ec('th');
-let el3kfeo = eo('th');
+let ellPab6 = eo('th');
 text(`Starts at`);
 ec('th');
-let elfXPrk = eo('th');
+let eluezLZ = eo('th');
 text(`Ends at`);
 ec('th');
-let eltA6ZS = eo('th');
+let elRom6Q = eo('th');
 text(`Reward`);
 ec('th');
-let elaP4MC = eo('th');
+let el3mWaj = eo('th');
 text(`Penalty ratio`);
 ec('th');
-let el8cLMy = eo('th');
+let elv5kJ6 = eo('th');
 text(`Control`);
 ec('th');
 ec('tr');
 ec('thead');
-let elw2ve8 = eo('tbody');
+let elO0pku = eo('tbody');
 for (let index in component.tasks) {
 let task = component.tasks[index]; 
- let iiMZ5e = 'mJJ67_L' + index;
-let el88AIh = eo('tr','Js_k8eUspOVe' + index+iiMZ5e);
-let elHNSzc = eo('td','HEFff'+iiMZ5e);
+ let ii_2ql = 'vjkb8O0' + index;
+let elLIKxL = eo('tr','iacp3eclas22' + index+ii_2ql);
+let elgf5ih = eo('td','1YOff'+ii_2ql);
 text(task.id);
 ec('td');
-let elXMWsI = eo('td','OBcff'+iiMZ5e);
+let elgTkru = eo('td','3skff'+ii_2ql);
 text(task.participant.name);
 ec('td');
-let elbEXHT = eo('td','D3Kff'+iiMZ5e);
+let el7vJz9 = eo('td','x05ff'+ii_2ql);
 text(task.title);
 ec('td');
-let elzQSec = eo('td','_Dbff'+iiMZ5e);
-let cmpfisC = this._lc('c3OEWNDG6', {parent:component,props:{timestamp:task.createdAt.timestamp},insideLoop:true,index:"" +iiMZ5e});
+let elgGMNG = eo('td','1Etff'+ii_2ql);
+let cmpMszM = this._lc('c15q5DaLj', {parent:component,props:{timestamp:task.createdAt.timestamp},insideLoop:true,index:"" +ii_2ql});
 ec('td');
-let elXT8HW = eo('td','pfOff'+iiMZ5e);
-let elAAAt6 = eo('span','6bQff'+iiMZ5e,null,`class`,`task-status badge`);
-elAAAt6.cls = taskStatus(task);
+let el5GJOD = eo('td','vxvff'+ii_2ql);
+let elr60B6 = eo('span','JB4ff'+ii_2ql,null,`class`,`task-status badge`);
+elr60B6.cls = taskStatus(task);
 
-            for (let className in elAAAt6.cls) {
-                elAAAt6.classList.toggle(className, elAAAt6.cls[className]);
+            for (let className in elr60B6.cls) {
+                elr60B6.classList.toggle(className, elr60B6.cls[className]);
             }  
             text(task.status);
 ec('span');
 ec('td');
-let el_FAIu = eo('td','Me3ff'+iiMZ5e);
+let elrxbUu = eo('td','nl7ff'+ii_2ql);
 text(task.startsAt);
 ec('td');
-let elHqKog = eo('td','09Tff'+iiMZ5e);
+let elQEjS1 = eo('td','rf_ff'+ii_2ql);
 text(task.endsAt);
 ec('td');
-let elF_M61 = eo('td','bixff'+iiMZ5e);
-let cmpeARl = this._lc('cGDl0ipVe', {parent:component,props:{coins:task.reward},insideLoop:true,index:"" +iiMZ5e});
+let els1Jys = eo('td','Squff'+ii_2ql);
+let cmp_Kbr = this._lc('ckYzHDCVr', {parent:component,props:{coins:task.reward},insideLoop:true,index:"" +ii_2ql});
 ec('td');
-let elXjKZH = eo('td','Kguff'+iiMZ5e,null,`class`,`bold red-text`);
+let elq2evR = eo('td','POyff'+ii_2ql,null,`class`,`bold red-text`);
 text(task.penaltyRatio + 'x');
 ec('td');
-let elElSzY = eo('td','V80ff'+iiMZ5e);
-let elHLDyD = eo('a','sLjff'+iiMZ5e,null,`href`,`/tasks/${ task.id }`,`class`,`btn btn-sm btn-primary bold`);
-let el_v121 = eo('i','hYiff'+iiMZ5e,null,`class`,`${fas('eye') + ' icon'}`);
+let elzVmgp = eo('td','6Nnff'+ii_2ql);
+let elndRxB = eo('a','mO5ff'+ii_2ql,null,`href`,`/tasks/${ task.id }`,`class`,`btn btn-sm btn-primary bold`);
+let elLhAQq = eo('i','nBvff'+ii_2ql,null,`class`,`${fas('eye') + ' icon'}`);
 ec('i');
 ec('a');
-let cnd3AWF = component.taskCanBeEdited(task);
-this.setState('st_FQqS', cnd3AWF);
-if (cnd3AWF) { 
-let elnGkxR = eo('button','oJFff'+iiMZ5e,null, eventListeners, {onclick:[function(e) {var $el = this;component.editingTask = task;}]},`type`,`button`,`class`,`btn btn-teal btn-sm`);
-let elWc5Xk = eo('i','yfcff'+iiMZ5e,null,`class`,`${fas('edit') + ' icon'}`);
+let cndqnFD = component.taskCanBeEdited(task);
+this.setState('stNGBgJ', cndqnFD);
+if (cndqnFD) { 
+let eliFZD7 = eo('button','3KKff'+ii_2ql,null, eventListeners, {onclick:[function(e) {var $el = this;component.editingTask = task;}]},`type`,`button`,`class`,`btn btn-teal btn-sm`);
+let eliQc_5 = eo('i','J8Bff'+ii_2ql,null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 ec('button');
-}let cnduciT = component.user.id == 1;
-this.setState('stM10d5', cnduciT);
-if (cnduciT) { 
-let elWYAmV = eo('button','9dnff'+iiMZ5e,null, eventListeners, {onclick:[function(e) {var $el = this;component.deleteTask(task, index)}]},`type`,`button`,`class`,`btn btn-danger btn-sm`);
-let el8AHKy = eo('i','F5pff'+iiMZ5e,null,`class`,`${fas('trash') + ' icon'}`);
+}let cndx1qb = component.user.id == 1;
+this.setState('stWF2j7', cndx1qb);
+if (cndx1qb) { 
+let eleWKze = eo('button','fNhff'+ii_2ql,null, eventListeners, {onclick:[function(e) {var $el = this;component.deleteTask(task, index)}]},`type`,`button`,`class`,`btn btn-danger btn-sm`);
+let elVbOBu = eo('i','1Kfff'+ii_2ql,null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 }ec('td');
@@ -104,10 +104,10 @@ ec('tr');
 }
 ec('tbody');
 ec('table');
-let cndbXid = component.editingTask;
-this.setState('stWe32p', cndbXid);
-if (cndbXid) { 
-let cmpXSJ2 = this._lc('cWwBvKe8_', {parent:component,props:{task:component.editingTask},events:{onclose:function(e) {let $el = this; component.editingTask = null}},state:'stWe32p'});
+let cndjKyq = component.editingTask;
+this.setState('stX62tz', cndjKyq);
+if (cndjKyq) { 
+let cmpn8Ie = this._lc('cslgECLQV', {parent:component,props:{task:component.editingTask},events:{onclose:function(e) {let $el = this; component.editingTask = null}},state:'stX62tz'});
 }
                     this.isReadyToGo();
                 }

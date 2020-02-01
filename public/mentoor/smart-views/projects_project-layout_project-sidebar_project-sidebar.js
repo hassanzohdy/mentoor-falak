@@ -6,203 +6,203 @@ _Component({
                 observe: ['project','isActiveLink'],
                 children: {},
                 render: function (component) {
-                    let elHq1iM = eo('nav',null,null,`class`,`col-12 col-sm-3 col-lg-2 d-md-block`,`id`,`project-sidebar`);
-let cndJ4tz = component.project;
-this.setState('stwWwuq', cndJ4tz);
-if (cndJ4tz) { 
-let elpBinI = eo('h1','BT6f',null,`class`,`project-name`);
+                    let elLoTHL = eo('nav',null,null,`class`,`col-12 col-sm-3 col-lg-2 d-md-block`,`id`,`project-sidebar`);
+let cndZWgN = component.project;
+this.setState('stHwjbL', cndZWgN);
+if (cndZWgN) { 
+let ele4azd = eo('h1','YZBf',null,`class`,`project-name`);
 text(component.project.name);
 ec('h1');
-let el_8kyp = eo('ul','ZH6f');
-let ell_pTN = eo('li','l9Pf');
-let elcZxxo = eo('a','qgwf',null,`href`,`${URLS.project(component.project)}`);
-elcZxxo.cls = component.isActiveLink('');
+let elEusle = eo('ul','Lnkf');
+let elpzv_1 = eo('li','PpRf');
+let elJzgV2 = eo('a','SCPf',null,`href`,`${URLS.project(component.project)}`);
+elJzgV2.cls = component.isActiveLink('');
 
-            for (let className in elcZxxo.cls) {
-                elcZxxo.classList.toggle(className, elcZxxo.cls[className]);
+            for (let className in elJzgV2.cls) {
+                elJzgV2.classList.toggle(className, elJzgV2.cls[className]);
             }  
-            let elNhtFc = eo('i','hfZf',null,`class`,`${fas('tachometer-alt') + ' icon'}`);
+            let elIpK3f = eo('i','8A7f',null,`class`,`${fas('tachometer-alt') + ' icon'}`);
 ec('i');
-let el6xB_i = eo('span','dINf');
+let elcslsv = eo('span','Vftf');
 text(`Overview`);
 ec('span');
 ec('a');
 ec('li');
-let elRcFu9 = eo('li','iB4f');
-let elMzUn7 = eo('a','1oHf',null,`href`,`${URLS.project(component.project, 'resources')}`);
-elMzUn7.cls = component.isActiveLink('resources');
+let elWaGM_ = eo('li','3xdf');
+let elgCSnI = eo('a','pjMf',null,`href`,`${URLS.project(component.project, 'resources')}`);
+elgCSnI.cls = component.isActiveLink('resources');
 
-            for (let className in elMzUn7.cls) {
-                elMzUn7.classList.toggle(className, elMzUn7.cls[className]);
+            for (let className in elgCSnI.cls) {
+                elgCSnI.classList.toggle(className, elgCSnI.cls[className]);
             }  
-            let elF9H_W = eo('i','rnjf',null,`class`,`${fas('bezier-curve') + ' icon'}`);
+            let elJ9X_D = eo('i','H6cf',null,`class`,`${fas('bezier-curve') + ' icon'}`);
 ec('i');
-let ell7Mbx = eo('span','pYpf');
+let el9u6dU = eo('span','EJsf');
 text(`Resources`);
 ec('span');
-let cnd_RIs = ! component.project.isMember;
-this.setState('stnur6y', cnd_RIs);
-if (cnd_RIs) { 
-let elAnQCZ = eo('i','fUef',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cnd56dq = ! component.project.isMember;
+this.setState('stl5LJJ', cnd56dq);
+if (cnd56dq) { 
+let elBB5wO = eo('i','68Bf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elAnQCZ;
+                        let $el = elBB5wO;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let elTSTLA = eo('li');
-let elbV0oo = eo('a',null,null,`href`,`${URLS.project(component.project, 'members')}`);
-elbV0oo.cls = component.isActiveLink('members');
+let elpPAxs = eo('li');
+let el5POYP = eo('a',null,null,`href`,`${URLS.project(component.project, 'members')}`);
+el5POYP.cls = component.isActiveLink('members');
 
-            for (let className in elbV0oo.cls) {
-                elbV0oo.classList.toggle(className, elbV0oo.cls[className]);
+            for (let className in el5POYP.cls) {
+                el5POYP.classList.toggle(className, el5POYP.cls[className]);
             }  
-            let elBKx4X = eo('i',null,null,`class`,`${fas('users') + ' icon'}`);
+            let elXjArI = eo('i',null,null,`class`,`${fas('users') + ' icon'}`);
 ec('i');
-let elmn5mF = eo('span');
+let elvCbWR = eo('span');
 text(`Members`);
 ec('span');
-let cnddgWB = ! component.project.isMember;
-this.setState('st1Abw2', cnddgWB);
-if (cnddgWB) { 
-let elAJ0CT = eo('i','rX7f',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndzdnb = ! component.project.isMember;
+this.setState('stWuZLc', cndzdnb);
+if (cndzdnb) { 
+let elHnkno = eo('i','WbFf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elAJ0CT;
+                        let $el = elHnkno;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let el9Vh46 = eo('li');
-let elAQUBF = eo('a',null,null,`href`,`${URLS.project(component.project, 'sprints')}`);
-elAQUBF.cls = component.isActiveLink('sprints');
+let elkceWZ = eo('li');
+let elETR7n = eo('a',null,null,`href`,`${URLS.project(component.project, 'sprints')}`);
+elETR7n.cls = component.isActiveLink('sprints');
 
-            for (let className in elAQUBF.cls) {
-                elAQUBF.classList.toggle(className, elAQUBF.cls[className]);
+            for (let className in elETR7n.cls) {
+                elETR7n.classList.toggle(className, elETR7n.cls[className]);
             }  
-            let elr9CGp = eo('i',null,null,`class`,`${fas('running') + ' icon'}`);
+            let el5lfsh = eo('i',null,null,`class`,`${fas('running') + ' icon'}`);
 ec('i');
-let elac6wu = eo('span');
+let elg5h54 = eo('span');
 text(`Sprints`);
 ec('span');
-let cndPPEQ = ! component.project.isMember;
-this.setState('st08Q5k', cndPPEQ);
-if (cndPPEQ) { 
-let elycRKm = eo('i','0Ghf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndfe7e = ! component.project.isMember;
+this.setState('stgaX08', cndfe7e);
+if (cndfe7e) { 
+let ela9MXy = eo('i','U9Rf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elycRKm;
+                        let $el = ela9MXy;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let elbQgE0 = eo('li');
-let eljLGjh = eo('a',null,null,`href`,`${URLS.project(component.project, 'user-stories')}`);
-eljLGjh.cls = component.isActiveLink('user-stories');
+let elJGPu_ = eo('li');
+let el8kwEw = eo('a',null,null,`href`,`${URLS.project(component.project, 'user-stories')}`);
+el8kwEw.cls = component.isActiveLink('user-stories');
 
-            for (let className in eljLGjh.cls) {
-                eljLGjh.classList.toggle(className, eljLGjh.cls[className]);
+            for (let className in el8kwEw.cls) {
+                el8kwEw.classList.toggle(className, el8kwEw.cls[className]);
             }  
-            let eliQBos = eo('i',null,null,`class`,`${fas('sticky-note') + ' icon'}`);
+            let el9KafZ = eo('i',null,null,`class`,`${fas('sticky-note') + ' icon'}`);
 ec('i');
-let elQW5U5 = eo('span');
+let elrF2ui = eo('span');
 text(`User Stories`);
 ec('span');
-let cndiQJe = ! component.project.isMember;
-this.setState('studkMQ', cndiQJe);
-if (cndiQJe) { 
-let ely3lSW = eo('i','XSvf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndqWrS = ! component.project.isMember;
+this.setState('stPF4r4', cndqWrS);
+if (cndqWrS) { 
+let elShDOn = eo('i','rUSf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = ely3lSW;
+                        let $el = elShDOn;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let elmfOn7 = eo('li');
-let el3tuCD = eo('a',null,null,`href`,`${URLS.project(component.project, 'tasks-board')}`);
-el3tuCD.cls = component.isActiveLink('tasks-board');
+let elY5yxE = eo('li');
+let elywD7P = eo('a',null,null,`href`,`${URLS.project(component.project, 'tasks-board')}`);
+elywD7P.cls = component.isActiveLink('tasks-board');
 
-            for (let className in el3tuCD.cls) {
-                el3tuCD.classList.toggle(className, el3tuCD.cls[className]);
+            for (let className in elywD7P.cls) {
+                elywD7P.classList.toggle(className, elywD7P.cls[className]);
             }  
-            let ela0pQL = eo('i',null,null,`class`,`${fas('tasks') + ' icon'}`);
+            let elp7zLZ = eo('i',null,null,`class`,`${fas('tasks') + ' icon'}`);
 ec('i');
-let elDvYbI = eo('span');
+let elOM2R9 = eo('span');
 text(`Tasks Board`);
 ec('span');
-let cndOEfl = ! component.project.isMember;
-this.setState('stSYZce', cndOEfl);
-if (cndOEfl) { 
-let elnFid6 = eo('i','1KIf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndcPvy = ! component.project.isMember;
+this.setState('st7GGMg', cndcPvy);
+if (cndcPvy) { 
+let elgB62I = eo('i','0Xif',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elnFid6;
+                        let $el = elgB62I;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let elMqL9r = eo('li');
-let elUyfKb = eo('a',null,null,`href`,`${URLS.project(component.project, 'test-suits')}`);
-elUyfKb.cls = component.isActiveLink('test-suits');
+let elRTFhG = eo('li');
+let elmaKCx = eo('a',null,null,`href`,`${URLS.project(component.project, 'test-suits')}`);
+elmaKCx.cls = component.isActiveLink('test-suits');
 
-            for (let className in elUyfKb.cls) {
-                elUyfKb.classList.toggle(className, elUyfKb.cls[className]);
+            for (let className in elmaKCx.cls) {
+                elmaKCx.classList.toggle(className, elmaKCx.cls[className]);
             }  
-            let elLjSm5 = eo('i',null,null,`class`,`${fas('toolbox') + ' icon'}`);
+            let elhRXl4 = eo('i',null,null,`class`,`${fas('toolbox') + ' icon'}`);
 ec('i');
-let el28XRz = eo('span');
+let elbUvhK = eo('span');
 text(`Test Suits`);
 ec('span');
-let cndWVol = ! component.project.isMember;
-this.setState('stx1RBI', cndWVol);
-if (cndWVol) { 
-let el8dM7d = eo('i','bBtf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cnd51AB = ! component.project.isMember;
+this.setState('stQpLov', cnd51AB);
+if (cnd51AB) { 
+let elTxBcu = eo('i','dA6f',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = el8dM7d;
+                        let $el = elTxBcu;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let el4uNTA = eo('li');
-let elEeYEc = eo('a',null,null,`href`,`${URLS.project(component.project, 'bugs')}`,`title`,``,`class`,`pt-0`);
-elEeYEc.cls = component.isActiveLink('bugs');
+let elV_cQk = eo('li');
+let elGzlyl = eo('a',null,null,`href`,`${URLS.project(component.project, 'bugs')}`,`title`,``,`class`,`pt-0`);
+elGzlyl.cls = component.isActiveLink('bugs');
 
-            for (let className in elEeYEc.cls) {
-                elEeYEc.classList.toggle(className, elEeYEc.cls[className]);
+            for (let className in elGzlyl.cls) {
+                elGzlyl.classList.toggle(className, elGzlyl.cls[className]);
             }  
-            let elSxjdu = ev('img',null,null,`src`,`${assets('images/bug.jpg')}`,`style`,`width: 20px; height: 30px; border-radius: 50%;`);
-let elJQxXe = eo('span',null,null,`class`,`bold red-text`,`style`,`font-size: 3rem`);
+            let el6ozLj = ev('img',null,null,`src`,`${assets('images/bug.jpg')}`,`style`,`width: 20px; height: 30px; border-radius: 50%;`);
+let elrVmYz = eo('span',null,null,`class`,`bold red-text`,`style`,`font-size: 3rem`);
 text(`s`);
 ec('span');
-let cndBzqo = ! component.project.isMember;
-this.setState('st19FPz', cndBzqo);
-if (cndBzqo) { 
-let elXnxHZ = eo('i','O_vf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndC5Vh = ! component.project.isMember;
+this.setState('stFjVWi', cndC5Vh);
+if (cndC5Vh) { 
+let elFYhFN = eo('i','d3Qf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elXnxHZ;
+                        let $el = elFYhFN;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
@@ -210,204 +210,204 @@ ec('i');
                 }ec('a');
 
                     setTimeout(function () {
-                        let $el = elEeYEc;
+                        let $el = elGzlyl;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Bugs')}`});
         ;
                     }, 20);                
                 ec('li');
-let ellJYgh = eo('li');
-let elFQVS3 = eo('a',null,null,`href`,`${URLS.project(component.project, 'meetings')}`);
-elFQVS3.cls = component.isActiveLink('meetings');
+let elsbzjw = eo('li');
+let elaadTO = eo('a',null,null,`href`,`${URLS.project(component.project, 'meetings')}`);
+elaadTO.cls = component.isActiveLink('meetings');
 
-            for (let className in elFQVS3.cls) {
-                elFQVS3.classList.toggle(className, elFQVS3.cls[className]);
+            for (let className in elaadTO.cls) {
+                elaadTO.classList.toggle(className, elaadTO.cls[className]);
             }  
-            let elXp9A7 = eo('i',null,null,`class`,`${fas('handshake') + ' icon'}`);
+            let elP6Bce = eo('i',null,null,`class`,`${fas('handshake') + ' icon'}`);
 ec('i');
-let elH8yRy = eo('span');
+let elqr5xu = eo('span');
 text(`Meetings`);
 ec('span');
-let cndC8fy = ! component.project.isMember;
-this.setState('stcTtn9', cndC8fy);
-if (cndC8fy) { 
-let elmbCSC = eo('i','xbuf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndiXF2 = ! component.project.isMember;
+this.setState('st0zbYS', cndiXF2);
+if (cndiXF2) { 
+let elQ7TCE = eo('i','qx8f',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elmbCSC;
+                        let $el = elQ7TCE;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let cndby_q = component.project.isHigherAuthority;
-this.setState('stSgGxq', cndby_q);
-if (cndby_q) { 
-let elIgzuI = eo('li','zcYf');
-let elgXPsZ = eo('a','8Nef',null,`href`,`${URLS.project(component.project, 'recruitment')}`);
-elgXPsZ.cls = component.isActiveLink('recruitment');
+let cndOckj = component.project.isHigherAuthority;
+this.setState('stO45IX', cndOckj);
+if (cndOckj) { 
+let elLmz1w = eo('li','pgef');
+let el4_nNq = eo('a','VaKf',null,`href`,`${URLS.project(component.project, 'recruitment')}`);
+el4_nNq.cls = component.isActiveLink('recruitment');
 
-            for (let className in elgXPsZ.cls) {
-                elgXPsZ.classList.toggle(className, elgXPsZ.cls[className]);
+            for (let className in el4_nNq.cls) {
+                el4_nNq.classList.toggle(className, el4_nNq.cls[className]);
             }  
-            let elUGkMl = eo('i','3dff',null,`class`,`${fas('suitcase') + ' icon'}`);
+            let eljNN41 = eo('i','oMTf',null,`class`,`${fas('suitcase') + ' icon'}`);
 ec('i');
-let elyBo3Q = eo('span','u6Gf');
+let elm6HTV = eo('span','QjXf');
 text(`Recruitment`);
 ec('span');
-let cndBkZ0 = ! component.project.isMember;
-this.setState('st3h5i4', cndBkZ0);
-if (cndBkZ0) { 
-let el0Troc = eo('i','nccf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndQoX4 = ! component.project.isMember;
+this.setState('stqHzww', cndQoX4);
+if (cndQoX4) { 
+let ellgN6J = eo('i','Nb0f',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = el0Troc;
+                        let $el = ellgN6J;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-}let elDymCM = eo('li');
-let elkBOcn = eo('a',null,null,`href`,`${URLS.project(component.project, 'teams')}`);
-elkBOcn.cls = component.isActiveLink('teams');
+}let elnxNtM = eo('li');
+let elgGtGo = eo('a',null,null,`href`,`${URLS.project(component.project, 'teams')}`);
+elgGtGo.cls = component.isActiveLink('teams');
 
-            for (let className in elkBOcn.cls) {
-                elkBOcn.classList.toggle(className, elkBOcn.cls[className]);
+            for (let className in elgGtGo.cls) {
+                elgGtGo.classList.toggle(className, elgGtGo.cls[className]);
             }  
-            let ellh_yD = eo('i',null,null,`class`,`${fas('people-carry') + ' icon'}`);
+            let elNtYbN = eo('i',null,null,`class`,`${fas('people-carry') + ' icon'}`);
 ec('i');
-let elsAurM = eo('span');
+let elelhXG = eo('span');
 text(`Teams`);
 ec('span');
-let cnd8Juj = ! component.project.isMember;
-this.setState('stihlLk', cnd8Juj);
-if (cnd8Juj) { 
-let elcMsOM = eo('i','oHpf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndSWDi = ! component.project.isMember;
+this.setState('stouA13', cndSWDi);
+if (cndSWDi) { 
+let elPflLF = eo('i','Prff',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elcMsOM;
+                        let $el = elPflLF;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let cndBvaa = component.project.isHigherAuthority;
-this.setState('staKWuA', cndBvaa);
-if (cndBvaa) { 
-let elq0JC1 = eo('li','YlMf');
-let elaoPhC = eo('a','ui7f',null,`href`,`${URLS.project(component.project, 'supervisors')}`);
-elaoPhC.cls = component.isActiveLink('supervisors');
+let cndAB0c = component.project.isHigherAuthority;
+this.setState('stWeuGL', cndAB0c);
+if (cndAB0c) { 
+let elDgJnj = eo('li','Cysf');
+let elLKDcC = eo('a','8oRf',null,`href`,`${URLS.project(component.project, 'supervisors')}`);
+elLKDcC.cls = component.isActiveLink('supervisors');
 
-            for (let className in elaoPhC.cls) {
-                elaoPhC.classList.toggle(className, elaoPhC.cls[className]);
+            for (let className in elLKDcC.cls) {
+                elLKDcC.classList.toggle(className, elLKDcC.cls[className]);
             }  
-            let elJ56RC = eo('i','oeKf',null,`class`,`${fas('user-secret') + ' icon'}`);
+            let elHSlpO = eo('i','WOzf',null,`class`,`${fas('user-secret') + ' icon'}`);
 ec('i');
-let elEP52D = eo('span','Ocwf');
+let elTcgsg = eo('span','FJef');
 text(`Supervisors`);
 ec('span');
-let cndbfq_ = ! component.project.isMember;
-this.setState('stomE6T', cndbfq_);
-if (cndbfq_) { 
-let elJWj21 = eo('i','39Yf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndt8lM = ! component.project.isMember;
+this.setState('stjAiE9', cndt8lM);
+if (cndt8lM) { 
+let elNxd38 = eo('i','Zkcf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elJWj21;
+                        let $el = elNxd38;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-}let cndIeSC = component.project.isHigherAuthority;
-this.setState('st2TLDE', cndIeSC);
-if (cndIeSC) { 
-let elTelqR = eo('li','8fhf');
-let elWfDuk = eo('a','i2Mf',null,`href`,`${URLS.project(component.project, 'client')}`);
-elWfDuk.cls = component.isActiveLink('client');
+}let cnd_Vbr = component.project.isHigherAuthority;
+this.setState('st7GJ50', cnd_Vbr);
+if (cnd_Vbr) { 
+let elSCnPV = eo('li','ffRf');
+let elaDWxK = eo('a','eLkf',null,`href`,`${URLS.project(component.project, 'client')}`);
+elaDWxK.cls = component.isActiveLink('client');
 
-            for (let className in elWfDuk.cls) {
-                elWfDuk.classList.toggle(className, elWfDuk.cls[className]);
+            for (let className in elaDWxK.cls) {
+                elaDWxK.classList.toggle(className, elaDWxK.cls[className]);
             }  
-            let elj7pu6 = eo('i','jXwf',null,`class`,`${fas('user-secret') + ' icon'}`);
+            let elpNs8b = eo('i','0mNf',null,`class`,`${fas('user-secret') + ' icon'}`);
 ec('i');
-let elIM5iO = eo('span','Tvef');
+let elvIHsb = eo('span','51cf');
 text(`Client`);
 ec('span');
-let cnd4Qj3 = ! component.project.isMember;
-this.setState('stfim_U', cnd4Qj3);
-if (cnd4Qj3) { 
-let elChL3d = eo('i','Jx3f',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndy0N5 = ! component.project.isMember;
+this.setState('stSUH7u', cndy0N5);
+if (cndy0N5) { 
+let elwbAeu = eo('i','a0Ff',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elChL3d;
+                        let $el = elwbAeu;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-}let elS2lzF = eo('li');
-let ellu5zW = eo('a',null,null,`href`,`${URLS.project(component.project, 'modules')}`);
-ellu5zW.cls = component.isActiveLink('modules');
+}let elrbzZC = eo('li');
+let elpU4wb = eo('a',null,null,`href`,`${URLS.project(component.project, 'modules')}`);
+elpU4wb.cls = component.isActiveLink('modules');
 
-            for (let className in ellu5zW.cls) {
-                ellu5zW.classList.toggle(className, ellu5zW.cls[className]);
+            for (let className in elpU4wb.cls) {
+                elpU4wb.classList.toggle(className, elpU4wb.cls[className]);
             }  
-            let elbvJZE = eo('i',null,null,`class`,`${fas('cogs') + ' icon'}`);
+            let elBPsOj = eo('i',null,null,`class`,`${fas('cogs') + ' icon'}`);
 ec('i');
-let elUncs6 = eo('span');
+let eleBD5H = eo('span');
 text(`Modules`);
 ec('span');
 ec('a');
 ec('li');
-let elrbGHZ = eo('li');
-let elH2siT = eo('a',null,null,`href`,`${URLS.project(component.project, 'change-requests')}`);
-elH2siT.cls = component.isActiveLink('change-requests');
+let eliMrzC = eo('li');
+let elgQj7M = eo('a',null,null,`href`,`${URLS.project(component.project, 'change-requests')}`);
+elgQj7M.cls = component.isActiveLink('change-requests');
 
-            for (let className in elH2siT.cls) {
-                elH2siT.classList.toggle(className, elH2siT.cls[className]);
+            for (let className in elgQj7M.cls) {
+                elgQj7M.classList.toggle(className, elgQj7M.cls[className]);
             }  
-            let el3XPcv = eo('i',null,null,`class`,`${fas('exchange-alt') + ' icon'}`);
+            let elR8yBK = eo('i',null,null,`class`,`${fas('exchange-alt') + ' icon'}`);
 ec('i');
-let elsWihU = eo('span');
+let eljzuq0 = eo('span');
 text(`Change Requests (CR)`);
 ec('span');
-let cndzKJZ = ! component.project.isMember;
-this.setState('st3HmkQ', cndzKJZ);
-if (cndzKJZ) { 
-let el8G8l6 = eo('i','aLZf',null,`class`,`${fas('lock') + ' float-right mt-2 icon'}`);
+let cndNyFT = ! component.project.isMember;
+this.setState('stYYaIX', cndNyFT);
+if (cndNyFT) { 
+let elXZsav = eo('i','NILf',null,`class`,`${fas('lock') + ' float-right mt-2 icon'}`);
 ec('i');
 }ec('a');
 ec('li');
-let elMl7nr = eo('li');
-let elQj1SR = eo('a',null,null,`href`,`${URLS.project(component.project, 'srs')}`,`title`,``);
-elQj1SR.cls = component.isActiveLink('srs');
+let elWZQxo = eo('li');
+let elXEzkF = eo('a',null,null,`href`,`${URLS.project(component.project, 'srs')}`,`title`,``);
+elXEzkF.cls = component.isActiveLink('srs');
 
-            for (let className in elQj1SR.cls) {
-                elQj1SR.classList.toggle(className, elQj1SR.cls[className]);
+            for (let className in elXEzkF.cls) {
+                elXEzkF.classList.toggle(className, elXEzkF.cls[className]);
             }  
-            let elwsTq5 = eo('i',null,null,`class`,`${fas('book') + ' icon'}`);
+            let elMbAdB = eo('i',null,null,`class`,`${fas('book') + ' icon'}`);
 ec('i');
-let elfLF8A = eo('span');
+let elrHS9Y = eo('span');
 text(`(SRS)`);
 ec('span');
-let cndSkUw = ! component.project.isMember;
-this.setState('stalDUs', cndSkUw);
-if (cndSkUw) { 
-let elxjUZT = eo('i','GGCf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cnd8vJS = ! component.project.isMember;
+this.setState('st019aZ', cnd8vJS);
+if (cnd8vJS) { 
+let elk3eQv = eo('i','kalf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elxjUZT;
+                        let $el = elk3eQv;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
@@ -415,103 +415,103 @@ ec('i');
                 }ec('a');
 
                     setTimeout(function () {
-                        let $el = elQj1SR;
+                        let $el = elXEzkF;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Software Requirements Specifications')}`});
         ;
                     }, 20);                
                 ec('li');
-let elnD_DK = eo('li');
-let el3QF2x = eo('a',null,null,`href`,`${URLS.project(component.project, 'documentation')}`);
-el3QF2x.cls = component.isActiveLink('documentation');
+let eld26P7 = eo('li');
+let elXfwd9 = eo('a',null,null,`href`,`${URLS.project(component.project, 'documentation')}`);
+elXfwd9.cls = component.isActiveLink('documentation');
 
-            for (let className in el3QF2x.cls) {
-                el3QF2x.classList.toggle(className, el3QF2x.cls[className]);
+            for (let className in elXfwd9.cls) {
+                elXfwd9.classList.toggle(className, elXfwd9.cls[className]);
             }  
-            let elk2uaj = eo('i',null,null,`class`,`${fas('book-dead') + ' icon'}`);
+            let el5Md4O = eo('i',null,null,`class`,`${fas('book-dead') + ' icon'}`);
 ec('i');
-let eloahnz = eo('span');
+let elcNs13 = eo('span');
 text(`Documentation`);
 ec('span');
-let cndoKWu = ! component.project.isMember;
-this.setState('stHO4vT', cndoKWu);
-if (cndoKWu) { 
-let elr8IyL = eo('i','F2af',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndd1l0 = ! component.project.isMember;
+this.setState('st7TxEr', cndd1l0);
+if (cndd1l0) { 
+let el8_aoH = eo('i','IRsf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elr8IyL;
+                        let $el = el8_aoH;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let elT80iz = eo('li');
-let el4YCR3 = eo('a',null,null,`href`,`${URLS.project(component.project, 'discussions')}`);
-el4YCR3.cls = component.isActiveLink('discussions');
+let elwjkWd = eo('li');
+let eldN4ti = eo('a',null,null,`href`,`${URLS.project(component.project, 'discussions')}`);
+eldN4ti.cls = component.isActiveLink('discussions');
 
-            for (let className in el4YCR3.cls) {
-                el4YCR3.classList.toggle(className, el4YCR3.cls[className]);
+            for (let className in eldN4ti.cls) {
+                eldN4ti.classList.toggle(className, eldN4ti.cls[className]);
             }  
-            let elAnImG = eo('i',null,null,`class`,`${fab('rocketchat') + ' icon'}`);
+            let elqIpoZ = eo('i',null,null,`class`,`${fab('rocketchat') + ' icon'}`);
 ec('i');
-let elW4pWJ = eo('span');
+let elPHJYw = eo('span');
 text(`Discussions`);
 ec('span');
-let cnduS9k = ! component.project.isMember;
-this.setState('stY1v6R', cnduS9k);
-if (cnduS9k) { 
-let elctB9f = eo('i','atPf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cndOnjI = ! component.project.isMember;
+this.setState('stOWuWK', cndOnjI);
+if (cndOnjI) { 
+let elGjhnm = eo('i','lfqf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elctB9f;
+                        let $el = elGjhnm;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let elDE2Qn = eo('li');
-let elaQ0OF = eo('a',null,null,`href`,`${URLS.project(component.project, 'fund')}`);
-elaQ0OF.cls = component.isActiveLink('fund');
+let el28YF5 = eo('li');
+let elgoZTR = eo('a',null,null,`href`,`${URLS.project(component.project, 'fund')}`);
+elgoZTR.cls = component.isActiveLink('fund');
 
-            for (let className in elaQ0OF.cls) {
-                elaQ0OF.classList.toggle(className, elaQ0OF.cls[className]);
+            for (let className in elgoZTR.cls) {
+                elgoZTR.classList.toggle(className, elgoZTR.cls[className]);
             }  
-            let elkjchP = eo('i',null,null,`class`,`${fas('coins') + ' icon'}`);
+            let elgqmzd = eo('i',null,null,`class`,`${fas('coins') + ' icon'}`);
 ec('i');
-let elI6SQC = eo('span');
+let el1U6B4 = eo('span');
 text(`Fund`);
 ec('span');
-let cnd6Xxg = ! component.project.isMember;
-this.setState('stYYIGF', cnd6Xxg);
-if (cnd6Xxg) { 
-let elix8Qs = eo('i','YEyf',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
+let cnd7ceT = ! component.project.isMember;
+this.setState('stg2xKg', cnd7ceT);
+if (cnd7ceT) { 
+let eliYQ_Q = eo('i','3q9f',null,`title`,``,`class`,`${fas('lock') + ' ml-2 float-right mt-2 icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elix8Qs;
+                        let $el = eliYQ_Q;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('You\'re not a project member')}`});
         ;
                     }, 20);                
                 }ec('a');
 ec('li');
-let cndnpBW = component.project.isHigherAuthority;
-this.setState('st8Bs5_', cndnpBW);
-if (cndnpBW) { 
-let elUybLH = eo('li','gb_f');
-let elftBvZ = eo('a','jKKf',null,`href`,`${URLS.project(component.project, 'settings')}`);
-elftBvZ.cls = component.isActiveLink('settings');
+let cndXXma = component.project.isHigherAuthority;
+this.setState('stZrdOi', cndXXma);
+if (cndXXma) { 
+let elnNG3Q = eo('li','Wm5f');
+let elgqhXi = eo('a','5qSf',null,`href`,`${URLS.project(component.project, 'settings')}`);
+elgqhXi.cls = component.isActiveLink('settings');
 
-            for (let className in elftBvZ.cls) {
-                elftBvZ.classList.toggle(className, elftBvZ.cls[className]);
+            for (let className in elgqhXi.cls) {
+                elgqhXi.classList.toggle(className, elgqhXi.cls[className]);
             }  
-            let elB9NRE = eo('i','_7af',null,`class`,`${fas('cog') + ' icon'}`);
+            let el9Sglk = eo('i','0vyf',null,`class`,`${fas('cog') + ' icon'}`);
 ec('i');
-let elK8MgG = eo('span','sJkf');
+let elPT_Hs = eo('span','IjYf');
 text(`Settings`);
 ec('span');
 ec('a');

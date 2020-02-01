@@ -4,52 +4,52 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','inEditMode','submit','projectSrs'],
-                children: {cDvI399Om:'markdown',cg3Zgnm30:'project-layout'},
+                children: {cHRFzEUyC:'markdown',cKHz5zDag:'project-layout'},
                 render: function (component) {
-                    let cmpRwti = this._lc('cg3Zgnm30', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elZon8j = eo('h1');
+                    let cmp6iDl = this._lc('cKHz5zDag', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let els8Mk8 = eo('h1');
 text(`Software Requirements Specifications [SRS]`);
-let cnd8jMD = component.project.isProjectManager;
-this.setState('stpLFjU', cnd8jMD);
-if (cnd8jMD) { 
-let eltc1rb = eo('button','lCAf',null, eventListeners, {onclick:[function(e) {var $el = this;component.inEditMode = !!!component.inEditMode}]},`type`,`button`,`class`,`btn btn-sm btn-teal bold`);
+let cnd6TmG = component.project.isProjectManager;
+this.setState('stIlXBY', cnd6TmG);
+if (cnd6TmG) { 
+let el2lvk4 = eo('button','RyXf',null, eventListeners, {onclick:[function(e) {var $el = this;component.inEditMode = !!!component.inEditMode}]},`type`,`button`,`class`,`btn btn-sm btn-teal bold`);
 text(`Edit`);
 ec('button');
 }ec('h1');
-let cndzY7d = component.inEditMode;
-this.setState('stzolee', cndzY7d);
-if (cndzY7d) { 
-let elssMG6 = eo('form','SPZf',null, eventListeners, {onsubmit:[function(e) {
+let cndqKel = component.inEditMode;
+this.setState('stbY3n1', cndqKel);
+if (cndqKel) { 
+let elNpF8f = eo('form','X6Xf',null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elssMG6.formHandler) {
-                    window.cfrmdlr = elssMG6.formHandler = new FormHandler(elssMG6, component);
+                if (! elNpF8f.formHandler) {
+                    window.cfrmdlr = elNpF8f.formHandler = new FormHandler(elNpF8f, component);
                 } else {
-                    window.cfrmdlr = elssMG6.formHandler;
+                    window.cfrmdlr = elNpF8f.formHandler;
                 }
-            let el4V2Rh = eo('div','pAZf',null,`class`,`form-group`);
-el4V2Rh.cls = {'group-error': !!elssMG6.formHandler.getError(`srs`) };
+            let el2ts2I = eo('div','t1Xf',null,`class`,`form-group`);
+el2ts2I.cls = {'group-error': !!elNpF8f.formHandler.getError(`srs`) };
 
-            for (let className in el4V2Rh.cls) {
-                el4V2Rh.classList.toggle(className, el4V2Rh.cls[className]);
+            for (let className in el2ts2I.cls) {
+                el2ts2I.classList.toggle(className, el2ts2I.cls[className]);
             }  
-            let elZnh8U = eo('label','fk2f',null,`for`,`srs`);
+            let elI3zc0 = eo('label','U0uf',null,`for`,`srs`);
 text(trans('SRS'));
 ec('label');
-let elU6Pt0 = eo('textarea','jYEf',null, eventListeners, {oninput:[function(e) {component.projectSrs = this.value;}]},`value`,`${fval(component.projectSrs)}`,`name`,`${(`srs`).toInputName()}`,`placeholder`,`${trans(`Write project Software Requirements Specifications      `)}`,`type`,`textarea`,`class`,`form-control`,`id`,`srs`);
-elU6Pt0.value = fval(component.projectSrs);
+let el00W15 = eo('textarea','nGPf',null, eventListeners, {oninput:[function(e) {component.projectSrs = this.value;}]},`value`,`${fval(component.projectSrs)}`,`name`,`${(`srs`).toInputName()}`,`placeholder`,`${trans(`Write project Software Requirements Specifications      `)}`,`type`,`textarea`,`class`,`form-control`,`id`,`srs`);
+el00W15.value = fval(component.projectSrs);
 ec('textarea');
 ec('div');
-let el7Z62I = eo('div','QFif',null,`class`,`text-center m-t-3`);
-let ellgw2e = eo('button','t2Ef',null, eventListeners, {onclick:[function(e) {var $el = this;component.inEditMode = false}]},`type`,`button`,`class`,`btn btn-danger bold`);
+let el9Hzjn = eo('div','vEmf',null,`class`,`text-center m-t-3`);
+let eldnjqk = eo('button','uE6f',null, eventListeners, {onclick:[function(e) {var $el = this;component.inEditMode = false}]},`type`,`button`,`class`,`btn btn-danger bold`);
 text(`Cancel`);
 ec('button');
-let elKxnLK = eo('button','2S9f',null,`class`,`btn btn-success bold`);
+let elXMKDH = eo('button','b1Uf',null,`class`,`btn btn-success bold`);
 text(`Save`);
 ec('button');
 ec('div');
 ec('form');
-}let cmpLqfM = this._lc('cDvI399Om', {parent:component,parentTop:projectLayout,props:{content:component.projectSrs}});
+}let cmpQ8WA = this._lc('cHRFzEUyC', {parent:component,parentTop:projectLayout,props:{content:component.projectSrs}});
 }});
 
                     this.isReadyToGo();

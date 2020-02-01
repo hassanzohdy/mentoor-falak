@@ -4,52 +4,52 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['affiliateUrl','copied','copyUrl','requiredAnswers','affiliateReward'],
-                children: {c3UEx3W9z:'gold-icon',c002di48e:'gold-icon',cGiZy4Hpu:'layout'},
+                children: {cffiq0RPq:'gold-icon',cWPFzMF2D:'gold-icon',cmqXN8mc4:'layout'},
                 render: function (component) {
-                    let cmpQKsK = this._lc('cGiZy4Hpu', {parent:component,content:(layout) => {let elcR6bK = eo('h1',null,null,`class`,`m-b-1`);
+                    let cmped2u = this._lc('cmqXN8mc4', {parent:component,content:(layout) => {let elVLZVz = eo('h1',null,null,`class`,`m-b-1`);
 text(`Affiliate Program`);
 ec('h1');
-let elkVuQu = eo('p');
+let eliAlub = eo('p');
 text(`You can earn extra`);
-let cmp1GDH = this._lc('c3UEx3W9z', {parent:component,parentTop:layout});
+let cmpa6In = this._lc('cffiq0RPq', {parent:component,parentTop:layout});
 text(`by inviting your friend to register to the application through an invitation link.`);
 ec('p');
-let elghVEE = eo('h1',null,null,`class`,`m-b-1`);
+let elNYESQ = eo('h1',null,null,`class`,`m-b-1`);
 text(`Where to get my affiliate url`);
 ec('h1');
-let elZnmqR = eo('p');
+let eltVNUN = eo('p');
 text(`Your affiliate link is`);
-let elnZyJk = eo('a',null,null,`class`,`bold teal-text mx-2`,`target`,`_blank`,`href`,`${ component.affiliateUrl }`);
+let elIovU7 = eo('a',null,null,`class`,`bold teal-text mx-2`,`target`,`_blank`,`href`,`${ component.affiliateUrl }`);
 text(component.affiliateUrl);
 ec('a');
-let cndxdhy = Is.null(component.copied);
-this.setState('strSJim', cndxdhy);
-if (cndxdhy) { 
-let elNCr0F = eo('button','IR7f',null, eventListeners, {onclick:[function(e) {var $el = this;component.copyUrl()}]},`title`,`${trans(`Copy`)}`,`class`,`text-primary`,`type`,`button`);
+let cndN2Y2 = Is.null(component.copied);
+this.setState('stv4fyB', cndN2Y2);
+if (cndN2Y2) { 
+let elHXpwC = eo('button','VaEf',null, eventListeners, {onclick:[function(e) {var $el = this;component.copyUrl()}]},`title`,`${trans(`Copy`)}`,`class`,`text-primary`,`type`,`button`);
 text(`(`);
-let el4fzJX = eo('i','bagf',null,`class`,`${fas('object-ungroup') + ' icon'}`);
+let elpO_fz = eo('i','267f',null,`class`,`${fas('object-ungroup') + ' icon'}`);
 ec('i');
 text(`)`);
 ec('button');
-}let cndlv5k = component.copied;
-this.setState('stemp26', cndlv5k);
-if (cndlv5k) { 
-let elRN7Nl = eo('strong','MoTf',null,`title`,`${trans(`Copied`)}`,`class`,`green-text ml-2`);
-let elOIM7e = eo('i','iJyf',null,`class`,`${fas('check') + ' icon'}`);
+}let cndlPdx = component.copied;
+this.setState('stVJblp', cndlPdx);
+if (cndlPdx) { 
+let elhRqHr = eo('strong','Yhjf',null,`title`,`${trans(`Copied`)}`,`class`,`green-text ml-2`);
+let el__vLx = eo('i','Jp8f',null,`class`,`${fas('check') + ' icon'}`);
 ec('i');
 ec('strong');
 }ec('p');
-let elkwhR0 = eo('h1',null,null,`class`,`m-b-1`);
+let elpX2ap = eo('h1',null,null,`class`,`m-b-1`);
 text(`What do i get in return`);
 ec('h1');
-let elWkziA = eo('p');
+let el4z5li = eo('p');
 text(`For every active user you invite who answers at least`);
-let elvvG4O = eo('strong',null,null,`class`,`ml-2 pink-text`);
+let elAnsRx = eo('strong',null,null,`class`,`ml-2 pink-text`);
 text(`${ component.requiredAnswers } answers`);
 ec('strong');
 text(`,
         You get`);
-let cmp4Lno = this._lc('c002di48e', {parent:component,parentTop:layout,props:{coins:component.affiliateReward}});
+let cmp7j7j = this._lc('cWPFzMF2D', {parent:component,parentTop:layout,props:{coins:component.affiliateReward}});
 ec('p');
 }});
 

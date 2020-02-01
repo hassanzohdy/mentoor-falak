@@ -4,85 +4,85 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','post','user','editMode','lastP'],
-                children: {cHbEGQ1h1:'post-placeholder',c0V629XQ2:'user-online',cSB0ueQWH:'flk-time-ago',c7HEJuDcF:'flk-time-ago',cdfMrdC3F:'flk-facebook-share',cMaYbQQLm:'markdown',cB07HNZvA:'post-comments',cM9KvVghi:'layout',cgXnmhOtZ:'new-post-modal'},
+                children: {c7FhAzaDo:'post-placeholder',cAIRXhCGW:'user-online',c5F0xsGXX:'flk-time-ago',c6hra0niz:'flk-time-ago',cLb8qKxXR:'flk-facebook-share',c2YSWfa2T:'markdown',c7DUbFH8q:'post-comments',c1sOApn4m:'layout',cxuv7Jdvj:'new-post-modal'},
                 render: function (component) {
-                    let cmpKEpI = this._lc('cM9KvVghi', {parent:component,content:(layout) => {let cnd3W9m = component.isLoading;
-this.setState('stBFgy4', cnd3W9m);
-let cndWjoj = !(cnd3W9m);
-this.setState('stiVF2x', cndWjoj);
-if (cnd3W9m) { 
-let cmpcvdy = this._lc('cHbEGQ1h1', {parent:component,parentTop:layout,state:'stBFgy4'});
+                    let cmpP4qp = this._lc('c1sOApn4m', {parent:component,content:(layout) => {let cndPaGM = component.isLoading;
+this.setState('stfxtdq', cndPaGM);
+let cnd1NyO = !(cndPaGM);
+this.setState('stQhet2', cnd1NyO);
+if (cndPaGM) { 
+let cmp_jQL = this._lc('c7FhAzaDo', {parent:component,parentTop:layout,state:'stfxtdq'});
 }else { 
-let el5f3Ut = eo('div',null,null,`id`,`post-wrapper`);
-let cndQZpC = component.post.createdBy.id == component.user.id || component.user.id == 1;
-this.setState('stCTqCF', cndQZpC);
-if (cndQZpC) { 
-let elE2lhc = eo('button','TU8f',null, eventListeners, {onclick:[function(e) {var $el = this;component.editMode = true}]},`class`,`post-edit-btn`);
-let eltF0qk = eo('i','4agf',null,`class`,`${fas('edit') + ' icon'}`);
+let elWyDMr = eo('div',null,null,`id`,`post-wrapper`);
+let cndziOR = component.post.createdBy.id == component.user.id || component.user.id == 1;
+this.setState('stJgypL', cndziOR);
+if (cndziOR) { 
+let elbFAiO = eo('button','5s_f',null, eventListeners, {onclick:[function(e) {var $el = this;component.editMode = true}]},`class`,`post-edit-btn`);
+let elA90km = eo('i','iI8f',null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 text(`Edit`);
 ec('button');
-}let elbDobr = ev('img',null,null,`src`,`${component.post.createdBy.image}`,`class`,`user-image`,`title`,`${component.post.createdBy.name}`,`alt`,`${component.post.createdBy.name}`);
-let eliYww8 = eo('div',null,null,`class`,`meta`);
-let elN6Lzy = eo('h1',null,null,`class`,`title m-b-1`);
-let elb4Ls4 = eo('span');
+}let elaGSMr = ev('img',null,null,`src`,`${component.post.createdBy.image}`,`class`,`user-image`,`title`,`${component.post.createdBy.name}`,`alt`,`${component.post.createdBy.name}`);
+let elyWIXm = eo('div',null,null,`class`,`meta`);
+let elhjRM9 = eo('h1',null,null,`class`,`title m-b-1`);
+let elrMO6s = eo('span');
 text(component.post.title);
 ec('span');
-let cndZz0B = component.post.status == 'pending';
-this.setState('stjYg9f', cndZz0B);
-if (cndZz0B) { 
-let el50cYd = eo('span','SsEf',null,`class`,`m-l-1 v-middle badge badge-warning`);
+let cndSlAj = component.post.status == 'pending';
+this.setState('stq_tVh', cndSlAj);
+if (cndSlAj) { 
+let elU4Yop = eo('span','ksPf',null,`class`,`m-l-1 v-middle badge badge-warning`);
 text(`Pending`);
 ec('span');
-}let cndL9ij = component.post.status == 'rejected';
-this.setState('stDdpRu', cndL9ij);
-if (cndL9ij) { 
-let elZB7oV = eo('span','YBGf',null,`class`,`m-l-1 v-middle badge badge-danger`);
+}let cndalLn = component.post.status == 'rejected';
+this.setState('stGD7oo', cndalLn);
+if (cndalLn) { 
+let elC4TKb = eo('span','chWf',null,`class`,`m-l-1 v-middle badge badge-danger`);
 text(`Rejected`);
 ec('span');
 }ec('h1');
-let elA5zLw = eo('div',null,null,`class`,`meta-info`);
-let eltcVdY = eo('span',null,null,`class`,`user-name`);
+let eldIgAW = eo('div',null,null,`class`,`meta-info`);
+let elUZqfS = eo('span',null,null,`class`,`user-name`);
 text(component.post.createdBy.name);
 ec('span');
-let cmppIUZ = this._lc('c0V629XQ2', {parent:component,parentTop:layout,props:{id:component.post.createdBy.id},attrs:{id:`${component.post.createdBy.id}`}});
-let cndDaD3 = component.lastP && component.lastP.id == component.post.id;
-this.setState('stjp2H4', cndDaD3);
-let cndv6Ex = !(cndDaD3);
-this.setState('stkP90n', cndv6Ex);
-if (cndDaD3) { 
-let cmpSjlj = this._lc('cSB0ueQWH', {parent:component,parentTop:layout,props:{timestamp:component.lastP.createdAt.timestamp},attrs:{class:'created-at'},state:'stjp2H4'});
+let cmpW_TZ = this._lc('cAIRXhCGW', {parent:component,parentTop:layout,props:{id:component.post.createdBy.id},attrs:{id:`${component.post.createdBy.id}`}});
+let cndnRsW = component.lastP && component.lastP.id == component.post.id;
+this.setState('st82vZV', cndnRsW);
+let cndChKo = !(cndnRsW);
+this.setState('st82e58', cndChKo);
+if (cndnRsW) { 
+let cmpZ6TG = this._lc('c5F0xsGXX', {parent:component,parentTop:layout,props:{timestamp:component.lastP.createdAt.timestamp},attrs:{class:'created-at'},state:'st82vZV'});
 }else { 
-let cmp30_2 = this._lc('c7HEJuDcF', {parent:component,parentTop:layout,props:{timestamp:component.post.createdAt.timestamp},attrs:{class:'created-at mr-2'},state:'stkP90n'});
-}let cmp4wbv = this._lc('cdfMrdC3F', {parent:component,parentTop:layout});
+let cmpXF27 = this._lc('c6hra0niz', {parent:component,parentTop:layout,props:{timestamp:component.post.createdAt.timestamp},attrs:{class:'created-at mr-2'},state:'st82e58'});
+}let cmpkSr4 = this._lc('cLb8qKxXR', {parent:component,parentTop:layout});
 ec('div');
 ec('div');
-let el8CcAu = eo('article');
-let cmpKwn2 = this._lc('cMaYbQQLm', {parent:component,parentTop:layout,props:{content:component.post.content}});
-let eleEl29 = eo('section',null,null,`class`,`tags`);
+let elaWMC1 = eo('article');
+let cmpaiMD = this._lc('c2YSWfa2T', {parent:component,parentTop:layout,props:{content:component.post.content}});
+let elx8b_V = eo('section',null,null,`class`,`tags`);
 for (let i in component.post.tags) {
 let tag = component.post.tags[i]; 
- let iibs7U = 'F1TZcls' + i;
-let elSuGC0 = eo('span','rbwp4OOzEjz2' + i+iibs7U,null,`class`,`tag`);
-let elAK969 = ev('img','NG6ff'+iibs7U,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
-let elCt9OO = eo('span','AYfff'+iibs7U);
+ let iiB1xS = 'Da045kU' + i;
+let elsAeg8 = eo('span','MpZyWK9RRA2X' + i+iiB1xS,null,`class`,`tag`);
+let elOlBin = ev('img','0Jkff'+iiB1xS,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
+let elzwOnZ = eo('span','_mdff'+iiB1xS);
 text('#' + tag.name);
 ec('span');
 ec('span');
 }
 ec('section');
 ec('article');
-let cndEEvd = component.post.image;
-this.setState('stIXLM7', cndEEvd);
-if (cndEEvd) { 
-let elF4fGO = ev('img','iyyf',null,`src`,`${component.post.image}`,`class`,`image`,`title`,`${component.post.title}`,`alt`,`${component.post.title}`);
-}let cmpFnN0 = this._lc('cB07HNZvA', {parent:component,parentTop:layout,props:{post:component.post}});
+let cndDHaq = component.post.image;
+this.setState('st231hY', cndDHaq);
+if (cndDHaq) { 
+let elx6CVM = ev('img','G7wf',null,`src`,`${component.post.image}`,`class`,`image`,`title`,`${component.post.title}`,`alt`,`${component.post.title}`);
+}let cmpZCCE = this._lc('c7DUbFH8q', {parent:component,parentTop:layout,props:{post:component.post}});
 ec('div');
 }}});
-let cnddYWL = component.editMode;
-this.setState('staYwEs', cnddYWL);
-if (cnddYWL) { 
-let cmpwbHc = this._lc('cgXnmhOtZ', {parent:component,props:{post:component.post},events:{onsave:function(e) {let $el = this; component.post = e},onclose:function(e) {let $el = this; component.editMode = false}},state:'staYwEs'});
+let cndNKHD = component.editMode;
+this.setState('stCnhnM', cndNKHD);
+if (cndNKHD) { 
+let cmpTT98 = this._lc('cxuv7Jdvj', {parent:component,props:{post:component.post},events:{onsave:function(e) {let $el = this; component.post = e},onclose:function(e) {let $el = this; component.editMode = false}},state:'stCnhnM'});
 }
                     this.isReadyToGo();
                 }
