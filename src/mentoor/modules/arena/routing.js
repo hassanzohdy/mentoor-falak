@@ -23,7 +23,7 @@ DI.resolve('events').subscribe('router.collecting', router => {
 		// Challenge/challenge Questions Page page
 		routerGroup.add('/challenges/{:id}/questions', ChallengeQuestionsPage);
 		// Rank page
-		routerGroup.add('/arena/rank', RankPage);
+		routerGroup.add('/rank', RankPage);
 		// end of routes
     });
 });
