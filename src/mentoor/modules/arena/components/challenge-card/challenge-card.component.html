@@ -1,1 +1,27 @@
-<h1>challenge-card component is ready</h1>
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <img 
+        src="{{this.challenge.thumbnail ? this.challenge.thumbnail: 'https://via.placeholder.com/150'}}" 
+        class="card-img" 
+        alt="{{this.challenge.title}}"
+        height="200px"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title"> {{ this.challenge.title }} </h2>
+        <p class="card-text">
+          {{this.challenge.description}}
+        </p>
+        <p class="card-text time-remaining">
+          <small class="text-muted">
+              <flk-time-remaining startsAt="this.startTime" endsAt="this.endTime"></flk-time-remaining>
+          </small>
+        </p>
+
+        <a href="/arena/challenges/{{this.challenge.id}}" class="btn btn-dark details-btn"> View Details </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,12 @@
-<h1>challenges-list component is ready</h1>
+<flk-spinner *if="this.isLoading"></flk-spinner>
+
+<else>
+  <div *if="!Is.empty(this.challenges)" class="challenges-list">
+    <challenge-card
+      *for="let challenge of this.challenges"
+      [challenge]="challenge"
+    ></challenge-card>
+  </div>
+
+  <p *else>No challenges yet !</p>
+</else>
