@@ -49,8 +49,14 @@ class ChallengesList {
           participants: ["usr1", "usr2"],
           requirements: ["req 1", "req 2"],
           thumbnail: "https://via.placeholder.com/150",
-          "startsAt": "2020-02-04T14:10:17.027Z",
-          "endsAt": "2020-02-04T14:10:17.027Z"
+          startsAt: {
+            format: "4-2-2020",
+            timestamp: 1580767200
+          },
+          endsAt: {
+            format: "6-2-2020",
+            timestamp: 1580940000
+          },
         },
         {
           id: "2",
@@ -109,8 +115,14 @@ class ChallengesList {
           participants: ["usr1", "usr2"],
           requirements: ["req 1", "req 2"],
           thumbnails: "https://via.placeholder.com/150",
-          "startsAt": "2020-02-04T14:10:17.027Z",
-          "endsAt": "2020-02-04T14:10:17.027Z"
+          startsAt: {
+            format: "4-2-2020",
+            timestamp: 1580767200
+          },
+          endsAt: {
+            format: "6-2-2020",
+            timestamp: 1580940000
+          },
         },
         {
           id: "3",
@@ -169,8 +181,14 @@ class ChallengesList {
           participants: ["usr1", "usr2"],
           requirements: ["req 1", "req 2"],
           thumbnails: "https://via.placeholder.com/150",
-          startsAt: "2020-02-04T14:10:17.027Z",
-          endsAt: "2020-02-04T14:10:17.027Z"
+          startsAt: {
+            format: "4-2-2020",
+            timestamp: 1580767200
+          },
+          endsAt: {
+            format: "6-2-2020",
+            timestamp: 1580940000
+          },
         }
       ];
 

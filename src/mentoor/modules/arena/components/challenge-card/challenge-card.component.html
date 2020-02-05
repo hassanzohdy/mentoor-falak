@@ -16,11 +16,29 @@
         </p>
         <p class="card-text time-remaining">
           <small class="text-muted">
-              <flk-time-remaining startsAt="this.startTime" endsAt="this.endTime"></flk-time-remaining>
+              <span class="challenge-key">Time remaining:</span> 
+              <flk-time-remaining 
+                [starts-at]="this.challenge.startsAt.timestamp" 
+                [ends-at]="this.challenge.endsAt.timestamp"
+              ></flk-time-remaining>
           </small>
         </p>
 
-        <a href="/arena/challenges/{{this.challenge.id}}" class="btn btn-dark details-btn"> View Details </a>
+        <a 
+          href="/arena/challenges/{{this.challenge.id}}" 
+          class="btn btn-dark details-btn"
+        > View Details </a>
+
+        <div class="d-flex challenge-date">
+            <p class="card-text">
+              <span class="challenge-key"> Start Date: </span>
+              {{this.challenge.startsAt.format}}
+            </p>
+            <p class="card-text">
+              <span class="challenge-key"> End Date: </span>
+              {{this.challenge.endsAt.format}}
+            </p>
+        </div>
       </div>
     </div>
   </div>

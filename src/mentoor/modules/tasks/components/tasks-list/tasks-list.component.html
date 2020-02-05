@@ -25,6 +25,7 @@
                 <span [html]="task.status" class="task-status badge" [class]="taskStatus(task)"></span>
             </td>
             <td [html]="task.startsAt"></td>
+            @echo(task.startsAt)
             <td [html]="task.endsAt"></td>
             <td>
                 <gold-icon [coins]="task.reward"></gold-icon>
