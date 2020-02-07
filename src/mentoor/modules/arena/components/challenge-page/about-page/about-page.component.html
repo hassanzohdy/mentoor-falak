@@ -1,1 +1,26 @@
-<h1>about-page component is ready</h1>
+<layout>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <else>
+        <h1> {{ this.challenge.title }} </h1>
+
+
+        <div *for="let question, index of challenge.questions">
+            <input type="hidden" name="questions.{{ index }}.question" [value]="question.id">
+
+            <input type="hidden" name="questions[0][question]">
+
+            <input type="hidden" name="questions[0][answer]">
+
+            <markdown-input name="questions.{{index}}.answer"></markdown-input>
+        </div>
+    </else>
+</layout>
+
+{
+    questions: [
+        {
+            question: 1,
+            answer: 'bla bla bla'
+        }
+    ]
+}
