@@ -3,6 +3,9 @@
     <flk-spinner *if="this.isLoading"></flk-spinner>
 
     <else>
+        <div class="text-right">
+            <a class="btn btn-green" [href]="URLS.project(this.resource.project)" [html]="this.resource.project.name"></a>
+        </div>
         <h1 [html]="this.resource.title"></h1>
         <p *if="this.resource.createdAt" class="teal-text">
             <flk-time-ago [timestamp]="this.resource.createdAt.timestamp"></flk-time-ago>
@@ -146,6 +149,5 @@
                 </tr>
             </tbody>
         </table>
-        <!-- <a [href]="URLS.project(this.resource.project)" [html]="this.resource.project.name"></a> -->
     </else>
 </layout>
