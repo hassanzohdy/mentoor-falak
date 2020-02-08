@@ -3,8 +3,8 @@ class ChallengesList {
    * Constructor
    * Put your required dependencies in the constructor parameters list
    */
-  constructor(arenaService) {
-    this.challengesService = arenaService;
+  constructor(arenaChallengesService) {
+    this.challengesService = arenaChallengesService;
    }
 
   /**
@@ -15,7 +15,7 @@ class ChallengesList {
     this.isLoading = true;
     this.challenges = [];
 
-    this.challengesService.getChallenges().then((res) => {
+    this.challengesService.list().then((res) => {
       this.challenges = res.records;
 
       this.isLoading = false;

@@ -3,12 +3,12 @@ class NewChallengePage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(arenaService, tagsService, router) {
+    constructor(arenaChallengesService, tagsService, router) {
         this.name = 'new-challenge';
         this.title = trans('new-challenge');
         this.tagsService = tagsService;
 
-        this.challenges = arenaService;
+        this.challenges = arenaChallengesService;
 
         this.router = router;
     }
@@ -34,37 +34,31 @@ class NewChallengePage {
         ]
 
         this.isSending = false;
+
+        this.question = '';
     }
 
-    createChallenge(e, form) {
-        e.preventDefault();
+    createChallenge(form) {
 
         this.isSending = true;
-
+        echo(this.challenges);
         this.challenges.create(form).then(res => {
             this.isSending = false;
-
-            setTimeout(() => {
-                this.router.navigateTo("/arena");
-            }, 2000);
+            echo(res)
+            this.router.navigateTo(URLS.arena(res.record.id));
         }).catch(err => {
             echo(err);
             this.error = err;
-        })
+        });
     }
 
-    addQuestion(e, question) {
-        e.preventDefault();
+    addQuestion() {
+        this.questions.push({ question: this.question });
 
-        if (question.trim() == "") return;
-
-        this.questions.push({ question });
-
-        this.questionItem.value = '';
+        this.question = '';
     }
 
-    removeQuestion(e, index) {
-        e.preventDefault();
+    removeQuestion(index) {
 
         this.questions.splice(index, 1);
 

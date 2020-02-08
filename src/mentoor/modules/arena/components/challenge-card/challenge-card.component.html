@@ -3,7 +3,7 @@
         <section>
             <div class="row mb-3">
                 <div class="d-flex">
-                    <img [src]="this.challenge.createdBy.image" [alt]="this.challenge.createdBy.name"
+                    <img [src]="this.challenge.createdBy.image" width="50px" [alt]="this.challenge.createdBy.name"
                         class="img-thumbnail circle creator-image" />
 
                     <div class="meta ml-3">
@@ -27,7 +27,7 @@
         </section>
 
         <section>
-            <gold-icon [coins]="this.challenge.reward"></gold-icon>
+            <gold-icon [coins]="this.challenge.rewards[0]"></gold-icon>
 
             <p class="my-3">
                 Level:

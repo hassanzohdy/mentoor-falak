@@ -4,42 +4,18 @@
     </header>
 
     <div class="container">
-        <form (submit)="this.createChallenge(e, $el)">
+        <form (submit)="this.createChallenge($el)">
             <div class="form-group">
                 <form-input type="text" name="title" required class="form-control" label="Challenge Title"
                     placeholder="e.g Arena Challenge"></form-input>
             </div>
 
             <div class="form-group">
-                <form-input type="textarea" name="description" class="form-control" label="Challenge description"
-                    placeholder="Supports markdown"></form-input>
+                <markdown-input name="description" class="form-control" label="Challenge description"
+                    placeholder="Supports markdown"></markdown-input>
             </div>
 
-            <div class="questions form-group">
-                <label>
-                    Questions
-                </label>
-
-                <ul class="list-unstyled questions-list">
-                    <li *for="let question, index of this.questions" class="question-item">
-                        <span [html]="question.question"></span>
-                        <button (click)="this.removeQuestion(e, index)">
-                            <fa icon="times"></fa>
-                        </button>
-                    </li>
-                </ul>
-
-                <div class="d-flex">
-                    <form-input type="text" placeholder="New Question" class="form-control col-6" *as="questionItem">
-                    </form-input>
-
-                    <button class="btn btn-dark rounded" (click)="this.addQuestion(e, this.questionItem.value)">
-                        Add question
-                    </button>
-                </div>
-
-                <input type="hidden" name="questions" [value]="this.questions">
-            </div>
+            
 
             <div class="row">
                 <div class="form-group col-md-6">
@@ -66,6 +42,30 @@
                         [min-date]="this.data.startsAt" [max-date]="this.data.endsAt" required label="Challenge Schedule"
                         placeholder="Schedule your challenge" (select)="this.data.startsAt = e[0]; this.data.endsAt = e[1];">
                     </flk-datepicker>
+                </div>
+            </div>
+
+            <div class="questions form-group">
+                <label>
+                    Questions
+                </label>
+                <ul class="list-unstyled questions-list">
+                    <li *for="let question, index of this.questions" class="question-item">
+                        <input type="hidden" name="questions.{{index}}.question" [value]="question">
+                        <markdown class="d-inline-block" [html]="question.question"></markdown>
+                        <button type="button" (click)="this.removeQuestion(index)">
+                            <fa icon="times"></fa>
+                        </button>
+                    </li>
+                </ul>
+
+                <div>
+                    <markdown-input (change)="this.question =  e" type="textarea" placeholder="New Question" [value]="this.question">
+                    </markdown-input>
+
+                    <button type="button" class="btn btn-dark rounded" (click)="this.addQuestion()" [disabled]="this.question.trim() == ''">
+                        Add question
+                    </button>
                 </div>
             </div>
 

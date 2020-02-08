@@ -9,7 +9,7 @@ class AboutPage {
 
         this.router = router;
 
-        this.challengesService = arenaService;
+        // this.challengesService = arenaService;
 
     }
     
@@ -22,10 +22,10 @@ class AboutPage {
         // Get a single challenge according the url parameter
         let id = this.router.params.id;
     
-        this.challengesService.getSingleChallenge(id).then(res => {
-            this.challenge = res.body;
-            this.isLoading = false;
-        })
+        // this.challengesService.getSingleChallenge(id).then(res => {
+        //     this.challenge = res.body;
+        //     this.isLoading = false;
+        // })
     }
 
     /**
