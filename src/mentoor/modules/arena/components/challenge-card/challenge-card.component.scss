@@ -5,36 +5,15 @@
                 font-size: 2rem;
             }
         }
-        p {
-            &.card-text {
-                font-size: 1.6rem;
-            }
-
-            &.time-remaining {
-                position: absolute;
-                right: 3rem;
-                top: 2rem;
-            }
-            .challenge-key {
-                font-weight: bold;
-                margin-right: 0.3rem;   
-                margin-bottom: 1rem;
-            }
-
-        }
-        .challenge-date {
-            position: absolute;
-            right: 3rem;
-            bottom: 2rem;
-
-            .card-text {
-                margin-right: 1rem;
-            }
-        }
 
         .details-btn {
             position: absolute;
             bottom: 1.5rem
+        }
+
+        .isHappenning {
+            font-size: 0.9rem;
+            font-weight: bold;
         }
     }
 }

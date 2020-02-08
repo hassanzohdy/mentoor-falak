@@ -4,7 +4,6 @@
   <div *if="!Is.empty(this.challenges)" class="challenges-list">
     <for loop="let challenge of this.challenges">
       <challenge-card
-        *if="challenge.state == 'approved' && ! challenge.expired"
         [challenge]="challenge"
       ></challenge-card>
     </for>

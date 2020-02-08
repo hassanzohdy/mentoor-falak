@@ -11,8 +11,8 @@
 - type => quiz|code
 - acceptedProgrammingLanguages[] => tags
 - RP => Reputition Points 
-- participantss 
-- isEnded 
+- participants
+- isEnded
 - questions[]
     - question
         - question
@@ -21,7 +21,8 @@
             - createdAt
             - createdBy 
             - answer 
-            - isPreviewwed 
+            - isPreviewed 
+            - previewedAt
             - previewedBy 
             - rating
             - feedback
@@ -43,10 +44,12 @@
 
 title 
 description
+startsAt
+endsAt
 level 
 type 
-questions[]
-acceptedProgrammingLanguages[] => Tags 
+questions[] 
+acceptedProgrammingLanguages[] => Tags (post)
 
 
 
@@ -74,3 +77,5 @@ moderator sends aaaaaaanswers preview
 - records[]
     - Basic User Info 
     - RP 
+
+/challenges/{id}/subscribe

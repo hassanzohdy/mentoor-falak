@@ -16,7 +16,7 @@ class ChallengesList {
     this.challenges = [];
 
     this.challengesService.getChallenges().then((res) => {
-      this.challenges = res.body;
+      this.challenges = res.records;
 
       this.isLoading = false;
     })
