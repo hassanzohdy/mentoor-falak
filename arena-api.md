@@ -51,8 +51,6 @@ type
 questions[] 
 acceptedProgrammingLanguages[] => Tags (post)
 
-
-
 /challenges/pending 
 same as challenges response 
 /challenges/{id}/approve  

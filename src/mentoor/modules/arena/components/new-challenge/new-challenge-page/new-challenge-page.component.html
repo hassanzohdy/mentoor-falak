@@ -1,1 +1,75 @@
-<h1>new-challenge-page component is ready</h1>
+<layout>
+    <header>
+        <h1> Create new challenge </h1>
+    </header>
+
+    <div class="container">
+        <form (submit)="this.createChallenge(e, $el)">
+            <div class="form-group">
+                <form-input type="text" name="title" required class="form-control" label="Challenge Title"
+                    placeholder="e.g Arena Challenge"></form-input>
+            </div>
+
+            <div class="form-group">
+                <form-input type="textarea" name="description" class="form-control" label="Challenge description"
+                    placeholder="Supports markdown"></form-input>
+            </div>
+
+            <div class="questions form-group">
+                <label>
+                    Questions
+                </label>
+
+                <ul class="list-unstyled questions-list">
+                    <li *for="let question, index of this.questions" class="question-item">
+                        <span [html]="question.question"></span>
+                        <button (click)="this.removeQuestion(e, index)">
+                            <fa icon="times"></fa>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="d-flex">
+                    <form-input type="text" placeholder="New Question" class="form-control col-6" *as="questionItem">
+                    </form-input>
+
+                    <button class="btn btn-dark rounded" (click)="this.addQuestion(e, this.questionItem.value)">
+                        Add question
+                    </button>
+                </div>
+
+                <input type="hidden" name="questions" [value]="this.questions">
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <flk-dropdown-list label="Tags" [imageable]="true" position="top" [multiple]="true" required
+                        name="tags" [lazy-loading]="true" [service]="this.tagsService"></flk-dropdown-list>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <flk-dropdown-list label="Type" position="bottom" required name="type" [items]="this.typeItems">
+                    </flk-dropdown-list>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <flk-dropdown-list label="Level" position="top" required name="level" [items]="this.levelItems">
+                    </flk-dropdown-list>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="hidden" name="startsAt" [value]="this.data.startsAt" />
+                    <input type="hidden" name="endsAt" [value]="this.data.endsAt" />
+                    <flk-datepicker [required]="true" class="form-control" mode="range" [date-time]="true"
+                        [min-date]="this.data.startsAt" [max-date]="this.data.endsAt" required label="Challenge Schedule"
+                        placeholder="Schedule your challenge" (select)="this.data.startsAt = e[0]; this.data.endsAt = e[1];">
+                    </flk-datepicker>
+                </div>
+            </div>
+
+            <input type="submit" value="{{this.isSending ? 'Sending ...' : 'Create'}}" class="btn btn-primary">
+        </form>
+    </div>
+</layout>
