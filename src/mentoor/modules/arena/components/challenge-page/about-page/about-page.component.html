@@ -1,26 +1,63 @@
 <layout>
-    <flk-spinner *if="this.isLoading"></flk-spinner>
-    <else>
-        <h1> {{ this.challenge.title }} </h1>
+  <flk-spinner *if="this.isLoading"></flk-spinner>
+  <else>
+    <header class="d-flex justify-content-between">
+      <div class="d-flex">
+        <img
+          [src]="this.challenge.createdBy.image"
+          width="50px"
+          height="50px"
+          [alt]="this.challenge.createdBy.name"
+          class="img-thumbnail circle creator-image"
+        />
 
+        <div class="ml-3">
+          <h1 [html]="this.challenge.title"></h1>
+          <p *if="this.challenge.createdAt" class="teal-text">
+            <span [html]="'by ' + this.challenge.createdBy.name + ' '"></span>
+            <flk-time-ago
+              [timestamp]="this.challenge.createdAt.timestamp"
+            ></flk-time-ago>
+          </p>
+        </div>
+      </div>
 
-        <div *for="let question, index of challenge.questions">
+      <div
+        *if="
+          !this.challenge.isEnded &&
+          this.challenge.isApproved &&
+          this.challenge.startsAt.timestamp < Math.ceil(Date.now() / 1000)
+        "
+      >
+        <new-item-btn
+          link="/arena/challenges/{{ this.challenge.id }}/join"
+          icon="plus"
+          color="primary"
+          label="Join"
+        ></new-item-btn>
+      </div>
+    </header>
+
+    <div class="card p-1" *if="this.challenge.description">
+      <markdown [content]="this.challenge.description"></markdown>
+    </div>
+
+    <section class="comments mt-4">
+      <comments
+        [comments]="this.challenge.comments"
+        type="challenge"
+        [type-id]="this.challenge.id"
+      ></comments>
+    </section>
+
+    <!-- <div *for="let question, index of challenge.questions">
             <input type="hidden" name="questions.{{ index }}.question" [value]="question.id">
 
             <input type="hidden" name="questions[0][question]">
 
             <input type="hidden" name="questions[0][answer]">
 
-            <markdown-input name="questions.{{index}}.answer"></markdown-input>
-        </div>
-    </else>
+            <markdown-input name="questions.{{index}}.answer"></markdown-input> 
+        </div> -->
+  </else>
 </layout>
-
-{
-    questions: [
-        {
-            question: 1,
-            answer: 'bla bla bla'
-        }
-    ]
-}

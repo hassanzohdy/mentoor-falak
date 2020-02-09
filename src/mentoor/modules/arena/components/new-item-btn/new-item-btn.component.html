@@ -1,4 +1,4 @@
-<a href="/arena/new" class="btn btn-success">
-    <fa icon="plus mr-2"></fa>
-    <span>New Challenge</span>
+<a [href]="this.link" class="btn btn-{{ this.color }}">
+  <fa [icon]="this.icon" class="mr-2"></fa>
+  <span [html]="this.label"></span>
 </a>

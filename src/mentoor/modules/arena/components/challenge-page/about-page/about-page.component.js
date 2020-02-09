@@ -3,13 +3,13 @@ class AboutPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(arenaService, router) {
+    constructor(arenaChallengesService, router) {
         this.name = 'about';
         this.title = trans('about');
 
         this.router = router;
 
-        // this.challengesService = arenaService;
+        this.challengesService = arenaChallengesService;
 
     }
     
@@ -22,10 +22,11 @@ class AboutPage {
         // Get a single challenge according the url parameter
         let id = this.router.params.id;
     
-        // this.challengesService.getSingleChallenge(id).then(res => {
-        //     this.challenge = res.body;
-        //     this.isLoading = false;
-        // })
+        this.challengesService.get(id).then(res => {
+            this.challenge = res.record;
+            console.log(res)
+            this.isLoading = false;
+        })
     }
 
     /**

@@ -76,4 +76,4 @@ moderator sends aaaaaaanswers preview
     - Basic User Info 
     - RP 
 
-/challenges/{id}/subscribe
+/challenges/{id}/join

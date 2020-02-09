@@ -3,6 +3,11 @@ class ArenaChallengesService extends Endpoint.Service {
         this.setRoute('/arena/challenges');
     }
 
+    
+    getSingleChallenge(id) {
+        return this.endpoint.get(`/arena/challenges/${id}`)
+    }
+
 }
 
 DI.register({
