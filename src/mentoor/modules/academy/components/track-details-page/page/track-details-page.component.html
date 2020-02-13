@@ -71,12 +71,12 @@
                     <strong class="number-font">
                         +{{ this.track.suggestTopic.reward.format() }}
                     </strong>
-                    <if condition="this.userCanSuggestNewTopics === false">
+                    <!-- <if condition="this.userCanSuggestNewTopics === false">
                         <small class="d-block yellow-text">
                             <fa icon="lock mr-2"></fa>
                             Requires {{ this.track.suggestTopic.requires }} approved answers.
                         </small>
-                    </if>
+                    </if> -->
                 </button>
                 <button class="d-block blue-text bold m-auto" type="button" *else
                     (click)="this.suggestTopic = false">Back</button>
