@@ -65,7 +65,7 @@ class TrackDetailsPage {
      * Open suggestion section for user
      */
     openSuggestionSection() {
-        // if (! this.userCanSuggestNewTopics) return;
+        if (! this.userCanSuggestNewTopics) return;
 
         this.suggestTopic = true;
     }
