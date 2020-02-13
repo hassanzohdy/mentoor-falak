@@ -1,0 +1,23 @@
+<if condition="this.user.accountType == 'admin'">
+</if>
+<div class="text-center">
+    <button type="button" (click)="this.openModal = true;" class="btn btn-sm bold btn-info">Assign moderator.</button>
+</div>
+
+<flk-modal *if="this.openModal" id="moderators-modal" header="Manage moderators">
+    <form>
+        <div class="form-group">
+            <flk-dropdown-list [lazy-loading]="true" [multiple]="true" [service]="this.adminUsersService"
+                label="Choose a user" name="moderators">
+            </flk-dropdown-list>
+        </div>
+
+        <div class="form-group">
+            <flk-dropdown-list name="category" [items]="this.categories" label="Choose a category">
+            </flk-dropdown-list>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success">Save</button>
+        </div>
+    </form>
+</flk-modal>

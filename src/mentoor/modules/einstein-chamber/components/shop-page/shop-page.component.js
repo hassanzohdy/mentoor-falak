@@ -46,7 +46,8 @@ class EinsteinChamberShop {
      * @returns boolean
      */
     canUnlock(category) {
-        return ! this.categoryIsUnlocked(category) && this.user.gold >= category.cost && this.user.total.academy.answers.approved >= category.requiredAnswers;
+        return ! this.categoryIsUnlocked(category) && this.user.gold >= category.cost 
+        // && this.user.info.total.academy.answers.approved >= category.requiredAnswers;
     }
 
     /**

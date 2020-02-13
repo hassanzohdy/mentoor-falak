@@ -1,4 +1,4 @@
-class ModerateTrack {
+class ModerateChamber {
     /**
      * Constructor
      * Put your required dependencies in the constructor parameters list  
