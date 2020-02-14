@@ -1,2 +1,3 @@
-<img [src]="assets('images/coins.svg')" [class]="{large: this.large}" class="coin-img {{ this.inputs.getAttr('class', '') }}" alt="coins" />
+<img [src]="assets('images/coins.svg')" [class]="{large: this.large}"
+    class="coin-img {{ this.inputs.getAttr('class', '') }}" alt="coins" />
 <strong *if="this.coins" class="{{ this.textColor }}" [html]="this.coins.format()"></strong>

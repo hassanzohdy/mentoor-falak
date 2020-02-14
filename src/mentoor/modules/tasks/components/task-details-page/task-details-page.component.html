@@ -11,6 +11,10 @@
                 </if>
             </div>
 
+            <if condition="this.user.accountType == 'admin'">
+                <star-rating class="form-group" stars="5" name="stars"></star-rating>
+            </if>
+
             <span [tooltip]="true" title="Created At">
                 <flk-time-ago [timestamp]="this.task.createdAt.timestamp"></flk-time-ago>
             </span>
