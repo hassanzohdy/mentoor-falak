@@ -103,6 +103,20 @@ class TaskChecklist {
         this.isAboutToRemove = true;
     }
 
+    handleCheckListItemForm(data) {
+        this.editCheckListItemForm = true;
+
+        this.currentItemToBeEdited = data.item;
+    }
+
+    async editListItem(form) {
+        this.isEditing = true;
+        let {record: item} = await this.taskChecklistItemsService.update(form);
+
+        echo(item);
+        this.editCheckListItemForm = false;
+    }
+
     /**
      * Remove checklist or checklist item based on current type
      */
