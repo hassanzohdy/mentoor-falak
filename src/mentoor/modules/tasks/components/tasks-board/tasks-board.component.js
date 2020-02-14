@@ -20,6 +20,12 @@ class TasksBoard {
         }
     }
 
+    ready() {
+        this.selectDefaultParticipant();
+
+        this.defaultParticipant = null;
+    }
+
     async quickAdd(form) {
         this.isSubmitting = true;
         let formHandler = form.formHandler;
@@ -74,6 +80,19 @@ class TasksBoard {
         this.prepareTasks();
 
         this.isLoading = false;
+    }
+
+    selectDefaultParticipant() {
+        let { id } = this.user.info;
+
+        this.filterOptions.participants.map(member => {
+            if (member.id == id) {
+                this.defaultParticipant = member;
+            }
+        });
+
+        this.filterBy('participants', this.defaultParticipant);
+
     }
 
     updateTasksList(tasks) {
@@ -207,7 +226,7 @@ class TasksBoard {
                 currentUserIsParticipant = true;
             }
 
-            
+
             if (task.participant.id == currentUserId && task.status == 'inProgress') {
                 currentUserIsParticipantAndHasInProgressTasks = true;
             }
