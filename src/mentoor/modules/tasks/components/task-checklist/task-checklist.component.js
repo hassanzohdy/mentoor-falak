@@ -19,7 +19,6 @@ class TaskChecklist {
     }
 
     addNewChecklist() {
-        this.addChecklistForm = true;
 
         this.isValidForm = true;
 
@@ -101,20 +100,6 @@ class TaskChecklist {
         this.checklistItem = checklistItem;
         this.checklistItemIndex = checklistItemIndex;
         this.isAboutToRemove = true;
-    }
-
-    handleCheckListItemForm(data) {
-        this.editCheckListItemForm = true;
-
-        this.currentItemToBeEdited = data.item;
-    }
-
-    async editListItem(form) {
-        this.isEditing = true;
-        let {record: item} = await this.taskChecklistItemsService.update(form);
-
-        echo(item);
-        this.editCheckListItemForm = false;
     }
 
     /**

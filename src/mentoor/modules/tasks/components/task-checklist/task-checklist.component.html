@@ -100,33 +100,14 @@
                     <li *for="let item, i of checklist.items" *key="item.id" class="item"
                         (mouseover)="this.suggestCheckItemModification(item)"
                         (mouseout)="this.unsuggestCheckItemModification()">
-                        <if condition="! this.editCheckListItemForm">
-                            <flk-mdb-checkbox [label]="item.item" [value]="item.item"
-                                (change)="this.changeItemStatus(item, $el.checked)" [checked]="item.done">
-                            </flk-mdb-checkbox>
-                            <button *if="this.isSuggestingItemControl && this.modifyingChecklistItem.id == item.id"
-                                class="btn btn-sm btn-danger btn-circle delete-item-btn" tooltip title="Remove item"
-                                (click)="this.confirmRemoving(checklist, index, 'item', item, i)">
-                                <fa icon="trash"></fa>
-                            </button>
-
-                            <button *if="this.isSuggestingItemControl && this.modifyingChecklistItem.id == item.id"
-                                class="btn btn-sm btn-cyan btn-circle edit-item-btn" tooltip title="Edit item"
-                                (click)="this.handleCheckListItemForm(item)">
-                                <fa icon="edit"></fa>
-                            </button>
-                        </if>
-                        <else>
-                            <form class="d-inline-block" (submit)="this.editListItem($el)">
-                                <form-input class="form-control" type="text" name="items[]" required
-                                    [value]="this.currentItemToBeEdited"></form-input>
-                                <input type="submit" value="Save" class="btn btn-sm btn-primary bold" />
-                            </form>
-                            <button type="button" (click)="this.editCheckListItemForm = false;" tooltip title="Remove"
-                                class="btn btn-sm btn-circle btn-danger">
-                                <fa icon="times"></fa>
-                            </button>
-                        </else>
+                        <flk-mdb-checkbox [label]="item.item" [value]="item.item"
+                            (change)="this.changeItemStatus(item, $el.checked)" [checked]="item.done">
+                        </flk-mdb-checkbox>
+                        <button *if="this.isSuggestingItemControl && this.modifyingChecklistItem.id == item.id"
+                            class="btn btn-sm btn-danger btn-circle delete-item-btn" tooltip title="Remove item"
+                            (click)="this.confirmRemoving(checklist, index, 'item', item, i)">
+                            <fa icon="trash"></fa>
+                        </button>
                     </li>
 
                     <li *if="this.isAddingChecklistItem && this.currentChecklist.id == checklist.id" class="item">

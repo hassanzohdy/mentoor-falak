@@ -17,8 +17,6 @@ class StarRating {
 
         this.starsLength = +this.inputs.getOption('stars');
 
-        echo(this.starsLength)
-
         this.starsRateArray = [];
 
         for (let i = 1; i <= this.starsLength; i++) {
