@@ -92,6 +92,7 @@
         "users",
         "static-pages",
         "einstein-chamber",
+        "einstein-chamber",
         "academy",
         "chat-rooms",
         "users",
@@ -102,7 +103,6 @@
         "tasks",
         "users",
         "facebook-cover-page",
-        "einstein-chamber",
         "dashboard",
         "posts",
         "tutorial-maker",
@@ -120,7 +120,6 @@
         "polls",
         "offline-courses",
         "resources",
-        "arena",
-        "einstein-champer"
+        "arena"
     ]
 }

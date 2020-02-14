@@ -23,9 +23,14 @@ DI.resolve('events').subscribe('router.collecting', router => {
             // shop page
             unlockedChamber.add('/shop', EinsteinChamberShop);
 
+            // New Challenge page
+            routerGroup.add('/new-puzzle', NewPuzzlePage);
+
             // Einstein puzzle answers page
             unlockedChamber.add('/puzzles/{:puzzleId}/answers', EinsteinPuzzleAnswersPage);
         });
+        // New Puzzle page
+        routerGroup.add('/einstein-chamber/new', NewPuzzlePage);
         // end of routes
     });
 
