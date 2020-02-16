@@ -119,6 +119,8 @@
         "record-audio-input",
         "polls",
         "offline-courses",
-        "resources"
+        "resources",
+        "arena",
+        "new-challenge"
     ]
 }
