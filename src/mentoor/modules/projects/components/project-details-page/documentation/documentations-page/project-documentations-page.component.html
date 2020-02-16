@@ -39,16 +39,17 @@
     </table>
 </project-layout>
 
-<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="full"
     [heading]="this.modalHeading">
     <form (submit)="this.submit($el)">
         <input type="hidden" name="project" [value]="this.project.id" />
         <form-input type="text" name="title" [value]="this.record.title" label="Documentation title" required
             class="form-control"></form-input>
 
-        <form-input type="textarea" name="content" rows="15" [value]="this.record.content" label="Documentation content (Markdown)" required
-            class="form-control"></form-input>
-
+            <div class="m-t-1">
+                <markdown-input name="content" [value]="this.record.content" [required]="true" label="Documentation content"></markdown-input>
+            </div>
+        
         <div class="m-t-1 text-center">
             <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
         </div>

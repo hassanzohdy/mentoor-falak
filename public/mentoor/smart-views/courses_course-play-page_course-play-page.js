@@ -6,7 +6,7 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let elmz31s = eo('h1');
+                    let eluTo85 = eo('h1');
 text(`course-play-page component is ready`);
 ec('h1');
 

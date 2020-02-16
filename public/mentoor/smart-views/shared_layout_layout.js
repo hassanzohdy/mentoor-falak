@@ -4,59 +4,59 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['user','redeem','isSending','redeemDailyLoginReward'],
-                children: {cunvpL7Au:'latest-news-top-bar',cD8S0usxE:'header-section',cXM0nfXL_:'sidebar',cJ1BRU8Mm:'footer-section',cq1hIfK8D:'gold-icon',cFE3OvvZF:'flk-number-counter',c0jf1vYx2:'flk-modal',cAwNJk9uf:'live-notifications'},
+                children: {ct_rjoyJR:'latest-news-top-bar',cqFQOiIut:'header-section',cURFGXIpq:'sidebar',cUFbbrxgK:'footer-section',cRLNUic0W:'gold-icon',cZAUXaL4a:'flk-number-counter',cNgSzZuXk:'flk-modal',cPHzOVxaN:'live-notifications'},
                 render: function (component) {
-                    let elERMJ8 = eo('div',null,null,`id`,`fb-root`);
+                    let eldwHSb = eo('div',null,null,`id`,`fb-root`);
 ec('div');
-let elF2VZH = eo('div',null,null,`id`,`wrapper`);
-elF2VZH.cls = {'latest-news': Object.get(component.user, 'seen.latest')};
+let elYFOib = eo('div',null,null,`id`,`wrapper`);
+elYFOib.cls = {'latest-news': Object.get(component.user, 'seen.latest')};
 
-            for (let className in elF2VZH.cls) {
-                elF2VZH.classList.toggle(className, elF2VZH.cls[className]);
+            for (let className in elYFOib.cls) {
+                elYFOib.classList.toggle(className, elYFOib.cls[className]);
             }  
-            let cndAx99 = Object.get(component.user, 'seen.latest');
-this.setState('stEX4bI', cndAx99);
-if (cndAx99) { 
-let cmps_tv = this._lc('cunvpL7Au', {parent:component,state:'stEX4bI'});
-}let cmpUbo_ = this._lc('cD8S0usxE', {parent:component});
-let cmpDaGU = this._lc('cXM0nfXL_', {parent:component});
-let elEaJGN = eo('main',null,null,`role`,`main`,`class`,`${ component.inputs.getOption('class', '') }`);
-let elClzpN = eo('div',null,null,`class`,`container-fluid`);
+            let cndssxJ = Object.get(component.user, 'seen.latest');
+this.setState('stRBbAg', cndssxJ);
+if (cndssxJ) { 
+let cmplM4c = this._lc('ct_rjoyJR', {parent:component,state:'stRBbAg'});
+}let cmp2Nuj = this._lc('cqFQOiIut', {parent:component});
+let cmpsGmj = this._lc('cURFGXIpq', {parent:component});
+let el2yedV = eo('main',null,null,`role`,`main`,`class`,`${ component.inputs.getOption('class', '') }`);
+let elQEgIX = eo('div',null,null,`class`,`container-fluid`);
 
         if (this.hasContent()) {
             this.content();
         }ec('div');
 ec('main');
-let cmpl6nh = this._lc('cJ1BRU8Mm', {parent:component});
+let cmp5FOV = this._lc('cUFbbrxgK', {parent:component});
 ec('div');
-let cnd0ih0 = component.user.dailyReward;
-this.setState('stm_8kV', cnd0ih0);
-if (cnd0ih0) { 
-component.dailyRewardModal = this._lc('c0jf1vYx2', {parent:component,props:{esc:false,backdrop:false,closeBtn:false},content:(flkModal) => {let elk3sS1 = eo('section',null,null,`class`,`text-center comic-font daily-login-reward`);
-let els2JlU = eo('h1',null,null,`class`,`m-t-1 m-b-2`);
+let cnd1jRy = component.user.dailyReward;
+this.setState('st4z7C5', cnd1jRy);
+if (cnd1jRy) { 
+component.dailyRewardModal = this._lc('cNgSzZuXk', {parent:component,props:{esc:false,backdrop:false,closeBtn:false},content:(flkModal) => {let elACoGI = eo('section',null,null,`class`,`text-center comic-font daily-login-reward`);
+let elxMfD4 = eo('h1',null,null,`class`,`m-t-1 m-b-2`);
 text(`Daily login Reward`);
 ec('h1');
-let elQ0CNC = eo('p',null,null,`class`,`reward-note`);
+let elSz0SC = eo('p',null,null,`class`,`reward-note`);
 text(`Every day you login to the application, you'll receive a good random reward!`);
 ec('p');
-let el8MYI9 = eo('div',null,null,`class`,`m-t-0 m-b-2`);
-let cmppDev = this._lc('cq1hIfK8D', {parent:component,parentTop:flkModal,props:{large:true},state:'stm_8kV'});
-let cmpYPNC = this._lc('cFE3OvvZF', {parent:component,parentTop:flkModal,props:{number:component.user.dailyReward},events:{onfinish:function(e) {let $el = this; component.redeem = true}},attrs:{class:'d-inline-block'},state:'stm_8kV'});
+let elpQEuR = eo('div',null,null,`class`,`m-t-0 m-b-2`);
+let cmpM_2_ = this._lc('cRLNUic0W', {parent:component,parentTop:flkModal,props:{large:true},state:'st4z7C5'});
+let cmpeBca = this._lc('cZAUXaL4a', {parent:component,parentTop:flkModal,props:{number:component.user.dailyReward},events:{onfinish:function(e) {let $el = this; component.redeem = true}},attrs:{class:'d-inline-block'},state:'st4z7C5'});
 ec('div');
-let cndRRom = ! component.isSending;
-this.setState('st_VmJD', cndRRom);
-let cndbkF1 = !(cndRRom);
-this.setState('stKU7O1', cndbkF1);
-if (cndRRom) { 
-let elodIHI = eo('button','p8rf',null, eventListeners, {onclick:[function(e) {var $el = this;component.redeemDailyLoginReward()}]}, boolAttrs, {disabled:component.redeem === false},`class`,`btn comic-btn green`);
+let cndrHqF = ! component.isSending;
+this.setState('stcBiXo', cndrHqF);
+let cndxOxL = !(cndrHqF);
+this.setState('stq7G35', cndxOxL);
+if (cndrHqF) { 
+let elqVxMN = eo('button','db7f',null, eventListeners, {onclick:[function(e) {var $el = this;component.redeemDailyLoginReward()}]}, boolAttrs, {disabled:component.redeem === false},`class`,`btn comic-btn green`);
 text(`Redeem`);
 ec('button');
 }else { 
-let eliZ1bE = eo('i',null,null,`class`,`${fas('spinner') + ' fa-spin icon'}`);
+let elkzLQG = eo('i',null,null,`class`,`${fas('spinner') + ' fa-spin icon'}`);
 ec('i');
 }ec('section');
-},attrs:{theme:'dark'},state:'stm_8kV'});
-}let cmp4AbX = this._lc('cAwNJk9uf', {parent:component});
+},attrs:{theme:'dark'},state:'st4z7C5'});
+}let cmpDdlL = this._lc('cPHzOVxaN', {parent:component});
 
                     this.isReadyToGo();
                 }

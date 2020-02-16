@@ -6,14 +6,14 @@ _Component({
                 observe: ['tag','small'],
                 children: {},
                 render: function (component) {
-                    let el1rqg4 = eo('a',null,null,`href`,`/tags/${ seo(component.tag.name) }`,`class`,`tag`);
-el1rqg4.cls = {small: component.small};
+                    let elO_U9H = eo('a',null,null,`href`,`/tags/${ seo(component.tag.name) }`,`class`,`tag`);
+elO_U9H.cls = {small: component.small};
 
-            for (let className in el1rqg4.cls) {
-                el1rqg4.classList.toggle(className, el1rqg4.cls[className]);
+            for (let className in elO_U9H.cls) {
+                elO_U9H.classList.toggle(className, elO_U9H.cls[className]);
             }  
-            let elFdqb2 = ev('img',null,null,`src`,`${component.tag.image}`,`title`,`${component.tag.name}`,`alt`,`${component.tag.name}`);
-let elVJZJD = eo('span');
+            let elvJ39E = ev('img',null,null,`src`,`${component.tag.image}`,`title`,`${component.tag.name}`,`alt`,`${component.tag.name}`);
+let eli30D4 = eo('span');
 text(component.tag.name);
 ec('span');
 ec('a');

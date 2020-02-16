@@ -6,7 +6,7 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let elE_Q6R = eo('h1');
+                    let elGVMly = eo('h1');
 text(`course-details-page component is ready`);
 ec('h1');
 

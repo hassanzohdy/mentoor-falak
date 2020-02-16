@@ -1,4 +1,4 @@
-let socket = io('http://localhost:5051');
+let socket = io('http://localhost:5050');
 
 let sassCompiler;
 

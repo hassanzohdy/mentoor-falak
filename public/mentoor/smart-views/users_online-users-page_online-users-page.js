@@ -6,7 +6,7 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let elOuyZu = eo('h1');
+                    let elRAA75 = eo('h1');
 text(`online-users-page component is ready`);
 ec('h1');
 

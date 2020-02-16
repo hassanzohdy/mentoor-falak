@@ -4,377 +4,377 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['heading','submit','resourceType','project','record','isValidForm','isSending','type'],
-                children: {cUtd8NSTY:'flk-mdb-checkbox',cFnR725Vq:'flk-image-input',cZHYU5jCg:'flk-file-input',cQk727MBg:'flk-modal'},
+                children: {cktf8mNFt:'flk-mdb-checkbox',cFAPEnV69:'flk-image-input',cDwQqkTQu:'flk-file-input',cMxWzwtWx:'flk-modal'},
                 render: function (component) {
-                    component.modal = this._lc('cQk727MBg', {parent:component,props:{heading:component.heading},events:{onclose:function(e) {let $el = this; component.inputs.getEvent('close')()}},content:(flkModal) => {let eluwDGW = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+                    component.modal = this._lc('cMxWzwtWx', {parent:component,props:{heading:component.heading},events:{onclose:function(e) {let $el = this; component.inputs.getEvent('close')()}},content:(flkModal) => {let el7XXC5 = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! eluwDGW.formHandler) {
-                    window.cfrmdlr = eluwDGW.formHandler = new FormHandler(eluwDGW, component);
+                if (! el7XXC5.formHandler) {
+                    window.cfrmdlr = el7XXC5.formHandler = new FormHandler(el7XXC5, component);
                 } else {
-                    window.cfrmdlr = eluwDGW.formHandler;
+                    window.cfrmdlr = el7XXC5.formHandler;
                 }
-            let elmrWF6 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.resourceType = this.value;}]},`value`,`${fval(component.resourceType)}`,`name`,`${(`type`).toInputName()}`,`type`,`hidden`);
-elmrWF6.value = fval(component.resourceType);
-let cndRuCZ = component.project;
-this.setState('stmoICg', cndRuCZ);
-let cndqTka = ['attachment', 'pdf'].includes(component.resourceType);
-this.setState('stJ0CVH', cndqTka);
-let cndbDIb = component.resourceType == 'email';
-this.setState('stZXjLt', cndbDIb);
-let cndHMPp = component.resourceType == 'ftp';
-this.setState('stLNKl1', cndHMPp);
-let cndZNle = component.resourceType == 'website';
-this.setState('st5Ng6B', cndZNle);
-let cndq1_a = component.resourceType == 'youtube';
-this.setState('stATMws', cndq1_a);
-let cndt6WY = component.resourceType == 'link';
-this.setState('stgppAE', cndt6WY);
-if (cndRuCZ) { 
-let eleuD5T = ev('input','MB5f',null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
-eleuD5T.value = fval(component.project.id);
-}let elbmuc5 = eo('div',null,null,`class`,`form-group`);
-elbmuc5.cls = {'group-error': !!eluwDGW.formHandler.getError(`title`) };
+            let elfKpOy = ev('input',null,null, eventListeners, {oninput:[function(e) {component.resourceType = this.value;}]},`value`,`${fval(component.resourceType)}`,`name`,`${(`type`).toInputName()}`,`type`,`hidden`);
+elfKpOy.value = fval(component.resourceType);
+let cndovLu = component.project;
+this.setState('stu_Ipw', cndovLu);
+let cndaCYN = ['attachment', 'pdf'].includes(component.resourceType);
+this.setState('stJX_wQ', cndaCYN);
+let cndX0YP = component.resourceType == 'email';
+this.setState('stWH05l', cndX0YP);
+let cndQJns = component.resourceType == 'ftp';
+this.setState('stw_XgT', cndQJns);
+let cnd4C8h = component.resourceType == 'website';
+this.setState('stFsluj', cnd4C8h);
+let cndCB3K = component.resourceType == 'youtube';
+this.setState('stbvzV8', cndCB3K);
+let cndpjgl = component.resourceType == 'link';
+this.setState('stuAp0Z', cndpjgl);
+if (cndovLu) { 
+let elg_Qns = ev('input','3cIf',null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
+elg_Qns.value = fval(component.project.id);
+}let elPNHKR = eo('div',null,null,`class`,`form-group`);
+elPNHKR.cls = {'group-error': !!el7XXC5.formHandler.getError(`title`) };
 
-            for (let className in elbmuc5.cls) {
-                elbmuc5.classList.toggle(className, elbmuc5.cls[className]);
+            for (let className in elPNHKR.cls) {
+                elPNHKR.classList.toggle(className, elPNHKR.cls[className]);
             }  
-            let elWaKKQ = eo('label',null,null,`for`,`title`);
+            let el5082w = eo('label',null,null,`for`,`title`);
 text(trans('Resource Title'));
-let elVktNP = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elKErCa = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elaqxZG = ev('input',null,null, eventListeners, {oninput:[function(e) {component.record.title = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`title`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`title`);}]},`value`,`${fval(component.record.title)}`,`name`,`${(`title`).toInputName()}`,`placeholder`,`${trans(`Resource Title`)}`,`type`,`text`,`class`,`form-control`,`id`,`title`);
-elaqxZG.value = fval(component.record.title);
-let cnduVBN = eluwDGW.formHandler.getError(`title`);
-this.setState('styrE0y', cnduVBN);
-if (cnduVBN) { 
-let elovrHj = eo('div','4a1f',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`title`));
+let elO8zp6 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.record.title = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`title`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`title`);}]},`value`,`${fval(component.record.title)}`,`name`,`${(`title`).toInputName()}`,`placeholder`,`${trans(`Resource Title`)}`,`type`,`text`,`class`,`form-control`,`id`,`title`);
+elO8zp6.value = fval(component.record.title);
+let cndoZsY = el7XXC5.formHandler.getError(`title`);
+this.setState('stJYHuz', cndoZsY);
+if (cndoZsY) { 
+let els_VeQ = eo('div','a0sf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`title`));
 ec('div');
 }ec('div');
-let elbiaG2 = eo('div',null,null,`class`,`form-group`);
-elbiaG2.cls = {'group-error': !!eluwDGW.formHandler.getError(`description`) };
+let elz6ysH = eo('div',null,null,`class`,`form-group`);
+elz6ysH.cls = {'group-error': !!el7XXC5.formHandler.getError(`description`) };
 
-            for (let className in elbiaG2.cls) {
-                elbiaG2.classList.toggle(className, elbiaG2.cls[className]);
+            for (let className in elz6ysH.cls) {
+                elz6ysH.classList.toggle(className, elz6ysH.cls[className]);
             }  
-            let elYCjbN = eo('label',null,null,`for`,`description`);
+            let elLTZFG = eo('label',null,null,`for`,`description`);
 text(trans('Description'));
 ec('label');
-let elbq2K8 = eo('textarea',null,null, eventListeners, {oninput:[function(e) {component.record.description = this.value;}]},`value`,`${fval(component.record.description)}`,`name`,`${(`description`).toInputName()}`,`placeholder`,`${trans(`Description`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`description`);
-elbq2K8.value = fval(component.record.description);
+let elOrlhl = eo('textarea',null,null, eventListeners, {oninput:[function(e) {component.record.description = this.value;}]},`value`,`${fval(component.record.description)}`,`name`,`${(`description`).toInputName()}`,`placeholder`,`${trans(`Description`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`description`);
+elOrlhl.value = fval(component.record.description);
 ec('textarea');
 ec('div');
-let el6wfcX = eo('div',null,null,`class`,`pl-2`);
-let cmp_w2X = this._lc('cUtd8NSTY', {parent:component,parentTop:flkModal,props:{checked:component.record.pinned},events:{onchange:function(e) {let $el = this; component.record.pinned = $el.checked}},boolAttrs:{checked:component.record.pinned},attrs:{name:`${(`pinned`).toInputName()}`,value:1,label:'Pin Resource'}});
+let elxMIrm = eo('div',null,null,`class`,`pl-2`);
+let cmpis14 = this._lc('cktf8mNFt', {parent:component,parentTop:flkModal,props:{checked:component.record.pinned},events:{onchange:function(e) {let $el = this; component.record.pinned = $el.checked}},boolAttrs:{checked:component.record.pinned},attrs:{name:`${(`pinned`).toInputName()}`,value:1,label:'Pin Resource'}});
 ec('div');
-let cndXSkp = component.resourceType == 'image';
-this.setState('stnRtR3', cndXSkp);
-let cndFG2N = cndqTka;
-this.setState('stUxiPL', cndFG2N);
-let cnd7HAl = cndbDIb;
-this.setState('stivmby', cnd7HAl);
-let cndQjUK = cndHMPp;
-this.setState('ste1gbE', cndQjUK);
-let cndYR3q = cndZNle;
-this.setState('stGOMOy', cndYR3q);
-let cnd7HSL = cndq1_a;
-this.setState('stXvDph', cnd7HSL);
-let cndrQPU = cndt6WY;
-this.setState('st3uMZD', cndrQPU);
-if (cndXSkp) { 
-let cmpCvNm = this._lc('cFnR725Vq', {parent:component,parentTop:flkModal,props:{src:component.record.attachment,required:true},attrs:{src:`${component.record.attachment}`,name:`${(`attachment`).toInputName()}`,label:'Resource Image',id:'attachment'},state:'stnRtR3'});
-}else if (cndFG2N) { 
-let elyGbwe = eo('div',null,null,`class`,`m-t-2`);
-let cmpmtyY = this._lc('cZHYU5jCg', {parent:component,parentTop:flkModal,props:{accept:component.type == 'pdf' ? 'pdf' : null},content:(flkFileInput) => {let elLTZaz = eo('i',null,null,`class`,`${fas('cloud-upload-alt') + ' icon'}`);
+let cndFETR = component.resourceType == 'image';
+this.setState('st_f30q', cndFETR);
+let cndhGNX = cndaCYN;
+this.setState('stgBhzW', cndhGNX);
+let cndL8fc = cndX0YP;
+this.setState('st6G4Bz', cndL8fc);
+let cndqaYx = cndQJns;
+this.setState('stTy6XI', cndqaYx);
+let cndYjP_ = cnd4C8h;
+this.setState('stSSaCr', cndYjP_);
+let cndygWm = cndCB3K;
+this.setState('st1vJX7', cndygWm);
+let cndMh62 = cndpjgl;
+this.setState('stDuLQO', cndMh62);
+if (cndFETR) { 
+let cmpItKv = this._lc('cFAPEnV69', {parent:component,parentTop:flkModal,props:{src:component.record.attachment,required:true},attrs:{src:`${component.record.attachment}`,name:`${(`attachment`).toInputName()}`,label:'Resource Image',id:'attachment'},state:'st_f30q'});
+}else if (cndhGNX) { 
+let elECsj1 = eo('div',null,null,`class`,`m-t-2`);
+let cmpBd3M = this._lc('cDwQqkTQu', {parent:component,parentTop:flkModal,props:{accept:component.type == 'pdf' ? 'pdf' : null},content:(flkFileInput) => {let elkJIzY = eo('i',null,null,`class`,`${fas('cloud-upload-alt') + ' icon'}`);
 ec('i');
-let el2som3 = eo('strong',null,null,`class`,`ml-2`);
+let elOC3d4 = eo('strong',null,null,`class`,`ml-2`);
 text(`Upload ${ component.type == 'pdf' ? 'PDF File' : 'Attachment' }`);
 ec('strong');
-},attrs:{name:`${(`attachment`).toInputName()}`,class:'btn btn-cyan bold'},state:'stUxiPL'});
+},attrs:{name:`${(`attachment`).toInputName()}`,class:'btn btn-cyan bold'},state:'stgBhzW'});
 ec('div');
-}else if (cnd7HAl) { 
-let elNLY3d = eo('div',null,null,`class`,`form-group`);
-elNLY3d.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.email.url`) };
+}else if (cndL8fc) { 
+let elMxFX1 = eo('div',null,null,`class`,`form-group`);
+elMxFX1.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.email.url`) };
 
-            for (let className in elNLY3d.cls) {
-                elNLY3d.classList.toggle(className, elNLY3d.cls[className]);
+            for (let className in elMxFX1.cls) {
+                elMxFX1.classList.toggle(className, elMxFX1.cls[className]);
             }  
-            let elQP8db = eo('label',null,null,`for`,`settings-email-url`);
+            let elHz6Uk = eo('label',null,null,`for`,`settings-email-url`);
 text(trans('Webmail Url'));
-let elhvdJs = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elfpFbO = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elWVN1P = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.email.url', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.email.url`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.email.url`);}]},`value`,`${fval(Object.get(component.record, 'settings.email.url', ''))}`,`name`,`${(`settings.email.url`).toInputName()}`,`placeholder`,`${trans(`Webmail Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-email-url`);
-elWVN1P.value = fval(Object.get(component.record, 'settings.email.url', ''));
-let cndIVTB = eluwDGW.formHandler.getError(`settings.email.url`);
-this.setState('staVJoE', cndIVTB);
-if (cndIVTB) { 
-let el5gNol = eo('div','Uqmf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.email.url`));
+let elRN92g = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.email.url', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.email.url`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.email.url`);}]},`value`,`${fval(Object.get(component.record, 'settings.email.url', ''))}`,`name`,`${(`settings.email.url`).toInputName()}`,`placeholder`,`${trans(`Webmail Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-email-url`);
+elRN92g.value = fval(Object.get(component.record, 'settings.email.url', ''));
+let cndA713 = el7XXC5.formHandler.getError(`settings.email.url`);
+this.setState('stzQfIy', cndA713);
+if (cndA713) { 
+let elVq3N5 = eo('div','5juf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.email.url`));
 ec('div');
 }ec('div');
-let elWxJpA = eo('div',null,null,`class`,`form-group`);
-elWxJpA.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.email.email`) };
+let elddzy8 = eo('div',null,null,`class`,`form-group`);
+elddzy8.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.email.email`) };
 
-            for (let className in elWxJpA.cls) {
-                elWxJpA.classList.toggle(className, elWxJpA.cls[className]);
+            for (let className in elddzy8.cls) {
+                elddzy8.classList.toggle(className, elddzy8.cls[className]);
             }  
-            let eliu2vE = eo('label',null,null,`for`,`settings-email-email`);
+            let els66iC = eo('label',null,null,`for`,`settings-email-email`);
 text(trans('Email Address'));
-let elQjVL6 = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let el2OqL6 = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elr0AIS = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.email.email', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.email.email`, 'required', trans('validation.required'));}else if (this.value && ! Is.email(this.value)) {return eluwDGW.formHandler.addError(`settings.email.email`, 'email', trans('invalid-email-address'));}return eluwDGW.formHandler.removeError(`settings.email.email`);}]},`value`,`${fval(Object.get(component.record, 'settings.email.email', ''))}`,`name`,`${(`settings.email.email`).toInputName()}`,`placeholder`,`${trans(`Email Address`)}`,`type`,`email`,`class`,`form-control`,`id`,`settings-email-email`);
-elr0AIS.value = fval(Object.get(component.record, 'settings.email.email', ''));
-let cndmXTN = eluwDGW.formHandler.getError(`settings.email.email`);
-this.setState('stx8gqZ', cndmXTN);
-if (cndmXTN) { 
-let elvtEzM = eo('div','Z6Xf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.email.email`));
+let el5_Htz = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.email.email', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.email.email`, 'required', trans('validation.required'));}else if (this.value && ! Is.email(this.value)) {return el7XXC5.formHandler.addError(`settings.email.email`, 'email', trans('invalid-email-address'));}return el7XXC5.formHandler.removeError(`settings.email.email`);}]},`value`,`${fval(Object.get(component.record, 'settings.email.email', ''))}`,`name`,`${(`settings.email.email`).toInputName()}`,`placeholder`,`${trans(`Email Address`)}`,`type`,`email`,`class`,`form-control`,`id`,`settings-email-email`);
+el5_Htz.value = fval(Object.get(component.record, 'settings.email.email', ''));
+let cndjEFH = el7XXC5.formHandler.getError(`settings.email.email`);
+this.setState('ste8C7R', cndjEFH);
+if (cndjEFH) { 
+let elZ9aeP = eo('div','oo7f',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.email.email`));
 ec('div');
 }ec('div');
-let eleKy3x = eo('div',null,null,`class`,`form-group`);
-eleKy3x.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.email.password`) };
+let el8kRY5 = eo('div',null,null,`class`,`form-group`);
+el8kRY5.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.email.password`) };
 
-            for (let className in eleKy3x.cls) {
-                eleKy3x.classList.toggle(className, eleKy3x.cls[className]);
+            for (let className in el8kRY5.cls) {
+                el8kRY5.classList.toggle(className, el8kRY5.cls[className]);
             }  
-            let eljKCaD = eo('label',null,null,`for`,`settings-email-password`);
+            let elwb63X = eo('label',null,null,`for`,`settings-email-password`);
 text(trans('Email Password'));
-let elLnoJO = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let el2a_wp = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elHLMRv = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.email.password', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.email.password`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.email.password`);}]},`value`,`${fval(Object.get(component.record, 'settings.email.password', ''))}`,`name`,`${(`settings.email.password`).toInputName()}`,`placeholder`,`${trans(`Email Password`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-email-password`);
-elHLMRv.value = fval(Object.get(component.record, 'settings.email.password', ''));
-let cndep5y = eluwDGW.formHandler.getError(`settings.email.password`);
-this.setState('stfNDpy', cndep5y);
-if (cndep5y) { 
-let eleS2Zo = eo('div','WuMf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.email.password`));
+let elaNfof = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.email.password', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.email.password`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.email.password`);}]},`value`,`${fval(Object.get(component.record, 'settings.email.password', ''))}`,`name`,`${(`settings.email.password`).toInputName()}`,`placeholder`,`${trans(`Email Password`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-email-password`);
+elaNfof.value = fval(Object.get(component.record, 'settings.email.password', ''));
+let cnd510Z = el7XXC5.formHandler.getError(`settings.email.password`);
+this.setState('stM4q1D', cnd510Z);
+if (cnd510Z) { 
+let elyWhGb = eo('div','L5uf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.email.password`));
 ec('div');
 }ec('div');
-}else if (cndQjUK) { 
-let el1w_d5 = eo('div',null,null,`class`,`form-group`);
-el1w_d5.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.ftp.host`) };
+}else if (cndqaYx) { 
+let el6nShj = eo('div',null,null,`class`,`form-group`);
+el6nShj.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.ftp.host`) };
 
-            for (let className in el1w_d5.cls) {
-                el1w_d5.classList.toggle(className, el1w_d5.cls[className]);
+            for (let className in el6nShj.cls) {
+                el6nShj.classList.toggle(className, el6nShj.cls[className]);
             }  
-            let elwO09P = eo('label',null,null,`for`,`settings-ftp-host`);
+            let el5eSBv = eo('label',null,null,`for`,`settings-ftp-host`);
 text(trans('FTP Host'));
-let elC5LWe = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elzJjfJ = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elErNcb = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.host', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.ftp.host`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.ftp.host`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.host', ''))}`,`name`,`${(`settings.ftp.host`).toInputName()}`,`placeholder`,`${trans(`FTP Host`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-host`);
-elErNcb.value = fval(Object.get(component.record, 'settings.ftp.host', ''));
-let cndp7Qb = eluwDGW.formHandler.getError(`settings.ftp.host`);
-this.setState('st4Oacb', cndp7Qb);
-if (cndp7Qb) { 
-let elzS5qq = eo('div','Xldf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.ftp.host`));
+let el3EXyz = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.host', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.ftp.host`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.ftp.host`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.host', ''))}`,`name`,`${(`settings.ftp.host`).toInputName()}`,`placeholder`,`${trans(`FTP Host`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-host`);
+el3EXyz.value = fval(Object.get(component.record, 'settings.ftp.host', ''));
+let cndhX7i = el7XXC5.formHandler.getError(`settings.ftp.host`);
+this.setState('stRQCcQ', cndhX7i);
+if (cndhX7i) { 
+let elJvgrK = eo('div','j7gf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.ftp.host`));
 ec('div');
 }ec('div');
-let elCCvhr = eo('div',null,null,`class`,`form-group`);
-elCCvhr.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.ftp.username`) };
+let elrAG55 = eo('div',null,null,`class`,`form-group`);
+elrAG55.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.ftp.username`) };
 
-            for (let className in elCCvhr.cls) {
-                elCCvhr.classList.toggle(className, elCCvhr.cls[className]);
+            for (let className in elrAG55.cls) {
+                elrAG55.classList.toggle(className, elrAG55.cls[className]);
             }  
-            let elq8GBK = eo('label',null,null,`for`,`settings-ftp-username`);
+            let elghiq5 = eo('label',null,null,`for`,`settings-ftp-username`);
 text(trans('FTP Username'));
-let elgbdZT = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elQ6wVA = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let eluT2hQ = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.username', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.ftp.username`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.ftp.username`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.username', ''))}`,`name`,`${(`settings.ftp.username`).toInputName()}`,`placeholder`,`${trans(`FTP Username`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-username`);
-eluT2hQ.value = fval(Object.get(component.record, 'settings.ftp.username', ''));
-let cndj3KX = eluwDGW.formHandler.getError(`settings.ftp.username`);
-this.setState('st8IXEn', cndj3KX);
-if (cndj3KX) { 
-let elrvjfL = eo('div','3Bwf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.ftp.username`));
+let elomimX = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.username', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.ftp.username`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.ftp.username`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.username', ''))}`,`name`,`${(`settings.ftp.username`).toInputName()}`,`placeholder`,`${trans(`FTP Username`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-username`);
+elomimX.value = fval(Object.get(component.record, 'settings.ftp.username', ''));
+let cndzwpP = el7XXC5.formHandler.getError(`settings.ftp.username`);
+this.setState('stEGrYE', cndzwpP);
+if (cndzwpP) { 
+let elJWQnW = eo('div','Tx4f',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.ftp.username`));
 ec('div');
 }ec('div');
-let elhZvoE = eo('div',null,null,`class`,`form-group`);
-elhZvoE.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.ftp.password`) };
+let el0dFM_ = eo('div',null,null,`class`,`form-group`);
+el0dFM_.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.ftp.password`) };
 
-            for (let className in elhZvoE.cls) {
-                elhZvoE.classList.toggle(className, elhZvoE.cls[className]);
+            for (let className in el0dFM_.cls) {
+                el0dFM_.classList.toggle(className, el0dFM_.cls[className]);
             }  
-            let eli5tWE = eo('label',null,null,`for`,`settings-ftp-password`);
+            let elZGOKt = eo('label',null,null,`for`,`settings-ftp-password`);
 text(trans('FTP Password'));
-let elMCNbA = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elPk6mu = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elbvCjt = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.password', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.ftp.password`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.ftp.password`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.password', ''))}`,`name`,`${(`settings.ftp.password`).toInputName()}`,`placeholder`,`${trans(`FTP Password`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-password`);
-elbvCjt.value = fval(Object.get(component.record, 'settings.ftp.password', ''));
-let cndRE6W = eluwDGW.formHandler.getError(`settings.ftp.password`);
-this.setState('stYTjdJ', cndRE6W);
-if (cndRE6W) { 
-let el2UcBp = eo('div','v1ef',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.ftp.password`));
+let eldLUCL = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.password', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.ftp.password`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.ftp.password`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.password', ''))}`,`name`,`${(`settings.ftp.password`).toInputName()}`,`placeholder`,`${trans(`FTP Password`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-password`);
+eldLUCL.value = fval(Object.get(component.record, 'settings.ftp.password', ''));
+let cndfKVU = el7XXC5.formHandler.getError(`settings.ftp.password`);
+this.setState('stEwh_1', cndfKVU);
+if (cndfKVU) { 
+let elaLmiY = eo('div','t_xf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.ftp.password`));
 ec('div');
 }ec('div');
-let elQ6zJP = eo('div',null,null,`class`,`form-group`);
-elQ6zJP.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.ftp.protocol`) };
+let el3ijnZ = eo('div',null,null,`class`,`form-group`);
+el3ijnZ.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.ftp.protocol`) };
 
-            for (let className in elQ6zJP.cls) {
-                elQ6zJP.classList.toggle(className, elQ6zJP.cls[className]);
+            for (let className in el3ijnZ.cls) {
+                el3ijnZ.classList.toggle(className, el3ijnZ.cls[className]);
             }  
-            let elI4Liu = eo('label',null,null,`for`,`settings-ftp-protocol`);
+            let elau9ln = eo('label',null,null,`for`,`settings-ftp-protocol`);
 text(trans('FTP Port'));
-let el61Bsj = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elIa42H = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elFTwVl = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.port', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.ftp.protocol`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.ftp.protocol`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.port', ''))}`,`name`,`${(`settings.ftp.protocol`).toInputName()}`,`placeholder`,`${trans(`FTP Port`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-protocol`);
-elFTwVl.value = fval(Object.get(component.record, 'settings.ftp.port', ''));
-let cnd_qME = eluwDGW.formHandler.getError(`settings.ftp.protocol`);
-this.setState('stNIWcU', cnd_qME);
-if (cnd_qME) { 
-let el9cQI1 = eo('div','4URf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.ftp.protocol`));
+let elZ0yWb = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.ftp.port', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.ftp.protocol`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.ftp.protocol`);}]},`value`,`${fval(Object.get(component.record, 'settings.ftp.port', ''))}`,`name`,`${(`settings.ftp.protocol`).toInputName()}`,`placeholder`,`${trans(`FTP Port`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-ftp-protocol`);
+elZ0yWb.value = fval(Object.get(component.record, 'settings.ftp.port', ''));
+let cndgPxP = el7XXC5.formHandler.getError(`settings.ftp.protocol`);
+this.setState('stM_JDR', cndgPxP);
+if (cndgPxP) { 
+let elMF2kk = eo('div','VG0f',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.ftp.protocol`));
 ec('div');
 }ec('div');
-}else if (cndYR3q) { 
-let elnPqhR = eo('div',null,null,`class`,`form-group`);
-elnPqhR.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.website.name`) };
+}else if (cndYjP_) { 
+let elRVien = eo('div',null,null,`class`,`form-group`);
+elRVien.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.website.name`) };
 
-            for (let className in elnPqhR.cls) {
-                elnPqhR.classList.toggle(className, elnPqhR.cls[className]);
+            for (let className in elRVien.cls) {
+                elRVien.classList.toggle(className, elRVien.cls[className]);
             }  
-            let elpiWmt = eo('label',null,null,`for`,`settings-website-name`);
+            let elW_K7o = eo('label',null,null,`for`,`settings-website-name`);
 text(trans('Website Name'));
-let elUWCHH = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elMpoSm = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let eltAFbb = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.name', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.website.name`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.website.name`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.name', ''))}`,`name`,`${(`settings.website.name`).toInputName()}`,`placeholder`,`${trans(`Website Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-name`);
-eltAFbb.value = fval(Object.get(component.record, 'settings.website.name', ''));
-let cndu4_i = eluwDGW.formHandler.getError(`settings.website.name`);
-this.setState('stIaRLR', cndu4_i);
-if (cndu4_i) { 
-let elULtgX = eo('div','2Nzf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.website.name`));
+let elJS4qn = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.name', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.website.name`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.website.name`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.name', ''))}`,`name`,`${(`settings.website.name`).toInputName()}`,`placeholder`,`${trans(`Website Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-name`);
+elJS4qn.value = fval(Object.get(component.record, 'settings.website.name', ''));
+let cndicXZ = el7XXC5.formHandler.getError(`settings.website.name`);
+this.setState('stk4niT', cndicXZ);
+if (cndicXZ) { 
+let elrLl6P = eo('div','jMZf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.website.name`));
 ec('div');
 }ec('div');
-let elCtAtg = eo('div',null,null,`class`,`form-group`);
-elCtAtg.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.website.url`) };
+let elUAbux = eo('div',null,null,`class`,`form-group`);
+elUAbux.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.website.url`) };
 
-            for (let className in elCtAtg.cls) {
-                elCtAtg.classList.toggle(className, elCtAtg.cls[className]);
+            for (let className in elUAbux.cls) {
+                elUAbux.classList.toggle(className, elUAbux.cls[className]);
             }  
-            let elvAigJ = eo('label',null,null,`for`,`settings-website-url`);
+            let elaUF9m = eo('label',null,null,`for`,`settings-website-url`);
 text(trans('Website Url'));
-let elX2BRv = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elsOIeP = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let el4xWA1 = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.url', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.website.url`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.website.url`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.url', ''))}`,`name`,`${(`settings.website.url`).toInputName()}`,`placeholder`,`${trans(`Website Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-url`);
-el4xWA1.value = fval(Object.get(component.record, 'settings.website.url', ''));
-let cndzBdZ = eluwDGW.formHandler.getError(`settings.website.url`);
-this.setState('stSgqH7', cndzBdZ);
-if (cndzBdZ) { 
-let elGG04p = eo('div','kU3f',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.website.url`));
+let el2jnO_ = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.url', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.website.url`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.website.url`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.url', ''))}`,`name`,`${(`settings.website.url`).toInputName()}`,`placeholder`,`${trans(`Website Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-url`);
+el2jnO_.value = fval(Object.get(component.record, 'settings.website.url', ''));
+let cnd6g7P = el7XXC5.formHandler.getError(`settings.website.url`);
+this.setState('stWDaGs', cnd6g7P);
+if (cnd6g7P) { 
+let elZjyKV = eo('div','W2Af',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.website.url`));
 ec('div');
 }ec('div');
-let elu6kLW = eo('div',null,null,`class`,`form-group`);
-elu6kLW.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.website.username`) };
+let ell4taC = eo('div',null,null,`class`,`form-group`);
+ell4taC.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.website.username`) };
 
-            for (let className in elu6kLW.cls) {
-                elu6kLW.classList.toggle(className, elu6kLW.cls[className]);
+            for (let className in ell4taC.cls) {
+                ell4taC.classList.toggle(className, ell4taC.cls[className]);
             }  
-            let eljjLAO = eo('label',null,null,`for`,`settings-website-username`);
+            let elN8sb5 = eo('label',null,null,`for`,`settings-website-username`);
 text(trans('Website Username'));
-let el6i9xm = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elKT6QX = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elKLpSL = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.username', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.website.username`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.website.username`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.username', ''))}`,`name`,`${(`settings.website.username`).toInputName()}`,`placeholder`,`${trans(`Website Username`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-username`);
-elKLpSL.value = fval(Object.get(component.record, 'settings.website.username', ''));
-let cndqp8t = eluwDGW.formHandler.getError(`settings.website.username`);
-this.setState('stgVOmI', cndqp8t);
-if (cndqp8t) { 
-let el6hjS_ = eo('div','fxaf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.website.username`));
+let elaGefp = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.username', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.website.username`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.website.username`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.username', ''))}`,`name`,`${(`settings.website.username`).toInputName()}`,`placeholder`,`${trans(`Website Username`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-username`);
+elaGefp.value = fval(Object.get(component.record, 'settings.website.username', ''));
+let cnd4VMB = el7XXC5.formHandler.getError(`settings.website.username`);
+this.setState('stphO0b', cnd4VMB);
+if (cnd4VMB) { 
+let el8GZ90 = eo('div','4I7f',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.website.username`));
 ec('div');
 }ec('div');
-let elEtxi4 = eo('div',null,null,`class`,`form-group`);
-elEtxi4.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.website.password`) };
+let el3Gkxa = eo('div',null,null,`class`,`form-group`);
+el3Gkxa.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.website.password`) };
 
-            for (let className in elEtxi4.cls) {
-                elEtxi4.classList.toggle(className, elEtxi4.cls[className]);
+            for (let className in el3Gkxa.cls) {
+                el3Gkxa.classList.toggle(className, el3Gkxa.cls[className]);
             }  
-            let elDIBhD = eo('label',null,null,`for`,`settings-website-password`);
+            let elOwFaY = eo('label',null,null,`for`,`settings-website-password`);
 text(trans('Website Password'));
-let elWBR_J = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elo2fhV = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elb13ps = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.password', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.website.password`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.website.password`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.password', ''))}`,`name`,`${(`settings.website.password`).toInputName()}`,`placeholder`,`${trans(`Website Password`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-password`);
-elb13ps.value = fval(Object.get(component.record, 'settings.website.password', ''));
-let cndR2Tm = eluwDGW.formHandler.getError(`settings.website.password`);
-this.setState('st8LgP6', cndR2Tm);
-if (cndR2Tm) { 
-let eleyGk6 = eo('div','M_if',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.website.password`));
+let el8AoDY = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.website.password', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.website.password`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.website.password`);}]},`value`,`${fval(Object.get(component.record, 'settings.website.password', ''))}`,`name`,`${(`settings.website.password`).toInputName()}`,`placeholder`,`${trans(`Website Password`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-website-password`);
+el8AoDY.value = fval(Object.get(component.record, 'settings.website.password', ''));
+let cndxQuS = el7XXC5.formHandler.getError(`settings.website.password`);
+this.setState('stlnxnY', cndxQuS);
+if (cndxQuS) { 
+let elFtsdF = eo('div','pkGf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.website.password`));
 ec('div');
 }ec('div');
-}else if (cnd7HSL) { 
-let elVSiZg = eo('div',null,null,`class`,`form-group`);
-elVSiZg.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.youtube`) };
+}else if (cndygWm) { 
+let ele6a30 = eo('div',null,null,`class`,`form-group`);
+ele6a30.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.youtube`) };
 
-            for (let className in elVSiZg.cls) {
-                elVSiZg.classList.toggle(className, elVSiZg.cls[className]);
+            for (let className in ele6a30.cls) {
+                ele6a30.classList.toggle(className, ele6a30.cls[className]);
             }  
-            let elWzhEw = eo('label',null,null,`for`,`settings-youtube`);
+            let elo1bdS = eo('label',null,null,`for`,`settings-youtube`);
 text(trans('Add Youtube url'));
-let elQeEZk = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elI0TE2 = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elSINbX = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.youtube', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.youtube`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.youtube`);}]},`value`,`${fval(Object.get(component.record, 'settings.youtube', ''))}`,`name`,`${(`settings.youtube`).toInputName()}`,`placeholder`,`${trans(`Add Youtube url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-youtube`);
-elSINbX.value = fval(Object.get(component.record, 'settings.youtube', ''));
-let cndZGT4 = eluwDGW.formHandler.getError(`settings.youtube`);
-this.setState('stM31Fc', cndZGT4);
-if (cndZGT4) { 
-let elB7bxq = eo('div','qCbf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.youtube`));
+let elNQoM_ = ev('input',null,null, eventListeners, {oninput:[function(e) {Object.set(component.record, 'settings.youtube', this.value);},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.youtube`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.youtube`);}]},`value`,`${fval(Object.get(component.record, 'settings.youtube', ''))}`,`name`,`${(`settings.youtube`).toInputName()}`,`placeholder`,`${trans(`Add Youtube url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-youtube`);
+elNQoM_.value = fval(Object.get(component.record, 'settings.youtube', ''));
+let cnd6vaN = el7XXC5.formHandler.getError(`settings.youtube`);
+this.setState('stfAahZ', cnd6vaN);
+if (cnd6vaN) { 
+let elAAHkQ = eo('div','Aggf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.youtube`));
 ec('div');
 }ec('div');
-}else if (cndrQPU) { 
-let elTl_1l = eo('div',null,null,`class`,`form-group`);
-elTl_1l.cls = {'group-error': !!eluwDGW.formHandler.getError(`settings.link`) };
+}else if (cndMh62) { 
+let elBRr0V = eo('div',null,null,`class`,`form-group`);
+elBRr0V.cls = {'group-error': !!el7XXC5.formHandler.getError(`settings.link`) };
 
-            for (let className in elTl_1l.cls) {
-                elTl_1l.classList.toggle(className, elTl_1l.cls[className]);
+            for (let className in elBRr0V.cls) {
+                elBRr0V.classList.toggle(className, elBRr0V.cls[className]);
             }  
-            let elE1B2N = eo('label',null,null,`for`,`settings-link`);
+            let el3shov = eo('label',null,null,`for`,`settings-link`);
 text(trans('Url'));
-let elLwlvy = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elNelBm = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elmHLVA = ev('input',null,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return eluwDGW.formHandler.addError(`settings.link`, 'required', trans('validation.required'));}return eluwDGW.formHandler.removeError(`settings.link`);}]},`name`,`${(`settings.link`).toInputName()}`,`placeholder`,`${trans(`Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-link`);
-let cndzexe = eluwDGW.formHandler.getError(`settings.link`);
-this.setState('st_BZdR', cndzexe);
-if (cndzexe) { 
-let el_dyl0 = eo('div','UJtf',null,`class`,`alert alert-danger`);
-text(eluwDGW.formHandler.getError(`settings.link`));
+let el3fZxN = ev('input',null,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return el7XXC5.formHandler.addError(`settings.link`, 'required', trans('validation.required'));}return el7XXC5.formHandler.removeError(`settings.link`);}]},`name`,`${(`settings.link`).toInputName()}`,`placeholder`,`${trans(`Url`)}`,`type`,`text`,`class`,`form-control`,`id`,`settings-link`);
+let cndZRcN = el7XXC5.formHandler.getError(`settings.link`);
+this.setState('stAJbLk', cndZRcN);
+if (cndZRcN) { 
+let elzpx7o = eo('div','Xjxf',null,`class`,`alert alert-danger`);
+text(el7XXC5.formHandler.getError(`settings.link`));
 ec('div');
 }ec('div');
-}let el2nVkK = eo('div');
-let elaZa33 = eo('button',null,null, boolAttrs, {disabled:! component.isValidForm || component.isSending},`class`,`btn btn-success bold`);
+}let el1xgUY = eo('div');
+let el1MAdW = eo('button',null,null, boolAttrs, {disabled:! component.isValidForm || component.isSending},`class`,`btn btn-success bold`);
 text(`Save`);
 ec('button');
 ec('div');

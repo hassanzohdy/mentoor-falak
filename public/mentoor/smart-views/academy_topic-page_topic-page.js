@@ -4,361 +4,361 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['topic','openAnswerText','preview','answerData','form','submitAnswer','storeAnswer','isValidForm','isSending','cancelBtn','user','handleAnswerDisplay','approveMsg','startQuest','btns','showQuestAnswer','disableQuestBtn','editAnswer','currentUserAnswer'],
-                children: {cXcCm5DTw:'flk-spinner',cjgdXJHlT:'flk-time-ago',cSBYRlrnH:'flk-facebook-share',cgPAgDueC:'markdown',cA_0su8Ru:'flk-audio-player',c9zfkweie:'markdown',cuberYEqr:'markdown',cJorP_enT:'flk-alert',cFAveMBD7:'user-online',c76Pdy9wv:'markdown',cl6Kj6DKA:'markdown',cMDQJAUAn:'gold-icon',cCcfeE5Hl:'gold-icon',c2dN9wMKU:'layout'},
+                children: {cTG9fcf5D:'flk-spinner',c9b4Q3_0u:'flk-time-ago',ceDnS7L5p:'flk-facebook-share',cfqqj5scJ:'markdown',cl9ZfGIX0:'flk-audio-player',cv78JIIJX:'markdown',c04UVdp0c:'markdown',cg5GYgnxo:'flk-alert',cgapyug7t:'user-online',cUX6ICYAa:'markdown',cHljQlL4Q:'markdown',cNMtgvLl0:'gold-icon',cFOs2aZyC:'gold-icon',chJcFvjZ2:'layout'},
                 render: function (component) {
-                    let cmpRCmk = this._lc('c2dN9wMKU', {parent:component,content:(layout) => {let cndmOxa = Is.empty(component.topic);
-this.setState('stccruO', cndmOxa);
-if (cndmOxa) { 
-let cmpzE2Y = this._lc('cXcCm5DTw', {parent:component,parentTop:layout,state:'stccruO'});
-}let cndngEz = ! Is.empty(component.topic);
-this.setState('stvYj9r', cndngEz);
-if (cndngEz) { 
-let elDUh3e = eo('div','CHDf',null,`class`,`row topicDetails`);
-let elvT0oS = eo('div','7Gkf',null,`class`,`col-lg-9 col-md-8`);
-let elxHemk = eo('section','na6f');
-let elQTYIy = eo('header','6fIf',null,`class`,`topicTitle`);
-let el_n_Xj = eo('h2','3MIf',null,`class`,`text-capitalize bold trackImage`);
-let elVR1Gn = eo('a','_Waf',null,`href`,`${URLS.track(component.topic.track)}`);
-let elRHQnM = ev('img','J2_f',null,`src`,`${component.topic.track.image}`,`class`,`mr-2 v-top`,`title`,`${component.topic.track.name}`,`alt`,`${component.topic.track.name}`);
+                    let cmp7jDm = this._lc('chJcFvjZ2', {parent:component,content:(layout) => {let cndDj59 = Is.empty(component.topic);
+this.setState('st4A0Fe', cndDj59);
+if (cndDj59) { 
+let cmpo5nt = this._lc('cTG9fcf5D', {parent:component,parentTop:layout,state:'st4A0Fe'});
+}let cndFkHb = ! Is.empty(component.topic);
+this.setState('stzAXOu', cndFkHb);
+if (cndFkHb) { 
+let elep8d4 = eo('div','hnAf',null,`class`,`row topicDetails`);
+let el06q6r = eo('div','eTtf',null,`class`,`col-lg-9 col-md-8`);
+let elv5VNk = eo('section','huEf');
+let elGZMO3 = eo('header','xztf',null,`class`,`topicTitle`);
+let elB6n65 = eo('h2','ekWf',null,`class`,`text-capitalize bold trackImage`);
+let elEzL9Q = eo('a','yWuf',null,`href`,`${URLS.track(component.topic.track)}`);
+let elbgE0H = ev('img','IyVf',null,`src`,`${component.topic.track.image}`,`class`,`mr-2 v-top`,`title`,`${component.topic.track.name}`,`alt`,`${component.topic.track.name}`);
 ec('a');
-let elt7ICo = eo('div','1uqf',null,`class`,`d-inline-block`);
+let ely2tBc = eo('div','8zXf',null,`class`,`d-inline-block`);
 text( component.topic.title );
-let elmZNt3 = eo('div','9QBf',null,`class`,`text-muted dateFont mt-1 font-weight-normal`);
-let el3HTUa = eo('i','TW4f',null,`class`,`${fas('calendar') + ' mx-2 icon'}`);
+let elQ1Wn2 = eo('div','ZmMf',null,`class`,`text-muted dateFont mt-1 font-weight-normal`);
+let elC92JO = eo('i','zmOf',null,`class`,`${fas('calendar') + ' mx-2 icon'}`);
 ec('i');
-let cmpeUs5 = this._lc('cjgdXJHlT', {parent:component,parentTop:layout,props:{timestamp:component.topic.createdAt.timestamp},state:'stvYj9r'});
-let el5zA6U = eo('div','fZUf',null,`class`,`m-t-1`);
-let cmp2Tji = this._lc('cSBYRlrnH', {parent:component,parentTop:layout,state:'stvYj9r'});
+let cmpIE6t = this._lc('c9b4Q3_0u', {parent:component,parentTop:layout,props:{timestamp:component.topic.createdAt.timestamp},state:'stzAXOu'});
+let elyvP7B = eo('div','GAwf',null,`class`,`m-t-1`);
+let cmpRXYV = this._lc('ceDnS7L5p', {parent:component,parentTop:layout,state:'stzAXOu'});
 ec('div');
 ec('div');
 ec('div');
 ec('h2');
 ec('header');
-let elhg6FL = eo('p','Xnlf',null,`class`,`topicDesc`);
+let elvvIBR = eo('p','9wKf',null,`class`,`topicDesc`);
 text( component.topic.shortDescription );
 ec('p');
-let cndCN1D = component.topic.userAnswer && component.topic.userAnswer.status == 'rejected' && (component.topic.userAnswer.comment || component.topic.userAnswer.recordNote);
-this.setState('st4YbQL', cndCN1D);
-if (cndCN1D) { 
-let eleqAzq = eo('footer','cEZf',null,`class`,`card p-2 m-b-1`);
-let elNBeVN = eo('h3','y2rf',null,`class`,`red-text bold m-b-1`);
+let cnd2Cld = component.topic.userAnswer && component.topic.userAnswer.status == 'rejected' && (component.topic.userAnswer.comment || component.topic.userAnswer.recordNote);
+this.setState('stJzPdZ', cnd2Cld);
+if (cnd2Cld) { 
+let eleS191 = eo('footer','I64f',null,`class`,`card p-2 m-b-1`);
+let elxMCVF = eo('h3','8LHf',null,`class`,`red-text bold m-b-1`);
 text(`Your answer has been rejected :(`);
 ec('h3');
-let elBFLK8 = eo('span','0Rff',null,`class`,`d-inline-block`);
+let elH1ET0 = eo('span','VO3f',null,`class`,`d-inline-block`);
 text(`Note by:`);
 ec('span');
-let elSZNaN = eo('strong','28sf',null,`class`,`d-inline-block`);
+let elCst2h = eo('strong','tLnf',null,`class`,`d-inline-block`);
 text(component.topic.userAnswer.commentBy.name);
 ec('strong');
-let elRw3RP = eo('p','uIbf',null,`class`,`notes`);
-let cndMo8H = component.topic.userAnswer.comment;
-this.setState('st4Gn75', cndMo8H);
-if (cndMo8H) { 
-let cmpFYKQ = this._lc('cgPAgDueC', {parent:component,parentTop:layout,props:{content:component.topic.userAnswer.comment},state:'st4Gn75'});
+let elVVwTD = eo('p','zZuf',null,`class`,`notes`);
+let cndQXsw = component.topic.userAnswer.comment;
+this.setState('stnsDgL', cndQXsw);
+if (cndQXsw) { 
+let cmpiO8R = this._lc('cfqqj5scJ', {parent:component,parentTop:layout,props:{content:component.topic.userAnswer.comment},state:'stnsDgL'});
 }ec('p');
-let cndPhGo = component.topic.userAnswer.recordNote;
-this.setState('stMZ2OU', cndPhGo);
-if (cndPhGo) { 
-let cmpcgJ2 = this._lc('cA_0su8Ru', {parent:component,parentTop:layout,props:{src:component.topic.userAnswer.recordNote},attrs:{src:`${component.topic.userAnswer.recordNote}`},state:'stMZ2OU'});
+let cndnegI = component.topic.userAnswer.recordNote;
+this.setState('stnDoyz', cndnegI);
+if (cndnegI) { 
+let cmpXS0L = this._lc('cl9ZfGIX0', {parent:component,parentTop:layout,props:{src:component.topic.userAnswer.recordNote},attrs:{src:`${component.topic.userAnswer.recordNote}`},state:'stnDoyz'});
 }ec('footer');
-}let elAW7Bl = eo('div',null,null,`class`,`metaInfo`);
-let elC3INi = eo('h3',null,null,`class`,`infoTitle bold`);
+}let elLBYlg = eo('div',null,null,`class`,`metaInfo`);
+let elg_HJ1 = eo('h3',null,null,`class`,`infoTitle bold`);
 text(`Quest`);
 ec('h3');
 ec('div');
-let elJun1f = eo('p',null,null,`class`,`topicQuest m-b-2`);
-let cndcMCd = component.topic.quest;
-this.setState('stMxhJn', cndcMCd);
-if (cndcMCd) { 
-let cmpU4gg = this._lc('c9zfkweie', {parent:component,parentTop:layout,props:{content:component.topic.quest},state:'stMxhJn'});
+let elIaLtR = eo('p',null,null,`class`,`topicQuest m-b-2`);
+let cnd6Pu3 = component.topic.quest;
+this.setState('strEZTJ', cnd6Pu3);
+if (cnd6Pu3) { 
+let cmpN_1G = this._lc('cv78JIIJX', {parent:component,parentTop:layout,props:{content:component.topic.quest},state:'strEZTJ'});
 }ec('p');
 ec('section');
-let cndH69r = component.openAnswerText;
-this.setState('stsU0zI', cndH69r);
-let cndnqkK = ! Is.empty(component.topic.answers);
-this.setState('stgYg_8', cndnqkK);
-if (cndH69r) { 
-let elgOU7l = eo('div','jZHf',null,`class`,`answerForm`);
-let elNYbeN = eo('h3','DT1f',null,`class`,`bold mb-3`);
+let cndz8Iq = component.openAnswerText;
+this.setState('stNQuYw', cndz8Iq);
+let cndHGvF = ! Is.empty(component.topic.answers);
+this.setState('stIHYTi', cndHGvF);
+if (cndz8Iq) { 
+let elJu3ij = eo('div','aG5f',null,`class`,`answerForm`);
+let elIlOfV = eo('h3','yOkf',null,`class`,`bold mb-3`);
 text(`Please be aware of the following notes when you submit your answer`);
 ec('h3');
-let elYWEt3 = eo('ul','hJif',null,`id`,`notes-list`);
-let el1b170 = eo('li','61pf');
+let elv5MeF = eo('ul','AAbf',null,`id`,`notes-list`);
+let elp_ULE = eo('li','orCf');
 text(`Don't forget to read about`);
-let elDm4Qb = eo('a','F1gf',null,`href`,`/writing-notes`,`class`,`bold mx-2 teal-text`);
+let elq2E2K = eo('a','yO7f',null,`href`,`/writing-notes`,`class`,`bold mx-2 teal-text`);
 text(`writing
                             notes`);
 ec('a');
 text(`before starting the quest.`);
 ec('li');
-let eloo26o = eo('li','ottf',null,`class`,`bold`);
+let elTjPGX = eo('li','Dl9f',null,`class`,`bold`);
 text(`DO NOT copy/paste the answer, write it with your own words and understanding.`);
 ec('li');
-let elDsGvO = eo('li','diHf');
+let elqZ_BO = eo('li','knkf');
 text(`Your answer is not meant to be ideal, so read about the quest and write what you know.`);
 ec('li');
-let el6KRbI = eo('li','5uef');
+let elxbrMs = eo('li','uBdf');
 text(`Make your answer simple and understandable.`);
 ec('li');
-let el2MARi = eo('li','9Z8f');
+let elie_Pz = eo('li','DuOf');
 text(`You can use markdown syntax in your answer, so use it especially in writing code.`);
 ec('li');
-let eltAmHN = eo('li','DtQf');
+let elDO2WL = eo('li','Uyif');
 text(`Always put references at the bottom of your answer from the articles/books you used in your
                         answer.`);
 ec('li');
-let elOn4aR = eo('li','boKf');
+let elH3u3j = eo('li','Yfwf');
 text(`Stick to the quest requirements, don't explain anything else.`);
 ec('li');
-let el7tPqk = eo('li','v4Kf');
+let elvW2k3 = eo('li','hP4f');
 text(`Your answer will be reviewed before publishing it to public, still write what you only know for
                         the quest.`);
 ec('li');
-let elFPnk9 = eo('li','jjhf');
+let elNRDFP = eo('li','XfUf');
 text(`Once the answer is posted, you can't change it while it is pending., so don't forget to`);
-let eliQVF3 = eo('button','6vpf',null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = ! component.preview}]},`type`,`button`,`class`,`btn btn-sm btn-success`);
+let el6A5U7 = eo('button','Yjpf',null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = ! component.preview}]},`type`,`button`,`class`,`btn btn-sm btn-success`);
 text(`preview`);
 ec('button');
 text(`it before posting.`);
 ec('li');
-let elrGMGC = eo('li','57Zf');
+let elyhBDu = eo('li','zCSf');
 text(`If the answer is rejected, you can edit it and try again.`);
 ec('li');
 ec('ul');
-let cndvyzF = component.preview;
-this.setState('stUzz0S', cndvyzF);
-if (cndvyzF) { 
-let elv7OCR = eo('h1','T_If');
+let cnd4tG7 = component.preview;
+this.setState('stlQREa', cnd4tG7);
+if (cnd4tG7) { 
+let elZWd3e = eo('h1','lbGf');
 text(`Answer preview`);
 ec('h1');
-let cmp7FA8 = this._lc('cuberYEqr', {parent:component,parentTop:layout,props:{content:component.answerData},state:'stUzz0S'});
-let elOtRLc = eo('button','sYLf',null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = false}]},`class`,`btn btn-purple`);
+let cmpsSRT = this._lc('c04UVdp0c', {parent:component,parentTop:layout,props:{content:component.answerData},state:'stlQREa'});
+let elWSkww = eo('button','aFNf',null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = false}]},`class`,`btn btn-purple`);
 text(`Back to code`);
 ec('button');
-}let cndsk1Y = component.form;
-this.setState('stIMwRg', cndsk1Y);
-if (cndsk1Y) { 
-let cmp_Wuu = this._lc('cJorP_enT', {parent:component,parentTop:layout,events:{onconfirm:function(e) {let $el = this; component.submitAnswer(component.form)},onclose:function(e) {let $el = this; component.form = null}},state:'stIMwRg'});
-}let cnd7UJN = component.openAnswerText;
-this.setState('st9j3Ux', cnd7UJN);
-if (cnd7UJN) { 
-let elqJtPC = eo('form','hbBf',null, eventListeners, {onsubmit:[function(e) {
+}let cndbU3i = component.form;
+this.setState('stIEaAR', cndbU3i);
+if (cndbU3i) { 
+let cmpgKi3 = this._lc('cg5GYgnxo', {parent:component,parentTop:layout,events:{onconfirm:function(e) {let $el = this; component.submitAnswer(component.form)},onclose:function(e) {let $el = this; component.form = null}},state:'stIEaAR'});
+}let cndt2x5 = component.openAnswerText;
+this.setState('stOCuoS', cndt2x5);
+if (cndt2x5) { 
+let elPDrFe = eo('form','jEsf',null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.form = $el;}]});
 
-                if (! elqJtPC.formHandler) {
-                    window.cfrmdlr = elqJtPC.formHandler = new FormHandler(elqJtPC, component);
+                if (! elPDrFe.formHandler) {
+                    window.cfrmdlr = elPDrFe.formHandler = new FormHandler(elPDrFe, component);
                 } else {
-                    window.cfrmdlr = elqJtPC.formHandler;
+                    window.cfrmdlr = elPDrFe.formHandler;
                 }
-            let elNOlYT = eo('textarea','ULHf',null, eventListeners, {oninput:[function(e) {component.answerData = this.value;},function(e) {var $el = this;component.storeAnswer($el.value)},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elqJtPC.formHandler.addError(`answer`, 'required', trans('validation.required'));}return elqJtPC.formHandler.removeError(`answer`);}]},`value`,`${fval(component.answerData)}`,`name`,`${(`answer`).toInputName()}`,`placeholder`,`${trans(`Write your answer ;)`)}`,`type`,`textarea`,`rows`,`8`,`class`,`form-control mb-4`,`dir`,`auto`,`id`,`answer`);
-elNOlYT.value = fval(component.answerData);
+            let elUSqiy = eo('textarea','mMJf',null, eventListeners, {oninput:[function(e) {component.answerData = this.value;},function(e) {var $el = this;component.storeAnswer($el.value)},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elPDrFe.formHandler.addError(`answer`, 'required', trans('validation.required'));}return elPDrFe.formHandler.removeError(`answer`);}]},`value`,`${fval(component.answerData)}`,`name`,`${(`answer`).toInputName()}`,`placeholder`,`${trans(`Write your answer ;)`)}`,`type`,`textarea`,`rows`,`8`,`class`,`form-control mb-4`,`dir`,`auto`,`id`,`answer`);
+elUSqiy.value = fval(component.answerData);
 ec('textarea');
-let cndFwC3 = elqJtPC.formHandler.getError(`answer`);
-this.setState('stodqKL', cndFwC3);
-if (cndFwC3) { 
-let elgm5B6 = eo('div','s7Ff',null,`class`,`alert alert-danger`);
-text(elqJtPC.formHandler.getError(`answer`));
+let cndElHY = elPDrFe.formHandler.getError(`answer`);
+this.setState('stDbxm7', cndElHY);
+if (cndElHY) { 
+let el0LO_1 = eo('div','CzRf',null,`class`,`alert alert-danger`);
+text(elPDrFe.formHandler.getError(`answer`));
 ec('div');
-}let elCrIpm = eo('button',null,null, boolAttrs, {disabled:!component.isValidForm || component.isSending},`class`,`btn btn-primary float-right`);
+}let elNeHiL = eo('button',null,null, boolAttrs, {disabled:!component.isValidForm || component.isSending},`class`,`btn btn-primary float-right`);
 text(`Send`);
 ec('button');
-let elskCwe = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = true}]},`type`,`button`,`class`,`btn btn-success float-right`);
+let el91gdZ = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = true}]},`type`,`button`,`class`,`btn btn-success float-right`);
 text(`Preview`);
 ec('button');
 ec('form');
-}let cndnKwe = component.cancelBtn;
-this.setState('st4q43i', cndnKwe);
-if (cndnKwe) { 
-let elN9AUv = eo('button','pOAf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openAnswerText = !component.openAnswerText; component.cancelBtn = false}]},`class`,`btn btn-danger float-right mr-2`);
+}let cndArGU = component.cancelBtn;
+this.setState('stnlaeN', cndArGU);
+if (cndArGU) { 
+let el5XsoA = eo('button','2yEf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openAnswerText = !component.openAnswerText; component.cancelBtn = false}]},`class`,`btn btn-danger float-right mr-2`);
 text(`Cancel`);
 ec('button');
 }ec('div');
-}else if (cndnqkK) { 
-let elsIAXx = eo('div');
-let elzrOO9 = eo('h4',null,null,`class`,`answersTitle bold m-b-2`);
+}else if (cndHGvF) { 
+let elMOaTd = eo('div');
+let eln4DHO = eo('h4',null,null,`class`,`answersTitle bold m-b-2`);
 text(`Answers ( ${ component.topic.answers.length } )`);
 ec('h4');
-let cndd3EN = ! component.topic.public && !component.topic.answered && component.user.id != 1;
-this.setState('strEvse', cndd3EN);
-let cndwPC8 = !(cndd3EN);
-this.setState('stMHnT0', cndwPC8);
-if (cndd3EN) { 
-let el2n5p_ = eo('h2','ibBf',null,`class`,`text-center bold teal-text`);
+let cndAGVZ = ! component.topic.public && !component.topic.answered && component.user.id != 1;
+this.setState('stjjLCr', cndAGVZ);
+let cnd0UpZ = !(cndAGVZ);
+this.setState('stn997M', cnd0UpZ);
+if (cndAGVZ) { 
+let elrWKmH = eo('h2','iVuf',null,`class`,`text-center bold teal-text`);
 text(`You need to answer first to see other's answers!`);
 ec('h2');
 }else { 
 for (let i in component.topic.answers) {
 let answer = component.topic.answers[i]; 
- let iiIA6_ = 'hqYbr0Z' + i;
-let elYmjX7 = eo('div','5yVsE_qKkQ_u' + i+iiIA6_,null,`class`,`card m-b-2`);
-let elEvVt6 = eo('div','wJkff'+iiIA6_,null,`class`,`card-body`);
-let elvtMSQ = eo('div','CVtff'+iiIA6_,null,`class`,`d-flex justify-content-between mb-3`);
-let elhQv0y = eo('div','cq9ff'+iiIA6_,null,`class`,`answerMeta w-100`);
-let el33T9P = eo('span','O2pff'+iiIA6_,null, eventListeners, {onclick:[function(e) {var $el = this;component.handleAnswerDisplay(answer);}]},`class`,`mainColor text-capitalize mr-2 pointer bold d-block`);
-let elHKus_ = eo('span','CUKff'+iiIA6_);
-elHKus_.cls = {'green-text': answer.by.id == component.user.id, 'blue-text': answer.by.id != component.user.id};
+ let ii5DAs = 'td3sZBp' + i;
+let elqwSG7 = eo('div','ijB5hBYfi1ru' + i+ii5DAs,null,`class`,`card m-b-2`);
+let elOJPpE = eo('div','Ubtff'+ii5DAs,null,`class`,`card-body`);
+let elI6gKj = eo('div','Y5Nff'+ii5DAs,null,`class`,`d-flex justify-content-between mb-3`);
+let eld78j6 = eo('div','nNPff'+ii5DAs,null,`class`,`answerMeta w-100`);
+let el_1sST = eo('span','Jh3ff'+ii5DAs,null, eventListeners, {onclick:[function(e) {var $el = this;component.handleAnswerDisplay(answer);}]},`class`,`mainColor text-capitalize mr-2 pointer bold d-block`);
+let elKzozi = eo('span','k9yff'+ii5DAs);
+elKzozi.cls = {'green-text': answer.by.id == component.user.id, 'blue-text': answer.by.id != component.user.id};
 
-            for (let className in elHKus_.cls) {
-                elHKus_.classList.toggle(className, elHKus_.cls[className]);
+            for (let className in elKzozi.cls) {
+                elKzozi.classList.toggle(className, elKzozi.cls[className]);
             }  
             text(answer.by.name);
 ec('span');
-let cmpzBd4 = this._lc('cFAveMBD7', {parent:component,parentTop:layout,props:{id:answer.by.id},attrs:{id:`${answer.by.id}`},state:'stMHnT0',insideLoop:true,index:"" +iiIA6_});
-let cndyOrL = answer.by.id == component.user.id && answer.status != 'approved';
-this.setState('stTqrU5', cndyOrL);
-let cnd_hJ_ = answer.display == DISPLAYED;
-this.setState('stIRQ_n', cnd_hJ_);
-let cndNFnU = answer.display == HIDDEN;
-this.setState('stn6w5C', cndNFnU);
-if (cndyOrL) { 
-let eluDt6k = eo('span','hvCff'+iiIA6_,null,`class`,`text-capitalize badge align-bottom ml-3 mb-1`);
-eluDt6k.cls = answerStatusClass(answer.status);
+let cmpxzFj = this._lc('cgapyug7t', {parent:component,parentTop:layout,props:{id:answer.by.id},attrs:{id:`${answer.by.id}`},state:'stn997M',insideLoop:true,index:"" +ii5DAs});
+let cndHf7V = answer.by.id == component.user.id && answer.status != 'approved';
+this.setState('st35rvl', cndHf7V);
+let cndH4Hk = answer.display == DISPLAYED;
+this.setState('stuyjbN', cndH4Hk);
+let cndlbce = answer.display == HIDDEN;
+this.setState('std298c', cndlbce);
+if (cndHf7V) { 
+let el5ZTSo = eo('span','uFOff'+ii5DAs,null,`class`,`text-capitalize badge align-bottom ml-3 mb-1`);
+el5ZTSo.cls = answerStatusClass(answer.status);
 
-            for (let className in eluDt6k.cls) {
-                eluDt6k.classList.toggle(className, eluDt6k.cls[className]);
+            for (let className in el5ZTSo.cls) {
+                el5ZTSo.classList.toggle(className, el5ZTSo.cls[className]);
             }  
             text( answer.status );
 ec('span');
-}let cndIK_u = answer.display == SEMI_DISPLAYED;
-this.setState('sttHugb', cndIK_u);
-let cnddKuC = cnd_hJ_;
-this.setState('stiQaDT', cnddKuC);
-let cndNp5k = cndNFnU;
-this.setState('st1oxoZ', cndNp5k);
-if (cndIK_u) { 
-let elfEWOF = eo('i','hJAff'+iiIA6_,null,`title`,`${trans(`Display`)}`,`class`,`${fas('angle-down') + ' float-right fa-2x icon'}`);
+}let cndH1tU = answer.display == SEMI_DISPLAYED;
+this.setState('stw3Kca', cndH1tU);
+let cndcN4L = cndH4Hk;
+this.setState('st_uTuu', cndcN4L);
+let cnd7avZ = cndlbce;
+this.setState('st0uHBT', cnd7avZ);
+if (cndH1tU) { 
+let elzJhFO = eo('i','4OCff'+ii5DAs,null,`title`,`${trans(`Display`)}`,`class`,`${fas('angle-down') + ' float-right fa-2x icon'}`);
 ec('i');
-}else if (cnddKuC) { 
-let elPKNZN = eo('i','5Wsff'+iiIA6_,null,`title`,`${trans(`Hide`)}`,`class`,`${fas('minus') + ' float-right fa-2x icon'}`);
+}else if (cndcN4L) { 
+let elnrTI3 = eo('i','INTff'+ii5DAs,null,`title`,`${trans(`Hide`)}`,`class`,`${fas('minus') + ' float-right fa-2x icon'}`);
 ec('i');
-}else if (cndNp5k) { 
-let elLYNBG = eo('i','4Mrff'+iiIA6_,null,`title`,`${trans(`Semi display`)}`,`class`,`${fas('plus') + ' float-right fa-2x icon'}`);
+}else if (cnd7avZ) { 
+let elFDKr7 = eo('i','yj9ff'+ii5DAs,null,`title`,`${trans(`Semi display`)}`,`class`,`${fas('plus') + ' float-right fa-2x icon'}`);
 ec('i');
 }ec('span');
-let elru9mT = eo('small','9vQff'+iiIA6_,null,`class`,`text-muted d-block`);
+let elJpTEv = eo('small','jNqff'+ii5DAs,null,`class`,`text-muted d-block`);
 text( answer.createdAt.format );
 ec('small');
 ec('div');
 ec('div');
-let cnd9y0O = answer.display == SEMI_DISPLAYED;
-this.setState('stfbMFw', cnd9y0O);
-let cndmkI4 = answer.display == DISPLAYED;
-this.setState('stnOGIR', cndmkI4);
-if (cnd9y0O) { 
-let cmpKmjK = this._lc('c76Pdy9wv', {parent:component,parentTop:layout,props:{content:answer.answer.split('\n').slice(0, 10).join('\n')},state:'stfbMFw',insideLoop:true,index:"" +iiIA6_});
-let cndFPcC = answer.answer.split('\n').length > 10;
-this.setState('stj6iuo', cndFPcC);
-if (cndFPcC) { 
-let el07yOz = eo('p','Wgaff'+iiIA6_,null, eventListeners, {onclick:[function(e) {var $el = this;component.handleAnswerDisplay(answer)}]},`class`,`pointer bold pink-text`);
+let cndzNWC = answer.display == SEMI_DISPLAYED;
+this.setState('st0NFQW', cndzNWC);
+let cndlMHT = answer.display == DISPLAYED;
+this.setState('stfZtPn', cndlMHT);
+if (cndzNWC) { 
+let cmpxMI8 = this._lc('cUX6ICYAa', {parent:component,parentTop:layout,props:{content:answer.answer.split('\n').slice(0, 10).join('\n')},state:'st0NFQW',insideLoop:true,index:"" +ii5DAs});
+let cndjCqo = answer.answer.split('\n').length > 10;
+this.setState('stFT6Oc', cndjCqo);
+if (cndjCqo) { 
+let elYQ2Uq = eo('p','6s7ff'+ii5DAs,null, eventListeners, {onclick:[function(e) {var $el = this;component.handleAnswerDisplay(answer)}]},`class`,`pointer bold pink-text`);
 text(`Read more...`);
 ec('p');
-}}else if (cndmkI4) { 
-let cmpiRsK = this._lc('cl6Kj6DKA', {parent:component,parentTop:layout,props:{content:answer.answer},state:'stnOGIR',insideLoop:true,index:"" +iiIA6_});
+}}else if (cndlMHT) { 
+let cmpRZjQ = this._lc('cHljQlL4Q', {parent:component,parentTop:layout,props:{content:answer.answer},state:'stfZtPn',insideLoop:true,index:"" +ii5DAs});
 }ec('div');
 ec('div');
 }
 }ec('div');
 }ec('div');
-let elGvJ91 = eo('div',null,null,`class`,`col-lg-3 col-md-4 text-center`);
-let elvLAAP = eo('div',null,null,`class`,`card`);
-let elCTPmX = eo('div',null,null,`class`,`card-body`);
-let cnd2sqn = component.approveMsg.show;
-this.setState('st59T5E', cnd2sqn);
-if (cnd2sqn) { 
-let elugXx0 = eo('div','LDWf',null,`class`,`mb-3`);
-let elZBUMK = eo('span','6QTf',null,`class`,`badge text-uppercase`);
-elZBUMK.cls = answerStatusClass(component.approveMsg.status);
+let elp4Xtd = eo('div',null,null,`class`,`col-lg-3 col-md-4 text-center`);
+let elCz28L = eo('div',null,null,`class`,`card`);
+let elaiyTU = eo('div',null,null,`class`,`card-body`);
+let cndbZmt = component.approveMsg.show;
+this.setState('stvLyQo', cndbZmt);
+if (cndbZmt) { 
+let elmpvhX = eo('div','9Ovf',null,`class`,`mb-3`);
+let elQRRPn = eo('span','bv8f',null,`class`,`badge text-uppercase`);
+elQRRPn.cls = answerStatusClass(component.approveMsg.status);
 
-            for (let className in elZBUMK.cls) {
-                elZBUMK.classList.toggle(className, elZBUMK.cls[className]);
+            for (let className in elQRRPn.cls) {
+                elQRRPn.classList.toggle(className, elQRRPn.cls[className]);
             }  
             text(component.approveMsg.status);
 ec('span');
-let cndKHg7 = component.approveMsg.status === 'rejected';
-this.setState('stsay3a', cndKHg7);
-if (cndKHg7) { 
-let elKFkCC = eo('span','rUpf');
+let cndBlPf = component.approveMsg.status === 'rejected';
+this.setState('strStnj', cndBlPf);
+if (cndBlPf) { 
+let elCIWvn = eo('span','VTWf');
 text(component.approveMsg.msg);
 ec('span');
 }ec('div');
-}let elf9Yat = eo('div',null,null,`class`,`topicEsTime`);
-let cndvbno = component.topic.userAnswer && component.topic.userAnswer.status == 'approved';
-this.setState('stpNreK', cndvbno);
-let cndpNpe = !(cndvbno);
-this.setState('st1StRZ', cndpNpe);
-if (cndvbno) { 
-let cndwj7r = component.topic.userAnswer.prize != component.topic.prize;
-this.setState('st0TtiO', cndwj7r);
-if (cndwj7r) { 
-let elUdU12 = eo('span','_Dyf',null,`class`,`reward-status`);
-elUdU12.cls = {'up': component.topic.userAnswer.prize > component.topic.prize, down: component.topic.userAnswer.prize < component.topic.prize};
+}let el23PiN = eo('div',null,null,`class`,`topicEsTime`);
+let cndJWLT = component.topic.userAnswer && component.topic.userAnswer.status == 'approved';
+this.setState('stDFsDT', cndJWLT);
+let cndbKOq = !(cndJWLT);
+this.setState('stpCCkG', cndbKOq);
+if (cndJWLT) { 
+let cndNdWz = component.topic.userAnswer.prize != component.topic.prize;
+this.setState('ste_rHo', cndNdWz);
+if (cndNdWz) { 
+let ela6WoX = eo('span','lq6f',null,`class`,`reward-status`);
+ela6WoX.cls = {'up': component.topic.userAnswer.prize > component.topic.prize, down: component.topic.userAnswer.prize < component.topic.prize};
 
-            for (let className in elUdU12.cls) {
-                elUdU12.classList.toggle(className, elUdU12.cls[className]);
+            for (let className in ela6WoX.cls) {
+                ela6WoX.classList.toggle(className, ela6WoX.cls[className]);
             }  
             ec('span');
-}let cmpkEdI = this._lc('cMDQJAUAn', {parent:component,parentTop:layout});
-let elhNeCb = eo('span',null,null,`class`,`bold`);
-elhNeCb.cls = {'green-text': component.topic.userAnswer.prize > component.topic.prize, 'red-text': component.topic.userAnswer.prize < component.topic.prize};
+}let cmp9AeZ = this._lc('cNMtgvLl0', {parent:component,parentTop:layout});
+let elRYkQp = eo('span',null,null,`class`,`bold`);
+elRYkQp.cls = {'green-text': component.topic.userAnswer.prize > component.topic.prize, 'red-text': component.topic.userAnswer.prize < component.topic.prize};
 
-            for (let className in elhNeCb.cls) {
-                elhNeCb.classList.toggle(className, elhNeCb.cls[className]);
+            for (let className in elRYkQp.cls) {
+                elRYkQp.classList.toggle(className, elRYkQp.cls[className]);
             }  
             text(component.topic.userAnswer.prize.format());
 ec('span');
-let cndS_Ig = component.topic.userAnswer && component.topic.userAnswer.prize != component.topic.prize;
-this.setState('stOSLJE', cndS_Ig);
-if (cndS_Ig) { 
-let elaHyvA = eo('div','yvMf',null,`class`,`bold p-l-4`);
-elaHyvA.cls = {'red-text': component.topic.userAnswer.prize < component.topic.prize, 'green-text': component.topic.userAnswer.prize > component.topic.prize};
+let cndKckq = component.topic.userAnswer && component.topic.userAnswer.prize != component.topic.prize;
+this.setState('stK98Ij', cndKckq);
+if (cndKckq) { 
+let elXCdDf = eo('div','NnGf',null,`class`,`bold p-l-4`);
+elXCdDf.cls = {'red-text': component.topic.userAnswer.prize < component.topic.prize, 'green-text': component.topic.userAnswer.prize > component.topic.prize};
 
-            for (let className in elaHyvA.cls) {
-                elaHyvA.classList.toggle(className, elaHyvA.cls[className]);
+            for (let className in elXCdDf.cls) {
+                elXCdDf.classList.toggle(className, elXCdDf.cls[className]);
             }  
-            let elKvR6x = eo('span','I5Lf');
+            let elRyVjV = eo('span','xJcf');
 text(component.topic.userAnswer.prize > component.topic.prize ? '+' : '-');
 ec('span');
-let elS30em = eo('span','wh8f');
+let elueWSE = eo('span','dwmf');
 text(Math.abs(component.topic.userAnswer.prize - component.topic.prize).format());
 ec('span');
 ec('div');
 }}else { 
-let cmpYp_N = this._lc('cCcfeE5Hl', {parent:component,parentTop:layout,props:{coins:component.topic.prize},state:'st1StRZ'});
-}let cndVmrT = component.startQuest;
-this.setState('st5adzm', cndVmrT);
-if (cndVmrT) { 
-let elp_DLd = eo('div','0SIf');
-let cndCf1P = ! component.topic.subscribed;
-this.setState('sthkxOc', cndCf1P);
-let cndfsn0 = !(cndCf1P);
-this.setState('stSs8Fq', cndfsn0);
-if (cndCf1P) { 
-let el0wunc = eo('a','unLf',null,`href`,`/academy`,`class`,`btn btn-sm btn-danger bold`);
+let cmpB_uq = this._lc('cFOs2aZyC', {parent:component,parentTop:layout,props:{coins:component.topic.prize},state:'stpCCkG'});
+}let cndisn2 = component.startQuest;
+this.setState('stazDWl', cndisn2);
+if (cndisn2) { 
+let elq7sox = eo('div','hpOf');
+let cndhWCw = ! component.topic.subscribed;
+this.setState('stCxV_V', cndhWCw);
+let cnd4Zd_ = !(cndhWCw);
+this.setState('stCEgRs', cnd4Zd_);
+if (cndhWCw) { 
+let el5eJAH = eo('a','4Enf',null,`href`,`/academy`,`class`,`btn btn-sm btn-danger bold`);
 text(`Subscribe to answer!`);
-let elIxAbK = eo('i','_Y0f',null,`class`,`${fas('lock') + ' icon ml-2 icon'}`);
+let elRM1Dd = eo('i','L7Of',null,`class`,`${fas('lock') + ' icon ml-2 icon'}`);
 ec('i');
 ec('a');
 }else { 
-let elU87GA = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.showQuestAnswer()}]}, boolAttrs, {disabled:component.disableQuestBtn},`class`,`btn text-uppercase`);
-elU87GA.cls = component.btns;
+let elrVZ05 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.showQuestAnswer()}]}, boolAttrs, {disabled:component.disableQuestBtn},`class`,`btn text-uppercase`);
+elrVZ05.cls = component.btns;
 
-            for (let className in elU87GA.cls) {
-                elU87GA.classList.toggle(className, elU87GA.cls[className]);
+            for (let className in elrVZ05.cls) {
+                elrVZ05.classList.toggle(className, elrVZ05.cls[className]);
             }  
             text( component.openAnswerText ? 'Cancel' : 'Start quest' );
-let cndwFuZ = ! component.user.isLoggedIn();
-this.setState('sti9Iu3', cndwFuZ);
-if (cndwFuZ) { 
-let elZaQ_i = eo('i','uX8f',null,`class`,`${fas('lock') + ' icon ml-2 icon'}`);
+let cndTy30 = ! component.user.isLoggedIn();
+this.setState('sta0I0B', cndTy30);
+if (cndTy30) { 
+let elAZPNb = eo('i','CLdf',null,`class`,`${fas('lock') + ' icon ml-2 icon'}`);
 ec('i');
 }ec('button');
 }ec('div');
-}let cndq60f = component.approveMsg.status === 'rejected';
-this.setState('stQGaN4', cndq60f);
-if (cndq60f) { 
-let el_0GtA = eo('div','R8gf',null, eventListeners, {onclick:[function(e) {var $el = this;component.editAnswer(component.currentUserAnswer.id, component.currentUserAnswer.answer)}]},`title`,`${trans(`Edit your answer`)}`,`class`,`text-info cursor text-center`);
-let el8mD1F = eo('i','K3Rf',null,`class`,`${fas('edit') + ' icon'}`);
+}let cndi5yV = component.approveMsg.status === 'rejected';
+this.setState('stjL4MC', cndi5yV);
+if (cndi5yV) { 
+let elWHQWI = eo('div','5S_f',null, eventListeners, {onclick:[function(e) {var $el = this;component.editAnswer(component.currentUserAnswer.id, component.currentUserAnswer.answer)}]},`title`,`${trans(`Edit your answer`)}`,`class`,`text-info cursor text-center`);
+let elRUBgs = eo('i','Qudf',null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 ec('div');
 }ec('div');

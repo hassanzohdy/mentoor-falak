@@ -4,17 +4,17 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: false,
                 observe: [],
-                children: {cJMytaHIy:'markdown',cLaGRavSz:'layout'},
+                children: {c4mgGhdok:'markdown',cHTKgqEBh:'layout'},
                 render: function (component) {
-                    let cmpOh_d = this._lc('cLaGRavSz', {parent:component,content:(layout) => {let elt_rmc = eo('h1',null,null,`class`,`text-sm-left text-center`);
-let elnGImO = eo('a',null,null,`href`,`/projects`);
-let ellarTw = eo('span',null,null,`class`,`d-block d-sm-inline`);
+                    let cmpxwNo = this._lc('cHTKgqEBh', {parent:component,content:(layout) => {let elDvSVn = eo('h1',null,null,`class`,`text-sm-left text-center`);
+let elD0tpP = eo('a',null,null,`href`,`/projects`);
+let elIcZiT = eo('span',null,null,`class`,`d-block d-sm-inline`);
 text(`Project Management System [PMS]`);
 ec('span');
 ec('a');
 ec('h1');
-let elZrOPz = eo('section',null,null,`id`,`about`,`class`,`m-t-2`);
-let cmpksdS = this._lc('cJMytaHIy', {parent:component,parentTop:layout,contentToString:`Project Management System [PMS] module helps you to mange projects you own/work in or supervising.
+let eli5NMn = eo('section',null,null,`id`,`about`,`class`,`m-t-2`);
+let cmpx2Pk = this._lc('c4mgGhdok', {parent:component,parentTop:layout,contentToString:`Project Management System [PMS] module helps you to mange projects you own/work in or supervising.
 
 ## So what does this module offer more than the other online tools?
 

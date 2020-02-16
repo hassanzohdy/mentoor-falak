@@ -24,7 +24,7 @@ $domain = $_GET['domain'];
 
 $delay = $_GET['delay'];
 
-$cache_path = __DIR__ . '/../static-files/';
+$cache_path = __DIR__ . '/..//static-files/';
 
 if (!is_dir($cache_path)) {
     mkdir($cache_path, 0777, true);
@@ -45,7 +45,7 @@ if (file_exists($file_path)) {
 
     // recache the content again
     send_response();
-    if (true) {
+    if (false) {
         load_content();
     }
     die;

@@ -7,7 +7,5 @@
     "assets": [
         "images"
     ],
-    "modules": [
-        "locales"
-    ]
+    "modules": []
 }

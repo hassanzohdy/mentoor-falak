@@ -4,133 +4,133 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['onClose','isUnlocked','confirm','isLoading','todo','filterBy','currentStatus','totalItems','totalPending','totalCompleted','getCategories','todoItems','readyInput','changeStatus','isAdding','currentCategoryIndex','isAddingCategory','addItem','addCategory','unlock'],
-                children: {culO1fEVi:'gold-icon',cvNFNpsW_:'flk-spinner',c21kbhK7J:'flk-dropdown-list',cZfkWog8C:'flk-modal',cbsbhG_K4:'flk-alert',cBi8jJF6_:'flk-alert',cTklklHP5:'flk-alert'},
+                children: {cUfgSF_QT:'gold-icon',cpEfCBsvy:'flk-spinner',chmDim3wq:'flk-dropdown-list',cO3RkaGF7:'flk-modal',ccDdiKyGb:'flk-alert',c4Su_Yuaz:'flk-alert',ceDI0bSTK:'flk-alert'},
                 render: function (component) {
-                    let cmp0TG7 = this._lc('cZfkWog8C', {parent:component,events:{onclose:function(e) {let $el = this; component.onClose()}},content:(flkModal) => {let cnd3T1v = ! component.isUnlocked();
-this.setState('stn3eOy', cnd3T1v);
-let cndcpzh = component.isLoading;
-this.setState('stU6ovo', cndcpzh);
-let cndAg6A = !(cnd3T1v||cndcpzh);
-this.setState('stUtjyJ', cndAg6A);
-if (cnd3T1v) { 
-let elPQfDI = eo('div','jQ0f');
-let elMDhir = eo('div','sX1f');
-let elScQMl = eo('p','Wc6f');
+                    let cmpoTk8 = this._lc('cO3RkaGF7', {parent:component,events:{onclose:function(e) {let $el = this; component.onClose()}},content:(flkModal) => {let cndIFmj = ! component.isUnlocked();
+this.setState('styvtzG', cndIFmj);
+let cndj18R = component.isLoading;
+this.setState('std2oVN', cndj18R);
+let cndvS1r = !(cndIFmj||cndj18R);
+this.setState('staDOWV', cndvS1r);
+if (cndIFmj) { 
+let elUxp4l = eo('div','lM9f');
+let elwdWA9 = eo('div','OQvf');
+let elADQsT = eo('p','h5Nf');
 text(`Todo list will give you a quick list for accomplishment progress based on your todo list items
                 completion.`);
 ec('p');
-let elHgnLB = eo('p','kL0f');
+let elP5yfo = eo('p','iGSf');
 text(`You can easily check/uncheck your finished todo items with a single click.`);
 ec('p');
 ec('div');
-let cndOY4k = ! Is.empty(FLAGS.shoppingMall);
-this.setState('st6pYHq', cndOY4k);
-if (cndOY4k) { 
-let elLtSym = eo('div','oe3f',null,`class`,`m-t-4 text-center`);
-let elf6lmf = eo('button','EIRf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirm = true}]},`class`,`btn btn-sm btn-success`);
-let cmpbaIp = this._lc('culO1fEVi', {parent:component,parentTop:flkModal,props:{coins:FLAGS.shoppingMall.todo},state:'st6pYHq'});
-let elw3IN4 = eo('div','nZrf',null,`class`,`bold p-l-1`);
+let cndKBuW = ! Is.empty(FLAGS.shoppingMall);
+this.setState('stLMfbp', cndKBuW);
+if (cndKBuW) { 
+let elmnuB7 = eo('div','ldKf',null,`class`,`m-t-4 text-center`);
+let elavUqK = eo('button','5Axf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirm = true}]},`class`,`btn btn-sm btn-success`);
+let cmptBgK = this._lc('cUfgSF_QT', {parent:component,parentTop:flkModal,props:{coins:FLAGS.shoppingMall.todo},state:'stLMfbp'});
+let elCANFh = eo('div','Ox_f',null,`class`,`bold p-l-1`);
 text(`Unlock`);
 ec('div');
 ec('button');
 ec('div');
 }ec('div');
-}else if (cndcpzh) { 
-let cmpQQTf = this._lc('cvNFNpsW_', {parent:component,parentTop:flkModal,attrs:{theme:'black'},state:'stU6ovo'});
+}else if (cndj18R) { 
+let cmpY32V = this._lc('cpEfCBsvy', {parent:component,parentTop:flkModal,attrs:{theme:'black'},state:'std2oVN'});
 }else { 
-let cndqi2u = ! Is.empty(component.todo.categories);
-this.setState('stoead2', cndqi2u);
-let cndxLFg = !(cndqi2u);
-this.setState('stgshOK', cndxLFg);
-if (cndqi2u) { 
-let elirQfw = eo('span','k7bf',null, eventListeners, {onclick:[function(e) {var $el = this;component.filterBy(TodoListModal.ALL)}]},`class`,`badge badge-purple`);
-elirQfw.cls = {active: TodoListModal.ALL == component.currentStatus};
+let cndv1_Z = ! Is.empty(component.todo.categories);
+this.setState('stVqrEh', cndv1_Z);
+let cndO4Wd = !(cndv1_Z);
+this.setState('stIWx78', cndO4Wd);
+if (cndv1_Z) { 
+let el0JHAd = eo('span','Xtyf',null, eventListeners, {onclick:[function(e) {var $el = this;component.filterBy(TodoListModal.ALL)}]},`class`,`badge badge-purple`);
+el0JHAd.cls = {active: TodoListModal.ALL == component.currentStatus};
 
-            for (let className in elirQfw.cls) {
-                elirQfw.classList.toggle(className, elirQfw.cls[className]);
+            for (let className in el0JHAd.cls) {
+                el0JHAd.classList.toggle(className, el0JHAd.cls[className]);
             }  
             text(`All
                 (${ component.totalItems() })`);
 ec('span');
-let elfbLdX = eo('span','X7_f',null, eventListeners, {onclick:[function(e) {var $el = this;component.filterBy(TodoListModal.PENDING)}]},`class`,`badge badge-primary`);
-elfbLdX.cls = {active: TodoListModal.PENDING == component.currentStatus};
+let elK1Ais = eo('span','g3lf',null, eventListeners, {onclick:[function(e) {var $el = this;component.filterBy(TodoListModal.PENDING)}]},`class`,`badge badge-primary`);
+elK1Ais.cls = {active: TodoListModal.PENDING == component.currentStatus};
 
-            for (let className in elfbLdX.cls) {
-                elfbLdX.classList.toggle(className, elfbLdX.cls[className]);
+            for (let className in elK1Ais.cls) {
+                elK1Ais.classList.toggle(className, elK1Ais.cls[className]);
             }  
             text(`Pending
                 (${ component.totalPending() })`);
 ec('span');
-let eltysft = eo('span','10Pf',null, eventListeners, {onclick:[function(e) {var $el = this;component.filterBy(TodoListModal.COMPLETED)}]},`class`,`badge badge-success`);
-eltysft.cls = {active: TodoListModal.COMPLETED == component.currentStatus};
+let elP9Bqs = eo('span','JdFf',null, eventListeners, {onclick:[function(e) {var $el = this;component.filterBy(TodoListModal.COMPLETED)}]},`class`,`badge badge-success`);
+elP9Bqs.cls = {active: TodoListModal.COMPLETED == component.currentStatus};
 
-            for (let className in eltysft.cls) {
-                eltysft.classList.toggle(className, eltysft.cls[className]);
+            for (let className in elP9Bqs.cls) {
+                elP9Bqs.classList.toggle(className, elP9Bqs.cls[className]);
             }  
             text(`Completed
                 (${ component.totalCompleted() })`);
 ec('span');
-let elM7hZ2 = eo('div','aVzf',null,`class`,`categories-filter`);
-component.categoriesDropdown = this._lc('c21kbhK7J', {parent:component,parentTop:flkModal,props:{items:component.getCategories(),multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy(component.currentStatus, e.map(cat => cat.text))}},boolAttrs:{multiple:true},attrs:{placeholder:`${trans(`Filter by category`)}`,heading:'Categories'},state:'stoead2'});
+let els4I9R = eo('div','_krf',null,`class`,`categories-filter`);
+component.categoriesDropdown = this._lc('chmDim3wq', {parent:component,parentTop:flkModal,props:{items:component.getCategories(),multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy(component.currentStatus, e.map(cat => cat.text))}},boolAttrs:{multiple:true},attrs:{placeholder:`${trans(`Filter by category`)}`,heading:'Categories'},state:'stVqrEh'});
 ec('div');
-let ele4NLk = eo('div','jb7f',null,`class`,`items-list`);
+let ellaPoP = eo('div','a0Yf',null,`class`,`items-list`);
 for (let index in component.todoItems) {
 let category = component.todoItems[index]; 
- let iih6i7 = category.id+ index;
-let elfG2ET = eo('div','9gZSpZni3VZN' + index+iih6i7,null,`class`,`category-wrapper`);
-let elunD69 = eo('h1','CPpff'+iih6i7,null,`class`,`category m-y-2`);
-let elqEFjR = eo('span','ZSzff'+iih6i7);
+ let ii7eHd = category.id+ index;
+let elkb87C = eo('div','xE3wcbXTOH9U' + index+ii7eHd,null,`class`,`category-wrapper`);
+let elFldQC = eo('h1','LQmff'+ii7eHd,null,`class`,`category m-y-2`);
+let elT0X_1 = eo('span','SDtff'+ii7eHd);
 text(category.name);
 ec('span');
-let cndJ1r9 = category.items.length > 0;
-this.setState('stCcJA3', cndJ1r9);
-if (cndJ1r9) { 
-let el7X92Z = eo('span','gSHff'+iih6i7);
+let cndmYVC = category.items.length > 0;
+this.setState('stfjLpj', cndmYVC);
+if (cndmYVC) { 
+let elba7xm = eo('span','udbff'+ii7eHd);
 text('(' + category.items.length + ')');
 ec('span');
 }ec('h1');
-let cndcjwi = ! Is.empty(category.items);
-this.setState('stFLkEF', cndcjwi);
-let cndsYfJ = !(cndcjwi);
-this.setState('st2QXoe', cndsYfJ);
-if (cndcjwi) { 
+let cndEwL2 = ! Is.empty(category.items);
+this.setState('stR2UTd', cndEwL2);
+let cnd3Uqq = !(cndEwL2);
+this.setState('stHBour', cnd3Uqq);
+if (cndEwL2) { 
 for (let i in category.items) {
 let item = category.items[i]; 
- let iiyhMV = item.id + item.done + category.id+ i;
-let elf4jnu = eo('div','VQ6qjaxLLfmd' + i+iih6i7+iiyhMV,null,`class`,`row item`);
-let el8TlgQ = eo('div','JMrff'+iih6i7+iiyhMV,null,`class`,`col-9`);
+ let iijqyF = item.id + item.done + category.id+ i;
+let elmAZtc = eo('div','NiHu1QTn35Ow' + i+ii7eHd+iijqyF,null,`class`,`row item`);
+let elQNBbI = eo('div','osMff'+ii7eHd+iijqyF,null,`class`,`col-9`);
 text(item.item);
 ec('div');
-let elJ1b73 = eo('div','WBMff'+iih6i7+iiyhMV,null,`class`,`col check-item`);
-let elBJmPv = eo('label','U1Iff'+iih6i7+iiyhMV);
-let elhmvPv = ev('input','unAff'+iih6i7+iiyhMV,null, eventListeners, {onready:[function(e) {var $el = this;component.readyInput($el)}],onchange:[function(e) {var $el = this;component.changeStatus(category, item.id, $el.checked)}]}, boolAttrs, {checked:item.done},`class`,`cb pristine`,`type`,`checkbox`);
-elhmvPv.cls = {checked: item.done};
+let elZffVz = eo('div','y4off'+ii7eHd+iijqyF,null,`class`,`col check-item`);
+let elxHvjl = eo('label','8mjff'+ii7eHd+iijqyF);
+let elTdVGP = ev('input','5atff'+ii7eHd+iijqyF,null, eventListeners, {onready:[function(e) {var $el = this;component.readyInput($el)}],onchange:[function(e) {var $el = this;component.changeStatus(category, item.id, $el.checked)}]}, boolAttrs, {checked:item.done},`class`,`cb pristine`,`type`,`checkbox`);
+elTdVGP.cls = {checked: item.done};
 
-            for (let className in elhmvPv.cls) {
-                elhmvPv.classList.toggle(className, elhmvPv.cls[className]);
+            for (let className in elTdVGP.cls) {
+                elTdVGP.classList.toggle(className, elTdVGP.cls[className]);
             }  
             
                     setTimeout(function () {
-                        let $el = elhmvPv;
+                        let $el = elTdVGP;
                         component.readyInput($el);
                     }, 20);                
-                let elo4bvz = eo('span','RH8ff'+iih6i7+iiyhMV);
+                let elzpXn7 = eo('span','1Xtff'+ii7eHd+iijqyF);
 ec('span');
 ec('label');
 ec('div');
 ec('div');
 }
 }else { 
-let eltqHdi = eo('h1','tVYff'+iih6i7,null,`class`,`m-y-2 text-center`);
+let elC_g1r = eo('h1','bphff'+ii7eHd,null,`class`,`m-y-2 text-center`);
 text(`No items here.`);
 ec('h1');
-}let elwIlXu = eo('button','i17ff'+iih6i7,null, eventListeners, {onclick:[function(e) {var $el = this;component.isAdding = true; component.currentCategoryIndex = index;}]},`title`,``,`class`,`btn btn-circle btn-success m-y-2`);
-let elTUs9s = eo('i','hMkff'+iih6i7,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
+}let elfH_AU = eo('button','yjjff'+ii7eHd,null, eventListeners, {onclick:[function(e) {var $el = this;component.isAdding = true; component.currentCategoryIndex = index;}]},`title`,``,`class`,`btn btn-circle btn-success m-y-2`);
+let elI5CgN = eo('i','gDmff'+ii7eHd,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elwIlXu;
+                        let $el = elfH_AU;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Add todo item')}`});
         ;
@@ -139,35 +139,35 @@ ec('button');
 }
 ec('div');
 }else { 
-let elcKRwO = eo('h1',null,null,`class`,`text-center bold p-y-3`);
+let elSwVVc = eo('h1',null,null,`class`,`text-center bold p-y-3`);
 text(`No items yet.`);
 ec('h1');
-}let el84df3 = eo('div',null,null,`class`,`btns-list`);
-let eljJwpT = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.isAddingCategory = true;}]},`title`,``,`class`,`btn btn-circle btn-pink float-right`);
-let elYmFrh = eo('i',null,null,`class`,`${fas('folder-plus') + ' mr-1 icon'}`);
+}let elWAseu = eo('div',null,null,`class`,`btns-list`);
+let el_flfz = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.isAddingCategory = true;}]},`title`,``,`class`,`btn btn-circle btn-pink float-right`);
+let elNNpw9 = eo('i',null,null,`class`,`${fas('folder-plus') + ' mr-1 icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = eljJwpT;
+                        let $el = el_flfz;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Add new category')}`});
         ;
                     }, 20);                
                 ec('div');
 }},attrs:{id:'todo-list-modal',header:'Todo list'}});
-let cndQGfo = component.isAdding;
-this.setState('stvb0HL', cndQGfo);
-if (cndQGfo) { 
-let cmpY7kL = this._lc('cbsbhG_K4', {parent:component,props:{withInput:true,headingTheme:'primary'},events:{onconfirm:function(e) {let $el = this; component.addItem(e)},onclose:function(e) {let $el = this; component.isAdding = false;}},attrs:{placeholder:`${trans(`Todo item.`)}`,heading:'Adding new Todo Item',message:'Add todo item.'},state:'stvb0HL'});
-}let cndPhYl = component.isAddingCategory;
-this.setState('stGVA5l', cndPhYl);
-if (cndPhYl) { 
-let cmpz4we = this._lc('cBi8jJF6_', {parent:component,props:{withInput:true},events:{onconfirm:function(e) {let $el = this; component.addCategory(e)},onclose:function(e) {let $el = this; component.isAddingCategory = false;}},attrs:{placeholder:`${trans(`Todo category.`)}`,heading:'Adding Todo category',message:'Add new todo category.'},state:'stGVA5l'});
-}let cndcbUn = component.confirm;
-this.setState('sttS2rf', cndcbUn);
-if (cndcbUn) { 
-let cmp62LH = this._lc('cTklklHP5', {parent:component,events:{onconfirm:function(e) {let $el = this; component.unlock();},onclose:function(e) {let $el = this; component.confirm = false;}},state:'sttS2rf'});
+let cndGI7I = component.isAdding;
+this.setState('sta7v6J', cndGI7I);
+if (cndGI7I) { 
+let cmp8d7x = this._lc('ccDdiKyGb', {parent:component,props:{withInput:true,headingTheme:'primary'},events:{onconfirm:function(e) {let $el = this; component.addItem(e)},onclose:function(e) {let $el = this; component.isAdding = false;}},attrs:{placeholder:`${trans(`Todo item.`)}`,heading:'Adding new Todo Item',message:'Add todo item.'},state:'sta7v6J'});
+}let cnduVgg = component.isAddingCategory;
+this.setState('st94EYj', cnduVgg);
+if (cnduVgg) { 
+let cmpyupa = this._lc('c4Su_Yuaz', {parent:component,props:{withInput:true},events:{onconfirm:function(e) {let $el = this; component.addCategory(e)},onclose:function(e) {let $el = this; component.isAddingCategory = false;}},attrs:{placeholder:`${trans(`Todo category.`)}`,heading:'Adding Todo category',message:'Add new todo category.'},state:'st94EYj'});
+}let cndovOj = component.confirm;
+this.setState('stO7N9n', cndovOj);
+if (cndovOj) { 
+let cmpapm6 = this._lc('ceDI0bSTK', {parent:component,events:{onconfirm:function(e) {let $el = this; component.unlock();},onclose:function(e) {let $el = this; component.confirm = false;}},state:'stO7N9n'});
 }
                     this.isReadyToGo();
                 }

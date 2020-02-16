@@ -4,19 +4,19 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['recordSrc','data','recordKey','captureRecord','onRecording','recordData','clearRecord'],
-                children: {c39x2ZaaK:'flk-audio-player',cmOogXrkC:'flk-audio-recorder'},
+                children: {ccWvEqkyq:'flk-audio-player',ca8B7WD8g:'flk-audio-recorder'},
                 render: function (component) {
-                    let elNCSD2 = eo('div',null,null,`class`,`form-group ${ component.inputs.getAttr('class') }`);
-let cndmg6u = component.recordSrc || component.data[component.recordKey];
-this.setState('stdHdAE', cndmg6u);
-if (cndmg6u) { 
-let cmp8iEN = this._lc('c39x2ZaaK', {parent:component,props:{src:component.recordSrc || component.data[component.recordKey]},attrs:{src:`${component.recordSrc || component.data[component.recordKey]}`},state:'stdHdAE'});
-}let cmpqVgW = this._lc('cmOogXrkC', {parent:component,events:{onrecord:function(e) {let $el = this; component.captureRecord(e)},onstart:function(e) {let $el = this; component.onRecording()}}});
-let cndHzK3 = component.recordData;
-this.setState('stAsvDJ', cndHzK3);
-if (cndHzK3) { 
-let elaGy6h = eo('button','MIxf',null, eventListeners, {onclick:[function(e) {var $el = this;component.clearRecord(true)}]},`title`,`${trans(`Remove record`)}`,`type`,`button`,`class`,`btn btn-danger btn-sm remove-record-btn`);
-let elQFrMc = eo('i','D4Gf',null,`class`,`${fas('trash') + ' icon'}`);
+                    let elp_s8l = eo('div',null,null,`class`,`form-group ${ component.inputs.getAttr('class') }`);
+let cnd6Da9 = component.recordSrc || component.data[component.recordKey];
+this.setState('st6n6Ah', cnd6Da9);
+if (cnd6Da9) { 
+let cmpj71M = this._lc('ccWvEqkyq', {parent:component,props:{src:component.recordSrc || component.data[component.recordKey]},attrs:{src:`${component.recordSrc || component.data[component.recordKey]}`},state:'st6n6Ah'});
+}let cmpUJXa = this._lc('ca8B7WD8g', {parent:component,events:{onrecord:function(e) {let $el = this; component.captureRecord(e)},onstart:function(e) {let $el = this; component.onRecording()}}});
+let cnddPH1 = component.recordData;
+this.setState('st942Z9', cnddPH1);
+if (cnddPH1) { 
+let el1mzi0 = eo('button','VJef',null, eventListeners, {onclick:[function(e) {var $el = this;component.clearRecord(true)}]},`title`,`${trans(`Remove record`)}`,`type`,`button`,`class`,`btn btn-danger btn-sm remove-record-btn`);
+let elYwyA3 = eo('i','1akf',null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 }ec('div');
