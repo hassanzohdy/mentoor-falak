@@ -1,17 +1,28 @@
 <layout>
     <div>
-        <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
-        <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
-        <a href="/einstein-chamber/shop" class="m-l-1" title="Shop">
-            <span class="shopping-cart"></span>
-        </a>
+        <div class="d-flex justify-content-between">
+            <div class="meta">
+                <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
+                <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
+                <a href="/einstein-chamber/shop" class="m-l-1" title="Shop">
+                    <span class="shopping-cart"></span>
+                </a>
 
-        <a href="/einstein-chamber/unlock" title="Help">
-            <fa icon="question-circle fa-2x ml-2 v-middle"></fa>
-        </a>
+                <a href="/einstein-chamber/unlock" title="Help">
+                    <fa icon="question-circle fa-2x ml-2 v-middle"></fa>
+                </a>
 
-        <a href="/einsteiin-chaaaaaaaaaaaaaamber/puzzles/{this.currentPuzzle.id}">Start                                 a challenge</a>
-            <flk-spinner *if="this.isLoading"></flk-spinner>
+            </div>
+
+            <new-item-btn [label]="'Add new challenge'" [icon]="'plus'" [color]="'success'"
+                [link]="'/einstein-chamber/new-puzzle'"></new-item-btn>
+        </div>
+
+        <div class="challenge-btn w-100 h-100 text-center my-5">
+            <a class="btn btn-primary btn-xl" href="/einstein-chamber/puzzles/{{this.puzzle.id}}">Start a challenge</a>
+        </div>
+
+        <flk-spinner *if="this.isLoading"></flk-spinner>
         <h1 class="m-t-1 text-center" *elseif="! this.puzzle">
             No more available puzzles at the moment, please check again later!
         </h1>

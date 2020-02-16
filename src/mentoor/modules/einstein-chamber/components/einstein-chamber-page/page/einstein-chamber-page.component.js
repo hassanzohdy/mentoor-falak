@@ -20,12 +20,7 @@ class EinsteinChamberPage {
         let response = await this.einsteinChamberService.getCurrentPuzzle();
         this.user.update(response.user);
         this.puzzle = response.puzzle;
-        if (this.puzzle) {
-            setTimeout(() => {
-                this.router.navigateTo(`/einstein-chamber/puzzles/${this.puzzle.id}`);
-            }, 100);
-        } else {
-            this.isLoading = false;
-        }
+
+        this.isLoading = false
     }
 }
