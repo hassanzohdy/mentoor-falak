@@ -11,10 +11,12 @@
                 </if>
             </div>
 
-            <star-rating class="form-group" [stars]="3.5" [readonly]="! this.user.accountType == 'admin'" (select)="this.rate = e" [half-star]="true"></star-rating>
+            <star-rating class="form-group" [readonly]="! this.user.accountType == 'admin'" (select)="this.rate = e">
+            </star-rating>
 
             <span [tooltip]="true" title="Created At">
-                <flk-time-ago [timestamp]="this.task.createdAt.timestamp"></flk-time-ago>
+                <flk-time-ago [time-format]="this.task.createdAt.format" [timestamp]="this.task.createdAt.timestamp">
+                </flk-time-ago>
             </span>
 
             <if condition="this.task.description">
@@ -32,7 +34,7 @@
             <div *if="this.task.participantNotes" class="card p-1 m-y-2">
                 <h3 class="bold pink-text">{{ this.task.participant.name }}</h3>
 
-                <flk-time-ago [timestamp]="this.task.submittedAt.timestamp" class="brown-text bold">
+                <flk-time-ago [time-format]="this.task.submittedAt.format" [timestamp]="this.task.submittedAt.timestamp" class="brown-text bold">
                 </flk-time-ago>
 
                 <p class="description m-y-2">

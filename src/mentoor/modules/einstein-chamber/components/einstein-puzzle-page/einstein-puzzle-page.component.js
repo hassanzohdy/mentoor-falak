@@ -22,6 +22,16 @@ class EinsteinPuzzlePage {
     async init() {
         this.puzzleId = this.router.params.puzzleId;
 
+        this.tags = [
+            { text: "Javascript", value: "javascript" },
+            { text: "Node.js", value: "node" },
+            { text: "PHP", value: "php" },
+            { text: "Java", value: "java" },
+            { text: "Python", value: "python" },
+            { text: "Ruby", value: "ruby" },
+            { text: "C++", value: "c++" },
+        ]
+
         this.isLoading = true;
         this.startQuest = false;
         this.isValidForm = true;

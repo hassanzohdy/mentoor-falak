@@ -71,10 +71,7 @@
                         </li>
                         <li>
                             <strong class="mr-1">Double</strong>
-                            check the answer before submitting it, you can't change it again, so don't forget to
-                            <button type="button" (click)="this.preview = ! this.preview"
-                                class="btn btn-sm btn-success">preview</button>
-                            it.
+                            check the answer before submitting it, you can't change it again.
                         </li>
                         <li>
                             If the puzzle is about creating a <strong class="mx-2">built in function</strong> in
@@ -93,23 +90,19 @@
                     <div class="row">
                         <form class="col" (submit)="this.submitAnswer($el)">
                             <section class="tags form-group">
-                                <flk-dropdown-list label="Choose a language to answer with" [imageable]="true"
-                                    position="top" [multiple]="true" required name="language" [lazy-loading]="true"
-                                    [service]="this.tagsService">
+                                <flk-dropdown-list label="Choose a language to answer with" [items]="this.tags"
+                                    position="top" [multiple]="true" required name="language">
                                 </flk-dropdown-list>
                             </section>
-                            <form-input type="textarea" rows="10" class="form-control mb-4" name="answer"
+                            <markdown-input name="answer" placeholder="Write your answer ;)" required
+                                [value]="this.answerData" (keyup)="this.storeAnswer($el.value)"></markdown-input>
+                            <!-- <form-input type="textarea" rows="10" class="form-control mb-4" name="answer"
                                 placeholder="Write your answer ;)" required [value]="this.answerData"
-                                (keyup)="this.storeAnswer($el.value)"></form-input>
+                                (keyup)="this.storeAnswer($el.value)"></form-input> -->
                             <button class="btn btn-primary float-right">Send</button>
-                            <button class="btn btn-success float-right" type="button"
-                                (click)="this.preview = ! this.preview">Preview</button>
                             <button class="btn btn-danger float-right mr-2" type="button"
                                 (click)="this.startQuest = false">Cancel</button>
                         </form>
-                        <div *if="this.preview && this.answerData" class="col-6">
-                            <markdown [content]="this.answerData"></markdown>
-                        </div>
                     </div>
                 </div>
                 <!--/ Form -->
