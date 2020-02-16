@@ -1,9 +1,9 @@
 <!-- TODO: Add API Handling -->
 <section class="{{this.inputs.getOption('class')}} rating">
-    <input type="hidden" name="{{this.inputs.getOption('name')}}" [value]="this.rateValue">
+    <input type="hidden" [value]="this.rateValue">
     <div>
-        <span *for="let star, index of this.starsRateArray" [class]="{'active': star.active}" data-index="{{index}}"
-            (click)="this.rate(index)">
+        <span *for="let star, index of this.starsRateArray" [class]="{'active': star.active}"
+            (click, mousemove)="this.rate(index)">
             <fa icon="star"></fa>
         </span>
     </div>
