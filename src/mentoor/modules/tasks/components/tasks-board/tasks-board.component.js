@@ -150,6 +150,10 @@ class TasksBoard {
                 filtered &= found;
             }
 
+            if (!Is.empty(this.filteredData.priorities)) {
+                filtered &= this.filteredData.priorities.includes(task.priority);
+            }
+
             return filtered;
         }).map(this.prepareSingleTask.bind(this));
     }
@@ -207,6 +211,7 @@ class TasksBoard {
             projects: [],
             modules: [],
             userStories: [],
+            priorities: []
         };
 
         this.filteredData = Object.clone(this.filterOptions);
@@ -252,6 +257,11 @@ class TasksBoard {
             // add participants to filter
             if (task.participant.id) {
                 Array.pushOnce(this.filterOptions.participants, task.participant, 'id');
+            }
+
+            // add priorities to filter
+            if (task.priority) {
+                Array.pushOnce(this.filterOptions.priorities, task.priority);
             }
 
             // add supervisors

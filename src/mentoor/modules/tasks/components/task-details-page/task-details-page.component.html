@@ -11,7 +11,7 @@
                 </if>
             </div>
 
-            <star-rating class="form-group" [readonly]="! this.user.accountType == 'admin'" (select)="this.rate = e">
+            <star-rating class="form-group" [readonly]="! this.user.accountType == 'admin'" (select)="this.rate(e)">
             </star-rating>
 
             <span [tooltip]="true" title="Created At">

@@ -13,6 +13,11 @@ class TaskDetailsPage {
         this.title = 'Task';
     }
 
+    rate(rateValue) {
+        let {id} = this.task;
+        this.tasksService.rateTask(this.task.id, {id, rateValue});    
+    }
+
     /**
      * Initialize the component
      * This method is triggered before rendering the component
