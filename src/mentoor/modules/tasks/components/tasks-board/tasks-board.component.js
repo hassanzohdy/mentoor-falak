@@ -34,7 +34,7 @@ class TasksBoard {
 
         let { record } = await this.tasksService.create(form);
 
-        this.originalTasks.push(record);
+        this.tasks.push(record);
 
         this.prepareTasks();
 
@@ -75,12 +75,40 @@ class TasksBoard {
             tasks = records;
         }
 
+        this.tasks = tasks;
+        
+        // to get reference to the original tasks
         this.originalTasks = tasks;
 
         this.prepareTasks();
 
         this.isLoading = false;
+
+        this.sort = {
+            id: false,
+        }
     }
+
+    sortTasksById() {
+        let tasks = this.originalTasks;
+
+        if (this.sort.id) {
+            this.tasks = tasks.reverse();
+
+            this.sort.id = false;
+        } else {
+            // The tasks comes sorted already from the back-end
+            this.tasks = tasks.reverse();
+
+            this.sort.id = true;
+        }
+
+        this.filter();
+    }
+
+    // sortTasksBy(key) {
+
+    // } 
 
     selectDefaultParticipant() {
         let { id } = this.user.info;
@@ -96,7 +124,7 @@ class TasksBoard {
     }
 
     updateTasksList(tasks) {
-        this.originalTasks = tasks;
+        this.tasks = tasks;
 
         this.prepareTasks();
     }
@@ -115,7 +143,7 @@ class TasksBoard {
     }
 
     filter() {
-        this.tasksList = this.originalTasks.filter(task => {
+        this.tasksList = this.tasks.filter(task => {
             let filtered = true;
 
             if (!Is.empty(this.filteredData.statuses)) {
@@ -222,7 +250,7 @@ class TasksBoard {
 
         let currentUserIsParticipantAndHasInProgressTasks = false;
 
-        this.tasksList = collect(this.originalTasks).filter(task => {
+        this.tasksList = collect(this.tasks).filter(task => {
             if (task.archived) {
                 this.archivedTasks.push(task);
             }
@@ -318,18 +346,18 @@ class TasksBoard {
     }
 
     remove() {
-        for (let i = 0; i < this.originalTasks.length; i++) {
-            let task = this.originalTasks[i];
+        for (let i = 0; i < this.tasks.length; i++) {
+            let task = this.tasks[i];
             if (task.id != this.record.id) continue;
 
-            delete this.originalTasks[i];
+            delete this.tasks[i];
 
-            this.originalTasks = Array.reset(this.originalTasks);
+            this.tasks = Array.reset(this.tasks);
 
             break;
         }
 
-        this.inputs.getEvent('change')(this.originalTasks);
+        this.inputs.getEvent('change')(this.tasks);
 
         this.tasksService.delete(this.record.id);
 
@@ -341,13 +369,13 @@ class TasksBoard {
 
     adjustTaskResponse(task) {
         if (this.currentType == 'add') {
-            this.originalTasks.push(task);
+            this.tasks.push(task);
         } else {
-            for (let i = 0; i < this.originalTasks.length; i++) {
-                let oldTask = this.originalTasks[i];
+            for (let i = 0; i < this.tasks.length; i++) {
+                let oldTask = this.tasks[i];
                 if (oldTask.id != task.id) continue;
 
-                this.originalTasks[i] = task;
+                this.tasks[i] = task;
                 break;
             }
         }
@@ -364,8 +392,8 @@ class TasksBoard {
     archive() {
         this.tasksService.archive(this.currentTask.id);
 
-        for (let i = 0; i < this.originalTasks.length; i++) {
-            let task = this.originalTasks[i];
+        for (let i = 0; i < this.tasks.length; i++) {
+            let task = this.tasks[i];
 
             if (this.currentTask.id != task.id) continue;
 
@@ -378,7 +406,7 @@ class TasksBoard {
 
         this.currentTask = null;
 
-        this.inputs.getEvent('change')(this.originalTasks);
+        this.inputs.getEvent('change')(this.tasks);
 
         this.prepareTasks();
     }
@@ -430,7 +458,7 @@ class TasksBoard {
 
                 let taskId = Number(item.getAttribute('data-id'));
 
-                let task = Array.get(this.originalTasks, task => task.id == taskId);
+                let task = Array.get(this.tasks, task => task.id == taskId);
 
                 if (task.isParticipant && !task.isSupervisor && ['failed', 'completed', 'autoFailed'].includes(task.status)) return false;
 
@@ -444,7 +472,7 @@ class TasksBoard {
 
                 let taskId = Number(taskElement.getAttribute('data-id'));
 
-                let task = Array.get(this.originalTasks, task => task.id == taskId);
+                let task = Array.get(this.tasks, task => task.id == taskId);
 
                 if (task.status == newStatus) {
                     // sort tasks...later

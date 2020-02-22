@@ -3,7 +3,7 @@
     <table class="table buttoned simple-card">
         <thead>
             <tr>
-                <th>#</th>
+                <th><button (click)="this.sortTasksById()" [tooltip]="true" title="Sort By ID">#</button></th>
                 <th>Task</th>
                 <th>Progress</th>
                 <th *if="! this.isInProjectPage">Project</th>
