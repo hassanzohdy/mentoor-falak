@@ -4,34 +4,33 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','categories'],
-                children: {cI2L1XmQ3:'flk-spinner',c8NbuLwfI:'champer-moderate',coBoL8aRD:'new-item-btn',cVdLcVK3_:'einstein-category-card',cs4FD951S:'layout'},
+                children: {c4aYY98iH:'flk-spinner',c1D5AMufW:'champer-moderate',c3aonEInv:'einstein-category-card',cU60nT_dB:'layout'},
                 render: function (component) {
-                    let cmpJZzh = this._lc('cs4FD951S', {parent:component,content:(layout) => {let cndN0pO = component.isLoading;
-this.setState('stnok6Y', cndN0pO);
-let cndM99s = !(cndN0pO);
-this.setState('stoljNs', cndM99s);
-if (cndN0pO) { 
-let cmpdW1n = this._lc('cI2L1XmQ3', {parent:component,parentTop:layout,state:'stnok6Y'});
+                    let cmp1OiL = this._lc('cU60nT_dB', {parent:component,content:(layout) => {let cndDiqN = component.isLoading;
+this.setState('stT4nUH', cndDiqN);
+let cndtjVC = !(cndDiqN);
+this.setState('stKtK3w', cndtjVC);
+if (cndDiqN) { 
+let cmpE8tf = this._lc('c4aYY98iH', {parent:component,parentTop:layout,state:'stT4nUH'});
 }else { 
-let elGTLRB = eo('div',null,null,`class`,`m-b-2 d-flex justify-content-between`);
-let elNy8IX = eo('div',null,null,`class`,`meta`);
-let elmt0He = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
-let el2eH56 = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
+let elsKF2c = eo('div',null,null,`class`,`m-b-2 d-flex justify-content-between`);
+let elOZOGJ = eo('div',null,null,`class`,`meta`);
+let el7lUIv = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
+let elGnK1V = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
 text(`Einstein Chamber`);
 ec('h3');
-let elI_eGW = eo('span',null,null,`class`,`shop badge badge-default m-l-1`);
+let elMD5uI = eo('span',null,null,`class`,`shop badge badge-default m-l-1`);
 text(`Shop`);
 ec('span');
 ec('div');
-let cmpybpV = this._lc('c8NbuLwfI', {parent:component,parentTop:layout,state:'stoljNs'});
-let cmpc8Ft = this._lc('coBoL8aRD', {parent:component,parentTop:layout,props:{label:'Add new challenge',icon:'plus',color:'success',link:'/einstein-chamber/new-puzzle'},attrs:{class:`${fas('plus') + ' icon'}`},style:{color:`${'success'}`},state:'stoljNs'});
+let cmpY1Vy = this._lc('c1D5AMufW', {parent:component,parentTop:layout,state:'stKtK3w'});
 ec('div');
-let elknztb = eo('div',null,null,`class`,`row`);
+let elE7W8q = eo('div',null,null,`class`,`row`);
 for (let i in component.categories) {
 let category = component.categories[i]; 
- let iiwP5V = 'Tc2yxS7' + i;
-let el75Xt6 = eo('div','CtvFw77ztXIl' + i+iiwP5V,null,`class`,`col-6 col-sm-4 col-md-3 m-b-2`);
-let cmpf6hc = this._lc('cVdLcVK3_', {parent:component,parentTop:layout,props:{category:category},state:'stoljNs',insideLoop:true,index:"" +iiwP5V});
+ let iiQDYa = 'B2SuUic' + i;
+let elcPnix = eo('div','uf8R0hbmIqIa' + i+iiQDYa,null,`class`,`col-6 col-sm-4 col-md-3 m-b-2`);
+let cmpxMVJ = this._lc('c3aonEInv', {parent:component,parentTop:layout,props:{category:category},state:'stKtK3w',insideLoop:true,index:"" +iiQDYa});
 ec('div');
 }
 ec('div');

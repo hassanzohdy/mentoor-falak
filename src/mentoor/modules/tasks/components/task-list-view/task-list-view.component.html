@@ -16,7 +16,7 @@
                             (select)="this.sortObjects('status', '', e.value)" [searchable]="false"></flk-dropdown-list>
                     </div>
                 </th>
-                <th>Remaining Time</th>
+                <th tooltip title="Remaining Time">R Time</th>
                 <th tooltip title="Sort by participant">
                     <button (click)="this.isPartSortOpened = !this.isPartSortOpened">Participant</button>
                     <div class="dropdown-sort">

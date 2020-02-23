@@ -6,19 +6,19 @@ _Component({
                 observe: ['videos'],
                 children: {},
                 render: function (component) {
-                    let cndDH1V = ! Is.empty(component.videos);
-this.setState('stRlb6V', cndDH1V);
-if (cndDH1V) { 
-let elbNrFM = eo('table','Y2pf',null,`class`,`table table-bordered`);
-let elgQgYf = eo('tbody','I6Of');
+                    let cndDuiM = ! Is.empty(component.videos);
+this.setState('stW41T8', cndDuiM);
+if (cndDuiM) { 
+let el0NIw3 = eo('table','t6Qf',null,`class`,`table table-bordered`);
+let eleiodB = eo('tbody','qdvf');
 for (let i in component.videos) {
 let video = component.videos[i]; 
- let iichi_ = 'v0an8Ih' + i;
-let elyTt6j = eo('tr','BauLgnj3nXC2' + i+iichi_);
-let elcOCuy = eo('td','UMmff'+iichi_);
+ let iibxtG = 'sL6zOOo' + i;
+let elRPHWs = eo('tr','ZlheaixquLuY' + i+iibxtG);
+let elNiVbd = eo('td','H00ff'+iibxtG);
 text(video.title);
 ec('td');
-let elghGnn = eo('td','AP9ff'+iichi_);
+let elnsgH6 = eo('td','kFQff'+iibxtG);
 text(String(video.duration.minutes).padStart(2, '0') + ':' + String(video.duration.seconds).padStart(2, '0'));
 ec('td');
 ec('tr');

@@ -4,82 +4,82 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','openAddMember','isSending','confirmRemoving','addNewMember','exceptMembers','usersService','mapUser','confirmDelete','remove'],
-                children: {cFAHxdIQ4:'flk-time-ago',cJEBX5Nq4:'project-layout',cl5Vz3R4q:'flk-dropdown-list',cd46CBiWj:'flk-modal',ckQMErrHn:'flk-alert'},
+                children: {cQs2rjBVm:'flk-time-ago',c1kWwaWP5:'project-layout',cwqbl5UT2:'flk-dropdown-list',cRKEsGEMz:'flk-modal',ckpKjovBa:'flk-alert'},
                 render: function (component) {
-                    let cmpxroi = this._lc('cJEBX5Nq4', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let cnd0bn2 = component.project.isProjectManager;
-this.setState('st8t_J7', cnd0bn2);
-if (cnd0bn2) { 
-let elur6VQ = eo('button','dahf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddMember = true; component.isSending = false;}]},`class`,`float-right btn bold`);
-elur6VQ.cls = {'btn-success': component.project.maxMembers <= component.project.members.length, 'btn-pink': component.project.maxMembers > component.project.members.length};
+                    let cmpx4Ir = this._lc('c1kWwaWP5', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let cnd23F4 = component.project.isProjectManager;
+this.setState('stiAhyK', cnd23F4);
+if (cnd23F4) { 
+let eleFcfB = eo('button','8QNf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddMember = true; component.isSending = false;}]},`class`,`float-right btn bold`);
+eleFcfB.cls = {'btn-success': component.project.maxMembers <= component.project.members.length, 'btn-pink': component.project.maxMembers > component.project.members.length};
 
-            for (let className in elur6VQ.cls) {
-                elur6VQ.classList.toggle(className, elur6VQ.cls[className]);
+            for (let className in eleFcfB.cls) {
+                eleFcfB.classList.toggle(className, eleFcfB.cls[className]);
             }  
-            let elo5Me4 = eo('i','8vmf',null,`class`,`${fas('plus') + ' mr-1 icon'}`);
+            let eltfAnq = eo('i','6Rcf',null,`class`,`${fas('plus') + ' mr-1 icon'}`);
 ec('i');
 text(`Member`);
 ec('button');
-}let elR794h = eo('h1',null,null,`class`,`m-y-1`);
+}let eleXykI = eo('h1',null,null,`class`,`m-y-1`);
 text(`Project members`);
-let elFdH30 = eo('span',null,null,`title`,``,`class`,`ml-1`);
+let elQRLaT = eo('span',null,null,`title`,``,`class`,`ml-1`);
 text(`(${ component.project.members.length + '/' + component.project.maxVisibleMembers })`);
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elFdH30;
+                        let $el = elQRLaT;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project members')}`});
         ;
                     }, 20);                
                 ec('h1');
-let elyUWIH = eo('table',null,null,`class`,`m-t-2 table table-bordered`);
-let eldSx_1 = eo('thead');
-let elGFkUB = eo('tr');
-let eljzSup = eo('th');
+let elDSgtX = eo('table',null,null,`class`,`m-t-2 table table-bordered`);
+let elCn1T1 = eo('thead');
+let el3l6WG = eo('tr');
+let elFbaeS = eo('th');
 text(`Member`);
 ec('th');
-let el18CVO = eo('th');
+let eljeVcs = eo('th');
 text(`Role`);
 ec('th');
-let elGpQPS = eo('th');
+let elkS1gS = eo('th');
 text(`Added By`);
 ec('th');
-let elHjNQr = eo('th');
+let elNmu6x = eo('th');
 text(`Added At`);
 ec('th');
-let elGILut = eo('th');
+let elF9HuQ = eo('th');
 text(`Control`);
 ec('th');
 ec('tr');
 ec('thead');
-let elHJf0M = eo('tbody');
+let elfdg2C = eo('tbody');
 for (let index in component.project.members) {
 let member = component.project.members[index]; 
- let ii2wmm = 'tYe3R39' + index;
-let elw9Tcu = eo('tr','EmW8n0aDM8ex' + index+ii2wmm);
-let elvdwBd = eo('td','At1ff'+ii2wmm);
+ let iiUDTN = 'ROFSGY6' + index;
+let els_AWR = eo('tr','kOWdb74UNH9V' + index+iiUDTN);
+let elUP7ah = eo('td','4uGff'+iiUDTN);
 text(member.member.name);
 ec('td');
-let eloU36C = eo('td','0Cfff'+ii2wmm);
+let elsdarX = eo('td','MIlff'+iiUDTN);
 text(member.role);
 ec('td');
-let el2sXbT = eo('td','fOaff'+ii2wmm);
+let eltuInr = eo('td','vIVff'+iiUDTN);
 text(member.createdBy.name);
 ec('td');
-let elWtpsv = eo('td','gpHff'+ii2wmm);
-let cmpq6V7 = this._lc('cFAHxdIQ4', {parent:component,parentTop:projectLayout,props:{timestamp:member.createdAt.timestamp},insideLoop:true,index:"" +ii2wmm});
+let eljWq9l = eo('td','hv7ff'+iiUDTN);
+let cmpJmJZ = this._lc('cQs2rjBVm', {parent:component,parentTop:projectLayout,props:{timestamp:member.createdAt.timestamp},insideLoop:true,index:"" +iiUDTN});
 ec('td');
-let elC46bX = eo('td','TPTff'+ii2wmm);
-let cnds1_e = component.project.is.higherAuthority;
-this.setState('stRbdNU', cnds1_e);
-if (cnds1_e) { 
-let elzlpPf = eo('button','tgnff'+ii2wmm,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(member, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-danger`);
-let el5haLC = eo('i','kfqff'+ii2wmm,null,`class`,`${fas('trash') + ' icon'}`);
+let elD13eU = eo('td','XHIff'+iiUDTN);
+let cnd2SRa = component.project.is.higherAuthority;
+this.setState('stQ3Kq2', cnd2SRa);
+if (cnd2SRa) { 
+let elufWUB = eo('button','GRGff'+iiUDTN,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(member, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-danger`);
+let el0ScYl = eo('i','C6aff'+iiUDTN,null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elzlpPf;
+                        let $el = elufWUB;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Dismiss Member')}`});
         ;
@@ -90,30 +90,30 @@ ec('tr');
 ec('tbody');
 ec('table');
 }});
-let cndoN6T = component.openAddMember;
-this.setState('stU2OBh', cndoN6T);
-if (cndoN6T) { 
-component.addMemberModal = this._lc('cd46CBiWj', {parent:component,events:{onclose:function(e) {let $el = this; component.openAddMember = null}},content:(flkModal) => {let elcT7Ge = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cndcXQp = component.openAddMember;
+this.setState('stqepwq', cndcXQp);
+if (cndcXQp) { 
+component.addMemberModal = this._lc('cRKEsGEMz', {parent:component,events:{onclose:function(e) {let $el = this; component.openAddMember = null}},content:(flkModal) => {let elks9z3 = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.addNewMember($el)}]});
 
-                if (! elcT7Ge.formHandler) {
-                    window.cfrmdlr = elcT7Ge.formHandler = new FormHandler(elcT7Ge, component);
+                if (! elks9z3.formHandler) {
+                    window.cfrmdlr = elks9z3.formHandler = new FormHandler(elks9z3, component);
                 } else {
-                    window.cfrmdlr = elcT7Ge.formHandler;
+                    window.cfrmdlr = elks9z3.formHandler;
                 }
-            let cmpGfDe = this._lc('cl5Vz3R4q', {parent:component,parentTop:flkModal,props:{lazyLoading:true,remoteSearch:true,except:component.exceptMembers,service:component.usersService},events:{onmap:function(e) {let $el = this; return component.mapUser(e)}},attrs:{name:`${(`memberId`).toInputName()}`,placeholder:`${trans(`Enter @username to add`)}`,heading:'Member',query:'username'},state:'stU2OBh'});
-let elkd0p3 = eo('div',null,null,`class`,`m-t-1 text-center`);
-let el5dydY = eo('button',null,null, boolAttrs, {disabled:component.isSending},`class`,`btn btn-success bold`);
+            let cmp6m7x = this._lc('cwqbl5UT2', {parent:component,parentTop:flkModal,props:{lazyLoading:true,remoteSearch:true,except:component.exceptMembers,service:component.usersService},events:{onmap:function(e) {let $el = this; return component.mapUser(e)}},attrs:{name:`${(`memberId`).toInputName()}`,placeholder:`${trans(`Enter @username to add`)}`,heading:'Member',query:'username'},state:'stqepwq'});
+let el2iq75 = eo('div',null,null,`class`,`m-t-1 text-center`);
+let elspUW6 = eo('button',null,null, boolAttrs, {disabled:component.isSending},`class`,`btn btn-success bold`);
 text(`Add`);
 ec('button');
 ec('div');
 ec('form');
-},attrs:{size:'small',header:'Add New Member'},state:'stU2OBh'});
-}let cndormO = component.confirmDelete;
-this.setState('stEAhmz', cndormO);
-if (cndormO) { 
-let cmpy35Z = this._lc('ckQMErrHn', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stEAhmz'});
+},attrs:{size:'small',header:'Add New Member'},state:'stqepwq'});
+}let cnd1tJZ = component.confirmDelete;
+this.setState('stjNNOA', cnd1tJZ);
+if (cnd1tJZ) { 
+let cmpCYbR = this._lc('ckpKjovBa', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stjNNOA'});
 }
                     this.isReadyToGo();
                 }

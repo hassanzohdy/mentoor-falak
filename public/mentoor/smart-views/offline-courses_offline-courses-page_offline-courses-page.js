@@ -4,86 +4,86 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','courses'],
-                children: {coCCcyyZg:'flk-spinner',coyq3nnHv:'layout'},
+                children: {cijN1N3LH:'flk-spinner',cBBQH7cpl:'layout'},
                 render: function (component) {
-                    let cmprkET = this._lc('coyq3nnHv', {parent:component,content:(layout) => {let cndZTCm = component.isLoading;
-this.setState('staSP9b', cndZTCm);
-let cndzPJH = !(cndZTCm);
-this.setState('st_seVG', cndzPJH);
-if (cndZTCm) { 
-let cmpfH31 = this._lc('coCCcyyZg', {parent:component,parentTop:layout,state:'staSP9b'});
+                    let cmps1ru = this._lc('cBBQH7cpl', {parent:component,content:(layout) => {let cnd7UJG = component.isLoading;
+this.setState('stKa0LY', cnd7UJG);
+let cndPSKC = !(cnd7UJG);
+this.setState('stFM223', cndPSKC);
+if (cnd7UJG) { 
+let cmpbVzC = this._lc('cijN1N3LH', {parent:component,parentTop:layout,state:'stKa0LY'});
 }else { 
-let el2A3Jy = eo('h1');
+let elUpuzV = eo('h1');
 text(`Courses list`);
 ec('h1');
-let elk6aNG = eo('p');
+let eltYsh1 = eo('p');
 text(`Please choose what course you need based on the provided information in each course.`);
 ec('p');
-let cnderWR = ! Is.empty(component.courses);
-this.setState('stuRUpz', cnderWR);
-let cndj6Dd = !(cnderWR);
-this.setState('stQE0T_', cndj6Dd);
-if (cnderWR) { 
-let elAxWNa = eo('div','bwJf',null,`class`,`row allCourses`);
+let cndsVdj = ! Is.empty(component.courses);
+this.setState('stI5d_2', cndsVdj);
+let cndVxai = !(cndsVdj);
+this.setState('stisXXb', cndVxai);
+if (cndsVdj) { 
+let elRwaAs = eo('div','NCwf',null,`class`,`row allCourses`);
 for (let i in component.courses) {
 let course = component.courses[i]; 
- let iiCRm2 = 'H035as2' + i;
-let el9B_Uj = eo('div','chnmvF92POVV' + i+iiCRm2,null,`class`,`track-card col-md-4 col-sm-6 col-12`);
-let eleaZVL = eo('div','mRLff'+iiCRm2,null,`class`,`card`);
-let el7OGKE = eo('div','AhRff'+iiCRm2);
-let elF9ATV = ev('img','tAeff'+iiCRm2,null,`src`,`${course.image}`,`class`,`imgTrack`);
+ let iikvEY = 'Mp62Bh3' + i;
+let elRQ7wd = eo('div','YCv_RDKbZWs7' + i+iikvEY,null,`class`,`track-card col-md-4 col-sm-6 col-12`);
+let elOHHZ_ = eo('div','aGuff'+iikvEY,null,`class`,`card`);
+let elayNQo = eo('div','OVEff'+iikvEY);
+let elIMn3R = ev('img','a4bff'+iikvEY,null,`src`,`${course.image}`,`class`,`imgTrack`);
 ec('div');
-let elOcnO7 = eo('div','1qdff'+iiCRm2,null,`class`,`trackInfoTitle card-body`);
-let eld36iO = eo('a','2xXff'+iiCRm2);
-let elaW27n = eo('h4','ZzHff'+iiCRm2,null,`class`,`text-capitalize`);
+let elzQOnS = eo('div','QgBff'+iikvEY,null,`class`,`trackInfoTitle card-body`);
+let elnyPex = eo('a','VpZff'+iikvEY);
+let elJVRF2 = eo('h4','y_xff'+iikvEY,null,`class`,`text-capitalize`);
 text(course.name);
 ec('h4');
 ec('a');
-let eli3TgL = eo('div','FE3ff'+iiCRm2,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 border-top`);
-let elNIffq = eo('span','BDnff'+iiCRm2,null,`class`,`bold orange-text`);
-let elfp6Fd = eo('i','AIZff'+iiCRm2,null,`class`,`ti ti-list`);
+let elD0cw1 = eo('div','K5yff'+iikvEY,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 border-top`);
+let elUQwb8 = eo('span','bZ3ff'+iikvEY,null,`class`,`bold orange-text`);
+let eldY4xg = eo('i','BZWff'+iikvEY,null,`class`,`ti ti-list`);
 ec('i');
 text(`${course.time.length} Weeks`);
 ec('span');
-let elnfSNM = eo('span','QBOff'+iiCRm2,null,`class`,`bold green-text`);
+let elvKxzR = eo('span','E0Dff'+iikvEY,null,`class`,`bold green-text`);
 text(`${ course.cost.format() } EGP`);
 ec('span');
 ec('div');
-let elLsKqY = eo('small','CKaff'+iiCRm2);
+let elLHoK6 = eo('small','emcff'+iikvEY);
 text(`By:`);
-let elNysVJ = eo('span','MPgff'+iiCRm2,null,`class`,`bold`);
+let elkdyeW = eo('span','utnff'+iikvEY,null,`class`,`bold`);
 text(course.instructor.name);
 ec('span');
-let eli9_he = eo('div','psoff'+iiCRm2,null,`class`,`float-right mt-1`);
+let elG4Zi0 = eo('div','LcTff'+iikvEY,null,`class`,`float-right mt-1`);
 text(course.level);
 ec('div');
 ec('small');
 ec('div');
-let elkEWRy = eo('div','Dnlff'+iiCRm2,null,`class`,`trackInfo`);
-let elFiSvE = eo('div','Vfyff'+iiCRm2,null,`class`,`trackInfoTitle`);
-let el65KfH = eo('a','sh6ff'+iiCRm2,null,`href`,`/offline-courses/${course.id}`);
-let elInxuY = eo('h4','G_dff'+iiCRm2,null,`class`,`text-capitalize`);
+let elmYa4a = eo('div','ez9ff'+iikvEY,null,`class`,`trackInfo`);
+let eleJv8t = eo('div','jsWff'+iikvEY,null,`class`,`trackInfoTitle`);
+let el2gY_V = eo('a','Azxff'+iikvEY,null,`href`,`/offline-courses/${course.id}`);
+let eljsQSo = eo('h4','Ikbff'+iikvEY,null,`class`,`text-capitalize`);
 text(course.name);
 ec('h4');
 ec('a');
 ec('div');
-let elVaXNg = eo('div','hYAff'+iiCRm2,null,`class`,`trackInfoDescription`);
-let eltrid4 = eo('p','dUaff'+iiCRm2,null,`class`,`pt-4`);
+let elWB837 = eo('div','MUfff'+iikvEY,null,`class`,`trackInfoDescription`);
+let elBnvh1 = eo('p','4Ugff'+iikvEY,null,`class`,`pt-4`);
 text(course.description);
 ec('p');
 ec('div');
-let elrDgru = eo('div','rd7ff'+iiCRm2,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 pb-4`);
-let elUGb3O = eo('span','TY0ff'+iiCRm2,null,`class`,`trackSingleMeta`);
-let elJnhzc = eo('i','iUuff'+iiCRm2,null,`class`,`ti ti-list`);
+let el0UKo_ = eo('div','6UGff'+iikvEY,null,`class`,`trackInfoMeta d-flex justify-content-between pt-4 pb-4`);
+let el3rQKv = eo('span','nE4ff'+iikvEY,null,`class`,`trackSingleMeta`);
+let el5loGB = eo('i','qRxff'+iikvEY,null,`class`,`ti ti-list`);
 ec('i');
 text(`${ course.time.duration } hrs/session`);
 ec('span');
-let elMvOKu = eo('span','TX7ff'+iiCRm2,null,`class`,`trackSingleMeta`);
+let elRYBbw = eo('span','Ohxff'+iikvEY,null,`class`,`trackSingleMeta`);
 text(`${ course.cost.format() } EGP`);
 ec('span');
 ec('div');
-let elL9POn = eo('div','BJXff'+iiCRm2,null,`class`,`trackPreview`);
-let elRsRrg = eo('a','HgIff'+iiCRm2,null,`href`,`/offline-courses/${course.id}`,`class`,`btn btn-primary btn-block`);
+let el0J3Ko = eo('div','4qhff'+iikvEY,null,`class`,`trackPreview`);
+let elOgNdC = eo('a','M2Vff'+iikvEY,null,`href`,`/offline-courses/${course.id}`,`class`,`btn btn-primary btn-block`);
 text(trans('Preview this course'));
 ec('a');
 ec('div');
@@ -93,7 +93,7 @@ ec('div');
 }
 ec('div');
 }else { 
-let el3c4Kt = eo('h1',null,null,`class`,`bold text-center`);
+let elXZh4E = eo('h1',null,null,`class`,`bold text-center`);
 text(`No courses yet!`);
 ec('h1');
 }}}});

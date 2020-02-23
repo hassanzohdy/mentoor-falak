@@ -4,110 +4,110 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','userStories','userStory'],
-                children: {cgmGalSew:'user-stories-board',criVOw_Uk:'markdown',cBu4Tnfv7:'markdown',cH1xyTfhU:'markdown',cfUJnzFxL:'project-layout'},
+                children: {cXOs1mwum:'user-stories-board',c7P_atF7j:'markdown',cEEsDL2H8:'markdown',cpO8Xd_DO:'markdown',c0AsbTUzp:'project-layout'},
                 render: function (component) {
-                    let cmpDIdu = this._lc('cfUJnzFxL', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let el0tsMk = eo('div',null,null,`class`,`row`);
-let cndNzt8 = ! Is.empty(component.userStories);
-this.setState('stEDKoz', cndNzt8);
-if (cndNzt8) { 
-let eliQcBW = eo('div','JJ_f',null,`class`,`col-sm-9`);
-let cmpstXz = this._lc('cgmGalSew', {parent:component,parentTop:projectLayout,props:{userStories:component.userStories,project:component.project},events:{onchange:function(e) {let $el = this; component.userStories = e}},state:'stEDKoz'});
+                    let cmpgXZG = this._lc('c0AsbTUzp', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elprxRc = eo('div',null,null,`class`,`row`);
+let cndBDaW = ! Is.empty(component.userStories);
+this.setState('stxdl2I', cndBDaW);
+if (cndBDaW) { 
+let elhgIq1 = eo('div','QWRf',null,`class`,`col-sm-9`);
+let cmpMCbq = this._lc('cXOs1mwum', {parent:component,parentTop:projectLayout,props:{userStories:component.userStories,project:component.project},events:{onchange:function(e) {let $el = this; component.userStories = e}},state:'stxdl2I'});
 ec('div');
-}let elv014c = eo('div',null,null,`class`,`col-sm`);
-let elJ5Ung = eo('div',null,null,`class`,`simple-card`);
-let elykopQ = eo('h3');
+}let elBzzfq = eo('div',null,null,`class`,`col-sm`);
+let elPxiUf = eo('div',null,null,`class`,`simple-card`);
+let elIJVI6 = eo('h3');
 text(component.userStory.title);
 ec('h3');
-let eleFdIX = eo('div',null,null,`class`,`m-t-1`);
-let el_k42P = eo('span');
+let elWhsfs = eo('div',null,null,`class`,`m-t-1`);
+let el8G5aU = eo('span');
 text(`Type:`);
 ec('span');
-let el_CWaH = eo('strong',null,null,`class`,`ml-2`);
+let elg9JBM = eo('strong',null,null,`class`,`ml-2`);
 text(component.userStory.type);
 ec('strong');
 ec('div');
-let eljcACb = eo('div',null,null,`class`,`m-t-1`);
-let elj8M7f = eo('span');
+let el9PIju = eo('div',null,null,`class`,`m-t-1`);
+let el0vBCh = eo('span');
 text(`Priority:`);
 ec('span');
-let elC9IdJ = eo('strong',null,null,`class`,`ml-2`);
+let elgy1Co = eo('strong',null,null,`class`,`ml-2`);
 text(component.userStory.priority);
 ec('strong');
 ec('div');
-let cndhb2d = component.userStory.parent;
-this.setState('stHaoB_', cndhb2d);
-if (cndhb2d) { 
-let elKWghN = eo('div','Qdsf',null,`class`,`m-t-1`);
-let elvqt_j = eo('span','hbpf');
+let cndLvuE = component.userStory.parent;
+this.setState('stryiif', cndLvuE);
+if (cndLvuE) { 
+let elKcTQJ = eo('div','BMAf',null,`class`,`m-t-1`);
+let ele7L0X = eo('span','ZtMf');
 text(`Parent:`);
 ec('span');
-let elPaTSk = eo('a','JbIf',null,`href`,`${URLS.project(component.project, 'user-stories', component.userStory.parent)}`,`class`,`ml-2 bold pink-text`);
+let elVvYvL = eo('a','T1Sf',null,`href`,`${URLS.project(component.project, 'user-stories', component.userStory.parent)}`,`class`,`ml-2 bold pink-text`);
 text(component.userStory.parent.title);
 ec('a');
 ec('div');
-}let cndQH3W = component.userStory.sprint;
-this.setState('st36bVB', cndQH3W);
-if (cndQH3W) { 
-let elFR8OX = eo('div','MaSf',null,`class`,`m-t-1`);
-let elRrgVg = eo('span','om6f');
+}let cnd_v_I = component.userStory.sprint;
+this.setState('st4QCsP', cnd_v_I);
+if (cnd_v_I) { 
+let elX1Gw_ = eo('div','oPVf',null,`class`,`m-t-1`);
+let elOf53T = eo('span','b5Rf');
 text(`Sprint:`);
 ec('span');
-let eljOJNE = eo('a','Jcnf',null,`href`,`${URLS.project(component.project, 'sprints', component.userStory.sprint)}`,`class`,`ml-2 bold badge pink`);
+let elToRQH = eo('a','TPZf',null,`href`,`${URLS.project(component.project, 'sprints', component.userStory.sprint)}`,`class`,`ml-2 bold badge pink`);
 text(component.userStory.sprint.name);
 ec('a');
 ec('div');
-}let cndYLjg = component.userStory.task;
-this.setState('stzzB1t', cndYLjg);
-if (cndYLjg) { 
-let eltGvsZ = eo('div','JUXf',null,`class`,`m-t-1`);
-let elcupoQ = eo('span','39Tf');
+}let cnduaP2 = component.userStory.task;
+this.setState('st6pqn2', cnduaP2);
+if (cnduaP2) { 
+let el2eVIx = eo('div','ySpf',null,`class`,`m-t-1`);
+let elv9DRm = eo('span','L7Zf');
 text(`Task:`);
 ec('span');
-let el8Omf3 = eo('a','vywf',null,`href`,`${URLS.task(component.userStory.task)}`,`class`,`ml-2 bold badge green`);
+let elzEwUn = eo('a','Fckf',null,`href`,`${URLS.task(component.userStory.task)}`,`class`,`ml-2 bold badge green`);
 text(component.userStory.task.title);
 ec('a');
 ec('div');
-}let cndNQNR = component.userStory.status;
-this.setState('st4HjQu', cndNQNR);
-if (cndNQNR) { 
-let elMUriU = eo('div','btHf',null,`class`,`m-t-1`);
-let elnrgDt = eo('span','yqIf');
+}let cndVSqv = component.userStory.status;
+this.setState('stXKsYX', cndVSqv);
+if (cndVSqv) { 
+let elx6H6s = eo('div','9Hvf',null,`class`,`m-t-1`);
+let elGElSj = eo('span','eA8f');
 text(`Status:`);
 ec('span');
-let elPIOXg = eo('span','smSf',null,`class`,`badge ml-2`);
-elPIOXg.cls = taskStatus(component.userStory);
+let elaaZqG = eo('span','pZFf',null,`class`,`badge ml-2`);
+elaaZqG.cls = taskStatus(component.userStory);
 
-            for (let className in elPIOXg.cls) {
-                elPIOXg.classList.toggle(className, elPIOXg.cls[className]);
+            for (let className in elaaZqG.cls) {
+                elaaZqG.classList.toggle(className, elaaZqG.cls[className]);
             }  
             text(trans(component.userStory.status));
 ec('span');
 ec('div');
-}let eljpFB2 = eo('div',null,null,`class`,`m-t-1`);
-let elsluSv = eo('span');
+}let elqle7S = eo('div',null,null,`class`,`m-t-1`);
+let elUTohJ = eo('span');
 text(`As a:`);
 ec('span');
-let elzXsbb = eo('strong',null,null,`class`,`ml-2`);
+let el00fQJ = eo('strong',null,null,`class`,`ml-2`);
 text(component.userStory.who);
 ec('strong');
 ec('div');
-let eljtoXd = eo('div',null,null,`class`,`m-t-1`);
-let elzLGxs = eo('strong');
+let el0v45H = eo('div',null,null,`class`,`m-t-1`);
+let el6CCQn = eo('strong');
 text(`I want to:`);
 ec('strong');
-let cmpDSWZ = this._lc('criVOw_Uk', {parent:component,parentTop:projectLayout,props:{content:component.userStory.what},attrs:{class:'ml-2'}});
+let cmp6JUC = this._lc('c7P_atF7j', {parent:component,parentTop:projectLayout,props:{content:component.userStory.what},attrs:{class:'ml-2'}});
 ec('div');
-let elvyqk6 = eo('div',null,null,`class`,`m-t-1`);
-let elzrXC3 = eo('strong');
+let elzwHKZ = eo('div',null,null,`class`,`m-t-1`);
+let elcWQJY = eo('strong');
 text(`So that:`);
 ec('strong');
-let cmp2TII = this._lc('cBu4Tnfv7', {parent:component,parentTop:projectLayout,props:{content:component.userStory.why},attrs:{class:'ml-2'}});
+let cmp1iI2 = this._lc('cEEsDL2H8', {parent:component,parentTop:projectLayout,props:{content:component.userStory.why},attrs:{class:'ml-2'}});
 ec('div');
-let el7GPc5 = eo('div',null,null,`class`,`m-t-1`);
-let el2UbaB = eo('strong',null,null,`class`,`teal-text`);
+let elIWY5V = eo('div',null,null,`class`,`m-t-1`);
+let elaBxia = eo('strong',null,null,`class`,`teal-text`);
 text(`Scenario (Acceptance Criteria):`);
 ec('strong');
-let cmpIk_N = this._lc('cH1xyTfhU', {parent:component,parentTop:projectLayout,props:{content:component.userStory.scenario}});
+let cmpk9WR = this._lc('cpO8Xd_DO', {parent:component,parentTop:projectLayout,props:{content:component.userStory.scenario}});
 ec('div');
 ec('div');
 ec('div');

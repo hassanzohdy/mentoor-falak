@@ -4,26 +4,26 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['sidebarIsVisible','project'],
-                children: {c0FR3br1m:'project-sidebar',cCCM_S703:'flk-spinner',cEKOEuQX1:'layout'},
+                children: {c5VKkn96j:'project-sidebar',c7I6mLXcp:'flk-spinner',cF6xtAM3s:'layout'},
                 render: function (component) {
-                    let cmpWFch = this._lc('cEKOEuQX1', {parent:component,content:(layout) => {let el_xcX6 = eo('div',null,null,`class`,`row`);
-let cndMlvE = component.sidebarIsVisible;
-this.setState('stsFHz2', cndMlvE);
-if (cndMlvE) { 
-let cmpV0mQ = this._lc('c0FR3br1m', {parent:component,parentTop:layout,props:{project:component.project},state:'stsFHz2'});
-}let elq1LSo = eo('div',null,null,`class`,`col-12`);
-elq1LSo.cls = {'offset-md-2': component.sidebarIsVisible, 'col-md-10': component.sidebarIsVisible};
+                    let cmpiKzG = this._lc('cF6xtAM3s', {parent:component,content:(layout) => {let elRInTE = eo('div',null,null,`class`,`row`);
+let cndEUoe = component.sidebarIsVisible;
+this.setState('stb4Cdh', cndEUoe);
+if (cndEUoe) { 
+let cmpFpHr = this._lc('c5VKkn96j', {parent:component,parentTop:layout,props:{project:component.project},state:'stb4Cdh'});
+}let el_N_zT = eo('div',null,null,`class`,`col-12`);
+el_N_zT.cls = {'offset-md-2': component.sidebarIsVisible, 'col-md-10': component.sidebarIsVisible};
 
-            for (let className in elq1LSo.cls) {
-                elq1LSo.classList.toggle(className, elq1LSo.cls[className]);
+            for (let className in el_N_zT.cls) {
+                el_N_zT.classList.toggle(className, el_N_zT.cls[className]);
             }  
-            let cndLC6a = ! component.project;
-this.setState('stlFJdU', cndLC6a);
-let cndBDh9 = !(cndLC6a);
-this.setState('stLbOPu', cndBDh9);
-if (cndLC6a) { 
-let elRC7sC = eo('div','3Kzf',null,`class`,`m-t-5`);
-let cmpfMVE = this._lc('cCCM_S703', {parent:component,parentTop:layout,state:'stlFJdU'});
+            let cndoJmJ = ! component.project;
+this.setState('stiZeDM', cndoJmJ);
+let cndoraI = !(cndoJmJ);
+this.setState('stSFMyF', cndoraI);
+if (cndoJmJ) { 
+let el20h3s = eo('div','ZWkf',null,`class`,`m-t-5`);
+let cmp9T17 = this._lc('c7I6mLXcp', {parent:component,parentTop:layout,state:'stiZeDM'});
 ec('div');
 }else { 
 

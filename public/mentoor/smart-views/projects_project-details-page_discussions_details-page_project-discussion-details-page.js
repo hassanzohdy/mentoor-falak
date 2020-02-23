@@ -4,88 +4,88 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','discussion','isInEditMode','confirmStatusChange','confirmStatusChanging','changeStatus','confirmDelete','remove'],
-                children: {c8PFneoyl:'flk-time-ago',csq8tRepj:'markdown',cDSp_U7Vu:'comments',cZtnxKE29:'project-discussion-form',c6u21fbe9:'project-layout',cpvBbn5yY:'flk-alert',cryq0CvCD:'flk-alert'},
+                children: {cc0QuNaaF:'flk-time-ago',cVe_tqVo4:'markdown',cQfZfUXPW:'comments',c16kYZflm:'project-discussion-form',c4IbBjfYV:'project-layout',cwmGguE3F:'flk-alert',cplTLIahg:'flk-alert'},
                 render: function (component) {
-                    let cmpk7uY = this._lc('c6u21fbe9', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let cnd4CVD = component.discussion && ! component.isInEditMode;
-this.setState('stiYUdc', cnd4CVD);
-if (cnd4CVD) { 
-let elicDCB = eo('div','sbFf',null,`class`,`discussion`);
-let cnduk9L = component.discussion.canBeModified;
-this.setState('stifawV', cnduk9L);
-if (cnduk9L) { 
-let elxUP5R = eo('div','1q1f',null,`class`,`status`);
-let cndi3WV = component.discussion.status == 'opened';
-this.setState('st0wPBt', cndi3WV);
-let cndJx59 = !(cndi3WV);
-this.setState('stsn6IE', cndJx59);
-if (cndi3WV) { 
-let elzJTbp = eo('button','sqHf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmStatusChange()}]},`type`,`button`,`class`,`btn bold badge badge-danger`);
-let elLXB03 = eo('i','O3af',null,`class`,`${fas('lock') + ' mr-2 icon'}`);
+                    let cmpuxhW = this._lc('c4IbBjfYV', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let cndGUDj = component.discussion && ! component.isInEditMode;
+this.setState('stP8lbM', cndGUDj);
+if (cndGUDj) { 
+let elYupIW = eo('div','kLvf',null,`class`,`discussion`);
+let cndsU3m = component.discussion.canBeModified;
+this.setState('st3ocop', cndsU3m);
+if (cndsU3m) { 
+let elngpjw = eo('div','hLqf',null,`class`,`status`);
+let cndtXUI = component.discussion.status == 'opened';
+this.setState('stSab9I', cndtXUI);
+let cnd6eaN = !(cndtXUI);
+this.setState('st2J46p', cnd6eaN);
+if (cndtXUI) { 
+let elQ2Kc3 = eo('button','_nMf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmStatusChange()}]},`type`,`button`,`class`,`btn bold badge badge-danger`);
+let elYl5yd = eo('i','kIUf',null,`class`,`${fas('lock') + ' mr-2 icon'}`);
 ec('i');
 text(`Close`);
 ec('button');
 }else { 
-let elsgSYF = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmStatusChange()}]},`class`,`btn badge badge-primary bold`);
-let elurVdq = eo('i',null,null,`class`,`${fas('unlock') + ' mr-2 icon'}`);
+let elgSiRj = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmStatusChange()}]},`class`,`btn badge badge-primary bold`);
+let elJjtiY = eo('i',null,null,`class`,`${fas('unlock') + ' mr-2 icon'}`);
 ec('i');
 text(`Reopen`);
 ec('button');
-}let elYbldP = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.isInEditMode = true}]},`class`,`btn badge badge-success bold`);
+}let elTXuiW = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.isInEditMode = true}]},`class`,`btn badge badge-success bold`);
 text(`Edit`);
 ec('button');
 ec('div');
-}let el0EooV = eo('h1',null,null,`class`,`m-b-1 title`);
-let elAZXrc = eo('span');
+}let elRZNra = eo('h1',null,null,`class`,`m-b-1 title`);
+let el2Ji35 = eo('span');
 text(component.discussion.title);
 ec('span');
-let cndoT5B = component.discussion.team.type;
-this.setState('st2yhv_', cndoT5B);
-let cnduowY = component.discussion.status == 'closed';
-this.setState('stollxO', cnduowY);
-if (cndoT5B) { 
-let elJaBLh = eo('small','OAWf',null,`class`,`teal-text bold ml-2`);
+let cndtDbJ = component.discussion.team.type;
+this.setState('stofpCm', cndtDbJ);
+let cnd5aEJ = component.discussion.status == 'closed';
+this.setState('stcDaMN', cnd5aEJ);
+if (cndtDbJ) { 
+let el6spNc = eo('small','cNEf',null,`class`,`teal-text bold ml-2`);
 text(component.discussion.team.type + ' team');
 ec('small');
-}let cndROtt = component.discussion.status == 'opened';
-this.setState('stuZQUV', cndROtt);
-let cndPfsi = cnduowY;
-this.setState('stZ_IT7', cndPfsi);
-if (cndROtt) { 
-let elWj2Or = eo('span','BZgf',null,`class`,`badge ml-2 badge-success`);
+}let cndEPUu = component.discussion.status == 'opened';
+this.setState('sty9F29', cndEPUu);
+let cndfFz1 = cnd5aEJ;
+this.setState('stK7PPS', cndfFz1);
+if (cndEPUu) { 
+let elkUIa9 = eo('span','Re5f',null,`class`,`badge ml-2 badge-success`);
 text(`Opened`);
 ec('span');
-}else if (cndPfsi) { 
-let el8Sfoq = eo('span',null,null,`class`,`badge ml-2 badge-danger`);
+}else if (cndfFz1) { 
+let elq0S4w = eo('span',null,null,`class`,`badge ml-2 badge-danger`);
 text(`Closed`);
 ec('span');
 }ec('h1');
-let el7HQYT = ev('img',null,null,`src`,`${component.discussion.createdBy.image}`,`class`,`user-image`,`title`,`${component.discussion.createdBy.name}`,`alt`,`${component.discussion.createdBy.name}`);
-let eljiOkh = eo('div',null,null,`class`,`d-inline-block`);
-let elqGcty = eo('div');
+let elDLvPz = ev('img',null,null,`src`,`${component.discussion.createdBy.image}`,`class`,`user-image`,`title`,`${component.discussion.createdBy.name}`,`alt`,`${component.discussion.createdBy.name}`);
+let elc3y4p = eo('div',null,null,`class`,`d-inline-block`);
+let el2d04L = eo('div');
 text(component.discussion.createdBy.name);
 ec('div');
-let elhxXm9 = eo('div');
-let cmpOkSD = this._lc('c8PFneoyl', {parent:component,parentTop:projectLayout,props:{timestamp:component.discussion.createdAt.timestamp},attrs:{class:'ago'}});
+let elQLxuk = eo('div');
+let cmpn7N7 = this._lc('cc0QuNaaF', {parent:component,parentTop:projectLayout,props:{timestamp:component.discussion.createdAt.timestamp},attrs:{class:'ago'}});
 ec('div');
 ec('div');
-let elrOiO4 = eo('div',null,null,`class`,`simple-card m-y-1`);
-let cmpFqgA = this._lc('csq8tRepj', {parent:component,parentTop:projectLayout,props:{content:component.discussion.discussion}});
+let elqDEzU = eo('div',null,null,`class`,`simple-card m-y-1`);
+let cmpQlGB = this._lc('cVe_tqVo4', {parent:component,parentTop:projectLayout,props:{content:component.discussion.discussion}});
 ec('div');
-let cmpWor1 = this._lc('cDSp_U7Vu', {parent:component,parentTop:projectLayout,props:{disableComments:component.discussion.status == 'closed',project:component.project,comments:component.discussion.comments,typeId:component.discussion.id},attrs:{type:'discussion'}});
+let cmpoQ9_ = this._lc('cQfZfUXPW', {parent:component,parentTop:projectLayout,props:{disableComments:component.discussion.status == 'closed',project:component.project,comments:component.discussion.comments,typeId:component.discussion.id},attrs:{type:'discussion'}});
 ec('div');
-}let cndqYZ4 = component.isInEditMode;
-this.setState('stbtfQu', cndqYZ4);
-if (cndqYZ4) { 
-let cmpaitA = this._lc('cZtnxKE29', {parent:component,parentTop:projectLayout,props:{project:component.project,discussion:component.discussion},events:{onclose:function(e) {let $el = this; component.isInEditMode = null}},state:'stbtfQu'});
+}let cndYYN9 = component.isInEditMode;
+this.setState('st9ufxI', cndYYN9);
+if (cndYYN9) { 
+let cmpNihq = this._lc('c16kYZflm', {parent:component,parentTop:projectLayout,props:{project:component.project,discussion:component.discussion},events:{onclose:function(e) {let $el = this; component.isInEditMode = null}},state:'st9ufxI'});
 }}});
-let cndO_6V = component.confirmStatusChanging;
-this.setState('stUfYl3', cndO_6V);
-if (cndO_6V) { 
-let cmpUUAW = this._lc('cpvBbn5yY', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmStatusChanging = null},onconfirm:function(e) {let $el = this; component.changeStatus()}},state:'stUfYl3'});
-}let cnd8ZxF = component.confirmDelete;
-this.setState('st8qv30', cnd8ZxF);
-if (cnd8ZxF) { 
-let cmpWwS7 = this._lc('cryq0CvCD', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'st8qv30'});
+let cndylMH = component.confirmStatusChanging;
+this.setState('stt_hAm', cndylMH);
+if (cndylMH) { 
+let cmp2yag = this._lc('cwmGguE3F', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmStatusChanging = null},onconfirm:function(e) {let $el = this; component.changeStatus()}},state:'stt_hAm'});
+}let cndKxF8 = component.confirmDelete;
+this.setState('stj4r8N', cndKxF8);
+if (cndKxF8) { 
+let cmp7nQe = this._lc('cplTLIahg', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stj4r8N'});
 }
                     this.isReadyToGo();
                 }

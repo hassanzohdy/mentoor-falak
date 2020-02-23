@@ -4,197 +4,197 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['user','isLoading','projects'],
-                children: {c0DAJ2ptI:'gold-icon',cIVmT0EdC:'flk-spinner',c9dKn__RN:'markdown',c5sXpYlDF:'layout'},
+                children: {cRkLs8uWC:'gold-icon',c_a1HWu_A:'flk-spinner',cFGWMX23l:'markdown',cDyNngVkv:'layout'},
                 render: function (component) {
-                    let cmpW808 = this._lc('c5sXpYlDF', {parent:component,content:(layout) => {let elaCqxc = eo('h1',null,null,`class`,`text-sm-left text-center m-b-5`);
-let elA6yvL = eo('span',null,null,`class`,`d-block d-sm-inline`);
+                    let cmpkBds = this._lc('cDyNngVkv', {parent:component,content:(layout) => {let eloDC8w = eo('h1',null,null,`class`,`text-sm-left text-center m-b-5`);
+let elng2WS = eo('span',null,null,`class`,`d-block d-sm-inline`);
 text(`Project Management System [PMS]`);
 ec('span');
-let elCFJMd = eo('a',null,null,`title`,``,`href`,`/projects/help`);
-let el9gacU = eo('i',null,null,`class`,`${fas('question-circle') + ' icon'}`);
+let elmLEmw = eo('a',null,null,`title`,``,`href`,`/projects/help`);
+let elwVYxb = eo('i',null,null,`class`,`${fas('question-circle') + ' icon'}`);
 ec('i');
 ec('a');
 
                     setTimeout(function () {
-                        let $el = elCFJMd;
+                        let $el = elmLEmw;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Help')}`});
         ;
                     }, 20);                
-                let cndJqFb = FLAGS.projects;
-this.setState('stLyAVf', cndJqFb);
-if (cndJqFb) { 
-let elloz_Y = eo('a','lG5f',null,`title`,`${trans(`Create new project`)}`,`href`,`/projects/new`,`class`,`btn float-right d-sm-inline-block bold`);
-elloz_Y.cls = {'btn-success': component.user.hasCreatedProjectBefore === true, 'btn-pink': component.user.hasCreatedProjectBefore === false};
+                let cndbtff = FLAGS.projects;
+this.setState('stCKWRv', cndbtff);
+if (cndbtff) { 
+let elMlUBU = eo('a','YuBf',null,`title`,`${trans(`Create new project`)}`,`href`,`/projects/new`,`class`,`btn float-right d-sm-inline-block bold`);
+elMlUBU.cls = {'btn-success': component.user.hasCreatedProjectBefore === true, 'btn-pink': component.user.hasCreatedProjectBefore === false};
 
-            for (let className in elloz_Y.cls) {
-                elloz_Y.classList.toggle(className, elloz_Y.cls[className]);
+            for (let className in elMlUBU.cls) {
+                elMlUBU.classList.toggle(className, elMlUBU.cls[className]);
             }  
-            let el2KDHk = eo('i','ATXf',null,`class`,`${fas('plus') + ' mr-2 icon'}`);
+            let el7PD6U = eo('i','OLDf',null,`class`,`${fas('plus') + ' mr-2 icon'}`);
 ec('i');
-let cndeMLy = component.user.hasCreatedProjectBefore === false;
-this.setState('stjgd6p', cndeMLy);
-if (cndeMLy) { 
-let elQYsPD = eo('span','uN5f',null,`class`,`mr-2`);
+let cndrfTl = component.user.hasCreatedProjectBefore === false;
+this.setState('stxy1pA', cndrfTl);
+if (cndrfTl) { 
+let elTqF97 = eo('span','_ZRf',null,`class`,`mr-2`);
 text(`FREE`);
 ec('span');
 }text(`Project`);
-let cndFBbP = component.user.hasCreatedProjectBefore;
-this.setState('stLZPte', cndFBbP);
-if (cndFBbP) { 
-let elrCxG9 = eo('div','lF0f');
-let cmp_yNM = this._lc('c0DAJ2ptI', {parent:component,parentTop:layout,props:{coins:FLAGS.projects.pricing.basic},state:'stLZPte'});
+let cndg4VT = component.user.hasCreatedProjectBefore;
+this.setState('sttVEpw', cndg4VT);
+if (cndg4VT) { 
+let ely4BSs = eo('div','NeIf');
+let cmpOStO = this._lc('cRkLs8uWC', {parent:component,parentTop:layout,props:{coins:FLAGS.projects.pricing.basic},state:'sttVEpw'});
 ec('div');
 }ec('a');
 }ec('h1');
-let cndUS9J = component.isLoading;
-this.setState('stiYwX7', cndUS9J);
-let cndqGdn = !(cndUS9J);
-this.setState('st4R9sN', cndqGdn);
-if (cndUS9J) { 
-let cmp6A36 = this._lc('cIVmT0EdC', {parent:component,parentTop:layout,state:'stiYwX7'});
+let cndU4NR = component.isLoading;
+this.setState('stSmOF4', cndU4NR);
+let cndDdfC = !(cndU4NR);
+this.setState('sttjwp8', cndDdfC);
+if (cndU4NR) { 
+let cmpLxVc = this._lc('c_a1HWu_A', {parent:component,parentTop:layout,state:'stSmOF4'});
 }else { 
-let cndKs0c = Is.empty(component.projects);
-this.setState('stsTgrW', cndKs0c);
-let cndBVjN = !(cndKs0c);
-this.setState('stQvG6W', cndBVjN);
-if (cndKs0c) { 
-let elK3P6E = eo('h3','Pd7f',null,`class`,`pink-text bold text-center`);
+let cndPSRP = Is.empty(component.projects);
+this.setState('stfDLZV', cndPSRP);
+let cndz8DY = !(cndPSRP);
+this.setState('st2LoUI', cndz8DY);
+if (cndPSRP) { 
+let el9cLio = eo('h3','vwdf',null,`class`,`pink-text bold text-center`);
 text(`No Projects Yet`);
 ec('h3');
 }else { 
-let ellfi4Q = eo('div',null,null,`class`,`projects-list`);
+let elsbT5x = eo('div',null,null,`class`,`projects-list`);
 for (let i in component.projects) {
 let project = component.projects[i]; 
- let iiVfDx = '3WegF82' + i;
-let el_9mNP = eo('div','MPCzc0f18rla' + i+iiVfDx,null,`class`,`row simple-card m-b-2 project`);
-let elS_tuJ = eo('div','P7cff'+iiVfDx,null,`class`,`col-sm-2 text-center`);
-let elv_oG6 = ev('img','dj1ff'+iiVfDx,null,`src`,`${project.image || FAVICON}`,`class`,`project-image`,`title`,`${project.name}`,`alt`,`${project.name}`);
+ let iikMcu = 'KwQucOR' + i;
+let el8O2QC = eo('div','rnk_td6i92eb' + i+iikMcu,null,`class`,`row simple-card m-b-2 project`);
+let el497MN = eo('div','gOnff'+iikMcu,null,`class`,`col-sm-2 text-center`);
+let elrTpcJ = ev('img','dmeff'+iikMcu,null,`src`,`${project.image || FAVICON}`,`class`,`project-image`,`title`,`${project.name}`,`alt`,`${project.name}`);
 ec('div');
-let eluRS0C = eo('div','7YUff'+iiVfDx,null,`class`,`col-sm-6 metadata`);
-let ellQ5j9 = eo('h3','ENPff'+iiVfDx,null,`class`,`name`);
+let elHygO9 = eo('div','cUlff'+iikMcu,null,`class`,`col-sm-6 metadata`);
+let elYNHfk = eo('h3','7vRff'+iikMcu,null,`class`,`name`);
 text(project.name);
 ec('h3');
-let elaEUWF = eo('p','vwIff'+iiVfDx,null,`class`,`short-description`);
-let cmpWToZ = this._lc('c9dKn__RN', {parent:component,parentTop:layout,props:{content:project.about.readMoreChars(100)},state:'stQvG6W',insideLoop:true,index:"" +iiVfDx});
+let elTkpJq = eo('p','jYDff'+iikMcu,null,`class`,`short-description`);
+let cmpgAIE = this._lc('cFGWMX23l', {parent:component,parentTop:layout,props:{content:project.about.readMoreChars(100)},state:'st2LoUI',insideLoop:true,index:"" +iikMcu});
 ec('p');
-let cnd8esW = ! Is.empty(project.tags);
-this.setState('st8xvfA', cnd8esW);
-if (cnd8esW) { 
-let elOQ2XB = eo('div','d0Off'+iiVfDx);
-let elNN25N = eo('h6','53Lff'+iiVfDx,null,`class`,`bold m-t-2 m-b-1`);
+let cndAgkw = ! Is.empty(project.tags);
+this.setState('stHcwJm', cndAgkw);
+if (cndAgkw) { 
+let elHCZaW = eo('div','Mj4ff'+iikMcu);
+let elqIFyo = eo('h6','rdOff'+iikMcu,null,`class`,`bold m-t-2 m-b-1`);
 text(`Technologies and Techniques used in this project`);
 ec('h6');
 for (let i in Array.chunk(project.tags.slice(0, 6), 4)) {
 let tags = Array.chunk(project.tags.slice(0, 6), 4)[i]; 
- let iiMUAo = '3OJpuJY' + i;
-let el4fouQ = eo('div','YbHNBZsqTMmU' + i+iiVfDx+iiMUAo,null,`class`,`tags-list m-t-2 text-justify`);
+ let iiN4jL = 'eskl75v' + i;
+let el5YAso = eo('div','yxzcusvCWEBt' + i+iikMcu+iiN4jL,null,`class`,`tags-list m-t-2 text-justify`);
 for (let i in tags) {
 let tag = tags[i]; 
- let iinneP = 'RR9V9Ew' + i;
-let elSHTpQ = eo('span','bHLvQW985ubv' + i+iiVfDx+iiMUAo+iinneP,null,`class`,`tag mr-2`);
-let elvYetq = ev('img','HbVff'+iiVfDx+iiMUAo+iinneP,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
-let elj7oOc = eo('span','Rpjff'+iiVfDx+iiMUAo+iinneP,null,`class`,`name`);
+ let iiyB1T = 'xrfkKzo' + i;
+let eliTT3q = eo('span','Jhmcw1z4PAp2' + i+iikMcu+iiN4jL+iiyB1T,null,`class`,`tag mr-2`);
+let el92N4D = ev('img','sSoff'+iikMcu+iiN4jL+iiyB1T,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
+let el0Chii = eo('span','E6off'+iikMcu+iiN4jL+iiyB1T,null,`class`,`name`);
 text(tag.name);
 ec('span');
 ec('span');
 }
 ec('div');
 }
-let cndKRRN = project.tags.length > 6;
-this.setState('styvHPX', cndKRRN);
-if (cndKRRN) { 
-let elSI_TJ = eo('small','m1Mff'+iiVfDx);
+let cndHmf7 = project.tags.length > 6;
+this.setState('stwKTIg', cndHmf7);
+if (cndHmf7) { 
+let eltkr9n = eo('small','T_xff'+iikMcu);
 text(`And ${ project.tags.length - 6 } more...`);
 ec('small');
 }ec('div');
-}let elf6sB1 = eo('a','gZvff'+iiVfDx,null,`href`,`${URLS.project(project, '')}`,`class`,`btn btn-gray bold m-t-2`);
+}let eltIl2c = eo('a','nFTff'+iikMcu,null,`href`,`${URLS.project(project, '')}`,`class`,`btn btn-gray bold m-t-2`);
 text(`VIEW DETAILS`);
 ec('a');
 ec('div');
-let elofKwm = eo('div','LG2ff'+iiVfDx,null,`class`,`col summary`);
-let el5VBTt = eo('div','1Stff'+iiVfDx,null,`class`,`gray-text bold m-b-1`);
-let elCUpO3 = eo('span','yYIff'+iiVfDx,null,`title`,``);
-let el4jJAj = eo('i','N_8ff'+iiVfDx,null,`class`,`${fas('users') + ' mr-2 icon'}`);
+let elEoYPd = eo('div','rwlff'+iikMcu,null,`class`,`col summary`);
+let elyZr9W = eo('div','j_Jff'+iikMcu,null,`class`,`gray-text bold m-b-1`);
+let elfRksb = eo('span','a0nff'+iikMcu,null,`title`,``);
+let elQq1Uu = eo('i','wW_ff'+iikMcu,null,`class`,`${fas('users') + ' mr-2 icon'}`);
 ec('i');
-let elYYcif = eo('span','klXff'+iiVfDx);
+let eleMQja = eo('span','W7cff'+iikMcu);
 text(`${ project.members.length }/${ project.maxMembers }`);
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elCUpO3;
+                        let $el = elfRksb;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Members')}`});
         ;
                     }, 20);                
                 ec('div');
-let elf0QKD = eo('div','QzLff'+iiVfDx,null,`class`,`gray-text bold m-b-1`);
-let elxJrCm = eo('span','AWzff'+iiVfDx,null,`title`,``);
-let elQ8Gl4 = eo('i','UuUff'+iiVfDx,null,`class`,`${fas('people-carry') + ' mr-2 icon'}`);
+let eleh_6l = eo('div','QUiff'+iikMcu,null,`class`,`gray-text bold m-b-1`);
+let el4Q8ag = eo('span','DvFff'+iikMcu,null,`title`,``);
+let elVsVqE = eo('i','6SCff'+iikMcu,null,`class`,`${fas('people-carry') + ' mr-2 icon'}`);
 ec('i');
-let elEOCBb = eo('span','cPbff'+iiVfDx);
+let elHAxvQ = eo('span','qNGff'+iikMcu);
 text(`${ project.teams.length }/${ project.maxTeams }`);
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elxJrCm;
+                        let $el = el4Q8ag;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Teams')}`});
         ;
                     }, 20);                
                 ec('div');
-let elgILRV = eo('div','kDKff'+iiVfDx,null,`class`,`gray-text bold m-b-1`);
-let elyK7dZ = eo('span','IOQff'+iiVfDx,null,`title`,``);
-let elHFizm = eo('i','O1Nff'+iiVfDx,null,`class`,`${fas('briefcase') + ' mr-2 icon'}`);
+let elUjz6E = eo('div','37Nff'+iikMcu,null,`class`,`gray-text bold m-b-1`);
+let elZkjON = eo('span','vIFff'+iikMcu,null,`title`,``);
+let elFxOcL = eo('i','U8jff'+iikMcu,null,`class`,`${fas('briefcase') + ' mr-2 icon'}`);
 ec('i');
-let cnd1DXS = project.settings.openRecruitment;
-this.setState('stJrzM6', cnd1DXS);
-if (cnd1DXS) { 
-let elWQzNM = eo('i','sfJff'+iiVfDx,null,`class`,`${fas('check') + ' green-text mr-2 icon'}`);
+let cndUx5D = project.settings.openRecruitment;
+this.setState('st7WayR', cndUx5D);
+if (cndUx5D) { 
+let elDth4S = eo('i','eOXff'+iikMcu,null,`class`,`${fas('check') + ' green-text mr-2 icon'}`);
 ec('i');
-}let cndaXrN = ! project.settings.openRecruitment;
-this.setState('std3amz', cndaXrN);
-if (cndaXrN) { 
-let ela3axS = eo('i','2Vvff'+iiVfDx,null,`class`,`${fas('times') + ' red-text mr-2 icon'}`);
+}let cnd7pA8 = ! project.settings.openRecruitment;
+this.setState('stLAWho', cnd7pA8);
+if (cnd7pA8) { 
+let elD9NI0 = eo('i','Bwuff'+iikMcu,null,`class`,`${fas('times') + ' red-text mr-2 icon'}`);
 ec('i');
 }ec('span');
 
                     setTimeout(function () {
-                        let $el = elyK7dZ;
+                        let $el = elZkjON;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Recruiting')}`});
         ;
                     }, 20);                
                 ec('div');
-let elCEKrF = eo('div','hqOff'+iiVfDx,null,`class`,`gray-text bold m-b-1`);
-let elOjtQh = eo('span','I1eff'+iiVfDx,null,`title`,``);
-let elvdNB3 = eo('i','ImPff'+iiVfDx,null,`class`,`${fas('chart-line') + ' mr-2 icon'}`);
+let elEpCOq = eo('div','GBcff'+iikMcu,null,`class`,`gray-text bold m-b-1`);
+let el6UnGo = eo('span','s6Cff'+iikMcu,null,`title`,``);
+let elV4rnU = eo('i','qg2ff'+iikMcu,null,`class`,`${fas('chart-line') + ' mr-2 icon'}`);
 ec('i');
-let elfroS_ = eo('span','5xmff'+iiVfDx,null,`class`,`text-capitalize`);
+let elLAovB = eo('span','hvlff'+iikMcu,null,`class`,`text-capitalize`);
 text(project.status);
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elOjtQh;
+                        let $el = el6UnGo;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Status')}`});
         ;
                     }, 20);                
                 ec('div');
-let elx5nnH = eo('div','qjeff'+iiVfDx,null,`class`,`gray-text bold m-b-1`);
-let ele9xy0 = eo('span','efQff'+iiVfDx,null,`title`,``);
-let elaPqCU = eo('i','259ff'+iiVfDx,null,`class`,`${fas('coins') + ' mr-2 icon'}`);
+let eliHFpp = eo('div','AGiff'+iikMcu,null,`class`,`gray-text bold m-b-1`);
+let elCi_v0 = eo('span','oEGff'+iikMcu,null,`title`,``);
+let el2rfIa = eo('i','4Tuff'+iikMcu,null,`class`,`${fas('coins') + ' mr-2 icon'}`);
 ec('i');
-let elPOsi6 = eo('span','GDjff'+iiVfDx);
+let eltPtdo = eo('span','MP7ff'+iikMcu);
 text( project.fund.format() );
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = ele9xy0;
+                        let $el = elCi_v0;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Fund')}`});
         ;

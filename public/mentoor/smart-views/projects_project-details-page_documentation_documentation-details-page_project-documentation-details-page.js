@@ -4,13 +4,13 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','documentation'],
-                children: {cB7HF0sTG:'markdown',cj0x3qqvz:'project-layout'},
+                children: {cRn1A4wif:'markdown',cTFdA1m5Y:'project-layout'},
                 render: function (component) {
-                    let cmpNwSm = this._lc('cj0x3qqvz', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let eluQSYJ = eo('h1',null,null,`class`,`heading`);
+                    let cmpJ8wX = this._lc('cTFdA1m5Y', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elC0743 = eo('h1',null,null,`class`,`heading`);
 text(component.documentation.title);
 ec('h1');
-let elwyfSh = eo('div',null,null,`class`,`simple-card`);
-let cmpTi8A = this._lc('cB7HF0sTG', {parent:component,parentTop:projectLayout,props:{content:component.documentation.content}});
+let elzB6Hd = eo('div',null,null,`class`,`simple-card`);
+let cmpVlmc = this._lc('cRn1A4wif', {parent:component,parentTop:projectLayout,props:{content:component.documentation.content}});
 ec('div');
 }});
 
