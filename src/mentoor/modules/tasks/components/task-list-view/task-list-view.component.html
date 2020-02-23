@@ -3,54 +3,33 @@
     <table class="table buttoned simple-card">
         <thead>
             <tr>
-                <th><button (click)="this.sortTasksBy('id')" [tooltip]="true" title="Sort By ID">#</button></th>
-                <th> <button (click)="this.sortTasksBy('title')" [tooltip]="true" title="Sort By Title">Task</button>
-                </th>
+                <th (click)="this.sortTasksBy('id')" [tooltip]="true" title="Sort By ID">#</th>
+                <th (click)="this.sortTasksBy('title')" [tooltip]="true" title="Sort By Title">Task</th>
                 <th> <button (click)="this.sortTasksBy('progress.completed')" [tooltip]="true"
                         title="Sort By Progress">Progress</button> </th>
                 <th *if="! this.isInProjectPage">Project</th>
-                <th tooltip title="Sort by status">
-                    <button (click)="this.isStatusSortOpened = !this.isStatusSortOpened">Status</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isStatusSortOpened" [items]="this.filterOptions.statuses"
-                            (select)="this.sortObjects('status', '', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                <th tooltip title="Sort by status" (click)="this.sortTasksBy('status')">
+                    Status
                 </th>
                 <th tooltip title="Remaining Time">R Time</th>
-                <th tooltip title="Sort by participant">
-                    <button (click)="this.isPartSortOpened = !this.isPartSortOpened">Participant</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isPartSortOpened" [items]="this.filterOptions.participants"
-                            (select)="this.sortObjects('participant', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                <th tooltip title="Sort By Participant" (click)="this.sortTasksBy('participant.name')">
+                    Participant
                 </th>
-                <th tooltip title="Sort by Supervisor">
-                    <button (click)="this.isSuperSortOpened = !this.isSuperSortOpened">Supervisors</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isSuperSortOpened" [items]="this.filterOptions.supervisors"
-                            (select)="this.sortObjects('supervisors', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                <th>
+                    Supervisors
                 </th>
-                <th class="text-center" tooltip title="Sort by Module">
-                    <button (click)="this.isModuleSortOpened = !this.isModuleSortOpened">Module</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isModuleSortOpened" [items]="this.filterOptions.modules"
-                            (select)="this.sortObjects('module', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                <th class="text-center" tooltip title="Sort by Module" (click)="this.sortTasksBy('module.name')">
+                    Module
                 </th>
-                <th class="text-center" tooltip title="Sort by Priority">
-                    <button (click)="this.isPrioritySortOpened = !this.isPrioritySortOpened">Priority</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isPrioritySortOpened" [items]="this.filterOptions.priorities"
-                            (select)="this.sortObjects('priority', '', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                <th class="text-center" tooltip title="Sort by Priority"  (click)="this.sortTasksBy('priority')">
+                    Priority
                 </th>
                 <!-- <th class="text-center">Sprint</th> -->
                 <th>Control</th>
             </tr>
         </thead>
         <tbody>
-            <tr *for="let task, index of this.tasksList" *key="task.id">
+            <tr *for="let task, index of this.tasksList" *key="task.id" [class]="{'alert-danger': task.priority == 'high', 'alert-warning': task.priority == 'medium', 'alert-info': task.priority == 'low'}">
                 <td [html]="task.id"></td>
                 <td>
                     <a [href]="URLS.task(task)" class="title" tooltip [title]="task.title"

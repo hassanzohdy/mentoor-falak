@@ -4,101 +4,101 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','openModal','modalIsOpened','submit','fundValue','user','isValidForm','isSending'],
-                children: {crQJFJPZF:'gold-icon',cQ9A6X9_0:'flk-time-ago',cLpfViOJP:'project-layout',c5RRDZoa3:'flk-modal'},
+                children: {cHeDBeMfj:'gold-icon',cJ3t1sSHx:'flk-time-ago',cAMYUiHcC:'project-layout',ccHhKNMM8:'flk-modal'},
                 render: function (component) {
-                    let cmpV_mN = this._lc('cLpfViOJP', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elXhseC = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal()}]},`class`,`float-right btn btn-success bold`);
-let elHgPc8 = eo('i',null,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
+                    let cmpeJPS = this._lc('cAMYUiHcC', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elocWNu = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal()}]},`class`,`float-right btn btn-success bold`);
+let ellmnDJ = eo('i',null,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
 ec('i');
-let cmp7MGi = this._lc('crQJFJPZF', {parent:component,parentTop:projectLayout,props:{coins:0}});
+let cmpsxvP = this._lc('cHeDBeMfj', {parent:component,parentTop:projectLayout,props:{coins:0}});
 ec('button');
-let elwMJha = eo('h1',null,null,`class`,`m-y-1`);
+let el9JolD = eo('h1',null,null,`class`,`m-y-1`);
 text(`${ component.project.name } Project Fund
         ${ component.project.fund.format() }`);
 ec('h1');
-let elIfmYy = eo('table',null,null,`class`,`m-t-2 table table-bordered`);
-let eloecWx = eo('thead');
-let elA7F0v = eo('tr');
-let elRSK2z = eo('th');
+let elv6TfJ = eo('table',null,null,`class`,`m-t-2 table table-bordered`);
+let eli2HTN = eo('thead');
+let el_Jh2W = eo('tr');
+let elcVB8x = eo('th');
 text(`Fund`);
 ec('th');
-let el66qb0 = eo('th');
+let elhR3Bz = eo('th');
 text(`By`);
 ec('th');
-let elSy5LR = eo('th');
+let el7gUaW = eo('th');
 text(`Donated`);
 ec('th');
 ec('tr');
 ec('thead');
-let el3_4T5 = eo('tbody');
-let cndeCd4 = Is.empty(component.project.fundList);
-this.setState('steTEbG', cndeCd4);
-let cndu8D4 = !(cndeCd4);
-this.setState('stNY4vW', cndu8D4);
-if (cndeCd4) { 
-let elEswQE = eo('tr','QiUf');
-let el9NBhD = eo('td','bNgf',null, 'style', {textAlign:'center'},`colspan`,`3`);
+let elVIzTO = eo('tbody');
+let cndWfNB = Is.empty(component.project.fundList);
+this.setState('stBevw5', cndWfNB);
+let cndJUS0 = !(cndWfNB);
+this.setState('stQvWpD', cndJUS0);
+if (cndWfNB) { 
+let elbnlJe = eo('tr','9Nqf');
+let el0gpZT = eo('td','75Yf',null, 'style', {textAlign:'center'},`colspan`,`3`);
 text(`No found yet`);
 ec('td');
 ec('tr');
 }else { 
 for (let i in component.project.fundList) {
 let fund = component.project.fundList[i]; 
- let iiue8G = 'ZmuUqmL' + i;
-let el5P9aH = eo('tr','y8gmlPD63Zbn' + i+iiue8G);
-let el7T539 = eo('td','VJzff'+iiue8G,null,`class`,`bold`);
+ let iiSSgn = '2X1X9A3' + i;
+let elgDgYk = eo('tr','5kXEvqWFKj5Q' + i+iiSSgn);
+let elLBKeJ = eo('td','4SBff'+iiSSgn,null,`class`,`bold`);
 text(fund.fund.format());
 ec('td');
-let elvS932 = eo('td','gPgff'+iiue8G);
+let elzNjEI = eo('td','XGgff'+iiSSgn);
 text(fund.createdBy.name);
 ec('td');
-let elVOtd0 = eo('td','iTWff'+iiue8G);
-let cmppJQq = this._lc('cQ9A6X9_0', {parent:component,parentTop:projectLayout,props:{timestamp:fund.createdAt.timestamp},state:'stNY4vW',insideLoop:true,index:"" +iiue8G});
+let elJS2Et = eo('td','61hff'+iiSSgn);
+let cmpdfxh = this._lc('cJ3t1sSHx', {parent:component,parentTop:projectLayout,props:{timestamp:fund.createdAt.timestamp},state:'stQvWpD',insideLoop:true,index:"" +iiSSgn});
 ec('td');
 ec('tr');
 }
 }ec('tbody');
 ec('table');
 }});
-let cndf67b = component.modalIsOpened;
-this.setState('stWTgih', cndf67b);
-if (cndf67b) { 
-component.modal = this._lc('c5RRDZoa3', {parent:component,events:{onclose:function(e) {let $el = this; component.modalIsOpened = null}},content:(flkModal) => {let elvpYYG = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cndtDgF = component.modalIsOpened;
+this.setState('stMKx22', cndtDgF);
+if (cndtDgF) { 
+component.modal = this._lc('ccHhKNMM8', {parent:component,events:{onclose:function(e) {let $el = this; component.modalIsOpened = null}},content:(flkModal) => {let elQYpiV = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elvpYYG.formHandler) {
-                    window.cfrmdlr = elvpYYG.formHandler = new FormHandler(elvpYYG, component);
+                if (! elQYpiV.formHandler) {
+                    window.cfrmdlr = elQYpiV.formHandler = new FormHandler(elQYpiV, component);
                 } else {
-                    window.cfrmdlr = elvpYYG.formHandler;
+                    window.cfrmdlr = elQYpiV.formHandler;
                 }
-            let elGWC6W = eo('div',null,null,`class`,`form-group`);
-elGWC6W.cls = {'group-error': !!elvpYYG.formHandler.getError(`fund`) };
+            let elXA3bQ = eo('div',null,null,`class`,`form-group`);
+elXA3bQ.cls = {'group-error': !!elQYpiV.formHandler.getError(`fund`) };
 
-            for (let className in elGWC6W.cls) {
-                elGWC6W.classList.toggle(className, elGWC6W.cls[className]);
+            for (let className in elXA3bQ.cls) {
+                elXA3bQ.classList.toggle(className, elXA3bQ.cls[className]);
             }  
-            let elVeEr_ = eo('label',null,null,`for`,`fund`);
+            let elMjhji = eo('label',null,null,`for`,`fund`);
 text(trans('Fund Amount'));
-let elxcQHw = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elHlqOW = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elrEhiJ = ev('input',null,null, eventListeners, {oninput:[function(e) {component.fundValue = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elvpYYG.formHandler.addError(`fund`, 'required', trans('validation.required'));}return elvpYYG.formHandler.removeError(`fund`);}]},`value`,`${fval(component.fundValue)}`,`name`,`${(`fund`).toInputName()}`,`placeholder`,`${trans(`Fund Amount`)}`,`type`,`number`,`class`,`form-control`,`id`,`fund`);
-elrEhiJ.value = fval(component.fundValue);
-let cndch_e = elvpYYG.formHandler.getError(`fund`);
-this.setState('stsP1ld', cndch_e);
-if (cndch_e) { 
-let elbckK9 = eo('div','B9Jf',null,`class`,`alert alert-danger`);
-text(elvpYYG.formHandler.getError(`fund`));
+let elsDcgh = ev('input',null,null, eventListeners, {oninput:[function(e) {component.fundValue = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elQYpiV.formHandler.addError(`fund`, 'required', trans('validation.required'));}return elQYpiV.formHandler.removeError(`fund`);}]},`value`,`${fval(component.fundValue)}`,`name`,`${(`fund`).toInputName()}`,`placeholder`,`${trans(`Fund Amount`)}`,`type`,`number`,`class`,`form-control`,`id`,`fund`);
+elsDcgh.value = fval(component.fundValue);
+let cndKuxi = elQYpiV.formHandler.getError(`fund`);
+this.setState('stYSaiv', cndKuxi);
+if (cndKuxi) { 
+let elv80h8 = eo('div','uSkf',null,`class`,`alert alert-danger`);
+text(elQYpiV.formHandler.getError(`fund`));
 ec('div');
 }ec('div');
-let el03Mkg = eo('div',null,null,`class`,`m-t-1 text-center`);
-let elvqn7r = eo('button',null,null, boolAttrs, {disabled:component.fundValue > component.user.gold || ! component.isValidForm || component.isSending},`class`,`btn btn-success bold`);
+let elQbYS7 = eo('div',null,null,`class`,`m-t-1 text-center`);
+let elX8Ijw = eo('button',null,null, boolAttrs, {disabled:component.fundValue > component.user.gold || ! component.isValidForm || component.isSending},`class`,`btn btn-success bold`);
 text(`Donate`);
 ec('button');
 ec('div');
 ec('form');
-},attrs:{size:'small',header:'Donate to the project'},state:'stWTgih'});
+},attrs:{size:'small',header:'Donate to the project'},state:'stMKx22'});
 }
                     this.isReadyToGo();
                 }

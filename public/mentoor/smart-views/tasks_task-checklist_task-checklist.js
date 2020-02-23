@@ -4,102 +4,102 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['task','addChecklistForm','addNewChecklist','submitChecklist','checklistName','items','unsetArrayIndex','isSending','isValidForm','isAddingChecklistItem','addChecklistItem','currentChecklist','isInEditMode','type','currentItem','allowEditing','confirmRemoving','suggestCheckItemModification','unsuggestCheckItemModification','changeItemStatus','isSuggestingItemControl','modifyingChecklistItem','submitItem','isAboutToRemove','remove'],
-                children: {cYs9rEOmC:'flk-mdb-checkbox',cWCz8Mixw:'flk-alert'},
+                children: {cjDAmOwnT:'flk-mdb-checkbox',cjt8GamAl:'flk-alert'},
                 render: function (component) {
-                    let elzmyF4 = eo('section',null,null,`class`,`checklists-wrapper`);
-let elbxO0m = eo('h3');
+                    let elDmi4B = eo('section',null,null,`class`,`checklists-wrapper`);
+let elCplLw = eo('h3');
 text(`Checklists (${ component.task.checklists.length })`);
-let cnddwQd = ! component.addChecklistForm;
-this.setState('ste87oP', cnddwQd);
-let cndzH8b = !(cnddwQd);
-this.setState('stGOnWl', cndzH8b);
-if (cnddwQd) { 
-let elUXCpU = eo('button','KAjf',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewChecklist()}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-success`);
-let elP13fR = eo('i','XkCf',null,`class`,`${fas('plus') + ' icon'}`);
+let cndPBYq = ! component.addChecklistForm;
+this.setState('st7PX1S', cndPBYq);
+let cndly5J = !(cndPBYq);
+this.setState('stDw4sZ', cndly5J);
+if (cndPBYq) { 
+let elFcmJt = eo('button','aLMf',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewChecklist()}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-success`);
+let elwdC3P = eo('i','a6rf',null,`class`,`${fas('plus') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elUXCpU;
+                        let $el = elFcmJt;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('New Checklist')}`});
         ;
                     }, 20);                
                 }else { 
-let elWCToX = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.addChecklistForm = false}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
-let elNQ971 = eo('i',null,null,`class`,`${fas('times') + ' icon'}`);
+let eldn0BB = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.addChecklistForm = false}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
+let el_ai6F = eo('i',null,null,`class`,`${fas('times') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elWCToX;
+                        let $el = eldn0BB;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Close')}`});
         ;
                     }, 20);                
-                }let cndPEef = component.addChecklistForm;
-this.setState('st4ytd_', cndPEef);
-if (cndPEef) { 
-let el0pK_g = eo('form','6d5f',null, eventListeners, {onsubmit:[function(e) {
+                }let cndfpD3 = component.addChecklistForm;
+this.setState('stEEmGS', cndfpD3);
+if (cndfpD3) { 
+let elE445X = eo('form','aPyf',null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submitChecklist($el)}]},`class`,`m-t-2`);
 
-                if (! el0pK_g.formHandler) {
-                    window.cfrmdlr = el0pK_g.formHandler = new FormHandler(el0pK_g, component);
+                if (! elE445X.formHandler) {
+                    window.cfrmdlr = elE445X.formHandler = new FormHandler(elE445X, component);
                 } else {
-                    window.cfrmdlr = el0pK_g.formHandler;
+                    window.cfrmdlr = elE445X.formHandler;
                 }
-            let eluSjT1 = eo('div','8p7f',null,`class`,`row`);
-let elYPSOX = ev('input','cw6f',null, eventListeners, {oninput:[function(e) {component.task.id = this.value;}]},`value`,`${fval(component.task.id)}`,`name`,`${(`task`).toInputName()}`,`type`,`hidden`);
-elYPSOX.value = fval(component.task.id);
-let elirvA2 = ev('input','dzvf',null, eventListeners, {oninput:[function(e) {component.task.checklists.length = this.value;}]},`value`,`${fval(component.task.checklists.length)}`,`name`,`${(`sortOrder`).toInputName()}`,`type`,`hidden`);
-elirvA2.value = fval(component.task.checklists.length);
-let el4Ude6 = eo('div','V7jf',null,`class`,`col-sm-4`);
-let elY3U4u = eo('div','fYnf',null,`class`,`form-group`);
-elY3U4u.cls = {'group-error': !!el0pK_g.formHandler.getError(`name`) };
+            let elFj02p = eo('div','wl5f',null,`class`,`row`);
+let elmlaeB = ev('input','Os5f',null, eventListeners, {oninput:[function(e) {component.task.id = this.value;}]},`value`,`${fval(component.task.id)}`,`name`,`${(`task`).toInputName()}`,`type`,`hidden`);
+elmlaeB.value = fval(component.task.id);
+let elI1isR = ev('input','WCAf',null, eventListeners, {oninput:[function(e) {component.task.checklists.length = this.value;}]},`value`,`${fval(component.task.checklists.length)}`,`name`,`${(`sortOrder`).toInputName()}`,`type`,`hidden`);
+elI1isR.value = fval(component.task.checklists.length);
+let elRRJ_e = eo('div','heXf',null,`class`,`col-sm-4`);
+let elVxNUs = eo('div','2ZSf',null,`class`,`form-group`);
+elVxNUs.cls = {'group-error': !!elE445X.formHandler.getError(`name`) };
 
-            for (let className in elY3U4u.cls) {
-                elY3U4u.classList.toggle(className, elY3U4u.cls[className]);
+            for (let className in elVxNUs.cls) {
+                elVxNUs.classList.toggle(className, elVxNUs.cls[className]);
             }  
-            let elc5qh7 = eo('label','bXmf',null,`for`,`name`);
+            let el1TEjV = eo('label','qrpf',null,`for`,`name`);
 text(trans('Checklist Name'));
-let elLasx9 = eo('span','hTtf',null,`title`,`${trans(`required`)}`,`class`,`required`);
+let eltv9f0 = eo('span','XS2f',null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let el3mZxy = ev('input','IlCf',null, eventListeners, {oninput:[function(e) {component.checklistName = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el0pK_g.formHandler.addError(`name`, 'required', trans('validation.required'));}return el0pK_g.formHandler.removeError(`name`);}]},`value`,`${fval(component.checklistName)}`,`name`,`${(`name`).toInputName()}`,`placeholder`,`${trans(`Checklist Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`name`);
-el3mZxy.value = fval(component.checklistName);
-let cndKNLM = el0pK_g.formHandler.getError(`name`);
-this.setState('stW7Ztx', cndKNLM);
-if (cndKNLM) { 
-let elwNQBa = eo('div','H9ff',null,`class`,`alert alert-danger`);
-text(el0pK_g.formHandler.getError(`name`));
+let elryALX = ev('input','ksMf',null, eventListeners, {oninput:[function(e) {component.checklistName = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elE445X.formHandler.addError(`name`, 'required', trans('validation.required'));}return elE445X.formHandler.removeError(`name`);}]},`value`,`${fval(component.checklistName)}`,`name`,`${(`name`).toInputName()}`,`placeholder`,`${trans(`Checklist Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`name`);
+elryALX.value = fval(component.checklistName);
+let cnd9LjH = elE445X.formHandler.getError(`name`);
+this.setState('stW9Q9m', cnd9LjH);
+if (cnd9LjH) { 
+let elYH0tq = eo('div','hBKf',null,`class`,`alert alert-danger`);
+text(elE445X.formHandler.getError(`name`));
 ec('div');
 }ec('div');
 ec('div');
 ec('div');
-let elP56Rr = eo('div',null,null,`class`,`row`);
-let elc3oZc = eo('div',null,null,`class`,`col-sm-8`);
+let elmGVPq = eo('div',null,null,`class`,`row`);
+let elOChKB = eo('div',null,null,`class`,`col-sm-8`);
 for (let index in component.items) {
 let item = component.items[index]; 
- let iiz_2k = 'rOJA3y5' + index;
-let elGWh6r = eo('div','IFm7FHZ_abIm' + index+iiz_2k,null,`class`,`row m-0`);
-let elBgNhV = ev('input','t2Kff'+iiz_2k,null, eventListeners, {oninput:[function(e) {component.items[index] = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return el0pK_g.formHandler.addError(`items[]`, 'required', trans('validation.required'));}return el0pK_g.formHandler.removeError(`items[]`);}]},`value`,`${fval(component.items[index])}`,`name`,`${(`items[]`).toInputName()}`,`placeholder`,`${trans(`Checklist Item`)}`,`type`,`text`,`class`,`form-control col-sm-10`,`id`,`items[]`);
-elBgNhV.value = fval(component.items[index]);
-let cndNJzM = el0pK_g.formHandler.getError(`items[]`);
-this.setState('stQiF5U', cndNJzM);
-if (cndNJzM) { 
-let elsynht = eo('div','FEnff'+iiz_2k,null,`class`,`alert alert-danger`);
-text(el0pK_g.formHandler.getError(`items[]`));
+ let iigYmB = 'KCQsvRe' + index;
+let elEt2UU = eo('div','bL1C_nT5ZNQ6' + index+iigYmB,null,`class`,`row m-0`);
+let eltFhMd = ev('input','uQOff'+iigYmB,null, eventListeners, {oninput:[function(e) {component.items[index] = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elE445X.formHandler.addError(`items[]`, 'required', trans('validation.required'));}return elE445X.formHandler.removeError(`items[]`);}]},`value`,`${fval(component.items[index])}`,`name`,`${(`items[]`).toInputName()}`,`placeholder`,`${trans(`Checklist Item`)}`,`type`,`text`,`class`,`form-control col-sm-10`,`id`,`items[]`);
+eltFhMd.value = fval(component.items[index]);
+let cndBMap = elE445X.formHandler.getError(`items[]`);
+this.setState('stUlRmh', cndBMap);
+if (cndBMap) { 
+let elXLxNq = eo('div','bUXff'+iigYmB,null,`class`,`alert alert-danger`);
+text(elE445X.formHandler.getError(`items[]`));
 ec('div');
-}let elC90jD = eo('div','ex4ff'+iiz_2k,null,`class`,`col mt-2`);
-let elcW8cW = eo('button','Kadff'+iiz_2k,null, eventListeners, {onclick:[function(e) {var $el = this;component.unsetArrayIndex('items', index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
-let elhShA_ = eo('i','uT2ff'+iiz_2k,null,`class`,`${fas('times') + ' icon'}`);
+}let elyyXtd = eo('div','ORdff'+iigYmB,null,`class`,`col mt-2`);
+let elZKZno = eo('button','ryKff'+iigYmB,null, eventListeners, {onclick:[function(e) {var $el = this;component.unsetArrayIndex('items', index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
+let elhy3Fq = eo('i','XVCff'+iigYmB,null,`class`,`${fas('times') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elcW8cW;
+                        let $el = elZKZno;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Remove Item')}`});
         ;
@@ -107,211 +107,211 @@ ec('button');
                 ec('div');
 ec('div');
 }
-let elFXlbx = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.items.push('')}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-info`);
-let elRbAqt = eo('i',null,null,`class`,`${fas('plus') + ' icon'}`);
+let elDdzGY = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.items.push('')}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-info`);
+let elM0mDR = eo('i',null,null,`class`,`${fas('plus') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elFXlbx;
+                        let $el = elDdzGY;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('add New Item')}`});
         ;
                     }, 20);                
                 ec('div');
 ec('div');
-let elYKOKw = eo('button',null,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn btn-sm btn-primary bold`);
+let elQH5PQ = eo('button',null,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn btn-sm btn-primary bold`);
 text(`Create
                 Checklist`);
 ec('button');
 ec('form');
-}let elEs_Ux = eo('div',null,null,`class`,`row`);
+}let elFw9iz = eo('div',null,null,`class`,`row`);
 for (let index in component.task.checklists) {
 let checklist = component.task.checklists[index]; 
- let ii8YOp = checklist.id+ index;
-let elmU9Br = eo('div','ZRV_s86vQJ6K' + index+ii8YOp,null,`class`,`col-sm-6 checklist m-t-2 p-0`);
-let eldiWv8 = eo('div','d_Sff'+ii8YOp,null,`class`,`bold`);
-let elcl5nP = eo('span','UXhff'+ii8YOp);
+ let iif9OC = checklist.id+ index;
+let elQ9_Pe = eo('div','AnskZLVfBtLk' + index+iif9OC,null,`class`,`col-sm-6 checklist m-t-2 p-0`);
+let elnYafq = eo('div','BOgff'+iif9OC,null,`class`,`bold`);
+let elDSlrU = eo('span','bycff'+iif9OC);
 text(checklist.name);
 ec('span');
 text(`(${ checklist.items.length })`);
-let cndY8cr = component.task.canBeModified;
-this.setState('stx1LFc', cndY8cr);
-if (cndY8cr) { 
-let cnd1TOo = ! component.isAddingChecklistItem;
-this.setState('st_G4MA', cnd1TOo);
-let cndWkCT = component.isAddingChecklistItem && component.currentChecklist.id == checklist.id;
-this.setState('stLPCqa', cndWkCT);
-let cndLdsj = !(cnd1TOo||cndWkCT);
-this.setState('stLfMpT', cndLdsj);
-if (cnd1TOo) { 
-let elYPJCw = eo('button','y1vff'+ii8YOp,null, eventListeners, {onclick:[function(e) {var $el = this;component.addChecklistItem(checklist)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-success`);
-let ellPqYJ = eo('i','RnMff'+ii8YOp,null,`class`,`${fas('plus') + ' icon'}`);
+let cndmpxD = component.task.canBeModified;
+this.setState('stU_FBa', cndmpxD);
+if (cndmpxD) { 
+let cnddX3E = ! component.isAddingChecklistItem;
+this.setState('sthdrUj', cnddX3E);
+let cndha9v = component.isAddingChecklistItem && component.currentChecklist.id == checklist.id;
+this.setState('stlSS4L', cndha9v);
+let cndUUco = !(cnddX3E||cndha9v);
+this.setState('st0Vsi9', cndUUco);
+if (cnddX3E) { 
+let elZd_3t = eo('button','xeAff'+iif9OC,null, eventListeners, {onclick:[function(e) {var $el = this;component.addChecklistItem(checklist)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-success`);
+let elZVgwi = eo('i','4Mfff'+iif9OC,null,`class`,`${fas('plus') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elYPJCw;
+                        let $el = elZd_3t;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Add Item')}`});
         ;
                     }, 20);                
-                }else if (cndWkCT) { 
-let elyhGWY = eo('button','1nTff'+ii8YOp,null, eventListeners, {onclick:[function(e) {var $el = this;component.isAddingChecklistItem = false;}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
-let elIduX_ = eo('i','oI6ff'+ii8YOp,null,`class`,`${fas('times') + ' icon'}`);
+                }else if (cndha9v) { 
+let elBspuk = eo('button','VFvff'+iif9OC,null, eventListeners, {onclick:[function(e) {var $el = this;component.isAddingChecklistItem = false;}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
+let el0I0zo = eo('i','9Brff'+iif9OC,null,`class`,`${fas('times') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elyhGWY;
+                        let $el = elBspuk;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Remove')}`});
         ;
                     }, 20);                
-                }let cndWqd9 = ! component.isInEditMode || component.type != 'checklist' || component.currentItem.id != checklist.id;
-this.setState('stNIcqD', cndWqd9);
-let cnd81q9 = !(cndWqd9);
-this.setState('stdZGtp', cnd81q9);
-if (cndWqd9) { 
-let elPw3Ki = eo('button','GtHff'+ii8YOp,null, eventListeners, {onclick:[function(e) {var $el = this;component.allowEditing(checklist, index, 'checklist')}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-cyan`);
-let el8u1tC = eo('i','3ewff'+ii8YOp,null,`class`,`${fas('edit') + ' icon'}`);
+                }let cndpoBw = ! component.isInEditMode || component.type != 'checklist' || component.currentItem.id != checklist.id;
+this.setState('stS10xQ', cndpoBw);
+let cnd_pYz = !(cndpoBw);
+this.setState('stsY52w', cnd_pYz);
+if (cndpoBw) { 
+let elwsvAt = eo('button','TuUff'+iif9OC,null, eventListeners, {onclick:[function(e) {var $el = this;component.allowEditing(checklist, index, 'checklist')}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-cyan`);
+let el2iEFw = eo('i','l3Sff'+iif9OC,null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elPw3Ki;
+                        let $el = elwsvAt;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Edit')}`});
         ;
                     }, 20);                
                 }else { 
-let elMXdmH = eo('button','smbff'+ii8YOp,null, eventListeners, {onclick:[function(e) {var $el = this;component.isInEditMode = false}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-orange`);
-let elY5Jat = eo('i','vUHff'+ii8YOp,null,`class`,`${fas('edit') + ' icon'}`);
+let elPPCdW = eo('button','TCGff'+iif9OC,null, eventListeners, {onclick:[function(e) {var $el = this;component.isInEditMode = false}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-orange`);
+let elzy4i9 = eo('i','QY3ff'+iif9OC,null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elMXdmH;
+                        let $el = elPPCdW;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Cancel Editing')}`});
         ;
                     }, 20);                
-                }let elelwOA = eo('button','iJXff'+ii8YOp,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(checklist, index, 'checklist')}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
-let elUlVh6 = eo('i','YxKff'+ii8YOp,null,`class`,`${fas('trash') + ' icon'}`);
+                }let ele6l3u = eo('button','bmpff'+iif9OC,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(checklist, index, 'checklist')}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-circle btn-danger`);
+let el_5KfC = eo('i','iv2ff'+iif9OC,null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elelwOA;
+                        let $el = ele6l3u;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Remove')}`});
         ;
                     }, 20);                
                 }ec('div');
-let cnd229S = component.isInEditMode && component.type == 'checklist' && component.currentItem.id == checklist.id;
-this.setState('stSOjxg', cnd229S);
-let cndxfoa = ! component.isInEditMode || !component.currentItem || component.currentItem.id != checklist.id;
-this.setState('stb0EvZ', cndxfoa);
-if (cnd229S) { 
-let elJAsVm = eo('form','c_Mff'+ii8YOp,null, eventListeners, {onsubmit:[function(e) {
+let cnd_ef6 = component.isInEditMode && component.type == 'checklist' && component.currentItem.id == checklist.id;
+this.setState('stVM5RI', cnd_ef6);
+let cndGzLa = ! component.isInEditMode || !component.currentItem || component.currentItem.id != checklist.id;
+this.setState('stHMb_0', cndGzLa);
+if (cnd_ef6) { 
+let elbjcIS = eo('form','zJ7ff'+iif9OC,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submitChecklist($el)}]},`class`,`m-t-2`);
 
-                if (! elJAsVm.formHandler) {
-                    window.cfrmdlr = elJAsVm.formHandler = new FormHandler(elJAsVm, component);
+                if (! elbjcIS.formHandler) {
+                    window.cfrmdlr = elbjcIS.formHandler = new FormHandler(elbjcIS, component);
                 } else {
-                    window.cfrmdlr = elJAsVm.formHandler;
+                    window.cfrmdlr = elbjcIS.formHandler;
                 }
-            let el6Y0vn = ev('input','aGsff'+ii8YOp,null, eventListeners, {oninput:[function(e) {component.task.id = this.value;}]},`value`,`${fval(component.task.id)}`,`name`,`${(`task`).toInputName()}`,`type`,`hidden`);
-el6Y0vn.value = fval(component.task.id);
-let elTFOtS = ev('input','MTtff'+ii8YOp,null, eventListeners, {oninput:[function(e) {component.currentItem.sortOrder = this.value;}]},`value`,`${fval(component.currentItem.sortOrder)}`,`name`,`${(`sortOrder`).toInputName()}`,`type`,`hidden`);
-elTFOtS.value = fval(component.currentItem.sortOrder);
-let el02tFR = eo('div','xJMff'+ii8YOp,null,`class`,`form-group`);
-el02tFR.cls = {'group-error': !!elJAsVm.formHandler.getError(`name`) };
+            let elpvAi2 = ev('input','PE_ff'+iif9OC,null, eventListeners, {oninput:[function(e) {component.task.id = this.value;}]},`value`,`${fval(component.task.id)}`,`name`,`${(`task`).toInputName()}`,`type`,`hidden`);
+elpvAi2.value = fval(component.task.id);
+let elg6zFO = ev('input','hzsff'+iif9OC,null, eventListeners, {oninput:[function(e) {component.currentItem.sortOrder = this.value;}]},`value`,`${fval(component.currentItem.sortOrder)}`,`name`,`${(`sortOrder`).toInputName()}`,`type`,`hidden`);
+elg6zFO.value = fval(component.currentItem.sortOrder);
+let elTGC1G = eo('div','6aNff'+iif9OC,null,`class`,`form-group`);
+elTGC1G.cls = {'group-error': !!elbjcIS.formHandler.getError(`name`) };
 
-            for (let className in el02tFR.cls) {
-                el02tFR.classList.toggle(className, el02tFR.cls[className]);
+            for (let className in elTGC1G.cls) {
+                elTGC1G.classList.toggle(className, elTGC1G.cls[className]);
             }  
-            let el1p24c = eo('label','RRoff'+ii8YOp,null,`for`,`name`);
+            let elX16fW = eo('label','4Skff'+iif9OC,null,`for`,`name`);
 text(trans('Checklist Name'));
-let elnqv59 = eo('span','nkbff'+ii8YOp,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elunq9Q = eo('span','y9nff'+iif9OC,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let el1VjIm = ev('input','wHQff'+ii8YOp,null, eventListeners, {oninput:[function(e) {component.currentItem.name = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elJAsVm.formHandler.addError(`name`, 'required', trans('validation.required'));}return elJAsVm.formHandler.removeError(`name`);}]},`value`,`${fval(component.currentItem.name)}`,`name`,`${(`name`).toInputName()}`,`placeholder`,`${trans(`Checklist Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`name`);
-el1VjIm.value = fval(component.currentItem.name);
-let cnd56fa = elJAsVm.formHandler.getError(`name`);
-this.setState('stW7oMj', cnd56fa);
-if (cnd56fa) { 
-let elPndbb = eo('div','Hbyff'+ii8YOp,null,`class`,`alert alert-danger`);
-text(elJAsVm.formHandler.getError(`name`));
+let elMT2nu = ev('input','3osff'+iif9OC,null, eventListeners, {oninput:[function(e) {component.currentItem.name = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elbjcIS.formHandler.addError(`name`, 'required', trans('validation.required'));}return elbjcIS.formHandler.removeError(`name`);}]},`value`,`${fval(component.currentItem.name)}`,`name`,`${(`name`).toInputName()}`,`placeholder`,`${trans(`Checklist Name`)}`,`type`,`text`,`class`,`form-control`,`id`,`name`);
+elMT2nu.value = fval(component.currentItem.name);
+let cnd3YC4 = elbjcIS.formHandler.getError(`name`);
+this.setState('stIRcPh', cnd3YC4);
+if (cnd3YC4) { 
+let elx8cOK = eo('div','T0Rff'+iif9OC,null,`class`,`alert alert-danger`);
+text(elbjcIS.formHandler.getError(`name`));
 ec('div');
 }ec('div');
-let el1VVsp = eo('button','97fff'+ii8YOp,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn bold btn-success bold`);
+let elfL_i6 = eo('button','80vff'+iif9OC,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn bold btn-success bold`);
 text(`Update`);
 ec('button');
 ec('form');
-}else if (cndxfoa) { 
-let elqUBoM = eo('ul','5Poff'+ii8YOp,null,`class`,`items`);
+}else if (cndGzLa) { 
+let el38xpq = eo('ul','_Eyff'+iif9OC,null,`class`,`items`);
 for (let i in checklist.items) {
 let item = checklist.items[i]; 
- let ii9SdE = item.id+ i;
-let eloDZMY = eo('li','hbN9zdy5XtGb' + i+ii8YOp+ii9SdE,null, eventListeners, {onmouseover:[function(e) {var $el = this;component.suggestCheckItemModification(item)}],onmouseout:[function(e) {var $el = this;component.unsuggestCheckItemModification()}]},`class`,`item`);
-let cmpeMOW = this._lc('cYs9rEOmC', {parent:component,props:{label:item.item,value:item.item,checked:item.done},events:{onchange:function(e) {let $el = this; component.changeItemStatus(item, $el.checked)}},boolAttrs:{checked:item.done},state:'stb0EvZ',insideLoop:true,index:"" +ii8YOp+ii9SdE});
-let cndvT3w = component.isSuggestingItemControl && component.modifyingChecklistItem.id == item.id;
-this.setState('stRgmzZ', cndvT3w);
-if (cndvT3w) { 
-let el8UMc8 = eo('button','REEff'+ii8YOp+ii9SdE,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(checklist, index, 'item', item, i)}]},`title`,``,`class`,`btn btn-sm btn-danger btn-circle delete-item-btn`);
-let elzUpw1 = eo('i','9jGff'+ii8YOp+ii9SdE,null,`class`,`${fas('trash') + ' icon'}`);
+ let iiZDx3 = item.id+ i;
+let elJjbjH = eo('li','qiNU0kXF1qzK' + i+iif9OC+iiZDx3,null, eventListeners, {onmouseover:[function(e) {var $el = this;component.suggestCheckItemModification(item)}],onmouseout:[function(e) {var $el = this;component.unsuggestCheckItemModification()}]},`class`,`item`);
+let cmp98uI = this._lc('cjDAmOwnT', {parent:component,props:{label:item.item,value:item.item,checked:item.done},events:{onchange:function(e) {let $el = this; component.changeItemStatus(item, $el.checked)}},boolAttrs:{checked:item.done},state:'stHMb_0',insideLoop:true,index:"" +iif9OC+iiZDx3});
+let cnd2cSU = component.isSuggestingItemControl && component.modifyingChecklistItem.id == item.id;
+this.setState('stAqQ8p', cnd2cSU);
+if (cnd2cSU) { 
+let elMfb6R = eo('button','qbhff'+iif9OC+iiZDx3,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(checklist, index, 'item', item, i)}]},`title`,``,`class`,`btn btn-sm btn-danger btn-circle delete-item-btn`);
+let elFWS0i = eo('i','H8Off'+iif9OC+iiZDx3,null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = el8UMc8;
+                        let $el = elMfb6R;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Remove item')}`});
         ;
                     }, 20);                
                 }ec('li');
 }
-let cndkPHl = component.isAddingChecklistItem && component.currentChecklist.id == checklist.id;
-this.setState('stYL_Xm', cndkPHl);
-if (cndkPHl) { 
-let elY7Xwy = eo('li','5RXff'+ii8YOp,null,`class`,`item`);
-let el5HjmY = eo('form','kVjff'+ii8YOp,null, eventListeners, {onsubmit:[function(e) {
+let cndy84b = component.isAddingChecklistItem && component.currentChecklist.id == checklist.id;
+this.setState('stHk8qr', cndy84b);
+if (cndy84b) { 
+let elhgvvn = eo('li','EzDff'+iif9OC,null,`class`,`item`);
+let elogu4p = eo('form','Cikff'+iif9OC,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submitItem($el)}]});
 
-                if (! el5HjmY.formHandler) {
-                    window.cfrmdlr = el5HjmY.formHandler = new FormHandler(el5HjmY, component);
+                if (! elogu4p.formHandler) {
+                    window.cfrmdlr = elogu4p.formHandler = new FormHandler(elogu4p, component);
                 } else {
-                    window.cfrmdlr = el5HjmY.formHandler;
+                    window.cfrmdlr = elogu4p.formHandler;
                 }
-            let elgpEsK = ev('input','kHtff'+ii8YOp,null, eventListeners, {oninput:[function(e) {component.task.id = this.value;}]},`value`,`${fval(component.task.id)}`,`name`,`${(`task`).toInputName()}`,`type`,`hidden`);
-elgpEsK.value = fval(component.task.id);
-let elA529U = ev('input','qWzff'+ii8YOp,null, eventListeners, {oninput:[function(e) {component.currentChecklist.id = this.value;}]},`value`,`${fval(component.currentChecklist.id)}`,`name`,`${(`checklist`).toInputName()}`,`type`,`hidden`);
-elA529U.value = fval(component.currentChecklist.id);
-let elwUNgb = ev('input','cHzff'+ii8YOp,null, eventListeners, {oninput:[function(e) {component.currentChecklist.length = this.value;}]},`value`,`${fval(component.currentChecklist.length)}`,`name`,`${(`sortOrder`).toInputName()}`,`type`,`hidden`);
-elwUNgb.value = fval(component.currentChecklist.length);
-let elozNJF = ev('input','cbqff'+ii8YOp,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return el5HjmY.formHandler.addError(`item`, 'required', trans('validation.required'));}return el5HjmY.formHandler.removeError(`item`);}]},`name`,`${(`item`).toInputName()}`,`placeholder`,`${trans(`Checklist Item`)}`,`type`,`text`,`class`,`form-control`,`id`,`item`);
+            let el7OWpn = ev('input','RGSff'+iif9OC,null, eventListeners, {oninput:[function(e) {component.task.id = this.value;}]},`value`,`${fval(component.task.id)}`,`name`,`${(`task`).toInputName()}`,`type`,`hidden`);
+el7OWpn.value = fval(component.task.id);
+let elWpeFQ = ev('input','K9Dff'+iif9OC,null, eventListeners, {oninput:[function(e) {component.currentChecklist.id = this.value;}]},`value`,`${fval(component.currentChecklist.id)}`,`name`,`${(`checklist`).toInputName()}`,`type`,`hidden`);
+elWpeFQ.value = fval(component.currentChecklist.id);
+let elmFihn = ev('input','nHbff'+iif9OC,null, eventListeners, {oninput:[function(e) {component.currentChecklist.length = this.value;}]},`value`,`${fval(component.currentChecklist.length)}`,`name`,`${(`sortOrder`).toInputName()}`,`type`,`hidden`);
+elmFihn.value = fval(component.currentChecklist.length);
+let elNgjDD = ev('input','wQFff'+iif9OC,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return elogu4p.formHandler.addError(`item`, 'required', trans('validation.required'));}return elogu4p.formHandler.removeError(`item`);}]},`name`,`${(`item`).toInputName()}`,`placeholder`,`${trans(`Checklist Item`)}`,`type`,`text`,`class`,`form-control`,`id`,`item`);
 
                     setTimeout(function () {
-                        let $el = elozNJF;
+                        let $el = elNgjDD;
                         
-            if (true && ! elozNJF.focused) {
-                elozNJF.setSelectionRange(elozNJF.value.length, elozNJF.value.length)
-                elozNJF.focused = true;
-                elozNJF.focus();
+            if (true && ! elNgjDD.focused) {
+                elNgjDD.setSelectionRange(elNgjDD.value.length, elNgjDD.value.length)
+                elNgjDD.focused = true;
+                elNgjDD.focus();
             }
         ;
                     }, 20);                
-                let cndizGM = el5HjmY.formHandler.getError(`item`);
-this.setState('stSBILP', cndizGM);
-if (cndizGM) { 
-let elsuBwi = eo('div','S2Nff'+ii8YOp,null,`class`,`alert alert-danger`);
-text(el5HjmY.formHandler.getError(`item`));
+                let cnd2wlz = elogu4p.formHandler.getError(`item`);
+this.setState('stdPvOG', cnd2wlz);
+if (cnd2wlz) { 
+let el0cG1Q = eo('div','lI6ff'+iif9OC,null,`class`,`alert alert-danger`);
+text(elogu4p.formHandler.getError(`item`));
 ec('div');
-}let ellduLP = eo('button','gPYff'+ii8YOp,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn btn-sm btn-primary bold`);
+}let el4myzj = eo('button','_7fff'+iif9OC,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn btn-sm btn-primary bold`);
 text(`Add Item`);
 ec('button');
 ec('form');
@@ -322,10 +322,10 @@ ec('li');
 ec('div');
 ec('h3');
 ec('section');
-let cnd_MrR = component.isAboutToRemove;
-this.setState('st8ryLx', cnd_MrR);
-if (cnd_MrR) { 
-let cmpDlq0 = this._lc('cWCz8Mixw', {parent:component,events:{onclose:function(e) {let $el = this; component.isAboutToRemove = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'st8ryLx'});
+let cndBkdi = component.isAboutToRemove;
+this.setState('stlsZ5Q', cndBkdi);
+if (cndBkdi) { 
+let cmpwaiP = this._lc('cjt8GamAl', {parent:component,events:{onclose:function(e) {let $el = this; component.isAboutToRemove = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stlsZ5Q'});
 }
                     this.isReadyToGo();
                 }

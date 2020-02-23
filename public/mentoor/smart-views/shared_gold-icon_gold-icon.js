@@ -6,16 +6,16 @@ _Component({
                 observe: ['large','coins','textColor'],
                 children: {},
                 render: function (component) {
-                    let elXDuco = ev('img',null,null,`src`,`${assets('images/coins.svg')}`,`class`,`coin-img ${ component.inputs.getAttr('class', '') }`,`alt`,`coins`);
-elXDuco.cls = {large: component.large};
+                    let eljfloV = ev('img',null,null,`src`,`${assets('images/coins.svg')}`,`class`,`coin-img ${ component.inputs.getAttr('class', '') }`,`alt`,`coins`);
+eljfloV.cls = {large: component.large};
 
-            for (let className in elXDuco.cls) {
-                elXDuco.classList.toggle(className, elXDuco.cls[className]);
+            for (let className in eljfloV.cls) {
+                eljfloV.classList.toggle(className, eljfloV.cls[className]);
             }  
-            let cndVuhg = component.coins;
-this.setState('stcuPOE', cndVuhg);
-if (cndVuhg) { 
-let el5Twpz = eo('strong','aoCf',null,`class`,`${ component.textColor }`);
+            let cndF_Qg = component.coins;
+this.setState('stoaUv4', cndF_Qg);
+if (cndF_Qg) { 
+let elQydUO = eo('strong','IYUf',null,`class`,`${ component.textColor }`);
 text(component.coins.format());
 ec('strong');
 }

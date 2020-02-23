@@ -4,9 +4,9 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: false,
                 observe: [],
-                children: {cLp63bNjX:'timeline-page'},
+                children: {c1BeXa_uf:'timeline-page'},
                 render: function (component) {
-                    let cmpNnKH = this._lc('cLp63bNjX', {parent:component});
+                    let cmpazWZ = this._lc('c1BeXa_uf', {parent:component});
 
                     this.isReadyToGo();
                 }

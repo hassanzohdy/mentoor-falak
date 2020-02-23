@@ -4,178 +4,178 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','openModal','bugs','detectChanges','confirmRemoving','modalIsOpened','record','onSubmit','confirmDelete','remove','filterOptions','filteredData','filterBy'],
-                children: {cJgvXlp17:'flk-dropdown-list',cCA3OZ3Sn:'flk-dropdown-list',cJrGuJXZn:'flk-dropdown-list',caJ6Ldag4:'flk-dropdown-list',clWiUCKJU:'flk-dropdown-list',cLLCZdyQ8:'flk-time-ago',crtCu8PEK:'project-layout',c6ATvue6l:'bug-modal',c_kE9zPFk:'flk-alert'},
+                children: {ciU3nPwm7:'flk-dropdown-list',clypeKkXa:'flk-dropdown-list',ciZNWMS4P:'flk-dropdown-list',cGuHXBi8n:'flk-dropdown-list',cDH6dnsM2:'flk-dropdown-list',cn_4TZGtb:'flk-time-ago',cqT0sUhQz:'project-layout',cKWGYTepg:'bug-modal',cvrNo0HMd:'flk-alert'},
                 render: function (component) {
-                    let cmpRR5l = this._lc('crtCu8PEK', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elcD4F9 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('add', {status: 'active'})}]},`class`,`float-right btn btn-success bold`);
-let elUZS53 = eo('i',null,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
+                    let cmpgFte = this._lc('cqT0sUhQz', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elGp3JD = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('add', {status: 'active'})}]},`class`,`float-right btn btn-success bold`);
+let elcvkMZ = eo('i',null,null,`class`,`${fas('plus') + ' mr-1 icon'}`);
 ec('i');
 text(`Bug`);
 ec('button');
-let elZAkHF = eo('h1',null,null,`class`,`m-y-1 purple-text`);
+let ely4lOt = eo('h1',null,null,`class`,`m-y-1 purple-text`);
 text( component.project.name );
-let el4N2Z1 = ev('img',null,null,`src`,`${assets('images/bug.jpg')}`,`title`,``,`style`,`width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem`);
+let elvMGug = ev('img',null,null,`src`,`${assets('images/bug.jpg')}`,`title`,``,`style`,`width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem`);
 
                     setTimeout(function () {
-                        let $el = el4N2Z1;
+                        let $el = elvMGug;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('bug')}`});
         ;
                     }, 20);                
-                let elt14Lj = eo('span',null,null,`class`,`bold red-text mr-2`);
+                let elIdGqQ = eo('span',null,null,`class`,`bold red-text mr-2`);
 text(`s`);
 ec('span');
 text(`(${ component.project.bugs.length })`);
 ec('h1');
-let elfZC7_ = eo('div',null,null,`class`,`simple-card m-b-2 col-12 tasks-list-filter`);
-let elSgwEQ = eo('div',null,null,`class`,`row`);
-let cndnz4q = ! Is.empty(component.filterOptions.assignees);
-this.setState('stSAKqX', cndnz4q);
-if (cndnz4q) { 
-let el8HD4W = eo('div','wDQf',null,`class`,`col-sm-3 filter-container`);
-let elV_fkn = eo('div','Txbf',null,`class`,`filter-list`);
-let cmpzSqn = this._lc('cJgvXlp17', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.assignees,value:component.filteredData.assignees,imageable:true,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('assignees', e);}},boolAttrs:{multiple:true},attrs:{heading:'Assignees'},state:'stSAKqX'});
+let elYf6Ep = eo('div',null,null,`class`,`simple-card m-b-2 col-12 tasks-list-filter`);
+let elkoOln = eo('div',null,null,`class`,`row`);
+let cnd8dKc = ! Is.empty(component.filterOptions.assignees);
+this.setState('stXnYuO', cnd8dKc);
+if (cnd8dKc) { 
+let elGPYbf = eo('div','n2zf',null,`class`,`col-sm-3 filter-container`);
+let el0MU6a = eo('div','jD5f',null,`class`,`filter-list`);
+let cmpyqZD = this._lc('ciU3nPwm7', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.assignees,value:component.filteredData.assignees,imageable:true,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('assignees', e);}},boolAttrs:{multiple:true},attrs:{heading:'Assignees'},state:'stXnYuO'});
 ec('div');
 ec('div');
-}let cndOgqC = ! Is.empty(component.filterOptions.testers);
-this.setState('st16SQc', cndOgqC);
-if (cndOgqC) { 
-let elr8lKN = eo('div','tugf',null,`class`,`col-sm-3 filter-container`);
-let elfxCRF = eo('div','fiEf',null,`class`,`filter-list`);
-let cmp72pM = this._lc('cCA3OZ3Sn', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.testers,value:component.filteredData.testers,imageable:true,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('testers', e);}},boolAttrs:{multiple:true},attrs:{heading:'Testers'},state:'st16SQc'});
+}let cnd2rpJ = ! Is.empty(component.filterOptions.testers);
+this.setState('stRt4t2', cnd2rpJ);
+if (cnd2rpJ) { 
+let elBla0V = eo('div','_kzf',null,`class`,`col-sm-3 filter-container`);
+let el5p4gv = eo('div','XRgf',null,`class`,`filter-list`);
+let cmp8Wny = this._lc('clypeKkXa', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.testers,value:component.filteredData.testers,imageable:true,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('testers', e);}},boolAttrs:{multiple:true},attrs:{heading:'Testers'},state:'stRt4t2'});
 ec('div');
 ec('div');
-}let cndhNbk = ! Is.empty(component.filterOptions.priorities);
-this.setState('stWjwrE', cndhNbk);
-if (cndhNbk) { 
-let elWpDSw = eo('div','UVCf',null,`class`,`col-sm-3 filter-container`);
-let elPCweZ = eo('div','xTff',null,`class`,`filter-list`);
-let cmpsd9Y = this._lc('cJrGuJXZn', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.priorities,value:component.filteredData.priorities,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('priorities', e);}},boolAttrs:{multiple:true},attrs:{heading:'Priority'},state:'stWjwrE'});
+}let cnduMRx = ! Is.empty(component.filterOptions.priorities);
+this.setState('stOqx4R', cnduMRx);
+if (cnduMRx) { 
+let elvYiBC = eo('div','sczf',null,`class`,`col-sm-3 filter-container`);
+let el_zufG = eo('div','fdzf',null,`class`,`filter-list`);
+let cmpOH5J = this._lc('ciZNWMS4P', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.priorities,value:component.filteredData.priorities,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('priorities', e);}},boolAttrs:{multiple:true},attrs:{heading:'Priority'},state:'stOqx4R'});
 ec('div');
 ec('div');
-}let cnda1mX = ! Is.empty(component.filterOptions.modules);
-this.setState('st08QBO', cnda1mX);
-if (cnda1mX) { 
-let elO8hgv = eo('div','Q1ef',null,`class`,`col-sm-3 filter-container`);
-let ellYzFl = eo('div','nL_f',null,`class`,`filter-list`);
-let cmppFTG = this._lc('caJ6Ldag4', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.modules,value:component.filteredData.modules,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('modules', e);}},boolAttrs:{multiple:true},attrs:{heading:'Module'},state:'st08QBO'});
+}let cndtV9R = ! Is.empty(component.filterOptions.modules);
+this.setState('std1h4y', cndtV9R);
+if (cndtV9R) { 
+let elO7kOG = eo('div','7jvf',null,`class`,`col-sm-3 filter-container`);
+let elp2znW = eo('div','TuYf',null,`class`,`filter-list`);
+let cmpTX8E = this._lc('cGuHXBi8n', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.modules,value:component.filteredData.modules,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('modules', e);}},boolAttrs:{multiple:true},attrs:{heading:'Module'},state:'std1h4y'});
 ec('div');
 ec('div');
-}let cndFcqN = ! Is.empty(component.filterOptions.sprints);
-this.setState('stu1uC9', cndFcqN);
-if (cndFcqN) { 
-let elnK6ki = eo('div','r4Mf',null,`class`,`col-sm-3 filter-container`);
-let elbnuR6 = eo('div','iHNf',null,`class`,`filter-list`);
-let cmpPM8a = this._lc('clWiUCKJU', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.sprints,value:component.filteredData.sprints,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('sprints', e);}},boolAttrs:{multiple:true},attrs:{heading:'Sprints'},state:'stu1uC9'});
+}let cndwTNg = ! Is.empty(component.filterOptions.sprints);
+this.setState('stsvjg2', cndwTNg);
+if (cndwTNg) { 
+let elJQScP = eo('div','YSKf',null,`class`,`col-sm-3 filter-container`);
+let elSnZx6 = eo('div','Pzof',null,`class`,`filter-list`);
+let cmpYYn7 = this._lc('cDH6dnsM2', {parent:component,parentTop:projectLayout,props:{items:component.filterOptions.sprints,value:component.filteredData.sprints,multiple:true},events:{onselect:function(e) {let $el = this; component.filterBy('sprints', e);}},boolAttrs:{multiple:true},attrs:{heading:'Sprints'},state:'stsvjg2'});
 ec('div');
 ec('div');
 }ec('div');
 ec('div');
 for (let status in component.bugs) {
 let bugsOptions = component.bugs[status]; 
- let iiIXVm = 'XzGcBI9' + status;
-let el9A4YW = eo('h4','yYSqxTyVMMU2' + status+iiIXVm,null, eventListeners, {onclick:[function(e) {var $el = this;bugsOptions.opened = ! bugsOptions.opened; component.detectChanges();}]},`class`,`text-capitalize m-t-2 pointer gray-text simple-card`);
-let el5rgvZ = eo('span','XBeff'+iiIXVm);
+ let iiIGOB = 'GN7o84B' + status;
+let el0iGIw = eo('h4','mPDwwlewGQTf' + status+iiIGOB,null, eventListeners, {onclick:[function(e) {var $el = this;bugsOptions.opened = ! bugsOptions.opened; component.detectChanges();}]},`class`,`text-capitalize m-t-2 pointer gray-text simple-card`);
+let elZjsXt = eo('span','sC7ff'+iiIGOB);
 text(status + ' Bugs (' + bugsOptions.bugs.length + ')');
 ec('span');
-let cndHvX9 = bugsOptions.opened;
-this.setState('stZukWe', cndHvX9);
-let cnddJjI = !(cndHvX9);
-this.setState('stLrD6G', cnddJjI);
-if (cndHvX9) { 
-let elp3_rQ = eo('i','jUUff'+iiIXVm,null,`class`,`${fas('angle-down') + ' ml-2 icon'}`);
+let cndFeic = bugsOptions.opened;
+this.setState('stcaBUl', cndFeic);
+let cndsUT5 = !(cndFeic);
+this.setState('stjU_1S', cndsUT5);
+if (cndFeic) { 
+let eln_SJU = eo('i','WeDff'+iiIGOB,null,`class`,`${fas('angle-down') + ' ml-2 icon'}`);
 ec('i');
 }else { 
-let el8NPIa = eo('i','9C_ff'+iiIXVm,null,`class`,`${fas('angle-up') + ' ml-2 icon'}`);
+let elhZtlc = eo('i','tBBff'+iiIGOB,null,`class`,`${fas('angle-up') + ' ml-2 icon'}`);
 ec('i');
 }ec('h4');
-let cndEbjR = bugsOptions.opened;
-this.setState('stvOB8M', cndEbjR);
-if (cndEbjR) { 
-let el60nlA = eo('div','Ws0ff'+iiIXVm,null,`class`,`table-responsive`);
-let elZF4eQ = eo('table','Ucoff'+iiIXVm,null,`class`,`table buttoned simple-card`);
-let el7wkA0 = eo('thead','qZBff'+iiIXVm);
-let elvyOYJ = eo('tr','Kcnff'+iiIXVm);
-let el8e1b3 = eo('th','Wjpff'+iiIXVm);
+let cndyJfD = bugsOptions.opened;
+this.setState('stpaqWP', cndyJfD);
+if (cndyJfD) { 
+let elw14pK = eo('div','U4Gff'+iiIGOB,null,`class`,`table-responsive`);
+let el88iAH = eo('table','zkOff'+iiIGOB,null,`class`,`table buttoned simple-card`);
+let els81Z0 = eo('thead','qA1ff'+iiIGOB);
+let el5Wjd4 = eo('tr','cIUff'+iiIGOB);
+let elvq2pc = eo('th','kdIff'+iiIGOB);
 text(`#`);
 ec('th');
-let eljLSYm = eo('th','dhzff'+iiIXVm,null,`class`,`title-column`);
+let elliNqh = eo('th','b1aff'+iiIGOB,null,`class`,`title-column`);
 text(`Title`);
 ec('th');
-let elo_v9w = eo('th','P9Yff'+iiIXVm);
+let elXw1wv = eo('th','fOfff'+iiIGOB);
 text(`Created`);
 ec('th');
-let elk0Q9q = eo('th','M0Wff'+iiIXVm);
+let elKngIs = eo('th','V9sff'+iiIGOB);
 text(`Comments`);
 ec('th');
-let elAFDZQ = eo('th','Vnjff'+iiIXVm);
+let elKnpZ0 = eo('th','DRtff'+iiIGOB);
 text(`Issued By`);
 ec('th');
-let elCUUif = eo('th','0ghff'+iiIXVm);
+let ela1RrU = eo('th','2Xxff'+iiIGOB);
 text(`Assigned To`);
 ec('th');
-let elNLqUu = eo('th','tU7ff'+iiIXVm);
+let elkl57s = eo('th','3bxff'+iiIGOB);
 text(`Module`);
 ec('th');
-let elrZgxa = eo('th','n6Vff'+iiIXVm);
+let elMzHJQ = eo('th','Jx4ff'+iiIGOB);
 text(`Priority`);
 ec('th');
-let elW7ceQ = eo('th','eysff'+iiIXVm);
+let el4nqZW = eo('th','s0fff'+iiIGOB);
 text(`Sprint`);
 ec('th');
-let elBLnNc = eo('th','IDjff'+iiIXVm);
+let elk6Lw4 = eo('th','bEYff'+iiIGOB);
 text(`Control`);
 ec('th');
 ec('tr');
 ec('thead');
-let elohSXx = eo('tbody','rXzff'+iiIXVm);
+let elageeE = eo('tbody','ilRff'+iiIGOB);
 for (let index in bugsOptions.bugs) {
 let record = bugsOptions.bugs[index]; 
- let iiabb6 = record.id+ index;
-let elAVT1K = eo('tr','89SB2u966ZTt' + index+iiIXVm+iiabb6);
-let elPrO5G = eo('td','jNFff'+iiIXVm+iiabb6);
+ let iifich = record.id+ index;
+let el2jc1N = eo('tr','VRoCtqrLul0g' + index+iiIGOB+iifich);
+let elM0tgu = eo('td','ySqff'+iiIGOB+iifich);
 text(record.id);
 ec('td');
-let elGR5qg = eo('td','6Hwff'+iiIXVm+iiabb6,null,`class`,`title-column`);
-let elpUoJZ = eo('a','yZfff'+iiIXVm+iiabb6,null,`href`,`${URLS.project(component.project, 'bugs', record)}`,`title`,``,`class`,`bold`);
+let elCkG6i = eo('td','9OVff'+iiIGOB+iifich,null,`class`,`title-column`);
+let elfW9Ow = eo('a','t1Eff'+iiIGOB+iifich,null,`href`,`${URLS.project(component.project, 'bugs', record)}`,`title`,``,`class`,`bold`);
 text(record.title.readMoreChars(20));
 ec('a');
 
                     setTimeout(function () {
-                        let $el = elpUoJZ;
+                        let $el = elfW9Ow;
                         
             true && tippyTooltip($el, {arrow:true,content:`${record.title}`});
         ;
                     }, 20);                
                 ec('td');
-let elrm1Pp = eo('td','0A0ff'+iiIXVm+iiabb6);
-let cmp6U9S = this._lc('cLLCZdyQ8', {parent:component,parentTop:projectLayout,props:{timestamp:record.createdAt.timestamp},state:'stvOB8M',insideLoop:true,index:"" +iiIXVm+iiabb6});
+let elrxqOa = eo('td','szrff'+iiIGOB+iifich);
+let cmpQepg = this._lc('cn_4TZGtb', {parent:component,parentTop:projectLayout,props:{timestamp:record.createdAt.timestamp},state:'stpaqWP',insideLoop:true,index:"" +iiIGOB+iifich});
 ec('td');
-let elk21cn = eo('td','vOpff'+iiIXVm+iiabb6);
-let eljLfFP = eo('strong','HQfff'+iiIXVm+iiabb6,null,`class`,`gray-text`);
+let el_0PE2 = eo('td','gcXff'+iiIGOB+iifich);
+let el8eTb1 = eo('strong','3IBff'+iiIGOB+iifich,null,`class`,`gray-text`);
 text(record.comments.length);
 ec('strong');
-let eloXq0h = eo('i','BQIff'+iiIXVm+iiabb6,null,`class`,`${far('comments') + ' ml-2 gray-text icon'}`);
+let el8nO5L = eo('i','xdnff'+iiIGOB+iifich,null,`class`,`${far('comments') + ' ml-2 gray-text icon'}`);
 ec('i');
 ec('td');
-let el3TWPn = eo('td','_ocff'+iiIXVm+iiabb6,null,`class`,`text-center`);
-let elZBsVy = ev('img','E80ff'+iiIXVm+iiabb6,null,`src`,`${record.createdBy.image}`,`title`,`${record.createdBy.name}`,`class`,`small mr-2 circle`,`alt`,`${record.createdBy.name}`);
+let elXQz0d = eo('td','7Sqff'+iiIGOB+iifich,null,`class`,`text-center`);
+let el5e1ID = ev('img','Mjrff'+iiIGOB+iifich,null,`src`,`${record.createdBy.image}`,`title`,`${record.createdBy.name}`,`class`,`small mr-2 circle`,`alt`,`${record.createdBy.name}`);
 
                     setTimeout(function () {
-                        let $el = elZBsVy;
+                        let $el = el5e1ID;
                         
             true && tippyTooltip($el, {arrow:true,content:`${record.createdBy.name}`});
         ;
                     }, 20);                
                 ec('td');
-let el1UXf8 = eo('td','7TYff'+iiIXVm+iiabb6,null,`class`,`text-center`);
+let el0hOEV = eo('td','37jff'+iiIGOB+iifich,null,`class`,`text-center`);
 for (let i in record.assignee) {
 let assignee = record.assignee[i]; 
- let iiq6k6 = 'NPpkTZi' + i;
-let elzzqIv = eo('span','tTYu6aNb1EBF' + i+iiIXVm+iiabb6+iiq6k6,null,`class`,`mx-1`);
-let elfde90 = ev('img','mc2ff'+iiIXVm+iiabb6+iiq6k6,null,`src`,`${assignee.image}`,`title`,`${assignee.name}`,`class`,`small mr-2 circle`,`alt`,`${assignee.name}`);
+ let iiHKMd = 'yKejrMs' + i;
+let elSW_II = eo('span','UPQZmZkkwh2_' + i+iiIGOB+iifich+iiHKMd,null,`class`,`mx-1`);
+let elwrQfE = ev('img','O72ff'+iiIGOB+iifich+iiHKMd,null,`src`,`${assignee.image}`,`title`,`${assignee.name}`,`class`,`small mr-2 circle`,`alt`,`${assignee.name}`);
 
                     setTimeout(function () {
-                        let $el = elfde90;
+                        let $el = elwrQfE;
                         
             true && tippyTooltip($el, {arrow:true,content:`${assignee.name}`});
         ;
@@ -183,39 +183,39 @@ let elfde90 = ev('img','mc2ff'+iiIXVm+iiabb6+iiq6k6,null,`src`,`${assignee.image
                 ec('span');
 }
 ec('td');
-let elSmg0b = eo('td','Urhff'+iiIXVm+iiabb6,null,`class`,`bold gray-text`);
+let elBM0LJ = eo('td','YL1ff'+iiIGOB+iifich,null,`class`,`bold gray-text`);
 text(record.module ? record.module.name : 'N/a');
 ec('td');
-let elkosMk = eo('td','STaff'+iiIXVm+iiabb6);
-let elf6HSk = eo('span','gXeff'+iiIXVm+iiabb6,null,`class`,`badge priority ${ record.priority }`);
+let elJAM5E = eo('td','5zAff'+iiIGOB+iifich);
+let elflALz = eo('span','5Gpff'+iiIGOB+iifich,null,`class`,`badge priority ${ record.priority }`);
 text(record.priority);
 ec('span');
 ec('td');
-let elmpUUT = eo('th','eSsff'+iiIXVm+iiabb6,null,`class`,`text-center`);
+let el3eYNR = eo('th','4Lmff'+iiIGOB+iifich,null,`class`,`text-center`);
 text(record.sprint.name || 'N/a');
 ec('th');
-let elnhiRO = eo('td','xb5ff'+iiIXVm+iiabb6);
-let cndLJQk = record.canBeModified;
-this.setState('stviwsS', cndLJQk);
-if (cndLJQk) { 
-let elhqyu6 = eo('button','25yff'+iiIXVm+iiabb6,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('edit', record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-cyan`);
-let elwaZK6 = eo('i','uGcff'+iiIXVm+iiabb6,null,`class`,`${fas('edit') + ' icon'}`);
+let elJV8bj = eo('td','Ytpff'+iiIGOB+iifich);
+let cndK_Kb = record.canBeModified;
+this.setState('stXlrc5', cndK_Kb);
+if (cndK_Kb) { 
+let el8ugJu = eo('button','dJMff'+iiIGOB+iifich,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('edit', record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-cyan`);
+let elnzhLp = eo('i','XGtff'+iiIGOB+iifich,null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elhqyu6;
+                        let $el = el8ugJu;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Edit Bug')}`});
         ;
                     }, 20);                
-                let eloUui5 = eo('button','v5nff'+iiIXVm+iiabb6,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-danger`);
-let elP2t60 = eo('i','qnjff'+iiIXVm+iiabb6,null,`class`,`${fas('trash') + ' icon'}`);
+                let elRwcnv = eo('button','eADff'+iiIGOB+iifich,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(record, index)}]},`title`,``,`type`,`button`,`class`,`btn btn-sm btn-danger`);
+let elMZuHj = eo('i','zFVff'+iiIGOB+iifich,null,`class`,`${fas('trash') + ' icon'}`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = eloUui5;
+                        let $el = elRwcnv;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Delete Bug')}`});
         ;
@@ -228,14 +228,14 @@ ec('table');
 ec('div');
 }}
 }});
-let cndDGOR = component.modalIsOpened;
-this.setState('stL10d5', cndDGOR);
-if (cndDGOR) { 
-let cmpb8MK = this._lc('c6ATvue6l', {parent:component,props:{record:component.record,project:component.project},events:{onclose:function(e) {let $el = this; component.modalIsOpened = null;},onsave:function(e) {let $el = this; component.onSubmit(e)}},state:'stL10d5'});
-}let cndLyFK = component.confirmDelete;
-this.setState('stdrkff', cndLyFK);
-if (cndLyFK) { 
-let cmpVxAf = this._lc('c_kE9zPFk', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stdrkff'});
+let cnd8N13 = component.modalIsOpened;
+this.setState('st9Dj5U', cnd8N13);
+if (cnd8N13) { 
+let cmpNfnG = this._lc('cKWGYTepg', {parent:component,props:{record:component.record,project:component.project},events:{onclose:function(e) {let $el = this; component.modalIsOpened = null;},onsave:function(e) {let $el = this; component.onSubmit(e)}},state:'st9Dj5U'});
+}let cndR5Sw = component.confirmDelete;
+this.setState('stPIIg1', cndR5Sw);
+if (cndR5Sw) { 
+let cmph65k = this._lc('cvrNo0HMd', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null},onconfirm:function(e) {let $el = this; component.remove()}},state:'stPIIg1'});
 }
                     this.isReadyToGo();
                 }

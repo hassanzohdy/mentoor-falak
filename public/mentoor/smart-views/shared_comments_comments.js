@@ -4,280 +4,280 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['parentComment','toggleParentComments','commentsList','activeComment','project','user','comment','index','editMode','detectChanges','confirmRemoving','previewBy','currentRoute','maxCommentLines','submitComment','typeId','type','commentId','isSending','isValidForm','toggleSubComment','openCommentReply','disableComments','scrollToForm','newComment','isRecording','recordAudio','fileInput','confirmDelete','remove'],
-                children: {clyKSfzjb:'user-card',cm5JIe2R9:'user-card',cfDyaKSpj:'flk-time-ago',cWja5u8zf:'markdown',c34Opt0zi:'markdown',cJUMFOJaY:'flk-audio-player',cM7XXSaoV:'markdown-input',cPVX_eDSc:'flk-file-input',cEtNfRxEi:'record-audio-input',cSckU2_0p:'comments',cZoxbhu86:'markdown-input',c2NzFDnM8:'flk-file-input',cYXApDBjM:'record-audio-input',czNF92xdm:'flk-alert'},
+                children: {c7Hsn7Hky:'user-card',cKS0_Cm9D:'user-card',cnKRAotW1:'flk-time-ago',cHhthCPmk:'markdown',cn3adz26b:'markdown',cwExMAeAe:'flk-audio-player',chDVpfz1H:'markdown-input',cvw3RINz6:'flk-file-input',cplwt5eG4:'record-audio-input',cUmiG264q:'comments',cmevc49xA:'markdown-input',cgX5QFDOb:'flk-file-input',cTyplpoXW:'record-audio-input',cSMtUNkD9:'flk-alert'},
                 render: function (component) {
-                    let elNSfss = eo('div',null,null,`class`,`comments-list`);
-elNSfss.cls = {child: component.parentComment};
+                    let elqshmt = eo('div',null,null,`class`,`comments-list`);
+elqshmt.cls = {child: component.parentComment};
 
-            for (let className in elNSfss.cls) {
-                elNSfss.classList.toggle(className, elNSfss.cls[className]);
+            for (let className in elqshmt.cls) {
+                elqshmt.classList.toggle(className, elqshmt.cls[className]);
             }  
-            let elEAjd7 = eo('h2',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.toggleParentComments()}]},`class`,`bold m-y-2 heading`);
-let cndbuNB = ! component.parentComment;
-this.setState('sttMZ0D', cndbuNB);
-if (cndbuNB) { 
-let elHrL1g = eo('span','LfTf');
+            let elelnbG = eo('h2',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.toggleParentComments()}]},`class`,`bold m-y-2 heading`);
+let cndyo2Z = ! component.parentComment;
+this.setState('ststkBD', cndyo2Z);
+if (cndyo2Z) { 
+let elAhsTP = eo('span','0sBf');
 text(`Comments
             (${ component.commentsList.length })`);
 ec('span');
 }ec('h2');
 for (let index in component.commentsList) {
 let comment = component.commentsList[index]; 
- let ii86Xm = comment.id+ index;
-let ellFbq2 = eo('div','alzUyNhVouDK' + index+ii86Xm,null,`id`,`${'cmnt' + comment.id}`,`class`,`comment p-1 m-b-1`);
-ellFbq2.cls = {active: Boolean(component.activeComment && component.activeComment.id == comment.id)};
+ let iiNy9P = comment.id+ index;
+let elbB6vv = eo('div','O3PcwQT4k1zu' + index+iiNy9P,null,`id`,`${'cmnt' + comment.id}`,`class`,`comment p-1 m-b-1`);
+elbB6vv.cls = {active: Boolean(component.activeComment && component.activeComment.id == comment.id)};
 
-            for (let className in ellFbq2.cls) {
-                ellFbq2.classList.toggle(className, ellFbq2.cls[className]);
+            for (let className in elbB6vv.cls) {
+                elbB6vv.classList.toggle(className, elbB6vv.cls[className]);
             }  
-            let cndIUt2 = component.project.isHigherAuthority || comment.createdBy.id == component.user.id;
-this.setState('stFnjRN', cndIUt2);
-if (cndIUt2) { 
-let elVzCsC = eo('span','Jcyff'+ii86Xm,null,`class`,`action-btns`);
-let cndETHM = ! component.comment || component.comment.id != comment.id;
-this.setState('strBgtd', cndETHM);
-let cnd8BHM = component.comment && component.comment.id == comment.id;
-this.setState('stWUYHR', cnd8BHM);
-if (cndETHM) { 
-let eldUQz6 = eo('button','1ciff'+ii86Xm,null, eventListeners, {onclick:[function(e) {var $el = this;component.comment = comment; component.index = index; component.editMode = true; component.detectChanges();}]},`type`,`button`);
-let el9v89_ = eo('i','_VCff'+ii86Xm,null,`class`,`${fas('edit') + ' icon'}`);
+            let cndWqPu = component.project.isHigherAuthority || comment.createdBy.id == component.user.id;
+this.setState('stJwyuB', cndWqPu);
+if (cndWqPu) { 
+let elWson4 = eo('span','o5Cff'+iiNy9P,null,`class`,`action-btns`);
+let cndMbji = ! component.comment || component.comment.id != comment.id;
+this.setState('stouDNs', cndMbji);
+let cnd175R = component.comment && component.comment.id == comment.id;
+this.setState('stS1uAG', cnd175R);
+if (cndMbji) { 
+let elVEHvi = eo('button','Ceiff'+iiNy9P,null, eventListeners, {onclick:[function(e) {var $el = this;component.comment = comment; component.index = index; component.editMode = true; component.detectChanges();}]},`type`,`button`);
+let elQnScW = eo('i','R_2ff'+iiNy9P,null,`class`,`${fas('edit') + ' icon'}`);
 ec('i');
 text(`Edit`);
 ec('button');
-}else if (cnd8BHM) { 
-let el5E9S_ = eo('button','JGaff'+ii86Xm,null, eventListeners, {onclick:[function(e) {var $el = this;component.comment = null; component.editMode = false; component.detectChanges();}]},`type`,`button`);
+}else if (cnd175R) { 
+let elVBLSv = eo('button','tsVff'+iiNy9P,null, eventListeners, {onclick:[function(e) {var $el = this;component.comment = null; component.editMode = false; component.detectChanges();}]},`type`,`button`);
 text(`Cancel`);
 ec('button');
-}let cndkze4 = ! component.comment || component.comment.id != comment.id;
-this.setState('st8VZ6u', cndkze4);
-if (cndkze4) { 
-let el_hmFl = eo('button','C8mff'+ii86Xm,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(comment, index); component.detectChanges();}]},`type`,`button`);
-let elqwFxM = eo('i','nnfff'+ii86Xm,null,`class`,`${fas('times') + ' mr-2 icon'}`);
+}let cndGdmi = ! component.comment || component.comment.id != comment.id;
+this.setState('stg23Tw', cndGdmi);
+if (cndGdmi) { 
+let el1ONY2 = eo('button','IIBff'+iiNy9P,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmRemoving(comment, index); component.detectChanges();}]},`type`,`button`);
+let elUNLEm = eo('i','6v7ff'+iiNy9P,null,`class`,`${fas('times') + ' mr-2 icon'}`);
 ec('i');
 text(`Delete`);
 ec('button');
 }ec('span');
-}let eluWX15 = eo('div','ojSff'+ii86Xm,null,`class`,`w-100`);
-let elfVQoY = eo('div','8anff'+ii86Xm,null, eventListeners, {onmouseover:[function(e) {var $el = this;component.previewBy($el, comment, 'previewUserFromImage')}]},`class`,`relative d-inline-block v-top`);
-let elpllxr = ev('img','v1off'+ii86Xm,null,`src`,`${comment.createdBy.image}`,`class`,`user-image`,`title`,`${comment.createdBy.name}`,`alt`,`${comment.createdBy.name}`);
-let cndkdpj = comment.previewUserFromImage;
-this.setState('stEKLor', cndkdpj);
-if (cndkdpj) { 
-let cmpQkl2 = this._lc('clyKSfzjb', {parent:component,props:{user:comment.createdBy},events:{onclose:function(e) {let $el = this; component.detectChanges(() => comment.previewUserFromImage = false)}},state:'stEKLor',insideLoop:true,index:"" +ii86Xm});
+}let elrK9W4 = eo('div','t8sff'+iiNy9P,null,`class`,`w-100`);
+let elQhU3Y = eo('div','NwLff'+iiNy9P,null, eventListeners, {onmouseover:[function(e) {var $el = this;component.previewBy($el, comment, 'previewUserFromImage')}]},`class`,`relative d-inline-block v-top`);
+let elLeF9D = ev('img','hrHff'+iiNy9P,null,`src`,`${comment.createdBy.image}`,`class`,`user-image`,`title`,`${comment.createdBy.name}`,`alt`,`${comment.createdBy.name}`);
+let cndWmU8 = comment.previewUserFromImage;
+this.setState('stg5D2i', cndWmU8);
+if (cndWmU8) { 
+let cmpvvb5 = this._lc('c7Hsn7Hky', {parent:component,props:{user:comment.createdBy},events:{onclose:function(e) {let $el = this; component.detectChanges(() => comment.previewUserFromImage = false)}},state:'stg5D2i',insideLoop:true,index:"" +iiNy9P});
 }ec('div');
-let elDaG4y = eo('div','oruff'+ii86Xm,null,`class`,`meta-comment`);
-let elT1WQK = eo('div','Qi4ff'+ii86Xm,null,`class`,`relative d-inline-block`);
-let el6PjQw = eo('span','CSoff'+ii86Xm,null, eventListeners, {onmouseover:[function(e) {var $el = this;component.previewBy($el, comment, 'previewUserFromName')}]});
+let eln8qEA = eo('div','NJlff'+iiNy9P,null,`class`,`meta-comment`);
+let ello9m9 = eo('div','14Aff'+iiNy9P,null,`class`,`relative d-inline-block`);
+let el6DZZi = eo('span','6Koff'+iiNy9P,null, eventListeners, {onmouseover:[function(e) {var $el = this;component.previewBy($el, comment, 'previewUserFromName')}]});
 text(comment.createdBy.name);
 ec('span');
-let elwCrJN = eo('a','Eniff'+ii86Xm,null,`href`,`${component.currentRoute + '?comment=' + comment.tree}`,`title`,``);
-let elMzYoy = eo('i','0Ksff'+ii86Xm,null,`class`,`${fas('link') + ' icon'}`);
+let elPkNal = eo('a','Ymjff'+iiNy9P,null,`href`,`${component.currentRoute + '?comment=' + comment.tree}`,`title`,``);
+let eltPltR = eo('i','EBiff'+iiNy9P,null,`class`,`${fas('link') + ' icon'}`);
 ec('i');
 ec('a');
 
                     setTimeout(function () {
-                        let $el = elwCrJN;
+                        let $el = elPkNal;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Comment url')}`});
         ;
                     }, 20);                
-                let cndSeEP = comment.previewUserFromName;
-this.setState('stZmUqV', cndSeEP);
-if (cndSeEP) { 
-let cmpeou9 = this._lc('cm5JIe2R9', {parent:component,props:{user:comment.createdBy},events:{onclose:function(e) {let $el = this; component.detectChanges(() => comment.previewUserFromName = false)}},state:'stZmUqV',insideLoop:true,index:"" +ii86Xm});
+                let cnddvV7 = comment.previewUserFromName;
+this.setState('stxHNvK', cnddvV7);
+if (cnddvV7) { 
+let cmpbsBf = this._lc('cKS0_Cm9D', {parent:component,props:{user:comment.createdBy},events:{onclose:function(e) {let $el = this; component.detectChanges(() => comment.previewUserFromName = false)}},state:'stxHNvK',insideLoop:true,index:"" +iiNy9P});
 }ec('div');
-let elhpOIp = eo('div','0fLff'+ii86Xm,null,`class`,`m-b-1`);
-let cmpTDCf = this._lc('cfDyaKSpj', {parent:component,props:{timestamp:comment.createdAt.timestamp},attrs:{class:'ago'},insideLoop:true,index:"" +ii86Xm});
+let elNe2Tq = eo('div','K88ff'+iiNy9P,null,`class`,`m-b-1`);
+let cmpDMr8 = this._lc('cnKRAotW1', {parent:component,props:{timestamp:comment.createdAt.timestamp},attrs:{class:'ago'},insideLoop:true,index:"" +iiNy9P});
 ec('div');
-let cndrRNr = ! component.editMode;
-this.setState('stJqV1N', cndrRNr);
-if (cndrRNr) { 
-let elA1mZR = eo('div','RfHff'+ii86Xm);
-let cndtfWc = String(comment.comment).split('\n').length <= component.maxCommentLines || comment.isExpanded;
-this.setState('stA7MAM', cndtfWc);
-let cndxj48 = !(cndtfWc);
-this.setState('stnpYJr', cndxj48);
-if (cndtfWc) { 
-let cmpNvKJ = this._lc('cWja5u8zf', {parent:component,props:{content:comment.comment},attrs:{class:'comment-text'},state:'stA7MAM',insideLoop:true,index:"" +ii86Xm});
+let cndmrL3 = ! component.editMode;
+this.setState('stJLgP5', cndmrL3);
+if (cndmrL3) { 
+let eljHv5y = eo('div','mT3ff'+iiNy9P);
+let cndTlIP = String(comment.comment).split('\n').length <= component.maxCommentLines || comment.isExpanded;
+this.setState('ste7DB6', cndTlIP);
+let cndAKWl = !(cndTlIP);
+this.setState('stBw_jt', cndAKWl);
+if (cndTlIP) { 
+let cmp4OKd = this._lc('cHhthCPmk', {parent:component,props:{content:comment.comment},attrs:{class:'comment-text'},state:'ste7DB6',insideLoop:true,index:"" +iiNy9P});
 }else { 
-let cmpUbel = this._lc('c34Opt0zi', {parent:component,props:{content:String(comment.comment).split('\n').slice(0, component.maxCommentLines).join('\n')},attrs:{class:'comment-text'},state:'stnpYJr',insideLoop:true,index:"" +ii86Xm});
-let elFj2oD = eo('div','66qff'+ii86Xm);
+let cmpiQUn = this._lc('cn3adz26b', {parent:component,props:{content:String(comment.comment).split('\n').slice(0, component.maxCommentLines).join('\n')},attrs:{class:'comment-text'},state:'stBw_jt',insideLoop:true,index:"" +iiNy9P});
+let elT2MXv = eo('div','4U1ff'+iiNy9P);
 text(`...`);
 ec('div');
-let ellP0Bh = eo('button','RPGff'+ii86Xm,null, eventListeners, {onclick:[function(e) {var $el = this;comment.isExpanded = true; component.detectChanges();}]},`type`,`button`,`class`,`bold orange-text`);
+let ellBIwB = eo('button','lNDff'+iiNy9P,null, eventListeners, {onclick:[function(e) {var $el = this;comment.isExpanded = true; component.detectChanges();}]},`type`,`button`,`class`,`bold orange-text`);
 text(`Continue Reading...`);
 ec('button');
 }ec('div');
-}let cndqYHh = comment.record;
-this.setState('stkQiY2', cndqYHh);
-if (cndqYHh) { 
-let elip_4Z = eo('div','hPbff'+ii86Xm,null,`class`,`m-t-1`);
-let cmppByU = this._lc('cJUMFOJaY', {parent:component,props:{src:comment.record},attrs:{src:`${comment.record}`},state:'stkQiY2',insideLoop:true,index:"" +ii86Xm});
+}let cndkGqO = comment.record;
+this.setState('st2ftId', cndkGqO);
+if (cndkGqO) { 
+let elQU9NP = eo('div','DOYff'+iiNy9P,null,`class`,`m-t-1`);
+let cmp5KWL = this._lc('cwExMAeAe', {parent:component,props:{src:comment.record},attrs:{src:`${comment.record}`},state:'st2ftId',insideLoop:true,index:"" +iiNy9P});
 ec('div');
 }ec('div');
 ec('div');
-let cnd5T6H = ! Is.empty(comment.attachments);
-this.setState('stRu6mc', cnd5T6H);
-if (cnd5T6H) { 
-let elz6mbz = eo('div','2Aiff'+ii86Xm);
-let el2DCOe = eo('h4','rF7ff'+ii86Xm,null,`class`,`bold`);
+let cndXhOZ = ! Is.empty(comment.attachments);
+this.setState('stYmItB', cndXhOZ);
+if (cndXhOZ) { 
+let elPpKpY = eo('div','S0Iff'+iiNy9P);
+let elnOPC9 = eo('h4','39Hff'+iiNy9P,null,`class`,`bold`);
 text(`Attachments (${ comment.attachments.length })`);
 ec('h4');
 for (let i in comment.attachments) {
 let attachment = comment.attachments[i]; 
- let iiV_W1 = 'NMsFhhV' + i;
-let elv8MzU = eo('a','Nm9bWAiTC0ab' + i+ii86Xm+iiV_W1,null,`href`,`${attachment}`,`target`,`_blank`);
-let cndZjTD = isImage(attachment);
-this.setState('stt_uOS', cndZjTD);
-let cndyJO9 = !(cndZjTD);
-this.setState('stg4zuT', cndyJO9);
-if (cndZjTD) { 
-let elQ43PA = ev('img','8C9ff'+ii86Xm+iiV_W1,null, 'style', {width:'100px',height:'100px'},`src`,`${attachment}`,`class`,`img-thumbnail m-l-1`,`title`,`${comment.comment}`,`alt`,`${comment.comment}`);
+ let iicAC1 = 'wvyVpML' + i;
+let el_xOWj = eo('a','55tSWDu2WHc_' + i+iiNy9P+iicAC1,null,`href`,`${attachment}`,`target`,`_blank`);
+let cndZcqc = isImage(attachment);
+this.setState('stfPccX', cndZcqc);
+let cndZOSu = !(cndZcqc);
+this.setState('stsnsZ9', cndZOSu);
+if (cndZcqc) { 
+let elfq1bY = ev('img','b9mff'+iiNy9P+iicAC1,null, 'style', {width:'100px',height:'100px'},`src`,`${attachment}`,`class`,`img-thumbnail m-l-1`,`title`,`${comment.comment}`,`alt`,`${comment.comment}`);
 }else { 
-let elFs5_Q = eo('button','vRSff'+ii86Xm+iiV_W1,null,`class`,`btn btn-sm bold btn-pink`);
+let elR6q8S = eo('button','5yxff'+iiNy9P+iicAC1,null,`class`,`btn btn-sm bold btn-pink`);
 text(`Open Attachment`);
 ec('button');
 }ec('a');
 }
 ec('div');
-}let cndV3mN = component.comment && component.comment.id == comment.id && component.editMode;
-this.setState('stnkrTg', cndV3mN);
-if (cndV3mN) { 
-let eltwAzL = eo('form','r6Mff'+ii86Xm,null, eventListeners, {onsubmit:[function(e) {
+}let cndpiIH = component.comment && component.comment.id == comment.id && component.editMode;
+this.setState('stljb8U', cndpiIH);
+if (cndpiIH) { 
+let el8WVJ0 = eo('form','THNff'+iiNy9P,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submitComment($el)}]},`class`,`m-t-1`);
 
-                if (! eltwAzL.formHandler) {
-                    window.cfrmdlr = eltwAzL.formHandler = new FormHandler(eltwAzL, component);
+                if (! el8WVJ0.formHandler) {
+                    window.cfrmdlr = el8WVJ0.formHandler = new FormHandler(el8WVJ0, component);
                 } else {
-                    window.cfrmdlr = eltwAzL.formHandler;
+                    window.cfrmdlr = el8WVJ0.formHandler;
                 }
-            let cndlGIE = component.parentComment;
-this.setState('st7P_ST', cndlGIE);
-if (cndlGIE) { 
-let el9DQBo = ev('input','IlMff'+ii86Xm,null, eventListeners, {oninput:[function(e) {component.parentComment.id = this.value;}]},`value`,`${fval(component.parentComment.id)}`,`name`,`${(`parent`).toInputName()}`,`type`,`hidden`);
-el9DQBo.value = fval(component.parentComment.id);
-}let cndXVkJ = component.project.id;
-this.setState('stpxp5u', cndXVkJ);
-if (cndXVkJ) { 
-let elDNQdq = ev('input','QR6ff'+ii86Xm,null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
-elDNQdq.value = fval(component.project.id);
-}let elDOlUm = ev('input','i5wff'+ii86Xm,null, eventListeners, {oninput:[function(e) {component.typeId = this.value;}]},`value`,`${fval(component.typeId)}`,`name`,`${(`typeId`).toInputName()}`,`type`,`hidden`);
-elDOlUm.value = fval(component.typeId);
-let el4QKaI = ev('input','39Nff'+ii86Xm,null, eventListeners, {oninput:[function(e) {component.type = this.value;}]},`value`,`${fval(component.type)}`,`name`,`${(`type`).toInputName()}`,`type`,`hidden`);
-el4QKaI.value = fval(component.type);
-let elZzHu8 = ev('input','n8zff'+ii86Xm,null, eventListeners, {oninput:[function(e) {component.commentId = this.value;}]},`value`,`${fval(component.commentId)}`,`name`,`${(`id`).toInputName()}`,`type`,`hidden`);
-elZzHu8.value = fval(component.commentId);
-let cmpZLxv = this._lc('cM7XXSaoV', {parent:component,props:{value:component.comment.comment},events:{onchange:function(e) {let $el = this; component.comment.comment = e}},attrs:{name:`${(`comment`).toInputName()}`,placeholder:`${trans(`Write a comment...`)}`},insideLoop:true,index:"" +ii86Xm});
+            let cndpT5q = component.parentComment;
+this.setState('stqBWwF', cndpT5q);
+if (cndpT5q) { 
+let elDtMcr = ev('input','0Vpff'+iiNy9P,null, eventListeners, {oninput:[function(e) {component.parentComment.id = this.value;}]},`value`,`${fval(component.parentComment.id)}`,`name`,`${(`parent`).toInputName()}`,`type`,`hidden`);
+elDtMcr.value = fval(component.parentComment.id);
+}let cndXl71 = component.project.id;
+this.setState('st_yrG6', cndXl71);
+if (cndXl71) { 
+let el9EeNa = ev('input','94fff'+iiNy9P,null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
+el9EeNa.value = fval(component.project.id);
+}let el3qrco = ev('input','8rnff'+iiNy9P,null, eventListeners, {oninput:[function(e) {component.typeId = this.value;}]},`value`,`${fval(component.typeId)}`,`name`,`${(`typeId`).toInputName()}`,`type`,`hidden`);
+el3qrco.value = fval(component.typeId);
+let elyih17 = ev('input','87uff'+iiNy9P,null, eventListeners, {oninput:[function(e) {component.type = this.value;}]},`value`,`${fval(component.type)}`,`name`,`${(`type`).toInputName()}`,`type`,`hidden`);
+elyih17.value = fval(component.type);
+let elFKb1h = ev('input','ydbff'+iiNy9P,null, eventListeners, {oninput:[function(e) {component.commentId = this.value;}]},`value`,`${fval(component.commentId)}`,`name`,`${(`id`).toInputName()}`,`type`,`hidden`);
+elFKb1h.value = fval(component.commentId);
+let cmpebdp = this._lc('chDVpfz1H', {parent:component,props:{value:component.comment.comment},events:{onchange:function(e) {let $el = this; component.comment.comment = e}},attrs:{name:`${(`comment`).toInputName()}`,placeholder:`${trans(`Write a comment...`)}`},insideLoop:true,index:"" +iiNy9P});
 
                 if (! component.fileInput) {
                     component.fileInput = [];
                 }
             ;
-component.fileInput = this._lc('cPVX_eDSc', {parent:component,props:{multiple:true},content:(flkFileInput) => {let el5Ijxx = eo('i',null,null,`class`,`${fas('cloud-upload-alt') + ' icon'}`);
+component.fileInput = this._lc('cvw3RINz6', {parent:component,props:{multiple:true},content:(flkFileInput) => {let eliegAM = eo('i',null,null,`class`,`${fas('cloud-upload-alt') + ' icon'}`);
 ec('i');
-let elO_R1B = eo('strong',null,null,`class`,`ml-2`);
+let elFcc6p = eo('strong',null,null,`class`,`ml-2`);
 text(`Attachments`);
 ec('strong');
-},boolAttrs:{multiple:true},attrs:{name:`${(`attachments[]`).toInputName()}`,class:'btn btn-info bold',label:'Attachments'},insideLoop:true,index:"" +ii86Xm});
-let cndhTji = ! component.isSending;
-this.setState('stlyerB', cndhTji);
-if (cndhTji) { 
+},boolAttrs:{multiple:true},attrs:{name:`${(`attachments[]`).toInputName()}`,class:'btn btn-info bold',label:'Attachments'},insideLoop:true,index:"" +iiNy9P});
+let cndLXZR = ! component.isSending;
+this.setState('stsnnCU', cndLXZR);
+if (cndLXZR) { 
 
                 if (! component.editRecordAudio) {
                     component.editRecordAudio = [];
                 }
             ;
-component.editRecordAudio = this._lc('cEtNfRxEi', {parent:component,state:'stlyerB',insideLoop:true,index:"" +ii86Xm});
-}let el1nTvP = eo('button','eSRff'+ii86Xm,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn btn-pink bold m-t-1`);
+component.editRecordAudio = this._lc('cplwt5eG4', {parent:component,state:'stsnnCU',insideLoop:true,index:"" +iiNy9P});
+}let elpuOuU = eo('button','YU6ff'+iiNy9P,null, boolAttrs, {disabled:component.isSending || ! component.isValidForm},`class`,`btn btn-pink bold m-t-1`);
 text(`Comment`);
 ec('button');
 ec('form');
-}let elK4wf_ = eo('h2','X43ff'+ii86Xm,null,`class`,`sub-comments-heading`);
-let el21oer = eo('span','IFaff'+ii86Xm,null, eventListeners, {onclick:[function(e) {var $el = this;component.toggleSubComment(comment)}]});
-let elgl9xc = eo('span','wrAff'+ii86Xm);
+}let elfWW5k = eo('h2','Mxwff'+iiNy9P,null,`class`,`sub-comments-heading`);
+let elOO4dI = eo('span','taNff'+iiNy9P,null, eventListeners, {onclick:[function(e) {var $el = this;component.toggleSubComment(comment)}]});
+let elCo5yP = eo('span','Rm2ff'+iiNy9P);
 text(`Replies`);
 ec('span');
 text(`(${ comment.comments.length })`);
 ec('span');
-let cnd_5vL = Comments.writeComment === false;
-this.setState('stsNYME', cnd_5vL);
-if (cnd_5vL) { 
-let elZ8uSi = eo('button','6aPff'+ii86Xm,null, eventListeners, {onclick:[function(e) {var $el = this;component.openCommentReply(comment)}]},`class`,`btn btn btn-sm btn-gray cc`);
+let cndf6Rk = Comments.writeComment === false;
+this.setState('stCDFmw', cndf6Rk);
+if (cndf6Rk) { 
+let elKQ0T0 = eo('button','7z9ff'+iiNy9P,null, eventListeners, {onclick:[function(e) {var $el = this;component.openCommentReply(comment)}]},`class`,`btn btn btn-sm btn-gray cc`);
 text(`Reply`);
 ec('button');
 }ec('h2');
-let cndFMSA = comment.commentsAreOpened;
-this.setState('stskml7', cndFMSA);
-if (cndFMSA) { 
-let cmpvj3Y = this._lc('cSckU2_0p', {parent:component,props:{disableComments:component.disableComments,parent:comment,comments:comment.comments,type:component.type,typeId:component.typeId,project:component.project},state:'stskml7',insideLoop:true,index:"" +ii86Xm});
+let cndO4Yn = comment.commentsAreOpened;
+this.setState('stzLQ_m', cndO4Yn);
+if (cndO4Yn) { 
+let cmpGHM6 = this._lc('cUmiG264q', {parent:component,props:{disableComments:component.disableComments,parent:comment,comments:comment.comments,type:component.type,typeId:component.typeId,project:component.project},state:'stzLQ_m',insideLoop:true,index:"" +iiNy9P});
 }ec('div');
 }
-let cndsEp2 = component.disableComments && ! component.parentComment;
-this.setState('st7bc4e', cndsEp2);
-let cndR3Kt = Comments.writeComment === false && ! component.parentComment;
-this.setState('stshzpT', cndR3Kt);
-let cndEmgp = Comments.writeComment === component.parentComment;
-this.setState('std5nrP', cndEmgp);
-if (cndsEp2) { 
-let elKIvmX = eo('div','RtMf',null,`class`,`text-center bold petrol-text closed-comments`);
+let cndUfaH = component.disableComments && ! component.parentComment;
+this.setState('stv9yIm', cndUfaH);
+let cnd1aiV = Comments.writeComment === false && ! component.parentComment;
+this.setState('st1I3u7', cnd1aiV);
+let cnd_msX = Comments.writeComment === component.parentComment;
+this.setState('stDK0TP', cnd_msX);
+if (cndUfaH) { 
+let elHC4cg = eo('div','prSf',null,`class`,`text-center bold petrol-text closed-comments`);
 text(`Comments Are Closed`);
 ec('div');
-}else if (cndR3Kt) { 
-let elbDAad = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;Comments.writeComment = component.parentComment; component.detectChanges();}]},`class`,`btn btn btn-gray`);
+}else if (cnd1aiV) { 
+let elaIDrB = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;Comments.writeComment = component.parentComment; component.detectChanges();}]},`class`,`btn btn btn-gray`);
 text(`Reply`);
 ec('button');
-}else if (cndEmgp) { 
-let elx9Msj = eo('form',null,null, eventListeners, {onready:[function(e) {var $el = this;component.scrollToForm($el)}],onsubmit:[function(e) {
+}else if (cnd_msX) { 
+let elX4nS0 = eo('form',null,null, eventListeners, {onready:[function(e) {var $el = this;component.scrollToForm($el)}],onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submitComment($el)}]},`class`,`m-t-4`);
 
-                if (! elx9Msj.formHandler) {
-                    window.cfrmdlr = elx9Msj.formHandler = new FormHandler(elx9Msj, component);
+                if (! elX4nS0.formHandler) {
+                    window.cfrmdlr = elX4nS0.formHandler = new FormHandler(elX4nS0, component);
                 } else {
-                    window.cfrmdlr = elx9Msj.formHandler;
+                    window.cfrmdlr = elX4nS0.formHandler;
                 }
-            let cnd5LrU = component.parentComment;
-this.setState('stvfWAT', cnd5LrU);
-if (cnd5LrU) { 
-let elMgHQ0 = ev('input','Sy6f',null, eventListeners, {oninput:[function(e) {component.parentComment.id = this.value;}]},`value`,`${fval(component.parentComment.id)}`,`name`,`${(`parent`).toInputName()}`,`type`,`hidden`);
-elMgHQ0.value = fval(component.parentComment.id);
-}let el6KS92 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
-el6KS92.value = fval(component.project.id);
-let el2fZmF = ev('input',null,null, eventListeners, {oninput:[function(e) {component.typeId = this.value;}]},`value`,`${fval(component.typeId)}`,`name`,`${(`typeId`).toInputName()}`,`type`,`hidden`);
-el2fZmF.value = fval(component.typeId);
-let elpbhIF = ev('input',null,null, eventListeners, {oninput:[function(e) {component.type = this.value;}]},`value`,`${fval(component.type)}`,`name`,`${(`type`).toInputName()}`,`type`,`hidden`);
-elpbhIF.value = fval(component.type);
-let cmpb520 = this._lc('cZoxbhu86', {parent:component,props:{value:component.newComment},events:{onchange:function(e) {let $el = this; component.newComment = e}},attrs:{name:`${(`comment`).toInputName()}`,placeholder:`${trans(`Write a comment... (Markdown Support)`)}`}});
-let elfnoBx = eo('div',null,null,`class`,`files`);
-component.fileInput = this._lc('c2NzFDnM8', {parent:component,props:{multiple:true},content:(flkFileInput) => {let elxAyX_ = eo('i',null,null,`class`,`${fas('cloud-upload-alt') + ' icon'}`);
+            let cndjHvY = component.parentComment;
+this.setState('stLy3cD', cndjHvY);
+if (cndjHvY) { 
+let elWdSAH = ev('input','Pjlf',null, eventListeners, {oninput:[function(e) {component.parentComment.id = this.value;}]},`value`,`${fval(component.parentComment.id)}`,`name`,`${(`parent`).toInputName()}`,`type`,`hidden`);
+elWdSAH.value = fval(component.parentComment.id);
+}let elcHS8k = ev('input',null,null, eventListeners, {oninput:[function(e) {component.project.id = this.value;}]},`value`,`${fval(component.project.id)}`,`name`,`${(`project`).toInputName()}`,`type`,`hidden`);
+elcHS8k.value = fval(component.project.id);
+let el7Car1 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.typeId = this.value;}]},`value`,`${fval(component.typeId)}`,`name`,`${(`typeId`).toInputName()}`,`type`,`hidden`);
+el7Car1.value = fval(component.typeId);
+let elAOZcT = ev('input',null,null, eventListeners, {oninput:[function(e) {component.type = this.value;}]},`value`,`${fval(component.type)}`,`name`,`${(`type`).toInputName()}`,`type`,`hidden`);
+elAOZcT.value = fval(component.type);
+let cmp3ZOG = this._lc('cmevc49xA', {parent:component,props:{value:component.newComment},events:{onchange:function(e) {let $el = this; component.newComment = e}},attrs:{name:`${(`comment`).toInputName()}`,placeholder:`${trans(`Write a comment... (Markdown Support)`)}`}});
+let elmjHZb = eo('div',null,null,`class`,`files`);
+component.fileInput = this._lc('cgX5QFDOb', {parent:component,props:{multiple:true},content:(flkFileInput) => {let elLekXX = eo('i',null,null,`class`,`${fas('cloud-upload-alt') + ' icon'}`);
 ec('i');
-let elxA5PE = eo('strong',null,null,`class`,`ml-2`);
+let elDsOsa = eo('strong',null,null,`class`,`ml-2`);
 text(`Attachments`);
 ec('strong');
 },boolAttrs:{multiple:true},attrs:{name:`${(`attachments[]`).toInputName()}`,class:'btn btn-info bold',label:'Attachments'}});
-let cndEdit = ! component.isSending;
-this.setState('stM0Ptr', cndEdit);
-if (cndEdit) { 
-component.recordAudio = this._lc('cYXApDBjM', {parent:component,events:{onstart:function(e) {let $el = this; component.isRecording = true},onrecord:function(e) {let $el = this; component.isRecording = false;}},attrs:{class:'audio-input'},state:'stM0Ptr'});
+let cndvooj = ! component.isSending;
+this.setState('stRpJYw', cndvooj);
+if (cndvooj) { 
+component.recordAudio = this._lc('cTyplpoXW', {parent:component,events:{onstart:function(e) {let $el = this; component.isRecording = true},onrecord:function(e) {let $el = this; component.isRecording = false;}},attrs:{class:'audio-input'},state:'stRpJYw'});
 }ec('div');
-let elluCQm = eo('button',null,null, boolAttrs, {disabled:(! component.newComment && ! component.recordAudio.recordData && component.fileInput.fileInput.files.length == 0) || component.isSending || ! component.isValidForm || component.isRecording},`class`,`btn btn-pink bold m-t-1`);
+let elCeexu = eo('button',null,null, boolAttrs, {disabled:(! component.newComment && ! component.recordAudio.recordData && component.fileInput.fileInput.files.length == 0) || component.isSending || ! component.isValidForm || component.isRecording},`class`,`btn btn-pink bold m-t-1`);
 text(`Comment`);
 ec('button');
-let elp_XAR = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;Comments.writeComment = false;  component.detectChanges();}]},`type`,`button`,`class`,`btn btn-light`);
+let elxDwGp = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;Comments.writeComment = false;  component.detectChanges();}]},`type`,`button`,`class`,`btn btn-light`);
 text(`Cancel`);
 ec('button');
 ec('form');
 
                     setTimeout(function () {
-                        let $el = elx9Msj;
+                        let $el = elX4nS0;
                         component.scrollToForm($el);
                     }, 20);                
                 }ec('div');
-let cndh9wz = component.confirmDelete;
-this.setState('stcezas', cndh9wz);
-if (cndh9wz) { 
-let cmpwBdN = this._lc('czNF92xdm', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null;  component.detectChanges();},onconfirm:function(e) {let $el = this; component.remove()}},state:'stcezas'});
+let cndBhDC = component.confirmDelete;
+this.setState('stC5W7h', cndBhDC);
+if (cndBhDC) { 
+let cmpnaQw = this._lc('cSMtUNkD9', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmDelete = null;  component.detectChanges();},onconfirm:function(e) {let $el = this; component.remove()}},state:'stC5W7h'});
 }
                     this.isReadyToGo();
                 }

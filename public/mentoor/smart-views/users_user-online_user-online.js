@@ -6,10 +6,10 @@ _Component({
                 observe: ['userId'],
                 children: {},
                 render: function (component) {
-                    let cndkcJi = isOnline(component.userId);
-this.setState('stl2vd1', cndkcJi);
-if (cndkcJi) { 
-let elE7ASs = eo('i','Vxof',null,`title`,`${trans(`Online`)}`,`class`,`${fas('circle') + ' on icon'}`);
+                    let cndcbEf = isOnline(component.userId);
+this.setState('stNz6k0', cndcbEf);
+if (cndcbEf) { 
+let eln5Wf7 = eo('i','Lmbf',null,`title`,`${trans(`Online`)}`,`class`,`${fas('circle') + ' on icon'}`);
 ec('i');
 }
                     this.isReadyToGo();

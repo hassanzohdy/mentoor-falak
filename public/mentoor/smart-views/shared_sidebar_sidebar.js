@@ -6,356 +6,356 @@ _Component({
                 observe: ['toggleMenu','toggle','closeSidebarNav','activeLink','user'],
                 children: {},
                 render: function (component) {
-                    let elZIMXZ = eo('nav',null,null,`class`,`sidebar-sticky`);
-component.element = elZIMXZ;
-elZIMXZ.cls = {'opened': component.toggleMenu};
+                    let ell58v3 = eo('nav',null,null,`class`,`sidebar-sticky`);
+component.element = ell58v3;
+ell58v3.cls = {'opened': component.toggleMenu};
 
-            for (let className in elZIMXZ.cls) {
-                elZIMXZ.classList.toggle(className, elZIMXZ.cls[className]);
+            for (let className in ell58v3.cls) {
+                ell58v3.classList.toggle(className, ell58v3.cls[className]);
             }  
-            let el2eaPO = eo('div',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.toggle()}]},`class`,`overlay`);
+            let el0cWET = eo('div',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.toggle()}]},`class`,`overlay`);
 ec('div');
-let el1dvd4 = eo('div',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.closeSidebarNav(e)}]},`id`,`sidebar-content`);
-component.sidebarContent = el1dvd4;
-el1dvd4.cls = {'opds': component.toggleMenu};
+let elmrrSc = eo('div',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.closeSidebarNav(e)}]},`id`,`sidebar-content`);
+component.sidebarContent = elmrrSc;
+elmrrSc.cls = {'opds': component.toggleMenu};
 
-            for (let className in el1dvd4.cls) {
-                el1dvd4.classList.toggle(className, el1dvd4.cls[className]);
+            for (let className in elmrrSc.cls) {
+                elmrrSc.classList.toggle(className, elmrrSc.cls[className]);
             }  
-            let eliXpOz = eo('ul',null,null,`class`,`nav flex-column`);
-let elXAkCn = eo('li',null,null,`class`,`nav-item`);
-let elOvzpC = eo('a',null,null,`class`,`nav-link bold`,`href`,`/timeline`);
-elOvzpC.cls = {active: component.activeLink('/timeline')};
+            let elhYpFd = eo('ul',null,null,`class`,`nav flex-column`);
+let elJEIbT = eo('li',null,null,`class`,`nav-item`);
+let elYWnCk = eo('a',null,null,`class`,`nav-link bold`,`href`,`/timeline`);
+elYWnCk.cls = {active: component.activeLink('/timeline')};
 
-            for (let className in elOvzpC.cls) {
-                elOvzpC.classList.toggle(className, elOvzpC.cls[className]);
+            for (let className in elYWnCk.cls) {
+                elYWnCk.classList.toggle(className, elYWnCk.cls[className]);
             }  
-            let el41K_W = eo('i',null,null,`class`,`${fas('mug-hot') + ' icon'}`);
+            let elFOefQ = eo('i',null,null,`class`,`${fas('mug-hot') + ' icon'}`);
 ec('i');
 text(`Timeline`);
-let elcJMdk = eo('span',null,null,`class`,`sr-only`);
+let elT4UEl = eo('span',null,null,`class`,`sr-only`);
 text(`(current)`);
 ec('span');
 ec('a');
 ec('li');
-let cndMyFo = component.user.isLoggedIn();
-this.setState('stvP5cW', cndMyFo);
-if (cndMyFo) { 
-let elwCgUG = eo('li','nzqf',null,`class`,`nav-item`);
-let elHX7XY = eo('a','XDOf',null,`class`,`nav-link`,`href`,`/dashboard`);
-elHX7XY.cls = {active: component.activeLink('/dashboard')};
+let cndP0nn = component.user.isLoggedIn();
+this.setState('stmvAPE', cndP0nn);
+if (cndP0nn) { 
+let elgusU8 = eo('li','Ntzf',null,`class`,`nav-item`);
+let elegFMF = eo('a','s7Tf',null,`class`,`nav-link`,`href`,`/dashboard`);
+elegFMF.cls = {active: component.activeLink('/dashboard')};
 
-            for (let className in elHX7XY.cls) {
-                elHX7XY.classList.toggle(className, elHX7XY.cls[className]);
+            for (let className in elegFMF.cls) {
+                elegFMF.classList.toggle(className, elegFMF.cls[className]);
             }  
-            let elcUUUV = eo('i','yA5f',null,`class`,`${fas('home') + ' icon'}`);
+            let elfXOrT = eo('i','4Mpf',null,`class`,`${fas('home') + ' icon'}`);
 ec('i');
 text(`Dashboard`);
-let elSB5qX = eo('span','t0If',null,`class`,`sr-only`);
+let el5gtsG = eo('span','sIUf',null,`class`,`sr-only`);
 text(`(current)`);
 ec('span');
 ec('a');
 ec('li');
-}let cnd9bMc = component.user.isLoggedIn();
-this.setState('st7yjnr', cnd9bMc);
-if (cnd9bMc) { 
-let elesvoL = eo('li','2Vvf',null,`class`,`nav-item`);
-let elPAoLZ = eo('a','E8Gf',null,`class`,`nav-link`,`href`,`/projects/me`);
-elPAoLZ.cls = {active: component.activeLink('/projects/me')};
+}let cndj_RH = component.user.isLoggedIn();
+this.setState('stdtGNC', cndj_RH);
+if (cndj_RH) { 
+let elsGV41 = eo('li','Ldpf',null,`class`,`nav-item`);
+let elZTe9K = eo('a','vW3f',null,`class`,`nav-link`,`href`,`/projects/me`);
+elZTe9K.cls = {active: component.activeLink('/projects/me')};
 
-            for (let className in elPAoLZ.cls) {
-                elPAoLZ.classList.toggle(className, elPAoLZ.cls[className]);
+            for (let className in elZTe9K.cls) {
+                elZTe9K.classList.toggle(className, elZTe9K.cls[className]);
             }  
-            let elqMsy_ = eo('i','kQRf',null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
+            let el7QgHA = eo('i','PXmf',null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
 ec('i');
 text(`My Projects`);
-let elxSE1U = eo('span','Wsgf',null,`class`,`sr-only`);
+let els3hIC = eo('span','yWLf',null,`class`,`sr-only`);
 text(`(current)`);
 ec('span');
 ec('a');
 ec('li');
-}let cndCLbv = component.user.id == 1;
-this.setState('stKPC8v', cndCLbv);
-if (cndCLbv) { 
-let elvDWw1 = eo('li','Xuif',null,`class`,`nav-item`);
-let elEWu8b = eo('a','R4df',null,`class`,`nav-link pink-text bold`,`href`,`/courses`);
-elEWu8b.cls = {active: component.activeLink('/courses', STARTING_WITH_ROUTE)};
+}let cndJQBL = Config.get('app.env') == 'development';
+this.setState('stnB7FE', cndJQBL);
+if (cndJQBL) { 
+let elA58As = eo('li','J4Rf',null,`class`,`nav-item`);
+let elZ2y9w = eo('a','04bf',null,`class`,`nav-link pink-text bold`,`href`,`/courses`);
+elZ2y9w.cls = {active: component.activeLink('/courses', STARTING_WITH_ROUTE)};
 
-            for (let className in elEWu8b.cls) {
-                elEWu8b.classList.toggle(className, elEWu8b.cls[className]);
+            for (let className in elZ2y9w.cls) {
+                elZ2y9w.classList.toggle(className, elZ2y9w.cls[className]);
             }  
-            let elQAq7k = eo('i','mMMf',null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
+            let eliE06E = eo('i','bEaf',null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
 ec('i');
-let elmZ0zy = eo('span','yVyf');
+let elVigTy = eo('span','N1Xf');
 text(`Courses`);
 ec('span');
-let elOjxLt = eo('span','bONf',null,`class`,`new`);
+let elon6oZ = eo('span','oVTf',null,`class`,`new`);
 text(`NEW`);
 ec('span');
 ec('a');
 ec('li');
-}let el7R7na = eo('li',null,null,`class`,`nav-item`);
-let elKtNmW = eo('a',null,null,`class`,`nav-link teal-text bold`,`href`,`/english`);
-elKtNmW.cls = {active: component.activeLink('/english', STARTING_WITH_ROUTE)};
+}let el1GGEO = eo('li',null,null,`class`,`nav-item`);
+let el7002L = eo('a',null,null,`class`,`nav-link teal-text bold`,`href`,`/english`);
+el7002L.cls = {active: component.activeLink('/english', STARTING_WITH_ROUTE)};
 
-            for (let className in elKtNmW.cls) {
-                elKtNmW.classList.toggle(className, elKtNmW.cls[className]);
+            for (let className in el7002L.cls) {
+                el7002L.classList.toggle(className, el7002L.cls[className]);
             }  
-            let elDtjR3 = eo('i',null,null,`class`,`${fas('language') + ' mr-2 icon'}`);
+            let el5RSa1 = eo('i',null,null,`class`,`${fas('language') + ' mr-2 icon'}`);
 ec('i');
-let eltqQET = eo('span',null,null,`id`,`eaf`);
+let elW9mu2 = eo('span',null,null,`id`,`eaf`);
 text(`English [EAF]`);
 ec('span');
 ec('a');
 ec('li');
-let elL7kjr = eo('li',null,null,`class`,`nav-item`);
-let elC3PY7 = eo('a',null,null,`class`,`nav-link orange-text bold`,`href`,`/projects`);
-elC3PY7.cls = {active: component.activeLink('/projects', STARTING_WITH_ROUTE, '/projects/me')};
+let el5Q7H4 = eo('li',null,null,`class`,`nav-item`);
+let elvCBVT = eo('a',null,null,`class`,`nav-link orange-text bold`,`href`,`/projects`);
+elvCBVT.cls = {active: component.activeLink('/projects', STARTING_WITH_ROUTE, '/projects/me')};
 
-            for (let className in elC3PY7.cls) {
-                elC3PY7.classList.toggle(className, elC3PY7.cls[className]);
+            for (let className in elvCBVT.cls) {
+                elvCBVT.classList.toggle(className, elvCBVT.cls[className]);
             }  
-            let el19cGL = eo('i',null,null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
+            let elMWMFm = eo('i',null,null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
 ec('i');
-let el8vDvf = eo('span');
+let eljuVVJ = eo('span');
 text(`Projects [PMS]`);
 ec('span');
-let el6bcCt = eo('span',null,null,`class`,`new`);
+let el5CbXM = eo('span',null,null,`class`,`new`);
 text(`NEW`);
 ec('span');
 ec('a');
 ec('li');
-let cndJb_6 = component.user.isLoggedIn();;
-this.setState('stI9mlW', cndJb_6);
-if (cndJb_6) { 
-let elmHCnZ = eo('li','pQHf',null,`class`,`nav-item`);
-let elmCEJS = eo('a','Daff',null,`class`,`nav-link`,`href`,`/training-ground`);
-elmCEJS.cls = {active: component.activeLink('/training-ground', STARTING_WITH_ROUTE)};
+let cndlgcE = component.user.isLoggedIn();;
+this.setState('stheS2P', cndlgcE);
+if (cndlgcE) { 
+let el5AEPG = eo('li','N6tf',null,`class`,`nav-item`);
+let elUgxbm = eo('a','47Jf',null,`class`,`nav-link`,`href`,`/training-ground`);
+elUgxbm.cls = {active: component.activeLink('/training-ground', STARTING_WITH_ROUTE)};
 
-            for (let className in elmCEJS.cls) {
-                elmCEJS.classList.toggle(className, elmCEJS.cls[className]);
+            for (let className in elUgxbm.cls) {
+                elUgxbm.classList.toggle(className, elUgxbm.cls[className]);
             }  
-            let elQY2or = ev('img','Xf0f',null,`src`,`${assets('images/target.png')}`,`class`,`target-icon small mr-2`);
+            let elYZx0W = ev('img','k7nf',null,`src`,`${assets('images/target.png')}`,`class`,`target-icon small mr-2`);
 text(`Training ground`);
 ec('a');
 ec('li');
-}let cnd1m8E = component.user.isLoggedIn();;
-this.setState('sty9Tf5', cnd1m8E);
-if (cnd1m8E) { 
-let el5sYnw = eo('li','p15f',null,`class`,`nav-item`);
-let elvcf0K = eo('a','djjf',null,`class`,`nav-link`,`href`,`/tasks`);
-elvcf0K.cls = {active: component.activeLink('/tasks')};
+}let cnd7i17 = component.user.isLoggedIn();;
+this.setState('st2K2fP', cnd7i17);
+if (cnd7i17) { 
+let elWz_kJ = eo('li','Bytf',null,`class`,`nav-item`);
+let el71O6j = eo('a','G3qf',null,`class`,`nav-link`,`href`,`/tasks`);
+el71O6j.cls = {active: component.activeLink('/tasks')};
 
-            for (let className in elvcf0K.cls) {
-                elvcf0K.classList.toggle(className, elvcf0K.cls[className]);
+            for (let className in el71O6j.cls) {
+                el71O6j.classList.toggle(className, el71O6j.cls[className]);
             }  
-            let elPG4X6 = eo('i','H0Af',null,`class`,`${fas('tasks') + ' icon'}`);
+            let elwQcoN = eo('i','Co3f',null,`class`,`${fas('tasks') + ' icon'}`);
 ec('i');
 text(`Tasks Board`);
 ec('a');
 ec('li');
-}let elCiZjw = eo('li',null,null,`class`,`nav-item`);
-let elpG65e = eo('a',null,null,`class`,`nav-link`,`href`,`/einstein-chamber`);
-elpG65e.cls = {active: component.activeLink('/einstein-chamber', STARTING_WITH_ROUTE)};
+}let elAQMnp = eo('li',null,null,`class`,`nav-item`);
+let elJB66g = eo('a',null,null,`class`,`nav-link`,`href`,`/einstein-chamber`);
+elJB66g.cls = {active: component.activeLink('/einstein-chamber', STARTING_WITH_ROUTE)};
 
-            for (let className in elpG65e.cls) {
-                elpG65e.classList.toggle(className, elpG65e.cls[className]);
+            for (let className in elJB66g.cls) {
+                elJB66g.classList.toggle(className, elJB66g.cls[className]);
             }  
-            let elXjh0Y = ev('img',null,null,`src`,`${assets('images/ein-sm.png')}`,`class`,`einstein-icon`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
+            let eladpOH = ev('img',null,null,`src`,`${assets('images/ein-sm.png')}`,`class`,`einstein-icon`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
 text(`Einstein Chamber`);
 ec('a');
 ec('li');
-let elz3oIv = eo('li',null,null,`class`,`nav-item`);
-let elfHCq0 = eo('a',null,null,`class`,`nav-link`,`href`,`/academy`);
-elfHCq0.cls = {active: component.activeLink('/academy', STARTING_WITH_ROUTE)};
+let el9FJkA = eo('li',null,null,`class`,`nav-item`);
+let elDfX8q = eo('a',null,null,`class`,`nav-link`,`href`,`/academy`);
+elDfX8q.cls = {active: component.activeLink('/academy', STARTING_WITH_ROUTE)};
 
-            for (let className in elfHCq0.cls) {
-                elfHCq0.classList.toggle(className, elfHCq0.cls[className]);
+            for (let className in elDfX8q.cls) {
+                elDfX8q.classList.toggle(className, elDfX8q.cls[className]);
             }  
-            let elrCz0B = eo('i',null,null,`class`,`${fas('university') + ' icon'}`);
+            let elIEOf0 = eo('i',null,null,`class`,`${fas('university') + ' icon'}`);
 ec('i');
 text(`Academy`);
 ec('a');
 ec('li');
-let cndXMPx = component.user.isLoggedIn();;
-this.setState('st8UQ2x', cndXMPx);
-if (cndXMPx) { 
-let eljvN8o = eo('li','ITGf',null,`class`,`nav-item`);
-let elL2lxW = eo('a','mlyf',null,`class`,`nav-link`,`href`,`/arena`);
-elL2lxW.cls = {active: component.activeLink('/arena')};
+let cndXOWe = Config.get('app.env') == 'development' && component.user.isLoggedIn();;
+this.setState('stxuDgM', cndXOWe);
+if (cndXOWe) { 
+let elJwGId = eo('li','4W7f',null,`class`,`nav-item`);
+let elUxr9O = eo('a','UxIf',null,`class`,`nav-link`,`href`,`/arena`);
+elUxr9O.cls = {active: component.activeLink('/arena')};
 
-            for (let className in elL2lxW.cls) {
-                elL2lxW.classList.toggle(className, elL2lxW.cls[className]);
+            for (let className in elUxr9O.cls) {
+                elUxr9O.classList.toggle(className, elUxr9O.cls[className]);
             }  
-            let elq9xDX = eo('i','6HGf',null,`class`,`${fas('biohazard') + ' icon'}`);
+            let elbjdHh = eo('i','FTnf',null,`class`,`${fas('biohazard') + ' icon'}`);
 ec('i');
 text(`Arena`);
 ec('a');
 ec('li');
 }ec('ul');
-let cndrFm3 = component.user.accountType == 'admin';
-this.setState('sth290g', cndrFm3);
-if (cndrFm3) { 
-let elpyp6P = eo('ul','uURf',null,`class`,`nav flex-column`);
-let elYFgl9 = eo('h6','0ZUf',null,`class`,`sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted`);
-let el3q8dd = eo('span','XmCf');
+let cndaRf2 = component.user.accountType == 'admin';
+this.setState('st8Ols6', cndaRf2);
+if (cndaRf2) { 
+let el9dLEk = eo('ul','xHVf',null,`class`,`nav flex-column`);
+let el8Wt2z = eo('h6','3rFf',null,`class`,`sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted`);
+let elDtYpy = eo('span','ofLf');
 text(`Administrator department`);
 ec('span');
-let el4qnWy = eo('a','C95f',null,`class`,`d-flex align-items-center text-muted`,`href`,`#`);
+let elzGM_2 = eo('a','p8vf',null,`class`,`d-flex align-items-center text-muted`,`href`,`#`);
 ec('a');
 ec('h6');
-let elWCrl2 = eo('li','HB5f',null,`class`,`nav-item`);
-let elpGNEq = eo('a','4m1f',null,`class`,`nav-link`,`href`,`/admin/tags`);
-elpGNEq.cls = {active: component.activeLink('/admin/tags')};
+let elUMBfw = eo('li','M_if',null,`class`,`nav-item`);
+let elt460N = eo('a','knvf',null,`class`,`nav-link`,`href`,`/admin/tags`);
+elt460N.cls = {active: component.activeLink('/admin/tags')};
 
-            for (let className in elpGNEq.cls) {
-                elpGNEq.classList.toggle(className, elpGNEq.cls[className]);
+            for (let className in elt460N.cls) {
+                elt460N.classList.toggle(className, elt460N.cls[className]);
             }  
-            let elAqaTy = eo('i','XXyf',null,`class`,`${fas('tags') + ' icon'}`);
+            let elDUeiO = eo('i','NcDf',null,`class`,`${fas('tags') + ' icon'}`);
 ec('i');
 text(`Tags`);
 ec('a');
 ec('li');
-let ellJ8rr = eo('li','2sEf',null,`class`,`nav-item`);
-let elOA6bK = eo('a','m3df',null,`class`,`nav-link`,`href`,`/admin/users`);
-elOA6bK.cls = {active: component.activeLink('/admin/users')};
+let elZF71t = eo('li','vPyf',null,`class`,`nav-item`);
+let el5kZbg = eo('a','kzDf',null,`class`,`nav-link`,`href`,`/admin/users`);
+el5kZbg.cls = {active: component.activeLink('/admin/users')};
 
-            for (let className in elOA6bK.cls) {
-                elOA6bK.classList.toggle(className, elOA6bK.cls[className]);
+            for (let className in el5kZbg.cls) {
+                el5kZbg.classList.toggle(className, el5kZbg.cls[className]);
             }  
-            let elzgua_ = eo('i','74qf',null,`class`,`${fas('users') + ' icon'}`);
+            let elrYQxy = eo('i','q2af',null,`class`,`${fas('users') + ' icon'}`);
 ec('i');
 text(`users`);
 ec('a');
 ec('li');
-let el5To_U = eo('li','664f',null,`class`,`nav-item`);
-let elJ3PWx = eo('a','Xu4f',null,`class`,`nav-link`,`href`,`/admin/posts`);
-elJ3PWx.cls = {active: component.activeLink('/admin/posts')};
+let elu0EUv = eo('li','gMEf',null,`class`,`nav-item`);
+let elKNzKn = eo('a','XIyf',null,`class`,`nav-link`,`href`,`/admin/posts`);
+elKNzKn.cls = {active: component.activeLink('/admin/posts')};
 
-            for (let className in elJ3PWx.cls) {
-                elJ3PWx.classList.toggle(className, elJ3PWx.cls[className]);
+            for (let className in elKNzKn.cls) {
+                elKNzKn.classList.toggle(className, elKNzKn.cls[className]);
             }  
-            let elm_Nz0 = eo('i','4FLf',null,`class`,`${fas('mortar-pestle') + ' icon'}`);
+            let elw6FvS = eo('i','WyCf',null,`class`,`${fas('mortar-pestle') + ' icon'}`);
 ec('i');
 text(`Posts`);
 ec('a');
 ec('li');
-let elIpDMy = eo('li','ZyCf',null,`class`,`nav-item`);
-let elzdicY = eo('a','agwf',null,`class`,`nav-link`,`href`,`/admin/academy/tracks`);
-elzdicY.cls = {active: component.activeLink('/admin/academy/tracks')};
+let el6NoBt = eo('li','P9Rf',null,`class`,`nav-item`);
+let elbdt5F = eo('a','KvVf',null,`class`,`nav-link`,`href`,`/admin/academy/tracks`);
+elbdt5F.cls = {active: component.activeLink('/admin/academy/tracks')};
 
-            for (let className in elzdicY.cls) {
-                elzdicY.classList.toggle(className, elzdicY.cls[className]);
+            for (let className in elbdt5F.cls) {
+                elbdt5F.classList.toggle(className, elbdt5F.cls[className]);
             }  
-            let elbOkZS = eo('i','8zff',null,`class`,`${fas('folder') + ' icon'}`);
+            let elopu_G = eo('i','AHpf',null,`class`,`${fas('folder') + ' icon'}`);
 ec('i');
 text(`Academy Tracks`);
 ec('a');
 ec('li');
-let elwgGx9 = eo('li','A0Cf',null,`class`,`nav-item`);
-let elRZIV2 = eo('a','YKvf',null,`class`,`nav-link`,`href`,`/admin/offline-courses`);
-elRZIV2.cls = {active: component.activeLink('/admin/offline-courses')};
+let elXSij0 = eo('li','AR3f',null,`class`,`nav-item`);
+let el7RgTZ = eo('a','K21f',null,`class`,`nav-link`,`href`,`/admin/offline-courses`);
+el7RgTZ.cls = {active: component.activeLink('/admin/offline-courses')};
 
-            for (let className in elRZIV2.cls) {
-                elRZIV2.classList.toggle(className, elRZIV2.cls[className]);
+            for (let className in el7RgTZ.cls) {
+                el7RgTZ.classList.toggle(className, el7RgTZ.cls[className]);
             }  
-            let elPzIcQ = eo('i','RF1f',null,`class`,`${fas('door-open') + ' icon'}`);
+            let eldabEP = eo('i','1RWf',null,`class`,`${fas('door-open') + ' icon'}`);
 ec('i');
 text(`offline tracks`);
 ec('a');
 ec('li');
-let el5x_HU = eo('li','duUf',null,`class`,`nav-item`);
-let elBfE5b = eo('a','Fnxf',null,`class`,`nav-link`,`href`,`/admin/cocktails/categories`);
-elBfE5b.cls = {active: component.activeLink('/admin/cocktails/categories')};
+let elJI3Ww = eo('li','H_zf',null,`class`,`nav-item`);
+let el6dOLK = eo('a','2bRf',null,`class`,`nav-link`,`href`,`/admin/cocktails/categories`);
+el6dOLK.cls = {active: component.activeLink('/admin/cocktails/categories')};
 
-            for (let className in elBfE5b.cls) {
-                elBfE5b.classList.toggle(className, elBfE5b.cls[className]);
+            for (let className in el6dOLK.cls) {
+                el6dOLK.classList.toggle(className, el6dOLK.cls[className]);
             }  
-            let elDcIs7 = eo('i','SEBf',null,`class`,`${fas('glass-martini-alt') + ' icon'}`);
+            let eljSIjU = eo('i','Mzkf',null,`class`,`${fas('glass-martini-alt') + ' icon'}`);
 ec('i');
 text(`Cocktails categories`);
 ec('a');
 ec('li');
-let elW7XYs = eo('li','n5hf',null,`class`,`nav-item`);
-let el6w38v = eo('a','HzQf',null,`class`,`nav-link`,`href`,`/admin/cocktails`);
-el6w38v.cls = {active: component.activeLink('/admin/cocktails')};
+let elKCsVy = eo('li','ZP5f',null,`class`,`nav-item`);
+let el1klnY = eo('a','pqbf',null,`class`,`nav-link`,`href`,`/admin/cocktails`);
+el1klnY.cls = {active: component.activeLink('/admin/cocktails')};
 
-            for (let className in el6w38v.cls) {
-                el6w38v.classList.toggle(className, el6w38v.cls[className]);
+            for (let className in el1klnY.cls) {
+                el1klnY.classList.toggle(className, el1klnY.cls[className]);
             }  
-            let elknBoi = eo('i','S4uf',null,`class`,`${fas('glass-martini-alt') + ' icon'}`);
+            let el4WamH = eo('i','WAaf',null,`class`,`${fas('glass-martini-alt') + ' icon'}`);
 ec('i');
 text(`Cocktails`);
 ec('a');
 ec('li');
-let el9UMl6 = eo('li','CRRf',null,`class`,`nav-item`);
-let el1EhUL = eo('a','3Wef',null,`class`,`nav-link`,`href`,`/admin/training-ground`);
-el1EhUL.cls = {active: component.activeLink('/admin/training-ground')};
+let elv0so9 = eo('li','gP8f',null,`class`,`nav-item`);
+let elCYH1z = eo('a','8rFf',null,`class`,`nav-link`,`href`,`/admin/training-ground`);
+elCYH1z.cls = {active: component.activeLink('/admin/training-ground')};
 
-            for (let className in el1EhUL.cls) {
-                el1EhUL.classList.toggle(className, el1EhUL.cls[className]);
+            for (let className in elCYH1z.cls) {
+                elCYH1z.classList.toggle(className, elCYH1z.cls[className]);
             }  
-            let elfqNrH = eo('i','gIZf',null,`class`,`${fas('bullseye') + ' icon'}`);
+            let eltYUkF = eo('i','sgHf',null,`class`,`${fas('bullseye') + ' icon'}`);
 ec('i');
 text(`Training ground`);
 ec('a');
 ec('li');
-let el6waZH = eo('li','jzCf',null,`class`,`nav-item`);
-let elH95Yw = eo('a','OjJf',null,`class`,`nav-link`,`href`,`/admin/academy/tracks/suggest-topics`);
-elH95Yw.cls = {active: component.activeLink('/admin/academy/tracks/suggest-topics')};
+let elkdOPZ = eo('li','EZrf',null,`class`,`nav-item`);
+let elTBXQw = eo('a','KuCf',null,`class`,`nav-link`,`href`,`/admin/academy/tracks/suggest-topics`);
+elTBXQw.cls = {active: component.activeLink('/admin/academy/tracks/suggest-topics')};
 
-            for (let className in elH95Yw.cls) {
-                elH95Yw.classList.toggle(className, elH95Yw.cls[className]);
+            for (let className in elTBXQw.cls) {
+                elTBXQw.classList.toggle(className, elTBXQw.cls[className]);
             }  
-            let elBGekZ = eo('i','bytf',null,`class`,`${fas('folder') + ' icon'}`);
+            let elz3D93 = eo('i','1mpf',null,`class`,`${fas('folder') + ' icon'}`);
 ec('i');
 text(`Tracks Suggest topics`);
 ec('a');
 ec('li');
-let elBxMw1 = eo('li','xSjf',null,`class`,`nav-item`);
-let elRN4bb = eo('a','4qjf',null,`class`,`nav-link`,`href`,`/admin/chat-rooms-puzzles-answers`);
-elRN4bb.cls = {active: component.activeLink('/admin/chat-rooms-puzzles-answers')};
+let elwFO8M = eo('li','8oWf',null,`class`,`nav-item`);
+let elscGFp = eo('a','EcWf',null,`class`,`nav-link`,`href`,`/admin/chat-rooms-puzzles-answers`);
+elscGFp.cls = {active: component.activeLink('/admin/chat-rooms-puzzles-answers')};
 
-            for (let className in elRN4bb.cls) {
-                elRN4bb.classList.toggle(className, elRN4bb.cls[className]);
+            for (let className in elscGFp.cls) {
+                elscGFp.classList.toggle(className, elscGFp.cls[className]);
             }  
-            let elIporu = eo('i','9FYf',null,`class`,`${fas('file') + ' icon'}`);
+            let el7nnYC = eo('i','zuNf',null,`class`,`${fas('file') + ' icon'}`);
 ec('i');
 text(`Chat rooms answers`);
 ec('a');
 ec('li');
-let elybtz7 = eo('li','c5vf',null,`class`,`nav-item`);
-let elMj0tx = eo('a','8z2f',null,`class`,`nav-link`,`href`,`/admin/einstein/answers`);
-elMj0tx.cls = {active: component.activeLink('/admin/einstein/answers')};
+let el6UOVs = eo('li','7f6f',null,`class`,`nav-item`);
+let elqp6DT = eo('a','F4_f',null,`class`,`nav-link`,`href`,`/admin/einstein/answers`);
+elqp6DT.cls = {active: component.activeLink('/admin/einstein/answers')};
 
-            for (let className in elMj0tx.cls) {
-                elMj0tx.classList.toggle(className, elMj0tx.cls[className]);
+            for (let className in elqp6DT.cls) {
+                elqp6DT.classList.toggle(className, elqp6DT.cls[className]);
             }  
-            let elHFTz6 = eo('i','XTPf',null,`class`,`${fas('file') + ' icon'}`);
+            let elIrFmg = eo('i','VBCf',null,`class`,`${fas('file') + ' icon'}`);
 ec('i');
 text(`Einstein answers`);
 ec('a');
 ec('li');
-let el495QN = eo('li','wSUf',null,`class`,`nav-item`);
-let elYiZD7 = eo('a','R6Cf',null,`class`,`nav-link`,`href`,`/admin/einstein`);
-elYiZD7.cls = {active: component.activeLink('/admin/einstein')};
+let elmSqfC = eo('li','Mn1f',null,`class`,`nav-item`);
+let elEbYqC = eo('a','R4Mf',null,`class`,`nav-link`,`href`,`/admin/einstein`);
+elEbYqC.cls = {active: component.activeLink('/admin/einstein')};
 
-            for (let className in elYiZD7.cls) {
-                elYiZD7.classList.toggle(className, elYiZD7.cls[className]);
+            for (let className in elEbYqC.cls) {
+                elEbYqC.classList.toggle(className, elEbYqC.cls[className]);
             }  
-            let elQcBh_ = eo('i','w57f',null,`class`,`${fas('file') + ' icon'}`);
+            let el46hsb = eo('i','vqVf',null,`class`,`${fas('file') + ' icon'}`);
 ec('i');
 text(`Einstein`);
 ec('a');
 ec('li');
-let eldaT3Q = eo('li','eV9f',null,`class`,`nav-item`);
-let elhy3co = eo('a','WcKf',null,`class`,`nav-link`,`href`,`/admin/academy/answers`);
-elhy3co.cls = {active: component.activeLink('/admin/answers')};
+let elSyzzJ = eo('li','e8sf',null,`class`,`nav-item`);
+let elJpPVH = eo('a','brIf',null,`class`,`nav-link`,`href`,`/admin/academy/answers`);
+elJpPVH.cls = {active: component.activeLink('/admin/answers')};
 
-            for (let className in elhy3co.cls) {
-                elhy3co.classList.toggle(className, elhy3co.cls[className]);
+            for (let className in elJpPVH.cls) {
+                elJpPVH.classList.toggle(className, elJpPVH.cls[className]);
             }  
-            let elO49Oc = eo('i','KzMf',null,`class`,`${fas('file') + ' icon'}`);
+            let el42gq1 = eo('i','VG9f',null,`class`,`${fas('file') + ' icon'}`);
 ec('i');
 text(`Pending answers`);
 ec('a');

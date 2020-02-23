@@ -4,54 +4,54 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['title','isLoading','users','user'],
-                children: {c2rJTox9M:'flk-spinner',cfoCOjBaZ:'user-online',cvJhYLqEJ:'gold-icon',cNlcQfHdF:'layout'},
+                children: {caP7pi7zA:'flk-spinner',ci7T73i2t:'user-online',cax1cEsZc:'gold-icon',cKDC5LxAH:'layout'},
                 render: function (component) {
-                    let cmpgbBE = this._lc('cNlcQfHdF', {parent:component,content:(layout) => {let elInNb5 = eo('h1',null,null,`class`,`bold`);
+                    let cmpgvTs = this._lc('cKDC5LxAH', {parent:component,content:(layout) => {let el7J3dC = eo('h1',null,null,`class`,`bold`);
 text(trans(component.title));
 ec('h1');
-let cndwDd4 = component.isLoading;
-this.setState('stWKT22', cndwDd4);
-let cndIlCi = !(cndwDd4);
-this.setState('stR5htr', cndIlCi);
-if (cndwDd4) { 
-let cmpXG36 = this._lc('c2rJTox9M', {parent:component,parentTop:layout,state:'stWKT22'});
+let cndgYqj = component.isLoading;
+this.setState('sthmley', cndgYqj);
+let cndip_n = !(cndgYqj);
+this.setState('stxIVZo', cndip_n);
+if (cndgYqj) { 
+let cmpcC0R = this._lc('caP7pi7zA', {parent:component,parentTop:layout,state:'sthmley'});
 }else { 
-let elcuh5_ = eo('table',null,null,`class`,`table table-bordered m-t-2`);
-let elNQzz1 = eo('thead');
-let els5Wgz = eo('tr');
-let elrEOTx = eo('th',null,null,`class`,`text-left`);
+let el5Px_W = eo('table',null,null,`class`,`table table-bordered m-t-2`);
+let el2j1ng = eo('thead');
+let elnBXqL = eo('tr');
+let elhUrdB = eo('th',null,null,`class`,`text-left`);
 text(`User`);
 ec('th');
-let elsX_3o = eo('th');
+let elQ5HGY = eo('th');
 text(`Gold`);
 ec('th');
 ec('tr');
 ec('thead');
-let elX2Wn9 = eo('tbody');
+let elWIQ68 = eo('tbody');
 for (let index in component.users) {
 let user = component.users[index]; 
- let ii7_X8 = 'AhrJ73p' + index;
-let eljjF9N = eo('tr','x7Ygp7SMAa67' + index+ii7_X8);
-let el5N9xq = eo('td','Yumff'+ii7_X8);
-let elTnm0T = eo('span','86Yff'+ii7_X8,null,`class`,`mr-1`);
-let eleaREp = eo('span','aI7ff'+ii7_X8);
+ let ii0ntS = 'slC48_i' + index;
+let elPnNFs = eo('tr','z1v77MizU4WJ' + index+ii0ntS);
+let elSvCn0 = eo('td','PNAff'+ii0ntS);
+let elKg538 = eo('span','vcWff'+ii0ntS,null,`class`,`mr-1`);
+let elNJb6P = eo('span','l1pff'+ii0ntS);
 text(Number(Number(index) + 1).format());
 ec('span');
 text(`-`);
 ec('span');
-let elfis__ = ev('img','omRff'+ii7_X8,null,`src`,`${userImage(user)}`,`class`,`u-image img-thumbnail`,`title`,`${userName(user)}`,`alt`,`${userName(user)}`);
-let el_ZQxV = eo('span','QQTff'+ii7_X8,null,`class`,`bold mr-1`);
-el_ZQxV.cls = {'orange-text': user.id == component.user.id};
+let elxUF40 = ev('img','Dloff'+ii0ntS,null,`src`,`${userImage(user)}`,`class`,`u-image img-thumbnail`,`title`,`${userName(user)}`,`alt`,`${userName(user)}`);
+let elbZO6Q = eo('span','4eUff'+ii0ntS,null,`class`,`bold mr-1`);
+elbZO6Q.cls = {'orange-text': user.id == component.user.id};
 
-            for (let className in el_ZQxV.cls) {
-                el_ZQxV.classList.toggle(className, el_ZQxV.cls[className]);
+            for (let className in elbZO6Q.cls) {
+                elbZO6Q.classList.toggle(className, elbZO6Q.cls[className]);
             }  
             text(userName(user));
 ec('span');
-let cmpDrqM = this._lc('cfoCOjBaZ', {parent:component,parentTop:layout,props:{id:user.id},attrs:{id:`${user.id}`},state:'stR5htr',insideLoop:true,index:"" +ii7_X8});
+let cmpcmd4 = this._lc('ci7T73i2t', {parent:component,parentTop:layout,props:{id:user.id},attrs:{id:`${user.id}`},state:'stxIVZo',insideLoop:true,index:"" +ii0ntS});
 ec('td');
-let ell38Be = eo('td','3L4ff'+ii7_X8,null,`class`,`total-reward`);
-let cmpQBVF = this._lc('cvJhYLqEJ', {parent:component,parentTop:layout,props:{coins:user.gold},state:'stR5htr',insideLoop:true,index:"" +ii7_X8});
+let elz74nO = eo('td','tihff'+ii0ntS,null,`class`,`total-reward`);
+let cmpIBiu = this._lc('cax1cEsZc', {parent:component,parentTop:layout,props:{coins:user.gold},state:'stxIVZo',insideLoop:true,index:"" +ii0ntS});
 ec('td');
 ec('tr');
 }

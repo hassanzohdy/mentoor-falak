@@ -4,92 +4,92 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['canUnlock','categoryIsUnlocked','purchase','category','isPurchasing'],
-                children: {cfmyyM5Ag:'gold-icon',cDJ_LapCV:'gold-icon'},
+                children: {csm2qo1F8:'gold-icon',cqKCadtqb:'gold-icon'},
                 render: function (component) {
-                    let elsaIFT = eo('div',null,null,`class`,`einstein-category`);
-let elMyo1z = eo('div',null,null,`class`,`card`);
-let cndg8nF = component.canUnlock();
-this.setState('stNtgSV', cndg8nF);
-let cndvVDr = component.categoryIsUnlocked();
-this.setState('stZCQen', cndvVDr);
-if (cndg8nF) { 
-let el4e8yf = eo('span','4tpf',null,`class`,`can-unlock`);
+                    let elLkjIV = eo('div',null,null,`class`,`einstein-category`);
+let elzVFuq = eo('div',null,null,`class`,`card`);
+let cndZIWx = component.canUnlock();
+this.setState('stpMak7', cndZIWx);
+let cndruxh = component.categoryIsUnlocked();
+this.setState('st4_jtt', cndruxh);
+if (cndZIWx) { 
+let el8D2et = eo('span','VBpf',null,`class`,`can-unlock`);
 text(`!`);
 ec('span');
-}else if (cndvVDr) { 
-let elZgqtC = eo('div',null,null,`title`,`${trans(`Purchased`)}`,`class`,`purchased-wrapper`);
-let elU6Z_U = eo('i',null,null,`class`,`${fas('check-circle') + ' purchased-icon icon'}`);
+}else if (cndruxh) { 
+let eldR9Sf = eo('div',null,null,`title`,`${trans(`Purchased`)}`,`class`,`purchased-wrapper`);
+let elWGxbw = eo('i',null,null,`class`,`${fas('check-circle') + ' purchased-icon icon'}`);
 ec('i');
 ec('div');
-}let cndP38p = ! component.categoryIsUnlocked();
-this.setState('stR0U7v', cndP38p);
-if (cndP38p) { 
-let el0rL1S = eo('button','KW7f',null, eventListeners, {onclick:[function(e) {var $el = this;component.purchase()}]},`class`,`lock-wrapper`);
-let eli0ohM = eo('i','psmf',null,`class`,`${fas('lock') + ' lock-icon icon'}`);
+}let cndRZdg = ! component.categoryIsUnlocked();
+this.setState('stnPvSf', cndRZdg);
+if (cndRZdg) { 
+let el756wf = eo('button','ve6f',null, eventListeners, {onclick:[function(e) {var $el = this;component.purchase()}]},`class`,`lock-wrapper`);
+let eldKRBl = eo('i','6zNf',null,`class`,`${fas('lock') + ' lock-icon icon'}`);
 ec('i');
 ec('button');
-}let elqCXJr = ev('img',null,null,`src`,`${component.category.image}`,`class`,`image`,`title`,`${component.category.name}`,`alt`,`${component.category.name}`);
-let elzh76V = eo('div',null,null,`class`,`name`);
+}let elNAAnK = ev('img',null,null,`src`,`${component.category.image}`,`class`,`image`,`title`,`${component.category.name}`,`alt`,`${component.category.name}`);
+let el7KMsk = eo('div',null,null,`class`,`name`);
 text(component.category.name);
 ec('div');
-let elRmga2 = eo('div',null,null,`class`,`requirements bold`);
-let elRHxz5 = eo('span',null,null,`title`,`${trans(`Required answers`)}`,`class`,`answers`);
-let eld6MQO = eo('i',null,null,`class`,`${fas('edit') + ' icon icon'}`);
+let ely6a5N = eo('div',null,null,`class`,`requirements bold`);
+let elVIyU4 = eo('span',null,null,`title`,`${trans(`Required answers`)}`,`class`,`answers`);
+let elGrIcF = eo('i',null,null,`class`,`${fas('edit') + ' icon icon'}`);
 ec('i');
 text( component.category.requiredAnswers.format() );
 ec('span');
-let elrNJtk = eo('span',null,null,`title`,`${trans(`Required gold`)}`,`class`,`cost`);
-let cnddH6k = component.category.cost == 0;
-this.setState('stXbH1q', cnddH6k);
-if (cnddH6k) { 
-let elIE96v = eo('span','qa2f',null,`class`,`bold pink-text`);
+let elh0R4W = eo('span',null,null,`title`,`${trans(`Required gold`)}`,`class`,`cost`);
+let cndLXgt = component.category.cost == 0;
+this.setState('stP5SzZ', cndLXgt);
+if (cndLXgt) { 
+let eltrSsF = eo('span','5Yef',null,`class`,`bold pink-text`);
 text(`FREE!`);
 ec('span');
-}let cmpQIfQ = this._lc('cfmyyM5Ag', {parent:component,props:{coins:component.category.cost}});
+}let cmpUsb6 = this._lc('csm2qo1F8', {parent:component,props:{coins:component.category.cost}});
 ec('span');
 ec('div');
 ec('div');
-let elH36ib = eo('div',null,null,`class`,`back-card`);
-let elwGvOV = eo('h3',null,null,`class`,`name`);
+let el1NV0a = eo('div',null,null,`class`,`back-card`);
+let eltOU5K = eo('h3',null,null,`class`,`name`);
 text(component.category.name);
 ec('h3');
-let el55vxk = eo('p',null,null,`class`,`description`);
+let elXhUUz = eo('p',null,null,`class`,`description`);
 text(component.category.description);
 ec('p');
-let elrW8Nq = eo('div',null,null,`class`,`requirements bold`);
-let elqr9RJ = eo('span',null,null,`title`,`${trans(`Required answers`)}`,`class`,`answers`);
-let elCech8 = eo('i',null,null,`class`,`${fas('edit') + ' icon icon'}`);
+let el0F8A7 = eo('div',null,null,`class`,`requirements bold`);
+let elBVck_ = eo('span',null,null,`title`,`${trans(`Required answers`)}`,`class`,`answers`);
+let elranAN = eo('i',null,null,`class`,`${fas('edit') + ' icon icon'}`);
 ec('i');
 text( component.category.requiredAnswers.format() );
 ec('span');
-let elsObmU = eo('span',null,null,`title`,`${trans(`Required gold`)}`,`class`,`cost`);
-let cndxOIZ = component.category.cost == 0;
-this.setState('stNB4gr', cndxOIZ);
-if (cndxOIZ) { 
-let eld0D1K = eo('span','fSNf',null,`class`,`bold pink-text`);
+let elmmZrV = eo('span',null,null,`title`,`${trans(`Required gold`)}`,`class`,`cost`);
+let cndJwAi = component.category.cost == 0;
+this.setState('stQyXAv', cndJwAi);
+if (cndJwAi) { 
+let elXokny = eo('span','1R5f',null,`class`,`bold pink-text`);
 text(`FREE!`);
 ec('span');
-}let cmpN4Zi = this._lc('cDJ_LapCV', {parent:component,props:{coins:component.category.cost}});
+}let cmp2MjY = this._lc('cqKCadtqb', {parent:component,props:{coins:component.category.cost}});
 ec('span');
 ec('div');
-let el3PY5k = eo('div',null,null,`class`,`text-center m-v-1`);
-let el03rB7 = eo('span',null,null,`title`,`${trans(`Level ${ component.category.level }`)}`,`class`,`level`);
+let elMRH4r = eo('div',null,null,`class`,`text-center m-v-1`);
+let eldiLQl = eo('span',null,null,`title`,`${trans(`Level ${ component.category.level }`)}`,`class`,`level`);
 text(component.category.level);
 ec('span');
 ec('div');
-let cndeohX = component.canUnlock();
-this.setState('styWXus', cndeohX);
-let cnddrGX = component.categoryIsUnlocked();
-this.setState('stFmOGc', cnddrGX);
-if (cndeohX) { 
-let el1OD_h = eo('div','3hRf',null,`class`,`text-center`);
-let el_sMmr = eo('button','cvvf',null, eventListeners, {onclick:[function(e) {var $el = this;component.purchase()}]}, boolAttrs, {disabled:component.isPurchasing},`class`,`btn btn-success purchase-btn`);
+let cnd99Wo = component.canUnlock();
+this.setState('stCQcDF', cnd99Wo);
+let cnd9Rhd = component.categoryIsUnlocked();
+this.setState('stNKvRE', cnd9Rhd);
+if (cnd99Wo) { 
+let elbJDIp = eo('div','0NNf',null,`class`,`text-center`);
+let elgaVu_ = eo('button','ms4f',null, eventListeners, {onclick:[function(e) {var $el = this;component.purchase()}]}, boolAttrs, {disabled:component.isPurchasing},`class`,`btn btn-success purchase-btn`);
 text(`Purchase`);
 ec('button');
 ec('div');
-}else if (cnddrGX) { 
-let el4hga_ = eo('div',null,null,`title`,`${trans(`Purchased`)}`,`class`,`text-center`);
-let elhYdov = eo('i',null,null,`class`,`${fas('check-circle') + ' purchased-icon icon'}`);
+}else if (cnd9Rhd) { 
+let elO1Y57 = eo('div',null,null,`title`,`${trans(`Purchased`)}`,`class`,`text-center`);
+let elPqeH6 = eo('i',null,null,`class`,`${fas('check-circle') + ' purchased-icon icon'}`);
 ec('i');
 ec('div');
 }ec('div');

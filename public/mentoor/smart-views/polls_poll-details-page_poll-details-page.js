@@ -4,88 +4,88 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','poll','answersIds','voteAnswer','currentAnswer','votingConfirm','user','confirmClosingPoll','vote','closePoll'],
-                children: {ceRqwFWvy:'flk-spinner',c5Y0fxX8D:'markdown',cttiqBRD8:'flk-mdb-checkbox',cOFgWoaW4:'flk-mdb-checkbox',c7sDaNdEO:'layout',c4GUCb_t4:'flk-alert',cZ2PkdENw:'flk-alert'},
+                children: {ceU9WPNz5:'flk-spinner',c0o1x1OSd:'markdown',cB6h2eE1d:'flk-mdb-checkbox',c5MVjiOXS:'flk-mdb-checkbox',csYRHf5w1:'layout',cvy1Clk7X:'flk-alert',cF8NcpvZh:'flk-alert'},
                 render: function (component) {
-                    let cmpzKCA = this._lc('c7sDaNdEO', {parent:component,content:(layout) => {let cndZNZF = component.isLoading;
-this.setState('steG0W4', cndZNZF);
-let cndm4rE = !(cndZNZF);
-this.setState('stg0XFO', cndm4rE);
-if (cndZNZF) { 
-let cmpIGDR = this._lc('ceRqwFWvy', {parent:component,parentTop:layout,state:'steG0W4'});
+                    let cmpwi11 = this._lc('csYRHf5w1', {parent:component,content:(layout) => {let cndyWtf = component.isLoading;
+this.setState('stRBkBz', cndyWtf);
+let cndPwIa = !(cndyWtf);
+this.setState('stj59nD', cndPwIa);
+if (cndyWtf) { 
+let cmpVW7y = this._lc('ceU9WPNz5', {parent:component,parentTop:layout,state:'stRBkBz'});
 }else { 
-let elLOj2F = eo('h1');
-let el6E8oM = eo('span');
+let elWb6VU = eo('h1');
+let elR111S = eo('span');
 text(component.poll.title);
 ec('span');
-let el1MOxU = eo('span',null,null,`class`,`btn btn-sm bold ml-2 v-middle`);
-el1MOxU.cls = {'btn-success': component.poll.closed === false, 'btn-danger': component.poll.closed === true};
+let els4Jqs = eo('span',null,null,`class`,`btn btn-sm bold ml-2 v-middle`);
+els4Jqs.cls = {'btn-success': component.poll.closed === false, 'btn-danger': component.poll.closed === true};
 
-            for (let className in el1MOxU.cls) {
-                el1MOxU.classList.toggle(className, el1MOxU.cls[className]);
+            for (let className in els4Jqs.cls) {
+                els4Jqs.classList.toggle(className, els4Jqs.cls[className]);
             }  
             text( component.poll.closed ? 'Closed' : 'Voting' );
 ec('span');
 ec('h1');
-let cmpu6Hk = this._lc('c5Y0fxX8D', {parent:component,parentTop:layout,props:{content:component.poll.description},state:'stg0XFO'});
-let el6LhtR = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cmpMm3F = this._lc('c0o1x1OSd', {parent:component,parentTop:layout,props:{content:component.poll.description},state:'stj59nD'});
+let el4F1s9 = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;}]},`class`,`m-t-2`);
-component.form = el6LhtR;
+component.form = el4F1s9;
 
-                if (! el6LhtR.formHandler) {
-                    window.cfrmdlr = el6LhtR.formHandler = new FormHandler(el6LhtR, component);
+                if (! el4F1s9.formHandler) {
+                    window.cfrmdlr = el4F1s9.formHandler = new FormHandler(el4F1s9, component);
                 } else {
-                    window.cfrmdlr = el6LhtR.formHandler;
+                    window.cfrmdlr = el4F1s9.formHandler;
                 }
-            let elBkebl = eo('ul',null,null,`class`,`answers-list`);
+            let elmYxoR = eo('ul',null,null,`class`,`answers-list`);
 for (let i in component.poll.answers) {
 let answer = component.poll.answers[i]; 
- let iiSAEn = 'Q9q8TI2' + i;
-let elZ1Nkj = eo('li','AYyd4fDj9GUT' + i+iiSAEn,null,`class`,`answer`);
-let cndSJvy = answer.votes.length > 0;
-this.setState('stz3B3H', cndSJvy);
-let cndsb_r = !(cndSJvy);
-this.setState('stcWoHW', cndsb_r);
-if (cndSJvy) { 
-let elnL6jJ = eo('span','JJ1ff'+iiSAEn,null, 'style', {width: (answer.votes.length * 100 / component.poll.totalVotes) + '%'},`class`,`bg`);
+ let ii_wzL = 'glLrZSH' + i;
+let elLg82G = eo('li','yLUr5rqWCJWN' + i+ii_wzL,null,`class`,`answer`);
+let cndB4M7 = answer.votes.length > 0;
+this.setState('stfvX4m', cndB4M7);
+let cnd7wKm = !(cndB4M7);
+this.setState('stYDDsb', cnd7wKm);
+if (cndB4M7) { 
+let elwMNA4 = eo('span','B21ff'+ii_wzL,null, 'style', {width: (answer.votes.length * 100 / component.poll.totalVotes) + '%'},`class`,`bg`);
 ec('span');
-}let cndizvt = component.poll.userHasVoted || component.poll.closed;
-this.setState('stCvqSW', cndizvt);
-let cnd3QtC = !(cndizvt);
-this.setState('stDuO1c', cnd3QtC);
-if (cndizvt) { 
-let elku6X4 = eo('span','gL9ff'+iiSAEn,null,`class`,`text`);
+}let cndlU6y = component.poll.userHasVoted || component.poll.closed;
+this.setState('stfXSLb', cndlU6y);
+let cnd4CMq = !(cndlU6y);
+this.setState('st7bO_j', cnd4CMq);
+if (cndlU6y) { 
+let elDpDU2 = eo('span','Lgfff'+ii_wzL,null,`class`,`text`);
 text(answer.answer);
 ec('span');
 }else { 
-let cnd4xcw = component.poll.allowMultipleVotes;
-this.setState('stf6dv4', cnd4xcw);
-let cndLX6k = !(cnd4xcw);
-this.setState('stmV06r', cndLX6k);
-if (cnd4xcw) { 
-let cmp0Tl2 = this._lc('cttiqBRD8', {parent:component,parentTop:layout,props:{checked:component.answersIds.includes(answer.id),label:answer.answer,value:answer.id},events:{onchange:function(e) {let $el = this; component.voteAnswer(answer)}},boolAttrs:{checked:component.answersIds.includes(answer.id)},attrs:{name:`${(`answersIds[]`).toInputName()}`,type:'checkbox'},state:'stf6dv4',insideLoop:true,index:"" +iiSAEn});
+let cnd7GOp = component.poll.allowMultipleVotes;
+this.setState('styNXuP', cnd7GOp);
+let cnd1yui = !(cnd7GOp);
+this.setState('stkuTT0', cnd1yui);
+if (cnd7GOp) { 
+let cmpzzVH = this._lc('cB6h2eE1d', {parent:component,parentTop:layout,props:{checked:component.answersIds.includes(answer.id),label:answer.answer,value:answer.id},events:{onchange:function(e) {let $el = this; component.voteAnswer(answer)}},boolAttrs:{checked:component.answersIds.includes(answer.id)},attrs:{name:`${(`answersIds[]`).toInputName()}`,type:'checkbox'},state:'styNXuP',insideLoop:true,index:"" +ii_wzL});
 }else { 
-let cmp1nT2 = this._lc('cOFgWoaW4', {parent:component,parentTop:layout,props:{checked:component.currentAnswer == answer.id,label:answer.answer,value:answer.id},events:{onchange:function(e) {let $el = this; component.voteAnswer(answer)}},boolAttrs:{checked:component.currentAnswer == answer.id},attrs:{name:`${(`answersIds`).toInputName()}`,type:'radio'},state:'stmV06r',insideLoop:true,index:"" +iiSAEn});
-}}let elSoDZA = eo('div','G_zff'+iiSAEn,null,`class`,`voters`);
+let cmpyprU = this._lc('c5MVjiOXS', {parent:component,parentTop:layout,props:{checked:component.currentAnswer == answer.id,label:answer.answer,value:answer.id},events:{onchange:function(e) {let $el = this; component.voteAnswer(answer)}},boolAttrs:{checked:component.currentAnswer == answer.id},attrs:{name:`${(`answersIds`).toInputName()}`,type:'radio'},state:'stkuTT0',insideLoop:true,index:"" +ii_wzL});
+}}let elZT6Yj = eo('div','Zdpff'+ii_wzL,null,`class`,`voters`);
 for (let i in answer.displayedVotes) {
 let voter = answer.displayedVotes[i]; 
- let iivuBy = '0ecebkY' + i;
-let elKyQOm = eo('div','OyyhaLmSBEJB' + i+iiSAEn+iivuBy,null,`class`,`voter`);
-let elH9g2W = ev('img','peXff'+iiSAEn+iivuBy,null,`src`,`${voter.createdBy.image}`,`title`,`${voter.createdBy.name}`,`class`,`circle`,`alt`,`${voter.createdBy.name}`);
+ let iifla5 = 'WJk8JwN' + i;
+let elBaayy = eo('div','qIQCdsTEhJwv' + i+ii_wzL+iifla5,null,`class`,`voter`);
+let el9W7Z6 = ev('img','VLhff'+ii_wzL+iifla5,null,`src`,`${voter.createdBy.image}`,`title`,`${voter.createdBy.name}`,`class`,`circle`,`alt`,`${voter.createdBy.name}`);
 
                     setTimeout(function () {
-                        let $el = elH9g2W;
+                        let $el = el9W7Z6;
                         
             true && tippyTooltip($el, {arrow:true,content:`${voter.createdBy.name}`});
         ;
                     }, 20);                
                 ec('div');
 }
-let cnd1Kt8 = answer.remainingVotes > 0;
-this.setState('stotJ_0', cnd1Kt8);
-if (cnd1Kt8) { 
-let elWUAwn = eo('div','0a3ff'+iiSAEn,null,`class`,`remaining`);
-let el1UDF5 = eo('i','qkLff'+iiSAEn,null,`class`,`${fas('plus') + ' icon'}`);
+let cndNGlA = answer.remainingVotes > 0;
+this.setState('stSg3DG', cndNGlA);
+if (cndNGlA) { 
+let el8lzbd = eo('div','8waff'+ii_wzL,null,`class`,`remaining`);
+let elxFhh2 = eo('i','W7Qff'+ii_wzL,null,`class`,`${fas('plus') + ' icon'}`);
 ec('i');
 text( answer.remainingVotes );
 ec('div');
@@ -93,39 +93,39 @@ ec('div');
 ec('li');
 }
 ec('ul');
-let cndqPT4 = ! component.poll.userHasVoted;
-this.setState('stXQA_i', cndqPT4);
-if (cndqPT4) { 
-let elZ23Q2 = eo('button','1Ncf',null, eventListeners, {onclick:[function(e) {var $el = this;component.votingConfirm = true;}]}, boolAttrs, {disabled:! component.user.isLoggedIn() || Is.empty(component.answersIds) && ! component.currentAnswer},`class`,`btn btn-info bold`,`type`,`button`);
-let cndQ40d = component.user.isLoggedIn();
-this.setState('stcz_i2', cndQ40d);
-let cndBsoG = !(cndQ40d);
-this.setState('stXtlyR', cndBsoG);
-if (cndQ40d) { 
-let elCfmg7 = eo('span','5e8f');
+let cndBQOF = ! component.poll.userHasVoted;
+this.setState('steBdyD', cndBQOF);
+if (cndBQOF) { 
+let elbPh2s = eo('button','5edf',null, eventListeners, {onclick:[function(e) {var $el = this;component.votingConfirm = true;}]}, boolAttrs, {disabled:! component.user.isLoggedIn() || Is.empty(component.answersIds) && ! component.currentAnswer},`class`,`btn btn-info bold`,`type`,`button`);
+let cndP5Vv = component.user.isLoggedIn();
+this.setState('stById5', cndP5Vv);
+let cnd1YM2 = !(cndP5Vv);
+this.setState('stU8lyd', cnd1YM2);
+if (cndP5Vv) { 
+let elP75SU = eo('span','91Nf');
 text(`Vote`);
 ec('span');
 }else { 
-let elyE4eR = eo('span');
+let elPPXGu = eo('span');
 text(`Login to vote`);
 ec('span');
 }ec('button');
 }ec('form');
-let cndPx8n = component.user.isLoggedIn() && ! component.poll.closed && [component.poll.createdBy.id, 1].includes(component.user.id);
-this.setState('st04Qq3', cndPx8n);
-if (cndPx8n) { 
-let el7gEQN = eo('button','7C6f',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmClosingPoll = true}]},`class`,`btn btn-danger bold`);
+let cndvpZ4 = component.user.isLoggedIn() && ! component.poll.closed && [component.poll.createdBy.id, 1].includes(component.user.id);
+this.setState('stbpG1K', cndvpZ4);
+if (cndvpZ4) { 
+let elFcNSC = eo('button','OtHf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmClosingPoll = true}]},`class`,`btn btn-danger bold`);
 text(`Close Poll`);
 ec('button');
 }}}});
-let cndXT23 = component.votingConfirm;
-this.setState('stTuAcv', cndXT23);
-if (cndXT23) { 
-let cmpdaYX = this._lc('c4GUCb_t4', {parent:component,events:{onclose:function(e) {let $el = this; component.votingConfirm = false;},onconfirm:function(e) {let $el = this; component.vote()}},state:'stTuAcv'});
-}let cnd1CcA = component.confirmClosingPoll;
-this.setState('stFCPKs', cnd1CcA);
-if (cnd1CcA) { 
-let cmpTYnV = this._lc('cZ2PkdENw', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmClosingPoll = false;},onconfirm:function(e) {let $el = this; component.closePoll()}},state:'stFCPKs'});
+let cndtGZY = component.votingConfirm;
+this.setState('str8m5f', cndtGZY);
+if (cndtGZY) { 
+let cmppRfW = this._lc('cvy1Clk7X', {parent:component,events:{onclose:function(e) {let $el = this; component.votingConfirm = false;},onconfirm:function(e) {let $el = this; component.vote()}},state:'str8m5f'});
+}let cndaRFo = component.confirmClosingPoll;
+this.setState('stFY7gC', cndaRFo);
+if (cndaRFo) { 
+let cmpgrWX = this._lc('cF8NcpvZh', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmClosingPoll = false;},onconfirm:function(e) {let $el = this; component.closePoll()}},state:'stFY7gC'});
 }
                     this.isReadyToGo();
                 }

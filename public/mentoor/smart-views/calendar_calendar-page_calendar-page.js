@@ -4,392 +4,392 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['user','confirm','unlock','add','submit','meService','data','todoItems','newStatus','changeScheduleStatus','openAddModal','updateStatus','statusList','currentScheduleItem','displayPreviousMonth','calendarOptions','displayNextMonth'],
-                children: {cyKIdvHZB:'gold-icon',c4C6Pgfw9:'flk-mdb-checkbox',cwds2lP6I:'flk-mdb-checkbox',cu0AXSN3j:'flk-mdb-checkbox',cKB7j9TXy:'flk-mdb-checkbox',cqT7GI9g4:'gold-icon',cYP2CI1yg:'layout',ciCioZGvY:'flk-alert',cZYS2Zz7P:'flk-datepicker',cCAhuOIFR:'flk-modal',c7Wxe7NUk:'flk-dropdown-list',cMNCLKZO5:'flk-datepicker',c4oBocXJD:'flk-modal',clMaYezeK:'flk-dropdown-list',csE1VFe2z:'flk-datepicker',cjlnsfHFO:'flk-modal',cyGPiMoFN:'flk-alert'},
+                children: {cFiYRLnsl:'gold-icon',cYmsirTUg:'flk-mdb-checkbox',cYzs9MezE:'flk-mdb-checkbox',c2JqbH9N2:'flk-mdb-checkbox',cPRElBEYQ:'flk-mdb-checkbox',chFVTjxKG:'gold-icon',cjGkyuUY0:'layout',c3ooMXmzr:'flk-alert',cqUPpQBKi:'flk-datepicker',cpkLXo9OT:'flk-modal',c_AaarsUc:'flk-dropdown-list',cSFqvqEnM:'flk-datepicker',cJOwyWhFV:'flk-modal',ch2fSncH6:'flk-dropdown-list',c7afBRgVn:'flk-datepicker',cp0MPwKBv:'flk-modal',cYYgDLaV6:'flk-alert'},
                 render: function (component) {
-                    let cmp9TEQ = this._lc('cYP2CI1yg', {parent:component,content:(layout) => {let elUJlAW = eo('h1');
+                    let cmpYEYL = this._lc('cjGkyuUY0', {parent:component,content:(layout) => {let elQ4iRz = eo('h1');
 text(`Calendar`);
 ec('h1');
-let elUMx5P = eo('p');
+let elgKwZk = eo('p');
 text(`Calendar will help you schedule your todo items into certain dates.`);
 ec('p');
-let elAN0WW = eo('p');
+let el2ghTj = eo('p');
 text(`This will massively increase your productivity.`);
 ec('p');
-let elwGWVR = eo('p');
+let elZpAdR = eo('p');
 text(`Calendar can be used to check what you've to do in certain day(s) for todo items, tasks, projects dates and
         so on.`);
 ec('p');
-let cndoP2w = ! component.user.isLoggedIn() || ! component.user.shoppingMall.includes('calendar');
-this.setState('stTi0ms', cndoP2w);
-let cnd3Uqa = !(cndoP2w);
-this.setState('stmk3oL', cnd3Uqa);
-if (cndoP2w) { 
-let cndbG6X = ! Is.empty(FLAGS.shoppingMall);
-this.setState('st5FtqV', cndbG6X);
-if (cndbG6X) { 
-let elmo7Kr = eo('div','hFpf',null,`class`,`m-t-4 text-center`);
-let elI16e8 = eo('button','NaIf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirm = true}]},`class`,`btn btn-success`);
-let cmpnx0j = this._lc('cyKIdvHZB', {parent:component,parentTop:layout,props:{coins:FLAGS.shoppingMall.calendar},state:'st5FtqV'});
-let elM_bO7 = eo('div','8D3f',null,`class`,`bold p-l-1`);
+let cnddtGm = ! component.user.isLoggedIn() || ! component.user.shoppingMall.includes('calendar');
+this.setState('st_Al3W', cnddtGm);
+let cndYMDI = !(cnddtGm);
+this.setState('steRF3o', cndYMDI);
+if (cnddtGm) { 
+let cnd5Zh8 = ! Is.empty(FLAGS.shoppingMall);
+this.setState('styCIZM', cnd5Zh8);
+if (cnd5Zh8) { 
+let elTZPzt = eo('div','R3Uf',null,`class`,`m-t-4 text-center`);
+let elUPgkv = eo('button','LyEf',null, eventListeners, {onclick:[function(e) {var $el = this;component.confirm = true}]},`class`,`btn btn-success`);
+let cmpcEdr = this._lc('cFiYRLnsl', {parent:component,parentTop:layout,props:{coins:FLAGS.shoppingMall.calendar},state:'styCIZM'});
+let elWfWTN = eo('div','FF1f',null,`class`,`bold p-l-1`);
 text(`Unlock`);
 ec('div');
 ec('button');
 ec('div');
 }}else { 
-let elmDDb3 = eo('section',null,null,`id`,`calendar-options`,`class`,`row`);
-let elKFG3x = eo('div',null,null,`class`,`col m-t-4`);
-let el5MZAo = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddModal('basic')}]},`title`,`${trans(`new Schedule`)}`,`type`,`button`,`class`,`d-block btn btn-pink bold`);
-let elpOjiW = eo('i',null,null,`class`,`${fas('plus') + ' mr-2 icon'}`);
+let ell8UIg = eo('section',null,null,`id`,`calendar-options`,`class`,`row`);
+let elWvzed = eo('div',null,null,`class`,`col m-t-4`);
+let eln1NCN = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddModal('basic')}]},`title`,`${trans(`new Schedule`)}`,`type`,`button`,`class`,`d-block btn btn-pink bold`);
+let elSOPwM = eo('i',null,null,`class`,`${fas('plus') + ' mr-2 icon'}`);
 ec('i');
 text(`Basic`);
 ec('button');
-let elfxhCX = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddModal('todo')}]},`title`,`${trans(`new Schedule`)}`,`type`,`button`,`class`,`d-block m-y-2 btn btn-success bold`);
-let elmFGun = eo('i',null,null,`class`,`${fas('plus') + ' mr-2 icon'}`);
+let elai9Mx = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddModal('todo')}]},`title`,`${trans(`new Schedule`)}`,`type`,`button`,`class`,`d-block m-y-2 btn btn-success bold`);
+let elJtwsX = eo('i',null,null,`class`,`${fas('plus') + ' mr-2 icon'}`);
 ec('i');
 text(`Todo`);
-let cndLIoy = component.user.isLoggedIn() && ! component.user.shoppingMall.includes('todo');
-this.setState('stC02nM', cndLIoy);
-if (cndLIoy) { 
-let ellYXPw = eo('i','Tq5f',null,`class`,`${fas('lock') + ' ml-2 icon'}`);
+let cndylbv = component.user.isLoggedIn() && ! component.user.shoppingMall.includes('todo');
+this.setState('stpTfTV', cndylbv);
+if (cndylbv) { 
+let elOCSDQ = eo('i','PaUf',null,`class`,`${fas('lock') + ' ml-2 icon'}`);
 ec('i');
 }ec('button');
-let eleLqeg = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddModal('task')}]},`title`,`${trans(`new Schedule`)}`,`type`,`button`,`class`,`d-block m-b-1 btn btn-cyan bold`);
-let elJ5I8a = eo('i',null,null,`class`,`${fas('plus') + ' mr-2 icon'}`);
+let elDxQlX = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openAddModal('task')}]},`title`,`${trans(`new Schedule`)}`,`type`,`button`,`class`,`d-block m-b-1 btn btn-cyan bold`);
+let elHMUa0 = eo('i',null,null,`class`,`${fas('plus') + ' mr-2 icon'}`);
 ec('i');
 text(`Task`);
 ec('button');
 ec('div');
-let el9sUHf = eo('div',null,null,`class`,`col m-t-4 checkbox-group`);
-let elak0_O = eo('span',null,null,`class`,`m-l-2`);
+let eluDJl9 = eo('div',null,null,`class`,`col m-t-4 checkbox-group`);
+let el81jmY = eo('span',null,null,`class`,`m-l-2`);
 text(`Show`);
 ec('span');
-let cmposkr = this._lc('c4C6Pgfw9', {parent:component,parentTop:layout,props:{checked:component.statusList.active},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'active');}},boolAttrs:{checked:component.statusList.active},attrs:{label:'Active'}});
-let cmp6uay = this._lc('cwds2lP6I', {parent:component,parentTop:layout,props:{checked:component.statusList.completed},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'completed');}},boolAttrs:{checked:component.statusList.completed},attrs:{label:'Completed'}});
-let cmpj7Es = this._lc('cu0AXSN3j', {parent:component,parentTop:layout,props:{checked:component.statusList.failed},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'failed');}},boolAttrs:{checked:component.statusList.failed},attrs:{label:'Failed'}});
-let cmpEuij = this._lc('cKB7j9TXy', {parent:component,parentTop:layout,props:{checked:component.statusList.autoFailed},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'autoFailed');}},boolAttrs:{checked:component.statusList.autoFailed},attrs:{label:'AutoFailed'}});
+let cmp2bsg = this._lc('cYmsirTUg', {parent:component,parentTop:layout,props:{checked:component.statusList.active},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'active');}},boolAttrs:{checked:component.statusList.active},attrs:{label:'Active'}});
+let cmpTyQl = this._lc('cYzs9MezE', {parent:component,parentTop:layout,props:{checked:component.statusList.completed},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'completed');}},boolAttrs:{checked:component.statusList.completed},attrs:{label:'Completed'}});
+let cmpuA68 = this._lc('c2JqbH9N2', {parent:component,parentTop:layout,props:{checked:component.statusList.failed},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'failed');}},boolAttrs:{checked:component.statusList.failed},attrs:{label:'Failed'}});
+let cmpbakb = this._lc('cPRElBEYQ', {parent:component,parentTop:layout,props:{checked:component.statusList.autoFailed},events:{onchange:function(e) {let $el = this; component.updateStatus($el.checked,'autoFailed');}},boolAttrs:{checked:component.statusList.autoFailed},attrs:{label:'AutoFailed'}});
 ec('div');
-let elrONWW = eo('div',null,null,`class`,`col`);
-let elQPLkl = eo('div',null,null,`class`,`float-right`,`id`,`symbols-list`);
-let elxw12J = eo('div',null,null,`class`,`symbol`);
-let elyppDy = eo('i',null,null,`class`,`circle basic`);
+let elGt7Pm = eo('div',null,null,`class`,`col`);
+let elaeEoF = eo('div',null,null,`class`,`float-right`,`id`,`symbols-list`);
+let el0J5t6 = eo('div',null,null,`class`,`symbol`);
+let elxD30k = eo('i',null,null,`class`,`circle basic`);
 ec('i');
-let elb0Rg6 = eo('span',null,null,`class`,`text`);
+let elsXycg = eo('span',null,null,`class`,`text`);
 text(`Basic`);
 ec('span');
-let cnd5b2g = component.user.total.calendar.basic;
-this.setState('stCboi8', cnd5b2g);
-if (cnd5b2g) { 
-let elf1n_h = eo('strong','xylf',null,`class`,`ml-1`);
+let cndKExj = component.user.total.calendar.basic;
+this.setState('stuKXBY', cndKExj);
+if (cndKExj) { 
+let eljwx8_ = eo('strong','Gbyf',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.basic + ')');
 ec('strong');
 }ec('div');
-let elj8EWm = eo('div',null,null,`class`,`symbol`);
-let el9E64O = eo('i',null,null,`class`,`circle todo`);
+let ellV0uo = eo('div',null,null,`class`,`symbol`);
+let eltPlgR = eo('i',null,null,`class`,`circle todo`);
 ec('i');
-let elc8Rai = eo('span',null,null,`class`,`text`);
+let elt8GSZ = eo('span',null,null,`class`,`text`);
 text(`Todo`);
 ec('span');
-let cndVSP_ = component.user.total.calendar.todo;
-this.setState('stRw8tZ', cndVSP_);
-if (cndVSP_) { 
-let el618LZ = eo('strong','m59f',null,`class`,`ml-1`);
+let cnd4f5I = component.user.total.calendar.todo;
+this.setState('st_8UCi', cnd4f5I);
+if (cnd4f5I) { 
+let elIhFqN = eo('strong','rgBf',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.todo + ')');
 ec('strong');
 }ec('div');
-let elqKqJV = eo('div',null,null,`class`,`symbol`);
-let el7OGNC = eo('i',null,null,`class`,`circle task`);
+let elIBxvc = eo('div',null,null,`class`,`symbol`);
+let elCKB_o = eo('i',null,null,`class`,`circle task`);
 ec('i');
-let elxBy2k = eo('span',null,null,`class`,`text`);
+let el_znuJ = eo('span',null,null,`class`,`text`);
 text(`Task`);
 ec('span');
-let cnd4clb = component.user.total.calendar.task;
-this.setState('stm7dS4', cnd4clb);
-if (cnd4clb) { 
-let eldqdee = eo('strong','a_Cf',null,`class`,`ml-1`);
+let cndZz9v = component.user.total.calendar.task;
+this.setState('stC9vMd', cndZz9v);
+if (cndZz9v) { 
+let els12RX = eo('strong','Q5af',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.task + ')');
 ec('strong');
 }ec('div');
-let elDI_yG = eo('div',null,null,`class`,`symbol`);
-let el4U6EV = eo('i',null,null,`class`,`${fas('hourglass-half') + ' icon'}`);
+let elXKzKH = eo('div',null,null,`class`,`symbol`);
+let elM4nyz = eo('i',null,null,`class`,`${fas('hourglass-half') + ' icon'}`);
 ec('i');
-let el7XZq9 = eo('span',null,null,`class`,`text`);
+let el367SS = eo('span',null,null,`class`,`text`);
 text(`Active`);
 ec('span');
-let cndAL5H = component.user.total.calendar.active;
-this.setState('st4rtLN', cndAL5H);
-if (cndAL5H) { 
-let elvPW9x = eo('strong','JiTf',null,`class`,`ml-1`);
+let cnddr_G = component.user.total.calendar.active;
+this.setState('stZ8ovx', cnddr_G);
+if (cnddr_G) { 
+let elXty8t = eo('strong','qukf',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.active + ')');
 ec('strong');
 }ec('div');
-let eloJ4oj = eo('div',null,null,`class`,`symbol`);
-let elqcCnA = eo('i',null,null,`class`,`${fas('check') + ' icon'}`);
+let elK1Uk7 = eo('div',null,null,`class`,`symbol`);
+let eluecdd = eo('i',null,null,`class`,`${fas('check') + ' icon'}`);
 ec('i');
-let elIglCN = eo('span',null,null,`class`,`text`);
+let elVfWPk = eo('span',null,null,`class`,`text`);
 text(`Completed`);
 ec('span');
-let cnd2YBE = component.user.total.calendar.completed;
-this.setState('stDbCPU', cnd2YBE);
-if (cnd2YBE) { 
-let elLTnRI = eo('strong','mMlf',null,`class`,`ml-1`);
+let cndmp7y = component.user.total.calendar.completed;
+this.setState('stbOOEf', cndmp7y);
+if (cndmp7y) { 
+let elovhHo = eo('strong','k_Hf',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.completed + ')');
 ec('strong');
 }ec('div');
-let elo1snY = eo('div',null,null,`class`,`symbol`);
-let el9YOF0 = eo('i',null,null,`class`,`${fas('frown-open') + ' icon'}`);
+let elXk914 = eo('div',null,null,`class`,`symbol`);
+let eluRGwC = eo('i',null,null,`class`,`${fas('frown-open') + ' icon'}`);
 ec('i');
-let elNyhaT = eo('span',null,null,`class`,`text`);
+let elKhIeF = eo('span',null,null,`class`,`text`);
 text(`Failed`);
 ec('span');
-let cndJywD = component.user.total.calendar.failed;
-this.setState('st0A_sN', cndJywD);
-if (cndJywD) { 
-let el1Ec4y = eo('strong','tnuf',null,`class`,`ml-1`);
+let cndYmCD = component.user.total.calendar.failed;
+this.setState('stTnj03', cndYmCD);
+if (cndYmCD) { 
+let el0TBiy = eo('strong','qZsf',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.failed + ')');
 ec('strong');
 }ec('div');
-let elYzP_6 = eo('div',null,null,`class`,`symbol`);
-let eltxtHk = eo('i',null,null,`class`,`${fas('frown') + ' icon'}`);
+let el66_fv = eo('div',null,null,`class`,`symbol`);
+let elsT51U = eo('i',null,null,`class`,`${fas('frown') + ' icon'}`);
 ec('i');
-let elSEHNU = eo('span',null,null,`class`,`text`);
+let elQbDtj = eo('span',null,null,`class`,`text`);
 text(`Auto Failed`);
 ec('span');
-let cndBA7u = component.user.total.calendar.autoFailed;
-this.setState('stc0wJA', cndBA7u);
-if (cndBA7u) { 
-let elox56K = eo('strong','dBlf',null,`class`,`ml-1`);
+let cndQNfv = component.user.total.calendar.autoFailed;
+this.setState('stljOBv', cndQNfv);
+if (cndQNfv) { 
+let elLTSOv = eo('strong','kw5f',null,`class`,`ml-1`);
 text('(' + component.user.total.calendar.autoFailed + ')');
 ec('strong');
 }ec('div');
 ec('div');
 ec('div');
 ec('section');
-let elFYDCE = eo('section',null,null,`id`,`calendar`);
-let el68iqv = eo('div',null,null,`class`,`columns`);
-let el96Fuy = eo('h3',null,null,`class`,`column column-1 bold text-center block m-b-0`);
-let elxaRfH = eo('i',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.displayPreviousMonth()}]},`title`,`${trans(`Previous month`)}`,`class`,`${fas('chevron-left') + ' mr-2 pointer icon'}`);
+let elhTlv6 = eo('section',null,null,`id`,`calendar`);
+let elHytkv = eo('div',null,null,`class`,`columns`);
+let el8_m8D = eo('h3',null,null,`class`,`column column-1 bold text-center block m-b-0`);
+let elu1Uc2 = eo('i',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.displayPreviousMonth()}]},`title`,`${trans(`Previous month`)}`,`class`,`${fas('chevron-left') + ' mr-2 pointer icon'}`);
 ec('i');
-let elzqLzd = eo('div',null,null,`class`,`current-month`);
+let elx1Ti6 = eo('div',null,null,`class`,`current-month`);
 text(component.calendarOptions.current.yearMonth);
 ec('div');
-let elYw6Y8 = eo('i',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.displayNextMonth()}]},`title`,`${trans(`Next month`)}`,`class`,`${fas('chevron-right') + ' ml-2 pointer icon'}`);
+let ely2L4n = eo('i',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.displayNextMonth()}]},`title`,`${trans(`Next month`)}`,`class`,`${fas('chevron-right') + ' ml-2 pointer icon'}`);
 ec('i');
 ec('h3');
 ec('div');
-let elSu6op = eo('div',null,null,`class`,`columns`);
-let el3Jjpr = eo('div',null,null,`class`,`block column column-8 heading`);
+let elLHN67 = eo('div',null,null,`class`,`columns`);
+let elHZ9bE = eo('div',null,null,`class`,`block column column-8 heading`);
 text(`Weeks`);
 ec('div');
 for (let i in component.calendarOptions.days) {
 let day = component.calendarOptions.days[i]; 
- let iiHQdG = 'WrEPnlI' + i;
-let el52sKU = eo('div','J8_qRqbm0eEU' + i+iiHQdG,null,`class`,`block column column-8 heading`);
-el52sKU.cls = {current: component.calendarOptions.current.day == day && component.calendarOptions.isCalendarOfThisMonth};
+ let iiE2Ev = 'VoW0nSR' + i;
+let elFm7Na = eo('div','5MBiOtF7I_md' + i+iiE2Ev,null,`class`,`block column column-8 heading`);
+elFm7Na.cls = {current: component.calendarOptions.current.day == day && component.calendarOptions.isCalendarOfThisMonth};
 
-            for (let className in el52sKU.cls) {
-                el52sKU.classList.toggle(className, el52sKU.cls[className]);
+            for (let className in elFm7Na.cls) {
+                elFm7Na.classList.toggle(className, elFm7Na.cls[className]);
             }  
             text(day);
 ec('div');
 }
 for (let week in component.calendarOptions.weeks) {
 let days = component.calendarOptions.weeks[week]; 
- let iiA9v4 = 'L8F_p2M' + week;
-let elm5P01 = eo('div','ob4cdGPQabsF' + week+iiA9v4,null,`class`,`columns`);
-let elBbnrD = eo('div','qJFff'+iiA9v4,null,`class`,`block column column-8 heading week-num`);
-elBbnrD.cls = {current: week == component.calendarOptions.current.week && component.calendarOptions.isCalendarOfThisMonth};
+ let iiKpCh = '81uoV47' + week;
+let elrkAUv = eo('div','85yVALBTj0fY' + week+iiKpCh,null,`class`,`columns`);
+let el6hOFi = eo('div','tFtff'+iiKpCh,null,`class`,`block column column-8 heading week-num`);
+el6hOFi.cls = {current: week == component.calendarOptions.current.week && component.calendarOptions.isCalendarOfThisMonth};
 
-            for (let className in elBbnrD.cls) {
-                elBbnrD.classList.toggle(className, elBbnrD.cls[className]);
+            for (let className in el6hOFi.cls) {
+                el6hOFi.classList.toggle(className, el6hOFi.cls[className]);
             }  
             text(`Week ${ week }`);
 ec('div');
 for (let i in days) {
 let day = days[i]; 
- let ii0spT = '6Qml1QN' + i;
-let elnd2RA = eo('div','K5Ykiv5tquQJ' + i+iiA9v4+ii0spT,null,`class`,`block column column-8 day`);
-elnd2RA.cls = {locked: !day.editable};
+ let iiFqCS = 'z4JflLv' + i;
+let elYnqlQ = eo('div','sVlO9F9Yvk2w' + i+iiKpCh+iiFqCS,null,`class`,`block column column-8 day`);
+elYnqlQ.cls = {locked: !day.editable};
 
-            for (let className in elnd2RA.cls) {
-                elnd2RA.classList.toggle(className, elnd2RA.cls[className]);
+            for (let className in elYnqlQ.cls) {
+                elYnqlQ.classList.toggle(className, elYnqlQ.cls[className]);
             }  
-            let elaXKQV = eo('span','3jAff'+iiA9v4+ii0spT,null,`class`,`number`);
-elaXKQV.cls = {current: day.date == component.calendarOptions.today.date};
+            let eleRGmm = eo('span','CEfff'+iiKpCh+iiFqCS,null,`class`,`number`);
+eleRGmm.cls = {current: day.date == component.calendarOptions.today.date};
 
-            for (let className in elaXKQV.cls) {
-                elaXKQV.classList.toggle(className, elaXKQV.cls[className]);
+            for (let className in eleRGmm.cls) {
+                eleRGmm.classList.toggle(className, eleRGmm.cls[className]);
             }  
             text(day.number);
 ec('span');
-let cndWiyG = day.month != component.calendarOptions.current.monthName;
-this.setState('stq9sh_', cndWiyG);
-if (cndWiyG) { 
-let elNY41z = eo('span','R4Jff'+iiA9v4+ii0spT,null,`class`,`month`);
+let cndQyNg = day.month != component.calendarOptions.current.monthName;
+this.setState('st2cVwl', cndQyNg);
+if (cndQyNg) { 
+let elHdqUg = eo('span','NcCff'+iiKpCh+iiFqCS,null,`class`,`month`);
 text(day.month);
 ec('span');
 }for (let i in day.schedule) {
 let scheduleItem = day.schedule[i]; 
- let iiX0UF = 'SW6PrFn' + i;
-let elADV1S = eo('div','_z2ff'+iiA9v4+ii0spT+iiX0UF,null, eventListeners, {onclick:[function(e) {var $el = this;scheduleItem.viewDetails = ! scheduleItem.viewDetails}]},`title`,`${scheduleItem.type}`,`class`,`schedule ${ scheduleItem.type }`);
-let elI1FD2 = eo('div','l3dff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`label pointer`);
-let elJydMq = eo('span','coSff'+iiA9v4+ii0spT+iiX0UF);
+ let iiUzg6 = 'cPvHub2' + i;
+let elNTPLu = eo('div','M97ff'+iiKpCh+iiFqCS+iiUzg6,null, eventListeners, {onclick:[function(e) {var $el = this;scheduleItem.viewDetails = ! scheduleItem.viewDetails}]},`title`,`${scheduleItem.type}`,`class`,`schedule ${ scheduleItem.type }`);
+let elzcif6 = eo('div','iFpff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`label pointer`);
+let elfDKh7 = eo('span','Xdgff'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.subject.readMoreChars(13));
 ec('span');
-let cndNnrw = scheduleItem.status == 'active';
-this.setState('sttucGI', cndNnrw);
-let cnd2nCm = scheduleItem.status == 'completed';
-this.setState('stV_gHF', cnd2nCm);
-let cnd1xTD = scheduleItem.status == 'failed';
-this.setState('stpthHM', cnd1xTD);
-let cndw8kx = scheduleItem.status == 'autoFailed';
-this.setState('stI2p3x', cndw8kx);
-if (cndNnrw) { 
-let el25jH6 = eo('i','IxCff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('hourglass-half') + ' icon icon'}`);
+let cndMuOU = scheduleItem.status == 'active';
+this.setState('st2NvhL', cndMuOU);
+let cndNiE1 = scheduleItem.status == 'completed';
+this.setState('stCvqpT', cndNiE1);
+let cndT5TC = scheduleItem.status == 'failed';
+this.setState('stJj4Ho', cndT5TC);
+let cndUUY5 = scheduleItem.status == 'autoFailed';
+this.setState('stydmQ2', cndUUY5);
+if (cndMuOU) { 
+let elhtkBF = eo('i','QlVff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('hourglass-half') + ' icon icon'}`);
 ec('i');
-}else if (cnd2nCm) { 
-let el3vtLh = eo('i','2Byff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('check') + ' icon icon'}`);
+}else if (cndNiE1) { 
+let el8MfcH = eo('i','QIiff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('check') + ' icon icon'}`);
 ec('i');
-}else if (cnd1xTD) { 
-let eluTcvY = eo('i','O75ff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown-open') + ' icon icon'}`);
+}else if (cndT5TC) { 
+let elf2DGK = eo('i','FBbff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown-open') + ' icon icon'}`);
 ec('i');
-}else if (cndw8kx) { 
-let el9Lchk = eo('i','AkDff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown') + ' icon icon'}`);
+}else if (cndUUY5) { 
+let el7jBtk = eo('i','Srwff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown') + ' icon icon'}`);
 ec('i');
 }ec('div');
-let elbrvYR = eo('div','_NTff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`details`);
-elbrvYR.cls = {open: scheduleItem.viewDetails};
+let el6eh5G = eo('div','MR6ff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`details`);
+el6eh5G.cls = {open: scheduleItem.viewDetails};
 
-            for (let className in elbrvYR.cls) {
-                elbrvYR.classList.toggle(className, elbrvYR.cls[className]);
+            for (let className in el6eh5G.cls) {
+                el6eh5G.classList.toggle(className, el6eh5G.cls[className]);
             }  
-            let el50kql = eo('div','Ar1ff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`info`);
-let elhzLEp = eo('div','YF1ff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`subject`);
+            let elwuxTN = eo('div','qO7ff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`info`);
+let elUf8DK = eo('div','aAYff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`subject`);
 text(scheduleItem.subject);
 ec('div');
-let el5JBfK = eo('div','8jDff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`date detail`);
-let elh6Bsm = eo('strong','oAvff'+iiA9v4+ii0spT+iiX0UF);
+let eldmfdI = eo('div','daRff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`date detail`);
+let ely7rLB = eo('strong','kPEff'+iiKpCh+iiFqCS+iiUzg6);
 text(`Ends at:`);
 ec('strong');
-let elRGrQ1 = eo('span','kOiff'+iiA9v4+ii0spT+iiX0UF);
+let elNoDZv = eo('span','86xff'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.deadline);
 ec('span');
 ec('div');
-let eljZPGn = eo('div','eOoff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`type detail`);
-let el1BT0K = eo('strong','aOuff'+iiA9v4+ii0spT+iiX0UF);
+let el8TO8k = eo('div','UNwff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`type detail`);
+let elQpcNR = eo('strong','uujff'+iiKpCh+iiFqCS+iiUzg6);
 text(`Type:`);
 ec('strong');
-let elYntnD = eo('span','h87ff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`bold ${scheduleItem.type}`);
+let elOvYRK = eo('span','e6Iff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`bold ${scheduleItem.type}`);
 text(scheduleItem.type);
 ec('span');
 ec('div');
-let el36saf = eo('div','Rzbff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`status detail`);
-let elQxeR_ = eo('strong','hllff'+iiA9v4+ii0spT+iiX0UF);
+let elJoHuw = eo('div','rkoff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`status detail`);
+let elNMCXh = eo('strong','VFZff'+iiKpCh+iiFqCS+iiUzg6);
 text(`Status:`);
 ec('strong');
-let cndlPzJ = scheduleItem.status == 'active';
-this.setState('stwrn3a', cndlPzJ);
-let cndX69H = scheduleItem.status == 'completed';
-this.setState('stEnLkC', cndX69H);
-let cndMq6o = scheduleItem.status == 'failed';
-this.setState('stVoB0g', cndMq6o);
-let cndLQUj = scheduleItem.status == 'autoFailed';
-this.setState('stBALPd', cndLQUj);
-if (cndlPzJ) { 
-let el3BOdW = eo('i','8X3ff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('hourglass-half') + ' v-middle icon'}`);
+let cndea2W = scheduleItem.status == 'active';
+this.setState('st4cGIc', cndea2W);
+let cndkjZR = scheduleItem.status == 'completed';
+this.setState('st1Ln1P', cndkjZR);
+let cndlg4x = scheduleItem.status == 'failed';
+this.setState('stbQlad', cndlg4x);
+let cnd3dGS = scheduleItem.status == 'autoFailed';
+this.setState('strTNH1', cnd3dGS);
+if (cndea2W) { 
+let elaxBXD = eo('i','qYYff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('hourglass-half') + ' v-middle icon'}`);
 ec('i');
-}else if (cndX69H) { 
-let elEchTm = eo('i','W8uff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('check') + ' v-middle icon'}`);
+}else if (cndkjZR) { 
+let el_3Ocs = eo('i','hisff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('check') + ' v-middle icon'}`);
 ec('i');
-}else if (cndMq6o) { 
-let el3CrK8 = eo('i','xtjff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown-open') + ' v-middle icon'}`);
+}else if (cndlg4x) { 
+let elL7wRI = eo('i','sD4ff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown-open') + ' v-middle icon'}`);
 ec('i');
-}else if (cndLQUj) { 
-let el32zOh = eo('i','dAdff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown') + ' v-middle icon'}`);
+}else if (cnd3dGS) { 
+let elcL8w8 = eo('i','pkcff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${scheduleItem.status}`,`class`,`${fas('frown') + ' v-middle icon'}`);
 ec('i');
-}let elEy9EB = eo('span','wCqff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`ml-2`);
+}let eli2Xdb = eo('span','gqlff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`ml-2`);
 text(scheduleItem.status);
 ec('span');
 ec('div');
-let cnd2zrS = scheduleItem.notes;
-this.setState('stkfv5M', cnd2zrS);
-let cndLJ2J = scheduleItem.todo;
-this.setState('stVXHhi', cndLJ2J);
-if (cnd2zrS) { 
-let elvAovh = eo('p','B4Xff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`notes`);
+let cndaRVE = scheduleItem.notes;
+this.setState('stIk3MD', cndaRVE);
+let cndXjKi = scheduleItem.todo;
+this.setState('st7sQ2p', cndXjKi);
+if (cndaRVE) { 
+let elywYwo = eo('p','AQRff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`notes`);
 text(`❝`);
-let elCH030 = eo('span','8piff'+iiA9v4+ii0spT+iiX0UF);
+let el2zPuc = eo('span','jErff'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.notes);
 ec('span');
 text(`❞`);
 ec('p');
-}let cnds7f_ = scheduleItem.task;
-this.setState('stMJieC', cnds7f_);
-let cndrFrn = cndLJ2J;
-this.setState('stkTVIl', cndrFrn);
-if (cnds7f_) { 
-let elVDuK7 = eo('div','XGNff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`custom-type task-details`);
-let elKTqmD = eo('h4','ObDff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`bold text-center`);
+}let cnd0IfR = scheduleItem.task;
+this.setState('st4ta_o', cnd0IfR);
+let cnd6Knb = cndXjKi;
+this.setState('str9vav', cnd6Knb);
+if (cnd0IfR) { 
+let elrvrRJ = eo('div','AMoff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`custom-type task-details`);
+let el2Y4Kk = eo('h4','3I5ff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`bold text-center`);
 text(`Task details`);
 ec('h4');
-let elkrx5u = eo('div','bTjff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`detail title`);
-let el8gMX_ = eo('strong','tGHff'+iiA9v4+ii0spT+iiX0UF);
+let elkobtc = eo('div','3rXff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`detail title`);
+let elRwDKO = eo('strong','ntVff'+iiKpCh+iiFqCS+iiUzg6);
 text(`Title:`);
 ec('strong');
-let elVjLVk = eo('span','xGVff'+iiA9v4+ii0spT+iiX0UF);
+let elsov0T = eo('span','IDaff'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.task.title);
 ec('span');
 ec('div');
-let elaWCpN = eo('div','Y7Lff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`detail ends-at`);
-let elupR_J = eo('strong','Wv0ff'+iiA9v4+ii0spT+iiX0UF);
+let elc54fv = eo('div','X2iff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`detail ends-at`);
+let el7d25H = eo('strong','_Eoff'+iiKpCh+iiFqCS+iiUzg6);
 text(`Ends at:`);
 ec('strong');
-let el11L4Z = eo('span','eKXff'+iiA9v4+ii0spT+iiX0UF);
+let elFtHeR = eo('span','P9Off'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.task.endsAt);
 ec('span');
 ec('div');
-let ellzVnf = eo('div','f_Xff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`detail reward`);
-let el1coAu = eo('strong','3Wyff'+iiA9v4+ii0spT+iiX0UF);
+let eleEUAc = eo('div','g0_ff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`detail reward`);
+let elUX0nP = eo('strong','TPPff'+iiKpCh+iiFqCS+iiUzg6);
 text(`Reward:`);
 ec('strong');
-let cmp4LT6 = this._lc('cqT7GI9g4', {parent:component,parentTop:layout,props:{coins:scheduleItem.task.reward},state:'stMJieC',insideLoop:true,index:"" +iiA9v4+ii0spT+iiX0UF});
-let elV9fQ8 = eo('span','vyiff'+iiA9v4+ii0spT+iiX0UF,null,`title`,`${trans(`Penalty Ratio`)}`,`class`,`bold red-text`);
+let cmp75Np = this._lc('chFVTjxKG', {parent:component,parentTop:layout,props:{coins:scheduleItem.task.reward},state:'st4ta_o',insideLoop:true,index:"" +iiKpCh+iiFqCS+iiUzg6});
+let eleocSR = eo('span','TWgff'+iiKpCh+iiFqCS+iiUzg6,null,`title`,`${trans(`Penalty Ratio`)}`,`class`,`bold red-text`);
 text(scheduleItem.task.penaltyRatio + 'x');
 ec('span');
 ec('div');
-let elPpRRF = eo('a','58sff'+iiA9v4+ii0spT+iiX0UF,null,`href`,`${URLS.task(scheduleItem.task)}`,`class`,`btn btn-cyan bold d-block text-center`);
+let el8LIT4 = eo('a','B8cff'+iiKpCh+iiFqCS+iiUzg6,null,`href`,`${URLS.task(scheduleItem.task)}`,`class`,`btn btn-cyan bold d-block text-center`);
 text(`View Task`);
 ec('a');
 ec('div');
-}else if (cndrFrn) { 
-let elg369D = eo('div','Dqrff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`custom-type todo-details`);
-let eltCJB4 = eo('h4','bebff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`bold text-center`);
+}else if (cnd6Knb) { 
+let elABf1g = eo('div','KBEff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`custom-type todo-details`);
+let elgjzbN = eo('h4','Xqqff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`bold text-center`);
 text(`Todo details`);
 ec('h4');
-let elNZ6Zz = eo('div','Ybpff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`detail title`);
-let elZW7j_ = eo('strong','Bjwff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`m-r-2`);
+let el6pHE5 = eo('div','6IIff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`detail title`);
+let elWQ4WW = eo('strong','muPff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`m-r-2`);
 text(`Item:`);
 ec('strong');
-let el8xIL9 = eo('span','xJjff'+iiA9v4+ii0spT+iiX0UF);
+let elahDlO = eo('span','JbTff'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.todo.item);
 ec('span');
 ec('div');
-let elqqMIq = eo('div','u7Dff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`detail category`);
-let elKHxEH = eo('strong','Dg4ff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`m-r-2`);
+let elRnTPO = eo('div','7B4ff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`detail category`);
+let elavvCs = eo('strong','iCGff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`m-r-2`);
 text(`Category:`);
 ec('strong');
-let elnF5qt = eo('span','cYQff'+iiA9v4+ii0spT+iiX0UF);
+let ell2o8o = eo('span','9p4ff'+iiKpCh+iiFqCS+iiUzg6);
 text(scheduleItem.todo.category.name);
 ec('span');
 ec('div');
 ec('div');
-}let cndoRg9 = ['active', 'autoFailed'].includes(scheduleItem.status);
-this.setState('sthwm_N', cndoRg9);
-if (cndoRg9) { 
-let elpApwa = eo('div','4vlff'+iiA9v4+ii0spT+iiX0UF,null,`class`,`text-center m-t-1`);
-let elTJEr5 = eo('button','6kiff'+iiA9v4+ii0spT+iiX0UF,null, eventListeners, {onclick:[function(e) {var $el = this;component.currentScheduleItem = scheduleItem; component.newStatus = 'completed'}]},`title`,`${trans(`Mark as Completed`)}`,`type`,`button`,`class`,`btn bold btn-success`);
+}let cndxlYO = ['active', 'autoFailed'].includes(scheduleItem.status);
+this.setState('strlEPz', cndxlYO);
+if (cndxlYO) { 
+let elSaEYg = eo('div','gkDff'+iiKpCh+iiFqCS+iiUzg6,null,`class`,`text-center m-t-1`);
+let elqc0gb = eo('button','NG5ff'+iiKpCh+iiFqCS+iiUzg6,null, eventListeners, {onclick:[function(e) {var $el = this;component.currentScheduleItem = scheduleItem; component.newStatus = 'completed'}]},`title`,`${trans(`Mark as Completed`)}`,`type`,`button`,`class`,`btn bold btn-success`);
 text(`Complete`);
 ec('button');
-let el7Zjdn = eo('button','xWZff'+iiA9v4+ii0spT+iiX0UF,null, eventListeners, {onclick:[function(e) {var $el = this;component.currentScheduleItem = scheduleItem; component.newStatus = 'failed'}]},`title`,`${trans(`Mark as Failed`)}`,`type`,`button`,`class`,`btn bold btn-danger`);
+let eliGzU_ = eo('button','cTcff'+iiKpCh+iiFqCS+iiUzg6,null, eventListeners, {onclick:[function(e) {var $el = this;component.currentScheduleItem = scheduleItem; component.newStatus = 'failed'}]},`title`,`${trans(`Mark as Failed`)}`,`type`,`button`,`class`,`btn bold btn-danger`);
 text(`Failed`);
 ec('button');
 ec('div');
@@ -404,171 +404,171 @@ ec('div');
 ec('div');
 ec('section');
 }}});
-let cndtanS = component.confirm;
-this.setState('st0zuex', cndtanS);
-if (cndtanS) { 
-let cmpvHjQ = this._lc('ciCioZGvY', {parent:component,events:{onconfirm:function(e) {let $el = this; component.unlock();},onclose:function(e) {let $el = this; component.confirm = false;}},state:'st0zuex'});
-}let cnd4Ko1 = component.add == 'basic';
-this.setState('stO9Be9', cnd4Ko1);
-if (cnd4Ko1) { 
-component.scheduleModal = this._lc('cCAhuOIFR', {parent:component,events:{onclose:function(e) {let $el = this; component.add = null}},content:(flkModal) => {let elglBkg = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cndytsc = component.confirm;
+this.setState('stpsJFD', cndytsc);
+if (cndytsc) { 
+let cmpQVQL = this._lc('c3ooMXmzr', {parent:component,events:{onconfirm:function(e) {let $el = this; component.unlock();},onclose:function(e) {let $el = this; component.confirm = false;}},state:'stpsJFD'});
+}let cndu23w = component.add == 'basic';
+this.setState('stt2Kr5', cndu23w);
+if (cndu23w) { 
+component.scheduleModal = this._lc('cpkLXo9OT', {parent:component,events:{onclose:function(e) {let $el = this; component.add = null}},content:(flkModal) => {let el5iq0V = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elglBkg.formHandler) {
-                    window.cfrmdlr = elglBkg.formHandler = new FormHandler(elglBkg, component);
+                if (! el5iq0V.formHandler) {
+                    window.cfrmdlr = el5iq0V.formHandler = new FormHandler(el5iq0V, component);
                 } else {
-                    window.cfrmdlr = elglBkg.formHandler;
+                    window.cfrmdlr = el5iq0V.formHandler;
                 }
-            component.date = this._lc('cZYS2Zz7P', {parent:component,parentTop:flkModal,props:{dateTime:true},attrs:{name:`${(`deadline`).toInputName()}`,label:'date',class:'form-control'},state:'stO9Be9'});
-let elzwZUr = eo('div',null,null,`class`,`form-group`);
-elzwZUr.cls = {'group-error': !!elglBkg.formHandler.getError(`subject`) };
+            component.date = this._lc('cqUPpQBKi', {parent:component,parentTop:flkModal,props:{dateTime:true},attrs:{name:`${(`deadline`).toInputName()}`,label:'date',class:'form-control'},state:'stt2Kr5'});
+let elAvf6Q = eo('div',null,null,`class`,`form-group`);
+elAvf6Q.cls = {'group-error': !!el5iq0V.formHandler.getError(`subject`) };
 
-            for (let className in elzwZUr.cls) {
-                elzwZUr.classList.toggle(className, elzwZUr.cls[className]);
+            for (let className in elAvf6Q.cls) {
+                elAvf6Q.classList.toggle(className, elAvf6Q.cls[className]);
             }  
-            let eliXAwa = eo('label',null,null,`for`,`subject`);
+            let elYXMR1 = eo('label',null,null,`for`,`subject`);
 text(trans('Subject'));
-let elgBlbG = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let el6smA5 = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elEXEAn = ev('input',null,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return elglBkg.formHandler.addError(`subject`, 'required', trans('validation.required'));}return elglBkg.formHandler.removeError(`subject`);}]},`name`,`${(`subject`).toInputName()}`,`placeholder`,`${trans(`Subject`)}`,`type`,`text`,`class`,`form-control`,`id`,`subject`);
-let cndntQH = elglBkg.formHandler.getError(`subject`);
-this.setState('stKS5GH', cndntQH);
-if (cndntQH) { 
-let elnDVxT = eo('div','2r4f',null,`class`,`alert alert-danger`);
-text(elglBkg.formHandler.getError(`subject`));
+let elF7SyA = ev('input',null,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return el5iq0V.formHandler.addError(`subject`, 'required', trans('validation.required'));}return el5iq0V.formHandler.removeError(`subject`);}]},`name`,`${(`subject`).toInputName()}`,`placeholder`,`${trans(`Subject`)}`,`type`,`text`,`class`,`form-control`,`id`,`subject`);
+let cnd3Xh4 = el5iq0V.formHandler.getError(`subject`);
+this.setState('stU8MR1', cnd3Xh4);
+if (cnd3Xh4) { 
+let elTxFbf = eo('div','VA7f',null,`class`,`alert alert-danger`);
+text(el5iq0V.formHandler.getError(`subject`));
 ec('div');
 }ec('div');
-let elD_q_4 = eo('div',null,null,`class`,`form-group`);
-elD_q_4.cls = {'group-error': !!elglBkg.formHandler.getError(`notes`) };
+let elpU13V = eo('div',null,null,`class`,`form-group`);
+elpU13V.cls = {'group-error': !!el5iq0V.formHandler.getError(`notes`) };
 
-            for (let className in elD_q_4.cls) {
-                elD_q_4.classList.toggle(className, elD_q_4.cls[className]);
+            for (let className in elpU13V.cls) {
+                elpU13V.classList.toggle(className, elpU13V.cls[className]);
             }  
-            let elZeRc9 = eo('label',null,null,`for`,`notes`);
+            let el3wFWk = eo('label',null,null,`for`,`notes`);
 text(trans('Notes'));
 ec('label');
-let el27Yrm = eo('textarea',null,null,`name`,`${(`notes`).toInputName()}`,`placeholder`,`${trans(`Notes`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`notes`);
+let elIcxFP = eo('textarea',null,null,`name`,`${(`notes`).toInputName()}`,`placeholder`,`${trans(`Notes`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`notes`);
 ec('textarea');
 ec('div');
-let eldz154 = ev('input',null,null,`name`,`${(`type`).toInputName()}`,`type`,`hidden`,`value`,`basic`);
-let el7d2in = eo('button',null,null,`class`,`btn btn-pink`);
+let elBzTFH = ev('input',null,null,`name`,`${(`type`).toInputName()}`,`type`,`hidden`,`value`,`basic`);
+let elYuqMg = eo('button',null,null,`class`,`btn btn-pink`);
 text(`Schedule`);
 ec('button');
 ec('form');
-},attrs:{header:'Add new schedule',size:'small'},state:'stO9Be9'});
-}let cndMYl9 = component.add == 'task';
-this.setState('stl4J6H', cndMYl9);
-if (cndMYl9) { 
-component.scheduleModal = this._lc('c4oBocXJD', {parent:component,events:{onclose:function(e) {let $el = this; component.add = null}},content:(flkModal) => {let elJzvCo = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+},attrs:{header:'Add new schedule',size:'small'},state:'stt2Kr5'});
+}let cnd0PrF = component.add == 'task';
+this.setState('stk8i69', cnd0PrF);
+if (cnd0PrF) { 
+component.scheduleModal = this._lc('cJOwyWhFV', {parent:component,events:{onclose:function(e) {let $el = this; component.add = null}},content:(flkModal) => {let elRD7KR = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elJzvCo.formHandler) {
-                    window.cfrmdlr = elJzvCo.formHandler = new FormHandler(elJzvCo, component);
+                if (! elRD7KR.formHandler) {
+                    window.cfrmdlr = elRD7KR.formHandler = new FormHandler(elRD7KR, component);
                 } else {
-                    window.cfrmdlr = elJzvCo.formHandler;
+                    window.cfrmdlr = elRD7KR.formHandler;
                 }
-            let cmpGXck = this._lc('c7Wxe7NUk', {parent:component,parentTop:flkModal,props:{lazyLoading:true,service:component.meService},events:{onselect:function(e) {let $el = this; component.data.subject = e.text}},attrs:{name:`${(`typeId`).toInputName()}`,serviceMethod:'tasks',responseKey:'tasks',heading:'Select Task'},state:'stl4J6H'});
-component.date = this._lc('cMNCLKZO5', {parent:component,parentTop:flkModal,props:{dateTime:true},attrs:{name:`${(`deadline`).toInputName()}`,label:'date',class:'form-control'},state:'stl4J6H'});
-let elnmlcO = eo('div',null,null,`class`,`form-group`);
-elnmlcO.cls = {'group-error': !!elJzvCo.formHandler.getError(`subject`) };
+            let cmpe0zr = this._lc('c_AaarsUc', {parent:component,parentTop:flkModal,props:{lazyLoading:true,service:component.meService},events:{onselect:function(e) {let $el = this; component.data.subject = e.text}},attrs:{name:`${(`typeId`).toInputName()}`,serviceMethod:'tasks',responseKey:'tasks',heading:'Select Task'},state:'stk8i69'});
+component.date = this._lc('cSFqvqEnM', {parent:component,parentTop:flkModal,props:{dateTime:true},attrs:{name:`${(`deadline`).toInputName()}`,label:'date',class:'form-control'},state:'stk8i69'});
+let elAHwMU = eo('div',null,null,`class`,`form-group`);
+elAHwMU.cls = {'group-error': !!elRD7KR.formHandler.getError(`subject`) };
 
-            for (let className in elnmlcO.cls) {
-                elnmlcO.classList.toggle(className, elnmlcO.cls[className]);
+            for (let className in elAHwMU.cls) {
+                elAHwMU.classList.toggle(className, elAHwMU.cls[className]);
             }  
-            let elKmTFa = eo('label',null,null,`for`,`subject`);
+            let el_uWhj = eo('label',null,null,`for`,`subject`);
 text(trans('Subject'));
-let elG7Exu = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elSs3WH = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let el8KqyW = ev('input',null,null, eventListeners, {oninput:[function(e) {component.data.subject = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elJzvCo.formHandler.addError(`subject`, 'required', trans('validation.required'));}return elJzvCo.formHandler.removeError(`subject`);}]},`value`,`${fval(component.data.subject)}`,`name`,`${(`subject`).toInputName()}`,`placeholder`,`${trans(`Subject`)}`,`type`,`text`,`class`,`form-control`,`id`,`subject`);
-el8KqyW.value = fval(component.data.subject);
-let cndOTwt = elJzvCo.formHandler.getError(`subject`);
-this.setState('stnpLnS', cndOTwt);
-if (cndOTwt) { 
-let elkegLu = eo('div','DJ3f',null,`class`,`alert alert-danger`);
-text(elJzvCo.formHandler.getError(`subject`));
+let elDGPDR = ev('input',null,null, eventListeners, {oninput:[function(e) {component.data.subject = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elRD7KR.formHandler.addError(`subject`, 'required', trans('validation.required'));}return elRD7KR.formHandler.removeError(`subject`);}]},`value`,`${fval(component.data.subject)}`,`name`,`${(`subject`).toInputName()}`,`placeholder`,`${trans(`Subject`)}`,`type`,`text`,`class`,`form-control`,`id`,`subject`);
+elDGPDR.value = fval(component.data.subject);
+let cndXcsG = elRD7KR.formHandler.getError(`subject`);
+this.setState('stfSi6c', cndXcsG);
+if (cndXcsG) { 
+let elwJ_H0 = eo('div','wcjf',null,`class`,`alert alert-danger`);
+text(elRD7KR.formHandler.getError(`subject`));
 ec('div');
 }ec('div');
-let elGIwAw = eo('div',null,null,`class`,`form-group`);
-elGIwAw.cls = {'group-error': !!elJzvCo.formHandler.getError(`notes`) };
+let el9XDHT = eo('div',null,null,`class`,`form-group`);
+el9XDHT.cls = {'group-error': !!elRD7KR.formHandler.getError(`notes`) };
 
-            for (let className in elGIwAw.cls) {
-                elGIwAw.classList.toggle(className, elGIwAw.cls[className]);
+            for (let className in el9XDHT.cls) {
+                el9XDHT.classList.toggle(className, el9XDHT.cls[className]);
             }  
-            let elcttM2 = eo('label',null,null,`for`,`notes`);
+            let elGWU4M = eo('label',null,null,`for`,`notes`);
 text(trans('Notes'));
 ec('label');
-let elSBhYb = eo('textarea',null,null,`name`,`${(`notes`).toInputName()}`,`placeholder`,`${trans(`Notes`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`notes`);
+let eltVOH_ = eo('textarea',null,null,`name`,`${(`notes`).toInputName()}`,`placeholder`,`${trans(`Notes`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`notes`);
 ec('textarea');
 ec('div');
-let elJ3YCU = ev('input',null,null,`name`,`${(`type`).toInputName()}`,`type`,`hidden`,`value`,`${ component.data.type }`);
-let elgtThL = eo('button',null,null,`class`,`btn btn-cyan`);
+let elephmT = ev('input',null,null,`name`,`${(`type`).toInputName()}`,`type`,`hidden`,`value`,`${ component.data.type }`);
+let elxUgvB = eo('button',null,null,`class`,`btn btn-cyan`);
 text(`Schedule`);
 ec('button');
 ec('form');
-},attrs:{header:'Add new task schedule',size:'small'},state:'stl4J6H'});
-}let cndEgS2 = component.add == 'todo';
-this.setState('st9zRG_', cndEgS2);
-if (cndEgS2) { 
-component.scheduleModal = this._lc('cjlnsfHFO', {parent:component,events:{onclose:function(e) {let $el = this; component.add = null}},content:(flkModal) => {let elHRclW = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+},attrs:{header:'Add new task schedule',size:'small'},state:'stk8i69'});
+}let cndkrg0 = component.add == 'todo';
+this.setState('st6x7We', cndkrg0);
+if (cndkrg0) { 
+component.scheduleModal = this._lc('cp0MPwKBv', {parent:component,events:{onclose:function(e) {let $el = this; component.add = null}},content:(flkModal) => {let elM1_D6 = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elHRclW.formHandler) {
-                    window.cfrmdlr = elHRclW.formHandler = new FormHandler(elHRclW, component);
+                if (! elM1_D6.formHandler) {
+                    window.cfrmdlr = elM1_D6.formHandler = new FormHandler(elM1_D6, component);
                 } else {
-                    window.cfrmdlr = elHRclW.formHandler;
+                    window.cfrmdlr = elM1_D6.formHandler;
                 }
-            component.todoDropdownList = this._lc('clMaYezeK', {parent:component,parentTop:flkModal,props:{items:component.todoItems},events:{onselect:function(e) {let $el = this; component.data.subject = e.text}},attrs:{name:`${(`typeId`).toInputName()}`,heading:'Select Todo'},state:'st9zRG_'});
-component.date = this._lc('csE1VFe2z', {parent:component,parentTop:flkModal,props:{dateTime:true},attrs:{name:`${(`deadline`).toInputName()}`,label:'date',class:'form-control'},state:'st9zRG_'});
-let eluB4KI = eo('div',null,null,`class`,`form-group`);
-eluB4KI.cls = {'group-error': !!elHRclW.formHandler.getError(`subject`) };
+            component.todoDropdownList = this._lc('ch2fSncH6', {parent:component,parentTop:flkModal,props:{items:component.todoItems},events:{onselect:function(e) {let $el = this; component.data.subject = e.text}},attrs:{name:`${(`typeId`).toInputName()}`,heading:'Select Todo'},state:'st6x7We'});
+component.date = this._lc('c7afBRgVn', {parent:component,parentTop:flkModal,props:{dateTime:true},attrs:{name:`${(`deadline`).toInputName()}`,label:'date',class:'form-control'},state:'st6x7We'});
+let elIUW3D = eo('div',null,null,`class`,`form-group`);
+elIUW3D.cls = {'group-error': !!elM1_D6.formHandler.getError(`subject`) };
 
-            for (let className in eluB4KI.cls) {
-                eluB4KI.classList.toggle(className, eluB4KI.cls[className]);
+            for (let className in elIUW3D.cls) {
+                elIUW3D.classList.toggle(className, elIUW3D.cls[className]);
             }  
-            let elWM41p = eo('label',null,null,`for`,`subject`);
+            let elK11Hk = eo('label',null,null,`for`,`subject`);
 text(trans('Subject'));
-let elJZabY = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
+let elKNGWb = eo('span',null,null,`title`,`${trans(`required`)}`,`class`,`required`);
 text(`*`);
 ec('span');
 ec('label');
-let elr0Tr0 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.data.subject = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elHRclW.formHandler.addError(`subject`, 'required', trans('validation.required'));}return elHRclW.formHandler.removeError(`subject`);}]},`value`,`${fval(component.data.subject)}`,`name`,`${(`subject`).toInputName()}`,`placeholder`,`${trans(`Subject`)}`,`type`,`text`,`class`,`form-control`,`id`,`subject`);
-elr0Tr0.value = fval(component.data.subject);
-let cndcWoB = elHRclW.formHandler.getError(`subject`);
-this.setState('stFVdoj', cndcWoB);
-if (cndcWoB) { 
-let elcxbe8 = eo('div','5Hgf',null,`class`,`alert alert-danger`);
-text(elHRclW.formHandler.getError(`subject`));
+let elYqELK = ev('input',null,null, eventListeners, {oninput:[function(e) {component.data.subject = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elM1_D6.formHandler.addError(`subject`, 'required', trans('validation.required'));}return elM1_D6.formHandler.removeError(`subject`);}]},`value`,`${fval(component.data.subject)}`,`name`,`${(`subject`).toInputName()}`,`placeholder`,`${trans(`Subject`)}`,`type`,`text`,`class`,`form-control`,`id`,`subject`);
+elYqELK.value = fval(component.data.subject);
+let cndb5Bq = elM1_D6.formHandler.getError(`subject`);
+this.setState('sth4Nms', cndb5Bq);
+if (cndb5Bq) { 
+let elsydAw = eo('div','BQof',null,`class`,`alert alert-danger`);
+text(elM1_D6.formHandler.getError(`subject`));
 ec('div');
 }ec('div');
-let elQpJzu = eo('div',null,null,`class`,`form-group`);
-elQpJzu.cls = {'group-error': !!elHRclW.formHandler.getError(`notes`) };
+let elcXfxR = eo('div',null,null,`class`,`form-group`);
+elcXfxR.cls = {'group-error': !!elM1_D6.formHandler.getError(`notes`) };
 
-            for (let className in elQpJzu.cls) {
-                elQpJzu.classList.toggle(className, elQpJzu.cls[className]);
+            for (let className in elcXfxR.cls) {
+                elcXfxR.classList.toggle(className, elcXfxR.cls[className]);
             }  
-            let el1JSdR = eo('label',null,null,`for`,`notes`);
+            let elCjuPG = eo('label',null,null,`for`,`notes`);
 text(trans('Notes'));
 ec('label');
-let elIkbpD = eo('textarea',null,null,`name`,`${(`notes`).toInputName()}`,`placeholder`,`${trans(`Notes`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`notes`);
+let elUQF7k = eo('textarea',null,null,`name`,`${(`notes`).toInputName()}`,`placeholder`,`${trans(`Notes`)}`,`type`,`textarea`,`class`,`form-control`,`id`,`notes`);
 ec('textarea');
 ec('div');
-let elIuGkH = ev('input',null,null,`name`,`${(`type`).toInputName()}`,`type`,`hidden`,`value`,`${ component.data.type }`);
-let elzanve = eo('button',null,null,`class`,`btn btn-success`);
+let el5xKzv = ev('input',null,null,`name`,`${(`type`).toInputName()}`,`type`,`hidden`,`value`,`${ component.data.type }`);
+let elr95wi = eo('button',null,null,`class`,`btn btn-success`);
 text(`Schedule`);
 ec('button');
 ec('form');
-},attrs:{header:'Add new todo schedule',size:'small'},state:'st9zRG_'});
-}let cndcQKg = component.newStatus;
-this.setState('stjJSUe', cndcQKg);
-if (cndcQKg) { 
-let cmp7Vek = this._lc('cyGPiMoFN', {parent:component,events:{onclose:function(e) {let $el = this; component.newStatus = null},onconfirm:function(e) {let $el = this; component.changeScheduleStatus()}},attrs:{message:`Are you sure you want to change the status to ${ component.newStatus }, it can not be undone?`},state:'stjJSUe'});
+},attrs:{header:'Add new todo schedule',size:'small'},state:'st6x7We'});
+}let cndePMM = component.newStatus;
+this.setState('stIvLEv', cndePMM);
+if (cndePMM) { 
+let cmpmK_F = this._lc('cYYgDLaV6', {parent:component,events:{onclose:function(e) {let $el = this; component.newStatus = null},onconfirm:function(e) {let $el = this; component.changeScheduleStatus()}},attrs:{message:`Are you sure you want to change the status to ${ component.newStatus }, it can not be undone?`},state:'stIvLEv'});
 }
                     this.isReadyToGo();
                 }
