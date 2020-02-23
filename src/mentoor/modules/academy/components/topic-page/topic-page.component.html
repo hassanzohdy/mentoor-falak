@@ -59,18 +59,10 @@
                     <li>Your answer will be reviewed before publishing it to public, still write what you only know for
                         the quest.</li>
                     <li>
-                        Once the answer is posted, you can't change it while it is pending., so don't forget to
-                        <button type="button" class="btn btn-sm btn-success"
-                            (click)="this.preview = ! this.preview">preview</button>
-                        it before posting.
+                        Once the answer is posted, you can't change it while it is pending.
                     </li>
                     <li>If the answer is rejected, you can edit it and try again.</li>
                 </ul>
-                <if condition="this.preview">
-                    <h1>Answer preview</h1>
-                    <markdown [content]="this.answerData"></markdown>
-                    <button class="btn btn-purple" (click)="this.preview = false">Back to code</button>
-                </if>
                 <flk-alert *if="this.form" (confirm)="this.submitAnswer(this.form)" (close)="this.form = null">
                 </flk-alert>
                 <form *if="this.openAnswerText" (submit)="this.form = $el;">
@@ -79,8 +71,6 @@
                     <button class="btn btn-primary float-right" [disabled]="!this.isValidForm || this.isSending">
                         Send
                     </button>
-                    <button type="button" class="btn btn-success float-right"
-                        (click)="this.preview = true">Preview</button>
                 </form>
                 <button *if="this.cancelBtn" class="btn btn-danger float-right mr-2"
                     (click)="this.openAnswerText = !this.openAnswerText; this.cancelBtn = false">

@@ -34,7 +34,7 @@ class TasksBoard {
 
         let { record } = await this.tasksService.create(form);
 
-        this.originalTasks.push(record);
+        this.tasks.push(record);
 
         this.prepareTasks();
 
@@ -75,11 +75,74 @@ class TasksBoard {
             tasks = records;
         }
 
+        this.tasks = tasks;
+
+        // to get reference to the original tasks
         this.originalTasks = tasks;
 
         this.prepareTasks();
 
         this.isLoading = false;
+
+        this.isStatusSortOpened = false;
+        this.isPartSortOpened = false;
+        this.isSuperSortOpened = false;
+        this.isModuleSortOpened = false;
+        this.isPrioritySortOpened = false;
+
+        echo(this.tasks)
+    }
+
+    sortObjects(key, subKey, val) {
+        echo(val)
+        let sortedItems = [];
+        this.tasksList.map((task, index) => {
+            // if the property is an object ==> get the sub key and compare with the value
+            if (typeof task[key] == 'object' && !Is.array(task[key])) {
+                if (task[key][subKey] == val) {
+                    sortedItems.push(task);
+
+                    this.tasksList.splice(index, 1);
+                }
+                // if the property is an array ==> loop through the array and compare each item's id with the value
+            } else if (Is.array(task[key])) {
+                task[key].map(item => {
+                    if (item.id == val) {
+                        sortedItems.push(task);
+
+                        this.tasksList.splice(index, 1);
+                    }
+                })
+                // if the property is a normal value ==> compare
+            } else if (task[key] == val) {
+                sortedItems.push(task);
+
+                this.tasksList.splice(index, 1);
+            }
+        });
+
+        if (sortedItems.length > 0) {
+            this.tasksList.unshift(...sortedItems);
+        }
+    }
+
+    sortTasksBy(key) {
+        // check the sort status for first time
+        if (!this.sortOrder) {
+            this.sortOrder = 'DESC';
+        }
+
+        let sortMethod;
+
+        if (this.sortOrder == 'DESC') {
+            sortMethod = 'sortBy';
+            this.sortOrder = 'ASC';
+        } else {
+            sortMethod = 'sortByDesc';
+            this.sortOrder = 'DESC';
+        }
+
+        this.tasksList = collect(this.tasksList)[sortMethod](key).toArray();
     }
 
     selectDefaultParticipant() {
@@ -96,7 +159,7 @@ class TasksBoard {
     }
 
     updateTasksList(tasks) {
-        this.originalTasks = tasks;
+        this.tasks = tasks;
 
         this.prepareTasks();
     }
@@ -115,7 +178,7 @@ class TasksBoard {
     }
 
     filter() {
-        this.tasksList = this.originalTasks.filter(task => {
+        this.tasksList = this.tasks.filter(task => {
             let filtered = true;
 
             if (!Is.empty(this.filteredData.statuses)) {
@@ -148,6 +211,10 @@ class TasksBoard {
                 }
 
                 filtered &= found;
+            }
+
+            if (!Is.empty(this.filteredData.priorities)) {
+                filtered &= this.filteredData.priorities.includes(task.priority);
             }
 
             return filtered;
@@ -207,6 +274,7 @@ class TasksBoard {
             projects: [],
             modules: [],
             userStories: [],
+            priorities: []
         };
 
         this.filteredData = Object.clone(this.filterOptions);
@@ -217,7 +285,7 @@ class TasksBoard {
 
         let currentUserIsParticipantAndHasInProgressTasks = false;
 
-        this.tasksList = collect(this.originalTasks).filter(task => {
+        this.tasksList = collect(this.tasks).filter(task => {
             if (task.archived) {
                 this.archivedTasks.push(task);
             }
@@ -252,6 +320,11 @@ class TasksBoard {
             // add participants to filter
             if (task.participant.id) {
                 Array.pushOnce(this.filterOptions.participants, task.participant, 'id');
+            }
+
+            // add priorities to filter
+            if (task.priority) {
+                Array.pushOnce(this.filterOptions.priorities, task.priority);
             }
 
             // add supervisors
@@ -308,18 +381,18 @@ class TasksBoard {
     }
 
     remove() {
-        for (let i = 0; i < this.originalTasks.length; i++) {
-            let task = this.originalTasks[i];
+        for (let i = 0; i < this.tasks.length; i++) {
+            let task = this.tasks[i];
             if (task.id != this.record.id) continue;
 
-            delete this.originalTasks[i];
+            delete this.tasks[i];
 
-            this.originalTasks = Array.reset(this.originalTasks);
+            this.tasks = Array.reset(this.tasks);
 
             break;
         }
 
-        this.inputs.getEvent('change')(this.originalTasks);
+        this.inputs.getEvent('change')(this.tasks);
 
         this.tasksService.delete(this.record.id);
 
@@ -331,13 +404,13 @@ class TasksBoard {
 
     adjustTaskResponse(task) {
         if (this.currentType == 'add') {
-            this.originalTasks.push(task);
+            this.tasks.push(task);
         } else {
-            for (let i = 0; i < this.originalTasks.length; i++) {
-                let oldTask = this.originalTasks[i];
+            for (let i = 0; i < this.tasks.length; i++) {
+                let oldTask = this.tasks[i];
                 if (oldTask.id != task.id) continue;
 
-                this.originalTasks[i] = task;
+                this.tasks[i] = task;
                 break;
             }
         }
@@ -354,8 +427,8 @@ class TasksBoard {
     archive() {
         this.tasksService.archive(this.currentTask.id);
 
-        for (let i = 0; i < this.originalTasks.length; i++) {
-            let task = this.originalTasks[i];
+        for (let i = 0; i < this.tasks.length; i++) {
+            let task = this.tasks[i];
 
             if (this.currentTask.id != task.id) continue;
 
@@ -368,7 +441,7 @@ class TasksBoard {
 
         this.currentTask = null;
 
-        this.inputs.getEvent('change')(this.originalTasks);
+        this.inputs.getEvent('change')(this.tasks);
 
         this.prepareTasks();
     }
@@ -420,7 +493,7 @@ class TasksBoard {
 
                 let taskId = Number(item.getAttribute('data-id'));
 
-                let task = Array.get(this.originalTasks, task => task.id == taskId);
+                let task = Array.get(this.tasks, task => task.id == taskId);
 
                 if (task.isParticipant && !task.isSupervisor && ['failed', 'completed', 'autoFailed'].includes(task.status)) return false;
 
@@ -434,7 +507,7 @@ class TasksBoard {
 
                 let taskId = Number(taskElement.getAttribute('data-id'));
 
-                let task = Array.get(this.originalTasks, task => task.id == taskId);
+                let task = Array.get(this.tasks, task => task.id == taskId);
 
                 if (task.status == newStatus) {
                     // sort tasks...later

@@ -47,6 +47,14 @@ class TasksService extends Endpoint.Service {
     }
 
     /**
+     * @param {string} taskId
+     * @param {object} rateObject
+     */
+    rateTask(taskId, rateObject) {
+        return this.endpoint.patch(this.path(`/${taskId}`), rateObject);
+    }
+
+    /**
      * Sort the given tasks list
      * 
      * @param array tasks

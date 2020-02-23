@@ -15,10 +15,6 @@ class TasksList {
      */
     init() {
         this.tasks = this.inputs.getProp('tasks');
-
-        // this.tasks.forEach(task => {
-        //     this.cache.set(`task.${task.id}`, task);
-        // });
     }
 
     /**

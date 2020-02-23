@@ -13,21 +13,13 @@
             </div>
 
             <div class="form-group">
-                <markdown-input name="quest" class="form-control" label="Quest Content"
+                <markdown-input name="quest" class="form-control" label="Quest Content" required
                     placeholder="Supports markdown"></markdown-input>
             </div>
 
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <flk-dropdown-list label="Caregory" position="top" required name="category" [lazy-loading]="true"
-                        [service]="this.einsteinCategoriesService"></flk-dropdown-list>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <flk-dropdown-list label="Level" position="top" required name="level" [items]="this.levelItems">
-                    </flk-dropdown-list>
-                </div>
-
+            <div class="form-group">
+                <flk-dropdown-list label="Level" position="top" required name="level" [items]="this.levelItems">
+                </flk-dropdown-list>
             </div>
 
             <input type="submit" value="{{this.isSending ? 'Sending ...' : 'Create'}}" class="btn btn-primary">
