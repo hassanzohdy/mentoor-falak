@@ -20,7 +20,5 @@ class NewItemBtn {
     this.icon = this.inputs.getProp("icon");
     this.link = this.inputs.getProp("link");
     this.color = this.inputs.getProp("color");
-
-    console.log(this.inputs)
   }
 }
