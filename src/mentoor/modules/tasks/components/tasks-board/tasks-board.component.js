@@ -76,7 +76,7 @@ class TasksBoard {
         }
 
         this.tasks = tasks;
-        
+
         // to get reference to the original tasks
         this.originalTasks = tasks;
 
@@ -84,31 +84,65 @@ class TasksBoard {
 
         this.isLoading = false;
 
-        this.sort = {
-            id: false,
+        this.isStatusSortOpened = false;
+        this.isPartSortOpened = false;
+        this.isSuperSortOpened = false;
+        this.isModuleSortOpened = false;
+
+        echo(this.tasks)
+    }
+
+    sortObjects(key, subKey, val) {
+        echo(val)
+        let sortedItems = [];
+        this.tasksList.map((task, index) => {
+            // if the property is an object ==> get the sub key and compare with the value
+            if (typeof task[key] == 'object' && !Is.array(task[key])) {
+                if (task[key][subKey] == val) {
+                    sortedItems.push(task);
+
+                    this.tasksList.splice(index, 1);
+                }
+                // if the property is an array ==> loop through the array and compare each item's id with the value
+            } else if (Is.array(task[key])) {
+                task[key].map(item => {
+                    if (item.id == val) {
+                        sortedItems.push(task);
+
+                        this.tasksList.splice(index, 1);
+                    }
+                })
+                // if the property is a normal value ==> compare
+            } else if (task[key] == val) {
+                sortedItems.push(task);
+
+                this.tasksList.splice(index, 1);
+            }
+        });
+
+        if (sortedItems.length > 0) {
+            this.tasksList.unshift(...sortedItems);
         }
     }
 
-    sortTasksById() {
-        let tasks = this.originalTasks;
+    sortTasksBy(key) {
+        // check the sort status for first time
+        if (!this.sortOrder) {
+            this.sortOrder = 'DESC';
+        }
 
-        if (this.sort.id) {
-            this.tasks = tasks.reverse();
+        let sortMethod;
 
-            this.sort.id = false;
+        if (this.sortOrder == 'DESC') {
+            sortMethod = 'sortBy';
+            this.sortOrder = 'ASC';
         } else {
-            // The tasks comes sorted already from the back-end
-            this.tasks = tasks.reverse();
-
-            this.sort.id = true;
+            sortMethod = 'sortByDesc';
+            this.sortOrder = 'DESC';
         }
 
-        this.filter();
+        this.tasksList = collect(this.tasksList)[sortMethod](key).toArray();
     }
-
-    // sortTasksBy(key) {
-
-    // } 
 
     selectDefaultParticipant() {
         let { id } = this.user.info;

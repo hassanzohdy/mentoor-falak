@@ -3,15 +3,41 @@
     <table class="table buttoned simple-card">
         <thead>
             <tr>
-                <th><button (click)="this.sortTasksById()" [tooltip]="true" title="Sort By ID">#</button></th>
-                <th>Task</th>
-                <th>Progress</th>
+                <th><button (click)="this.sortTasksBy('id')" [tooltip]="true" title="Sort By ID">#</button></th>
+                <th> <button (click)="this.sortTasksBy('title')" [tooltip]="true" title="Sort By Title">Task</button>
+                </th>
+                <th> <button (click)="this.sortTasksBy('progress.completed')" [tooltip]="true"
+                        title="Sort By Progress">Progress</button> </th>
                 <th *if="! this.isInProjectPage">Project</th>
-                <th>Status</th>
+                <th tooltip title="Sort by status">
+                    <button (click)="this.isStatusSortOpened = !this.isStatusSortOpened">Status</button>
+                    <div class="dropdown-sort">
+                        <flk-dropdown-list *if="this.isStatusSortOpened" [items]="this.filterOptions.statuses"
+                            (select)="this.sortObjects('status', '', e.value)" [searchable]="false"></flk-dropdown-list>
+                    </div>
+                </th>
                 <th>Remaining Time</th>
-                <th>Participant</th>
-                <th>Supervisors</th>
-                <th class="text-center">Module</th>
+                <th tooltip title="Sort by participant">
+                    <button (click)="this.isPartSortOpened = !this.isPartSortOpened">Participant</button>
+                    <div class="dropdown-sort">
+                        <flk-dropdown-list *if="this.isPartSortOpened" [items]="this.filterOptions.participants"
+                            (select)="this.sortObjects('participant', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
+                    </div>
+                </th>
+                <th>
+                    <button (click)="this.isSuperSortOpened = !this.isSuperSortOpened">Supervisors</button>
+                    <div class="dropdown-sort">
+                        <flk-dropdown-list *if="this.isSuperSortOpened" [items]="this.filterOptions.supervisors"
+                            (select)="this.sortObjects('supervisors', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
+                    </div>
+                </th>
+                <th class="text-center">
+                    <button (click)="this.isModuleSortOpened = !this.isModuleSortOpened">Module</button>
+                    <div class="dropdown-sort">
+                        <flk-dropdown-list *if="this.isModuleSortOpened" [items]="this.filterOptions.modules"
+                            (select)="this.sortObjects('module', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
+                    </div>
+                </th>
                 <!-- <th class="text-center">Sprint</th> -->
                 <th>Control</th>
             </tr>
@@ -20,26 +46,24 @@
             <tr *for="let task, index of this.tasksList" *key="task.id">
                 <td [html]="task.id"></td>
                 <td>
-                    <a [href]="URLS.task(task)" class="title" tooltip [title]="task.title" [html]="task.title.readMoreChars(30)"></a>
+                    <a [href]="URLS.task(task)" class="title" tooltip [title]="task.title"
+                        [html]="task.title.readMoreChars(30)"></a>
                     <span *if="! Is.empty(task.comments)" tooltip title="Task Comments" class="ml-3">
                         <fa icon="comments gray-text mr-2"></fa>
                         <strong [html]="task.comments.length"></strong>
-                    </span>                    
+                    </span>
                 </td>
                 <td>
-                    <div *if="task.progress" tooltip [title]="Math.floor(task.progress.percentage) + '% Completed'" class="task-progress">
+                    <div *if="task.progress" tooltip [title]="Math.floor(task.progress.percentage) + '% Completed'"
+                        class="task-progress">
                         <div class="completed" [width]="task.progress.percentage + '%'"></div>
                         <div class="value" [html]="task.progress.completed + '/' + task.progress.total"></div>
                     </div>
                 </td>
                 <td *if="! this.isInProjectPage">
-                    <a
-                        *if="this.project || task.project"                         
-                        [href]="URLS.project(this.project || task.project)" 
-                        class="ml-3" 
-                        tooltip
-                        [title]="this.project ? this.project.name : task.project.name" class="mx-3"
-                    >
+                    <a *if="this.project || task.project" [href]="URLS.project(this.project || task.project)"
+                        class="ml-3" tooltip [title]="this.project ? this.project.name : task.project.name"
+                        class="mx-3">
                         <img *if="task.project.image" class="small circle" [src]="task.project.image" />
                         <fa *else icon="suitcase"></fa>
                     </a>
@@ -48,84 +72,60 @@
                 <td class="status-column">
                     <span (click)="task.canUserControl ? task.openStatusChanger = ! task.openStatusChanger : null;">
                         <span class="badge" [class]="taskStatus(task)" [html]="task.status"></span>
-                        <fa 
-                            *if="task.canUserControl" 
-                            icon="caret-down" 
-                            title="Change Task Status" 
-                            tooltip                         
-                        ></fa>
+                        <fa *if="task.canUserControl" icon="caret-down" title="Change Task Status" tooltip></fa>
                     </span>
                     <div *if="task.openStatusChanger" class="status-changer">
-                        <flk-dropdown-list                        
-                            [items]="getAllowedTaskStatuses(task)"
-                            [searchable]="false"
-                            [except]="task.status"
-                            (select)="this.updateTaskStatus(task, e.value)"
-                        ></flk-dropdown-list>
+                        <flk-dropdown-list [items]="getAllowedTaskStatuses(task)" [searchable]="false"
+                            [except]="task.status" (select)="this.updateTaskStatus(task, e.value)"></flk-dropdown-list>
                     </div>
                 </td>
                 <td>
                     <div *if="task.status == 'completed'">
                         <fa icon="check-double green-text" tooltip title="Completed"></fa>
                     </div>
-                    <span *elseif="task.endsAtTimestamp && ! ['completed', 'archived'].includes(task.status)" 
-                         [tooltip]="true" 
-                         [title]="task.endsAtTimestamp - task.startsAtTimestamp <= 0 ? 'Time up' : 'Remaining Time'"
-                    >
+                    <span *elseif="task.endsAtTimestamp && ! ['completed', 'archived'].includes(task.status)"
+                        [tooltip]="true"
+                        [title]="task.endsAtTimestamp - task.startsAtTimestamp <= 0 ? 'Time up' : 'Remaining Time'">
                         <fa icon="clock mr-2"></fa>
-                        <flk-time-remaining                          
-                            class="bold" 
-                            [starts-at]="task.startsAtTimestamp" 
+                        <flk-time-remaining class="bold" [starts-at]="task.startsAtTimestamp"
                             [ends-at]="task.endsAtTimestamp">
                         </flk-time-remaining>
                     </span>
                 </td>
 
                 <td class="text-center">
-                        <img [src]="task.participant.image" 
-                            class="small mr-2 circle" 
-                            tooltip
-                            [title]="task.participant.name" 
-                            [alt]="task.participant.name" />
+                    <img [src]="task.participant.image" class="small mr-2 circle" tooltip
+                        [title]="task.participant.name" [alt]="task.participant.name" />
                 </td>
                 <td class="text-center">
                     <span *for="let supervisor of task.supervisors" class="mx-1">
-                        <img [src]="supervisor.image" 
-                            class="small mr-2 circle" 
-                            tooltip 
-                            [title]="supervisor.name"
+                        <img [src]="supervisor.image" class="small mr-2 circle" tooltip [title]="supervisor.name"
                             [alt]="supervisor.name" />
                     </span>
-                </td>      
+                </td>
                 <th class="text-center v-middle gray-text">
                     <if condition="task.module?.parent?.name">
                         <span [html]="task.module.parent.name"></span>
-                        <fa icon="angle-double-right mx-2"></fa>        
+                        <fa icon="angle-double-right mx-2"></fa>
                     </if>
                     <span [html]="task.module?.name"></span>
-                </th>        
+                </th>
                 <!-- <th class="text-center v-middle teal-text">
                     <a *if="task.sprint" [href]="URLS.project(task.project, 'sprints', task.sprint)" [html]="task.sprint?.name"></a>
                 </th>         -->
                 <td>
                     <if condition="true">
-                        <button type="button" 
-                                (click)="this.openModal('edit', task, index)" 
-                                class="btn btn-sm btn-circle btn-cyan"
-                                tooltip 
-                                title="Edit Tasks-board">
+                        <button type="button" (click)="this.openModal('edit', task, index)"
+                            class="btn btn-sm btn-circle btn-cyan" tooltip title="Edit Tasks-board">
                             <fa icon="edit"></fa>
                         </button>
-    
-                        <button type="button" 
-                                (click)="this.confirmRemoving(task, index)" 
-                                class="btn btn-sm btn-circle btn-danger"
-                                tooltip 
-                                title="Delete Tasks-board">
+
+                        <button type="button" (click)="this.confirmRemoving(task, index)"
+                            class="btn btn-sm btn-circle btn-danger" tooltip title="Delete Tasks-board">
                             <fa icon="trash"></fa>
-                        </button>                        
+                        </button>
                     </if>
-                </td>                  
+                </td>
             </tr>
         </tbody>
     </table>
