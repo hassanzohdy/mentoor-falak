@@ -3,274 +3,278 @@ _Component({
                 c: 'EinsteinPuzzlePage', // c for component name
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
-                observe: ['isLoading','puzzle','startQuest','hideForm','preview','submitAnswer','answerData','storeAnswer','getProperBadge','user','isSending'],
-                children: {cuvOCo5ES:'flk-spinner',cyfcpbidO:'flk-facebook-share',c97bMBxse:'markdown',caAijZHEA:'flk-audio-player',cap4ngvDs:'markdown',ci5jAeZoK:'markdown',cfHS9HaGB:'markdown',cLjNvqfgJ:'gold-icon',cHb71qsuD:'layout'},
+                observe: ['isLoading','puzzle','startQuest','hideForm','preview','submitAnswer','tagsService','answerData','storeAnswer','getProperBadge','user','isSending'],
+                children: {cN997YYEe:'flk-spinner',cp0MFhbdz:'flk-facebook-share',c3_BbiAqX:'markdown',caZHv2KRc:'flk-audio-player',czM8tabTM:'markdown',cywssXvgU:'markdown',cf9CNWUce:'flk-dropdown-list',cNTfgzQ5M:'markdown',c1xyxyHOZ:'gold-icon',cqqsEJGaY:'layout'},
                 render: function (component) {
-                    let cmp4tU2 = this._lc('cHb71qsuD', {parent:component,content:(layout) => {let elSsx7g = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
-let elhXhv6 = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
+                    let cmpMjKS = this._lc('cqqsEJGaY', {parent:component,content:(layout) => {let el9meBs = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
+let elcCIny = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
 text(`Einstein Chamber`);
 ec('h3');
-let elW_iYt = eo('a',null,null,`title`,`${trans(`Shop`)}`,`href`,`/einstein-chamber/shop`,`class`,`m-l-1`);
-let elmYnQc = eo('span',null,null,`class`,`shopping-cart`);
+let elopL2R = eo('a',null,null,`title`,`${trans(`Shop`)}`,`href`,`/einstein-chamber/shop`,`class`,`m-l-1`);
+let elWETbn = eo('span',null,null,`class`,`shopping-cart`);
 ec('span');
 ec('a');
-let elW0F77 = eo('a',null,null,`title`,`${trans(`Help`)}`,`href`,`/einstein-chamber/unlock`);
-let elMrNUY = eo('i',null,null,`class`,`${fas('question-circle') + ' fa-2x ml-2 v-middle icon'}`);
+let eld4s3o = eo('a',null,null,`title`,`${trans(`Help`)}`,`href`,`/einstein-chamber/unlock`);
+let elL_Y8H = eo('i',null,null,`class`,`${fas('question-circle') + ' fa-2x ml-2 v-middle icon'}`);
 ec('i');
 ec('a');
-let cndXOk8 = component.isLoading;
-this.setState('stmBQZ0', cndXOk8);
-let cndLdnD = !(cndXOk8);
-this.setState('stQN9vr', cndLdnD);
-if (cndXOk8) { 
-let cmp8e4t = this._lc('cuvOCo5ES', {parent:component,parentTop:layout,state:'stmBQZ0'});
+let cndEUCL = component.isLoading;
+this.setState('st4aIEv', cndEUCL);
+let cnddwfv = !(cndEUCL);
+this.setState('stx2EQR', cnddwfv);
+if (cndEUCL) { 
+let cmpIa9m = this._lc('cN997YYEe', {parent:component,parentTop:layout,state:'st4aIEv'});
 }else { 
-let cndco1r = component.puzzle.public;
-this.setState('stsA60o', cndco1r);
-if (cndco1r) { 
-let elTLX8X = eo('span','p1Ff',null,`class`,`ml-2 badge badge-primary`);
+let cnds0zQ = component.puzzle.public;
+this.setState('stWKcPC', cnds0zQ);
+if (cnds0zQ) { 
+let el9ulGR = eo('span','KRBf',null,`class`,`ml-2 badge badge-primary`);
 text(`Public`);
 ec('span');
-}let cndm1bu = component.puzzle && component.puzzle.public;
-this.setState('stgjhmn', cndm1bu);
-if (cndm1bu) { 
-let elMKVTx = eo('div','qIof',null,`class`,`m-y-1`);
-let cmp2jER = this._lc('cyfcpbidO', {parent:component,parentTop:layout,state:'stgjhmn'});
+}let cndHOPR = component.puzzle && component.puzzle.public;
+this.setState('stNxMUh', cndHOPR);
+if (cndHOPR) { 
+let elEzr5b = eo('div','02pf',null,`class`,`m-y-1`);
+let cmpU8Eb = this._lc('cp0MFhbdz', {parent:component,parentTop:layout,state:'stNxMUh'});
 ec('div');
-}let cndhIcI = component.puzzle.status && component.puzzle.status == 'approved';
-this.setState('stdZ7_A', cndhIcI);
-if (cndhIcI) { 
-let el4XDvW = eo('div','s5Af');
-let elGGXbZ = eo('a','8ecf',null,`href`,`/einstein-chamber/puzzles/${ component.puzzle.id }/answers`,`class`,`btn btn-pink bold`);
+}let cndPV6I = component.puzzle.status && component.puzzle.status == 'approved';
+this.setState('stEGX7z', cndPV6I);
+if (cndPV6I) { 
+let eleOgtq = eo('div','r0Qf');
+let elmtM20 = eo('a','HUxf',null,`href`,`/einstein-chamber/puzzles/${ component.puzzle.id }/answers`,`class`,`btn btn-pink bold`);
 text(`See how others
                 solved it!`);
 ec('a');
 ec('div');
-}let elvB6cE = eo('div',null,null,`class`,`puzzle row`);
-let elu2Ueo = eo('div',null,null,`class`,`col-9`);
-let elQ4mmu = eo('h1',null,null,`class`,`m-v-1`);
+}let elXYGq_ = eo('div',null,null,`class`,`puzzle row`);
+let elKGV_A = eo('div',null,null,`class`,`col-9`);
+let elBbxRZ = eo('h1',null,null,`class`,`m-v-1`);
 text( component.puzzle.title );
-let el9NHbk = eo('strong',null,null,`class`,`green-text ml-2`);
+let elbh1pu = eo('strong',null,null,`class`,`green-text ml-2`);
 text(component.puzzle.category.name);
 ec('strong');
 ec('h1');
-let cndg9f9 = component.puzzle.status == 'rejected';
-this.setState('stbFQbN', cndg9f9);
-if (cndg9f9) { 
-let elE0cGu = eo('div','5AUf',null,`class`,`card p-1 m-b-1`);
-let els6GKU = eo('div','F_If',null,`class`,`bold red-text`);
+let cnd2QRD = component.puzzle.status == 'rejected';
+this.setState('stHmnX6', cnd2QRD);
+if (cnd2QRD) { 
+let el1CaaH = eo('div','I7qf',null,`class`,`card p-1 m-b-1`);
+let el9HLqA = eo('div','dycf',null,`class`,`bold red-text`);
 text(`You're previous answer had some issues, please check the following
                         comment and act accordingly.`);
 ec('div');
-let eltNu4e = eo('div','Fiwf',null,`class`,`m-y-1`);
-let ellHzEI = eo('span','EZzf');
+let el7h_B2 = eo('div','eSRf',null,`class`,`m-y-1`);
+let el1J4Po = eo('span','cudf');
 text(`By:`);
 ec('span');
-let elrPTtm = eo('strong','AQsf',null,`class`,`ml-2`);
+let ellBsFe = eo('strong','AQIf',null,`class`,`ml-2`);
 text(component.puzzle.commentBy.name);
 ec('strong');
-let cndWTso = component.puzzle.comment;
-this.setState('stq2PDu', cndWTso);
-if (cndWTso) { 
-let cmpylv4 = this._lc('c97bMBxse', {parent:component,parentTop:layout,props:{content:component.puzzle.comment},state:'stq2PDu'});
-}let cnd4D4V = component.puzzle.recordNote;
-this.setState('stQUNcI', cnd4D4V);
-if (cnd4D4V) { 
-let cmpvFtz = this._lc('caAijZHEA', {parent:component,parentTop:layout,props:{src:component.puzzle.recordNote},attrs:{src:`${component.puzzle.recordNote}`},state:'stQUNcI'});
+let cndP3c5 = component.puzzle.comment;
+this.setState('stPQmrp', cndP3c5);
+if (cndP3c5) { 
+let cmp3I9r = this._lc('c3_BbiAqX', {parent:component,parentTop:layout,props:{content:component.puzzle.comment},state:'stPQmrp'});
+}let cndt5w0 = component.puzzle.recordNote;
+this.setState('stwRLHJ', cndt5w0);
+if (cndt5w0) { 
+let cmpe_Rx = this._lc('caZHv2KRc', {parent:component,parentTop:layout,props:{src:component.puzzle.recordNote},attrs:{src:`${component.puzzle.recordNote}`},state:'stwRLHJ'});
 }ec('div');
 ec('div');
-}let cmpxEHL = this._lc('cap4ngvDs', {parent:component,parentTop:layout,props:{content:component.puzzle.quest}});
-let cndjiHc = component.puzzle.answer;
-this.setState('stRYgt2', cndjiHc);
-if (cndjiHc) { 
-let eloS1Fz = eo('h1','_dyf',null,`class`,`m-v-1 teal-text`);
+}let cmpBq8V = this._lc('czM8tabTM', {parent:component,parentTop:layout,props:{content:component.puzzle.quest}});
+let cndQU15 = component.puzzle.answer;
+this.setState('stsh48z', cndQU15);
+if (cndQU15) { 
+let elLOAIP = eo('h1','dNjf',null,`class`,`m-v-1 teal-text`);
 text(`Your previous answer`);
 ec('h1');
-let elnSavs = ev('hr','Cr5f');
-let cmpCsxi = this._lc('ci5jAeZoK', {parent:component,parentTop:layout,props:{content:component.puzzle.answer},state:'stRYgt2'});
-}let cndhJlB = component.startQuest;
-this.setState('stYgD1f', cndhJlB);
-if (cndhJlB) { 
-let elQMzAz = eo('div','4o9f',null,`class`,`m-t-1`);
-elQMzAz.cls = {'d-none': component.hideForm};
+let elnDmUV = ev('hr','7OPf');
+let cmp4kIy = this._lc('cywssXvgU', {parent:component,parentTop:layout,props:{content:component.puzzle.answer},state:'stsh48z'});
+}let cndQnaw = component.startQuest;
+this.setState('stZGY4z', cndQnaw);
+if (cndQnaw) { 
+let el6_qbz = eo('div','WDuf',null,`class`,`m-t-1`);
+el6_qbz.cls = {'d-none': component.hideForm};
 
-            for (let className in elQMzAz.cls) {
-                elQMzAz.classList.toggle(className, elQMzAz.cls[className]);
+            for (let className in el6_qbz.cls) {
+                el6_qbz.classList.toggle(className, el6_qbz.cls[className]);
             }  
-            let ela_jar = eo('h1','X3df',null,`class`,`m-v-1`);
+            let elQ4sUS = eo('h1','6XBf',null,`class`,`m-v-1`);
 text(`Notes before answering.`);
 ec('h1');
-let eldQmnX = eo('ul','LXOf',null,`class`,`font-weight-normal`);
-let elPIzz5 = eo('li','MxWf',null,`class`,`red-text bold`);
+let eluR_xM = eo('ul','9Hcf',null,`class`,`font-weight-normal`);
+let elqtRpN = eo('li','Asxf',null,`class`,`red-text bold`);
 text(`Any code without comments makes your answer get rejected!`);
 ec('li');
-let elbBUzg = eo('li','tCVf',null,`class`,`pink-text bold`);
+let eldEhp7 = eo('li','i55f',null,`class`,`pink-text bold`);
 text(`the code MUST BE WORKING or it will get rejected!`);
 ec('li');
-let eloDnpH = eo('li','Q_sf');
+let elDcOm_ = eo('li','thjf');
 text(`You can use markdown syntax in your answer, so use it especially in writing code.`);
 ec('li');
-let elrytbA = eo('li','QE4f');
+let elvzgFP = eo('li','abSf');
 text(`Add the code in the answer box then put it on`);
-let elq8H8f = eo('a','uAVf',null,`href`,`https://codepen.io/`,`class`,`bold m-h-1 teal-text`,`target`,`_blank`);
+let elLFGxN = eo('a','8Zyf',null,`href`,`https://codepen.io/`,`class`,`bold m-h-1 teal-text`,`target`,`_blank`);
 text(`Codepen`);
 ec('a');
 text(`if your challenge is
                             about`);
-let el5t7VG = eo('strong','xn4f',null,`class`,`mx-2`);
+let ellvmQr = eo('strong','zQOf',null,`class`,`mx-2`);
 text(`HTML, CSS, Javascript, Typescript or SCSS`);
 ec('strong');
 text(`and put it on`);
-let eldxnK4 = eo('a','wYdf',null,`href`,`https://tehplayground.com`,`class`,`bold m-h-1 green-text`,`target`,`_blank`);
+let elIJY0v = eo('a','vyQf',null,`href`,`https://tehplayground.com`,`class`,`bold m-h-1 green-text`,`target`,`_blank`);
 text(`Tehplayground`);
 ec('a');
 text(`If your challenge is about`);
-let elVRH6w = eo('strong','nAlf',null,`class`,`mx-2`);
+let elXGXUI = eo('strong','Y0yf',null,`class`,`mx-2`);
 text(`PHP`);
 ec('strong');
 text(`after that put the link at the bottom of the answer or it will get`);
-let el3jLUg = eo('span','_QDf',null,`class`,`ml-1 red-text bold`);
+let eluM5IJ = eo('span','_10f',null,`class`,`ml-1 red-text bold`);
 text(`rejected`);
 ec('span');
 text(`.`);
 ec('li');
-let elgb7S5 = eo('li','B2tf');
+let elmWTy_ = eo('li','anXf');
 text(`Stick to the puzzle requirements.`);
 ec('li');
-let elr1glB = eo('li','hjyf');
+let elG7pWz = eo('li','Od4f');
 text(`Your answer will be reviewed, you can not edit it again it if it gets`);
-let elB67Fc = eo('span','sonf',null,`class`,`ml-1 red-text bold`);
+let elcQEpL = eo('span','C3_f',null,`class`,`ml-1 red-text bold`);
 text(`rejected`);
 ec('span');
 text(`.`);
 ec('li');
-let elQOTd1 = eo('li','YYZf');
-let elHqtu5 = eo('strong','If4f',null,`class`,`mr-1`);
+let elu7AHv = eo('li','HQ7f');
+let elt3ZIN = eo('strong','uidf',null,`class`,`mr-1`);
 text(`Double`);
 ec('strong');
 text(`check the answer before submitting it, you can't change it again, so don't forget to`);
-let elyFP5a = eo('button','0UWf',null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = ! component.preview}]},`type`,`button`,`class`,`btn btn-sm btn-success`);
+let ellqe12 = eo('button','zIXf',null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = ! component.preview}]},`type`,`button`,`class`,`btn btn-sm btn-success`);
 text(`preview`);
 ec('button');
 text(`it.`);
 ec('li');
-let elMZZ9Z = eo('li','PXIf');
+let eln6uNz = eo('li','xKQf');
 text(`If the puzzle is about creating a`);
-let elRTkAt = eo('strong','953f',null,`class`,`mx-2`);
+let el95nl0 = eo('strong','QwNf',null,`class`,`mx-2`);
 text(`built in function`);
 ec('strong');
-text(`in programming language,`);
-let elowrho = eo('strong','as0f',null,`class`,`mx-2`);
+text(`in
+                            programming language,`);
+let elIVBFH = eo('strong','yPEf',null,`class`,`mx-2`);
 text(`DO NOT`);
 ec('strong');
 text(`use it, but implement it.`);
 ec('li');
-let eliGHwF = eo('li','Pskf');
+let el8V6d9 = eo('li','lxIf');
 text(`If the answer is`);
-let elt4L42 = eo('span','mQtf',null,`class`,`mx-1 red-text bold`);
+let elm8tC5 = eo('span','pdTf',null,`class`,`mx-1 red-text bold`);
 text(`rejected`);
 ec('span');
 text(`,
                             the puzzle may appear again later.`);
 ec('li');
 ec('ul');
-let eld0iTL = eo('p','v5Jf',null,`class`,`orange-text bold`);
+let elihKdM = eo('p','moGf',null,`class`,`orange-text bold`);
 text(`If the answer got`);
-let el4DnFD = eo('span','UEff',null,`class`,`mx-1 red-text bold`);
+let elJg3RQ = eo('span','y7cf',null,`class`,`mx-1 red-text bold`);
 text(`rejected`);
 ec('span');
 text(`,
                         you will lose the reward of the puzzle from your gold, thus try to understand the quest
                         properly.`);
 ec('p');
-let elsYHaJ = eo('div','UUHf',null,`class`,`row`);
-let elBBB4x = eo('form','P0Cf',null, eventListeners, {onsubmit:[function(e) {
+let eldho8F = eo('div','iiEf',null,`class`,`row`);
+let eldXDo2 = eo('form','qKrf',null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submitAnswer($el)}]},`class`,`col`);
 
-                if (! elBBB4x.formHandler) {
-                    window.cfrmdlr = elBBB4x.formHandler = new FormHandler(elBBB4x, component);
+                if (! eldXDo2.formHandler) {
+                    window.cfrmdlr = eldXDo2.formHandler = new FormHandler(eldXDo2, component);
                 } else {
-                    window.cfrmdlr = elBBB4x.formHandler;
+                    window.cfrmdlr = eldXDo2.formHandler;
                 }
-            let el3XdL9 = eo('textarea','f1Bf',null, eventListeners, {oninput:[function(e) {component.answerData = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elBBB4x.formHandler.addError(`answer`, 'required', trans('validation.required'));}return elBBB4x.formHandler.removeError(`answer`);}],onkeyup:[function(e) {var $el = this;component.storeAnswer($el.value)}]},`value`,`${fval(component.answerData)}`,`name`,`${(`answer`).toInputName()}`,`placeholder`,`${trans(`Write your answer ;)`)}`,`type`,`textarea`,`rows`,`10`,`class`,`form-control mb-4`,`id`,`answer`);
-el3XdL9.value = fval(component.answerData);
+            let ellLaeY = eo('section','Iqxf',null,`class`,`tags form-group`);
+let cmpaa28 = this._lc('cf9CNWUce', {parent:component,parentTop:layout,props:{imageable:true,multiple:true,lazyLoading:true,service:component.tagsService},boolAttrs:{multiple:true},attrs:{name:`${(`language`).toInputName()}`,label:'Choose a language to answer with',required:''},style:{position:'top'},state:'stZGY4z'});
+ec('section');
+let elwhWMy = eo('textarea','vVKf',null, eventListeners, {oninput:[function(e) {component.answerData = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eldXDo2.formHandler.addError(`answer`, 'required', trans('validation.required'));}return eldXDo2.formHandler.removeError(`answer`);}],onkeyup:[function(e) {var $el = this;component.storeAnswer($el.value)}]},`value`,`${fval(component.answerData)}`,`name`,`${(`answer`).toInputName()}`,`placeholder`,`${trans(`Write your answer ;)`)}`,`type`,`textarea`,`rows`,`10`,`class`,`form-control mb-4`,`id`,`answer`);
+elwhWMy.value = fval(component.answerData);
 ec('textarea');
-let cndAh7K = elBBB4x.formHandler.getError(`answer`);
-this.setState('stRUpS_', cndAh7K);
-if (cndAh7K) { 
-let elNv4O2 = eo('div','w5bf',null,`class`,`alert alert-danger`);
-text(elBBB4x.formHandler.getError(`answer`));
+let cndwnWQ = eldXDo2.formHandler.getError(`answer`);
+this.setState('st8HX7k', cndwnWQ);
+if (cndwnWQ) { 
+let elybKr2 = eo('div','6P7f',null,`class`,`alert alert-danger`);
+text(eldXDo2.formHandler.getError(`answer`));
 ec('div');
-}let ele6YsU = eo('button',null,null,`class`,`btn btn-primary float-right`);
+}let elq3gjj = eo('button',null,null,`class`,`btn btn-primary float-right`);
 text(`Send`);
 ec('button');
-let elqMRzW = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = ! component.preview}]},`class`,`btn btn-success float-right`,`type`,`button`);
+let elOJRUb = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.preview = ! component.preview}]},`class`,`btn btn-success float-right`,`type`,`button`);
 text(`Preview`);
 ec('button');
-let elCcAd5 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.startQuest = false}]},`class`,`btn btn-danger float-right mr-2`,`type`,`button`);
+let el1mr7d = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.startQuest = false}]},`class`,`btn btn-danger float-right mr-2`,`type`,`button`);
 text(`Cancel`);
 ec('button');
 ec('form');
-let cnd27QM = component.preview && component.answerData;
-this.setState('st2WpbJ', cnd27QM);
-if (cnd27QM) { 
-let elmSHgo = eo('div','7XYf',null,`class`,`col-6`);
-let cmpmMmW = this._lc('cfHS9HaGB', {parent:component,parentTop:layout,props:{content:component.answerData},state:'st2WpbJ'});
+let cndBQs0 = component.preview && component.answerData;
+this.setState('stWoWJ1', cndBQs0);
+if (cndBQs0) { 
+let el5nJbE = eo('div','Ap_f',null,`class`,`col-6`);
+let cmpUIya = this._lc('cNTfgzQ5M', {parent:component,parentTop:layout,props:{content:component.answerData},state:'stWoWJ1'});
 ec('div');
 }ec('div');
 ec('div');
 }ec('div');
-let el7MfFU = eo('div',null,null,`class`,`col`);
-let elXxjCu = eo('div',null,null,`class`,`card m-t-0`);
-let elxGXEi = eo('div',null,null,`title`,`${trans(`Level ${ component.puzzle.level }`)}`,`class`,`text-center level`);
+let elrJ0Fn = eo('div',null,null,`class`,`col`);
+let elgAR0_ = eo('div',null,null,`class`,`card m-t-0`);
+let elycCKL = eo('div',null,null,`title`,`${trans(`Level ${ component.puzzle.level }`)}`,`class`,`text-center level`);
 text(component.puzzle.level);
 ec('div');
-let cndIsIY = component.puzzle.status == 'active';
-this.setState('stZgbT0', cndIsIY);
-let cndV2MD = component.puzzle.status;
-this.setState('sthcNZ2', cndV2MD);
-if (cndIsIY) { 
-let elcNmYC = eo('div','4B5f',null,`class`,`text-center bold status active`);
+let cnd2Fni = component.puzzle.status == 'active';
+this.setState('steWG86', cnd2Fni);
+let cndQo5J = component.puzzle.status;
+this.setState('std1Hn8', cndQo5J);
+if (cnd2Fni) { 
+let elSHFm0 = eo('div','t0yf',null,`class`,`text-center bold status active`);
 ec('div');
-}else if (cndV2MD) { 
-let elpcwaR = eo('div',null,null,`class`,`text-center bold status`);
-let eltSeL1 = eo('span',null,null,`class`,`badge`);
-eltSeL1.cls = component.getProperBadge(component.puzzle.status);
+}else if (cndQo5J) { 
+let elFaxRi = eo('div',null,null,`class`,`text-center bold status`);
+let elI_xa8 = eo('span',null,null,`class`,`badge`);
+elI_xa8.cls = component.getProperBadge(component.puzzle.status);
 
-            for (let className in eltSeL1.cls) {
-                eltSeL1.classList.toggle(className, eltSeL1.cls[className]);
+            for (let className in elI_xa8.cls) {
+                elI_xa8.classList.toggle(className, elI_xa8.cls[className]);
             }  
             text(component.puzzle.status);
 ec('span');
 ec('div');
-}let elChG9f = eo('div',null,null,`class`,`bold text-center m-v-1`);
-let elrsHVw = eo('div');
+}let elIN423 = eo('div',null,null,`class`,`bold text-center m-v-1`);
+let elbcbAA = eo('div');
 text(`Reward`);
 ec('div');
-let cmpCsIC = this._lc('cLjNvqfgJ', {parent:component,parentTop:layout,props:{coins:component.puzzle.reward}});
+let cmp4Vta = this._lc('c1xyxyHOZ', {parent:component,parentTop:layout,props:{coins:component.puzzle.reward}});
 ec('div');
-let cndhruf = component.puzzle.status == 'approved';
-this.setState('steW2RD', cndhruf);
-if (cndhruf) { 
-let elirWSP = eo('i','KFwf',null,`title`,`${trans(`Solved`)}`,`class`,`${fas('check') + ' green-text fa-2x text-center icon'}`);
+let cndEMdK = component.puzzle.status == 'approved';
+this.setState('st0rGcB', cndEMdK);
+if (cndEMdK) { 
+let elE8Tax = eo('i','N9Rf',null,`title`,`${trans(`Solved`)}`,`class`,`${fas('check') + ' green-text fa-2x text-center icon'}`);
 ec('i');
-}let elrtxqU = eo('div',null,null,`class`,`text-center m-b-1`);
-let cndR_ZV = component.user.isLoggedIn() && ['active', 'rejected'].includes(component.puzzle.status);
-this.setState('stsUaEi', cndR_ZV);
-if (cndR_ZV) { 
-let ell4ATG = eo('button','cSvf',null, eventListeners, {onclick:[function(e) {var $el = this;component.startQuest = ! component.startQuest}]}, boolAttrs, {disabled:component.isSending},`class`,`btn text-uppercase`);
-ell4ATG.cls = {'btn-primary': ! component.startQuest, 'btn-danger': component.startQuest};
+}let el2o2MF = eo('div',null,null,`class`,`text-center m-b-1`);
+let cnddHE6 = component.user.isLoggedIn() && ['active', 'rejected'].includes(component.puzzle.status);
+this.setState('stDTUlY', cnddHE6);
+if (cnddHE6) { 
+let eln743S = eo('button','zN7f',null, eventListeners, {onclick:[function(e) {var $el = this;component.startQuest = ! component.startQuest}]}, boolAttrs, {disabled:component.isSending},`class`,`btn text-uppercase`);
+eln743S.cls = {'btn-primary': ! component.startQuest, 'btn-danger': component.startQuest};
 
-            for (let className in ell4ATG.cls) {
-                ell4ATG.classList.toggle(className, ell4ATG.cls[className]);
+            for (let className in eln743S.cls) {
+                eln743S.classList.toggle(className, eln743S.cls[className]);
             }  
             text( component.startQuest ? 'Cancel' : 'Start quest' );
 ec('button');
-}let cnd1lVD = ! component.user.isLoggedIn();
-this.setState('sthblHq', cnd1lVD);
-if (cnd1lVD) { 
-let el19u5v = eo('a','1Z9f',null,`href`,`/login`,`class`,`btn bold btn-danger text-uppercase`);
+}let cnduhDF = ! component.user.isLoggedIn();
+this.setState('stM32Fm', cnduhDF);
+if (cnduhDF) { 
+let elbxEIh = eo('a','Xu1f',null,`href`,`/login`,`class`,`btn bold btn-danger text-uppercase`);
 text(`Login to solve!`);
 ec('a');
 }ec('div');

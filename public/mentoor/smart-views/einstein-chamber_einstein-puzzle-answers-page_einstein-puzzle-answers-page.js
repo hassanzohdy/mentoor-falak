@@ -4,60 +4,60 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['hasSomethingWentWrong','isLoading','puzzle'],
-                children: {cS9jVugfH:'flk-spinner',crJq75Ty4:'flk-time-ago',cgWMC_s7H:'markdown',ch4phC5MM:'markdown',cTLrcUvGz:'layout'},
+                children: {cGIYFf4uJ:'flk-spinner',c4tZcbNXN:'flk-time-ago',c8wMz6z7j:'markdown',cU0h_S4ZC:'markdown',cOs56UpzW:'layout'},
                 render: function (component) {
-                    let cmpnI8s = this._lc('cTLrcUvGz', {parent:component,content:(layout) => {let elzSdID = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
-let elDaxOn = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
+                    let cmpf0DQ = this._lc('cOs56UpzW', {parent:component,content:(layout) => {let elAPzqw = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
+let elGh3vN = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
 text(`Einstein Chamber`);
 ec('h3');
-let elWUYBN = eo('a',null,null,`title`,`${trans(`Shop`)}`,`href`,`/einstein-chamber/shop`,`class`,`m-l-1`);
-let elk0_QE = eo('span',null,null,`class`,`shopping-cart`);
+let el4ObG5 = eo('a',null,null,`title`,`${trans(`Shop`)}`,`href`,`/einstein-chamber/shop`,`class`,`m-l-1`);
+let elA8nCr = eo('span',null,null,`class`,`shopping-cart`);
 ec('span');
 ec('a');
-let cndgYy5 = component.hasSomethingWentWrong;
-this.setState('sttUVc9', cndgYy5);
-let cnduKSX = component.isLoading;
-this.setState('st8JPX_', cnduKSX);
-let cndfzBV = !(cndgYy5||cnduKSX);
-this.setState('stiXs9R', cndfzBV);
-if (cndgYy5) { 
-let elSp7nN = eo('h1','753f',null,`class`,`text-center bold m-y-2`);
+let cnd6wIY = component.hasSomethingWentWrong;
+this.setState('stIN6LY', cnd6wIY);
+let cndFviM = component.isLoading;
+this.setState('stjRHE3', cndFviM);
+let cndjd1K = !(cnd6wIY||cndFviM);
+this.setState('stSdD3W', cndjd1K);
+if (cnd6wIY) { 
+let elomx6d = eo('h1','YOFf',null,`class`,`text-center bold m-y-2`);
 text(component.hasSomethingWentWrong);
 ec('h1');
-}else if (cnduKSX) { 
-let cmpsjEo = this._lc('cS9jVugfH', {parent:component,parentTop:layout,state:'st8JPX_'});
+}else if (cndFviM) { 
+let cmp5ZUp = this._lc('cGIYFf4uJ', {parent:component,parentTop:layout,state:'stjRHE3'});
 }else { 
-let eliZ_AD = eo('div',null,null,`class`,`puzzle row`);
-let elHlhwQ = eo('div',null,null,`class`,`col-9`);
-let elM8EPU = eo('h1',null,null,`class`,`m-v-1`);
+let el7_3xR = eo('div',null,null,`class`,`puzzle row`);
+let elxZhzu = eo('div',null,null,`class`,`col-9`);
+let elW4buQ = eo('h1',null,null,`class`,`m-v-1`);
 text( component.puzzle.title );
-let eljDShu = eo('strong',null,null,`class`,`green-text ml-2`);
+let elzKPMz = eo('strong',null,null,`class`,`green-text ml-2`);
 text(component.puzzle.category.name);
 ec('strong');
 ec('h1');
-let elcDJnc = eo('h1',null,null,`class`,`teal-text m-t-1 m-b-2`);
+let elUuMwz = eo('h1',null,null,`class`,`teal-text m-t-1 m-b-2`);
 text(`Answers (${ component.puzzle.answers.length })`);
 ec('h1');
 for (let i in component.puzzle.answers) {
 let answer = component.puzzle.answers[i]; 
- let iii_77 = 'As9JpbA' + i;
-let el1VZ03 = eo('div','MJb6142X6qB7' + i+iii_77,null,`class`,`card p-2 m-b-3`);
-let el5TX85 = eo('h3','NxJff'+iii_77);
+ let iiF10L = 'fMa8Z14' + i;
+let eldkKfe = eo('div','iEZZdqoa3czM' + i+iiF10L,null,`class`,`card p-2 m-b-3`);
+let elM1X0y = eo('h3','TxEff'+iiF10L);
 text(answer.by.name);
 ec('h3');
-let cmpYjUS = this._lc('crJq75Ty4', {parent:component,parentTop:layout,props:{timestamp:answer.createdAt.timestamp},attrs:{class:'mt-1 grey-text'},state:'stiXs9R',insideLoop:true,index:"" +iii_77});
-let cndwkC1 = answer.answer;
-this.setState('stILydu', cndwkC1);
-if (cndwkC1) { 
-let cmp2J2m = this._lc('cgWMC_s7H', {parent:component,parentTop:layout,props:{content:answer.answer},state:'stILydu',insideLoop:true,index:"" +iii_77});
+let cmpb_qP = this._lc('c4tZcbNXN', {parent:component,parentTop:layout,props:{timestamp:answer.createdAt.timestamp},attrs:{class:'mt-1 grey-text'},state:'stSdD3W',insideLoop:true,index:"" +iiF10L});
+let cnd477i = answer.answer;
+this.setState('std7Mrm', cnd477i);
+if (cnd477i) { 
+let cmpg3j0 = this._lc('c8wMz6z7j', {parent:component,parentTop:layout,props:{content:answer.answer},state:'std7Mrm',insideLoop:true,index:"" +iiF10L});
 }ec('div');
 }
 ec('div');
-let el8lrFi = eo('div',null,null,`class`,`col-3 card p-t-1 m-t-10`);
-let elbfab5 = eo('h3');
+let el8pYHB = eo('div',null,null,`class`,`col-3 card p-t-1 m-t-10`);
+let elFIP4L = eo('h3');
 text(`Puzzle`);
 ec('h3');
-let cmpNmdq = this._lc('ch4phC5MM', {parent:component,parentTop:layout,props:{content:component.puzzle.quest}});
+let cmpzpRw = this._lc('cU0h_S4ZC', {parent:component,parentTop:layout,props:{content:component.puzzle.quest}});
 ec('div');
 ec('div');
 }}});

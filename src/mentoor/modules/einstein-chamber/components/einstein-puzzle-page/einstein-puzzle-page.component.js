@@ -3,7 +3,7 @@ class EinsteinPuzzlePage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(meta, user, cache, router, einsteinChamberService) {
+    constructor(meta, user, cache, router, einsteinChamberService, tagsService) {
         this.meta = meta;
         this.user = user;
         this.cache = cache;
@@ -11,6 +11,8 @@ class EinsteinPuzzlePage {
         this.einsteinChamberService = einsteinChamberService;
         this.name = 'einstein-puzzle';
         this.title = 'Einstein puzzle';
+
+        this.tagsService = tagsService;
     }
 
     /**

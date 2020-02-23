@@ -20,6 +20,12 @@ class TaskModal {
         this.isSending = false;
         this.modal = null;
 
+        this.taskLevels = [
+            { text: "High", value: "high" },
+            { text: "Medium", value: "medium" },
+            { text: "Low", value: "low" },
+        ]
+
         this.participants = this.inputs.getProp('participants');
         this.supervisors = this.inputs.getProp('supervisors');
         this.project = this.inputs.getProp('project');

@@ -160,6 +160,9 @@ function initializeUrls() {
         task(task) {
             return `/tasks/${task.id}`;
         },
+        arena(challenge){
+            return `/arena/challenges/${challenge}`;
+        },
         project(project, extend = null, extra) {
             if (! project) return '';
             extend = extend ? '/' + extend : '';

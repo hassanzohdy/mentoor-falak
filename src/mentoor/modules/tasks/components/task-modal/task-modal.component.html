@@ -22,18 +22,26 @@
             </div>
 
             <div *if="this.statuses" class="col">
-                <flk-dropdown-list label="Task Status" [except]="'autoFailed'" [items]="this.statuses" [value]="this.data.status" name="status">
+                <flk-dropdown-list label="Task Status" [except]="'autoFailed'" [items]="this.statuses"
+                    [value]="this.data.status" name="status">
                 </flk-dropdown-list>
             </div>
         </div>
         <div *if="this.project" class="row m-y-1">
             <div class="col">
-                <flk-dropdown-list name="module" [none]="true" label="Module" [required]="false" [value]="this.data.module?.id" [lazy-loading]="true"
-                    [request]="this.loadModules.bind(this)"></flk-dropdown-list>
+                <flk-dropdown-list name="module" [none]="true" label="Module" [required]="false"
+                    [value]="this.data.module?.id" [lazy-loading]="true" [request]="this.loadModules.bind(this)">
+                </flk-dropdown-list>
             </div>
             <div class="col">
-                <flk-dropdown-list name="userStory" label="User Story" [required]="false" [value]="this.data.userStory?.id" [lazy-loading]="true"
-                    [request]="loadUserStories.bind(this, 'withNoTaskAttached', Object.get(this.data, 'userStory.id'))"></flk-dropdown-list>
+                <flk-dropdown-list name="userStory" label="User Story" [required]="false"
+                    [value]="this.data.userStory?.id" [lazy-loading]="true"
+                    [request]="loadUserStories.bind(this, 'withNoTaskAttached', Object.get(this.data, 'userStory.id'))">
+                </flk-dropdown-list>
+            </div>
+
+            <div class="col">
+                <flk-dropdown-list name="priority" label="Task priority" required [items]="this.taskLevels"></flk-dropdown-list>
             </div>
         </div>
         <form-input type="text" class="form-control" required label="title" name="title" [value]="this.data.title">
@@ -55,39 +63,25 @@
             <div class="col-sm-6">
                 <input type="hidden" name="startsAt" [value]="this.data.startsAt" />
                 <input type="hidden" name="endsAt" [value]="this.data.endsAt" />
-                <flk-datepicker [required]="true" class="form-control" mode="range" [date-time]="true" [min-date]="this.data.startsAt" [max-date]="this.data.endsAt" required label="Start date"
+                <flk-datepicker [required]="true" class="form-control" mode="range" [date-time]="true"
+                    [min-date]="this.data.startsAt" [max-date]="this.data.endsAt" required label="Start date"
                     placeholder="Task Due Date" (select)="this.data.startsAt = e[0]; this.data.endsAt = e[1];">
                 </flk-datepicker>
             </div>
             <div class="col-sm-6">
-                <flk-dropdown-list
-                    *if="! this.project" 
-                    label="Parent Task (Search By Id only)" 
-                    [value]="this.data.parent?.id" 
-                    name="parent"
-                    heading="Parent Task"
-                    [lazy-loading]="true"
-                    [remote-search]="true"
-                    [except]="this.data.id"
-                    [service]="this.tasksService"
-                    query="id"
-                >
+                <flk-dropdown-list *if="! this.project" label="Parent Task (Search By Id only)"
+                    [value]="this.data.parent?.id" name="parent" heading="Parent Task" [lazy-loading]="true"
+                    [remote-search]="true" [except]="this.data.id" [service]="this.tasksService" query="id">
                 </flk-dropdown-list>
 
-                <flk-dropdown-list
-                    *else 
-                    label="Parent Task" 
-                    [value]="this.data.parent?.id" 
-                    name="parent"
-                    heading="Parent Task"
-                    [except]="this.data.id"
-                    [lazy-loading]="true"
+                <flk-dropdown-list *else label="Parent Task" [value]="this.data.parent?.id" name="parent"
+                    heading="Parent Task" [except]="this.data.id" [lazy-loading]="true"
                     [request]="loadProjectTasks.bind(this)">
-                >
-                </flk-dropdown-list>                
+                    >
+                </flk-dropdown-list>
             </div>
         </div>
-        
+
         <record-audio-input [data]="this.data" *as="recordAudio"></record-audio-input>
         <button class="btn btn-success bold" [disabled]="this.isSending">Save</button>
     </form>

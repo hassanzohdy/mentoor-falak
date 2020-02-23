@@ -19,7 +19,6 @@ class TaskChecklist {
     }
 
     addNewChecklist() {
-        this.addChecklistForm = true;
 
         this.isValidForm = true;
 

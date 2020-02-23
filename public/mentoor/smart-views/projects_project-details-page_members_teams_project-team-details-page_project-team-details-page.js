@@ -4,126 +4,126 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','teamMembers','teamMembersExceptTeamLeader','openAssignTeamLeader','addNewTeamMember','teamExceededMaxFreeMembers','currentTeam','assignTeamLeader','currentTeamLeaderId','isSending','addTeamMember','projectMembersExceptTeamMembers','newMember'],
-                children: {c6rItCnkJ:'gold-icon',cD_eo_vje:'project-layout',cehSONoDT:'flk-dropdown-list',cDO6C1Ycf:'flk-modal',cLEyt3j2Q:'flk-dropdown-list',cX8eXzu_C:'flk-modal'},
+                children: {cIRBSUrGG:'gold-icon',cDxK92B1Y:'project-layout',c9XvX0a_n:'flk-dropdown-list',czziNgwa_:'flk-modal',cn3ogE0rr:'flk-dropdown-list',c25E4qlKx:'flk-modal'},
                 render: function (component) {
-                    let cmpHGZn = this._lc('cD_eo_vje', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let cndi2E9 = component.project.isProjectManager && component.teamMembersExceptTeamLeader.length > 0;
-this.setState('stjYiUo', cndi2E9);
-if (cndi2E9) { 
-let elIvHKY = eo('button','wiOf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openAssignTeamLeader = true}]},`class`,`float-right btn btn-cyan bold`);
-let elnrUdG = eo('i','YPmf',null,`class`,`${fas('user-secret') + ' mr-1 icon'}`);
+                    let cmpVF_u = this._lc('cDxK92B1Y', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let cndG9sZ = component.project.isProjectManager && component.teamMembersExceptTeamLeader.length > 0;
+this.setState('stoAVfO', cndG9sZ);
+if (cndG9sZ) { 
+let elh7rdi = eo('button','dqff',null, eventListeners, {onclick:[function(e) {var $el = this;component.openAssignTeamLeader = true}]},`class`,`float-right btn btn-cyan bold`);
+let elWfv2E = eo('i','gDVf',null,`class`,`${fas('user-secret') + ' mr-1 icon'}`);
 ec('i');
 text(`Assign Team Leader`);
 ec('button');
-}let cndeuT8 = component.project.isProjectManager;
-this.setState('stj1Sgd', cndeuT8);
-if (cndeuT8) { 
-let elqkRDZ = eo('button','Ol3f',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewTeamMember = true}]}, boolAttrs, {disabled:component.teamExceededMaxFreeMembers && component.project.fund < FLAGS.projects.pricing.extra.teamMember},`class`,`float-right btn bold`);
-elqkRDZ.cls = {'btn-pink': ! component.teamExceededMaxFreeMembers, 'btn-success': component.teamExceededMaxFreeMembers};
+}let cndJLxD = component.project.isProjectManager;
+this.setState('stCDIak', cndJLxD);
+if (cndJLxD) { 
+let ell6nox = eo('button','0e6f',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewTeamMember = true}]}, boolAttrs, {disabled:component.teamExceededMaxFreeMembers && component.project.fund < FLAGS.projects.pricing.extra.teamMember},`class`,`float-right btn bold`);
+ell6nox.cls = {'btn-pink': ! component.teamExceededMaxFreeMembers, 'btn-success': component.teamExceededMaxFreeMembers};
 
-            for (let className in elqkRDZ.cls) {
-                elqkRDZ.classList.toggle(className, elqkRDZ.cls[className]);
+            for (let className in ell6nox.cls) {
+                ell6nox.classList.toggle(className, ell6nox.cls[className]);
             }  
-            let el3iXtg = eo('i','mHsf',null,`class`,`${fas('plus') + ' mr-1 icon'}`);
+            let elhwTYd = eo('i','yZHf',null,`class`,`${fas('plus') + ' mr-1 icon'}`);
 ec('i');
-let cndbNgK = ! component.teamExceededMaxFreeMembers;
-this.setState('stIuc73', cndbNgK);
-if (cndbNgK) { 
-let elQrUVo = eo('span','vIQf',null,`class`,`mr-2`);
+let cndH_LY = ! component.teamExceededMaxFreeMembers;
+this.setState('stjCmx1', cndH_LY);
+if (cndH_LY) { 
+let elOeOl0 = eo('span','hZPf',null,`class`,`mr-2`);
 text(`Free`);
 ec('span');
 }text(`Member`);
-let cndt_et = component.teamExceededMaxFreeMembers;
-this.setState('stx7IdP', cndt_et);
-if (cndt_et) { 
-let elcgIDQ = eo('div','KRRf');
-let cmpnp1R = this._lc('c6rItCnkJ', {parent:component,parentTop:projectLayout,props:{coins:FLAGS.projects.pricing.extra.teamMember},state:'stx7IdP'});
+let cndCUoD = component.teamExceededMaxFreeMembers;
+this.setState('stFkthI', cndCUoD);
+if (cndCUoD) { 
+let elQoP9o = eo('div','T5Tf');
+let cmpyvg2 = this._lc('cIRBSUrGG', {parent:component,parentTop:projectLayout,props:{coins:FLAGS.projects.pricing.extra.teamMember},state:'stFkthI'});
 ec('div');
 }ec('button');
-}let elt0A4q = eo('h1',null,null,`class`,`m-y-1`);
+}let elccY_S = eo('h1',null,null,`class`,`m-y-1`);
 text(`${ component.currentTeam.type.toStudlyCase() } Team`);
-let elrDvCZ = eo('span',null,null,`title`,``,`class`,`ml-1`);
+let elmlg7V = eo('span',null,null,`title`,``,`class`,`ml-1`);
 text(`(${ component.currentTeam.members.length + '/' + component.currentTeam.maxVisibleMembers })`);
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elrDvCZ;
+                        let $el = elmlg7V;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Team members')}`});
         ;
                     }, 20);                
                 ec('h1');
-let el1LGhR = eo('table',null,null,`class`,`m-t-2 table table-bordered`);
-let elcc_gf = eo('thead');
-let el7Px7h = eo('tr');
-let elnlGlE = eo('th');
+let elN5CWw = eo('table',null,null,`class`,`m-t-2 table table-bordered`);
+let elduwUf = eo('thead');
+let elRhoGO = eo('tr');
+let elqyfBB = eo('th');
 text(`Member`);
 ec('th');
-let elfEMzt = eo('th');
+let el6ByiQ = eo('th');
 text(`Role`);
 ec('th');
-let elmh9uC = eo('th');
+let el3QuY9 = eo('th');
 text(`Control`);
 ec('th');
 ec('tr');
 ec('thead');
-let elf7WMf = eo('tbody');
+let el1pbQ6 = eo('tbody');
 for (let i in component.currentTeam.members) {
 let member = component.currentTeam.members[i]; 
- let iiP44a = 'VmlBl77' + i;
-let eldxsYs = eo('tr','up2AkToQQ77u' + i+iiP44a);
-let elPRF40 = eo('td','Ucnff'+iiP44a);
+ let iiP_jk = 'Mr7ziIl' + i;
+let elZdLmt = eo('tr','airQvOJK6h9i' + i+iiP_jk);
+let elc66ne = eo('td','xOZff'+iiP_jk);
 text(member.member.name);
 ec('td');
-let elzaPkd = eo('td','ZVUff'+iiP44a);
+let el6y7Cz = eo('td','bMmff'+iiP_jk);
 text(member.role);
 ec('td');
-let el6007Q = eo('td','q2tff'+iiP44a);
+let elGiiEj = eo('td','BQJff'+iiP_jk);
 ec('td');
 ec('tr');
 }
 ec('tbody');
 ec('table');
 }});
-let cnd1TSP = component.openAssignTeamLeader;
-this.setState('stPKsjW', cnd1TSP);
-if (cnd1TSP) { 
-component.teamModal = this._lc('cDO6C1Ycf', {parent:component,events:{onclose:function(e) {let $el = this; component.openAssignTeamLeader = null}},content:(flkModal) => {let elEXuH1 = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cndVvIS = component.openAssignTeamLeader;
+this.setState('st5Yw62', cndVvIS);
+if (cndVvIS) { 
+component.teamModal = this._lc('czziNgwa_', {parent:component,events:{onclose:function(e) {let $el = this; component.openAssignTeamLeader = null}},content:(flkModal) => {let elMRf7P = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.assignTeamLeader($el, 'add')}]});
 
-                if (! elEXuH1.formHandler) {
-                    window.cfrmdlr = elEXuH1.formHandler = new FormHandler(elEXuH1, component);
+                if (! elMRf7P.formHandler) {
+                    window.cfrmdlr = elMRf7P.formHandler = new FormHandler(elMRf7P, component);
                 } else {
-                    window.cfrmdlr = elEXuH1.formHandler;
+                    window.cfrmdlr = elMRf7P.formHandler;
                 }
-            let cmptCHM = this._lc('cehSONoDT', {parent:component,parentTop:flkModal,props:{required:true,value:component.currentTeamLeaderId,items:component.teamMembersExceptTeamLeader},attrs:{name:`${(`teamLeader`).toInputName()}`,placeholder:`${trans(`Enter name to select`)}`,label:'Team Leader',heading:'Select Team Leader'},state:'stPKsjW'});
-let elBtMmh = eo('div',null,null,`class`,`m-t-1 text-center`);
-let el9SB0X = eo('button',null,null, boolAttrs, {disabled:component.isSending},`class`,`btn btn-success bold`);
+            let cmpRly_ = this._lc('c9XvX0a_n', {parent:component,parentTop:flkModal,props:{required:true,value:component.currentTeamLeaderId,items:component.teamMembersExceptTeamLeader},attrs:{name:`${(`teamLeader`).toInputName()}`,placeholder:`${trans(`Enter name to select`)}`,label:'Team Leader',heading:'Select Team Leader'},state:'st5Yw62'});
+let elDqIDC = eo('div',null,null,`class`,`m-t-1 text-center`);
+let elBTz8P = eo('button',null,null, boolAttrs, {disabled:component.isSending},`class`,`btn btn-success bold`);
 text(`Assign`);
 ec('button');
 ec('div');
 ec('form');
-},attrs:{size:'small',header:'Assign Team Leader'},state:'stPKsjW'});
-}let cndwsff = component.addNewTeamMember;
-this.setState('stVJ0Hu', cndwsff);
-if (cndwsff) { 
-component.teamMemberModal = this._lc('cX8eXzu_C', {parent:component,events:{onclose:function(e) {let $el = this; component.addNewTeamMember = null}},content:(flkModal) => {let el0BPVM = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+},attrs:{size:'small',header:'Assign Team Leader'},state:'st5Yw62'});
+}let cndaAyG = component.addNewTeamMember;
+this.setState('stIgEJr', cndaAyG);
+if (cndaAyG) { 
+component.teamMemberModal = this._lc('c25E4qlKx', {parent:component,events:{onclose:function(e) {let $el = this; component.addNewTeamMember = null}},content:(flkModal) => {let elJlXSl = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.addTeamMember($el)}]});
 
-                if (! el0BPVM.formHandler) {
-                    window.cfrmdlr = el0BPVM.formHandler = new FormHandler(el0BPVM, component);
+                if (! elJlXSl.formHandler) {
+                    window.cfrmdlr = elJlXSl.formHandler = new FormHandler(elJlXSl, component);
                 } else {
-                    window.cfrmdlr = el0BPVM.formHandler;
+                    window.cfrmdlr = elJlXSl.formHandler;
                 }
-            let cmpj9tT = this._lc('cLEyt3j2Q', {parent:component,parentTop:flkModal,props:{items:component.projectMembersExceptTeamMembers},events:{onselect:function(e) {let $el = this; component.newMember = e.value}},attrs:{name:`${(`memberId`).toInputName()}`,placeholder:`${trans(`Enter name to select`)}`,label:'Member',heading:'Select Member from the project to add'},state:'stVJ0Hu'});
-let el5OOgP = eo('div',null,null,`class`,`m-t-1 text-center`);
-let el7QTW6 = eo('button',null,null, boolAttrs, {disabled:component.isSending || ! component.newMember},`class`,`btn btn-success bold`);
+            let cmpiAiE = this._lc('cn3ogE0rr', {parent:component,parentTop:flkModal,props:{items:component.projectMembersExceptTeamMembers},events:{onselect:function(e) {let $el = this; component.newMember = e.value}},attrs:{name:`${(`memberId`).toInputName()}`,placeholder:`${trans(`Enter name to select`)}`,label:'Member',heading:'Select Member from the project to add'},state:'stIgEJr'});
+let el4B3wL = eo('div',null,null,`class`,`m-t-1 text-center`);
+let elwHfD0 = eo('button',null,null, boolAttrs, {disabled:component.isSending || ! component.newMember},`class`,`btn btn-success bold`);
 text(`Add`);
 ec('button');
 ec('div');
 ec('form');
-},attrs:{size:'small',header:'Add new member'},state:'stVJ0Hu'});
+},attrs:{size:'small',header:'Add new member'},state:'stIgEJr'});
 }
                     this.isReadyToGo();
                 }

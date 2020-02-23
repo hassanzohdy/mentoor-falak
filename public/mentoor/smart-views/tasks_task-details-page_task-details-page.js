@@ -3,260 +3,266 @@ _Component({
                 c: 'TaskDetailsPage', // c for component name
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
-                observe: ['task','getTaskStatus','taskStatusCanBeChanged','getAllowedTaskStatuses','updateTaskStatus'],
-                children: {cLiA2XOHc:'flk-spinner',cmndqpuTU:'flk-time-ago',ciBcXZ37o:'markdown',ccE5gxYus:'flk-audio-player',cpJeCAglx:'flk-time-ago',cXLWgnFVZ:'markdown',coiax2sT1:'flk-audio-player',cUunlhNec:'task-checklist',cLdHUJLAK:'comments',cRPCgUWJk:'flk-time-ago',c8GO7lY18:'gold-icon',cfIyH6GEA:'flk-time-remaining',crVhNwjSC:'flk-dropdown-list',cwoJmSAkK:'layout'},
+                observe: ['task','user','getTaskStatus','taskStatusCanBeChanged','getAllowedTaskStatuses','updateTaskStatus'],
+                children: {cU5ZaF9NK:'flk-spinner',cgv3UjmAv:'star-rating',cwpm4N7tw:'flk-time-ago',cpswh0Iyk:'markdown',cDJ2n3OU9:'flk-audio-player',cPwoNByrl:'flk-time-ago',c6U2DIAZv:'markdown',cHzusbPVz:'flk-audio-player',cPdiCxVDi:'task-checklist',cIrXkzY7B:'comments',cnPU1Likt:'flk-time-ago',cZ5rpnBXl:'gold-icon',cU3gEiwZz:'flk-time-remaining',cUQQQHv7i:'flk-dropdown-list',cBwI2fipb:'layout'},
                 render: function (component) {
-                    let cmpE3qB = this._lc('cwoJmSAkK', {parent:component,content:(layout) => {let cndpEtu = ! component.task;
-this.setState('stRB2tG', cndpEtu);
-let cndiWke = !(cndpEtu);
-this.setState('stUMVkx', cndiWke);
-if (cndpEtu) { 
-let cmpFKzJ = this._lc('cLiA2XOHc', {parent:component,parentTop:layout,state:'stRB2tG'});
+                    let cmpvNUg = this._lc('cBwI2fipb', {parent:component,content:(layout) => {let cnduM1C = ! component.task;
+this.setState('stTTLPq', cnduM1C);
+let cndpCrj = !(cnduM1C);
+this.setState('st6FLzB', cndpCrj);
+if (cnduM1C) { 
+let cmpNGWy = this._lc('cU5ZaF9NK', {parent:component,parentTop:layout,state:'stTTLPq'});
 }else { 
-let elv3BFz = eo('div',null,null,`class`,`row`);
-let elMvumF = eo('div',null,null,`class`,`col order-12 order-sm-1`);
-let el7U8V5 = eo('h1',null,null,`class`,`m-b-1`);
+let el37OEQ = eo('div',null,null,`class`,`row`);
+let ell4ZOv = eo('div',null,null,`class`,`col order-12 order-sm-1`);
+let elpjpvK = eo('h1',null,null,`class`,`m-b-1`);
 text('#' + component.task.id + ' ' + component.task.title);
 ec('h1');
-let cnddxAZ = component.task.startsAt;
-this.setState('stjp6cj', cnddxAZ);
-if (cnddxAZ) { 
-let elfAxxk = eo('div','JO6f',null,`class`,`teal-text bold`);
+let cndJbgA = component.task.startsAt;
+this.setState('stEIGjd', cndJbgA);
+if (cndJbgA) { 
+let elshZmj = eo('div','45Hf',null,`class`,`teal-text bold`);
 text( component.task.startsAt );
-let cndGFmk = component.task.endsAt;
-this.setState('stKjo5x', cndGFmk);
-if (cndGFmk) { 
+let cndF_Ln = component.task.endsAt;
+this.setState('stfzRnK', cndF_Ln);
+if (cndF_Ln) { 
 text(`-
                     ${ component.task.endsAt }`);
 }ec('div');
-}let elUfRBq = eo('span',null,null,`title`,``);
-let cmp3T_D = this._lc('cmndqpuTU', {parent:component,parentTop:layout,props:{timestamp:component.task.createdAt.timestamp}});
+}let cndFWW2 = component.user.accountType == 'admin';
+this.setState('stoS5Dx', cndFWW2);
+if (cndFWW2) { 
+let cmpLWsv = this._lc('cgv3UjmAv', {parent:component,parentTop:layout,attrs:{name:`${(`stars`).toInputName()}`,class:'form-group',stars:5},state:'stoS5Dx'});
+}let elF4BH8 = eo('span',null,null,`title`,``);
+let cmp__rS = this._lc('cwpm4N7tw', {parent:component,parentTop:layout,props:{timestamp:component.task.createdAt.timestamp}});
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elUfRBq;
+                        let $el = elF4BH8;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Created At')}`});
         ;
                     }, 20);                
-                let cndxi2A = component.task.description;
-this.setState('stbvlLM', cndxi2A);
-if (cndxi2A) { 
-let elrPXYg = eo('h2','Kl1f',null,`class`,`bold m-y-2`);
+                let cndAtBD = component.task.description;
+this.setState('stNSFtV', cndAtBD);
+if (cndAtBD) { 
+let el3Wv0p = eo('h2','jD4f',null,`class`,`bold m-y-2`);
 text(`Details`);
 ec('h2');
-let elZXSEH = eo('p','9SOf',null,`class`,`description card p-1`);
-let cmpu9QU = this._lc('ciBcXZ37o', {parent:component,parentTop:layout,props:{content:component.task.description},state:'stbvlLM'});
-let cndLZ8q = component.task.descriptionRecord;
-this.setState('stRI90x', cndLZ8q);
-if (cndLZ8q) { 
-let cmpqCOG = this._lc('ccE5gxYus', {parent:component,parentTop:layout,props:{src:component.task.descriptionRecord},attrs:{src:`${component.task.descriptionRecord}`},state:'stRI90x'});
-}ec('p');
-}let cndlsX1 = component.task.participantNotes;
-this.setState('stfpJGP', cndlsX1);
-if (cndlsX1) { 
-let elvcsVI = eo('div','Pivf',null,`class`,`card p-1 m-y-2`);
-let el2Ha9f = eo('h3','znHf',null,`class`,`bold pink-text`);
+let elrk4bt = eo('p','pqhf',null,`class`,`description card p-1`);
+let cmpRRcr = this._lc('cpswh0Iyk', {parent:component,parentTop:layout,props:{content:component.task.description},state:'stNSFtV'});
+ec('p');
+}let elPUD2I = eo('div',null,null,`class`,`card my-3`);
+let cndfuTA = component.task.descriptionRecord;
+this.setState('stt219N', cndfuTA);
+if (cndfuTA) { 
+let cmp6YtZ = this._lc('cDJ2n3OU9', {parent:component,parentTop:layout,props:{src:component.task.descriptionRecord},attrs:{src:`${component.task.descriptionRecord}`},state:'stt219N'});
+}ec('div');
+let cndewMm = component.task.participantNotes;
+this.setState('stQFaKM', cndewMm);
+if (cndewMm) { 
+let elie7IL = eo('div','4sQf',null,`class`,`card p-1 m-y-2`);
+let el3hIPf = eo('h3','vhcf',null,`class`,`bold pink-text`);
 text( component.task.participant.name );
 ec('h3');
-let cmpyu9Y = this._lc('cpJeCAglx', {parent:component,parentTop:layout,props:{timestamp:component.task.submittedAt.timestamp},attrs:{class:'brown-text bold'},state:'stfpJGP'});
-let elEG2Yh = eo('p','AFuf',null,`class`,`description m-y-2`);
-let cmpfa_e = this._lc('cXLWgnFVZ', {parent:component,parentTop:layout,props:{content:component.task.participantNotes},state:'stfpJGP'});
+let cmpHHGf = this._lc('cPwoNByrl', {parent:component,parentTop:layout,props:{timestamp:component.task.submittedAt.timestamp},attrs:{class:'brown-text bold'},state:'stQFaKM'});
+let elH1upF = eo('p','02Sf',null,`class`,`description m-y-2`);
+let cmprHwE = this._lc('c6U2DIAZv', {parent:component,parentTop:layout,props:{content:component.task.participantNotes},state:'stQFaKM'});
 ec('p');
-let cndZLZ0 = component.task.participantRecord;
-this.setState('stPR7rk', cndZLZ0);
-if (cndZLZ0) { 
-let cmpYm9B = this._lc('coiax2sT1', {parent:component,parentTop:layout,props:{src:component.task.participantRecord},attrs:{src:`${component.task.participantRecord}`},state:'stPR7rk'});
+let cndemA8 = component.task.participantRecord;
+this.setState('st6j50V', cndemA8);
+if (cndemA8) { 
+let cmpHuJN = this._lc('cHzusbPVz', {parent:component,parentTop:layout,props:{src:component.task.participantRecord},attrs:{src:`${component.task.participantRecord}`},state:'st6j50V'});
 }ec('div');
-}let cmpjMMT = this._lc('cUunlhNec', {parent:component,parentTop:layout,props:{task:component.task}});
-let cmpEJ44 = this._lc('cLdHUJLAK', {parent:component,parentTop:layout,props:{comments:component.task.comments,project:component.task.project,typeId:component.task.id},attrs:{type:'task'}});
-let elvxGiZ = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
+}let cmpmvpC = this._lc('cPdiCxVDi', {parent:component,parentTop:layout,props:{task:component.task}});
+let cmphs21 = this._lc('cIrXkzY7B', {parent:component,parentTop:layout,props:{comments:component.task.comments,project:component.task.project,typeId:component.task.id},attrs:{type:'task'}});
+let elI5dTM = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
 text(`Task Status Change Log`);
 ec('h3');
-let elnLhNZ = eo('table',null,null,`class`,`table table-bordered`,`id`,`status-table`);
-let elkIVxv = eo('thead');
-let elheu1k = eo('tr');
-let elYbpJy = eo('th');
+let elGi9P_ = eo('table',null,null,`class`,`table table-bordered`,`id`,`status-table`);
+let elWlogz = eo('thead');
+let elRF3z6 = eo('tr');
+let elPUUWZ = eo('th');
 text(`Status`);
 ec('th');
-let el2E13I = eo('th');
+let elJmCb8 = eo('th');
 text(`Created By`);
 ec('th');
-let eliZkFC = eo('th');
+let elKlzrb = eo('th');
 text(`Created`);
 ec('th');
 ec('tr');
 ec('thead');
-let el9vVkM = eo('tbody');
+let elpPzk9 = eo('tbody');
 for (let i in component.task.statusLog) {
 let status = component.task.statusLog[i]; 
- let ii__xv = 'FgXF5tJ' + i;
-let elST9Dg = eo('tr','WBJXzi8NKzwi' + i+ii__xv);
-let eliOUZU = eo('td','jBTff'+ii__xv);
-let elVUrT5 = eo('span','LKUff'+ii__xv,null,`class`,`bold btn btn-sm status`);
-elVUrT5.cls = taskStatus(status);
+ let iipusO = 'Q0pHHij' + i;
+let elil_Ou = eo('tr','8mUuc6tE5Cfv' + i+iipusO);
+let ela9NFk = eo('td','g4yff'+iipusO);
+let elxFVfc = eo('span','sdWff'+iipusO,null,`class`,`bold btn btn-sm status`);
+elxFVfc.cls = taskStatus(status);
 
-            for (let className in elVUrT5.cls) {
-                elVUrT5.classList.toggle(className, elVUrT5.cls[className]);
+            for (let className in elxFVfc.cls) {
+                elxFVfc.classList.toggle(className, elxFVfc.cls[className]);
             }  
             text(trans(status.status));
 ec('span');
 ec('td');
-let eldmwen = eo('td','_y4ff'+ii__xv);
+let elKvhCX = eo('td','IVEff'+iipusO);
 text(status.status != 'autoFailed' ? status.createdBy.name : 'System');
 ec('td');
-let elPLuur = eo('td','DYqff'+ii__xv);
-let cmptuS0 = this._lc('cRPCgUWJk', {parent:component,parentTop:layout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +ii__xv});
+let elGcuNe = eo('td','kS7ff'+iipusO);
+let cmpsSuF = this._lc('cnPU1Likt', {parent:component,parentTop:layout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +iipusO});
 ec('td');
 ec('tr');
 }
 ec('tbody');
 ec('table');
 ec('div');
-let elYjwI_ = eo('div',null,null,`class`,`col-sm-3 order-1`);
-let cndns6z = Object.get(component.task.project, 'id', '');
-this.setState('stqHLrz', cndns6z);
-if (cndns6z) { 
-let el17aAR = eo('a','e_Af',null,`href`,`${URLS.project(component.task.project, 'tasks-board')}`,`class`,`btn bold btn-purple m-b-1`);
+let elYcL7B = eo('div',null,null,`class`,`col-sm-3 order-1`);
+let cndTAc8 = Object.get(component.task.project, 'id', '');
+this.setState('st88bxh', cndTAc8);
+if (cndTAc8) { 
+let el5KTx2 = eo('a','S80f',null,`href`,`${URLS.project(component.task.project, 'tasks-board')}`,`class`,`btn bold btn-purple m-b-1`);
 text(`Back to Tasks Board`);
 ec('a');
-}let elZccWy = eo('div',null,null,`class`,`card`);
-let elj12uh = eo('div',null,null,`class`,`text-center`);
-let els67JM = eo('div',null,null,`class`,`task-status badge`);
-els67JM.cls = component.getTaskStatus();
+}let el21KID = eo('div',null,null,`class`,`card`);
+let elQlHq6 = eo('div',null,null,`class`,`text-center`);
+let elIUPNW = eo('div',null,null,`class`,`task-status badge`);
+elIUPNW.cls = component.getTaskStatus();
 
-            for (let className in els67JM.cls) {
-                els67JM.classList.toggle(className, els67JM.cls[className]);
+            for (let className in elIUPNW.cls) {
+                elIUPNW.classList.toggle(className, elIUPNW.cls[className]);
             }  
             text(trans(component.task.status));
 ec('div');
-let elX3akP = eo('div',null,null,`title`,``);
-let cmprHbN = this._lc('c8GO7lY18', {parent:component,parentTop:layout,props:{coins:component.task.reward}});
+let elwA0Gu = eo('div',null,null,`title`,``);
+let cmpoPjR = this._lc('cZ5rpnBXl', {parent:component,parentTop:layout,props:{coins:component.task.reward}});
 ec('div');
 
                     setTimeout(function () {
-                        let $el = elX3akP;
+                        let $el = elwA0Gu;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Task Reward')}`});
         ;
                     }, 20);                
-                let elDZbhZ = eo('div',null,null,`title`,``,`class`,`m-b-1`);
-let eluItaV = eo('strong',null,null,`class`,`red-text`);
+                let elAvTvW = eo('div',null,null,`title`,``,`class`,`m-b-1`);
+let elneX4g = eo('strong',null,null,`class`,`red-text`);
 text(component.task.penaltyRatio + 'x');
 ec('strong');
 ec('div');
 
                     setTimeout(function () {
-                        let $el = elDZbhZ;
+                        let $el = elAvTvW;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Penalty ratio')}`});
         ;
                     }, 20);                
-                let cnd394d = component.task.endsAtTimestamp;
-this.setState('stLAnQG', cnd394d);
-if (cnd394d) { 
-let elJRdEg = eo('div','QjLf',null,`title`,``,`class`,`m-b-2`);
-let elNUcKi = eo('i','57Cf',null,`class`,`${fas('clock') + ' mr-2 icon'}`);
+                let cndHk3f = component.task.endsAtTimestamp;
+this.setState('st472JK', cndHk3f);
+if (cndHk3f) { 
+let el8aXQS = eo('div','7qof',null,`title`,``,`class`,`m-b-2`);
+let elpK4aa = eo('i','jjRf',null,`class`,`${fas('clock') + ' mr-2 icon'}`);
 ec('i');
-let cmpwn3G = this._lc('cfIyH6GEA', {parent:component,parentTop:layout,props:{startsAt:component.task.startsAtTimestamp,endsAt:component.task.endsAtTimestamp},attrs:{class:'bold'},state:'stLAnQG'});
+let cmpaNc7 = this._lc('cU3gEiwZz', {parent:component,parentTop:layout,props:{startsAt:component.task.startsAtTimestamp,endsAt:component.task.endsAtTimestamp},attrs:{class:'bold'},state:'st472JK'});
 ec('div');
 
                     setTimeout(function () {
-                        let $el = elJRdEg;
+                        let $el = el8aXQS;
                         
             true && tippyTooltip($el, {arrow:true,content:`${component.task.endsAtTimestamp - component.task.startsAtTimestamp <= 0 ? 'Time up' : 'Remaining Time'}`});
         ;
                     }, 20);                
                 }ec('div');
 ec('div');
-let cndNMWB = ! Is.empty(component.task.parent);
-this.setState('st9wn9u', cndNMWB);
-if (cndNMWB) { 
-let elbmlRI = eo('div','IqQf',null,`class`,`card p-1`);
-let ellJGyr = eo('div','uLLf',null,`class`,`bold text-center m-b-1`);
-let elsnN6B = eo('i','GDYf',null,`class`,`${fas('folder-open') + ' mr-2 icon'}`);
+let cndk3vB = ! Is.empty(component.task.parent);
+this.setState('stnJ1ZR', cndk3vB);
+if (cndk3vB) { 
+let elNKPWF = eo('div','lL_f',null,`class`,`card p-1`);
+let elLVRnB = eo('div','tUPf',null,`class`,`bold text-center m-b-1`);
+let elQlHY5 = eo('i','nE4f',null,`class`,`${fas('folder-open') + ' mr-2 icon'}`);
 ec('i');
 text(`Parent Task`);
 ec('div');
-let ellEmZb = eo('a','7eqf',null,`href`,`${URLS.task(component.task.parent)}`,`class`,`btn btn-cyan bold`);
+let elTvl8d = eo('a','APYf',null,`href`,`${URLS.task(component.task.parent)}`,`class`,`btn btn-cyan bold`);
 text(component.task.parent.title);
 ec('a');
 ec('div');
-}let elBGmYH = eo('div',null,null,`class`,`card p-1`);
-let elCnVme = eo('div',null,null,`class`,`bold text-center m-b-1`);
-let elLTC_r = eo('i',null,null,`class`,`${fas('user') + ' mr-2 icon'}`);
+}let elCj2Wt = eo('div',null,null,`class`,`card p-1`);
+let elTrpTR = eo('div',null,null,`class`,`bold text-center m-b-1`);
+let elszsBB = eo('i',null,null,`class`,`${fas('user') + ' mr-2 icon'}`);
 ec('i');
 text(`Participant`);
 ec('div');
-let eloglG_ = eo('div',null,null,`class`,`bold teal-text`);
+let elgYWWu = eo('div',null,null,`class`,`bold teal-text`);
 text(component.task.participant.name);
 ec('div');
 ec('div');
-let elZXoQ2 = eo('div',null,null,`class`,`card p-1`);
-let elQrlvw = eo('div',null,null,`class`,`bold text-center m-b-1`);
-let elAr268 = eo('i',null,null,`class`,`${fas('user-secret') + ' mr-2 icon'}`);
+let elEUaKk = eo('div',null,null,`class`,`card p-1`);
+let elsq7Ds = eo('div',null,null,`class`,`bold text-center m-b-1`);
+let el2Cv4W = eo('i',null,null,`class`,`${fas('user-secret') + ' mr-2 icon'}`);
 ec('i');
 text(`Supervisors`);
 ec('div');
 for (let i in component.task.supervisors) {
 let supervisor = component.task.supervisors[i]; 
- let iixN5x = 'iYqCul2' + i;
-let elEDgnx = eo('div','tJCNhIua8fDq' + i+iixN5x,null,`class`,`bold green-text`);
+ let iiIViR = 'bwiYTMx' + i;
+let el6LGfs = eo('div','NjpokMFPcY5j' + i+iiIViR,null,`class`,`bold green-text`);
 text(supervisor.name);
 ec('div');
 }
 ec('div');
-let cndFmJO = component.task.project;
-this.setState('stCKNBZ', cndFmJO);
-if (cndFmJO) { 
-let elEI7ue = eo('div','0TZf',null,`class`,`card p-1`);
-let el1ilvz = eo('div','Km9f',null,`class`,`bold text-center m-b-1`);
-let el6FQKs = eo('i','JS2f',null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
+let cndXRq0 = component.task.project;
+this.setState('st5Xrwf', cndXRq0);
+if (cndXRq0) { 
+let el0tjVe = eo('div','Wacf',null,`class`,`card p-1`);
+let elAQRX4 = eo('div','nJqf',null,`class`,`bold text-center m-b-1`);
+let elaQmht = eo('i','Bbjf',null,`class`,`${fas('suitcase') + ' mr-2 icon'}`);
 ec('i');
 text(`Project`);
 ec('div');
-let cndINin = component.task.module;
-this.setState('stF12n9', cndINin);
-if (cndINin) { 
-let elAzjPZ = eo('div','Gfff');
-let elsIquk = eo('span','488f',null,`class`,`mr-2`);
+let cndbGnu = component.task.module;
+this.setState('studjLR', cndbGnu);
+if (cndbGnu) { 
+let el3dPH0 = eo('div','4dOf');
+let elV8TGj = eo('span','h_ff',null,`class`,`mr-2`);
 text(`Module:`);
 ec('span');
-let cndxlzM = component.task.module.parent.id;
-this.setState('stCYINo', cndxlzM);
-if (cndxlzM) { 
-let elquti8 = eo('strong','Au8f');
+let cndD_T0 = component.task.module.parent.id;
+this.setState('stHVdep', cndD_T0);
+if (cndD_T0) { 
+let elq0A_Y = eo('strong','mKff');
 text(`${ component.task.module.parent.name } »`);
 ec('strong');
-}let ellfyIe = eo('strong');
+}let elwCqvm = eo('strong');
 text(component.task.module.name);
 ec('strong');
 ec('div');
-}let eluqbFT = eo('a',null,null,`href`,`${URLS.project(component.task.project)}`,`class`,`btn btn-teal bold`);
+}let elnIMKM = eo('a',null,null,`href`,`${URLS.project(component.task.project)}`,`class`,`btn btn-teal bold`);
 text(component.task.project.name);
 ec('a');
 ec('div');
-}let cndsIxV = component.task.userStory;
-this.setState('stEKzKi', cndsIxV);
-if (cndsIxV) { 
-let elkL5r8 = eo('div','rBVf',null,`class`,`card p-1`);
-let el9GusO = eo('div','5KBf',null,`class`,`bold text-center m-b-1`);
-let elcuFcK = eo('i','6mDf',null,`class`,`${fas('sticky-note') + ' mr-2 icon'}`);
+}let cndE91t = component.task.userStory;
+this.setState('stJEg3_', cndE91t);
+if (cndE91t) { 
+let eldv8wA = eo('div','i4sf',null,`class`,`card p-1`);
+let elwQV4D = eo('div','uZBf',null,`class`,`bold text-center m-b-1`);
+let elkRHMC = eo('i','dWjf',null,`class`,`${fas('sticky-note') + ' mr-2 icon'}`);
 ec('i');
 text(`User Story`);
 ec('div');
-let elOR_qI = eo('a','meIf',null,`href`,`${URLS.project(component.task.project, 'user-stories', component.task.userStory)}`,`class`,`btn btn-pink bold`);
+let elSNjcf = eo('a','A6Qf',null,`href`,`${URLS.project(component.task.project, 'user-stories', component.task.userStory)}`,`class`,`btn btn-pink bold`);
 text(component.task.userStory.title);
 ec('a');
 ec('div');
-}let cndjpjZ = component.taskStatusCanBeChanged();
-this.setState('st7Wbwn', cndjpjZ);
-if (cndjpjZ) { 
-let elU5ALI = eo('div','EQdf',null,`class`,`card p-1`);
-let elrqQgE = eo('div','CK5f',null,`class`,`text-center bold m-b-1 purple-text`);
+}let cnd46_6 = component.taskStatusCanBeChanged();
+this.setState('stmokvw', cnd46_6);
+if (cnd46_6) { 
+let elLdfBc = eo('div','6_mf',null,`class`,`card p-1`);
+let elftkCd = eo('div','wwLf',null,`class`,`text-center bold m-b-1 purple-text`);
 text(`Mark task as`);
 ec('div');
-let cmpVVqs = this._lc('crVhNwjSC', {parent:component,parentTop:layout,props:{items:component.getAllowedTaskStatuses(),value:component.task.status},events:{onselect:function(e) {let $el = this; component.updateTaskStatus(e.value)}},attrs:{heading:'Mark Task As..'},state:'st7Wbwn'});
+let cmpJnSZ = this._lc('cUQQQHv7i', {parent:component,parentTop:layout,props:{items:component.getAllowedTaskStatuses(),value:component.task.status},events:{onselect:function(e) {let $el = this; component.updateTaskStatus(e.value)}},attrs:{heading:'Mark Task As..'},state:'stmokvw'});
 ec('div');
 }ec('div');
 ec('div');

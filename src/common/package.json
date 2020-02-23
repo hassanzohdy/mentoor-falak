@@ -2,8 +2,7 @@
     "name": "common",
     "type": "app",
     "favicon": "images/favicon.jpg",
-    "packages": [
-    ],
+    "packages": [],
     "assets": [
         "images"
     ],

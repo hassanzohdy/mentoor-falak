@@ -6,10 +6,10 @@ _Component({
                 observe: ['userId'],
                 children: {},
                 render: function (component) {
-                    let cndo4WC = isOnline(component.userId);
-this.setState('stbqjli', cndo4WC);
-if (cndo4WC) { 
-let elVCJzp = eo('i','B6pf',null,`title`,`${trans(`Online`)}`,`class`,`${fas('circle') + ' on icon'}`);
+                    let cndvxTY = isOnline(component.userId);
+this.setState('stk2eDv', cndvxTY);
+if (cndvxTY) { 
+let elDbHEQ = eo('i','Ehof',null,`title`,`${trans(`Online`)}`,`class`,`${fas('circle') + ' on icon'}`);
 ec('i');
 }
                     this.isReadyToGo();

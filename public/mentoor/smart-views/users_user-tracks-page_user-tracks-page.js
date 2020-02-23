@@ -4,34 +4,34 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','tracks'],
-                children: {cgOUDP4kY:'flk-spinner',cbBhj55vv:'track-card',c2OAZivYV:'layout'},
+                children: {ccLOfy8ot:'flk-spinner',cNXyapZtW:'track-card',cplAvdqrc:'layout'},
                 render: function (component) {
-                    let cmpivoC = this._lc('c2OAZivYV', {parent:component,content:(layout) => {let cndzvVP = component.isLoading;
-this.setState('stRhIR9', cndzvVP);
-let cnd2y2W = !Is.empty(component.tracks);
-this.setState('st6kUgE', cnd2y2W);
-let cndhW3s = !(cndzvVP||cnd2y2W);
-this.setState('stC2Xtb', cndhW3s);
-if (cndzvVP) { 
-let cmptlPh = this._lc('cgOUDP4kY', {parent:component,parentTop:layout,state:'stRhIR9'});
-}else if (cnd2y2W) { 
-let el9v2nY = eo('div',null,null,`class`,`row allTracks`);
-let elTkEma = eo('h1',null,null,`class`,`col-12`);
+                    let cmphm4I = this._lc('cplAvdqrc', {parent:component,content:(layout) => {let cndKnAz = component.isLoading;
+this.setState('stG3SGy', cndKnAz);
+let cndGCP4 = !Is.empty(component.tracks);
+this.setState('stZXdxc', cndGCP4);
+let cndM9WA = !(cndKnAz||cndGCP4);
+this.setState('stCCNJP', cndM9WA);
+if (cndKnAz) { 
+let cmp5o2_ = this._lc('ccLOfy8ot', {parent:component,parentTop:layout,state:'stG3SGy'});
+}else if (cndGCP4) { 
+let elM8Vjh = eo('div',null,null,`class`,`row allTracks`);
+let el_fKEZ = eo('h1',null,null,`class`,`col-12`);
 text(`My tracks`);
 ec('h1');
 for (let i in component.tracks) {
 let track = component.tracks[i]; 
- let iigKM9 = '8YjTjDs' + i;
-let cmpG9Is = this._lc('cbBhj55vv', {parent:component,parentTop:layout,props:{track:track},attrs:{class:'col-lg-3 col-md-6'},state:'st6kUgE',insideLoop:true,index:"" +iigKM9});
+ let iiiCxI = 'dm_refp' + i;
+let cmpSYEj = this._lc('cNXyapZtW', {parent:component,parentTop:layout,props:{track:track},attrs:{class:'col-lg-3 col-md-6'},state:'stZXdxc',insideLoop:true,index:"" +iiiCxI});
 }
 ec('div');
 }else { 
-let elyBUtF = eo('h1');
+let elh2Jp4 = eo('h1');
 text(`No tracks yet!`);
 ec('h1');
-let ela0N4U = eo('p',null,null,`class`,`m-t-1 font-weight-normal`);
+let el5pWUS = eo('p',null,null,`class`,`m-t-1 font-weight-normal`);
 text(`Go to`);
-let elStCze = eo('a',null,null,`href`,`/academy`);
+let elMhKoL = eo('a',null,null,`href`,`/academy`);
 text(`Academy page`);
 ec('a');
 text(`and subscribe to some tracks!`);

@@ -92,12 +92,12 @@
                     <fa icon="university"></fa> Academy
                 </a>
             </li>
-            <!-- <li class="nav-item" *if="this.user.isLoggedIn();">
-                <a class="nav-link" href="/academy/tracks" [class]="{active: this.activeLink('/tracks')}">
+            <li class="nav-item" *if="this.user.isLoggedIn();">
+                <a class="nav-link" href="/arena" [class]="{active: this.activeLink('/arena')}">
                     <fa icon="biohazard"></fa>
-                    Tracks
+                    Arena
                 </a>
-            </!-->
+            </li>
         </ul>
 
         <ul class="nav flex-column" *if="this.user.accountType == 'admin'">

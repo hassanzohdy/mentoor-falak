@@ -1,15 +1,21 @@
 <layout>
     <flk-spinner *if="this.isLoading"></flk-spinner>
     <else>
-        <div class="m-b-2">
-            <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
-            <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
-            <span class="shop badge badge-default m-l-1">Shop</span>
+        <div class="m-b-2 d-flex justify-content-between">
+            <div class="meta">
+                <img [src]="assets('images/en.png')" class="einstein-image" [alt]="'Einstein Chamber'" />
+                <h3 class="d-inline bold m-l-1">Einstein Chamber</h3>
+                <span class="shop badge badge-default m-l-1">Shop</span>
+            </div>
+
+            <champer-moderate></champer-moderate>
+
+            <new-item-btn [label]="'Add new challenge'" [icon]="'plus'" [color]="'success'" [link]="'/einstein-chamber/new-puzzle'"></new-item-btn>
         </div>
 
         <div class="row">
             <div class="col-6 col-sm-4 col-md-3 m-b-2" *for="let category of this.categories">
-               <einstein-category-card [category]="category"></einstein-category-card>
+                <einstein-category-card [category]="category"></einstein-category-card>
             </div>
         </div>
     </else>

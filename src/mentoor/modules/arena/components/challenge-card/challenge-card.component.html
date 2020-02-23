@@ -1,1 +1,89 @@
-<h1>challenge-card component is ready</h1>
+<article class="card w-75 mb-3 p-1">
+  <div class="card-body d-flex justify-content-between">
+    <section>
+      <div class="row mb-3">
+        <div class="d-flex">
+          <img
+            [src]="this.challenge.createdBy.image"
+            width="50px"
+            [alt]="this.challenge.createdBy.name"
+            class="img-thumbnail circle creator-image"
+          />
+
+          <div class="meta ml-3">
+            <h2 class="title">
+              <a
+                [href]="'arena/challenges/' + this.challenge.id"
+                [html]="this.challenge.title"
+              ></a>
+              <span
+                class="isHappenning red-text ml-2"
+                *if="this.isChallengeLive()"
+              >
+                [happenning now]
+              </span>
+            </h2>
+            <div class="created text-muted">
+              <span class="by">
+                By
+                <span [html]="' ' + this.challenge.createdBy.name + ' '"></span>
+              </span>
+              <flk-time-ago
+                class="at"
+                [timestamp]="this.challenge.createdAt.timestamp"
+              ></flk-time-ago>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <markdown
+        *if="this.challenge.description"
+        class="description"
+        [content]="this.challenge.description"
+      >
+      </markdown>
+    </section>
+
+    <section>
+      <gold-icon [coins]="this.challenge.rewards[0]"></gold-icon>
+
+      <p class="my-3">
+        Level:
+        <span class="text-muted" [html]="' ' + this.challenge.level"></span>
+      </p>
+
+      <section class="timing">
+        <if condition="this.isChallengeLive()">
+          <p>
+            Time to end:
+            <flk-time-remaining
+              class="ml-2 text-muted"
+              [starts-at]="Math.ceil(Date.now() / 1000)"
+              [ends-at]="this.challenge.endsAt.timestamp"
+            >
+            </flk-time-remaining>
+          </p>
+        </if>
+        <elseif condition="this.challenge.isEnded">
+          <p>
+            Ended:
+            <flk-time-ago
+              class="text-muted ml-2"
+              [timestamp]="this.challenge.endsAt.timestamp"
+            ></flk-time-ago>
+          </p>
+        </elseif>
+        <elseif condition="this.isChallengeNotStarted()">
+          <p>
+            Starts At:
+            <span
+              class="text-muted"
+              [html]="this.challenge.startsAt.format"
+            ></span>
+          </p>
+        </elseif>
+      </section>
+    </section>
+  </div>
+</article>

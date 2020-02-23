@@ -1,10 +1,8 @@
 class ArenaService extends Endpoint.Service {
-    /**
-     * {@inheritDoc} 
-     */
     boot() {
-        this.setRoute('/arina');
+        this.setRoute('/arena');
     }
+
 }
 
 DI.register({

@@ -4,99 +4,99 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['crudOptions','items','tableHeading','editItem','deleteItem','openModal','closeModal','submit','categoryId','formObject','isValidForm','submitting'],
-                children: {cNsLQqE2e:'table-actions',cG_q7JVJF:'admin-table',c3OztjlQz:'flk-checkbox',cEX_uvRTT:'flk-modal'},
+                children: {cJWWeKfyJ:'table-actions',cV4OAtmlw:'admin-table',cV_a0FXHb:'flk-checkbox',ceakGzmW_:'flk-modal'},
                 render: function (component) {
-                    let cmpiQGR = this._lc('cG_q7JVJF', {parent:component,props:{columns:component.crudOptions.columns,records:component.items,addHeading:component.crudOptions.heading,tableHeading:component.tableHeading},content:(adminTable) => {for (let index in component.items) {
+                    let cmpWel5 = this._lc('cV4OAtmlw', {parent:component,props:{columns:component.crudOptions.columns,records:component.items,addHeading:component.crudOptions.heading,tableHeading:component.tableHeading},content:(adminTable) => {for (let index in component.items) {
 let record = component.items[index]; 
- let iiS7_X = 'nJzH8DO' + index;
-let el6stqR = eo('tr','hoyBpJtyzzHn' + index+iiS7_X);
-let el7ckz2 = eo('td','D7Vff'+iiS7_X);
+ let iij1XC = 'aft7NEc' + index;
+let el0Jfxd = eo('tr','goyx0l8u6FLH' + index+iij1XC);
+let elSKpkM = eo('td','VZ_ff'+iij1XC);
 text(record.id);
 ec('td');
-let elDzaoj = eo('td','Yj9ff'+iiS7_X);
+let elL914O = eo('td','XFqff'+iij1XC);
 text(record.title);
 ec('td');
-let elEGVjF = eo('td','zBeff'+iiS7_X);
+let el8x4BO = eo('td','03xff'+iij1XC);
 text(record.level);
 ec('td');
-let elY9TjC = eo('td','nx6ff'+iiS7_X);
+let el7R1gx = eo('td','O7Aff'+iij1XC);
 text(Boolean(record.public));
 ec('td');
-let elyN1bI = eo('td','p7cff'+iiS7_X);
+let elpoqsX = eo('td','uyAff'+iij1XC);
 text( Number(record.reward).format() );
 ec('td');
-let el0otww = eo('td','puhff'+iiS7_X);
+let elq_nxU = eo('td','wJMff'+iij1XC);
 text(record.duration);
 ec('td');
-let elz4C96 = eo('td','PzAff'+iiS7_X);
-let cmpLznZ = this._lc('cNsLQqE2e', {parent:component,parentTop:adminTable,events:{onedit:function(e) {let $el = this; component.editItem(record)},ondelete:function(e) {let $el = this; component.deleteItem(record.id, index)}},insideLoop:true,index:"" +iiS7_X});
+let elriKxd = eo('td','mDNff'+iij1XC);
+let cmpfx0R = this._lc('cJWWeKfyJ', {parent:component,parentTop:adminTable,events:{onedit:function(e) {let $el = this; component.editItem(record)},ondelete:function(e) {let $el = this; component.deleteItem(record.id, index)}},insideLoop:true,index:"" +iij1XC});
 ec('td');
 ec('tr');
 }
 }});
-let cnd2GPy = component.openModal;
-this.setState('stoGfsy', cnd2GPy);
-if (cnd2GPy) { 
-let cmp_yyL = this._lc('cEX_uvRTT', {parent:component,props:{modalHeader:component.crudOptions.heading},events:{onclose:function(e) {let $el = this; component.closeModal();}},content:(flkModal) => {let elB9DQL = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let cnd_mG_ = component.openModal;
+this.setState('stxv0AG', cnd_mG_);
+if (cnd_mG_) { 
+let cmpCH_7 = this._lc('ceakGzmW_', {parent:component,props:{modalHeader:component.crudOptions.heading},events:{onclose:function(e) {let $el = this; component.closeModal();}},content:(flkModal) => {let eld5Sff = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.submit($el)}]});
 
-                if (! elB9DQL.formHandler) {
-                    window.cfrmdlr = elB9DQL.formHandler = new FormHandler(elB9DQL, component);
+                if (! eld5Sff.formHandler) {
+                    window.cfrmdlr = eld5Sff.formHandler = new FormHandler(eld5Sff, component);
                 } else {
-                    window.cfrmdlr = elB9DQL.formHandler;
+                    window.cfrmdlr = eld5Sff.formHandler;
                 }
-            let el5r89C = ev('input',null,null, eventListeners, {oninput:[function(e) {component.categoryId = this.value;}]},`value`,`${fval(component.categoryId)}`,`name`,`${(`categoryId`).toInputName()}`,`type`,`hidden`);
-el5r89C.value = fval(component.categoryId);
-let elVfHEi = eo('div',null,null,`class`,`form-group`);
-let el85bjE = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.title = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elB9DQL.formHandler.addError(`title`, 'required', trans('validation.required'));}return elB9DQL.formHandler.removeError(`title`);}]},`value`,`${fval(component.formObject.title)}`,`name`,`${(`title`).toInputName()}`,`placeholder`,`${trans(`Title`)}`,`type`,`text`,`class`,`form-control`,`id`,`title`);
-el85bjE.value = fval(component.formObject.title);
-let cndunT1 = elB9DQL.formHandler.getError(`title`);
-this.setState('st8qLYP', cndunT1);
-if (cndunT1) { 
-let elgEIc9 = eo('div','mRnf',null,`class`,`alert alert-danger`);
-text(elB9DQL.formHandler.getError(`title`));
+            let elWTJcI = ev('input',null,null, eventListeners, {oninput:[function(e) {component.categoryId = this.value;}]},`value`,`${fval(component.categoryId)}`,`name`,`${(`categoryId`).toInputName()}`,`type`,`hidden`);
+elWTJcI.value = fval(component.categoryId);
+let el6QoIL = eo('div',null,null,`class`,`form-group`);
+let elEHkrE = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.title = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eld5Sff.formHandler.addError(`title`, 'required', trans('validation.required'));}return eld5Sff.formHandler.removeError(`title`);}]},`value`,`${fval(component.formObject.title)}`,`name`,`${(`title`).toInputName()}`,`placeholder`,`${trans(`Title`)}`,`type`,`text`,`class`,`form-control`,`id`,`title`);
+elEHkrE.value = fval(component.formObject.title);
+let cndBCTB = eld5Sff.formHandler.getError(`title`);
+this.setState('stTLFRE', cndBCTB);
+if (cndBCTB) { 
+let elX64ld = eo('div','AY6f',null,`class`,`alert alert-danger`);
+text(eld5Sff.formHandler.getError(`title`));
 ec('div');
 }ec('div');
-let elMH50r = eo('div',null,null,`class`,`form-group`);
-let elkp4BE = eo('textarea',null,null, eventListeners, {oninput:[function(e) {component.formObject.quest = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elB9DQL.formHandler.addError(`quest`, 'required', trans('validation.required'));}return elB9DQL.formHandler.removeError(`quest`);}]},`value`,`${fval(component.formObject.quest)}`,`name`,`${(`quest`).toInputName()}`,`placeholder`,`${trans(`Quest`)}`,`type`,`textarea`,`rows`,`6`,`class`,`form-control`,`id`,`quest`);
-elkp4BE.value = fval(component.formObject.quest);
+let elvZufB = eo('div',null,null,`class`,`form-group`);
+let eld__o1 = eo('textarea',null,null, eventListeners, {oninput:[function(e) {component.formObject.quest = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eld5Sff.formHandler.addError(`quest`, 'required', trans('validation.required'));}return eld5Sff.formHandler.removeError(`quest`);}]},`value`,`${fval(component.formObject.quest)}`,`name`,`${(`quest`).toInputName()}`,`placeholder`,`${trans(`Quest`)}`,`type`,`textarea`,`rows`,`6`,`class`,`form-control`,`id`,`quest`);
+eld__o1.value = fval(component.formObject.quest);
 ec('textarea');
-let cndW4Pe = elB9DQL.formHandler.getError(`quest`);
-this.setState('stEiENC', cndW4Pe);
-if (cndW4Pe) { 
-let elq17VL = eo('div','0g_f',null,`class`,`alert alert-danger`);
-text(elB9DQL.formHandler.getError(`quest`));
+let cndGWuH = eld5Sff.formHandler.getError(`quest`);
+this.setState('sttOxxH', cndGWuH);
+if (cndGWuH) { 
+let el4B46P = eo('div','46Uf',null,`class`,`alert alert-danger`);
+text(eld5Sff.formHandler.getError(`quest`));
 ec('div');
 }ec('div');
-let elk88MS = eo('div',null,null,`class`,`form-group`);
-let elihsOD = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.level = this.value;}]},`value`,`${fval(component.formObject.level)}`,`name`,`${(`level`).toInputName()}`,`placeholder`,`${trans(`level`)}`,`type`,`number`,`class`,`form-control`,`id`,`level`);
-elihsOD.value = fval(component.formObject.level);
+let elFTZaJ = eo('div',null,null,`class`,`form-group`);
+let el7nlxg = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.level = this.value;}]},`value`,`${fval(component.formObject.level)}`,`name`,`${(`level`).toInputName()}`,`placeholder`,`${trans(`level`)}`,`type`,`number`,`class`,`form-control`,`id`,`level`);
+el7nlxg.value = fval(component.formObject.level);
 ec('div');
-let elfCzF0 = eo('div',null,null,`class`,`form-group`);
-let el26ztX = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.reward = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return elB9DQL.formHandler.addError(`reward`, 'required', trans('validation.required'));}return elB9DQL.formHandler.removeError(`reward`);}]},`value`,`${fval(component.formObject.reward)}`,`name`,`${(`reward`).toInputName()}`,`placeholder`,`${trans(`reward`)}`,`class`,`form-control`,`type`,`number`,`id`,`reward`);
-el26ztX.value = fval(component.formObject.reward);
-let cndTAhO = elB9DQL.formHandler.getError(`reward`);
-this.setState('studNIv', cndTAhO);
-if (cndTAhO) { 
-let elmeNvi = eo('div','CyPf',null,`class`,`alert alert-danger`);
-text(elB9DQL.formHandler.getError(`reward`));
+let elINMsN = eo('div',null,null,`class`,`form-group`);
+let elFysgM = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.reward = this.value;},function(e) {let value = this.value.trim();if (Is.empty(value)) {return eld5Sff.formHandler.addError(`reward`, 'required', trans('validation.required'));}return eld5Sff.formHandler.removeError(`reward`);}]},`value`,`${fval(component.formObject.reward)}`,`name`,`${(`reward`).toInputName()}`,`placeholder`,`${trans(`reward`)}`,`class`,`form-control`,`type`,`number`,`id`,`reward`);
+elFysgM.value = fval(component.formObject.reward);
+let cndHZDG = eld5Sff.formHandler.getError(`reward`);
+this.setState('stopsuV', cndHZDG);
+if (cndHZDG) { 
+let elneVHy = eo('div','Ytuf',null,`class`,`alert alert-danger`);
+text(eld5Sff.formHandler.getError(`reward`));
 ec('div');
 }ec('div');
-let el6oL2n = eo('div',null,null,`class`,`form-group`);
-let elj6Ce_ = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.duration = this.value;}]},`value`,`${fval(component.formObject.duration)}`,`name`,`${(`duration`).toInputName()}`,`placeholder`,`${trans(`Duration in seconds`)}`,`class`,`form-control`,`type`,`number`,`id`,`duration`);
-elj6Ce_.value = fval(component.formObject.duration);
+let elmXrjp = eo('div',null,null,`class`,`form-group`);
+let eljlKvL = ev('input',null,null, eventListeners, {oninput:[function(e) {component.formObject.duration = this.value;}]},`value`,`${fval(component.formObject.duration)}`,`name`,`${(`duration`).toInputName()}`,`placeholder`,`${trans(`Duration in seconds`)}`,`class`,`form-control`,`type`,`number`,`id`,`duration`);
+eljlKvL.value = fval(component.formObject.duration);
 ec('div');
-let elvZJkJ = eo('div',null,null,`class`,`form-group`);
-let cmpyjKm = this._lc('c3OztjlQz', {parent:component,parentTop:flkModal,props:{checked:component.formObject.public},events:{onchange:function(e) {let $el = this; component.formObject.public = ! component.formObject.public}},boolAttrs:{checked:component.formObject.public},attrs:{name:`${(`public`).toInputName()}`,label:'Public puzzle',value:1},state:'stoGfsy'});
+let elaNItu = eo('div',null,null,`class`,`form-group`);
+let cmp4zEy = this._lc('cV_a0FXHb', {parent:component,parentTop:flkModal,props:{checked:component.formObject.public},events:{onchange:function(e) {let $el = this; component.formObject.public = ! component.formObject.public}},boolAttrs:{checked:component.formObject.public},attrs:{name:`${(`public`).toInputName()}`,label:'Public puzzle',value:1},state:'stxv0AG'});
 ec('div');
-let elGQykw = eo('div',null,null,`class`,`form-btns d-flex justify-content-end`);
-let el6gUoK = eo('button',null,null, boolAttrs, {disabled:!component.isValidForm || component.submitting},`class`,`btn btn-primary`);
+let elFKApC = eo('div',null,null,`class`,`form-btns d-flex justify-content-end`);
+let elkrLrC = eo('button',null,null, boolAttrs, {disabled:!component.isValidForm || component.submitting},`class`,`btn btn-primary`);
 text(trans('save'));
 ec('button');
 ec('div');
 ec('form');
-},state:'stoGfsy'});
+},state:'stxv0AG'});
 }
                     this.isReadyToGo();
                 }

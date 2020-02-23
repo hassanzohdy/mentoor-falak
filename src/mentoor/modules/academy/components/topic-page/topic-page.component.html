@@ -23,13 +23,17 @@
                 </header>
                 <p class="topicDesc">{{ this.topic.shortDescription }}</p>
 
-                <footer class="card p-2 m-b-1" *if="this.topic.userAnswer && this.topic.userAnswer.status == 'rejected' && (this.topic.userAnswer.comment || this.topic.userAnswer.recordNote)">
+                <footer class="card p-2 m-b-1"
+                    *if="this.topic.userAnswer && this.topic.userAnswer.status == 'rejected' && (this.topic.userAnswer.comment || this.topic.userAnswer.recordNote)">
                     <h3 class="red-text bold m-b-1">Your answer has been rejected :(</h3>
-                    <span class="d-inline-block">Note by:</span> <strong class="d-inline-block" [html]="this.topic.userAnswer.commentBy.name"></strong>
+                    <span class="d-inline-block">Note by:</span> <strong class="d-inline-block"
+                        [html]="this.topic.userAnswer.commentBy.name"></strong>
                     <p class="notes">
-                        <markdown *if="this.topic.userAnswer.comment" [content]="this.topic.userAnswer.comment"></markdown>
+                        <markdown *if="this.topic.userAnswer.comment" [content]="this.topic.userAnswer.comment">
+                        </markdown>
                     </p>
-                    <flk-audio-player *if="this.topic.userAnswer.recordNote" [src]="this.topic.userAnswer.recordNote"></flk-audio-player>
+                    <flk-audio-player *if="this.topic.userAnswer.recordNote" [src]="this.topic.userAnswer.recordNote">
+                    </flk-audio-player>
                 </footer>
                 <div class="metaInfo">
                     <h3 class="infoTitle bold">Quest</h3>
@@ -70,9 +74,8 @@
                 <flk-alert *if="this.form" (confirm)="this.submitAnswer(this.form)" (close)="this.form = null">
                 </flk-alert>
                 <form *if="this.openAnswerText" (submit)="this.form = $el;">
-                    <form-input (input)="this.storeAnswer($el.value)" type="textarea" [value]="this.answerData" required
-                        rows="8" name="answer" placeholder="Write your answer ;)" class="form-control mb-4" dir="auto">
-                    </form-input>
+                    <markdown-input (input)="this.storeAnswer(e)" placeholder="Write your answer ;)" type="textarea"
+                        [value]="this.answerData" required></markdown-input>
                     <button class="btn btn-primary float-right" [disabled]="!this.isValidForm || this.isSending">
                         Send
                     </button>
@@ -148,7 +151,9 @@
                             <span class="bold"
                                 [class]="{'green-text': this.topic.userAnswer.prize > this.topic.prize, 'red-text': this.topic.userAnswer.prize < this.topic.prize}"
                                 [html]="this.topic.userAnswer.prize.format()"></span>
-                            <div *if="this.topic.userAnswer && this.topic.userAnswer.prize != this.topic.prize" class="bold p-l-4" [class]="{'red-text': this.topic.userAnswer.prize < this.topic.prize, 'green-text': this.topic.userAnswer.prize > this.topic.prize}">
+                            <div *if="this.topic.userAnswer && this.topic.userAnswer.prize != this.topic.prize"
+                                class="bold p-l-4"
+                                [class]="{'red-text': this.topic.userAnswer.prize < this.topic.prize, 'green-text': this.topic.userAnswer.prize > this.topic.prize}">
                                 <span [html]="this.topic.userAnswer.prize > this.topic.prize ? '+' : '-'"></span>
                                 <span [html]="Math.abs(this.topic.userAnswer.prize - this.topic.prize).format()"></span>
                             </div>

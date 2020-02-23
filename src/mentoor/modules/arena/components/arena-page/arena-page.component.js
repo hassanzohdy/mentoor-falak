@@ -4,8 +4,8 @@ class ArenaPage {
      * Put your required dependencies in the constructor parameters list  
      */
     constructor() {
-        this.name = 'arena';
-        this.title = trans('arena');
+        this.name = 'Arena';
+        this.title = trans('Arena');
     }
     
     /**

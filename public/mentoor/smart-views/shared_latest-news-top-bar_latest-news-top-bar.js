@@ -6,16 +6,16 @@ _Component({
                 observe: ['goToLatest','markAsSeen'],
                 children: {},
                 render: function (component) {
-                    let elKE3NA = eo('section',null,null,`id`,`latest-news-bar`,`class`,`fixed-top`);
-let elTVe0j = eo('span',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.goToLatest()}]},`class`,`pointer`);
+                    let el3mTUJ = eo('section',null,null,`id`,`latest-news-bar`,`class`,`fixed-top`);
+let elTBSF2 = eo('span',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.goToLatest()}]},`class`,`pointer`);
 text(`Project Management System Tool Is Here`);
 ec('span');
-let elKEtw9 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.markAsSeen()}]},`type`,`button`,`class`,`close-icon`);
-let elwFQPw = eo('i',null,null,`title`,``,`class`,`${fas('times') + ' pointer icon'}`);
+let elwcjdo = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.markAsSeen()}]},`type`,`button`,`class`,`close-icon`);
+let elERwaV = eo('i',null,null,`title`,``,`class`,`${fas('times') + ' pointer icon'}`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elwFQPw;
+                        let $el = elERwaV;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Close')}`});
         ;

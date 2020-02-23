@@ -1,0 +1,13 @@
+<flk-spinner *if="this.isLoading"></flk-spinner>
+
+<else>
+  <div *if="!Is.empty(this.challenges)" class="challenges-list">
+    <for loop="let challenge of this.challenges">
+      <challenge-card
+        [challenge]="challenge"
+      ></challenge-card>
+    </for>
+  </div>
+
+  <p *else>No challenges yet !</p>
+</else>

@@ -1,0 +1,36 @@
+<layout>
+    <header>
+        <h1> Create new challenge </h1>
+
+        <p *if="this.error" class="alert alert-danger" [html]="this.error"></p>
+    </header>
+
+    <div class="container">
+        <form (submit)="this.createChallenge($el)">
+            <div class="form-group">
+                <form-input type="text" name="title" required class="form-control" label="Challenge Title"
+                    placeholder="e.g Challenge"></form-input>
+            </div>
+
+            <div class="form-group">
+                <markdown-input name="quest" class="form-control" label="Quest Content"
+                    placeholder="Supports markdown"></markdown-input>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <flk-dropdown-list label="Caregory" position="top" required name="category" [lazy-loading]="true"
+                        [service]="this.einsteinCategoriesService"></flk-dropdown-list>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <flk-dropdown-list label="Level" position="top" required name="level" [items]="this.levelItems">
+                    </flk-dropdown-list>
+                </div>
+
+            </div>
+
+            <input type="submit" value="{{this.isSending ? 'Sending ...' : 'Create'}}" class="btn btn-primary">
+        </form>
+    </div>
+</layout>

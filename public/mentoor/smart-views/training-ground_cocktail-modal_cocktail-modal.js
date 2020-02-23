@@ -4,133 +4,133 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['close','isLoading','cocktailsCategories','currentCategory','display','categoryHasCocktailsToUnlock','displayedCocktails','isLocked','hasCocktailToBeUnlocked','unlockCocktail'],
-                children: {cYC8qJxrI:'flk-spinner',cdBw2A4At:'gold-icon',csQwOlDOJ:'flk-modal',cYr00o_4Y:'flk-alert'},
+                children: {c7z6MtuPO:'flk-spinner',c4axovRY8:'gold-icon',cBA_lcZaN:'flk-modal',cbz7OPZBT:'flk-alert'},
                 render: function (component) {
-                    let elRXNLd = eo('div',null,null,`id`,`cocktail-modal`);
-let cmpnItA = this._lc('csQwOlDOJ', {parent:component,events:{onclose:function(e) {let $el = this; component.close()}},content:(flkModal) => {let cndQqtR = component.isLoading;
-this.setState('stNQGyG', cndQqtR);
-let cndhHoV = !(cndQqtR);
-this.setState('stJuofG', cndhHoV);
-if (cndQqtR) { 
-let cmptc8N = this._lc('cYC8qJxrI', {parent:component,parentTop:flkModal,attrs:{theme:'black'},state:'stNQGyG'});
+                    let elPwYDD = eo('div',null,null,`id`,`cocktail-modal`);
+let cmp6HVg = this._lc('cBA_lcZaN', {parent:component,events:{onclose:function(e) {let $el = this; component.close()}},content:(flkModal) => {let cndCcxh = component.isLoading;
+this.setState('stIbnO8', cndCcxh);
+let cndoaEd = !(cndCcxh);
+this.setState('stf583B', cndoaEd);
+if (cndCcxh) { 
+let cmpQwL1 = this._lc('c7z6MtuPO', {parent:component,parentTop:flkModal,attrs:{theme:'black'},state:'stIbnO8'});
 }else { 
-let elY1ALh = eo('div',null,null,`class`,`row m-0`);
-let eludZln = eo('aside',null,null,`class`,`col-sm-3 p-0`);
+let elIH_kV = eo('div',null,null,`class`,`row m-0`);
+let elFMNxu = eo('aside',null,null,`class`,`col-sm-3 p-0`);
 for (let i in component.cocktailsCategories) {
 let category = component.cocktailsCategories[i]; 
- let iiwYs9 = 'eYdNGJh' + i;
-let el5MHIV = eo('button','3ykwJVJ4Awm1' + i+iiwYs9,null, eventListeners, {onclick:[function(e) {var $el = this;component.display(category)}]},`type`,`button`,`class`,`category-btn`);
-el5MHIV.cls = {active: component.currentCategory.id == category.id};
+ let iiaOej = 'OLIXoAM' + i;
+let el8GE68 = eo('button','doQNb_NMa96D' + i+iiaOej,null, eventListeners, {onclick:[function(e) {var $el = this;component.display(category)}]},`type`,`button`,`class`,`category-btn`);
+el8GE68.cls = {active: component.currentCategory.id == category.id};
 
-            for (let className in el5MHIV.cls) {
-                el5MHIV.classList.toggle(className, el5MHIV.cls[className]);
+            for (let className in el8GE68.cls) {
+                el8GE68.classList.toggle(className, el8GE68.cls[className]);
             }  
-            let el51Fci = ev('img','cl8ff'+iiwYs9,null,`src`,`${category.icon}`,`title`,`${category.name}`,`alt`,`${category.name}`);
-let elDasWZ = eo('strong','0vDff'+iiwYs9);
+            let elu7ut_ = ev('img','J2Cff'+iiaOej,null,`src`,`${category.icon}`,`title`,`${category.name}`,`alt`,`${category.name}`);
+let elCr6rY = eo('strong','dkwff'+iiaOej);
 text(category.name);
 ec('strong');
-let cndLTA8 = component.categoryHasCocktailsToUnlock(category);
-this.setState('stMDV8c', cndLTA8);
-if (cndLTA8) { 
-let elHRJKi = eo('span','dm6ff'+iiwYs9,null,`title`,`${trans(`Unlockable`)}`,`class`,`can-unlock top-right ml-2`);
+let cndXWXH = component.categoryHasCocktailsToUnlock(category);
+this.setState('str1Auk', cndXWXH);
+if (cndXWXH) { 
+let elKNQ4b = eo('span','Nsiff'+iiaOej,null,`title`,`${trans(`Unlockable`)}`,`class`,`can-unlock top-right ml-2`);
 text(`!`);
 ec('span');
 }ec('button');
 }
 ec('aside');
-let el7d582 = eo('div',null,null,`class`,`col-sm-9 body`);
+let el44NXt = eo('div',null,null,`class`,`col-sm-9 body`);
 for (let i in component.displayedCocktails) {
 let cocktail = component.displayedCocktails[i]; 
- let iivadn = 'Rg_7jYz' + i;
-let elhpS3w = eo('div','QfElawhEzH8I' + i+iivadn,null,`class`,`cocktail`);
-let elvVQud = eo('h3','ufKff'+iivadn,null,`class`,`name`);
-let elOoglV = ev('img','pYrff'+iivadn,null,`src`,`${cocktail.icon}`,`class`,`small mr-2`);
-let el8kISq = eo('span','qYCff'+iivadn);
+ let iiLrfc = 'UiapqyX' + i;
+let elPXSxh = eo('div','uWUKCw9mC65w' + i+iiLrfc,null,`class`,`cocktail`);
+let el_tnVA = eo('h3','545ff'+iiLrfc,null,`class`,`name`);
+let elVcqjt = ev('img','R29ff'+iiLrfc,null,`src`,`${cocktail.icon}`,`class`,`small mr-2`);
+let eleyPy_ = eo('span','ZnCff'+iiLrfc);
 text(cocktail.name);
 ec('span');
-let cnd4s8n = cocktail.canBeUnlocked && ! cocktail.unlocked;
-this.setState('stKkik3', cnd4s8n);
-if (cnd4s8n) { 
-let el0EXNh = eo('span','pLqff'+iivadn,null,`title`,`${trans(`Unlockable`)}`,`class`,`can-unlock top-right ml-2`);
+let cndsStA = cocktail.canBeUnlocked && ! cocktail.unlocked;
+this.setState('st52rtW', cndsStA);
+if (cndsStA) { 
+let elkr76e = eo('span','qWTff'+iiLrfc,null,`title`,`${trans(`Unlockable`)}`,`class`,`can-unlock top-right ml-2`);
 text(`!`);
 ec('span');
 }ec('h3');
-let elo1w0_ = eo('p','6Gmff'+iivadn,null,`class`,`description m-b-1`);
+let elfOyTw = eo('p','YHaff'+iiLrfc,null,`class`,`description m-b-1`);
 text(cocktail.description);
 ec('p');
-let elVlMkg = eo('div','aoIff'+iivadn,null,`class`,`tags`);
+let elysTtg = eo('div','gDnff'+iiLrfc,null,`class`,`tags`);
 for (let i in cocktail.tags) {
 let tag = cocktail.tags[i]; 
- let ii_Kuh = '1HqHjed' + i;
-let elpcfV0 = eo('span','8pmzjYlUJJjM' + i+iivadn+ii_Kuh,null,`class`,`tag-icon`);
-let el2tq5_ = ev('img','coYff'+iivadn+ii_Kuh,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
-el2tq5_.cls = {gray: component.isLocked(cocktail) };
+ let iiVDfq = '6tkBPev' + i;
+let el_Ocgd = eo('span','q7SAVgMwsouc' + i+iiLrfc+iiVDfq,null,`class`,`tag-icon`);
+let elAFBhp = ev('img','IZPff'+iiLrfc+iiVDfq,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
+elAFBhp.cls = {gray: component.isLocked(cocktail) };
 
-            for (let className in el2tq5_.cls) {
-                el2tq5_.classList.toggle(className, el2tq5_.cls[className]);
+            for (let className in elAFBhp.cls) {
+                elAFBhp.classList.toggle(className, elAFBhp.cls[className]);
             }  
-            let cndRG0G = (Number(i) + 1) != cocktail.tags.length;
-this.setState('stml3Lb', cndRG0G);
-if (cndRG0G) { 
-let elAzsBi = eo('i','xEzff'+iivadn+ii_Kuh,null,`class`,`${fas('plus') + ' plus icon'}`);
+            let cndBKjp = (Number(i) + 1) != cocktail.tags.length;
+this.setState('stz_0Yw', cndBKjp);
+if (cndBKjp) { 
+let elpSIdb = eo('i','kWJff'+iiLrfc+iiVDfq,null,`class`,`${fas('plus') + ' plus icon'}`);
 ec('i');
 }ec('span');
 }
-let el0j0Ke = eo('div','wVfff'+iivadn,null,`class`,`cost`);
-el0j0Ke.cls = {gray: component.isLocked(cocktail) };
+let el67vuu = eo('div','KOuff'+iiLrfc,null,`class`,`cost`);
+el67vuu.cls = {gray: component.isLocked(cocktail) };
 
-            for (let className in el0j0Ke.cls) {
-                el0j0Ke.classList.toggle(className, el0j0Ke.cls[className]);
+            for (let className in el67vuu.cls) {
+                el67vuu.classList.toggle(className, el67vuu.cls[className]);
             }  
-            let cmpHdq_ = this._lc('cdBw2A4At', {parent:component,parentTop:flkModal,props:{coins:cocktail.cost},insideLoop:true,index:"" +iivadn});
-let cnd9P3c = cocktail.cost == 0;
-this.setState('st0tdTb', cnd9P3c);
-let cndN6zA = !(cnd9P3c);
-this.setState('stIxeYr', cndN6zA);
-if (cnd9P3c) { 
-let elTzHER = eo('span','yVpff'+iivadn,null,`class`,`pink-text bold`);
+            let cmpzwPI = this._lc('c4axovRY8', {parent:component,parentTop:flkModal,props:{coins:cocktail.cost},insideLoop:true,index:"" +iiLrfc});
+let cndTn4D = cocktail.cost == 0;
+this.setState('stRwKOa', cndTn4D);
+let cndOtR3 = !(cndTn4D);
+this.setState('st0TIjI', cndOtR3);
+if (cndTn4D) { 
+let elHbyJK = eo('span','MsKff'+iiLrfc,null,`class`,`pink-text bold`);
 text(`FREE!`);
 ec('span');
-}let cndJzOf = ! cocktail.unlocked;
-this.setState('stvBQ82', cndJzOf);
-let cnd5cd5 = !(cndJzOf);
-this.setState('stgSdYE', cnd5cd5);
-if (cndJzOf) { 
-let elsr3cB = eo('button','eXMff'+iivadn,null, eventListeners, {onclick:[function(e) {var $el = this;component.hasCocktailToBeUnlocked = cocktail;}]}, boolAttrs, {disabled:! cocktail.canBeUnlocked},`class`,`unlock-btn`);
+}let cndD73a = ! cocktail.unlocked;
+this.setState('stkmDQI', cndD73a);
+let cndRKmD = !(cndD73a);
+this.setState('stD5sPB', cndRKmD);
+if (cndD73a) { 
+let eliC6oJ = eo('button','05Vff'+iiLrfc,null, eventListeners, {onclick:[function(e) {var $el = this;component.hasCocktailToBeUnlocked = cocktail;}]}, boolAttrs, {disabled:! cocktail.canBeUnlocked},`class`,`unlock-btn`);
 text(`Unlock`);
 ec('button');
 }else { 
-let eluFtKa = eo('i','DoAff'+iivadn,null,`title`,`${trans(`Unlocked`)}`,`class`,`${fas('check') + ' green-text unlocked icon'}`);
+let elHcsqX = eo('i','NjWff'+iiLrfc,null,`title`,`${trans(`Unlocked`)}`,`class`,`${fas('check') + ' green-text unlocked icon'}`);
 ec('i');
 }ec('div');
-let cndkFNG = ! Is.empty(cocktail.requiredCocktails);
-this.setState('stoKawb', cndkFNG);
-if (cndkFNG) { 
-let elVgqap = eo('div','9P7ff'+iivadn,null,`class`,`m-t-1`);
-let el5BjA8 = eo('small','u58ff'+iivadn,null,`class`,`d-block m-t-2 bold red-text`);
+let cndTYL7 = ! Is.empty(cocktail.requiredCocktails);
+this.setState('stIuqft', cndTYL7);
+if (cndTYL7) { 
+let el7iMXb = eo('div','kNsff'+iiLrfc,null,`class`,`m-t-1`);
+let elzYVDi = eo('small','g8jff'+iiLrfc,null,`class`,`d-block m-t-2 bold red-text`);
 text(`You should be a:`);
 ec('small');
 for (let i in cocktail.requiredCocktails) {
 let requiredCocktail = cocktail.requiredCocktails[i]; 
- let iiyLj9 = 'U13zON5' + i;
-let elm2yFc = eo('li','07iyJS5h6acm' + i+iivadn+iiyLj9,null,`class`,`required-cocktail bold`);
-let elUPx6K = eo('span','Xehff'+iivadn+iiyLj9);
-elUPx6K.cls = {'brown-text': ! component.isLocked(requiredCocktail) };
+ let iiOsvg = 'CRhZQBn' + i;
+let elUqQdo = eo('li','YJxrNe5s4N5b' + i+iiLrfc+iiOsvg,null,`class`,`required-cocktail bold`);
+let elEeILL = eo('span','bw6ff'+iiLrfc+iiOsvg);
+elEeILL.cls = {'brown-text': ! component.isLocked(requiredCocktail) };
 
-            for (let className in elUPx6K.cls) {
-                elUPx6K.classList.toggle(className, elUPx6K.cls[className]);
+            for (let className in elEeILL.cls) {
+                elEeILL.classList.toggle(className, elEeILL.cls[className]);
             }  
             text(requiredCocktail.name);
 ec('span');
-let cndiBWH = ! component.isLocked(requiredCocktail);
-this.setState('st4W7Tc', cndiBWH);
-if (cndiBWH) { 
-let el8NqS4 = eo('i','5ohff'+iivadn+iiyLj9,null,`class`,`${fas('check') + ' green-text ml-2 icon'}`);
+let cndZ2ph = ! component.isLocked(requiredCocktail);
+this.setState('stxkaqa', cndZ2ph);
+if (cndZ2ph) { 
+let el6YAWC = eo('i','dS2ff'+iiLrfc+iiOsvg,null,`class`,`${fas('check') + ' green-text ml-2 icon'}`);
 ec('i');
-}let cndEm1U = component.isLocked(requiredCocktail) && component.currentCategory.id != requiredCocktail.category.id;
-this.setState('stb4Tc0', cndEm1U);
-if (cndEm1U) { 
-let elg5frl = eo('button','KFZff'+iivadn+iiyLj9,null, eventListeners, {onclick:[function(e) {var $el = this;component.display(requiredCocktail.category)}]},`type`,`button`,`class`,`ml-2 teal-text`);
+}let cndlJoQ = component.isLocked(requiredCocktail) && component.currentCategory.id != requiredCocktail.category.id;
+this.setState('stdX7_G', cndlJoQ);
+if (cndlJoQ) { 
+let elC4lOZ = eo('button','6Cqff'+iiLrfc+iiOsvg,null, eventListeners, {onclick:[function(e) {var $el = this;component.display(requiredCocktail.category)}]},`type`,`button`,`class`,`ml-2 teal-text`);
 text(requiredCocktail.category.name);
 ec('button');
 }ec('li');
@@ -142,10 +142,10 @@ ec('div');
 ec('div');
 ec('div');
 }},attrs:{header:'Choose your position'}});
-let cndJu65 = component.hasCocktailToBeUnlocked;
-this.setState('stjn94D', cndJu65);
-if (cndJu65) { 
-let cmp3A_Y = this._lc('cYr00o_4Y', {parent:component,events:{onclose:function(e) {let $el = this; component.hasCocktailToBeUnlocked = null;},onconfirm:function(e) {let $el = this; component.unlockCocktail();}},state:'stjn94D'});
+let cnd2jXQ = component.hasCocktailToBeUnlocked;
+this.setState('stlzMn4', cnd2jXQ);
+if (cnd2jXQ) { 
+let cmpBQZj = this._lc('cbz7OPZBT', {parent:component,events:{onclose:function(e) {let $el = this; component.hasCocktailToBeUnlocked = null;},onconfirm:function(e) {let $el = this; component.unlockCocktail();}},state:'stlzMn4'});
 }ec('div');
 
                     this.isReadyToGo();

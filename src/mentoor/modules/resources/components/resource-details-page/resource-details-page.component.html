@@ -3,6 +3,151 @@
     <flk-spinner *if="this.isLoading"></flk-spinner>
 
     <else>
+        <div class="text-right">
+            <a class="btn btn-green" [href]="URLS.project(this.resource.project)" [html]="this.resource.project.name"></a>
+        </div>
         <h1 [html]="this.resource.title"></h1>
+        <p *if="this.resource.createdAt" class="teal-text">
+            <flk-time-ago [timestamp]="this.resource.createdAt.timestamp"></flk-time-ago>
+        </p>
+
+        <if condition="this.resource.description">
+            <p class="description card p-1">
+                <markdown [content]="this.resource.description"></markdown>
+            </p>
+        </if>
+
+        <main>
+            <if condition="this.resource.type == 'link'">
+                <h2> The link to open </h2>
+                <p class="p-2">
+                    <a class="btn btn-red" href="{{this.resource.settings.link}}"
+                        [html]="Array.end(this.resource.settings.link.split('/'))"></a>
+                </p>
+            </if>
+
+            <elseif condition="this.resource.type == 'image'">
+                <h2> The image attached </h2>
+                <p class="p-2">
+                    <a href="{{this.resource.attachment}}" target="_blank">
+                        <img [src]="this.resource.attachment" class="img-thumbnail" [alt]="this.resource.title" />
+                    </a>
+                </p>
+            </elseif>
+
+            <elseif condition="['attachment', 'pdf'].includes(this.resource.type)">
+                <h2> The PDF attached </h2>
+                <p class="p-2">
+                    <a class="btn btn-red" href="{{this.resource.attachment}}" target="_blank"
+                        [html]="Array.end(this.resource.attachment.split('/'))"></a>
+                </p>
+            </elseif>
+
+            <elseif condition="this.resource.type == 'youtube'">
+                <div class="text-center">
+                    <flk-youtube-video style="width: 100%; height: 400px" [src]="this.resource.settings.youtube"></flk-youtube-video>
+                </div>
+            </elseif>
+
+            <elseif condition="this.resource.type == 'ftp'">
+                <h2 class="m-t-0">
+                    FTP Account Info
+
+                    (<span [html]="this.resource.title"></span>)
+                </h2>
+
+                <table class="table table-bordered table-striped resource-table">
+                    <tbody>
+                        <tr>
+                            <th>FTP Host</th>
+                            <th [html]="this.resource.settings.ftp.host"></th>
+                        </tr>
+                        <tr>
+                            <th>FTP Username</th>
+                            <th [html]="this.resource.settings.ftp.username"></th>
+                        </tr>
+                        <tr>
+                            <th>FTP password</th>
+                            <th [html]="this.resource.settings.ftp.password"></th>
+                        </tr>
+                        <tr>
+                            <th>FTP Port</th>
+                            <th [html]="this.resource.settings.ftp.port"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </elseif>
+
+            <elseif condition="this.resource.type == 'website'">
+                <h1>
+                    {{this.resource.settings.website.name}} Website
+                    (<span [html]="this.resource.title"></span>)
+                </h1>
+
+                <table class="table table-bordered table-striped resource-table">
+                    <tbody>
+                        <tr>
+                            <th>Website</th>
+                            <th [html]="this.resource.settings.website.name"></th>
+                        </tr>
+                        <tr>
+                            <th>Website Url</th>
+                            <th [html]="this.resource.settings.website.url"></th>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <th [html]="this.resource.settings.website.username"></th>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <th [html]="this.resource.settings.website.password"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </elseif>
+
+            <elseif condition="this.resource.type == 'email'">
+                <h1>
+                    Email Account Info
+                    (<span [html]="this.resource.title"></span>)
+                </h1>
+
+                <table class="table table-bordered table-striped resource-table">
+                    <tbody>
+                        <tr>
+                            <th>Webmail url</th>
+                            <th [html]="this.resource.settings.email.url"></th>
+                        </tr>
+                        <tr>
+                            <th>Email Address</th>
+                            <th [html]="this.resource.settings.email.email"></th>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <th [html]="this.resource.settings.email.password"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </elseif>
+        </main>
+
+        <comments [comments]="this.resource.comments" type="resource" [type-id]="this.resource.id"></comments>
+
+        <table class="table table-bordered mt-1" id="status-table">
+            <thead>
+                <tr>
+                    <th>Created By</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td [html]="this.resource.createdBy.name"></td>
+                    <td>
+                        <flk-time-ago [timestamp]="this.resource.createdAt.timestamp"></flk-time-ago>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </else>
 </layout>

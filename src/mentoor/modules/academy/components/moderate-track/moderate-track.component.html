@@ -8,7 +8,8 @@
 <flk-modal *if="this.openModal" id="moderators-modal" header="Manage moderators">
     <form>
         <input type="hidden" name="trackId" [value]="this.track.id" />
-        <flk-dropdown-list [lazy-loading]="true" [multiple]="true" [service]="this.adminUsersService" name="moderators"></flk-dropdown-list>
+        <flk-dropdown-list [lazy-loading]="true" [multiple]="true" [service]="this.adminUsersService" name="moderators">
+        </flk-dropdown-list>
         <div class="text-center">
             <button class="btn btn-success">Save</button>
         </div>

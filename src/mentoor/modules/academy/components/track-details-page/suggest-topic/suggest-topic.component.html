@@ -18,8 +18,8 @@
     <form-input type="text" class="form-control" [value]="this.suggestTopicTitle" label="Title" name="title" required></form-input>
     <input type="hidden" name="slug" value="{{ seo(this.suggestTopicTitle) }}" />
     <input type="hidden" name="display" value="1" />
-    <form-input type="textarea" class="form-control" label="Short description about the topic (Appears in the topics list)" name="shortDescription" required></form-input>
-    <form-input type="textarea" class="form-control" label="Quest info (markdown is supported)" name="quest" required></form-input>
+    <markdown-input name="shortDescription" type="textarea" required label="Description" placeholder="Short description about the topic (Appears in the topics list)"></markdown-input>
+    <markdown-input name="quest" label="Quest Info" type="textarea" placeholder="Quest info (markdown is supported)"></markdown-input>
     <form-input type="number" class="form-control" label="Suggesting reward" placeholder="i.e 15000" name="reward" required></form-input>
     <button class="btn btn-secondary" [disabled]="! this.isValidForm || this.isSubmittingTopicSuggestion">Send</button>
 </form>

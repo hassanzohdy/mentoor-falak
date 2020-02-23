@@ -6,7 +6,7 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let elgUHaz = eo('h1');
+                    let elvQqcF = eo('h1');
 text(`tutorial-maker-compare-page component is ready`);
 ec('h1');
 

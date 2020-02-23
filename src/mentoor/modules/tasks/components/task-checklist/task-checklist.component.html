@@ -45,9 +45,7 @@
                 Checklist</button>
         </form>
         <div class="row">
-            <div 
-                *for="let checklist,index of this.task.checklists" 
-                *key="checklist.id" 
+            <div *for="let checklist,index of this.task.checklists" *key="checklist.id"
                 class="col-sm-6 checklist m-t-2 p-0">
                 <div class="bold">
                     <span [html]="checklist.name"></span>
@@ -66,60 +64,48 @@
                             <fa icon="times"></fa>
                         </button>
 
-                        <button *if="! this.isInEditMode || this.type != 'checklist' || this.currentItem.id != checklist.id" type="button" (click)="this.allowEditing(checklist, index, 'checklist')"
-                            tooltip title="Edit" class="btn btn-sm btn-circle btn-cyan">
+                        <button
+                            *if="! this.isInEditMode || this.type != 'checklist' || this.currentItem.id != checklist.id"
+                            type="button" (click)="this.allowEditing(checklist, index, 'checklist')" tooltip
+                            title="Edit" class="btn btn-sm btn-circle btn-cyan">
                             <fa icon="edit"></fa>
                         </button>
 
-                        <button *else type="button" (click)="this.isInEditMode = false"
-                            tooltip title="Cancel Editing" class="btn btn-sm btn-circle btn-orange">
+                        <button *else type="button" (click)="this.isInEditMode = false" tooltip title="Cancel Editing"
+                            class="btn btn-sm btn-circle btn-orange">
                             <fa icon="edit"></fa>
                         </button>
 
-                        <button type="button" (click)="this.confirmRemoving(checklist, index, 'checklist')"
-                            tooltip title="Remove" class="btn btn-sm btn-circle btn-danger">
+                        <button type="button" (click)="this.confirmRemoving(checklist, index, 'checklist')" tooltip
+                            title="Remove" class="btn btn-sm btn-circle btn-danger">
                             <fa icon="trash"></fa>
                         </button>
                     </if>
 
                 </div>
 
-                <form 
-                    *if="this.isInEditMode && this.type == 'checklist' && this.currentItem.id == checklist.id" 
-                    class="m-t-2" 
-                    (submit)="this.submitChecklist($el)">
+                <form *if="this.isInEditMode && this.type == 'checklist' && this.currentItem.id == checklist.id"
+                    class="m-t-2" (submit)="this.submitChecklist($el)">
                     <input type="hidden" name="task" [value]="this.task.id" />
                     <input type="hidden" name="sortOrder" [value]="this.currentItem.sortOrder" />
-                    <form-input type="text" name="name" [value]="this.currentItem.name" class="form-control" label="Checklist Name"
-                    [value]="this.checklistName" required></form-input>
-        
-                    <button class="btn bold btn-success bold" [disabled]="this.isSending || ! this.isValidForm">Update</button>
+                    <form-input type="text" name="name" [value]="this.currentItem.name" class="form-control"
+                        label="Checklist Name" [value]="this.checklistName" required></form-input>
+
+                    <button class="btn bold btn-success bold"
+                        [disabled]="this.isSending || ! this.isValidForm">Update</button>
                 </form>
 
-                <ul *elseif="! this.isInEditMode || !this.currentItem || this.currentItem.id != checklist.id" class="items">
-                    <li 
-                        *for="let item, i of checklist.items" 
-                        *key="item.id" 
-                        class="item"
+                <ul *elseif="! this.isInEditMode || !this.currentItem || this.currentItem.id != checklist.id"
+                    class="items">
+                    <li *for="let item, i of checklist.items" *key="item.id" class="item"
                         (mouseover)="this.suggestCheckItemModification(item)"
-                        (mouseout)="this.unsuggestCheckItemModification()"
-                    >
-                        <!-- <div class="checklist-item">
-                        </div> -->
-
-                    <flk-mdb-checkbox                             
-                        [label]="item.item" 
-                        [value]="item.item"
-                        (change)="this.changeItemStatus(item, $el.checked)" 
-                        [checked]="item.done">
-                    </flk-mdb-checkbox>                        
-                        <button
-                            *if="this.isSuggestingItemControl && this.modifyingChecklistItem.id == item.id" 
-                            class="btn btn-sm btn-danger btn-circle delete-item-btn"
-                            tooltip
-                            title="Remove item"
-                            (click)="this.confirmRemoving(checklist, index, 'item', item, i)"
-                        >
+                        (mouseout)="this.unsuggestCheckItemModification()">
+                        <flk-mdb-checkbox [label]="item.item" [value]="item.item"
+                            (change)="this.changeItemStatus(item, $el.checked)" [checked]="item.done">
+                        </flk-mdb-checkbox>
+                        <button *if="this.isSuggestingItemControl && this.modifyingChecklistItem.id == item.id"
+                            class="btn btn-sm btn-danger btn-circle delete-item-btn" tooltip title="Remove item"
+                            (click)="this.confirmRemoving(checklist, index, 'item', item, i)">
                             <fa icon="trash"></fa>
                         </button>
                     </li>
@@ -142,8 +128,4 @@
     </h3>
 </section>
 
-<flk-alert
-    *if="this.isAboutToRemove"
-    (close)="this.isAboutToRemove = null"
-    (confirm)="this.remove()"
-></flk-alert>
+<flk-alert *if="this.isAboutToRemove" (close)="this.isAboutToRemove = null" (confirm)="this.remove()"></flk-alert>
