@@ -10,40 +10,18 @@
                         title="Sort By Progress">Progress</button> </th>
                 <th *if="! this.isInProjectPage">Project</th>
                 <th tooltip title="Sort by status">
-                    <button (click)="this.isStatusSortOpened = !this.isStatusSortOpened">Status</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isStatusSortOpened" [items]="this.filterOptions.statuses"
-                            (select)="this.sortObjects('status', '', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                    <button (click)="this.sortTasksCustom(['notStarted', 'inProgress', 'inReview', 'autoFailed', 'completed', 'archived'], 'status')"> Status </button>
                 </th>
                 <th>Remaining Time</th>
                 <th tooltip title="Sort by participant">
-                    <button (click)="this.isPartSortOpened = !this.isPartSortOpened">Participant</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isPartSortOpened" [items]="this.filterOptions.participants"
-                            (select)="this.sortObjects('participant', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                    <button (click)="this.sortTasksBy('participant.id')"> Participant </button>
                 </th>
-                <th tooltip title="Sort by Supervisor">
-                    <button (click)="this.isSuperSortOpened = !this.isSuperSortOpened">Supervisors</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isSuperSortOpened" [items]="this.filterOptions.supervisors"
-                            (select)="this.sortObjects('supervisors', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
-                </th>
+                <th>Supervisors</th>
                 <th class="text-center" tooltip title="Sort by Module">
-                    <button (click)="this.isModuleSortOpened = !this.isModuleSortOpened">Module</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isModuleSortOpened" [items]="this.filterOptions.modules"
-                            (select)="this.sortObjects('module', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                    <button (click)="this.sortTasksBy('module.name')"> Module </button>
                 </th>
                 <th class="text-center" tooltip title="Sort by Priority">
-                    <button (click)="this.isPrioritySortOpened = !this.isPrioritySortOpened">Priority</button>
-                    <div class="dropdown-sort">
-                        <flk-dropdown-list *if="this.isPrioritySortOpened" [items]="this.filterOptions.priorities"
-                            (select)="this.sortObjects('priority', '', e.value)" [searchable]="false"></flk-dropdown-list>
-                    </div>
+                    <button (click)="this.sortTasksCustom(['low', 'medium', 'high'], 'priority')"> Priority </button>
                 </th>
                 <!-- <th class="text-center">Sprint</th> -->
                 <th>Control</th>

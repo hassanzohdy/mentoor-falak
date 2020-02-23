@@ -83,47 +83,6 @@ class TasksBoard {
         this.prepareTasks();
 
         this.isLoading = false;
-
-        this.isStatusSortOpened = false;
-        this.isPartSortOpened = false;
-        this.isSuperSortOpened = false;
-        this.isModuleSortOpened = false;
-        this.isPrioritySortOpened = false;
-
-        echo(this.tasks)
-    }
-
-    sortObjects(key, subKey, val) {
-        echo(val)
-        let sortedItems = [];
-        this.tasksList.map((task, index) => {
-            // if the property is an object ==> get the sub key and compare with the value
-            if (typeof task[key] == 'object' && !Is.array(task[key])) {
-                if (task[key][subKey] == val) {
-                    sortedItems.push(task);
-
-                    this.tasksList.splice(index, 1);
-                }
-                // if the property is an array ==> loop through the array and compare each item's id with the value
-            } else if (Is.array(task[key])) {
-                task[key].map(item => {
-                    if (item.id == val) {
-                        sortedItems.push(task);
-
-                        this.tasksList.splice(index, 1);
-                    }
-                })
-                // if the property is a normal value ==> compare
-            } else if (task[key] == val) {
-                sortedItems.push(task);
-
-                this.tasksList.splice(index, 1);
-            }
-        });
-
-        if (sortedItems.length > 0) {
-            this.tasksList.unshift(...sortedItems);
-        }
     }
 
     sortTasksBy(key) {
@@ -143,6 +102,18 @@ class TasksBoard {
         }
 
         this.tasksList = collect(this.tasksList)[sortMethod](key).toArray();
+    }
+
+    sortTasksCustom(orderArray, key) {
+        this.tasksList.map(task => {
+            for (let item of orderArray) {
+                if (task[key] == item) {
+                    task.order = orderArray.indexOf(item);
+                }
+            }
+        });
+
+        this.sortTasksBy('order');
     }
 
     selectDefaultParticipant() {
