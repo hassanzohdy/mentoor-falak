@@ -24,18 +24,25 @@
                             (select)="this.sortObjects('participant', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
                     </div>
                 </th>
-                <th>
+                <th tooltip title="Sort by Supervisor">
                     <button (click)="this.isSuperSortOpened = !this.isSuperSortOpened">Supervisors</button>
                     <div class="dropdown-sort">
                         <flk-dropdown-list *if="this.isSuperSortOpened" [items]="this.filterOptions.supervisors"
                             (select)="this.sortObjects('supervisors', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
                     </div>
                 </th>
-                <th class="text-center">
+                <th class="text-center" tooltip title="Sort by Module">
                     <button (click)="this.isModuleSortOpened = !this.isModuleSortOpened">Module</button>
                     <div class="dropdown-sort">
                         <flk-dropdown-list *if="this.isModuleSortOpened" [items]="this.filterOptions.modules"
                             (select)="this.sortObjects('module', 'id', e.value)" [searchable]="false"></flk-dropdown-list>
+                    </div>
+                </th>
+                <th class="text-center" tooltip title="Sort by Priority">
+                    <button (click)="this.isPrioritySortOpened = !this.isPrioritySortOpened">Priority</button>
+                    <div class="dropdown-sort">
+                        <flk-dropdown-list *if="this.isPrioritySortOpened" [items]="this.filterOptions.priorities"
+                            (select)="this.sortObjects('priority', '', e.value)" [searchable]="false"></flk-dropdown-list>
                     </div>
                 </th>
                 <!-- <th class="text-center">Sprint</th> -->
@@ -109,6 +116,11 @@
                         <fa icon="angle-double-right mx-2"></fa>
                     </if>
                     <span [html]="task.module?.name"></span>
+                </th>
+                <th class="text-center v-middle gray-text">
+                    <if condition="task.priority">
+                        <span [html]="task.priority"></span>
+                    </if>
                 </th>
                 <!-- <th class="text-center v-middle teal-text">
                     <a *if="task.sprint" [href]="URLS.project(task.project, 'sprints', task.sprint)" [html]="task.sprint?.name"></a>

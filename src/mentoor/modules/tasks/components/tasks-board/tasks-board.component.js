@@ -88,6 +88,7 @@ class TasksBoard {
         this.isPartSortOpened = false;
         this.isSuperSortOpened = false;
         this.isModuleSortOpened = false;
+        this.isPrioritySortOpened = false;
 
         echo(this.tasks)
     }
