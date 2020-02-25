@@ -39,39 +39,6 @@
                     </section>
                 </article>
             </div>
-
-            <div class="row posts-list">
-                <div *for="let post of this.posts" class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="post">
-                        <a class="link" [href]="URLS.post(post)">
-                            <img [src]="post.image ? post.image + '?w=400' : assets('images/default.png')" class="image"
-                                [alt]="post.title" />
-                                <div class="title text-center" [html]="post.title"></div>
-                            </a>
-
-                        <!-- <div class="footer">
-                                <div class="meta-info">
-                                    <span class="user">
-                                        <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
-                                        <span class="user-name" [html]="post.createdBy.name"></span>
-                                        <user-online [id]="post.createdBy.id"></user-online>
-                                    </span>
-    
-                                    <flk-time-ago *if="this.lastP && this.lastP.id == post.id"
-                                        [timestamp]="this.lastP.createdAt.timestamp" class="created-at"></flk-time-ago>
-                                    <flk-time-ago *else [timestamp]="post.createdAt.timestamp" class="created-at">
-                                    </flk-time-ago>
-                                </div>
-                                <section class="tags text-centers">
-                                    <span *for="let tag of post.tags" class="tag">
-                                        <img [src]="tag.image" tooltip [title]="tag.name" [alt]="tag.name" />
-                                        <span [html]="'#' + tag.name"></span>
-                                    </span>
-                                </section>
-                            </div> -->
-                    </div>
-                </div>
-            </div>
         </else>
     </else>
 </layout>
