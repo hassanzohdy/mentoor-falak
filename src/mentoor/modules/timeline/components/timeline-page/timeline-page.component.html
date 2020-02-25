@@ -14,7 +14,7 @@
         <!-- <post-placeholder></post-placeholder> -->
         <h1 *if="Is.empty(this.posts)" class="bold text-center">No posts yet!</h1>
         <else>
-            <div *if="this.pep" *for="let post of this.posts" class="post">
+            <div *for="let post of this.posts" class="post">
                 <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
                 <div class="meta">
                     <a href="{{ URLS.post(post) }}" class="title" [html]="post.title"></a>
@@ -28,8 +28,8 @@
                 </div>
                 <article>
                     <!-- Content -->
-                    <markdown [content]="post.content.split('\n').slice(0, 20).join('\n')"></markdown>
-                    <a *if="post.content.split('\n').length > 20" href="{{ URLS.post(post) }}">Continue reading</a>
+                    <markdown [content]="post.content.split('\n').slice(0, 10).join('\n')"></markdown>
+                    <a *if="post.content.split('\n').length > 10" href="{{ URLS.post(post) }}">Continue reading</a>
                     <!-- Tags list -->
                     <section class="tags">
                         <span *for="let tag of post.tags" class="tag">
@@ -38,9 +38,6 @@
                         </span>
                     </section>
                 </article>
-                <!-- s=o >> size=original -->
-                <img *if="post.image" [src]="post.image + '?s=o1'" class="image" [alt]="post.title" />
-                <post-comments [post]="post" [max]="5"></post-comments>
             </div>
 
             <div class="row posts-list">

@@ -5,6 +5,7 @@
             <tr>
                 <th><button (click)="this.sortTasksBy('id')" [tooltip]="true" title="Sort By ID">#</button></th>
                 <th> <button (click)="this.sortTasksBy('title')" [tooltip]="true" title="Sort By Title">Task</button>
+                    <if condition="this.sort"></if>
                 </th>
                 <th> <button (click)="this.sortTasksBy('progress.completed')" [tooltip]="true"
                         title="Sort By Progress">Progress</button> </th>

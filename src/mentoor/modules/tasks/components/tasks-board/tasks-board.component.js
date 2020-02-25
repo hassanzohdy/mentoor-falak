@@ -101,6 +101,8 @@ class TasksBoard {
             this.sortOrder = 'DESC';
         }
 
+        this['sort' + key + 'order'] = this.sortOrder;
+
         this.tasksList = collect(this.tasksList)[sortMethod](key).toArray();
     }
 
