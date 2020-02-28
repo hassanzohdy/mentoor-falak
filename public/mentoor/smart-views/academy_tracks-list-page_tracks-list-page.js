@@ -4,36 +4,36 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','tracks'],
-                children: {cXcjswfS0:'flk-spinner',cUPJWRo3K:'flk-facebook-share',cRm3tO7vy:'track-card',csn0I8_cJ:'layout'},
+                children: {clSDSTyj3:'flk-spinner',c4_AOmy2U:'flk-facebook-share',cQmRiQgbr:'track-card',cxt5443lE:'layout'},
                 render: function (component) {
-                    let cmp7PEW = this._lc('csn0I8_cJ', {parent:component,content:(layout) => {let cnd4xMk = component.isLoading;
-this.setState('stQilnF', cnd4xMk);
-let cndNGn4 = !(cnd4xMk);
-this.setState('stnPJl7', cndNGn4);
-if (cnd4xMk) { 
-let cmp7jgZ = this._lc('cXcjswfS0', {parent:component,parentTop:layout,state:'stQilnF'});
+                    let cmpaRlR = this._lc('cxt5443lE', {parent:component,content:(layout) => {let cndE3nR = component.isLoading;
+this.setState('stKyl2S', cndE3nR);
+let cndZhLk = !(cndE3nR);
+this.setState('stmxUUf', cndZhLk);
+if (cndE3nR) { 
+let cmpbnyM = this._lc('clSDSTyj3', {parent:component,parentTop:layout,state:'stKyl2S'});
 }else { 
-let elOjaD_ = eo('h1');
+let elSf8yo = eo('h1');
 text(`Academy`);
 ec('h1');
-let elA8Git = eo('p');
+let elOeT6q = eo('p');
 text(`Here you'll learn how to enhance your search, how to write, read English amd Code.`);
 ec('p');
-let cmpBqMj = this._lc('cUPJWRo3K', {parent:component,parentTop:layout,state:'stnPJl7'});
-let cnde_3q = ! Is.empty(component.tracks);
-this.setState('stE0PIc', cnde_3q);
-let cndVWXu = !(cnde_3q);
-this.setState('stQudbM', cndVWXu);
-if (cnde_3q) { 
-let elqF82a = eo('div','6H6f',null,`class`,`row allTracks`);
+let cmp2P8B = this._lc('c4_AOmy2U', {parent:component,parentTop:layout,state:'stmxUUf'});
+let cndTHwu = ! Is.empty(component.tracks);
+this.setState('stnxDb4', cndTHwu);
+let cndLfik = !(cndTHwu);
+this.setState('stDp1ho', cndLfik);
+if (cndTHwu) { 
+let elp3fR8 = eo('div','x3Mf',null,`class`,`row allTracks`);
 for (let i in component.tracks) {
 let track = component.tracks[i]; 
- let iifAqZ = '1vWL7t5' + i;
-let cmp4vQ1 = this._lc('cRm3tO7vy', {parent:component,parentTop:layout,props:{track:track},attrs:{class:'col-lg-3 col-md-6'},state:'stE0PIc',insideLoop:true,index:"" +iifAqZ});
+ let ii0276 = 'P197HZw' + i;
+let cmpcyLG = this._lc('cQmRiQgbr', {parent:component,parentTop:layout,props:{track:track},attrs:{class:'col-lg-3 col-md-6'},state:'stnxDb4',insideLoop:true,index:"" +ii0276});
 }
 ec('div');
 }else { 
-let elUGJx6 = eo('h1',null,null,`class`,`bold text-center`);
+let elEzt9n = eo('h1',null,null,`class`,`bold text-center`);
 text(`No tracks yet!`);
 ec('h1');
 }}}});

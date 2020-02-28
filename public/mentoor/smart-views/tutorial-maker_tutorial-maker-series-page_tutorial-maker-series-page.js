@@ -6,64 +6,59 @@ _Component({
                 observe: ['series','current','done'],
                 children: {},
                 render: function (component) {
-                    let eldyT_L = eo('div',null,null,`class`,`dark`);
-let eldIoxR = eo('div',null,null,`class`,`fb-page`);
-let eldDlZY = eo('i',null,null,`class`,`${fas('facebook') + ' icon'}`);
+                    let elWReSX = eo('div',null,null,`class`,`dark`);
+let eltOX1u = eo('div',null,null,`class`,`fb-page`);
+let ellAc8P = eo('i',null,null,`class`,`${fas('facebook')} icon`);
 ec('i');
-let elcadx8 = eo('span',null,null,`class`,``);
+let elDYFdh = eo('span',null,null,`class`,``);
 text(`/mentoor.io`);
 ec('span');
 ec('div');
-let elqeupU = eo('h1',null,null,`class`,`text-center white-text m-b-4`,`id`,`main-text`);
+let eloGi3Y = eo('h1',null,null,`class`,`text-center white-text m-b-4`,`id`,`main-text`);
 text(`Functional Programming`);
 ec('h1');
-let elcc_d_ = eo('div',null,null,`class`,`m-t-1`);
+let el1Ia_x = eo('div',null,null,`class`,`m-t-1`);
 ec('div');
-let elFWE1H = eo('h1',null,null,`class`,`master`);
-let elJX1qJ = eo('i',null,null,`class`,`${fas('tint') + ' icon icon'}`);
+let el7kgON = eo('h1',null,null,`class`,`master`);
+let elDIoi6 = eo('i',null,null,`class`,`${fas('tint')} icon icon`);
 ec('i');
-let elX6rQx = eo('div',null,null,`class`,`m-t-8`);
+let elokaMi = eo('div',null,null,`class`,`m-t-8`);
 ec('div');
 text(`Pure functions`);
-let elzJZVH = eo('i',null,null,`class`,`${fas('shield') + ' icon'}`);
+let elZrqk1 = eo('i',null,null,`class`,`${fas('shield')} icon`);
 ec('i');
 ec('h1');
-let elntNJa = eo('ul',null,null,`id`,`series-list`);
+let elstPKv = eo('ul',null,null,`id`,`series-list`);
 for (let i in component.series) {
 let item = component.series[i]; 
- let iizQ48 = 'pggKBZH' + i;
-let elONu3S = eo('li','6eETztxLNg8F' + i+iizQ48);
-elONu3S.cls = {active: item == component.current, done: component.done.includes(item)};
-
-            for (let className in elONu3S.cls) {
-                elONu3S.classList.toggle(className, elONu3S.cls[className]);
-            }  
-            let cndjIIv = component.done.includes(item);
-this.setState('stjKJyw', cndjIIv);
-if (cndjIIv) { 
-let elhhwJR = eo('i','tM0ff'+iizQ48,null,`class`,`${fas('check-circle') + ' icon'}`);
+ let iigyGa = '09PdJWF' + i;
+let elpwVzv = eo('li','vpfFE5EnE7Co' + i+iigyGa,null,`class`,` ${cls({active: item == component.current, done: component.done.includes(item)})}`);
+let cndnHIo = component.done.includes(item);
+this.setState('stFDOMA', cndnHIo);
+if (cndnHIo) { 
+let elmIpA7 = eo('i','iw2ff'+iigyGa,null,`class`,`${fas('check-circle')} icon`);
 ec('i');
-}let cndThpB = item == component.current;
-this.setState('stFAgwF', cndThpB);
-if (cndThpB) { 
-let elhFXy0 = eo('i','XDIff'+iizQ48,null,`class`,`${fas('hand-point-right') + ' icon'}`);
+}let cndW10J = item == component.current;
+this.setState('stxWLPa', cndW10J);
+if (cndW10J) { 
+let elpE2zt = eo('i','mZ2ff'+iigyGa,null,`class`,`${fas('hand-point-right')} icon`);
 ec('i');
 }text( item );
 ec('li');
 }
 ec('ul');
-let elMdGi_ = eo('div',null,null,`class`,`overlay`);
+let el4RanW = eo('div',null,null,`class`,`overlay`);
 ec('div');
-let eloCkj8 = eo('h4',null,null,`class`,`hashtag`);
-let elivfhG = eo('div');
+let elnDarW = eo('h4',null,null,`class`,`hashtag`);
+let elKt3Az = eo('div');
 text(`#mentoor_what_does_it_mean`);
 ec('div');
 ec('h4');
-let elOZwLC = eo('div',null,null,`id`,`logo`);
-let elec15H = eo('h1',null,null,`id`,`m`);
+let el23PV8 = eo('div',null,null,`id`,`logo`);
+let elZRP4z = eo('h1',null,null,`id`,`m`);
 text(`M`);
 ec('h1');
-let elSn6NS = eo('h1',null,null,`id`,`name`,`class`,`inline`);
+let elYIrVB = eo('h1',null,null,`id`,`name`,`class`,`inline`);
 text(`mentoor.io`);
 ec('h1');
 ec('div');

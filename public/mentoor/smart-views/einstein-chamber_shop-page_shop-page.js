@@ -4,33 +4,33 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','categories'],
-                children: {cGFNLhszh:'flk-spinner',cN5LGEzJv:'champer-moderate',cVGWzYB5K:'einstein-category-card',cjlWfkcSU:'layout'},
+                children: {cjHlLmn2Y:'flk-spinner',cMYj9wedg:'champer-moderate',cKxoWVzCW:'einstein-category-card',cDlsLr0AR:'layout'},
                 render: function (component) {
-                    let cmpAWYt = this._lc('cjlWfkcSU', {parent:component,content:(layout) => {let cndAshg = component.isLoading;
-this.setState('stSO8KG', cndAshg);
-let cnd1Elt = !(cndAshg);
-this.setState('stFthFO', cnd1Elt);
-if (cndAshg) { 
-let cmpqD2Z = this._lc('cGFNLhszh', {parent:component,parentTop:layout,state:'stSO8KG'});
+                    let cmpg3wt = this._lc('cDlsLr0AR', {parent:component,content:(layout) => {let cndj9VA = component.isLoading;
+this.setState('stzoNu5', cndj9VA);
+let cndL7DQ = !(cndj9VA);
+this.setState('stEx4nt', cndL7DQ);
+if (cndj9VA) { 
+let cmp46Qv = this._lc('cjHlLmn2Y', {parent:component,parentTop:layout,state:'stzoNu5'});
 }else { 
-let elsiawW = eo('div',null,null,`class`,`m-b-2 d-flex justify-content-between`);
-let elNJF_G = eo('div',null,null,`class`,`meta`);
-let elzz0Cv = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
-let elU9wMD = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
+let el_RHtw = eo('div',null,null,`class`,`m-b-2 d-flex justify-content-between`);
+let el8kALX = eo('div',null,null,`class`,`meta`);
+let elUfcxe = ev('img',null,null,`src`,`${assets('images/en.png')}`,`class`,`einstein-image`,`title`,`${'Einstein Chamber'}`,`alt`,`${'Einstein Chamber'}`);
+let el5wQJq = eo('h3',null,null,`class`,`d-inline bold m-l-1`);
 text(`Einstein Chamber`);
 ec('h3');
-let elWug6i = eo('span',null,null,`class`,`shop badge badge-default m-l-1`);
+let el95BCF = eo('span',null,null,`class`,`shop badge badge-default m-l-1`);
 text(`Shop`);
 ec('span');
 ec('div');
-let cmpWp2r = this._lc('cN5LGEzJv', {parent:component,parentTop:layout,state:'stFthFO'});
+let cmpFz4u = this._lc('cMYj9wedg', {parent:component,parentTop:layout,state:'stEx4nt'});
 ec('div');
-let el18oDG = eo('div',null,null,`class`,`row`);
+let elZRxwg = eo('div',null,null,`class`,`row`);
 for (let i in component.categories) {
 let category = component.categories[i]; 
- let iiD2x3 = 'Qbb2Nlj' + i;
-let elJtz8_ = eo('div','kHt24AdZdcgn' + i+iiD2x3,null,`class`,`col-6 col-sm-4 col-md-3 m-b-2`);
-let cmpJdwX = this._lc('cVGWzYB5K', {parent:component,parentTop:layout,props:{category:category},state:'stFthFO',insideLoop:true,index:"" +iiD2x3});
+ let iiijkK = 'uHr84Rm' + i;
+let el5EdYR = eo('div','PeaI305BKAv0' + i+iiijkK,null,`class`,`col-6 col-sm-4 col-md-3 m-b-2`);
+let cmphBwu = this._lc('cKxoWVzCW', {parent:component,parentTop:layout,props:{category:category},state:'stEx4nt',insideLoop:true,index:"" +iiijkK});
 ec('div');
 }
 ec('div');

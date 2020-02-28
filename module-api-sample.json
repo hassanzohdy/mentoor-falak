@@ -1,0 +1,89 @@
+[
+    {
+        "route": "/admin",
+        "name": "adminRoutes",
+        "description": "Admin Routes API",
+        "list": [
+            {
+                "route": "/users",
+                "name": "adminUsers",
+                "method": "GET",
+                "description": "Users List",
+                "query": [
+                    {
+                        "name": "id",
+                        "type": "int",
+                        "default": "",
+                        "description": ""
+                    },
+                    {
+                        "name": "status",
+                        "type": "string",
+                        "default": "enabled",
+                        "options": [
+                            "enabled",
+                            "disabled"
+                        ],
+                        "description": "...",
+                        "required": false
+                    }
+                ],
+                "body": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "rules": "required"
+                    },
+                    {
+                        "name": "email",
+                        "type": "string",
+                        "rules": "required|email|unique"
+                    },
+                    {
+                        "name": "password",
+                        "type": "string",
+                        "rules": "required|min: 10"
+                    },
+                    {
+                        "name": "confirmPassword",
+                        "type": "string",
+                        "rules": "required|min: 10:match: password"
+                    }
+                ],
+                "response": [
+                    {
+                        "code": 200,
+                        "body": [
+                            {
+                                "name": "code",
+                                "type": "string",
+                                "expectedValue": "OK|NO"
+                            },
+                            {
+                                "name": "records",
+                                "type": "array",
+                                "value": [
+                                    {
+                                        "name": "id",
+                                        "type": "int"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "object",
+                                        "value": [
+                                            {
+                                                "name": "first",
+                                                "type": "string",
+                                                "description": "First Name"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

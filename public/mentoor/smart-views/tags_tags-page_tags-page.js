@@ -6,7 +6,7 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let elf6j0N = eo('h1');
+                    let elLCgDO = eo('h1');
 text(`tags-page component is ready`);
 ec('h1');
 

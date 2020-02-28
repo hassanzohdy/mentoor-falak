@@ -4,52 +4,52 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','sprint'],
-                children: {c1wTz5WaR:'markdown',cssh7ebOM:'project-layout'},
+                children: {cYwbBErfq:'markdown',cqAtT6S0R:'project-layout'},
                 render: function (component) {
-                    let cmpT_pv = this._lc('cssh7ebOM', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let eljTtxj = eo('div',null,null,`class`,`float-right m-b-1`);
-let elZthJx = eo('a',null,null,`href`,`${URLS.project(component.project, 'sprints')}`,`class`,`btn bold btn-purple`);
-let ely231a = eo('i',null,null,`class`,`${fas('arrow-left') + ' mr-2 icon'}`);
+                    let cmpPJZS = this._lc('cqAtT6S0R', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let el089Jw = eo('div',null,null,`class`,`float-right m-b-1`);
+let elOjyGr = eo('a',null,null,`href`,`${URLS.project(component.project, 'sprints')}`,`class`,`btn bold btn-purple`);
+let elu6zlA = eo('i',null,null,`class`,`${fas('arrow-left')} mr-2 icon`);
 ec('i');
 text(`Back to
             Sprints
             List`);
 ec('a');
 ec('div');
-let elkdWwR = eo('h1',null,null,`class`,`heading`);
+let el3AwyH = eo('h1',null,null,`class`,`heading`);
 text(component.sprint.name);
 ec('h1');
-let el1CG1A = eo('div',null,null,`class`,`row m-t-3`);
-let elqswfJ = eo('div',null,null,`class`,`col-9`);
-let elign8a = eo('div',null,null,`class`,`simple-card`);
-let cmpmWj0 = this._lc('c1wTz5WaR', {parent:component,parentTop:projectLayout,props:{content:component.sprint.goal}});
+let elMWi3l = eo('div',null,null,`class`,`row m-t-3`);
+let elyFV6c = eo('div',null,null,`class`,`col-9`);
+let elw2TXc = eo('div',null,null,`class`,`simple-card`);
+let cmpGHzR = this._lc('cYwbBErfq', {parent:component,parentTop:projectLayout,props:{content:component.sprint.goal}});
 ec('div');
 ec('div');
-let elKWEBZ = eo('div',null,null,`class`,`col`);
-let el7r_ZK = eo('div',null,null,`class`,`card p-1`);
-let el_0rYj = eo('h3',null,null,`class`,`text-center m-b-1`);
+let elBHPRp = eo('div',null,null,`class`,`col`);
+let elJQIko = eo('div',null,null,`class`,`card p-1`);
+let elM0fJp = eo('h3',null,null,`class`,`text-center m-b-1`);
 text(`Sprint Details`);
 ec('h3');
-let elY77Kv = eo('div',null,null,`class`,`m-b-1`);
-let el37mOX = eo('span',null,null,`class`,`mr-3`);
+let el6e7Xd = eo('div',null,null,`class`,`m-b-1`);
+let elG5H3i = eo('span',null,null,`class`,`mr-3`);
 text(`Status`);
 ec('span');
-let elZuqHs = eo('strong');
+let elU536d = eo('strong');
 text(component.sprint.status.capitalize());
 ec('strong');
 ec('div');
-let elBIvMI = eo('div',null,null,`class`,`m-b-1`);
-let elUhCZ6 = eo('span',null,null,`class`,`mr-3`);
+let ellMwxj = eo('div',null,null,`class`,`m-b-1`);
+let elmisNH = eo('span',null,null,`class`,`mr-3`);
 text(`Starts At`);
 ec('span');
-let elLrd1x = eo('strong');
+let elSQLZN = eo('strong');
 text(component.sprint.startsAt);
 ec('strong');
 ec('div');
-let el_hjlc = eo('div',null,null,`class`,`m-b-1`);
-let elIG8dI = eo('span',null,null,`class`,`mr-3`);
+let elt6snY = eo('div',null,null,`class`,`m-b-1`);
+let elWHxF5 = eo('span',null,null,`class`,`mr-3`);
 text(`Ends At`);
 ec('span');
-let eltfGcb = eo('strong');
+let elu_bEu = eo('strong');
 text(component.sprint.endsAt);
 ec('strong');
 ec('div');

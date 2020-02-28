@@ -163,9 +163,11 @@ function initializeUrls() {
         arena(challenge){
             return `/arena/challenges/${challenge}`;
         },
-        project(project, extend = null, extra) {
+        project(project, extend = '', extra) {
             if (! project) return '';
-            extend = extend ? '/' + extend : '';
+            if (extend) {
+                extend = '/' + extend;
+            }
 
             if (extra  && Is.plainObject(extra)) {
                 extend += '/' + extra.id;

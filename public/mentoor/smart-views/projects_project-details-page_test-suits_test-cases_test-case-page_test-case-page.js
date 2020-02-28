@@ -4,150 +4,150 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','testCase','testCaseStatusCanBeChanged','openStatusChangeConfirm','confirmStatusChange','reasonIsRequired','getConfirmingMessage','statusChanger','updateStatus'],
-                children: {cNc0ukmtE:'flk-time-ago',c_3qcIdi0:'markdown',cPDVlJ0r2:'markdown',cSs0Ff8sC:'markdown',cg2552Ueg:'markdown',cemRul5av:'markdown',c8pT6LnIc:'markdown',cCRQ0HtB3:'comments',ctrrxijMi:'flk-time-ago',c7jSEP_Q0:'flk-dropdown-list',cNtyD_JWg:'project-layout',ccim6jPRe:'flk-alert'},
+                children: {crLzvFxoI:'flk-time-ago',cGBFuM_1I:'markdown',cpM5Ap2yR:'markdown',c_16OYyUd:'markdown',cMEuIXU1a:'markdown',cItCuvwX3:'markdown',cwR0ij4U5:'markdown',cEXo8U2ut:'comments',cB4fN1AkB:'flk-time-ago',cK3er0fT9:'flk-dropdown-list',cUltbb4Dh:'project-layout',cjUTRcHXU:'flk-alert'},
                 render: function (component) {
-                    let cmp8zCG = this._lc('cNtyD_JWg', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elDDFx6 = eo('div',null,null,`class`,`text-right m-b-1`);
-let eloolEV = eo('a',null,null,`href`,`${URLS.project(component.project, 'test-suits')}`,`class`,`btn bold btn-purple`);
-let elSrZRZ = eo('i',null,null,`class`,`${fas('arrow-left') + ' mr-2 icon'}`);
+                    let cmpJfXk = this._lc('cUltbb4Dh', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let eltTqBv = eo('div',null,null,`class`,`text-right m-b-1`);
+let elT11pn = eo('a',null,null,`href`,`${URLS.project(component.project, 'test-suits')}`,`class`,`btn bold btn-purple`);
+let elK7E6h = eo('i',null,null,`class`,`${fas('arrow-left')} mr-2 icon`);
 ec('i');
 text(`Back to
             test suits`);
 ec('a');
 ec('div');
-let cndbFaR = component.testCase;
-this.setState('st4lLKk', cndbFaR);
-if (cndbFaR) { 
-let elu1iE4 = eo('div','NrSf',null,`class`,`testCase row`);
-let el99QH9 = eo('div','SQgf',null,`class`,`col col-sm-9 order-12 order-sm-1`);
-let elBbpVy = eo('h1','fWxf',null,`class`,`title`);
+let cndriMo = component.testCase;
+this.setState('stSyh5h', cndriMo);
+if (cndriMo) { 
+let elfLzQE = eo('div','Squf',null,`class`,`testCase row`);
+let elTdkJe = eo('div','eNEf',null,`class`,`col col-sm-9 order-12 order-sm-1`);
+let el6VX7D = eo('h1','dcLf',null,`class`,`title`);
 text('#' + component.testCase.id + ' ' + component.testCase.title);
 ec('h1');
-let el1ZIkH = ev('img','MQIf',null,`src`,`${component.testCase.createdBy.image}`,`class`,`user-image`,`title`,`${component.testCase.createdBy.name}`,`alt`,`${component.testCase.createdBy.name}`);
-let elOYCtA = eo('div','VEUf',null,`class`,`d-inline-block`);
-let elGGOBr = eo('div','v2Jf');
+let elzDmqH = ev('img','4MEf',null,`src`,`${component.testCase.createdBy.image}`,`class`,`user-image`,`title`,`${component.testCase.createdBy.name}`,`alt`,`${component.testCase.createdBy.name}`);
+let elpu24L = eo('div','q3Af',null,`class`,`d-inline-block`);
+let elRINiG = eo('div','okYf');
 text(component.testCase.createdBy.name);
 ec('div');
-let eljj9I1 = eo('div','iK7f');
-let cmp70vL = this._lc('cNc0ukmtE', {parent:component,parentTop:projectLayout,props:{timestamp:component.testCase.createdAt.timestamp},attrs:{class:'ago'},state:'st4lLKk'});
+let elwC7nZ = eo('div','Dejf');
+let cmpiWlN = this._lc('crLzvFxoI', {parent:component,parentTop:projectLayout,props:{timestamp:component.testCase.createdAt.timestamp},attrs:{class:'ago'},state:'stSyh5h'});
 ec('div');
 ec('div');
-let elE5bjT = eo('div','0q_f',null,`class`,`simple-card p-1 m-y-1`);
-let elX9ZWQ = eo('div','Uo5f',null,`class`,`result-heading`);
+let el0rqY3 = eo('div','9Saf',null,`class`,`simple-card p-1 m-y-1`);
+let elBCUJK = eo('div','ROpf',null,`class`,`result-heading`);
 text(`Description`);
 ec('div');
-let cmppxzb = this._lc('c_3qcIdi0', {parent:component,parentTop:projectLayout,props:{content:component.testCase.description},state:'st4lLKk'});
+let cmpEsyg = this._lc('cGBFuM_1I', {parent:component,parentTop:projectLayout,props:{content:component.testCase.description},state:'stSyh5h'});
 ec('div');
-let elxToIg = eo('div','vVFf',null,`class`,`simple-card p-1 m-y-1`);
-let elFc02Y = eo('div','21Rf',null,`class`,`result-heading`);
+let elVqNy0 = eo('div','6fEf',null,`class`,`simple-card p-1 m-y-1`);
+let elFmfQj = eo('div','S_kf',null,`class`,`result-heading`);
 text(`Data`);
 ec('div');
-let cmp8wmj = this._lc('cPDVlJ0r2', {parent:component,parentTop:projectLayout,props:{content:component.testCase.data},state:'st4lLKk'});
+let cmpW0mE = this._lc('cpM5Ap2yR', {parent:component,parentTop:projectLayout,props:{content:component.testCase.data},state:'stSyh5h'});
 ec('div');
-let cnd4IMz = component.testCase.preconditions;
-this.setState('stYsAnk', cnd4IMz);
-if (cnd4IMz) { 
-let elUVarO = eo('div','5vRf',null,`class`,`simple-card p-1 m-y-1`);
-let elV8pUC = eo('div','L0uf',null,`class`,`result-heading`);
+let cndoRX0 = component.testCase.preconditions;
+this.setState('stLZqwa', cndoRX0);
+if (cndoRX0) { 
+let elcqvnt = eo('div','RFsf',null,`class`,`simple-card p-1 m-y-1`);
+let elClqjE = eo('div','QkNf',null,`class`,`result-heading`);
 text(`Pre Conditions`);
 ec('div');
-let cmpbbRU = this._lc('cSs0Ff8sC', {parent:component,parentTop:projectLayout,props:{content:component.testCase.preconditions},state:'stYsAnk'});
+let cmpgrkD = this._lc('c_16OYyUd', {parent:component,parentTop:projectLayout,props:{content:component.testCase.preconditions},state:'stLZqwa'});
 ec('div');
-}let cndpmyc = ! Is.empty(component.testCase.preConditionsTestCases);
-this.setState('stljI1N', cndpmyc);
-if (cndpmyc) { 
-let eloIf_G = eo('div','Hpnf',null,`class`,`simple-card p-1 m-y-1`);
-let elVsbpC = eo('div','XTjf',null,`class`,`result-heading`);
+}let cndeCdG = ! Is.empty(component.testCase.preConditionsTestCases);
+this.setState('stSzqU2', cndeCdG);
+if (cndeCdG) { 
+let elXubLZ = eo('div','CXcf',null,`class`,`simple-card p-1 m-y-1`);
+let eliYcLj = eo('div','Wo4f',null,`class`,`result-heading`);
 text(`Pre Conditions (Test Cases)`);
 ec('div');
 for (let i in component.testCase.preConditionsTestCases) {
 let testCase = component.testCase.preConditionsTestCases[i]; 
- let iinLro = 'PT8gSnz' + i;
-let elojiIk = eo('a','YwEMsMm7cAWg' + i+iinLro,null,`href`,`${URLS.project(component.project, 'test-cases', testCase)}`,`class`,`btn bold btn-sm btn-pink`);
+ let iibXfa = 'CSF721v' + i;
+let elELT1l = eo('a','KdDyEO7E0laL' + i+iibXfa,null,`href`,`${URLS.project(component.project, 'test-cases', testCase)}`,`class`,`btn bold btn-sm btn-pink`);
 text(testCase.title);
 ec('a');
 }
 ec('div');
-}let cndeTes = component.testCase.postConditions;
-this.setState('st2mimO', cndeTes);
-if (cndeTes) { 
-let el8LoA2 = eo('div','99Hf',null,`class`,`simple-card p-1 m-y-1`);
-let elADiLR = eo('div','Rv8f',null,`class`,`result-heading`);
+}let cndVu6y = component.testCase.postConditions;
+this.setState('stJ5a4a', cndVu6y);
+if (cndVu6y) { 
+let elSaj_h = eo('div','LSyf',null,`class`,`simple-card p-1 m-y-1`);
+let elJOE3h = eo('div','7PIf',null,`class`,`result-heading`);
 text(`Post Conditions`);
 ec('div');
-let cmpGRYw = this._lc('cg2552Ueg', {parent:component,parentTop:projectLayout,props:{content:component.testCase.postConditions},state:'st2mimO'});
+let cmpOWN1 = this._lc('cMEuIXU1a', {parent:component,parentTop:projectLayout,props:{content:component.testCase.postConditions},state:'stJ5a4a'});
 ec('div');
-}let elP86oK = eo('div',null,null,`class`,`simple-card p-1 m-b-1`);
-let el5d3sl = eo('div',null,null,`class`,`result-heading`);
+}let el3cJoi = eo('div',null,null,`class`,`simple-card p-1 m-b-1`);
+let elMs8M7 = eo('div',null,null,`class`,`result-heading`);
 text(`Steps To Reproduce`);
 ec('div');
-let el8py9V = eo('ol',null,null,`class`,`steps-list`);
+let elbzOr0 = eo('ol',null,null,`class`,`steps-list`);
 for (let i in component.testCase.stepsToReproduce.split('\n')) {
 let step = component.testCase.stepsToReproduce.split('\n')[i]; 
- let ii9L2N = 'yIsfNIo' + i;
-let eln30Bz = eo('li','MKsXt64KGWYl' + i+ii9L2N);
+ let iiHqRR = 'RKqrSj5' + i;
+let elG8ExA = eo('li','lBIi7o0VaFci' + i+iiHqRR);
 text(step);
 ec('li');
 }
 ec('ol');
 ec('div');
-let elDMKAV = eo('div',null,null,`class`,`simple-card p-1 m-b-1`);
-let elaU_Z4 = eo('div',null,null,`class`,`result-heading`);
+let elWRFmY = eo('div',null,null,`class`,`simple-card p-1 m-b-1`);
+let elvo2AG = eo('div',null,null,`class`,`result-heading`);
 text(`Expected Result`);
 ec('div');
-let cmpJRiV = this._lc('cemRul5av', {parent:component,parentTop:projectLayout,props:{content:component.testCase.expectedBehavior}});
+let cmpKhO7 = this._lc('cItCuvwX3', {parent:component,parentTop:projectLayout,props:{content:component.testCase.expectedBehavior}});
 ec('div');
-let el3S7nP = eo('div',null,null,`class`,`simple-card p-1 m-b-1`);
-let eltptAC = eo('div',null,null,`class`,`result-heading`);
+let elp4MrF = eo('div',null,null,`class`,`simple-card p-1 m-b-1`);
+let el3oQi8 = eo('div',null,null,`class`,`result-heading`);
 text(`Actual Result`);
 ec('div');
-let cmpe1tp = this._lc('c8pT6LnIc', {parent:component,parentTop:projectLayout,props:{content:component.testCase.actualResult}});
+let cmptkWS = this._lc('cwR0ij4U5', {parent:component,parentTop:projectLayout,props:{content:component.testCase.actualResult}});
 ec('div');
-let cmpObSr = this._lc('cCRQ0HtB3', {parent:component,parentTop:projectLayout,props:{project:component.project,comments:component.testCase.comments,typeId:component.testCase.id},attrs:{type:'testCase'}});
-let el9xEeA = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
+let cmpJieG = this._lc('cEXo8U2ut', {parent:component,parentTop:projectLayout,props:{project:component.project,comments:component.testCase.comments,typeId:component.testCase.id},attrs:{type:'testCase'}});
+let eluvPIn = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
 text(`Test Case Status Change Log`);
 ec('h3');
-let elclPO4 = eo('table',null,null,`class`,`table table-bordered`);
-let eluO9uh = eo('thead');
-let elCrRqZ = eo('tr');
-let elvJcM6 = eo('th');
+let elOQzhM = eo('table',null,null,`class`,`table table-bordered`);
+let elJUCUC = eo('thead');
+let ellSP9E = eo('tr');
+let elsmfva = eo('th');
 text(`Status`);
 ec('th');
-let elq4qpX = eo('th');
+let elKV6Fb = eo('th');
 text(`Created By`);
 ec('th');
-let el2eFAr = eo('th');
+let elQYwzs = eo('th');
 text(`Created`);
 ec('th');
-let elI1zQ7 = eo('th');
+let elD3sjx = eo('th');
 text(`Extra`);
 ec('th');
 ec('tr');
 ec('thead');
-let elFDG6c = eo('tbody');
+let elHrnbs = eo('tbody');
 for (let i in component.testCase.statuses) {
 let status = component.testCase.statuses[i]; 
- let iiaeRo = 'iFzNIe_' + i;
-let elK0j1g = eo('tr','Wnm4T9QGZJsn' + i+iiaeRo);
-let el2GZqd = eo('td','Vb0ff'+iiaeRo);
+ let ii4_fP = 'CT82_He' + i;
+let elUEiEm = eo('tr','HbVATZWWA1AH' + i+ii4_fP);
+let el0sfKg = eo('td','_rxff'+ii4_fP);
 text(status.status.capitalize());
 ec('td');
-let elV67GC = eo('td','XFzff'+iiaeRo);
+let elch9tL = eo('td','so7ff'+ii4_fP);
 text(status.createdBy.name);
 ec('td');
-let elTRjoP = eo('td','I2jff'+iiaeRo);
-let cmps1tj = this._lc('ctrrxijMi', {parent:component,parentTop:projectLayout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +iiaeRo});
+let el1KxcK = eo('td','Zbcff'+ii4_fP);
+let cmp08e_ = this._lc('cB4fN1AkB', {parent:component,parentTop:projectLayout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +ii4_fP});
 ec('td');
-let elk3QcD = eo('td','E5Yff'+iiaeRo);
-let cndwORF = status.reason;
-this.setState('stXMw0h', cndwORF);
-if (cndwORF) { 
-let elTdiSz = eo('strong','4rZff'+iiaeRo);
+let eljWmdl = eo('td','6vwff'+ii4_fP);
+let cndrxOk = status.reason;
+this.setState('stq2vT9', cndrxOk);
+if (cndrxOk) { 
+let el8dpkj = eo('strong','FUbff'+ii4_fP);
 text(status.reason);
 ec('strong');
-}let cndTypA = Object.get(status.bug, 'id', '');
-this.setState('st_vb9L', cndTypA);
-if (cndTypA) { 
-let elmBCrN = eo('a','J88ff'+iiaeRo,null,`href`,`${URLS.project(component.project, 'bugs', status.bug)}`);
+}let cnd46nf = Object.get(status.bug, 'id', '');
+this.setState('stjljyf', cnd46nf);
+if (cnd46nf) { 
+let elyxrQP = eo('a','wNUff'+ii4_fP,null,`href`,`${URLS.project(component.project, 'bugs', status.bug)}`);
 text(`Bug #${ status.bug.id }`);
 ec('a');
 }ec('td');
@@ -156,81 +156,71 @@ ec('tr');
 ec('tbody');
 ec('table');
 ec('div');
-let el7CaPc = eo('div',null,null,`class`,`col col-sm-3 order-1`);
-let elvwg6n = eo('div',null,null,`class`,`simple-card`);
-let ellfOls = eo('h2',null,null,`class`,`text-center`);
+let el1VQUE = eo('div',null,null,`class`,`col col-sm-3 order-1`);
+let elmCfOm = eo('div',null,null,`class`,`simple-card`);
+let elZMBE9 = eo('h2',null,null,`class`,`text-center`);
 text(`Test Case Information`);
 ec('h2');
-let eldIE44 = eo('table',null,null,`class`,`table m-t-2`);
-let el6wcxf = eo('tbody');
-let elEt1aS = eo('tr');
-let elWf0jN = eo('td');
+let elZtFXz = eo('table',null,null,`class`,`table m-t-2`);
+let ellwTel = eo('tbody');
+let eltH2fI = eo('tr');
+let elaxdAR = eo('td');
 text(`Type`);
 ec('td');
-let elycN8i = eo('th',null,null,`class`,`bold ${ component.testCase.type } text-capitalize`);
-elycN8i.cls = {'green-text': component.testCase.type == 'positive', 'red-text': component.testCase.type == 'negative'};
-
-            for (let className in elycN8i.cls) {
-                elycN8i.classList.toggle(className, elycN8i.cls[className]);
-            }  
-            text(component.testCase.type);
+let eliqzR4 = eo('th',null,null,`class`,`bold ${ component.testCase.type } text-capitalize ${cls({'green-text': component.testCase.type == 'positive', 'red-text': component.testCase.type == 'negative'})}`);
+text(component.testCase.type);
 ec('th');
 ec('tr');
-let cndqscI = component.testCase.status;
-this.setState('stLHD5S', cndqscI);
-if (cndqscI) { 
-let elrfmXf = eo('tr','lBqf');
-let eliwTK1 = eo('td','PQBf');
+let cndtPGW = component.testCase.status;
+this.setState('st3IkW6', cndtPGW);
+if (cndtPGW) { 
+let elTYYW7 = eo('tr','YNwf');
+let elpMIqO = eo('td','LAIf');
 text(`Status`);
 ec('td');
-let elDLuaS = eo('th','SJjf',null,`class`,`bold status ${ component.testCase.status } text-capitalize`);
-elDLuaS.cls = {'orange-text': component.testCase.status == 'blocked', 'green-text': component.testCase.status == 'passed', 'red-text': component.testCase.status == 'failed'};
-
-            for (let className in elDLuaS.cls) {
-                elDLuaS.classList.toggle(className, elDLuaS.cls[className]);
-            }  
-            text(component.testCase.status);
+let elhyu32 = eo('th','5zCf',null,`class`,`bold status ${ component.testCase.status } text-capitalize ${cls({'orange-text': component.testCase.status == 'blocked', 'green-text': component.testCase.status == 'passed', 'red-text': component.testCase.status == 'failed'})}`);
+text(component.testCase.status);
 ec('th');
 ec('tr');
-}let elU8E83 = eo('tr');
-let el5S8k_ = eo('td');
+}let elxzVeK = eo('tr');
+let elyLG5h = eo('td');
 text(`Priority`);
 ec('td');
-let elTeE54 = eo('th',null,null,`class`,`bold priority ${ component.testCase.priority }`);
+let elQrBjZ = eo('th',null,null,`class`,`bold priority ${ component.testCase.priority }`);
 text(component.testCase.priority);
 ec('th');
 ec('tr');
-let cndIhh4 = component.testCase.status == 'failed';
-this.setState('stxQhGl', cndIhh4);
-if (cndIhh4) { 
-let elIVwh5 = eo('tr','bOYf');
-let elMkQVA = eo('td','eUxf');
+let cndxKiT = component.testCase.status == 'failed';
+this.setState('stN7ipG', cndxKiT);
+if (cndxKiT) { 
+let elO3ryQ = eo('tr','FJvf');
+let el93QI7 = eo('td','BY8f');
 text(`Bug`);
 ec('td');
-let el2qcwJ = eo('th','a6Pf');
-let el5PZxB = eo('a','dyof',null,`href`,`${URLS.project(component.project, 'bugs', component.testCase.bug)}`);
+let elyJvdq = eo('th','_HPf');
+let elKrf6d = eo('a','zF4f',null,`href`,`${URLS.project(component.project, 'bugs', component.testCase.bug)}`);
 text('#' + component.testCase.bug.id);
 ec('a');
 ec('th');
 ec('tr');
-}let elwcU5U = eo('tr');
-let elkrxB9 = eo('td');
+}let elbJIkO = eo('tr');
+let elNeoUU = eo('td');
 text(`Test Suit`);
 ec('td');
-let elB4wSw = eo('th');
+let elJvwVd = eo('th');
 text(component.testCase.testSuit.name);
 ec('th');
 ec('tr');
-let cndmyFF = component.testCase.attachment;
-this.setState('st9PELt', cndmyFF);
-if (cndmyFF) { 
-let elxud11 = eo('tr','vuuf');
-let elPT6F8 = eo('td','pKhf');
+let cndZ7Bp = component.testCase.attachment;
+this.setState('stExA5a', cndZ7Bp);
+if (cndZ7Bp) { 
+let elGhVPI = eo('tr','CUwf');
+let elgWqkb = eo('td','sX4f');
 text(`Automation File`);
 ec('td');
-let elfSPfJ = eo('th','cCKf');
-let elD32IX = eo('a','y3cf',null,`href`,`${component.testCase.attachment}`,`class`,`btn btn-sm btn-bold btn-pink`,`target`,`_blank`);
-let el5kVnf = eo('i','ryPf',null,`class`,`${fas('cloud-download-alt') + ' mr-2 icon'}`);
+let elBr7za = eo('th','un0f');
+let elqiObm = eo('a','0kjf',null,`href`,`${component.testCase.attachment}`,`class`,`btn btn-sm btn-bold btn-pink`,`target`,`_blank`);
+let elqtjr_ = eo('i','AMZf',null,`class`,`${fas('cloud-download-alt')} mr-2 icon`);
 ec('i');
 text(`Download`);
 ec('a');
@@ -239,22 +229,22 @@ ec('tr');
 }ec('tbody');
 ec('table');
 ec('div');
-let cndCv5U = component.testCaseStatusCanBeChanged;
-this.setState('st2ng7c', cndCv5U);
-if (cndCv5U) { 
-let elhSYUW = eo('div','G5ef',null,`class`,`simple-card mt-2`);
-let elh4RY9 = eo('h2','oHmf',null,`class`,`text-center m-b-1`);
+let cndo2z_ = component.testCaseStatusCanBeChanged;
+this.setState('stIrJvk', cndo2z_);
+if (cndo2z_) { 
+let elClNjE = eo('div','N8Hf',null,`class`,`simple-card mt-2`);
+let elBmThK = eo('h2','YoAf',null,`class`,`text-center m-b-1`);
 text(`Test Case Status`);
 ec('h2');
-component.statusChanger = this._lc('c7jSEP_Q0', {parent:component,parentTop:projectLayout,props:{value:component.testCase.status,items:['passed', 'failed', 'blocked', 'dead']},events:{onselect:function(e) {let $el = this; component.openStatusChangeConfirm(e.value)}},attrs:{heading:'Change test case Status'},state:'st2ng7c'});
+component.statusChanger = this._lc('cK3er0fT9', {parent:component,parentTop:projectLayout,props:{value:component.testCase.status,items:['passed', 'failed', 'blocked', 'dead']},events:{onselect:function(e) {let $el = this; component.openStatusChangeConfirm(e.value)}},attrs:{heading:'Change test case Status'},state:'stIrJvk'});
 ec('div');
 }ec('div');
 ec('div');
 }}});
-let cndLQe8 = component.confirmStatusChange;
-this.setState('stDEafF', cndLQe8);
-if (cndLQe8) { 
-let cmpl3vs = this._lc('ccim6jPRe', {parent:component,props:{withInput:component.reasonIsRequired,message:component.getConfirmingMessage(),required:component.reasonIsRequired},events:{onclose:function(e) {let $el = this; component.statusChanger.currentValue = component.testCase.status; component.confirmStatusChange = null},onconfirm:function(e) {let $el = this; component.updateStatus(e)}},state:'stDEafF'});
+let cndAKLx = component.confirmStatusChange;
+this.setState('stg2nZk', cndAKLx);
+if (cndAKLx) { 
+let cmpxxNR = this._lc('cjUTRcHXU', {parent:component,props:{withInput:component.reasonIsRequired,message:component.getConfirmingMessage(),required:component.reasonIsRequired},events:{onclose:function(e) {let $el = this; component.statusChanger.currentValue = component.testCase.status; component.confirmStatusChange = null},onconfirm:function(e) {let $el = this; component.updateStatus(e)}},state:'stg2nZk'});
 }
                     this.isReadyToGo();
                 }

@@ -4,171 +4,161 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['hasItems','currentStep','finalStep','texts','currentPage'],
-                children: {cmRbs0Du_:'markdown'},
+                children: {cqmMTyGCh:'markdown'},
                 render: function (component) {
-                    let elizXDO = eo('div',null,null,`class`,`dark`);
-elizXDO.cls = {items: component.hasItems};
-
-            for (let className in elizXDO.cls) {
-                elizXDO.classList.toggle(className, elizXDO.cls[className]);
-            }  
-            let cndj3xh = component.hasItems;
-this.setState('stc5e1Y', cndj3xh);
-if (cndj3xh) { 
-let ell6Alp = eo('div','W6df',null,`class`,`fb-page`);
-let elth3Ya = eo('i','wnbf',null,`class`,`${fas('facebook') + ' icon'}`);
+                    let elBRh1A = eo('div',null,null,`class`,`dark ${cls({items: component.hasItems})}`);
+let cndVOYh = component.hasItems;
+this.setState('stYAxj3', cndVOYh);
+if (cndVOYh) { 
+let elYYhib = eo('div','aTNf',null,`class`,`fb-page`);
+let ellsdhs = eo('i','Vdef',null,`class`,`${fas('facebook')} icon`);
 ec('i');
-let elUBwZi = eo('span','Vf_f',null,`class`,``);
+let eljGexB = eo('span','LcLf',null,`class`,``);
 text(`/mentoor.io`);
 ec('span');
 ec('div');
-}let cndZdGG = component.hasItems;
-this.setState('stxDb5R', cndZdGG);
-if (cndZdGG) { 
-let eljbDCM = eo('div','QLxf',null,`class`,`items-heading bold text-center white-text`);
-let elT2_wP = ev('img','ek_f',null,`src`,`${assets('images/en.png')}`,`class`,`sm`);
-elT2_wP.cls = {gray: component.currentStep != component.finalStep};
-
-            for (let className in elT2_wP.cls) {
-                elT2_wP.classList.toggle(className, elT2_wP.cls[className]);
-            }  
-            let elbJmQi = eo('h1','OUKf');
+}let cndlepu = component.hasItems;
+this.setState('stXlvKy', cndlepu);
+if (cndlepu) { 
+let elwteWv = eo('div','bBxf',null,`class`,`items-heading bold text-center white-text`);
+let elsrxeg = ev('img','hVzf',null,`class`,`sm ${cls({gray: component.currentStep != component.finalStep})}`,`src`,`${assets('images/en.png')}`);
+let elZ8iUr = eo('h1','U47f');
 text(`Problem Solving`);
 ec('h1');
-let elN1z2e = eo('p','kw6f');
+let elZLaxc = eo('p','TGQf');
 text(`Find the missing number`);
 ec('p');
-let elqib4I = ev('img','v0gf',null,`src`,`https://restful.mentoor.io/einstein-categories/esURtDIQPmMvZRVVFMI7DwMW7EeQKDWmKDqjqRFt.png`,`class`,`big`);
-let elvIOB7 = eo('div','padf',null,`class`,`overlay`);
+let elEU6LH = ev('img','uvrf',null,`src`,`https://restful.mentoor.io/einstein-categories/esURtDIQPmMvZRVVFMI7DwMW7EeQKDWmKDqjqRFt.png`,`class`,`big`);
+let elGcGPG = eo('div','S8Sf',null,`class`,`overlay`);
 ec('div');
-let elCJPFa = eo('div','OITf',null,`id`,`logo`);
-let ellIq5V = eo('h1','udHf',null,`id`,`m`);
+let el_9Pd2 = eo('div','I5sf',null,`id`,`logo`);
+let elRt8Wo = eo('h1','ysUf',null,`id`,`m`);
 text(`M`);
 ec('h1');
-let elBwpBH = eo('h1','ehzf',null,`id`,`name`,`class`,`inline`);
+let elDs6TV = eo('h1','d1Vf',null,`id`,`name`,`class`,`inline`);
 text(`mentoor.io`);
 ec('h1');
 ec('div');
-let elI9LL7 = eo('h4','Ygif',null,`class`,`hashtag`);
-let elc5Dbz = eo('div','u_Pf');
+let el7dxZE = eo('h4','Stkf',null,`class`,`hashtag`);
+let el6S7hA = eo('div','Kzpf');
 text(`#mentoor_einstein`);
 ec('div');
 ec('h4');
 ec('div');
-}let cndKWu5 = ! component.hasItems;
-this.setState('stxgp80', cndKWu5);
-if (cndKWu5) { 
-let elk49Gk = eo('h1','YL3f',null,`class`,`text-center white-text`);
+}let cndWCZd = ! component.hasItems;
+this.setState('stfgdLm', cndWCZd);
+if (cndWCZd) { 
+let el8Tj_W = eo('h1','r0bf',null,`class`,`text-center white-text`);
 text(`What Is`);
 ec('h1');
-let el2mgeD = eo('div','cX0f',null,`class`,`m-t-1`);
+let elwXIx6 = eo('div','v2vf',null,`class`,`m-t-1`);
 ec('div');
-let ellXSBA = eo('h1','L_6f',null,`class`,`master`);
+let el9CevN = eo('h1','DBXf',null,`class`,`master`);
 text(`Unit testing`);
 ec('h1');
-let eleU7xX = eo('h1','CHff',null,`class`,`ar`);
+let elNZ9KM = eo('h1','Jepf',null,`class`,`ar`);
 text(`يعني إيه`);
 ec('h1');
-let elHjGzB = eo('div','uxWf',null,`class`,`overlay`);
+let elkRP9x = eo('div','orCf',null,`class`,`overlay`);
 ec('div');
-let elWzHUY = eo('h4','5WKf',null,`class`,`hashtag`);
-let elk5GZh = eo('div','pbEf');
+let elfb5e5 = eo('h4','DYtf',null,`class`,`hashtag`);
+let eler4JI = eo('div','9pzf');
 text(`#mentoor_what_does_it_mean`);
 ec('div');
 ec('h4');
-let eluXHRD = eo('div','OfIf',null,`id`,`logo`);
-let elJC8sB = eo('h1','MRuf',null,`id`,`m`);
+let elmXMD4 = eo('div','sfJf',null,`id`,`logo`);
+let el1OzKF = eo('h1','zRff',null,`id`,`m`);
 text(`M`);
 ec('h1');
-let elzLOb2 = eo('h1','PLuf',null,`id`,`name`,`class`,`inline`);
+let elR1RVD = eo('h1','BFVf',null,`id`,`name`,`class`,`inline`);
 text(`mentoor.io`);
 ec('h1');
 ec('div');
-}let cndyZ8e = component.hasItems;
-this.setState('st4qi5C', cndyZ8e);
-if (cndyZ8e) { 
-let elfLNPk = eo('div','JgTf',null,`class`,`p-1 text-left tutorial-content`);
-let elV_XNn = eo('div','QZ8f',null,`class`,``);
+}let cndwijV = component.hasItems;
+this.setState('stVT0g2', cndwijV);
+if (cndwijV) { 
+let elXFqWN = eo('div','fejf',null,`class`,`p-1 text-left tutorial-content`);
+let eli29sJ = eo('div','VaVf',null,`class`,``);
 for (let page in component.texts) {
 let texts = component.texts[page]; 
- let iiaLRk = 'tQhWGCt' + page;
-let cnd9drj = page == component.currentPage;
-this.setState('stoNvRh', cnd9drj);
-if (cnd9drj) { 
-let elrY3u6 = eo('div','nsxff'+iiaLRk,null,`class`,`page`);
+ let iibjuN = 'mPNsfID' + page;
+let cnd7ruw = page == component.currentPage;
+this.setState('stfEIry', cnd7ruw);
+if (cnd7ruw) { 
+let elG7ZgS = eo('div','ozZff'+iibjuN,null,`class`,`page`);
 for (let i in texts) {
 let statement = texts[i]; 
- let iiidG0 = 'kAGFXWO' + i;
-let cndg8UY = ! statement.type && component.currentStep >= statement.step;
-this.setState('stOZFpC', cndg8UY);
-let cndCJZQ = statement.type == 'h1' && component.currentStep >= statement.step;
-this.setState('sty9tQB', cndCJZQ);
-let cnd2ntD = statement.type == 'p' && component.currentStep >= statement.step;
-this.setState('stoB8Mo', cnd2ntD);
-if (cndg8UY) { 
-let elAHVYB = eo('div','YCMff'+iiaLRk+iiidG0,null,`class`,`p-x-2`);
-let elpgyce = eo('div','r3rff'+iiaLRk+iiidG0,null,`class`,`list`);
-let elLSHMf = eo('div','kETff'+iiaLRk+iiidG0,null,`class`,`animate`);
-let cmpklIc = this._lc('cmRbs0Du_', {parent:component,props:{content:statement.text.trim()},state:'stOZFpC',insideLoop:true,index:"" +iiaLRk+iiidG0});
+ let iin97c = 'r2ypwRt' + i;
+let cndh652 = ! statement.type && component.currentStep >= statement.step;
+this.setState('stsvbg7', cndh652);
+let cndPZbr = statement.type == 'h1' && component.currentStep >= statement.step;
+this.setState('stKWPV3', cndPZbr);
+let cndtYhr = statement.type == 'p' && component.currentStep >= statement.step;
+this.setState('stlK8wL', cndtYhr);
+if (cndh652) { 
+let el6Xnkd = eo('div','XnFff'+iibjuN+iin97c,null,`class`,`p-x-2`);
+let elahBuP = eo('div','S4dff'+iibjuN+iin97c,null,`class`,`list`);
+let ellOO_C = eo('div','DP7ff'+iibjuN+iin97c,null,`class`,`animate`);
+let cmpJVDz = this._lc('cqmMTyGCh', {parent:component,props:{content:statement.text.trim()},state:'stsvbg7',insideLoop:true,index:"" +iibjuN+iin97c});
 ec('div');
 
                     setTimeout(function () {
-                        let $el = elLSHMf;
+                        let $el = ellOO_C;
                         
             var animator = DI.resolve('animator');
-            animator.animate(elLSHMf, statement.animation, 'normal');
+            animator.animate(ellOO_C, statement.animation, 'normal');
         ;
                     }, 20);                
                 ec('div');
 ec('div');
-}else if (cndCJZQ) { 
-let elaONW9 = eo('h1','PZDff'+iiaLRk+iiidG0,null,`class`,`animate ${ statement.className || '' }`);
-let cndI0UZ = statement.icon;
-this.setState('sthHMS_', cndI0UZ);
-if (cndI0UZ) { 
-let elRGk6J = eo('i','cfRff'+iiaLRk+iiidG0,null,`class`,`${fas(statement.icon) + ' icon'}`);
+}else if (cndPZbr) { 
+let el9b9sg = eo('h1','Tzoff'+iibjuN+iin97c,null,`class`,`animate ${ statement.className || '' }`);
+let cnd24Xf = statement.icon;
+this.setState('stwhZlr', cnd24Xf);
+if (cnd24Xf) { 
+let elfeovz = eo('i','TbCff'+iibjuN+iin97c,null,`class`,`${fas(statement.icon)} icon`);
 ec('i');
-}let cndoQ5b = statement.image;
-this.setState('stx6I7_', cndoQ5b);
-if (cndoQ5b) { 
-let elEV2hj = ev('img','YAWff'+iiaLRk+iiidG0,null,`src`,`${statement.image}`);
+}let cndgn8F = statement.image;
+this.setState('stU5Fi1', cndgn8F);
+if (cndgn8F) { 
+let eljkexe = ev('img','HYfff'+iibjuN+iin97c,null,`src`,`${statement.image}`);
 }text( statement.text );
 ec('h1');
 
                     setTimeout(function () {
-                        let $el = elaONW9;
+                        let $el = el9b9sg;
                         
             var animator = DI.resolve('animator');
-            animator.animate(elaONW9, statement.animation, 'normal');
+            animator.animate(el9b9sg, statement.animation, 'normal');
         ;
                     }, 20);                
-                }else if (cnd2ntD) { 
-let elCcBtk = eo('p','DCAff'+iiaLRk+iiidG0,null,`class`,`animate`);
+                }else if (cndtYhr) { 
+let elsAhQW = eo('p','LN2ff'+iibjuN+iin97c,null,`class`,`animate`);
 text(statement.text);
 ec('p');
 
                     setTimeout(function () {
-                        let $el = elCcBtk;
+                        let $el = elsAhQW;
                         
             var animator = DI.resolve('animator');
-            animator.animate(elCcBtk, statement.animation, 'normal');
+            animator.animate(elsAhQW, statement.animation, 'normal');
         ;
                     }, 20);                
                 }}
 ec('div');
 }}
-let cndcvIb = component.currentStep == component.finalStep;
-this.setState('strpawD', cndcvIb);
-if (cndcvIb) { 
-let elUsJ7L = eo('h1','PFyf',null,`class`,`bold animate text-center m-t-3`);
+let cndU_ya = component.currentStep == component.finalStep;
+this.setState('stKOKtB', cndU_ya);
+if (cndU_ya) { 
+let elXXeLX = eo('h1','iTDf',null,`class`,`bold animate text-center m-t-3`);
 text(`Thank you!`);
 ec('h1');
 
                     setTimeout(function () {
-                        let $el = elUsJ7L;
+                        let $el = elXXeLX;
                         
             var animator = DI.resolve('animator');
-            animator.animate(elUsJ7L, 'fadeIn', 'normal');
+            animator.animate(elXXeLX, 'fadeIn', 'normal');
         ;
                     }, 20);                
                 }ec('div');

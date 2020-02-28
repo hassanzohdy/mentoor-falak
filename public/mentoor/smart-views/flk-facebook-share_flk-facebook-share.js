@@ -6,12 +6,12 @@ _Component({
                 observe: ['router'],
                 children: {},
                 render: function (component) {
-                    let elvVCtn = eo('span');
+                    let elXREo9 = eo('span');
 
-                // let elvVCtn = currentElement();
+                // let elXREo9 = currentElement();
 
-                if (! elvVCtn.__rendered) {
-                    elvVCtn.__rendered = true;let elEmTcB = eo('span',null,null,`class`,`fb-share-button`,`data-href`,`${ component.router.url() }`,`data-layout`,`button_count`);
+                if (! elXREo9.__rendered) {
+                    elXREo9.__rendered = true;let eldJzHq = eo('span',null,null,`class`,`fb-share-button`,`data-href`,`${ component.router.url() }`,`data-layout`,`button_count`);
 ec('span');
 
                 } else {

@@ -54,6 +54,7 @@
         "@flk/seo",
         "pluralize",
         "@flk/message",
+        "@flk/tabs",
         "sortablejs"
     ],
     "vendor": {
@@ -119,6 +120,7 @@
         "polls",
         "offline-courses",
         "resources",
-        "arena"
+        "arena",
+        "json-api-preview"
     ]
 }

@@ -6,24 +6,24 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let el3N3UF = eo('div',null,null,`class`,`placeload`);
-let elxE2_L = eo('div',null,null,`class`,`header`);
-let elxxXQ1 = eo('div',null,null,`class`,`img loads`);
+                    let elPa_U5 = eo('div',null,null,`class`,`placeload`);
+let elnU1ex = eo('div',null,null,`class`,`header`);
+let eltCetC = eo('div',null,null,`class`,`img loads`);
 ec('div');
-let eltfzns = eo('div',null,null,`class`,`header-content`);
-let elLndmi = eo('div',null,null,`class`,`content-shape loads`);
+let elTTKdg = eo('div',null,null,`class`,`header-content`);
+let elLtpOe = eo('div',null,null,`class`,`content-shape loads`);
 ec('div');
-let el4GKdh = eo('div',null,null,`class`,`content-shape loads`);
+let elSWvOk = eo('div',null,null,`class`,`content-shape loads`);
 ec('div');
 ec('div');
 ec('div');
-let elwD4S5 = eo('div',null,null,`class`,`image-placeholder loads`);
+let eluQ9FP = eo('div',null,null,`class`,`image-placeholder loads`);
 ec('div');
-let el8JaG0 = eo('div',null,null,`class`,`placeholder-footer`);
-let elxvonr = eo('div',null,null,`class`,`footer-block`);
-let el0E6WY = eo('div',null,null,`class`,`content-shape loads`);
+let elIkIuo = eo('div',null,null,`class`,`placeholder-footer`);
+let elPiuPO = eo('div',null,null,`class`,`footer-block`);
+let elZz3hr = eo('div',null,null,`class`,`content-shape loads`);
 ec('div');
-let elEjIMT = eo('div',null,null,`class`,`content-shape loads`);
+let eltefCf = eo('div',null,null,`class`,`content-shape loads`);
 ec('div');
 ec('div');
 ec('div');

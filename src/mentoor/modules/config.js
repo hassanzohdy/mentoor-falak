@@ -3,7 +3,7 @@ Config.extend({
     http: {
         endpoint: {
             baseUrl: 'https://restful.mentoor.io/api',
-            // baseUrl: 'http://localhost/mentor/back/public/api',
+            baseUrl: 'http://localhost/mentor/back/public/api',
             apiKey: 'SP6YHG56IKLO90MNF4TGAQW23FVBG765', // api key if required i.e Authorization: key {some-key}, add only the key without the `key` word
             baseRoute: '', // base route that will be added at the end of the base url
         }

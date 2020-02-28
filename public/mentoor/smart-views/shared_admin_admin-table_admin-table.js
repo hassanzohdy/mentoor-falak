@@ -4,56 +4,56 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['tableHeading','hideAddBtn','addNewItem','addHeading','records','columns'],
-                children: {cqTIxMI8J:'flk-spinner',c0UNFP7R0:'layout'},
+                children: {cdDvqj7OA:'flk-spinner',cJF4kai0i:'layout'},
                 render: function (component) {
-                    let cmpT6WY = this._lc('c0UNFP7R0', {parent:component,content:(layout) => {let el0HrCy = eo('div',null,null,`class`,`d-flex justify-content-between align-items-center flex-wrap mb-3`);
-let elxQBDV = eo('h2',null,null,`class`,`tableHeading bold`);
+                    let cmpjI0J = this._lc('cJF4kai0i', {parent:component,content:(layout) => {let elmj2Yz = eo('div',null,null,`class`,`d-flex justify-content-between align-items-center flex-wrap mb-3`);
+let eld_pkF = eo('h2',null,null,`class`,`tableHeading bold`);
 text(trans(component.tableHeading));
 ec('h2');
-let cndGUkP = !component.hideAddBtn;
-this.setState('stwCXlt', cndGUkP);
-if (cndGUkP) { 
-let el9_JCg = eo('button','Mamf',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewItem()}]},`class`,`btn btn-info`);
-let ellBHyp = eo('i','u0Vf',null,`class`,`${fas('plus') + ' icon'}`);
+let cndrR1G = !component.hideAddBtn;
+this.setState('stzrAMt', cndrR1G);
+if (cndrR1G) { 
+let elvbBjk = eo('button','SZjf',null, eventListeners, {onclick:[function(e) {var $el = this;component.addNewItem()}]},`class`,`btn btn-info`);
+let elG1CWX = eo('i','DWNf',null,`class`,`${fas('plus')} icon`);
 ec('i');
 text(trans('add-new-item', trans(component.addHeading)));
 ec('button');
 }ec('div');
-let cndLTVD = ! Is.empty(component.records);
-this.setState('st2F2zG', cndLTVD);
-if (cndLTVD) { 
-let elOjcb6 = eo('small','Yu6f',null,`class`,`m-b-1 d-block`);
+let cndHukh = ! Is.empty(component.records);
+this.setState('st3Ohd4', cndHukh);
+if (cndHukh) { 
+let elECMFs = eo('small','5CAf',null,`class`,`m-b-1 d-block`);
 text(`Displaying`);
-let elXN0Ow = eo('strong','BZRf',null,`class`,`mx-2`);
+let elZaRPl = eo('strong','WRZf',null,`class`,`mx-2`);
 text(component.records.length.format());
 ec('strong');
 text(`Records.`);
 ec('small');
-}let elo_H2K = eo('div',null,null,`class`,`table-responsive`);
-let elpCp_x = eo('table',null,null,`class`,`table table-hover admin-table`);
-let elXhKXC = eo('thead',null,null,`class`,`thead-light`);
-let elSXpws = eo('tr');
+}let elw2PKq = eo('div',null,null,`class`,`table-responsive`);
+let elYnD6X = eo('table',null,null,`class`,`table table-hover admin-table`);
+let elcwRuC = eo('thead',null,null,`class`,`thead-light`);
+let elnWD8l = eo('tr');
 for (let i in component.columns) {
 let col = component.columns[i]; 
- let iiMRyb = 'OdkaGzU' + i;
-let elqVCBK = eo('th','wJvUiO89JBCv' + i+iiMRyb);
+ let iijvWC = 'H97p3tu' + i;
+let elvvkcl = eo('th','cUflNFW_Z2t2' + i+iijvWC);
 text(trans(col));
 ec('th');
 }
 ec('tr');
 ec('thead');
-let elIKmBC = eo('tbody');
-let cndOCnk = component.inputs.parent.isLoading;
-this.setState('stflQEQ', cndOCnk);
-let cndRs9y = !Is.empty(component.records);
-this.setState('stcR0eV', cndRs9y);
-if (cndOCnk) { 
-let elKDQM6 = eo('tr','5ecf');
-let elZwa06 = eo('td','rbkf',null,`colspan`,`${ component.columns.length }`);
-let cmpzuAb = this._lc('cqTIxMI8J', {parent:component,parentTop:layout,state:'stflQEQ'});
+let eltTb8s = eo('tbody');
+let cndlRBy = component.inputs.parent.isLoading;
+this.setState('stLsQV1', cndlRBy);
+let cnd5Wba = !Is.empty(component.records);
+this.setState('sti5VVt', cnd5Wba);
+if (cndlRBy) { 
+let elHZQ61 = eo('tr','qKbf');
+let elbF6fO = eo('td','yvif',null,`colspan`,`${ component.columns.length }`);
+let cmpMXeX = this._lc('cdDvqj7OA', {parent:component,parentTop:layout,state:'stLsQV1'});
 ec('td');
 ec('tr');
-}else if (cndRs9y) { 
+}else if (cnd5Wba) { 
 
         if (this.hasContent()) {
             this.content();

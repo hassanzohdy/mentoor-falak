@@ -6,68 +6,68 @@ _Component({
                 observe: ['forgetPass','errorMsg','isValidForm','isForgot'],
                 children: {},
                 render: function (component) {
-                    let elQju45 = eo('div',null,null,`class`,`authLayout`);
-let elPTIyX = eo('div',null,null,`class`,`auth`);
-let elyaaem = eo('h1',null,null,`class`,`text-center authTitle`);
+                    let elpzfhQ = eo('div',null,null,`class`,`authLayout`);
+let elC7GYO = eo('div',null,null,`class`,`auth`);
+let elhsW7g = eo('h1',null,null,`class`,`text-center authTitle`);
 text(trans('Forgot your password!'));
 ec('h1');
-let elAQKLs = eo('p',null,null,`class`,`text-center`);
+let ellwcbH = eo('p',null,null,`class`,`text-center`);
 text(`Enter you email below to receive your`);
-let elvE5Ri = ev('br');
+let el8see6 = ev('br');
 text(`password reset instructions`);
 ec('p');
-let el4w_3Q = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+let el1iKGU = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;},function(e) {var $el = this;component.forgetPass($el)}]},`class`,`authForm`,`id`,`my-form`);
 
-                if (! el4w_3Q.formHandler) {
-                    window.cfrmdlr = el4w_3Q.formHandler = new FormHandler(el4w_3Q, component);
+                if (! el1iKGU.formHandler) {
+                    window.cfrmdlr = el1iKGU.formHandler = new FormHandler(el1iKGU, component);
                 } else {
-                    window.cfrmdlr = el4w_3Q.formHandler;
+                    window.cfrmdlr = el1iKGU.formHandler;
                 }
-            let cndlAAx = component.errorMsg;
-this.setState('stWKCDb', cndlAAx);
-if (cndlAAx) { 
-let elY9yJF = eo('div','zDdf',null,`class`,`alert alert-danger`);
+            let cndgvPh = component.errorMsg;
+this.setState('stwrflk', cndgvPh);
+if (cndgvPh) { 
+let el4xvtg = eo('div','7BHf',null,`class`,`alert alert-danger`);
 text(component.errorMsg);
 ec('div');
-}let elpW5xw = ev('input',null,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return el4w_3Q.formHandler.addError(`email`, 'required', trans('validation.required'));}else if (this.value && ! Is.email(this.value)) {return el4w_3Q.formHandler.addError(`email`, 'email', trans('invalid-email-address'));}return el4w_3Q.formHandler.removeError(`email`);}]},`name`,`${(`email`).toInputName()}`,`placeholder`,`${trans(`email`)}`,`type`,`email`,`class`,`form-control`,`id`,`email`);
+}let elYDr_7 = ev('input',null,null, eventListeners, {oninput:[function(e) {let value = this.value.trim();if (Is.empty(value)) {return el1iKGU.formHandler.addError(`email`, 'required', trans('validation.required'));}else if (this.value && ! Is.email(this.value)) {return el1iKGU.formHandler.addError(`email`, 'email', trans('invalid-email-address'));}return el1iKGU.formHandler.removeError(`email`);}]},`name`,`${(`email`).toInputName()}`,`placeholder`,`${trans(`email`)}`,`type`,`email`,`class`,`form-control`,`id`,`email`);
 
                     setTimeout(function () {
-                        let $el = elpW5xw;
+                        let $el = elYDr_7;
                         
-            if (true && ! elpW5xw.focused) {
+            if (true && ! elYDr_7.focused) {
                 
-                elpW5xw.focused = true;
-                elpW5xw.focus();
+                elYDr_7.focused = true;
+                elYDr_7.focus();
             }
         ;
                     }, 20);                
-                let cnd677q = el4w_3Q.formHandler.getError(`email`);
-this.setState('stc4dXf', cnd677q);
-if (cnd677q) { 
-let elyzfC3 = eo('div','DD3f',null,`class`,`alert alert-danger`);
-text(el4w_3Q.formHandler.getError(`email`));
+                let cndaBsi = el1iKGU.formHandler.getError(`email`);
+this.setState('stiMOsd', cndaBsi);
+if (cndaBsi) { 
+let ellRNQz = eo('div','RuPf',null,`class`,`alert alert-danger`);
+text(el1iKGU.formHandler.getError(`email`));
 ec('div');
-}let el7_TVq = eo('button',null,null, boolAttrs, {disabled:! component.isValidForm || component.isForgot},`class`,`btn btn-primary btn-block`);
-let cndMrM3 = !component.isForgot;
-this.setState('stFaXVD', cndMrM3);
-let cnddBur = !(cndMrM3);
-this.setState('stFB45c', cnddBur);
-if (cndMrM3) { 
-let elzg9jU = eo('span','ypgf');
+}let elqBzLi = eo('button',null,null, boolAttrs, {disabled:! component.isValidForm || component.isForgot},`class`,`btn btn-primary btn-block`);
+let cnd4fvj = !component.isForgot;
+this.setState('st6bBQV', cnd4fvj);
+let cndDzom = !(cnd4fvj);
+this.setState('stN_oi7', cndDzom);
+if (cnd4fvj) { 
+let elYNcxS = eo('span','i5gf');
 text(trans('send'));
 ec('span');
 }else { 
-let elitJsn = eo('div',null,null,`class`,`text-center`);
-let elbvfwv = eo('i',null,null,`class`,`${fas('spinner') + ' fa-spin fa-1x icon'}`);
+let elZHJqo = eo('div',null,null,`class`,`text-center`);
+let elvWdSA = eo('i',null,null,`class`,`${fas('spinner')} fa-spin fa-1x icon`);
 ec('i');
 ec('div');
 }ec('button');
-let elHmZ3g = eo('div',null,null,`class`,`d-flex justify-content-between authLink m-1`);
-let eldBNeU = eo('p');
-let elLmiwa = eo('a',null,null,`href`,`/login`,`class`,`mainColor ml-1`);
-let elOgMBw = eo('i',null,null,`class`,`${fas('caret-left') + ' mr-2 icon'}`);
+let elTozQ7 = eo('div',null,null,`class`,`d-flex justify-content-between authLink m-1`);
+let elpgWp1 = eo('p');
+let elRrqTl = eo('a',null,null,`href`,`/login`,`class`,`mainColor ml-1`);
+let elQXD9y = eo('i',null,null,`class`,`${fas('caret-left')} mr-2 icon`);
 ec('i');
 text(`Back to login`);
 ec('a');

@@ -4,45 +4,45 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['comments','originalComments','loadMoreComments','isLoadingComments','user','setComment','comment','isPostingComment'],
-                children: {cJa1deYZ0:'user-online',cc4xWUMPB:'markdown',c95oYgza1:'flk-time-ago'},
+                children: {cSm9kY6rf:'user-online',c2g0vFMaw:'markdown',cueS7m7Yn:'flk-time-ago'},
                 render: function (component) {
-                    let ellD32o = eo('section',null,null,`class`,`post-comments`);
-let cndRZR9 = ! Is.empty(component.comments);
-this.setState('stNw3Wf', cndRZR9);
-if (cndRZR9) { 
-let elTYBpp = eo('div','FMWf',null,`class`,`comments-list`);
+                    let el0ulYa = eo('section',null,null,`class`,`post-comments`);
+let cnd7UE3 = ! Is.empty(component.comments);
+this.setState('stxY4mQ', cnd7UE3);
+if (cnd7UE3) { 
+let elnRibU = eo('div','akZf',null,`class`,`comments-list`);
 for (let i in component.comments) {
 let comment = component.comments[i]; 
- let iiOOFS = 'JngK0pW' + i;
-let elkRMta = eo('div','pLoR3KEnj5hK' + i+iiOOFS,null,`class`,`comment`);
-let el_Obsh = ev('img','ogyff'+iiOOFS,null,`src`,`${comment.createdBy.image}`,`class`,`comment-image`);
-let elG88Ir = eo('div','x4wff'+iiOOFS,null,`class`,`comment-content`);
-let el1x3i9 = eo('div','HJOff'+iiOOFS,null,`class`,`by`);
-let elGTjRj = eo('span','avQff'+iiOOFS);
+ let iivm8_ = 'y4P10Gu' + i;
+let el668wx = eo('div','oGKyF_iBKiGf' + i+iivm8_,null,`class`,`comment`);
+let elx0ebA = ev('img','9nSff'+iivm8_,null,`src`,`${comment.createdBy.image}`,`class`,`comment-image`);
+let els84lE = eo('div','l8Rff'+iivm8_,null,`class`,`comment-content`);
+let elREEWn = eo('div','Oyiff'+iivm8_,null,`class`,`by`);
+let elHta5q = eo('span','vONff'+iivm8_);
 text(comment.createdBy.name);
 ec('span');
-let cmpCwNe = this._lc('cJa1deYZ0', {parent:component,props:{id:comment.createdBy.id},attrs:{id:`${comment.createdBy.id}`},state:'stNw3Wf',insideLoop:true,index:"" +iiOOFS});
+let cmpXsha = this._lc('cSm9kY6rf', {parent:component,props:{id:comment.createdBy.id},attrs:{id:`${comment.createdBy.id}`},state:'stxY4mQ',insideLoop:true,index:"" +iivm8_});
 ec('div');
-let elXsaiR = eo('p','k4Off'+iiOOFS);
-let cmpKknz = this._lc('cc4xWUMPB', {parent:component,props:{content:comment.comment},state:'stNw3Wf',insideLoop:true,index:"" +iiOOFS});
+let elPNXFH = eo('p','9Mxff'+iivm8_);
+let cmp7fy8 = this._lc('c2g0vFMaw', {parent:component,props:{content:comment.comment},state:'stxY4mQ',insideLoop:true,index:"" +iivm8_});
 ec('p');
-let cmpDIGJ = this._lc('c95oYgza1', {parent:component,props:{timestamp:comment.createdAt.timestamp},attrs:{class:'created-at'},state:'stNw3Wf',insideLoop:true,index:"" +iiOOFS});
+let cmpTgJu = this._lc('cueS7m7Yn', {parent:component,props:{timestamp:comment.createdAt.timestamp},attrs:{class:'created-at'},state:'stxY4mQ',insideLoop:true,index:"" +iivm8_});
 ec('div');
 ec('div');
 }
-let cnd2iNy = component.comments.length < component.originalComments.length;
-this.setState('stiw21Q', cnd2iNy);
-if (cnd2iNy) { 
-let eluyXPs = eo('button','gmjf',null, eventListeners, {onclick:[function(e) {var $el = this;component.loadMoreComments()}]}, boolAttrs, {disabled:component.isLoadingComments},`class`,`btn btn-sm btn-primary bold m-l-6 m-b-2`);
+let cndoxlK = component.comments.length < component.originalComments.length;
+this.setState('stnv_xG', cndoxlK);
+if (cndoxlK) { 
+let elBEgi8 = eo('button','TcWf',null, eventListeners, {onclick:[function(e) {var $el = this;component.loadMoreComments()}]}, boolAttrs, {disabled:component.isLoadingComments},`class`,`btn btn-sm btn-primary bold m-l-6 m-b-2`);
 text(`Load more comments`);
 ec('button');
 }ec('div');
-}let cnd7UVh = component.user.isLoggedIn();
-this.setState('stuKpgD', cnd7UVh);
-if (cnd7UVh) { 
-let el6_vod = ev('img','ZHyf',null,`src`,`${component.user.image}`,`class`,`user-image-input`,`title`,`${component.user.name}`,`alt`,`${component.user.name}`);
-let elsFFAh = eo('textarea','Qgjf',null, eventListeners, {oninput:[function(e) {component.comment = this.value;}],onkeyup:[function(e) {var $el = this;component.setComment($el, event)}]}, boolAttrs, {disabled:component.isPostingComment},`value`,`${fval(component.comment)}`,`placeholder`,`${trans(`Write a comment... (markdown supported)`)}`,`type`,`textarea`,`class`,`comment-input`);
-elsFFAh.value = fval(component.comment);
+}let cndvnNc = component.user.isLoggedIn();
+this.setState('stlT0MH', cndvnNc);
+if (cndvnNc) { 
+let elu4KzG = ev('img','z6_f',null,`src`,`${component.user.image}`,`class`,`user-image-input`,`title`,`${component.user.name}`,`alt`,`${component.user.name}`);
+let elM2h3E = eo('textarea','BPXf',null, eventListeners, {oninput:[function(e) {component.comment = this.value;}],onkeyup:[function(e) {var $el = this;component.setComment($el, event)}]}, boolAttrs, {disabled:component.isPostingComment},`value`,`${fval(component.comment)}`,`placeholder`,`${trans(`Write a comment... (markdown supported)`)}`,`type`,`textarea`,`class`,`comment-input`);
+elM2h3E.value = fval(component.comment);
 ec('textarea');
 }ec('section');
 

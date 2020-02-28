@@ -4,54 +4,49 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['title','isLoading','users','user'],
-                children: {caP7pi7zA:'flk-spinner',ci7T73i2t:'user-online',cax1cEsZc:'gold-icon',cKDC5LxAH:'layout'},
+                children: {c9wKqqtei:'flk-spinner',c6o_chx78:'user-online',cnC9gF_LJ:'gold-icon',cy4jnsKZZ:'layout'},
                 render: function (component) {
-                    let cmpgvTs = this._lc('cKDC5LxAH', {parent:component,content:(layout) => {let el7J3dC = eo('h1',null,null,`class`,`bold`);
+                    let cmpAx83 = this._lc('cy4jnsKZZ', {parent:component,content:(layout) => {let elIuqo1 = eo('h1',null,null,`class`,`bold`);
 text(trans(component.title));
 ec('h1');
-let cndgYqj = component.isLoading;
-this.setState('sthmley', cndgYqj);
-let cndip_n = !(cndgYqj);
-this.setState('stxIVZo', cndip_n);
-if (cndgYqj) { 
-let cmpcC0R = this._lc('caP7pi7zA', {parent:component,parentTop:layout,state:'sthmley'});
+let cndl0ac = component.isLoading;
+this.setState('stgBNCD', cndl0ac);
+let cnd16RT = !(cndl0ac);
+this.setState('stvb7ZU', cnd16RT);
+if (cndl0ac) { 
+let cmp3cu0 = this._lc('c9wKqqtei', {parent:component,parentTop:layout,state:'stgBNCD'});
 }else { 
-let el5Px_W = eo('table',null,null,`class`,`table table-bordered m-t-2`);
-let el2j1ng = eo('thead');
-let elnBXqL = eo('tr');
-let elhUrdB = eo('th',null,null,`class`,`text-left`);
+let elEKi4J = eo('table',null,null,`class`,`table table-bordered m-t-2`);
+let el5EOy0 = eo('thead');
+let elQ4e2Z = eo('tr');
+let elhTCB3 = eo('th',null,null,`class`,`text-left`);
 text(`User`);
 ec('th');
-let elQ5HGY = eo('th');
+let elh4DnL = eo('th');
 text(`Gold`);
 ec('th');
 ec('tr');
 ec('thead');
-let elWIQ68 = eo('tbody');
+let elb8c9e = eo('tbody');
 for (let index in component.users) {
 let user = component.users[index]; 
- let ii0ntS = 'slC48_i' + index;
-let elPnNFs = eo('tr','z1v77MizU4WJ' + index+ii0ntS);
-let elSvCn0 = eo('td','PNAff'+ii0ntS);
-let elKg538 = eo('span','vcWff'+ii0ntS,null,`class`,`mr-1`);
-let elNJb6P = eo('span','l1pff'+ii0ntS);
+ let iigENu = '89TV0KT' + index;
+let elCZBho = eo('tr','ZnxU4_g8PReA' + index+iigENu);
+let elXlsz5 = eo('td','a4pff'+iigENu);
+let elZplVw = eo('span','WWxff'+iigENu,null,`class`,`mr-1`);
+let elCSqjx = eo('span','oZeff'+iigENu);
 text(Number(Number(index) + 1).format());
 ec('span');
 text(`-`);
 ec('span');
-let elxUF40 = ev('img','Dloff'+ii0ntS,null,`src`,`${userImage(user)}`,`class`,`u-image img-thumbnail`,`title`,`${userName(user)}`,`alt`,`${userName(user)}`);
-let elbZO6Q = eo('span','4eUff'+ii0ntS,null,`class`,`bold mr-1`);
-elbZO6Q.cls = {'orange-text': user.id == component.user.id};
-
-            for (let className in elbZO6Q.cls) {
-                elbZO6Q.classList.toggle(className, elbZO6Q.cls[className]);
-            }  
-            text(userName(user));
+let elYm3nI = ev('img','G1Dff'+iigENu,null,`src`,`${userImage(user)}`,`class`,`u-image img-thumbnail`,`title`,`${userName(user)}`,`alt`,`${userName(user)}`);
+let elV0T7h = eo('span','dsQff'+iigENu,null,`class`,`bold mr-1 ${cls({'orange-text': user.id == component.user.id})}`);
+text(userName(user));
 ec('span');
-let cmpcmd4 = this._lc('ci7T73i2t', {parent:component,parentTop:layout,props:{id:user.id},attrs:{id:`${user.id}`},state:'stxIVZo',insideLoop:true,index:"" +ii0ntS});
+let cmpxeic = this._lc('c6o_chx78', {parent:component,parentTop:layout,props:{id:user.id},attrs:{id:`${user.id}`},state:'stvb7ZU',insideLoop:true,index:"" +iigENu});
 ec('td');
-let elz74nO = eo('td','tihff'+ii0ntS,null,`class`,`total-reward`);
-let cmpIBiu = this._lc('cax1cEsZc', {parent:component,parentTop:layout,props:{coins:user.gold},state:'stxIVZo',insideLoop:true,index:"" +ii0ntS});
+let elkVdH5 = eo('td','Sioff'+iigENu,null,`class`,`total-reward`);
+let cmpvn6e = this._lc('cnC9gF_LJ', {parent:component,parentTop:layout,props:{coins:user.gold},state:'stvb7ZU',insideLoop:true,index:"" +iigENu});
 ec('td');
 ec('tr');
 }

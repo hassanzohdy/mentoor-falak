@@ -6,16 +6,11 @@ _Component({
                 observe: ['large','coins','textColor'],
                 children: {},
                 render: function (component) {
-                    let eljfloV = ev('img',null,null,`src`,`${assets('images/coins.svg')}`,`class`,`coin-img ${ component.inputs.getAttr('class', '') }`,`alt`,`coins`);
-eljfloV.cls = {large: component.large};
-
-            for (let className in eljfloV.cls) {
-                eljfloV.classList.toggle(className, eljfloV.cls[className]);
-            }  
-            let cndF_Qg = component.coins;
-this.setState('stoaUv4', cndF_Qg);
-if (cndF_Qg) { 
-let elQydUO = eo('strong','IYUf',null,`class`,`${ component.textColor }`);
+                    let elHzpPb = ev('img',null,null,`class`,`coin-img ${ component.inputs.getAttr('class', '') } ${cls({large: component.large})}`,`src`,`${assets('images/coins.svg')}`,`alt`,`coins`);
+let cndJrbM = component.coins;
+this.setState('st7UJX1', cndJrbM);
+if (cndJrbM) { 
+let eli8GiG = eo('strong','MXVf',null,`class`,`${ component.textColor }`);
 text(component.coins.format());
 ec('strong');
 }

@@ -6,12 +6,12 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let eln602v = eo('span',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.inputs.getEvent('edit')()}]},`title`,`${trans('Edit')}`,`class`,`text-info mr-2 ml-2 cursor d-inline-block`);
-let el27KN3 = eo('i',null,null,`class`,`${fas('edit') + ' icon'}`);
+                    let elV1Kxw = eo('span',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.inputs.getEvent('edit')()}]},`title`,`${trans('Edit')}`,`class`,`text-info mr-2 ml-2 cursor d-inline-block`);
+let elt8j5t = eo('i',null,null,`class`,`${fas('edit')} icon`);
 ec('i');
 ec('span');
-let elAvIku = eo('span',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.inputs.getEvent('delete')()}]},`title`,`${trans('Delete')}`,`class`,`pink-text mr-2 ml-2  cursor d-inline-block`);
-let elrfSOW = eo('i',null,null,`class`,`${fas('trash') + ' icon'}`);
+let elLGtCu = eo('span',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.inputs.getEvent('delete')()}]},`title`,`${trans('Delete')}`,`class`,`pink-text mr-2 ml-2  cursor d-inline-block`);
+let elOd0QJ = eo('i',null,null,`class`,`${fas('trash')} icon`);
 ec('i');
 ec('span');
 
