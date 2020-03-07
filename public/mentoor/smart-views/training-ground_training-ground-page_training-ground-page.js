@@ -4,68 +4,68 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['unlockedCocktail','autoOpenCocktailsModal','user','isLoading','trainingGrounds'],
-                children: {cqfN2k4dX:'training-ground-header',cFTGuxPDR:'flk-spinner',cHjeKeEvl:'gold-icon',c7kuNiPum:'layout'},
+                children: {ckXdo6wTU:'training-ground-header',c8hdmWf1v:'flk-spinner',cjwU8xSyG:'gold-icon',cMDTsad6E:'layout'},
                 render: function (component) {
-                    let cmphROk = this._lc('c7kuNiPum', {parent:component,content:(layout) => {let cmp2B9F = this._lc('cqfN2k4dX', {parent:component,parentTop:layout,props:{autoOpen:component.autoOpenCocktailsModal},events:{onunlock:function(e) {let $el = this; component.unlockedCocktail(e)}}});
-let cndVYKg = ! component.user.isLoggedIn();
-this.setState('stFX41n', cndVYKg);
-let cndhkop = Is.empty(component.user.trainingGround) || Is.empty(component.user.trainingGround.cocktailsIds);
-this.setState('stlCdkz', cndhkop);
-let cndHDhG = component.isLoading;
-this.setState('stQdAUO', cndHDhG);
-let cndLppM = !(cndVYKg||cndhkop||cndHDhG);
-this.setState('st1imyL', cndLppM);
-if (cndVYKg) { 
-let elk6Em0 = eo('a','FFXf',null,`href`,`/login`,`class`,`bold text-center m-y-2 btn btn-danger`);
-let el2KFrk = eo('i','dOMf',null,`class`,`${fas('lock')} mr-2 icon`);
+                    let cmp0dXZ = this._lc('cMDTsad6E', {parent:component,content:(layout) => {let cmpY__m = this._lc('ckXdo6wTU', {parent:component,parentTop:layout,props:{autoOpen:component.autoOpenCocktailsModal},events:{onunlock:function(e) {let $el = this; component.unlockedCocktail(e)}}});
+let cndMsC9 = ! component.user.isLoggedIn();
+this.setState('st73tRV', cndMsC9);
+let cndKIZA = Is.empty(component.user.trainingGround) || Is.empty(component.user.trainingGround.cocktailsIds);
+this.setState('stv4Yq_', cndKIZA);
+let cndL750 = component.isLoading;
+this.setState('st3scju', cndL750);
+let cndUJ4i = !(cndMsC9||cndKIZA||cndL750);
+this.setState('st9dmjO', cndUJ4i);
+if (cndMsC9) { 
+let elmWMsj = eo('a','1O4f',null,`href`,`/login`,`class`,`bold text-center m-y-2 btn btn-danger`);
+let el4cFmE = eo('i','8i3f',null,`class`,`${fas('lock')} mr-2 icon`);
 ec('i');
 text(`Login to get started!`);
 ec('a');
-}else if (cndhkop) { 
-let elhtbD9 = eo('h1',null,null,`class`,`bold text-center m-y-2`);
+}else if (cndKIZA) { 
+let eli_WqK = eo('h1',null,null,`class`,`bold text-center m-y-2`);
 text(`Please select a career first.`);
 ec('h1');
-}else if (cndHDhG) { 
-let cmprRYF = this._lc('cFTGuxPDR', {parent:component,parentTop:layout,state:'stQdAUO'});
+}else if (cndL750) { 
+let cmpPMSS = this._lc('c8hdmWf1v', {parent:component,parentTop:layout,state:'st3scju'});
 }else { 
-let elQ5o6j = eo('div',null,null,`class`,`row`);
+let el70YZ7 = eo('div',null,null,`class`,`row`);
 for (let i in component.trainingGrounds) {
 let trainingGround = component.trainingGrounds[i]; 
- let iiNrRv = 'hnnnjxu' + i;
-let el6bXLm = eo('div','rNW3e0haOEtO' + i+iiNrRv,null,`class`,`training-ground col col-sm-6 col-md-4 col-lg-3`);
-let elNCsmA = eo('div','viIff'+iiNrRv,null,`class`,`card`);
-let el9Sx0f = eo('h3','Amcff'+iiNrRv,null,`class`,`card-header text-center`);
-let elD1Lka = ev('img','7uZff'+iiNrRv,null,`src`,`${trainingGround.cocktail.icon}`,`class`,`cocktail-image`);
-let el9_Sxq = eo('span','0CDff'+iiNrRv);
+ let ii_MQS = 'Qn9AjR4' + i;
+let elB5VrY = eo('div','zPJQGxBWL7qG' + i+ii_MQS,null,`class`,`training-ground col col-sm-6 col-md-4 col-lg-3`);
+let elMdTfE = eo('div','snXff'+ii_MQS,null,`class`,`card`);
+let elw7fV8 = eo('h3','LUXff'+ii_MQS,null,`class`,`card-header text-center`);
+let elpT9Ci = ev('img','akSff'+ii_MQS,null,`src`,`${trainingGround.cocktail.icon}`,`class`,`cocktail-image`);
+let eleyadO = eo('span','q_Iff'+ii_MQS);
 text(trainingGround.cocktail.name);
 ec('span');
 ec('h3');
-let elAtfjo = eo('div','xkUff'+iiNrRv,null,`class`,`card-body`);
-let el4GSQP = eo('div','gR6ff'+iiNrRv,null,`class`,`text-center image-wrapper`);
-let elOmjC1 = ev('img','RYSff'+iiNrRv,null,`src`,`${trainingGround.image}`,`class`,`image`,`title`,`${trainingGround.title}`,`alt`,`${trainingGround.title}`);
+let elzWCPC = eo('div','rTkff'+ii_MQS,null,`class`,`card-body`);
+let el4QL9y = eo('div','8kEff'+ii_MQS,null,`class`,`text-center image-wrapper`);
+let elj9Inx = ev('img','aLXff'+ii_MQS,null,`src`,`${trainingGround.image}`,`class`,`image`,`title`,`${trainingGround.title}`,`alt`,`${trainingGround.title}`);
 ec('div');
-let el6o_uB = eo('div','pG0ff'+iiNrRv,null,`class`,`text-center m-t-1`);
-let elK1ZI8 = eo('div','cgfff'+iiNrRv,null,`title`,`${trans(`Prize`)}`,`class`,`pink-text prize`);
-let cmpqgq5 = this._lc('cHjeKeEvl', {parent:component,parentTop:layout,props:{coins:trainingGround.prize},state:'st1imyL',insideLoop:true,index:"" +iiNrRv});
+let elC_9I0 = eo('div','ND5ff'+ii_MQS,null,`class`,`text-center m-t-1`);
+let el6fzGK = eo('div','Sk0ff'+ii_MQS,null,`title`,`${trans(`Prize`)}`,`class`,`pink-text prize`);
+let cmpBTs1 = this._lc('cjwU8xSyG', {parent:component,parentTop:layout,props:{coins:trainingGround.prize},state:'st9dmjO',insideLoop:true,index:"" +ii_MQS});
 ec('div');
-let el9H21I = eo('a','6oEff'+iiNrRv,null,`href`,`/training-ground/${ trainingGround.id }`,`class`,`bold btn view-btn`);
+let elBsP3u = eo('a','wY8ff'+ii_MQS,null,`href`,`/training-ground/${ trainingGround.id }`,`class`,`bold btn view-btn`);
 text(trainingGround.title);
 ec('a');
 ec('div');
 ec('div');
-let elI6mub = eo('div','5kpff'+iiNrRv,null,`class`,`card-hover`);
-let el_YOwq = eo('span','zGAff'+iiNrRv,null,`class`,`arrow`);
+let elGAdk3 = eo('div','E14ff'+ii_MQS,null,`class`,`card-hover`);
+let eliMFL2 = eo('span','4yoff'+ii_MQS,null,`class`,`arrow`);
 ec('span');
-let elyAAF1 = eo('p','yKCff'+iiNrRv);
+let elum0Mk = eo('p','5Kwff'+ii_MQS);
 text(trainingGround.shortDescription);
 ec('p');
-let elnou2Z = eo('div','tf6ff'+iiNrRv,null,`class`,`text-center`);
+let elhrOgl = eo('div','DKwff'+ii_MQS,null,`class`,`text-center`);
 for (let i in trainingGround.tags) {
 let tag = trainingGround.tags[i]; 
- let iiCpyR = '5_ozDFx' + i;
-let el1afTt = eo('div','MuXLVz3wFM7A' + i+iiNrRv+iiCpyR,null,`class`,`technology`);
-let ely_XZn = ev('img','NDTff'+iiNrRv+iiCpyR,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
-let elYAlKG = eo('div','s6bff'+iiNrRv+iiCpyR,null,`class`,`bold indigo-text`);
+ let iizfP1 = 'H1cgaiD' + i;
+let elvqrSd = eo('div','EHapoWK9d0Ba' + i+ii_MQS+iizfP1,null,`class`,`technology`);
+let elujfvf = ev('img','mjLff'+ii_MQS+iizfP1,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
+let elLIYGB = eo('div','DIFff'+ii_MQS+iizfP1,null,`class`,`bold indigo-text`);
 text(tag.name);
 ec('div');
 ec('div');

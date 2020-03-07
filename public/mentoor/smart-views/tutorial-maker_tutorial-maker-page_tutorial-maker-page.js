@@ -4,161 +4,161 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['hasItems','currentStep','finalStep','texts','currentPage'],
-                children: {cqmMTyGCh:'markdown'},
+                children: {cw4r8D18P:'markdown'},
                 render: function (component) {
-                    let elBRh1A = eo('div',null,null,`class`,`dark ${cls({items: component.hasItems})}`);
-let cndVOYh = component.hasItems;
-this.setState('stYAxj3', cndVOYh);
-if (cndVOYh) { 
-let elYYhib = eo('div','aTNf',null,`class`,`fb-page`);
-let ellsdhs = eo('i','Vdef',null,`class`,`${fas('facebook')} icon`);
+                    let elH1Wr5 = eo('div',null,null,`class`,`dark ${cls({items: component.hasItems})}`);
+let cndsd_R = component.hasItems;
+this.setState('stZYGnf', cndsd_R);
+if (cndsd_R) { 
+let elnj1Mf = eo('div','ySlf',null,`class`,`fb-page`);
+let elah281 = eo('i','Smkf',null,`class`,`${fas('facebook')} icon`);
 ec('i');
-let eljGexB = eo('span','LcLf',null,`class`,``);
+let elpOQzv = eo('span','zBRf',null,`class`,``);
 text(`/mentoor.io`);
 ec('span');
 ec('div');
-}let cndlepu = component.hasItems;
-this.setState('stXlvKy', cndlepu);
-if (cndlepu) { 
-let elwteWv = eo('div','bBxf',null,`class`,`items-heading bold text-center white-text`);
-let elsrxeg = ev('img','hVzf',null,`class`,`sm ${cls({gray: component.currentStep != component.finalStep})}`,`src`,`${assets('images/en.png')}`);
-let elZ8iUr = eo('h1','U47f');
+}let cndkVGJ = component.hasItems;
+this.setState('stNwxVV', cndkVGJ);
+if (cndkVGJ) { 
+let elEQCkl = eo('div','t5Af',null,`class`,`items-heading bold text-center white-text`);
+let elLmCSN = ev('img','QGCf',null,`class`,`sm ${cls({gray: component.currentStep != component.finalStep})}`,`src`,`${assets('images/en.png')}`);
+let elSBNwH = eo('h1','Slrf');
 text(`Problem Solving`);
 ec('h1');
-let elZLaxc = eo('p','TGQf');
+let el7aJHF = eo('p','1PJf');
 text(`Find the missing number`);
 ec('p');
-let elEU6LH = ev('img','uvrf',null,`src`,`https://restful.mentoor.io/einstein-categories/esURtDIQPmMvZRVVFMI7DwMW7EeQKDWmKDqjqRFt.png`,`class`,`big`);
-let elGcGPG = eo('div','S8Sf',null,`class`,`overlay`);
+let elGA8oe = ev('img','QHEf',null,`src`,`https://restful.mentoor.io/einstein-categories/esURtDIQPmMvZRVVFMI7DwMW7EeQKDWmKDqjqRFt.png`,`class`,`big`);
+let elEJFQ_ = eo('div','u0Hf',null,`class`,`overlay`);
 ec('div');
-let el_9Pd2 = eo('div','I5sf',null,`id`,`logo`);
-let elRt8Wo = eo('h1','ysUf',null,`id`,`m`);
+let eloLktR = eo('div','EUif',null,`id`,`logo`);
+let elhdura = eo('h1','zA7f',null,`id`,`m`);
 text(`M`);
 ec('h1');
-let elDs6TV = eo('h1','d1Vf',null,`id`,`name`,`class`,`inline`);
+let eljNhun = eo('h1','m2jf',null,`id`,`name`,`class`,`inline`);
 text(`mentoor.io`);
 ec('h1');
 ec('div');
-let el7dxZE = eo('h4','Stkf',null,`class`,`hashtag`);
-let el6S7hA = eo('div','Kzpf');
+let elbkD3p = eo('h4','Mulf',null,`class`,`hashtag`);
+let elDSDAF = eo('div','4JWf');
 text(`#mentoor_einstein`);
 ec('div');
 ec('h4');
 ec('div');
-}let cndWCZd = ! component.hasItems;
-this.setState('stfgdLm', cndWCZd);
-if (cndWCZd) { 
-let el8Tj_W = eo('h1','r0bf',null,`class`,`text-center white-text`);
+}let cndTdSA = ! component.hasItems;
+this.setState('stXL5UX', cndTdSA);
+if (cndTdSA) { 
+let elfm2V_ = eo('h1','u_gf',null,`class`,`text-center white-text`);
 text(`What Is`);
 ec('h1');
-let elwXIx6 = eo('div','v2vf',null,`class`,`m-t-1`);
+let elK1qTV = eo('div','L6sf',null,`class`,`m-t-1`);
 ec('div');
-let el9CevN = eo('h1','DBXf',null,`class`,`master`);
+let elnfurD = eo('h1','hKUf',null,`class`,`master`);
 text(`Unit testing`);
 ec('h1');
-let elNZ9KM = eo('h1','Jepf',null,`class`,`ar`);
+let elSxoaO = eo('h1','nI9f',null,`class`,`ar`);
 text(`يعني إيه`);
 ec('h1');
-let elkRP9x = eo('div','orCf',null,`class`,`overlay`);
+let elo2xvu = eo('div','rznf',null,`class`,`overlay`);
 ec('div');
-let elfb5e5 = eo('h4','DYtf',null,`class`,`hashtag`);
-let eler4JI = eo('div','9pzf');
+let eltr_0t = eo('h4','kYjf',null,`class`,`hashtag`);
+let el8M3Bb = eo('div','4Y7f');
 text(`#mentoor_what_does_it_mean`);
 ec('div');
 ec('h4');
-let elmXMD4 = eo('div','sfJf',null,`id`,`logo`);
-let el1OzKF = eo('h1','zRff',null,`id`,`m`);
+let elkuZBG = eo('div','sX7f',null,`id`,`logo`);
+let elvUXCg = eo('h1','zhNf',null,`id`,`m`);
 text(`M`);
 ec('h1');
-let elR1RVD = eo('h1','BFVf',null,`id`,`name`,`class`,`inline`);
+let eljcpAm = eo('h1','xktf',null,`id`,`name`,`class`,`inline`);
 text(`mentoor.io`);
 ec('h1');
 ec('div');
-}let cndwijV = component.hasItems;
-this.setState('stVT0g2', cndwijV);
-if (cndwijV) { 
-let elXFqWN = eo('div','fejf',null,`class`,`p-1 text-left tutorial-content`);
-let eli29sJ = eo('div','VaVf',null,`class`,``);
+}let cnduDLD = component.hasItems;
+this.setState('stZxf2P', cnduDLD);
+if (cnduDLD) { 
+let elSi0VU = eo('div','MeYf',null,`class`,`p-1 text-left tutorial-content`);
+let el0k2IH = eo('div','EpGf',null,`class`,``);
 for (let page in component.texts) {
 let texts = component.texts[page]; 
- let iibjuN = 'mPNsfID' + page;
-let cnd7ruw = page == component.currentPage;
-this.setState('stfEIry', cnd7ruw);
-if (cnd7ruw) { 
-let elG7ZgS = eo('div','ozZff'+iibjuN,null,`class`,`page`);
+ let iin66L = 'n2iLJQd' + page;
+let cndZKvz = page == component.currentPage;
+this.setState('stGayYI', cndZKvz);
+if (cndZKvz) { 
+let elbXGXE = eo('div','2Yqff'+iin66L,null,`class`,`page`);
 for (let i in texts) {
 let statement = texts[i]; 
- let iin97c = 'r2ypwRt' + i;
-let cndh652 = ! statement.type && component.currentStep >= statement.step;
-this.setState('stsvbg7', cndh652);
-let cndPZbr = statement.type == 'h1' && component.currentStep >= statement.step;
-this.setState('stKWPV3', cndPZbr);
-let cndtYhr = statement.type == 'p' && component.currentStep >= statement.step;
-this.setState('stlK8wL', cndtYhr);
-if (cndh652) { 
-let el6Xnkd = eo('div','XnFff'+iibjuN+iin97c,null,`class`,`p-x-2`);
-let elahBuP = eo('div','S4dff'+iibjuN+iin97c,null,`class`,`list`);
-let ellOO_C = eo('div','DP7ff'+iibjuN+iin97c,null,`class`,`animate`);
-let cmpJVDz = this._lc('cqmMTyGCh', {parent:component,props:{content:statement.text.trim()},state:'stsvbg7',insideLoop:true,index:"" +iibjuN+iin97c});
+ let iiKR8J = 'm3a0Kww' + i;
+let cnddw6g = ! statement.type && component.currentStep >= statement.step;
+this.setState('stHCf3p', cnddw6g);
+let cndMkKQ = statement.type == 'h1' && component.currentStep >= statement.step;
+this.setState('stOFVuR', cndMkKQ);
+let cndJnen = statement.type == 'p' && component.currentStep >= statement.step;
+this.setState('stqID5M', cndJnen);
+if (cnddw6g) { 
+let eljFQQa = eo('div','hHMff'+iin66L+iiKR8J,null,`class`,`p-x-2`);
+let ellV3vz = eo('div','UEKff'+iin66L+iiKR8J,null,`class`,`list`);
+let ela20ZI = eo('div','Q55ff'+iin66L+iiKR8J,null,`class`,`animate`);
+let cmpSnV2 = this._lc('cw4r8D18P', {parent:component,props:{content:statement.text.trim()},state:'stHCf3p',insideLoop:true,index:"" +iin66L+iiKR8J});
 ec('div');
 
                     setTimeout(function () {
-                        let $el = ellOO_C;
+                        let $el = ela20ZI;
                         
             var animator = DI.resolve('animator');
-            animator.animate(ellOO_C, statement.animation, 'normal');
+            animator.animate(ela20ZI, statement.animation, 'normal');
         ;
                     }, 20);                
                 ec('div');
 ec('div');
-}else if (cndPZbr) { 
-let el9b9sg = eo('h1','Tzoff'+iibjuN+iin97c,null,`class`,`animate ${ statement.className || '' }`);
-let cnd24Xf = statement.icon;
-this.setState('stwhZlr', cnd24Xf);
-if (cnd24Xf) { 
-let elfeovz = eo('i','TbCff'+iibjuN+iin97c,null,`class`,`${fas(statement.icon)} icon`);
+}else if (cndMkKQ) { 
+let elhDEvI = eo('h1','Fiyff'+iin66L+iiKR8J,null,`class`,`animate ${ statement.className || '' }`);
+let cndmCIY = statement.icon;
+this.setState('stey692', cndmCIY);
+if (cndmCIY) { 
+let elRJmgq = eo('i','cvgff'+iin66L+iiKR8J,null,`class`,`${fas(statement.icon)} icon`);
 ec('i');
-}let cndgn8F = statement.image;
-this.setState('stU5Fi1', cndgn8F);
-if (cndgn8F) { 
-let eljkexe = ev('img','HYfff'+iibjuN+iin97c,null,`src`,`${statement.image}`);
+}let cndQES7 = statement.image;
+this.setState('stzJAaE', cndQES7);
+if (cndQES7) { 
+let el5Wm0u = ev('img','SPNff'+iin66L+iiKR8J,null,`src`,`${statement.image}`);
 }text( statement.text );
 ec('h1');
 
                     setTimeout(function () {
-                        let $el = el9b9sg;
+                        let $el = elhDEvI;
                         
             var animator = DI.resolve('animator');
-            animator.animate(el9b9sg, statement.animation, 'normal');
+            animator.animate(elhDEvI, statement.animation, 'normal');
         ;
                     }, 20);                
-                }else if (cndtYhr) { 
-let elsAhQW = eo('p','LN2ff'+iibjuN+iin97c,null,`class`,`animate`);
+                }else if (cndJnen) { 
+let elmdwcm = eo('p','NSvff'+iin66L+iiKR8J,null,`class`,`animate`);
 text(statement.text);
 ec('p');
 
                     setTimeout(function () {
-                        let $el = elsAhQW;
+                        let $el = elmdwcm;
                         
             var animator = DI.resolve('animator');
-            animator.animate(elsAhQW, statement.animation, 'normal');
+            animator.animate(elmdwcm, statement.animation, 'normal');
         ;
                     }, 20);                
                 }}
 ec('div');
 }}
-let cndU_ya = component.currentStep == component.finalStep;
-this.setState('stKOKtB', cndU_ya);
-if (cndU_ya) { 
-let elXXeLX = eo('h1','iTDf',null,`class`,`bold animate text-center m-t-3`);
+let cndfNRA = component.currentStep == component.finalStep;
+this.setState('stKwHQ0', cndfNRA);
+if (cndfNRA) { 
+let elcW4Io = eo('h1','MSAf',null,`class`,`bold animate text-center m-t-3`);
 text(`Thank you!`);
 ec('h1');
 
                     setTimeout(function () {
-                        let $el = elXXeLX;
+                        let $el = elcW4Io;
                         
             var animator = DI.resolve('animator');
-            animator.animate(elXXeLX, 'fadeIn', 'normal');
+            animator.animate(elcW4Io, 'fadeIn', 'normal');
         ;
                     }, 20);                
                 }ec('div');

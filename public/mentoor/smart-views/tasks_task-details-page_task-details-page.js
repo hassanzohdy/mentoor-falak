@@ -4,252 +4,252 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['task','user','rate','getTaskStatus','taskStatusCanBeChanged','getAllowedTaskStatuses','updateTaskStatus'],
-                children: {cTbBFYuNY:'flk-spinner',cWOWpok6d:'star-rating',cd9JnohZi:'flk-time-ago',c4L8Enwod:'markdown',cX_2lJXEm:'flk-audio-player',clhx3ByBm:'flk-time-ago',c5N3voh0o:'markdown',cYnjqLJOf:'flk-audio-player',cvSVxUGQk:'task-checklist',cRKfkQP4Y:'comments',cFmDHUOO8:'flk-time-ago',cpVgydgom:'gold-icon',c6lUhPZNw:'flk-time-remaining',cPigq3IDl:'flk-dropdown-list',c9gLkx8Xp:'layout'},
+                children: {c9_3X42XV:'flk-spinner',c_4E2fu6k:'star-rating',c77av6G3D:'flk-time-ago',cqTQBjNZS:'markdown',co_keHnwM:'flk-audio-player',cU5daF1VN:'flk-time-ago',cpdkr3ozs:'markdown',ccNMdzAzp:'flk-audio-player',cL_xyeIEB:'task-checklist',c_L5Z0UpG:'comments',cc2g9TG1U:'flk-time-ago',ciY20lDjQ:'gold-icon',cpIhw8y3j:'flk-time-remaining',cGoOpC5w9:'flk-dropdown-list',c7yiYpygK:'layout'},
                 render: function (component) {
-                    let cmpuhq6 = this._lc('c9gLkx8Xp', {parent:component,content:(layout) => {let cndfE9s = ! component.task;
-this.setState('stNXIkb', cndfE9s);
-let cndekgd = !(cndfE9s);
-this.setState('stCNLzm', cndekgd);
-if (cndfE9s) { 
-let cmpeNdN = this._lc('cTbBFYuNY', {parent:component,parentTop:layout,state:'stNXIkb'});
+                    let cmpXnjj = this._lc('c7yiYpygK', {parent:component,content:(layout) => {let cndwGRp = ! component.task;
+this.setState('stc6J2f', cndwGRp);
+let cnd0dhZ = !(cndwGRp);
+this.setState('st75X57', cnd0dhZ);
+if (cndwGRp) { 
+let cmpPtql = this._lc('c9_3X42XV', {parent:component,parentTop:layout,state:'stc6J2f'});
 }else { 
-let elMrfHV = eo('div',null,null,`class`,`row`);
-let elXnVLi = eo('div',null,null,`class`,`col order-12 order-sm-1`);
-let elmsuKp = eo('h1',null,null,`class`,`m-b-1`);
+let elGoqEM = eo('div',null,null,`class`,`row`);
+let elemJnU = eo('div',null,null,`class`,`col order-12 order-sm-1`);
+let elCyTqa = eo('h1',null,null,`class`,`m-b-1`);
 text('#' + component.task.id + ' ' + component.task.title);
 ec('h1');
-let cnd_d5f = component.task.startsAt;
-this.setState('stA4nnU', cnd_d5f);
-if (cnd_d5f) { 
-let elPHaYK = eo('div','62Tf',null,`class`,`teal-text bold`);
+let cndQShw = component.task.startsAt;
+this.setState('stj7MZa', cndQShw);
+if (cndQShw) { 
+let elqfRwP = eo('div','xLof',null,`class`,`teal-text bold`);
 text( component.task.startsAt );
-let cndZn_U = component.task.endsAt;
-this.setState('stn3d1I', cndZn_U);
-if (cndZn_U) { 
+let cndGQGi = component.task.endsAt;
+this.setState('stj_cFR', cndGQGi);
+if (cndGQGi) { 
 text(`-
                     ${ component.task.endsAt }`);
 }ec('div');
-}let cmpALE0 = this._lc('cWOWpok6d', {parent:component,parentTop:layout,props:{readonly:! component.user.accountType == 'admin'},events:{onselect:function(e) {let $el = this; component.rate(e)}},boolAttrs:{readOnly:! component.user.accountType == 'admin'},attrs:{class:'form-group'}});
-let el1vcOT = eo('span',null,null,`title`,``);
-let cmpDSOS = this._lc('cd9JnohZi', {parent:component,parentTop:layout,props:{timeFormat:component.task.createdAt.format,timestamp:component.task.createdAt.timestamp}});
+}let cmpztZO = this._lc('c_4E2fu6k', {parent:component,parentTop:layout,props:{readonly:! component.user.accountType == 'admin'},events:{onselect:function(e) {let $el = this; component.rate(e)}},boolAttrs:{readOnly:! component.user.accountType == 'admin'},attrs:{class:'form-group'}});
+let elulr2M = eo('span',null,null,`title`,``);
+let cmpCLQd = this._lc('c77av6G3D', {parent:component,parentTop:layout,props:{timeFormat:component.task.createdAt.format,timestamp:component.task.createdAt.timestamp}});
 ec('span');
 
                     setTimeout(function () {
-                        let $el = el1vcOT;
+                        let $el = elulr2M;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Created At')}`});
         ;
                     }, 20);                
-                let cndYsEB = component.task.description;
-this.setState('stTPFTs', cndYsEB);
-if (cndYsEB) { 
-let elAogIG = eo('h2','1Izf',null,`class`,`bold m-y-2`);
+                let cndlEHN = component.task.description;
+this.setState('stFEh7N', cndlEHN);
+if (cndlEHN) { 
+let el6C1xi = eo('h2','ydef',null,`class`,`bold m-y-2`);
 text(`Details`);
 ec('h2');
-let eldY4Iu = eo('p','XW1f',null,`class`,`description card p-1`);
-let cmp1uj6 = this._lc('c4L8Enwod', {parent:component,parentTop:layout,props:{content:component.task.description},state:'stTPFTs'});
+let elySOw_ = eo('p','evvf',null,`class`,`description card p-1`);
+let cmp6_Dm = this._lc('cqTQBjNZS', {parent:component,parentTop:layout,props:{content:component.task.description},state:'stFEh7N'});
 ec('p');
-}let ela0buF = eo('div',null,null,`class`,`card my-3`);
-let cndGyY5 = component.task.descriptionRecord;
-this.setState('sthLtcL', cndGyY5);
-if (cndGyY5) { 
-let cmpLSIz = this._lc('cX_2lJXEm', {parent:component,parentTop:layout,props:{src:component.task.descriptionRecord},attrs:{src:`${component.task.descriptionRecord}`},state:'sthLtcL'});
+}let elIgDq2 = eo('div',null,null,`class`,`card my-3`);
+let cndvo0c = component.task.descriptionRecord;
+this.setState('stIlduJ', cndvo0c);
+if (cndvo0c) { 
+let cmpgVZS = this._lc('co_keHnwM', {parent:component,parentTop:layout,props:{src:component.task.descriptionRecord},attrs:{src:`${component.task.descriptionRecord}`},state:'stIlduJ'});
 }ec('div');
-let cndV6EK = component.task.participantNotes;
-this.setState('st3_mDV', cndV6EK);
-if (cndV6EK) { 
-let elamBIA = eo('div','7K1f',null,`class`,`card p-1 m-y-2`);
-let elstfqT = eo('h3','gzxf',null,`class`,`bold pink-text`);
+let cnddZF3 = component.task.participantNotes;
+this.setState('staKBpq', cnddZF3);
+if (cnddZF3) { 
+let elSqOHM = eo('div','wGOf',null,`class`,`card p-1 m-y-2`);
+let elIjlH_ = eo('h3','hPwf',null,`class`,`bold pink-text`);
 text( component.task.participant.name );
 ec('h3');
-let cmpVltc = this._lc('clhx3ByBm', {parent:component,parentTop:layout,props:{timeFormat:component.task.submittedAt.format,timestamp:component.task.submittedAt.timestamp},attrs:{class:'brown-text bold'},state:'st3_mDV'});
-let elYAQsX = eo('p','GH2f',null,`class`,`description m-y-2`);
-let cmp61Id = this._lc('c5N3voh0o', {parent:component,parentTop:layout,props:{content:component.task.participantNotes},state:'st3_mDV'});
+let cmpp4Ad = this._lc('cU5daF1VN', {parent:component,parentTop:layout,props:{timeFormat:component.task.submittedAt.format,timestamp:component.task.submittedAt.timestamp},attrs:{class:'brown-text bold'},state:'staKBpq'});
+let el3PJ7a = eo('p','7cyf',null,`class`,`description m-y-2`);
+let cmpAqmZ = this._lc('cpdkr3ozs', {parent:component,parentTop:layout,props:{content:component.task.participantNotes},state:'staKBpq'});
 ec('p');
-let cndp21t = component.task.participantRecord;
-this.setState('stl4y6G', cndp21t);
-if (cndp21t) { 
-let cmpfCIN = this._lc('cYnjqLJOf', {parent:component,parentTop:layout,props:{src:component.task.participantRecord},attrs:{src:`${component.task.participantRecord}`},state:'stl4y6G'});
+let cndvdto = component.task.participantRecord;
+this.setState('st7Kp06', cndvdto);
+if (cndvdto) { 
+let cmpFHbo = this._lc('ccNMdzAzp', {parent:component,parentTop:layout,props:{src:component.task.participantRecord},attrs:{src:`${component.task.participantRecord}`},state:'st7Kp06'});
 }ec('div');
-}let cmpXfq1 = this._lc('cvSVxUGQk', {parent:component,parentTop:layout,props:{task:component.task}});
-let cmp4pd3 = this._lc('cRKfkQP4Y', {parent:component,parentTop:layout,props:{comments:component.task.comments,project:component.task.project,typeId:component.task.id},attrs:{type:'task'}});
-let el3ZVb9 = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
+}let cmpOEGq = this._lc('cL_xyeIEB', {parent:component,parentTop:layout,props:{task:component.task}});
+let cmpJFdn = this._lc('c_L5Z0UpG', {parent:component,parentTop:layout,props:{comments:component.task.comments,project:component.task.project,typeId:component.task.id},attrs:{type:'task'}});
+let elwn2iG = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
 text(`Task Status Change Log`);
 ec('h3');
-let elaatw7 = eo('table',null,null,`class`,`table table-bordered`,`id`,`status-table`);
-let el22pQ1 = eo('thead');
-let elrVN1k = eo('tr');
-let elXgD3T = eo('th');
+let elrM9oa = eo('table',null,null,`class`,`table table-bordered`,`id`,`status-table`);
+let elxSyaD = eo('thead');
+let elF6Z93 = eo('tr');
+let el2xJfB = eo('th');
 text(`Status`);
 ec('th');
-let elkI6Ak = eo('th');
+let eldvF1c = eo('th');
 text(`Created By`);
 ec('th');
-let el2TbQE = eo('th');
+let elD7Eko = eo('th');
 text(`Created`);
 ec('th');
 ec('tr');
 ec('thead');
-let elWZpsc = eo('tbody');
+let elnMnqc = eo('tbody');
 for (let i in component.task.statusLog) {
 let status = component.task.statusLog[i]; 
- let ii_uji = 'plAw6wC' + i;
-let elzmARQ = eo('tr','gBpVsr0IxHU1' + i+ii_uji);
-let elRWWZi = eo('td','o_Uff'+ii_uji);
-let elmekY4 = eo('span','8nWff'+ii_uji,null,`class`,`bold btn btn-sm status ${cls(taskStatus(status))}`);
+ let iiwRlJ = 'KHjKU2y' + i;
+let elrmDv0 = eo('tr','NMwNrXKs5NRb' + i+iiwRlJ);
+let eloPN2c = eo('td','etKff'+iiwRlJ);
+let ela6gwA = eo('span','L9Yff'+iiwRlJ,null,`class`,`bold btn btn-sm status ${cls(taskStatus(status))}`);
 text(trans(status.status));
 ec('span');
 ec('td');
-let elcmZl2 = eo('td','VwYff'+ii_uji);
+let elBMmWv = eo('td','Q2cff'+iiwRlJ);
 text(status.status != 'autoFailed' ? status.createdBy.name : 'System');
 ec('td');
-let elOw0EA = eo('td','sEfff'+ii_uji);
-let cmptyDV = this._lc('cFmDHUOO8', {parent:component,parentTop:layout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +ii_uji});
+let elShgts = eo('td','6Wzff'+iiwRlJ);
+let cmprreG = this._lc('cc2g9TG1U', {parent:component,parentTop:layout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +iiwRlJ});
 ec('td');
 ec('tr');
 }
 ec('tbody');
 ec('table');
 ec('div');
-let elGJ9QB = eo('div',null,null,`class`,`col-sm-3 order-1`);
-let cndrh6u = Object.get(component.task.project, 'id', '');
-this.setState('stYk4MS', cndrh6u);
-if (cndrh6u) { 
-let el2VAjr = eo('a','pK7f',null,`href`,`${URLS.project(component.task.project, 'tasks-board')}`,`class`,`btn bold btn-purple m-b-1`);
+let el5yr2e = eo('div',null,null,`class`,`col-sm-3 order-1`);
+let cnd68iW = Object.get(component.task.project, 'id', '');
+this.setState('sta4wQA', cnd68iW);
+if (cnd68iW) { 
+let elYo3Gv = eo('a','4ALf',null,`href`,`${URLS.project(component.task.project, 'tasks-board')}`,`class`,`btn bold btn-purple m-b-1`);
 text(`Back to Tasks Board`);
 ec('a');
-}let eloWNxU = eo('div',null,null,`class`,`card`);
-let elrVRK0 = eo('div',null,null,`class`,`text-center`);
-let el56bAT = eo('div',null,null,`class`,`task-status badge ${cls(component.getTaskStatus())}`);
+}let el3wOf9 = eo('div',null,null,`class`,`card`);
+let el0TOUH = eo('div',null,null,`class`,`text-center`);
+let elYA92f = eo('div',null,null,`class`,`task-status badge ${cls(component.getTaskStatus())}`);
 text(trans(component.task.status));
 ec('div');
-let elpCadw = eo('div',null,null,`title`,``);
-let cmp6DDh = this._lc('cpVgydgom', {parent:component,parentTop:layout,props:{coins:component.task.reward}});
+let elGW0lK = eo('div',null,null,`title`,``);
+let cmpYg6P = this._lc('ciY20lDjQ', {parent:component,parentTop:layout,props:{coins:component.task.reward}});
 ec('div');
 
                     setTimeout(function () {
-                        let $el = elpCadw;
+                        let $el = elGW0lK;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Task Reward')}`});
         ;
                     }, 20);                
-                let ellJ5zd = eo('div',null,null,`title`,``,`class`,`m-b-1`);
-let elYTVF5 = eo('strong',null,null,`class`,`red-text`);
+                let el4AMcU = eo('div',null,null,`title`,``,`class`,`m-b-1`);
+let elzi2kp = eo('strong',null,null,`class`,`red-text`);
 text(component.task.penaltyRatio + 'x');
 ec('strong');
 ec('div');
 
                     setTimeout(function () {
-                        let $el = ellJ5zd;
+                        let $el = el4AMcU;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Penalty ratio')}`});
         ;
                     }, 20);                
-                let cndEASq = component.task.endsAtTimestamp;
-this.setState('stCZ7Q9', cndEASq);
-if (cndEASq) { 
-let elpveZN = eo('div','9Cqf',null,`title`,``,`class`,`m-b-2`);
-let el3eJLI = eo('i','86Cf',null,`class`,`${fas('clock')} mr-2 icon`);
+                let cndLJCA = component.task.endsAtTimestamp;
+this.setState('stzBIrA', cndLJCA);
+if (cndLJCA) { 
+let elCnO1e = eo('div','z5Wf',null,`title`,``,`class`,`m-b-2`);
+let elKul8U = eo('i','tJHf',null,`class`,`${fas('clock')} mr-2 icon`);
 ec('i');
-let cmpQl3c = this._lc('c6lUhPZNw', {parent:component,parentTop:layout,props:{startsAt:component.task.startsAtTimestamp,endsAt:component.task.endsAtTimestamp},attrs:{class:'bold'},state:'stCZ7Q9'});
+let cmpERaj = this._lc('cpIhw8y3j', {parent:component,parentTop:layout,props:{startsAt:component.task.startsAtTimestamp,endsAt:component.task.endsAtTimestamp},attrs:{class:'bold'},state:'stzBIrA'});
 ec('div');
 
                     setTimeout(function () {
-                        let $el = elpveZN;
+                        let $el = elCnO1e;
                         
             true && tippyTooltip($el, {arrow:true,content:`${component.task.endsAtTimestamp - component.task.startsAtTimestamp <= 0 ? 'Time up' : 'Remaining Time'}`});
         ;
                     }, 20);                
                 }ec('div');
 ec('div');
-let cndQ8jj = ! Is.empty(component.task.parent);
-this.setState('stV5AC_', cndQ8jj);
-if (cndQ8jj) { 
-let elskToJ = eo('div','6sDf',null,`class`,`card p-1`);
-let el7UM5o = eo('div','6Qsf',null,`class`,`bold text-center m-b-1`);
-let el6HenX = eo('i','Xp5f',null,`class`,`${fas('folder-open')} mr-2 icon`);
+let cndWeYn = ! Is.empty(component.task.parent);
+this.setState('st9XyRW', cndWeYn);
+if (cndWeYn) { 
+let elheUXB = eo('div','n2Qf',null,`class`,`card p-1`);
+let elA6UN_ = eo('div','NhNf',null,`class`,`bold text-center m-b-1`);
+let elNr2vN = eo('i','0kYf',null,`class`,`${fas('folder-open')} mr-2 icon`);
 ec('i');
 text(`Parent Task`);
 ec('div');
-let elhL28k = eo('a','a2Pf',null,`href`,`${URLS.task(component.task.parent)}`,`class`,`btn btn-cyan bold`);
+let elpkBH8 = eo('a','Evaf',null,`href`,`${URLS.task(component.task.parent)}`,`class`,`btn btn-cyan bold`);
 text(component.task.parent.title);
 ec('a');
 ec('div');
-}let elQlEq_ = eo('div',null,null,`class`,`card p-1`);
-let el3ptYj = eo('div',null,null,`class`,`bold text-center m-b-1`);
-let elw5Bte = eo('i',null,null,`class`,`${fas('user')} mr-2 icon`);
+}let el_G_Hk = eo('div',null,null,`class`,`card p-1`);
+let elUTBKo = eo('div',null,null,`class`,`bold text-center m-b-1`);
+let eldx2_E = eo('i',null,null,`class`,`${fas('user')} mr-2 icon`);
 ec('i');
 text(`Participant`);
 ec('div');
-let elnZDUV = eo('div',null,null,`class`,`bold teal-text`);
+let elWkr9N = eo('div',null,null,`class`,`bold teal-text`);
 text(component.task.participant.name);
 ec('div');
 ec('div');
-let el32Qx1 = eo('div',null,null,`class`,`card p-1`);
-let elJryG5 = eo('div',null,null,`class`,`bold text-center m-b-1`);
-let elmptCV = eo('i',null,null,`class`,`${fas('user-secret')} mr-2 icon`);
+let elUkZGC = eo('div',null,null,`class`,`card p-1`);
+let elOSE7_ = eo('div',null,null,`class`,`bold text-center m-b-1`);
+let elgVUvc = eo('i',null,null,`class`,`${fas('user-secret')} mr-2 icon`);
 ec('i');
 text(`Supervisors`);
 ec('div');
 for (let i in component.task.supervisors) {
 let supervisor = component.task.supervisors[i]; 
- let iizJv7 = 'k8tMcJr' + i;
-let elw8ZH2 = eo('div','mz2QR2li8ugg' + i+iizJv7,null,`class`,`bold green-text`);
+ let iiGRjO = 'gUlkgyr' + i;
+let elu1GSJ = eo('div','3zAztwHigvAP' + i+iiGRjO,null,`class`,`bold green-text`);
 text(supervisor.name);
 ec('div');
 }
 ec('div');
-let cnd1ufl = component.task.project;
-this.setState('stwYTHt', cnd1ufl);
-if (cnd1ufl) { 
-let elVhyof = eo('div','_4Of',null,`class`,`card p-1`);
-let elzzXSU = eo('div','SORf',null,`class`,`bold text-center m-b-1`);
-let elFYjRW = eo('i','cNGf',null,`class`,`${fas('suitcase')} mr-2 icon`);
+let cndQOCc = component.task.project;
+this.setState('st65Kmc', cndQOCc);
+if (cndQOCc) { 
+let elk_xbQ = eo('div','13Yf',null,`class`,`card p-1`);
+let el3HjDz = eo('div','E8Rf',null,`class`,`bold text-center m-b-1`);
+let elpJFbi = eo('i','ykrf',null,`class`,`${fas('suitcase')} mr-2 icon`);
 ec('i');
 text(`Project`);
 ec('div');
-let cnd2sy3 = component.task.module;
-this.setState('stzLSK4', cnd2sy3);
-if (cnd2sy3) { 
-let elYtd6V = eo('div','TYSf');
-let elhhBym = eo('span','0nMf',null,`class`,`mr-2`);
+let cndOX2q = component.task.module;
+this.setState('stcMBd1', cndOX2q);
+if (cndOX2q) { 
+let el15VGp = eo('div','kVkf');
+let elCdTBH = eo('span','v_Bf',null,`class`,`mr-2`);
 text(`Module:`);
 ec('span');
-let cndLpHe = component.task.module.parent.id;
-this.setState('stJWPEh', cndLpHe);
-if (cndLpHe) { 
-let elqvHY7 = eo('strong','GwLf');
+let cndAlf4 = component.task.module.parent.id;
+this.setState('st7ltAi', cndAlf4);
+if (cndAlf4) { 
+let elmYc9Q = eo('strong','TOFf');
 text(`${ component.task.module.parent.name } »`);
 ec('strong');
-}let ellg4H0 = eo('strong');
+}let elSpc6U = eo('strong');
 text(component.task.module.name);
 ec('strong');
 ec('div');
-}let elcyxml = eo('a',null,null,`href`,`${URLS.project(component.task.project)}`,`class`,`btn btn-teal bold`);
+}let elACFMC = eo('a',null,null,`href`,`${URLS.project(component.task.project)}`,`class`,`btn btn-teal bold`);
 text(component.task.project.name);
 ec('a');
 ec('div');
-}let cndfDQl = component.task.userStory;
-this.setState('ste0GOw', cndfDQl);
-if (cndfDQl) { 
-let elSdELI = eo('div','JLCf',null,`class`,`card p-1`);
-let elWflNm = eo('div','G8Zf',null,`class`,`bold text-center m-b-1`);
-let elbcwAS = eo('i','k90f',null,`class`,`${fas('sticky-note')} mr-2 icon`);
+}let cndwNuR = component.task.userStory;
+this.setState('stwL6xF', cndwNuR);
+if (cndwNuR) { 
+let eln4vU6 = eo('div','H8yf',null,`class`,`card p-1`);
+let elz8bbj = eo('div','dHYf',null,`class`,`bold text-center m-b-1`);
+let elSRZID = eo('i','S_If',null,`class`,`${fas('sticky-note')} mr-2 icon`);
 ec('i');
 text(`User Story`);
 ec('div');
-let elsbtvG = eo('a','7aNf',null,`href`,`${URLS.project(component.task.project, 'user-stories', component.task.userStory)}`,`class`,`btn btn-pink bold`);
+let elK1c27 = eo('a','Jqhf',null,`href`,`${URLS.project(component.task.project, 'user-stories', component.task.userStory)}`,`class`,`btn btn-pink bold`);
 text(component.task.userStory.title);
 ec('a');
 ec('div');
-}let cndgHQ1 = component.taskStatusCanBeChanged();
-this.setState('sthSvXr', cndgHQ1);
-if (cndgHQ1) { 
-let eluWe3I = eo('div','44Tf',null,`class`,`card p-1`);
-let el1dHRO = eo('div','b0zf',null,`class`,`text-center bold m-b-1 purple-text`);
+}let cndETNl = component.taskStatusCanBeChanged();
+this.setState('sti4_nO', cndETNl);
+if (cndETNl) { 
+let elpemdz = eo('div','qOVf',null,`class`,`card p-1`);
+let elRrYIO = eo('div','Mpuf',null,`class`,`text-center bold m-b-1 purple-text`);
 text(`Mark task as`);
 ec('div');
-let cmp1a0f = this._lc('cPigq3IDl', {parent:component,parentTop:layout,props:{items:component.getAllowedTaskStatuses(),value:component.task.status},events:{onselect:function(e) {let $el = this; component.updateTaskStatus(e.value)}},attrs:{heading:'Mark Task As..'},state:'sthSvXr'});
+let cmppqvm = this._lc('cGoOpC5w9', {parent:component,parentTop:layout,props:{items:component.getAllowedTaskStatuses(),value:component.task.status},events:{onselect:function(e) {let $el = this; component.updateTaskStatus(e.value)}},attrs:{heading:'Mark Task As..'},state:'sti4_nO'});
 ec('div');
 }ec('div');
 ec('div');

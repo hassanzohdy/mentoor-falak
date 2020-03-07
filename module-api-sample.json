@@ -14,7 +14,7 @@
                         "name": "id",
                         "type": "int",
                         "default": "",
-                        "description": ""
+                        "description": "ss"
                     },
                     {
                         "name": "status",
@@ -32,22 +32,26 @@
                     {
                         "name": "name",
                         "type": "string",
-                        "rules": "required"
+                        "rules": "required",
+                        "description": "ss"
                     },
                     {
                         "name": "email",
                         "type": "string",
-                        "rules": "required|email|unique"
+                        "rules": "required|email|unique",
+                        "description": "ss"
                     },
                     {
                         "name": "password",
                         "type": "string",
-                        "rules": "required|min: 10"
+                        "rules": "required|min: 10",
+                        "description": "ss"
                     },
                     {
                         "name": "confirmPassword",
                         "type": "string",
-                        "rules": "required|min: 10:match: password"
+                        "rules": "required|min: 10:match: password",
+                        "description": "ss"
                     }
                 ],
                 "response": [
@@ -57,7 +61,8 @@
                             {
                                 "name": "code",
                                 "type": "string",
-                                "expectedValue": "OK|NO"
+                                "expectedValue": "OK|NO",
+                                "description": "ss"
                             },
                             {
                                 "name": "records",

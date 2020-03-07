@@ -4,157 +4,157 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading','bug','bugCanBeEdited','editBug','bugStatusCanBeChanged','getProperStatuses','oldStatus','confirmStatusChange','newStatus','isRequiringValue','getConfirmingMessage','updateStatus','prepareBug'],
-                children: {cqgg7tfCA:'flk-time-ago',cGwljRV_7:'markdown',cc8ZjFBxR:'flk-audio-player',cpJiwowb0:'markdown',c2tuT5PsP:'markdown',cv75Y1CSO:'comments',cvM4BYRoG:'flk-time-ago',cCJ1Ovs0h:'flk-dropdown-list',cMyRszfvK:'project-layout',c4zZVz1_5:'flk-alert',cJZfWfw2M:'bug-modal'},
+                children: {cjgSQoCG9:'flk-time-ago',cMBOp6vgo:'markdown',cbDVON4aN:'flk-audio-player',c1lt7knV0:'markdown',clLrT8nfB:'markdown',cv28PubhN:'comments',cIvcrvCvp:'flk-time-ago',c3IcrFVc8:'flk-dropdown-list',cUjzcUtRn:'project-layout',c3KsHrrvp:'flk-alert',cKvWFJJpn:'bug-modal'},
                 render: function (component) {
-                    let cmpURcE = this._lc('cMyRszfvK', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let elU5sV5 = eo('div',null,null,`class`,`text-right m-b-1`);
-let ellckj2 = eo('a',null,null,`href`,`${URLS.project(component.project, 'bugs')}`,`class`,`btn bold btn-purple`);
-let elIavof = eo('i',null,null,`class`,`${fas('arrow-left')} mr-2 icon`);
+                    let cmpQ4se = this._lc('cUjzcUtRn', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let el4l4fU = eo('div',null,null,`class`,`text-right m-b-1`);
+let eliGi4v = eo('a',null,null,`href`,`${URLS.project(component.project, 'bugs')}`,`class`,`btn bold btn-purple`);
+let elpfnv3 = eo('i',null,null,`class`,`${fas('arrow-left')} mr-2 icon`);
 ec('i');
 text(`Back to`);
-let elXDazD = eo('span',null,null,`class`,`mx-2`);
-let elMHj7W = ev('img',null,null,`src`,`${assets('images/bug.jpg')}`,`style`,`width: 20px; height: 30px; border-radius: 50%;`);
-let elJwFOq = eo('span',null,null,`class`,`bold red-text`);
+let elWxTLz = eo('span',null,null,`class`,`mx-2`);
+let els6A1N = ev('img',null,null,`src`,`${assets('images/bug.jpg')}`,`style`,`width: 20px; height: 30px; border-radius: 50%;`);
+let elcRinZ = eo('span',null,null,`class`,`bold red-text`);
 text(`s`);
 ec('span');
 ec('span');
 text(`List`);
 ec('a');
 ec('div');
-let cndhmQu = component.bug;
-this.setState('sto0qvJ', cndhmQu);
-if (cndhmQu) { 
-let elp4OW5 = eo('div','PMEf',null,`class`,`bug row`);
-let elEfiWd = eo('div','HsIf',null,`class`,`col col-sm-9 order-12 order-sm-1`);
-let elS2eX7 = eo('h1','mNNf',null,`class`,`title`);
+let cndUPmL = component.bug;
+this.setState('stjYtGD', cndUPmL);
+if (cndUPmL) { 
+let elJEdiL = eo('div','J1xf',null,`class`,`bug row`);
+let eljSMMn = eo('div','RNlf',null,`class`,`col col-sm-9 order-12 order-sm-1`);
+let elkiMNA = eo('h1','SZef',null,`class`,`title`);
 text('#' + component.bug.id + ' ' + component.bug.title);
 ec('h1');
-let elwRW8w = ev('img','Q3Mf',null,`src`,`${component.bug.createdBy.image}`,`class`,`user-image`,`title`,`${component.bug.createdBy.name}`,`alt`,`${component.bug.createdBy.name}`);
-let elq10pj = eo('div','Gr0f',null,`class`,`d-inline-block`);
-let elGvJz6 = eo('div','KbGf');
+let elaz3sa = ev('img','qxIf',null,`src`,`${component.bug.createdBy.image}`,`class`,`user-image`,`title`,`${component.bug.createdBy.name}`,`alt`,`${component.bug.createdBy.name}`);
+let elkKGZv = eo('div','Tvvf',null,`class`,`d-inline-block`);
+let elVDhfK = eo('div','QYnf');
 text(component.bug.createdBy.name);
 ec('div');
-let eloDx50 = eo('div','z69f');
-let cmpBAU3 = this._lc('cqgg7tfCA', {parent:component,parentTop:projectLayout,props:{timestamp:component.bug.createdAt.timestamp},attrs:{class:'ago'},state:'sto0qvJ'});
+let elUyzPo = eo('div','t49f');
+let cmpTDj4 = this._lc('cjgSQoCG9', {parent:component,parentTop:projectLayout,props:{timestamp:component.bug.createdAt.timestamp},attrs:{class:'ago'},state:'stjYtGD'});
 ec('div');
 ec('div');
-let elTuKti = eo('div','cW1f',null,`class`,`simple-card p-1 m-y-1`);
-let el8GGDY = eo('div','hPYf',null,`class`,`result-heading`);
+let elza4Y7 = eo('div','qhrf',null,`class`,`simple-card p-1 m-y-1`);
+let el0afYO = eo('div','8KEf',null,`class`,`result-heading`);
 text(`Description`);
 ec('div');
-let cmpJVOW = this._lc('cGwljRV_7', {parent:component,parentTop:projectLayout,props:{content:component.bug.description},state:'sto0qvJ'});
-let cndcqhZ = component.bug.record;
-this.setState('stvoWVZ', cndcqhZ);
-if (cndcqhZ) { 
-let cmpm4dK = this._lc('cc8ZjFBxR', {parent:component,parentTop:projectLayout,props:{src:component.bug.record},attrs:{src:`${component.bug.record}`},state:'stvoWVZ'});
+let cmp6aDR = this._lc('cMBOp6vgo', {parent:component,parentTop:projectLayout,props:{content:component.bug.description},state:'stjYtGD'});
+let cnd4ZY_ = component.bug.record;
+this.setState('st8hAmq', cnd4ZY_);
+if (cnd4ZY_) { 
+let cmpsR72 = this._lc('cbDVON4aN', {parent:component,parentTop:projectLayout,props:{src:component.bug.record},attrs:{src:`${component.bug.record}`},state:'st8hAmq'});
 }ec('div');
-let cnddym2 = component.bug.stepsToReproduce;
-this.setState('stSZiz2', cnddym2);
-if (cnddym2) { 
-let elQjBmr = eo('div','kwaf',null,`class`,`simple-card p-1 m-b-1`);
-let elYi3PD = eo('div','xKVf',null,`class`,`result-heading`);
+let cndCWMD = component.bug.stepsToReproduce;
+this.setState('stfI9Uc', cndCWMD);
+if (cndCWMD) { 
+let elqSSaY = eo('div','RjOf',null,`class`,`simple-card p-1 m-b-1`);
+let elePm8q = eo('div','f7ff',null,`class`,`result-heading`);
 text(`Steps To Reproduce`);
 ec('div');
-let elp3YDi = eo('ol','DmHf',null,`class`,`steps-list`);
+let el4HtwF = eo('ol','73Gf',null,`class`,`steps-list`);
 for (let i in component.bug.stepsToReproduce.split('\n')) {
 let step = component.bug.stepsToReproduce.split('\n')[i]; 
- let iiUlOK = 'JAe_13x' + i;
-let ellQilQ = eo('li','1uScsRg6jnml' + i+iiUlOK);
+ let iircF1 = 'hqxnMkD' + i;
+let elwxK8C = eo('li','zfLAtGT_43w5' + i+iircF1);
 text(step);
 ec('li');
 }
 ec('ol');
 ec('div');
-}let cndw3Id = component.bug.expectedBehavior;
-this.setState('stArfch', cndw3Id);
-if (cndw3Id) { 
-let elLwwAX = eo('div','oVff',null,`class`,`simple-card p-1 m-b-1`);
-let el_rt0s = eo('div','1hLf',null,`class`,`result-heading`);
+}let cndbrFg = component.bug.expectedBehavior;
+this.setState('stP8GhL', cndbrFg);
+if (cndbrFg) { 
+let elCFqnF = eo('div','KKff',null,`class`,`simple-card p-1 m-b-1`);
+let el0EmSn = eo('div','2yrf',null,`class`,`result-heading`);
 text(`Expected Result`);
 ec('div');
-let cmpdQr5 = this._lc('cpJiwowb0', {parent:component,parentTop:projectLayout,props:{content:component.bug.expectedBehavior},state:'stArfch'});
+let cmpr2BJ = this._lc('c1lt7knV0', {parent:component,parentTop:projectLayout,props:{content:component.bug.expectedBehavior},state:'stP8GhL'});
 ec('div');
-}let cndQ4CJ = component.bug.actualResult;
-this.setState('stgQIkt', cndQ4CJ);
-if (cndQ4CJ) { 
-let elCKXUr = eo('div','WW9f',null,`class`,`simple-card p-1 m-b-1`);
-let elbn65i = eo('div','gZLf',null,`class`,`result-heading`);
+}let cndeMzW = component.bug.actualResult;
+this.setState('stYuFLj', cndeMzW);
+if (cndeMzW) { 
+let elNn5zf = eo('div','8Edf',null,`class`,`simple-card p-1 m-b-1`);
+let el7kz0y = eo('div','4RMf',null,`class`,`result-heading`);
 text(`Actual Result`);
 ec('div');
-let cmpEKBA = this._lc('c2tuT5PsP', {parent:component,parentTop:projectLayout,props:{content:component.bug.actualResult},state:'stgQIkt'});
+let cmpIrhX = this._lc('clLrT8nfB', {parent:component,parentTop:projectLayout,props:{content:component.bug.actualResult},state:'stYuFLj'});
 ec('div');
-}let cndn6A8 = ! Is.empty(component.bug.attachments);
-this.setState('stq73da', cndn6A8);
-if (cndn6A8) { 
-let elWRR5G = eo('div','0Jcf',null,`class`,`m-b-2`);
-let elboyd2 = eo('h2','zo1f');
+}let cndsboW = ! Is.empty(component.bug.attachments);
+this.setState('std6Nhf', cndsboW);
+if (cndsboW) { 
+let eleUGcj = eo('div','0aIf',null,`class`,`m-b-2`);
+let elzuAWH = eo('h2','O9wf');
 text(`Attachments (${ component.bug.attachments.length })`);
 ec('h2');
 for (let i in component.bug.attachments) {
 let attachment = component.bug.attachments[i]; 
- let ii_QtP = '2EndsWf' + i;
-let elGbivC = eo('a','jc5YrxupIq3D' + i+ii_QtP,null,`href`,`${attachment}`,`target`,`_blank`);
-let cndVQTS = isImage(attachment);
-this.setState('stWXvPS', cndVQTS);
-let cndSTRN = !(cndVQTS);
-this.setState('stTS2JT', cndSTRN);
-if (cndVQTS) { 
-let el1ZcBt = ev('img','NJWff'+ii_QtP,null, 'style', {width:'100px',height:'100px'},`src`,`${attachment}`,`class`,`img-thumbnail m-l-1`,`title`,`${component.bug.title}`,`alt`,`${component.bug.title}`);
+ let iiF4xV = '2w1pFlq' + i;
+let elFCdcv = eo('a','Dstx3qPufhF1' + i+iiF4xV,null,`href`,`${attachment}`,`target`,`_blank`);
+let cnd4tv4 = isImage(attachment);
+this.setState('stOrNkc', cnd4tv4);
+let cndlpt5 = !(cnd4tv4);
+this.setState('st7nwtZ', cndlpt5);
+if (cnd4tv4) { 
+let elfVqUZ = ev('img','5Edff'+iiF4xV,null, 'style', {width:'100px',height:'100px'},`src`,`${attachment}`,`class`,`img-thumbnail m-l-1`,`title`,`${component.bug.title}`,`alt`,`${component.bug.title}`);
 }else { 
-let elZX_Vi = eo('button','JiNff'+ii_QtP,null,`class`,`btn btn-pink`);
+let elIn6SG = eo('button','ejyff'+iiF4xV,null,`class`,`btn btn-pink`);
 text(`Open Attachment`);
 ec('button');
 }ec('a');
 }
 ec('div');
-}let cmpKqky = this._lc('cv75Y1CSO', {parent:component,parentTop:projectLayout,props:{project:component.project,comments:component.bug.comments,typeId:component.bug.id},attrs:{type:'bug'}});
-let elKRZyj = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
+}let cmpNJs3 = this._lc('cv28PubhN', {parent:component,parentTop:projectLayout,props:{project:component.project,comments:component.bug.comments,typeId:component.bug.id},attrs:{type:'bug'}});
+let elOGc2v = eo('h3',null,null,`class`,`bold m-t-2 m-b-1`);
 text(`Bug Status Change Log`);
 ec('h3');
-let elQ7Hl0 = eo('table',null,null,`class`,`table table-bordered`);
-let elDjfjd = eo('thead');
-let elufDnf = eo('tr');
-let eliQuuq = eo('th');
+let ellkln4 = eo('table',null,null,`class`,`table table-bordered`);
+let elYa0pk = eo('thead');
+let elghygF = eo('tr');
+let elc9Mgo = eo('th');
 text(`Status`);
 ec('th');
-let el1LPxJ = eo('th');
+let elr7ly5 = eo('th');
 text(`Created By`);
 ec('th');
-let elaDRiT = eo('th');
+let elWdDs7 = eo('th');
 text(`Created`);
 ec('th');
-let elSXm_z = eo('th');
+let ely6Avd = eo('th');
 text(`Extra`);
 ec('th');
 ec('tr');
 ec('thead');
-let elN0wAs = eo('tbody');
+let elBW38G = eo('tbody');
 for (let i in component.bug.statuses) {
 let status = component.bug.statuses[i]; 
- let iiBasN = '1pxcvNb' + i;
-let elAGv4K = eo('tr','7Ns1f7y9vldc' + i+iiBasN);
-let eleOV9l = eo('td','Mu1ff'+iiBasN);
+ let iiyTNR = '1rY3Kfv' + i;
+let el_6s2x = eo('tr','Ar7DnGj2w7PE' + i+iiyTNR);
+let elPkJwA = eo('td','9Mhff'+iiyTNR);
 text(status.status.capitalize());
 ec('td');
-let elkZcdn = eo('td','zmmff'+iiBasN);
+let el5aDQQ = eo('td','AXeff'+iiyTNR);
 text(status.createdBy.name);
 ec('td');
-let elD_pnt = eo('td','oOsff'+iiBasN);
-let cmp6MOv = this._lc('cvM4BYRoG', {parent:component,parentTop:projectLayout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +iiBasN});
+let el67GMU = eo('td','YPiff'+iiyTNR);
+let cmpcxb9 = this._lc('cIvcrvCvp', {parent:component,parentTop:projectLayout,props:{timestamp:status.createdAt.timestamp},insideLoop:true,index:"" +iiyTNR});
 ec('td');
-let elF9UQ5 = eo('td','v94ff'+iiBasN);
-let cndLf0y = status.extra;
-this.setState('stxl2Gb', cndLf0y);
-if (cndLf0y) { 
-let cnd3ZA2 = ['notBug', 'deferred', 'rejected', 'reopened'].includes(status.status);
-this.setState('stDWDAg', cnd3ZA2);
-let cndpvKB = status.status == 'Duplicated';
-this.setState('stMJkiX', cndpvKB);
-if (cnd3ZA2) { 
-let el4Pn06 = eo('span','ag3ff'+iiBasN);
+let elNn2Er = eo('td','KMKff'+iiyTNR);
+let cnd4jG3 = status.extra;
+this.setState('stj4LYJ', cnd4jG3);
+if (cnd4jG3) { 
+let cndAjWV = ['notBug', 'deferred', 'rejected', 'reopened'].includes(status.status);
+this.setState('st52_yD', cndAjWV);
+let cndvT3q = status.status == 'Duplicated';
+this.setState('st1QyIV', cndvT3q);
+if (cndAjWV) { 
+let elGxOu6 = eo('span','acyff'+iiyTNR);
 text(status.extra);
 ec('span');
-}else if (cndpvKB) { 
-let el94Esh = eo('a','4Hsff'+iiBasN,null,`href`,`${URLS.project(component.project, 'bugs', {id: status.extra})}`);
+}else if (cndvT3q) { 
+let elioy6U = eo('a','CVjff'+iiyTNR,null,`href`,`${URLS.project(component.project, 'bugs', {id: status.extra})}`);
 text(`Duplicated Bug
                                     #${ status.extra }`);
 ec('a');
@@ -164,132 +164,132 @@ ec('tr');
 ec('tbody');
 ec('table');
 ec('div');
-let elnbQ6z = eo('div',null,null,`class`,`col col-sm-3 order-1`);
-let elhmJk3 = eo('div',null,null,`class`,`simple-card`);
-let el3FPaR = eo('h2',null,null,`class`,`text-center`);
+let elKHSSG = eo('div',null,null,`class`,`col col-sm-3 order-1`);
+let elY6eyh = eo('div',null,null,`class`,`simple-card`);
+let el5en5F = eo('h2',null,null,`class`,`text-center`);
 text(`Bug Information`);
 ec('h2');
-let cnd4beB = component.bugCanBeEdited;
-this.setState('stnhtJm', cnd4beB);
-if (cnd4beB) { 
-let el7KHu7 = eo('div','Hvhf',null,`class`,`text-center`);
-let elPnsBY = eo('button','Xsmf',null, eventListeners, {onclick:[function(e) {var $el = this;component.editBug = true}]},`type`,`button`,`class`,`btn btn-sm btn-success bold`);
+let cndFhnq = component.bugCanBeEdited;
+this.setState('stpEuFm', cndFhnq);
+if (cndFhnq) { 
+let elUhhf5 = eo('div','F_bf',null,`class`,`text-center`);
+let elFZMpG = eo('button','mEXf',null, eventListeners, {onclick:[function(e) {var $el = this;component.editBug = true}]},`type`,`button`,`class`,`btn btn-sm btn-success bold`);
 text(`Edit`);
 ec('button');
 ec('div');
-}let elkdMlz = eo('table',null,null,`class`,`table m-t-2`);
-let el9kutk = eo('tbody');
-let el9S7ZA = eo('tr');
-let el5FC1d = eo('td');
+}let elOqYIy = eo('table',null,null,`class`,`table m-t-2`);
+let elUhkpT = eo('tbody');
+let el1vYld = eo('tr');
+let elrMxmd = eo('td');
 text(`Status`);
 ec('td');
-let elYcR4t = eo('th',null,null,`class`,`bold status ${ component.bug.status }`);
+let elceWMU = eo('th',null,null,`class`,`bold status ${ component.bug.status }`);
 text(component.bug.status);
 ec('th');
 ec('tr');
-let cndkTMx = component.bug.priority;
-this.setState('stzTO5L', cndkTMx);
-if (cndkTMx) { 
-let elNLPbG = eo('tr','LVBf');
-let elQoIfw = eo('td','ZVKf');
+let cndGqKr = component.bug.priority;
+this.setState('stubRfG', cndGqKr);
+if (cndGqKr) { 
+let ellVluM = eo('tr','9Gyf');
+let eliqRdZ = eo('td','11yf');
 text(`Priority`);
 ec('td');
-let elXf2_h = eo('th','Bx9f',null,`class`,`bold priority ${ component.bug.priority }`);
+let el2U2Du = eo('th','jh4f',null,`class`,`bold priority ${ component.bug.priority }`);
 text(component.bug.priority);
 ec('th');
 ec('tr');
-}let cndQgXu = component.bug.dueDate;
-this.setState('stLOBI1', cndQgXu);
-if (cndQgXu) { 
-let eluZ82C = eo('tr','I3Zf');
-let el1yuKO = eo('td','r70f');
+}let cndTPdA = component.bug.dueDate;
+this.setState('stwrTbv', cndTPdA);
+if (cndTPdA) { 
+let elU2UxU = eo('tr','UbQf');
+let elLC1xy = eo('td','qhRf');
 text(`Due Date`);
 ec('td');
-let elfpGiX = eo('th','yTUf',null,`class`,`bold`);
+let elAELpO = eo('th','2_vf',null,`class`,`bold`);
 text(trans(component.bug.dueDate));
 ec('th');
 ec('tr');
-}let cndVuNG = component.bug.classification;
-this.setState('stda9g8', cndVuNG);
-if (cndVuNG) { 
-let elT4alM = eo('tr','ZFxf');
-let elooofG = eo('td','_Jbf');
+}let cndTMqy = component.bug.classification;
+this.setState('stAjZGv', cndTMqy);
+if (cndTMqy) { 
+let elmpmce = eo('tr','bG_f');
+let elHpAsZ = eo('td','Mdkf');
 text(`Classification`);
 ec('td');
-let elwdd3h = eo('th','eYzf',null,`class`,`bold`);
+let elJmoBv = eo('th','E2Nf',null,`class`,`bold`);
 text(trans(component.bug.classification));
 ec('th');
 ec('tr');
-}let cnd94Wr = component.bug.severity;
-this.setState('sttc39o', cnd94Wr);
-if (cnd94Wr) { 
-let eltwmrr = eo('tr','90qf');
-let elh0z_U = eo('td','nqMf');
+}let cndOoij = component.bug.severity;
+this.setState('stiLXk_', cndOoij);
+if (cndOoij) { 
+let elwxT3Y = eo('tr','yJFf');
+let elbdz_c = eo('td','fh0f');
 text(`Severity`);
 ec('td');
-let ellAJTe = eo('th','2lEf',null,`class`,`bold`);
+let el6RctW = eo('th','OM8f',null,`class`,`bold`);
 text(trans(component.bug.severity));
 ec('th');
 ec('tr');
-}let cndWZkG = component.bug.reproducible;
-this.setState('stG7Xdr', cndWZkG);
-if (cndWZkG) { 
-let elheGfb = eo('tr','nb5f');
-let elVN265 = eo('td','oa_f');
+}let cndTuOu = component.bug.reproducible;
+this.setState('stMvj21', cndTuOu);
+if (cndTuOu) { 
+let elGqxpW = eo('tr','uJ2f');
+let el_cLiJ = eo('td','Ohwf');
 text(`Reproducible`);
 ec('td');
-let el2MGHo = eo('th','SUzf',null,`class`,`bold`);
+let elAPl49 = eo('th','0XLf',null,`class`,`bold`);
 text(trans(component.bug.reproducible));
 ec('th');
 ec('tr');
-}let cnd6Xiv = component.bug.testingUrl;
-this.setState('st_PQeT', cnd6Xiv);
-if (cnd6Xiv) { 
-let elCqgoQ = eo('tr','sTcf');
-let el6ovTN = eo('th','qRqf');
+}let cndQ31O = component.bug.testingUrl;
+this.setState('stkW5A3', cndQ31O);
+if (cndQ31O) { 
+let el68eJC = eo('tr','xpof');
+let elRqOVT = eo('th','Dfff');
 text(`Testing Url`);
 ec('th');
-let elTN5o_ = eo('td','wu4f');
-let elcEI6k = eo('a','TFAf',null,`href`,`${component.bug.testingUrl}`,`class`,`btn btn-sm bold btn-orange`,`target`,`_blank`);
+let elo1gmj = eo('td','3Qrf');
+let elRfhIj = eo('a','uaKf',null,`href`,`${component.bug.testingUrl}`,`class`,`btn btn-sm bold btn-orange`,`target`,`_blank`);
 text(`Open Link`);
 ec('a');
 ec('td');
 ec('tr');
-}let cnd_R72 = component.bug.sprint;
-this.setState('stvm6ro', cnd_R72);
-if (cnd_R72) { 
-let elS2dZC = eo('tr','iuAf');
-let elU127b = eo('td','92df');
+}let cnd0lqm = component.bug.sprint;
+this.setState('stiNEUU', cnd0lqm);
+if (cnd0lqm) { 
+let elu3pXa = eo('tr','qlZf');
+let elmSOS0 = eo('td','5yJf');
 text(`Sprint`);
 ec('td');
-let el_THr5 = eo('th','E0mf');
-let elZM9nE = eo('a','B2sf',null,`href`,`${URLS.project(component.project, 'sprints', component.bug.sprint)}`,`class`,`bold`);
+let el3_cqS = eo('th','gb6f');
+let elJENPy = eo('a','XrXf',null,`href`,`${URLS.project(component.project, 'sprints', component.bug.sprint)}`,`class`,`bold`);
 text(component.bug.sprint.name);
 ec('a');
 ec('th');
 ec('tr');
-}let cndpdOW = Object.get(component.bug.testCase, 'id', '');
-this.setState('stHYH8c', cndpdOW);
-if (cndpdOW) { 
-let elE_CVO = eo('tr','atYf');
-let elAzCnu = eo('td','gKIf');
+}let cndIRQ5 = Object.get(component.bug.testCase, 'id', '');
+this.setState('st6btCV', cndIRQ5);
+if (cndIRQ5) { 
+let el2FXJm = eo('tr','E_Pf');
+let elZyHtC = eo('td','aHAf');
 text(`Test Case`);
 ec('td');
-let elUtgPd = eo('th','hZxf');
-let eldT44n = eo('a','pthf',null,`href`,`${URLS.project(component.project, 'test-cases', component.bug.testCase)}`,`class`,`bold`);
+let elSBOem = eo('th','Cs4f');
+let elYxBgA = eo('a','fQpf',null,`href`,`${URLS.project(component.project, 'test-cases', component.bug.testCase)}`,`class`,`bold`);
 text(component.bug.testCase.title);
 ec('a');
 ec('th');
 ec('tr');
-}let cnd5SDS = component.bug.module;
-this.setState('stZwRof', cnd5SDS);
-if (cnd5SDS) { 
-let el_5Jly = eo('tr','Utif');
-let elIgGvW = eo('td','3Vmf');
+}let cndb9L_ = component.bug.module;
+this.setState('stV4I0M', cndb9L_);
+if (cndb9L_) { 
+let elx0Fv5 = eo('tr','kqtf');
+let elDMqF7 = eo('td','_Vzf');
 text(`Module`);
 ec('td');
-let elgJQ6a = eo('th','V4Bf');
-let elcDVqT = eo('a','eouf',null,`href`,`${URLS.project(component.project, 'modules', component.bug.module)}`,`class`,`bold`);
+let elInIrB = eo('th','tlof');
+let elljj4r = eo('a','FEpf',null,`href`,`${URLS.project(component.project, 'modules', component.bug.module)}`,`class`,`bold`);
 text(component.bug.module.name);
 ec('a');
 ec('th');
@@ -297,53 +297,53 @@ ec('tr');
 }ec('tbody');
 ec('table');
 ec('div');
-let cndyCD5 = ! Is.empty(component.bug.assignee);
-this.setState('stgNXNO', cndyCD5);
-if (cndyCD5) { 
-let elIRSA0 = eo('div','0mIf',null,`class`,`simple-card mt-2`);
-let el1YZ2z = eo('h2','pQpf',null,`class`,`text-center`);
+let cnd7rnQ = ! Is.empty(component.bug.assignee);
+this.setState('stPZVPd', cnd7rnQ);
+if (cnd7rnQ) { 
+let elAwfLg = eo('div','QHzf',null,`class`,`simple-card mt-2`);
+let elA169w = eo('h2','Vd5f',null,`class`,`text-center`);
 text(`Assigned To`);
 ec('h2');
 for (let i in component.bug.assignee) {
 let member = component.bug.assignee[i]; 
- let iiCcNW = 'fIiF87s' + i;
-let eltXJmU = eo('div','2fvTLA3ShCWc' + i+iiCcNW,null,`class`,`m-t-1`);
-let elqd0hP = ev('img','Julff'+iiCcNW,null, 'style', {width:'60px',height:'60px'},`src`,`${member.image}`,`class`,`rounded-circle`,`title`,`${member.name}`,`alt`,`${member.name}`);
-let elyv_Oc = eo('strong','OPbff'+iiCcNW,null,`class`,`ml-3 teal-text`);
+ let ii6q8O = 'IG1UEKy' + i;
+let elU5REO = eo('div','Vc6HKGfPeQDX' + i+ii6q8O,null,`class`,`m-t-1`);
+let elAu0ua = ev('img','XnVff'+ii6q8O,null, 'style', {width:'60px',height:'60px'},`src`,`${member.image}`,`class`,`rounded-circle`,`title`,`${member.name}`,`alt`,`${member.name}`);
+let elB6AKz = eo('strong','a33ff'+ii6q8O,null,`class`,`ml-3 teal-text`);
 text(member.name);
 ec('strong');
 ec('div');
 }
 ec('div');
-}let cndli0F = component.bugStatusCanBeChanged();
-this.setState('stLI_FW', cndli0F);
-if (cndli0F) { 
-let ely9mFH = eo('div','OKNf',null,`class`,`simple-card mt-2`);
-let el9r3wW = eo('h2','xhVf',null,`class`,`text-center m-b-1`);
+}let cndNoOZ = component.bugStatusCanBeChanged();
+this.setState('stThH5y', cndNoOZ);
+if (cndNoOZ) { 
+let elONRnl = eo('div','nmUf',null,`class`,`simple-card mt-2`);
+let elreZJQ = eo('h2','Xx0f',null,`class`,`text-center m-b-1`);
 text(`Bug Status`);
 ec('h2');
-let cndEK3P = component.bug.status == 'fixed' && Object.get(component.project.currentSprint, 'id', '') && Object.get(component.bug.sprint, 'id', '') && Object.get(component.bug.sprint, 'id', '') == Object.get(component.project.currentSprint, 'id', '');
-this.setState('stYLgJf', cndEK3P);
-let cndqMeM = !(cndEK3P);
-this.setState('stZitEj', cndqMeM);
-if (cndEK3P) { 
-let el61ziR = eo('div','5B7f',null,`class`,`red-text text-center bold`);
+let cndYo4Y = component.bug.status == 'fixed' && Object.get(component.project.currentSprint, 'id', '') && Object.get(component.bug.sprint, 'id', '') && Object.get(component.bug.sprint, 'id', '') == Object.get(component.project.currentSprint, 'id', '');
+this.setState('stBJHrX', cndYo4Y);
+let cnd0MMY = !(cndYo4Y);
+this.setState('st0Lbpi', cnd0MMY);
+if (cndYo4Y) { 
+let elyoSW2 = eo('div','BPkf',null,`class`,`red-text text-center bold`);
 text(`Can not retest bug in same project sprint.`);
 ec('div');
 }else { 
-let cmp2oRP = this._lc('cCJ1Ovs0h', {parent:component,parentTop:projectLayout,props:{value:component.bug.status,items:component.getProperStatuses()},events:{onselect:function(e) {let $el = this; component.oldStatus = component.bug.status; component.confirmStatusChange = e.value != component.bug.status; component.newStatus = e.value}},attrs:{heading:'Change Bug Status'},state:'stZitEj'});
+let cmpSH2b = this._lc('c3IcrFVc8', {parent:component,parentTop:projectLayout,props:{value:component.bug.status,items:component.getProperStatuses()},events:{onselect:function(e) {let $el = this; component.oldStatus = component.bug.status; component.confirmStatusChange = e.value != component.bug.status; component.newStatus = e.value}},attrs:{heading:'Change Bug Status'},state:'st0Lbpi'});
 }ec('div');
 }ec('div');
 ec('div');
 }}});
-let cndjhwT = component.confirmStatusChange;
-this.setState('st5cWD4', cndjhwT);
-if (cndjhwT) { 
-let cmpwqlk = this._lc('c4zZVz1_5', {parent:component,props:{withInput:component.isRequiringValue(),message:component.getConfirmingMessage(),required:component.isRequiringValue()},events:{onclose:function(e) {let $el = this; component.confirmStatusChange = null;},onconfirm:function(e) {let $el = this; component.updateStatus(e)}},state:'st5cWD4'});
-}let cndsmXX = component.editBug;
-this.setState('stjE7ov', cndsmXX);
-if (cndsmXX) { 
-let cmpaJcu = this._lc('cJZfWfw2M', {parent:component,props:{record:component.bug,project:component.project},events:{onclose:function(e) {let $el = this; component.editBug = null;},onsave:function(e) {let $el = this; component.prepareBug(e)}},state:'stjE7ov'});
+let cndvsD8 = component.confirmStatusChange;
+this.setState('stsFQNg', cndvsD8);
+if (cndvsD8) { 
+let cmpxHa1 = this._lc('c3KsHrrvp', {parent:component,props:{withInput:component.isRequiringValue(),message:component.getConfirmingMessage(),required:component.isRequiringValue()},events:{onclose:function(e) {let $el = this; component.confirmStatusChange = null;},onconfirm:function(e) {let $el = this; component.updateStatus(e)}},state:'stsFQNg'});
+}let cndtA7_ = component.editBug;
+this.setState('stTHReJ', cndtA7_);
+if (cndtA7_) { 
+let cmpmXqJ = this._lc('cKvWFJJpn', {parent:component,props:{record:component.bug,project:component.project},events:{onclose:function(e) {let $el = this; component.editBug = null;},onsave:function(e) {let $el = this; component.prepareBug(e)}},state:'stTHReJ'});
 }
                     this.isReadyToGo();
                 }

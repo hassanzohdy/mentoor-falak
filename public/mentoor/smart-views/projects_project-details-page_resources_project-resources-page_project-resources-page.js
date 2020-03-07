@@ -4,13 +4,13 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['project','isLoading'],
-                children: {cwoAdtsvM:'resources-list',cUTVbRdYX:'project-layout'},
+                children: {cR8BDpbvb:'resources-list',c_oyDn6Z9:'project-layout'},
                 render: function (component) {
-                    let cmpUZ3C = this._lc('cUTVbRdYX', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let eldzGML = eo('h1',null,null,`class`,`m-y-1 purple-text`);
+                    let cmpF626 = this._lc('c_oyDn6Z9', {parent:component,props:{project:component.project,isLoading:component.isLoading},content:(projectLayout) => {let eluRV2u = eo('h1',null,null,`class`,`m-y-1 purple-text`);
 text(`${ component.project.name } Resources
         (${ component.project.resources.length })`);
 ec('h1');
-let cmpklrC = this._lc('cwoAdtsvM', {parent:component,parentTop:projectLayout,props:{resources:component.project.resources,canAdd:true,project:component.project},events:{onremove:function(e) {let $el = this; component.project.resources = e}}});
+let cmp2ZDT = this._lc('cR8BDpbvb', {parent:component,parentTop:projectLayout,props:{resources:component.project.resources,canAdd:true,project:component.project},events:{onremove:function(e) {let $el = this; component.project.resources = e}}});
 }});
 
                     this.isReadyToGo();

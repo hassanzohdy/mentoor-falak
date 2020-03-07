@@ -10,15 +10,18 @@ class NewItemBtn {
    * Initialize the component
    * This method is triggered before rendering the component
    */
-  init() {}
+  init() {
+    this.label = this.prop("label");
+    this.icon = this.prop("icon");
+    this.link = this.prop("link");
+    this.color = this.prop("color");
+
+    echo(this.color)
+  }
   
   /**
    * The component is ready to do any action after being rendered in dom
    */
   ready() {
-    this.label = this.inputs.getProp("label");
-    this.icon = this.inputs.getProp("icon");
-    this.link = this.inputs.getProp("link");
-    this.color = this.inputs.getProp("color");
   }
 }

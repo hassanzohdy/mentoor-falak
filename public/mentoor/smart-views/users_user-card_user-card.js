@@ -4,27 +4,27 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','user'],
-                children: {c1lupaMac:'flk-spinner'},
+                children: {cljyDUwCl:'flk-spinner'},
                 render: function (component) {
-                    let elAq1xY = eo('div',null,null,`class`,`simple-card user-card`);
-component.userCard = elAq1xY;
-let cndgcOD = component.isLoading;
-this.setState('stCvMW9', cndgcOD);
-let cnd0XcR = !(cndgcOD);
-this.setState('styXBNi', cnd0XcR);
-if (cndgcOD) { 
-let cmpeZ8f = this._lc('c1lupaMac', {parent:component,attrs:{theme:'black'},state:'stCvMW9'});
+                    let elfENTB = eo('div',null,null,`class`,`simple-card user-card`);
+component.userCard = elfENTB;
+let cndINUb = component.isLoading;
+this.setState('stBxhcw', cndINUb);
+let cndLNiy = !(cndINUb);
+this.setState('st5MUe8', cndLNiy);
+if (cndINUb) { 
+let cmpFumr = this._lc('cljyDUwCl', {parent:component,attrs:{theme:'black'},state:'stBxhcw'});
 }else { 
-let elo6c3F = eo('div');
-let elUeqFl = ev('img',null,null,`src`,`${apiImageUrl(component.user.image)}`,`title`,`${component.user.name}`,`alt`,`${component.user.name}`);
-let elmFPkT = eo('div',null,null,`class`,`meta`);
-let elv8E1a = eo('span',null,null,`class`,`name`);
+let eldDt4u = eo('div');
+let elTzC0t = ev('img',null,null,`src`,`${apiImageUrl(component.user.image)}`,`title`,`${component.user.name}`,`alt`,`${component.user.name}`);
+let elzDIVW = eo('div',null,null,`class`,`meta`);
+let elc1vEi = eo('span',null,null,`class`,`name`);
 text(component.user.name);
 ec('span');
-let cndPyXU = component.user.username;
-this.setState('stcdbs9', cndPyXU);
-if (cndPyXU) { 
-let elNaPWv = eo('span','Etkf',null,`class`,`username`);
+let cnd1U1E = component.user.username;
+this.setState('stjqmNX', cnd1U1E);
+if (cnd1U1E) { 
+let elnlaOH = eo('span','_d_f',null,`class`,`username`);
 text('@' + component.user.username);
 ec('span');
 }ec('div');

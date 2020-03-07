@@ -183,6 +183,18 @@ class TasksBoard {
         this.tasksList = tasksList.toArray();
     }
 
+    sortTasksCustom(orderArray, key) {
+        this.tasksList.map(task => {
+            for (let item of orderArray) {
+                if (task[key] == item) {
+                    task.order = orderArray.indexOf(item);
+                }
+            }
+        });
+
+        this.sortTasksBy('order');
+    }
+
     selectDefaultParticipant() {
         let { id } = this.user.info;
 

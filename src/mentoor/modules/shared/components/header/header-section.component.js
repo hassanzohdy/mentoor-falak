@@ -33,6 +33,10 @@ class Header {
 
     navigateToProject(projectId) {       
         this.projectId = projectId;
+        this.currentProjectId = projectId;
+        this.shareable.share('project', {
+            id: projectId,
+        });
         this.router.navigateTo(URLS.project({ id: projectId }));
     }
 

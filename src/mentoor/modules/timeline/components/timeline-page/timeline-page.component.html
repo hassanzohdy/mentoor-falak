@@ -14,7 +14,7 @@
         <!-- <post-placeholder></post-placeholder> -->
         <h1 *if="Is.empty(this.posts)" class="bold text-center">No posts yet!</h1>
         <else>
-            <div *if="this.pep" *for="let post of this.posts" class="post">
+            <div *for="let post of this.posts" class="post">
                 <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
                 <div class="meta">
                     <a href="{{ URLS.post(post) }}" class="title" [html]="post.title"></a>
@@ -28,8 +28,8 @@
                 </div>
                 <article>
                     <!-- Content -->
-                    <markdown [content]="post.content.split('\n').slice(0, 20).join('\n')"></markdown>
-                    <a *if="post.content.split('\n').length > 20" href="{{ URLS.post(post) }}">Continue reading</a>
+                    <markdown [content]="post.content.split('\n').slice(0, 10).join('\n')"></markdown>
+                    <a *if="post.content.split('\n').length > 10" href="{{ URLS.post(post) }}">Continue reading</a>
                     <!-- Tags list -->
                     <section class="tags">
                         <span *for="let tag of post.tags" class="tag">
@@ -38,42 +38,6 @@
                         </span>
                     </section>
                 </article>
-                <!-- s=o >> size=original -->
-                <img *if="post.image" [src]="post.image + '?s=o1'" class="image" [alt]="post.title" />
-                <post-comments [post]="post" [max]="5"></post-comments>
-            </div>
-
-            <div class="row posts-list">
-                <div *for="let post of this.posts" class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="post">
-                        <a class="link" [href]="URLS.post(post)">
-                            <img [src]="post.image ? post.image + '?w=400' : assets('images/default.png')" class="image"
-                                [alt]="post.title" />
-                                <div class="title text-center" [html]="post.title"></div>
-                            </a>
-
-                        <!-- <div class="footer">
-                                <div class="meta-info">
-                                    <span class="user">
-                                        <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
-                                        <span class="user-name" [html]="post.createdBy.name"></span>
-                                        <user-online [id]="post.createdBy.id"></user-online>
-                                    </span>
-    
-                                    <flk-time-ago *if="this.lastP && this.lastP.id == post.id"
-                                        [timestamp]="this.lastP.createdAt.timestamp" class="created-at"></flk-time-ago>
-                                    <flk-time-ago *else [timestamp]="post.createdAt.timestamp" class="created-at">
-                                    </flk-time-ago>
-                                </div>
-                                <section class="tags text-centers">
-                                    <span *for="let tag of post.tags" class="tag">
-                                        <img [src]="tag.image" tooltip [title]="tag.name" [alt]="tag.name" />
-                                        <span [html]="'#' + tag.name"></span>
-                                    </span>
-                                </section>
-                            </div> -->
-                    </div>
-                </div>
             </div>
         </else>
     </else>

@@ -4,173 +4,173 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','word','user','togglePublishedWords','requiresLogin','confirmPurchase','openModal','sortBy','defaultSort','currentWord','delete','wordsPerLine','modalShouldBeOpened','validateAsUnique','getWordRecord','adjustRecord','purchaseCategory'],
-                children: {cpe1gK5hQ:'flk-spinner',cIa_4b8gS:'flk-facebook-share',ccftQkBoX:'gold-icon',cTWgzhATF:'gold-icon',cQe36cGeP:'flk-dropdown-list',coOgv8qAU:'layout',cmBK_6lr8:'word-modal',cFCLn87KW:'flk-alert'},
+                children: {chzCAtcVH:'flk-spinner',cVfb29mHw:'flk-facebook-share',cz_pIs1Nz:'gold-icon',cE_FG7Ig7:'gold-icon',cViVXezeC:'flk-dropdown-list',cdR6VLn6t:'layout',cpmcqShNr:'word-modal',cexuRcx3P:'flk-alert'},
                 render: function (component) {
-                    let cmpv9g2 = this._lc('coOgv8qAU', {parent:component,content:(layout) => {let elLMRQ0 = eo('h1',null,null,`class`,`m-y-1 p-r-2`);
+                    let cmpVfiy = this._lc('cdR6VLn6t', {parent:component,content:(layout) => {let elv6ZOh = eo('h1',null,null,`class`,`m-y-1 p-r-2`);
 text(`English As A Foreigner`);
-let elTZhS1 = eo('a',null,null,`href`,`/english`,`class`,`float-right mr-3 d-inline-block btn btn-purple bold`);
-let el25vdM = eo('i',null,null,`class`,`${fas('angle-left')} mr-2 icon`);
+let eldhsQT = eo('a',null,null,`href`,`/english`,`class`,`float-right mr-3 d-inline-block btn btn-purple bold`);
+let elVdBEN = eo('i',null,null,`class`,`${fas('angle-left')} mr-2 icon`);
 ec('i');
 text(`Back to Topics list`);
 ec('a');
 ec('h1');
-let cnd4cGF = component.isLoading;
-this.setState('st6CyWB', cnd4cGF);
-let cndvVA5 = !(cnd4cGF);
-this.setState('stB_My_', cndvVA5);
-if (cnd4cGF) { 
-let cmp5sTa = this._lc('cpe1gK5hQ', {parent:component,parentTop:layout,state:'st6CyWB'});
+let cndztyU = component.isLoading;
+this.setState('stEAHTq', cndztyU);
+let cndKBIB = !(cndztyU);
+this.setState('stZiCHJ', cndKBIB);
+if (cndztyU) { 
+let cmp4nYV = this._lc('chzCAtcVH', {parent:component,parentTop:layout,state:'stEAHTq'});
 }else { 
-let elHz9Sq = eo('div',null,null,`id`,`word-wrapper`);
-let eliiFR0 = eo('div',null,null,`class`,`text-left row m-0`);
-let elrDXO6 = ev('img',null,null,`src`,`${component.word.image}`,`class`,`image col-sm-2`,`title`,`${component.word.word}`,`alt`,`${component.word.word}`);
-let el_9_RS = eo('div',null,null,`id`,`meta`,`class`,`col-sm-10`);
-let elgxAQh = eo('h1',null,null,`class`,`heading`);
-let elRe0ys = eo('div',null,null,`id`,`word`);
-let elbyn58 = eo('span');
+let elsCw0N = eo('div',null,null,`id`,`word-wrapper`);
+let el3iw1Q = eo('div',null,null,`class`,`text-left row m-0`);
+let elPkaf_ = ev('img',null,null,`src`,`${component.word.image}`,`class`,`image col-sm-2`,`title`,`${component.word.word}`,`alt`,`${component.word.word}`);
+let elEiocx = eo('div',null,null,`id`,`meta`,`class`,`col-sm-10`);
+let elHI3NT = eo('h1',null,null,`class`,`heading`);
+let elVhIX4 = eo('div',null,null,`id`,`word`);
+let eluNL4T = eo('span');
 text(component.word.word);
 ec('span');
-let cndoCk8 = Object.get(component.word, 'total.words', '');
-this.setState('st4pS8u', cndoCk8);
-if (cndoCk8) { 
-let elHN52f = eo('span','TJef',null,`class`,`ml-2`);
+let cndbkC8 = Object.get(component.word, 'total.words', '');
+this.setState('stNC_gh', cndbkC8);
+if (cndbkC8) { 
+let elfpK7Z = eo('span','aBXf',null,`class`,`ml-2`);
 text('(' + component.word.total.words.format() + ')');
 ec('span');
 }ec('div');
-let elhRaBH = eo('div',null,null,`id`,`translation`);
+let el49VTZ = eo('div',null,null,`id`,`translation`);
 text(component.word.translation.word);
 ec('div');
-let elffRm7 = eo('div');
-let cmpYl2Z = this._lc('cIa_4b8gS', {parent:component,parentTop:layout});
+let elSzJZl = eo('div');
+let cmpLzh7 = this._lc('cVfb29mHw', {parent:component,parentTop:layout});
 ec('div');
-let cndohNF = component.user.accountType == 'admin';
-this.setState('st1b6Bt', cndohNF);
-if (cndohNF) { 
-let el8bp9P = eo('button','y0Ff',null, eventListeners, {onclick:[function(e) {var $el = this;component.togglePublishedWords()}]},`type`,`button`,`class`,`btn bold btn-primary`);
+let cndNj5E = component.user.accountType == 'admin';
+this.setState('st2SzOx', cndNj5E);
+if (cndNj5E) { 
+let elyWMnM = eo('button','DMrf',null, eventListeners, {onclick:[function(e) {var $el = this;component.togglePublishedWords()}]},`type`,`button`,`class`,`btn bold btn-primary`);
 text(`Needs preview only`);
 ec('button');
 }ec('h1');
-let cndmtyv = component.word.description;
-this.setState('stgt1pn', cndmtyv);
-let cndFN2Q = ! component.word.isUnlocked;
-this.setState('stBq9Xj', cndFN2Q);
-let cndvuKY = Object.get(FLAGS, 'english.newWord');
-this.setState('stOM1MM', cndvuKY);
-if (cndmtyv) { 
-let el5pGWw = eo('div','gX_f',null,`id`,`description`);
-let elNafiS = eo('p','8xbf');
+let cndHtV1 = component.word.description;
+this.setState('stWe4rO', cndHtV1);
+let cndud9d = ! component.word.isUnlocked;
+this.setState('stPH0Su', cndud9d);
+let cndCddQ = Object.get(FLAGS, 'english.newWord');
+this.setState('stCfVKK', cndCddQ);
+if (cndHtV1) { 
+let elIeztx = eo('div','5Xvf',null,`id`,`description`);
+let elL1m68 = eo('p','_Lef');
 text(component.word.description);
 ec('p');
-let elQnE9v = eo('p','3cPf',null,`class`,`ar`);
+let el6S8kg = eo('p','z4zf',null,`class`,`ar`);
 text(component.word.translation.description);
 ec('p');
 ec('div');
-}let cndNTVa = component.requiresLogin;
-this.setState('stw1IQB', cndNTVa);
-let cndk89Q = cndFN2Q;
-this.setState('stvzrZO', cndk89Q);
-let cnd_Iv4 = cndvuKY;
-this.setState('ste2SWt', cnd_Iv4);
-if (cndNTVa) { 
-let elnDHdl = eo('div','4Gsf',null,`class`,`text-center`);
-let elN6NhI = eo('a','udwf',null,`class`,`btn btn-danger btn-sm login-btn`,`id`,`action-btn`,`href`,`/login`);
-let elzHI1E = eo('i','hccf',null,`class`,`${fas('lock')} mr-2 icon`);
+}let cndq_RE = component.requiresLogin;
+this.setState('stHHp1U', cndq_RE);
+let cndyOYg = cndud9d;
+this.setState('sthQZpA', cndyOYg);
+let cndOJ2H = cndCddQ;
+this.setState('stVildi', cndOJ2H);
+if (cndq_RE) { 
+let elA4AHk = eo('div','Kmqf',null,`class`,`text-center`);
+let elpXRqP = eo('a','cf6f',null,`class`,`btn btn-danger btn-sm login-btn`,`id`,`action-btn`,`href`,`/login`);
+let eljoXiV = eo('i','KZAf',null,`class`,`${fas('lock')} mr-2 icon`);
 ec('i');
 text(`Login to proceed.`);
 ec('a');
 ec('div');
-}else if (cndk89Q) { 
-let elWK_SL = eo('div',null,null,`id`,`action-btn`);
-let elowYAV = eo('div',null,null,`class`,`cost`);
-let cmpx1L4 = this._lc('ccftQkBoX', {parent:component,parentTop:layout,props:{coins:component.word.cost},style:{color:'green'},state:'stvzrZO'});
-let cndPZBJ = component.word.cost == 0;
-this.setState('st60jct', cndPZBJ);
-if (cndPZBJ) { 
-let ellqWy_ = eo('strong','m9Sf',null,`class`,`pink-text`);
+}else if (cndyOYg) { 
+let elmELQU = eo('div',null,null,`id`,`action-btn`);
+let elOBLHL = eo('div',null,null,`class`,`cost`);
+let cmpEdzr = this._lc('cz_pIs1Nz', {parent:component,parentTop:layout,props:{coins:component.word.cost},attrs:{color:'green'},state:'sthQZpA'});
+let cndGze0 = component.word.cost == 0;
+this.setState('styOY6M', cndGze0);
+if (cndGze0) { 
+let elcQfnU = eo('strong','Ksmf',null,`class`,`pink-text`);
 text(`FREE!`);
 ec('strong');
 }ec('div');
-let el2Rg9o = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmPurchase = true}]},`type`,`button`,`class`,`btn purchase-btn btn-sm bold btn-danger`);
-let elYtGgd = eo('i',null,null,`class`,`${fas('lock')} mr-2 icon`);
+let elkSJcQ = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.confirmPurchase = true}]},`type`,`button`,`class`,`btn purchase-btn btn-sm bold btn-danger`);
+let elGLeOr = eo('i',null,null,`class`,`${fas('lock')} mr-2 icon`);
 ec('i');
 text(`Purchase to unlock`);
 ec('button');
 ec('div');
-}else if (cnd_Iv4) { 
-let eltfbta = eo('div',null,null,`id`,`action-btn`);
-let elQPN1T = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('add')}]},`type`,`button`,`class`,`btn btn-success`,`id`,`suggest-btn`);
-let elTjnj4 = eo('i',null,null,`class`,`${fas('plus')} icon`);
+}else if (cndOJ2H) { 
+let elIwPhY = eo('div',null,null,`id`,`action-btn`);
+let eldbWZs = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal('add')}]},`type`,`button`,`class`,`btn btn-success`,`id`,`suggest-btn`);
+let eldFoH3 = eo('i',null,null,`class`,`${fas('plus')} icon`);
 ec('i');
-let cmpaTCj = this._lc('cTWgzhATF', {parent:component,parentTop:layout,props:{coins:FLAGS.english.newWord},state:'ste2SWt'});
-let el9ys97 = eo('div',null,null,`class`,`bold`);
+let cmpYa56 = this._lc('cE_FG7Ig7', {parent:component,parentTop:layout,props:{coins:FLAGS.english.newWord},state:'stVildi'});
+let elgzrfI = eo('div',null,null,`class`,`bold`);
 text(`New word`);
 ec('div');
 ec('button');
 ec('div');
 }ec('div');
 ec('div');
-let cndzCmx = component.word.isUnlocked && component.word.type == 'category' && ! Is.empty(component.word.words);
-this.setState('stvhUC1', cndzCmx);
-if (cndzCmx) { 
-let elmvts9 = eo('div','QPxf',null,`class`,`m-t-2`);
-let el23jYL = eo('h3','Z3wf',null,`class`,`words-lst`);
+let cndtSe_ = component.word.isUnlocked && component.word.type == 'category' && ! Is.empty(component.word.words);
+this.setState('stq5wQd', cndtSe_);
+if (cndtSe_) { 
+let el69Xyn = eo('div','6cHf',null,`class`,`m-t-2`);
+let elQhUxr = eo('h3','QOsf',null,`class`,`words-lst`);
 text(`Words list
                 -`);
-let elLy_2E = eo('span','bo2f',null,`class`,`ml-1 translation`);
+let elkLVi8 = eo('span','fZtf',null,`class`,`ml-1 translation`);
 text(`الكلمات`);
 ec('span');
 ec('h3');
-let elxzhbS = eo('div','9q8f',null,`class`,`words-sort-wrapper`);
-let elEi3MU = eo('label','juWf',null,`class`,`mr-2 bold teal-text`);
+let elKbmTi = eo('div','QZVf',null,`class`,`words-sort-wrapper`);
+let elzVjM9 = eo('label','k9Tf',null,`class`,`mr-2 bold teal-text`);
 text(`Sort`);
 ec('label');
-let cmp_E_P = this._lc('cQe36cGeP', {parent:component,parentTop:layout,props:{items:['Chronologically', 'Alphabetically'],searchable:false,value:component.defaultSort},events:{onselect:function(e) {let $el = this; component.sortBy(e.value)}},attrs:{class:'dropdown'},state:'stvhUC1'});
+let cmp62qh = this._lc('cViVXezeC', {parent:component,parentTop:layout,props:{items:['Chronologically', 'Alphabetically'],searchable:false,value:component.defaultSort},events:{onselect:function(e) {let $el = this; component.sortBy(e.value)}},attrs:{class:'dropdown'},state:'stq5wQd'});
 ec('div');
-let eljUK9_ = eo('table','RCuf',null,`class`,`table table-bordered table-striped`);
-let elgploZ = eo('tbody','jSrf');
+let elsTaP2 = eo('table','La5f',null,`class`,`table table-bordered table-striped`);
+let eluPbNN = eo('tbody','IIrf');
 for (let i in Array.chunk(component.word.words, component.wordsPerLine)) {
 let words = Array.chunk(component.word.words, component.wordsPerLine)[i]; 
- let iiuEZA = 'YvxiAuL' + i;
-let elbNOaD = eo('tr','8Cti7T6OwPiS' + i+iiuEZA);
+ let iidcdf = 'UUUIf5F' + i;
+let elTozWu = eo('tr','ObGqhbS4aDBi' + i+iidcdf);
 for (let index in words) {
 let word = words[index]; 
- let ii7bKX = '9DVRnQK' + index;
-let elEkXGz = eo('td','eAfdyPqu_PKc' + index+iiuEZA+ii7bKX,null,`class`,`word-wrapper`);
-let elHjNH2 = eo('div','qVxff'+iiuEZA+ii7bKX,null,`class`,`word`);
-let cndFXfJ = word.image;
-this.setState('stNC9JL', cndFXfJ);
-if (cndFXfJ) { 
-let elTAfka = ev('img','JLTff'+iiuEZA+ii7bKX,null,`src`,`${word.image}`,`title`,`${word.word}`,`alt`,`${word.word}`);
-}let elmBjwF = eo('span','lkOff'+iiuEZA+ii7bKX);
+ let iigqbr = 'lHEHsxl' + index;
+let eljQxSb = eo('td','Icq3Br4h4y6E' + index+iidcdf+iigqbr,null,`class`,`word-wrapper`);
+let elexoz6 = eo('div','ECoff'+iidcdf+iigqbr,null,`class`,`word`);
+let cndEmca = word.image;
+this.setState('stGy2Cd', cndEmca);
+if (cndEmca) { 
+let el_CJHf = ev('img','IxSff'+iidcdf+iigqbr,null,`src`,`${word.image}`,`title`,`${word.word}`,`alt`,`${word.word}`);
+}let elFbX_c = eo('span','3HKff'+iidcdf+iigqbr);
 text(word.word);
 ec('span');
 ec('div');
 ec('td');
-let elsC2IA = eo('td','fAudyPqu_PKc' + index+iiuEZA+ii7bKX,null,`class`,`translation`);
+let elE8Awp = eo('td','fRO3Br4h4y6E' + index+iidcdf+iigqbr,null,`class`,`translation`);
 text(word.translation.word);
 ec('td');
-let cndkQMb = component.user.accountType == 'admin';
-this.setState('stElAr5', cndkQMb);
-if (cndkQMb) { 
-let elmx1oj = eo('td','NYsff'+iiuEZA+ii7bKX);
-let cnd4IPX = word.published;
-this.setState('stvNmCs', cnd4IPX);
-if (cnd4IPX) { 
-let elqfMrs = eo('i','dOvff'+iiuEZA+ii7bKX,null,`title`,``,`class`,`${fas('check-circle')} blue-text icon`);
+let cndLsy1 = component.user.accountType == 'admin';
+this.setState('staTOMI', cndLsy1);
+if (cndLsy1) { 
+let elIkpUb = eo('td','ZXdff'+iidcdf+iigqbr);
+let cndKG1t = word.published;
+this.setState('stl_aNv', cndKG1t);
+if (cndKG1t) { 
+let elol8oX = eo('i','UmDff'+iidcdf+iigqbr,null,`title`,``,`class`,`${fas('check-circle')} blue-text icon`);
 ec('i');
 
                     setTimeout(function () {
-                        let $el = elqfMrs;
+                        let $el = elol8oX;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Published')}`});
         ;
                     }, 20);                
-                }let el5HVM0 = eo('button','pq9ff'+iiuEZA+ii7bKX,null, eventListeners, {onclick:[function(e) {var $el = this;component.delete(word, index)}]},`type`,`button`,`class`,`btn btn-circle btn-danger`);
-let elMSlDM = eo('i','2qRff'+iiuEZA+ii7bKX,null,`class`,`${fas('trash')} icon`);
+                }let elteLSI = eo('button','iLFff'+iidcdf+iigqbr,null, eventListeners, {onclick:[function(e) {var $el = this;component.delete(word, index)}]},`type`,`button`,`class`,`btn btn-circle btn-danger`);
+let elN7phm = eo('i','OAOff'+iidcdf+iigqbr,null,`class`,`${fas('trash')} icon`);
 ec('i');
 ec('button');
-let elOyIsL = eo('button','Itlff'+iiuEZA+ii7bKX,null, eventListeners, {onclick:[function(e) {var $el = this;component.currentWord = word; component.openModal('edit');}]},`type`,`button`,`class`,`btn btn-circle btn-primary`);
-let elE2hGr = eo('i','DZoff'+iiuEZA+ii7bKX,null,`class`,`${fas('edit')} icon`);
+let elc4bcQ = eo('button','ftBff'+iidcdf+iigqbr,null, eventListeners, {onclick:[function(e) {var $el = this;component.currentWord = word; component.openModal('edit');}]},`type`,`button`,`class`,`btn btn-circle btn-primary`);
+let elfBJEX = eo('i','Dcoff'+iidcdf+iigqbr,null,`class`,`${fas('edit')} icon`);
 ec('i');
 ec('button');
 ec('td');
@@ -182,14 +182,14 @@ ec('table');
 ec('div');
 }ec('div');
 }}});
-let cndPTex = component.modalShouldBeOpened;
-this.setState('stiA7lX', cndPTex);
-if (cndPTex) { 
-let cmpyG8S = this._lc('cmBK_6lr8', {parent:component,props:{record:component.getWordRecord(),category:component.word},events:{onvalidate:function(e) {let $el = this; return component.validateAsUnique(e)},onsave:function(e) {let $el = this; component.adjustRecord(e)},onclose:function(e) {let $el = this; component.modalShouldBeOpened = null}},state:'stiA7lX'});
-}let cnd07jo = component.confirmPurchase;
-this.setState('stfDVXi', cnd07jo);
-if (cnd07jo) { 
-let cmp4ANf = this._lc('cFCLn87KW', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmPurchase = false},onconfirm:function(e) {let $el = this; component.purchaseCategory()}},state:'stfDVXi'});
+let cndO9k7 = component.modalShouldBeOpened;
+this.setState('st0J5fL', cndO9k7);
+if (cndO9k7) { 
+let cmpgcwQ = this._lc('cpmcqShNr', {parent:component,props:{record:component.getWordRecord(),category:component.word},events:{onvalidate:function(e) {let $el = this; return component.validateAsUnique(e)},onsave:function(e) {let $el = this; component.adjustRecord(e)},onclose:function(e) {let $el = this; component.modalShouldBeOpened = null}},state:'st0J5fL'});
+}let cndb__7 = component.confirmPurchase;
+this.setState('stjIzyQ', cndb__7);
+if (cndb__7) { 
+let cmp5519 = this._lc('cexuRcx3P', {parent:component,events:{onclose:function(e) {let $el = this; component.confirmPurchase = false},onconfirm:function(e) {let $el = this; component.purchaseCategory()}},state:'stjIzyQ'});
 }
                     this.isReadyToGo();
                 }

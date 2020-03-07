@@ -4,81 +4,81 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','newVideo','currentSection','course','updateVideo','currentVideo','editSection','index','deleteSection','newSection','removeSection'],
-                children: {ce7Lb9r2o:'flk-spinner',cCf4uGR_G:'course-video-form',cks6dNYSJ:'course-video-form',chbf6SRW0:'course-section-videos-list',c4h7puX0T:'flk-accordion',cQOjUxhVh:'layout',cR1017Dvc:'course-section-form',c_ZMVGfGG:'course-section-form',c1nHymsET:'flk-alert'},
+                children: {ceNhxd2w3:'flk-spinner',cmPLCajhf:'course-video-form',cM3yCvoBh:'course-video-form',cCBKjtMQC:'course-section-videos-list',cPjSlukXa:'flk-accordion',cpSzrqb9d:'layout',cw8nkVl6C:'course-section-form',cpSo0R1Yp:'course-section-form',cIzhXey3C:'flk-alert'},
                 render: function (component) {
-                    let cmpnn3t = this._lc('cQOjUxhVh', {parent:component,content:(layout) => {let cndHXJR = component.isLoading;
-this.setState('stsES2z', cndHXJR);
-let cndnTAq = !(cndHXJR);
-this.setState('sttc0Vl', cndnTAq);
-if (cndHXJR) { 
-let cmp9AAL = this._lc('ce7Lb9r2o', {parent:component,parentTop:layout,state:'stsES2z'});
+                    let cmpltBG = this._lc('cpSzrqb9d', {parent:component,content:(layout) => {let cndKbMe = component.isLoading;
+this.setState('stiPryG', cndKbMe);
+let cnd4f_s = !(cndKbMe);
+this.setState('stRbBPx', cnd4f_s);
+if (cndKbMe) { 
+let cmpiM6V = this._lc('ceNhxd2w3', {parent:component,parentTop:layout,state:'stiPryG'});
 }else { 
-let elP1zL9 = eo('div');
-let cndOOdU = component.newVideo;
-this.setState('sty0N8i', cndOOdU);
-let cndMQWz = component.updateVideo;
-this.setState('st8zOKH', cndMQWz);
-let cndQULY = !(cndOOdU||cndMQWz);
-this.setState('stAJ5Ch', cndQULY);
-if (cndOOdU) { 
-let cmpZOcA = this._lc('cCf4uGR_G', {parent:component,parentTop:layout,props:{course:component.course,section:component.currentSection},events:{onclose:function(e) {let $el = this; component.newVideo = false},onsave:function(e) {let $el = this; component.currentSection.videos.push(e)}},state:'sty0N8i'});
-}else if (cndMQWz) { 
-let cmp29GD = this._lc('cks6dNYSJ', {parent:component,parentTop:layout,props:{video:component.currentVideo,course:component.course,section:component.currentSection},events:{onclose:function(e) {let $el = this; component.updateVideo = false},onsave:function(e) {let $el = this; component.currentSection[index] = e}},state:'st8zOKH'});
+let eltVPY8 = eo('div');
+let cnd9D4n = component.newVideo;
+this.setState('stc8FG4', cnd9D4n);
+let cndjNMm = component.updateVideo;
+this.setState('stLj1FJ', cndjNMm);
+let cnd_Y9H = !(cnd9D4n||cndjNMm);
+this.setState('stXPfYO', cnd_Y9H);
+if (cnd9D4n) { 
+let cmpc8YZ = this._lc('cmPLCajhf', {parent:component,parentTop:layout,props:{course:component.course,section:component.currentSection},events:{onclose:function(e) {let $el = this; component.newVideo = false},onsave:function(e) {let $el = this; component.currentSection.videos.push(e)}},state:'stc8FG4'});
+}else if (cndjNMm) { 
+let cmpysUe = this._lc('cM3yCvoBh', {parent:component,parentTop:layout,props:{video:component.currentVideo,course:component.course,section:component.currentSection},events:{onclose:function(e) {let $el = this; component.updateVideo = false},onsave:function(e) {let $el = this; component.currentSection[index] = e}},state:'stLj1FJ'});
 }else { 
-let elr3eQo = eo('h1');
+let elVE3dQ = eo('h1');
 text(component.course.title);
 ec('h1');
-let elg9CnR = eo('div',null,null,`class`,`simple-card p-0 m-t-1`);
+let elgjDRj = eo('div',null,null,`class`,`simple-card p-0 m-t-1`);
 for (let index in component.course.sections) {
 let section = component.course.sections[index]; 
- let iiXQy1 = section.id+ index;
-let cmpXFG9 = this._lc('c4h7puX0T', {parent:component,parentTop:layout,props:{heading:section.title},content:(flkAccordion) => {let elFPOCX = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.editSection = true; component.currentSection = section; component.index = index;}]},`title`,``,`type`,`button`,`class`,`btn btn-circle btn-info btn-sm`);
-let elhTRK5 = eo('i',null,null,`class`,`${fas('edit')} icon`);
+ let iixdZF = section.id+ index;
+let cmppSxt = this._lc('cPjSlukXa', {parent:component,parentTop:layout,props:{heading:section.title},content:(flkAccordion) => {let elJYkwa = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.editSection = true; component.currentSection = section; component.index = index;}]},`title`,``,`type`,`button`,`class`,`btn btn-circle btn-info btn-sm`);
+let elyb7BK = eo('i',null,null,`class`,`${fas('edit')} icon`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elFPOCX;
+                        let $el = elJYkwa;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Edit')}`});
         ;
                     }, 20);                
-                let el1fcjw = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.deleteSection = true; component.currentSection = section; component.index = index;}]},`title`,``,`type`,`button`,`class`,`btn btn-circle btn-danger btn-sm`);
-let elpROEi = eo('i',null,null,`class`,`${fas('trash')} icon`);
+                let elLs6sd = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.deleteSection = true; component.currentSection = section; component.index = index;}]},`title`,``,`type`,`button`,`class`,`btn btn-circle btn-danger btn-sm`);
+let el1HTFf = eo('i',null,null,`class`,`${fas('trash')} icon`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = el1fcjw;
+                        let $el = elLs6sd;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Delete')}`});
         ;
                     }, 20);                
-                let elyo1vJ = ev('hr');
-let elGBJ01 = eo('h4',null,null,`class`,`m-t-1`);
+                let elR7eEM = ev('hr');
+let elpGIws = eo('h4',null,null,`class`,`m-t-1`);
 text(`Content`);
 ec('h4');
-let cmpW3E5 = this._lc('chbf6SRW0', {parent:component,parentTop:flkAccordion,props:{videos:section.videos},state:'stAJ5Ch'});
-let elpFz37 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.newVideo = true; component.currentSection = section}]},`title`,``,`type`,`button`,`class`,`m-y-2 btn btn-sm btn-purple`);
-let elmF4CW = eo('i',null,null,`class`,`${fas('plus')} icon fa-2x`);
+let cmp_Aht = this._lc('cCBKjtMQC', {parent:component,parentTop:flkAccordion,props:{videos:section.videos},state:'stXPfYO'});
+let elgVQMc = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.newVideo = true; component.currentSection = section}]},`title`,``,`type`,`button`,`class`,`m-y-2 btn btn-sm btn-purple`);
+let elYrXWi = eo('i',null,null,`class`,`${fas('plus')} icon fa-2x`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = elpFz37;
+                        let $el = elgVQMc;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('New Video')}`});
         ;
                     }, 20);                
-                },state:'stAJ5Ch',insideLoop:true,index:"" +iiXQy1});
+                },state:'stXPfYO',insideLoop:true,index:"" +iixdZF});
 }
-let el615C7 = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.newSection = true}]},`title`,``,`type`,`button`,`class`,`m-y-2 btn btn-sm btn-success`);
-let elyErek = eo('i',null,null,`class`,`${fas('plus')} icon fa-2x`);
+let elSIiLZ = eo('button',null,null, eventListeners, {onclick:[function(e) {var $el = this;component.newSection = true}]},`title`,``,`type`,`button`,`class`,`m-y-2 btn btn-sm btn-success`);
+let elPst1k = eo('i',null,null,`class`,`${fas('plus')} icon fa-2x`);
 ec('i');
 ec('button');
 
                     setTimeout(function () {
-                        let $el = el615C7;
+                        let $el = elSIiLZ;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('New Section')}`});
         ;
@@ -86,18 +86,18 @@ ec('button');
                 ec('div');
 }ec('div');
 }}});
-let cndnl2O = component.newSection;
-this.setState('stTwjor', cndnl2O);
-if (cndnl2O) { 
-let cmpm4SO = this._lc('cR1017Dvc', {parent:component,props:{course:component.course},events:{onclose:function(e) {let $el = this; component.newSection = false},onsave:function(e) {let $el = this; component.course.sections.push(e)}},state:'stTwjor'});
-}let cndOBqi = component.editSection;
-this.setState('stKUit2', cndOBqi);
-if (cndOBqi) { 
-let cmpiNkT = this._lc('c_ZMVGfGG', {parent:component,props:{course:component.course,section:component.currentSection},events:{onclose:function(e) {let $el = this; component.editSection = false},onsave:function(e) {let $el = this; component.course.sections[component.index] = e}},state:'stKUit2'});
-}let cndF9eF = component.deleteSection;
-this.setState('stzGbbj', cndF9eF);
-if (cndF9eF) { 
-let cmpFF_E = this._lc('c1nHymsET', {parent:component,events:{onclose:function(e) {let $el = this; component.deleteSection = false},onconfirm:function(e) {let $el = this; component.removeSection()}},state:'stzGbbj'});
+let cndFvah = component.newSection;
+this.setState('sttALxd', cndFvah);
+if (cndFvah) { 
+let cmpX33b = this._lc('cw8nkVl6C', {parent:component,props:{course:component.course},events:{onclose:function(e) {let $el = this; component.newSection = false},onsave:function(e) {let $el = this; component.course.sections.push(e)}},state:'sttALxd'});
+}let cndAmA7 = component.editSection;
+this.setState('stGU8mL', cndAmA7);
+if (cndAmA7) { 
+let cmpWIIx = this._lc('cpSo0R1Yp', {parent:component,props:{course:component.course,section:component.currentSection},events:{onclose:function(e) {let $el = this; component.editSection = false},onsave:function(e) {let $el = this; component.course.sections[component.index] = e}},state:'stGU8mL'});
+}let cndWCs3 = component.deleteSection;
+this.setState('sti8ofE', cndWCs3);
+if (cndWCs3) { 
+let cmpUdTI = this._lc('cIzhXey3C', {parent:component,events:{onclose:function(e) {let $el = this; component.deleteSection = false},onconfirm:function(e) {let $el = this; component.removeSection()}},state:'sti8ofE'});
 }
                     this.isReadyToGo();
                 }

@@ -6,9 +6,9 @@ _Component({
                 observe: ['tag','small'],
                 children: {},
                 render: function (component) {
-                    let elQzBMH = eo('a',null,null,`class`,`tag ${cls({small: component.small})}`,`href`,`/tags/${ seo(component.tag.name) }`);
-let eltQWk6 = ev('img',null,null,`src`,`${component.tag.image}`,`title`,`${component.tag.name}`,`alt`,`${component.tag.name}`);
-let el99gEf = eo('span');
+                    let elezk1Y = eo('a',null,null,`class`,`tag ${cls({small: component.small})}`,`href`,`/tags/${ seo(component.tag.name) }`);
+let el2xh_w = ev('img',null,null,`src`,`${component.tag.image}`,`title`,`${component.tag.name}`,`alt`,`${component.tag.name}`);
+let elRTRwP = eo('span');
 text(component.tag.name);
 ec('span');
 ec('a');
