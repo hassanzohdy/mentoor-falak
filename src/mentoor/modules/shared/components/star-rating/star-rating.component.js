@@ -15,17 +15,18 @@ class StarRating {
     init() {
         this.rateValue = 0;
 
-        this.starsLength = Math.round(+this.inputs.getProp('stars', 0));
+        this.starsLength = Math.round(+this.prop('stars', 0));
         this.isReadOnly = this.prop("readonly", false);
-        this.totalStars = this.prop("max-stars", 5);
+        this.totalStars = this.prop("maxStars", 5);
         
         this.starsRateArray = [];
 
         for (let i = 1; i <= this.totalStars; i++) {
+            // check the number incoming and check if it's active
             this.starsRateArray.push({ active: false });
         }
 
-        this.rate(this.starsLength - 1);
+        this.updateStyle(this.starsLength - 1);
     }
 
     rate(index) {
@@ -36,8 +37,7 @@ class StarRating {
             this.updateStyle(index);
 
             // pass data to the parent component
-            let selectEvent = this.inputs.getEvent("select");
-            selectEvent(this.rateValue);
+            this.event("select")(this.rateValue)
         }
     }
 

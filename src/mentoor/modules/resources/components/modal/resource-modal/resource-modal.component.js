@@ -27,6 +27,7 @@ class ResourceModal {
         this.detectChanges();
 
         let updatedRecord;
+        echo(form)
 
         if (! this.record.id) {
             let { record } = await this.service.create(form);
