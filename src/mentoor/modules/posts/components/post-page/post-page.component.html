@@ -6,7 +6,6 @@
             <fa icon="edit"></fa>
             Edit
         </button>
-        <img *if="this.post.image" [src]="this.post.image" class="image" [alt]="this.post.title" />
         <section class="mt-4">
             <img [src]="this.post.createdBy.image" [alt]="this.post.createdBy.name" class="user-image">
             <div class="meta">
@@ -25,6 +24,7 @@
                     <flk-facebook-share></flk-facebook-share>
                 </div>
             </div>
+            <img *if="this.post.image" [src]="this.post.image" class="image" [alt]="this.post.title" />
         </section>
         <article>
             <!-- Content -->

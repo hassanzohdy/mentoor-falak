@@ -7,7 +7,7 @@ class FullNameMiddleware {
         this.user = user;
         this.router = router;
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -19,12 +19,16 @@ class FullNameMiddleware {
      * {@inheritDoc}
      */
     handle() {
-    if (this.user.isLoggedIn() && ! this.user.name.includes(' ') && this.router.route() != '/me') {
-            window.requireNameChange = true;
+        if (this.user.isLoggedIn() && this.isImagePlaceholder(this.user.image) && this.router.route() != '/me') {
+            window.requireImageChange = true;
             return this.router.navigateTo('/me');
         }
         //
         return Middleware.NEXT;
+    }
+
+    isImagePlaceholder(image) {
+        return image.split("/").includes("avatar.png");
     }
 }
 
