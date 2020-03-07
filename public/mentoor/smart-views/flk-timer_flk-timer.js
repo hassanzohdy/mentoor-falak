@@ -6,7 +6,7 @@ _Component({
                 observe: ['remainingTime'],
                 children: {},
                 render: function (component) {
-                    let elynABb = eo('span',null,null,`class`,`remaining-time`);
+                    let el1DtcD = eo('span',null,null,`class`,`remaining-time`);
 text(component.remainingTime);
 ec('span');
 

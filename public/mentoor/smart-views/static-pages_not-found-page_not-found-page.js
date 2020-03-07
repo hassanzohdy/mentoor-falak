@@ -6,33 +6,33 @@ _Component({
                 observe: [],
                 children: {},
                 render: function (component) {
-                    let elpTWPy = eo('div');
-let elzf8uM = eo('p',null,null,`class`,`white-text main-error`);
+                    let elAjXxa = eo('div');
+let elriE36 = eo('p',null,null,`class`,`white-text main-error`);
 text(`E`);
-let elaJNlr = eo('span');
+let elsa3fY = eo('span');
 text(`r`);
 ec('span');
 text(`r`);
-let elSocBo = eo('span');
+let elCyNhz = eo('span');
 text(`o`);
 ec('span');
 text(`r`);
 ec('p');
-let el2Hb1P = eo('p',null,null,`class`,`white-text main-error small`);
+let elzeSVP = eo('p',null,null,`class`,`white-text main-error small`);
 text(`DO NOT COME TO THIS PAGE AGAIN!`);
 ec('p');
-let elXxu7E = eo('p',null,null,`id`,`code`);
-let elOze5e = eo('span');
+let elEQefy = eo('p',null,null,`id`,`code`);
+let elB4vau = eo('span');
 text(`4`);
 ec('span');
-let elE2Bty = eo('span');
+let elu5EHM = eo('span');
 text(`0`);
 ec('span');
-let elxblyK = eo('span');
+let el5wnhE = eo('span');
 text(`4`);
 ec('span');
 ec('p');
-let elV2s8v = eo('a',null,null,`href`,`/`);
+let el46iLa = eo('a',null,null,`href`,`/`);
 text(`GO BACK`);
 ec('a');
 ec('div');

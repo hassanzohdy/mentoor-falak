@@ -4,185 +4,185 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['isLoading','projects','user'],
-                children: {cvO3L4B3B:'gold-icon',cntoh3G0K:'flk-spinner',cCvVG8p42:'markdown',cIkWj3Ehh:'layout'},
+                children: {c9J4Lw6Tv:'gold-icon',cLS5CB8WQ:'flk-spinner',cvm_aCYyF:'markdown',cond7EZdp:'layout'},
                 render: function (component) {
-                    let cmpzFn1 = this._lc('cIkWj3Ehh', {parent:component,content:(layout) => {let el_mZSN = eo('h1',null,null,`class`,`m-b-2 clearfix`);
-let cndEQ6R = FLAGS.projects;
-this.setState('stiJvnV', cndEQ6R);
-if (cndEQ6R) { 
-let el0cCDD = eo('a','5j4f',null,`class`,`btn float-right d-sm-inline-block bold ${cls({'btn-success': component.user.hasCreatedProjectBefore === true, 'btn-pink': component.user.hasCreatedProjectBefore === false})}`,`title`,`${trans(`Create new project`)}`,`href`,`/projects/new`);
-let el0sPpn = eo('i','yBXf',null,`class`,`${fas('plus')} mr-2 icon`);
+                    let cmp098l = this._lc('cond7EZdp', {parent:component,content:(layout) => {let elu4NzV = eo('h1',null,null,`class`,`m-b-2 clearfix`);
+let cndm6Gp = FLAGS.projects;
+this.setState('st6dNv0', cndm6Gp);
+if (cndm6Gp) { 
+let elf96tJ = eo('a','ul2f',null,`class`,`btn float-right d-sm-inline-block bold ${cls({'btn-success': component.user.hasCreatedProjectBefore === true, 'btn-pink': component.user.hasCreatedProjectBefore === false})}`,`title`,`${trans(`Create new project`)}`,`href`,`/projects/new`);
+let elHoR9E = eo('i','fNqf',null,`class`,`${fas('plus')} mr-2 icon`);
 ec('i');
-let cndIWa1 = component.user.hasCreatedProjectBefore === false;
-this.setState('stmu0rn', cndIWa1);
-if (cndIWa1) { 
-let elU57pW = eo('span','aORf',null,`class`,`mr-2`);
+let cndOfI1 = component.user.hasCreatedProjectBefore === false;
+this.setState('stySHwL', cndOfI1);
+if (cndOfI1) { 
+let el1auur = eo('span','hUAf',null,`class`,`mr-2`);
 text(`FREE`);
 ec('span');
 }text(`Project`);
-let cndQcQW = component.user.hasCreatedProjectBefore;
-this.setState('st76KjU', cndQcQW);
-if (cndQcQW) { 
-let el5_jPS = eo('div','5I9f');
-let cmpZpBq = this._lc('cvO3L4B3B', {parent:component,parentTop:layout,props:{coins:FLAGS.projects.pricing.basic},state:'st76KjU'});
+let cndOj2y = component.user.hasCreatedProjectBefore;
+this.setState('stLW1BE', cndOj2y);
+if (cndOj2y) { 
+let eltqCIX = eo('div','0xef');
+let cmp55mb = this._lc('c9J4Lw6Tv', {parent:component,parentTop:layout,props:{coins:FLAGS.projects.pricing.basic},state:'stLW1BE'});
 ec('div');
 }ec('a');
 }text(`My Projects`);
-let cndPLDC = ! component.isLoading;
-this.setState('stAWoPp', cndPLDC);
-if (cndPLDC) { 
-let el2X3DP = eo('span','5spf',null,`class`,`ml-2`);
+let cndid5s = ! component.isLoading;
+this.setState('stfr7Ff', cndid5s);
+if (cndid5s) { 
+let el__3V0 = eo('span','ALyf',null,`class`,`ml-2`);
 text('(' + component.projects.length + ')');
 ec('span');
 }ec('h1');
-let cndy_bw = component.isLoading;
-this.setState('stn88i3', cndy_bw);
-let cndE_rW = !(cndy_bw);
-this.setState('st_zp2v', cndE_rW);
-if (cndy_bw) { 
-let cmpMClU = this._lc('cntoh3G0K', {parent:component,parentTop:layout,state:'stn88i3'});
+let cnd9YGN = component.isLoading;
+this.setState('stD6J2j', cnd9YGN);
+let cndaRZL = !(cnd9YGN);
+this.setState('stoLiw4', cndaRZL);
+if (cnd9YGN) { 
+let cmpf0xt = this._lc('cLS5CB8WQ', {parent:component,parentTop:layout,state:'stD6J2j'});
 }else { 
-let cndpj_W = Is.empty(component.projects);
-this.setState('steDt7a', cndpj_W);
-let cndHUS0 = !(cndpj_W);
-this.setState('ste7ech', cndHUS0);
-if (cndpj_W) { 
-let elbRdo7 = eo('h3','Eqif',null,`class`,`pink-text bold text-center`);
+let cndxvtB = Is.empty(component.projects);
+this.setState('st5qyG5', cndxvtB);
+let cndVeSq = !(cndxvtB);
+this.setState('stVsL7t', cndVeSq);
+if (cndxvtB) { 
+let elkgzoj = eo('h3','0wHf',null,`class`,`pink-text bold text-center`);
 text(`No Projects Yet`);
 ec('h3');
 }else { 
-let elBPkwg = eo('div',null,null,`class`,`projects-list`);
+let elXAqJp = eo('div',null,null,`class`,`projects-list`);
 for (let i in component.projects) {
 let project = component.projects[i]; 
- let iiqssR = 'pnUsTue' + i;
-let elBdCLG = eo('div','PDNED1FKBRzv' + i+iiqssR,null,`class`,`row simple-card m-b-2 project`);
-let el3Av4v = eo('div','vnRff'+iiqssR,null,`class`,`col-sm-2 text-center`);
-let el9Ql4M = ev('img','i97ff'+iiqssR,null,`src`,`${project.image || FAVICON}`,`class`,`project-image`,`title`,`${project.name}`,`alt`,`${project.name}`);
+ let iiHzTq = 'WuJRJuR' + i;
+let elJDqbd = eo('div','8_IaYSeuPrAk' + i+iiHzTq,null,`class`,`row simple-card m-b-2 project`);
+let elhsOJ4 = eo('div','Fi9ff'+iiHzTq,null,`class`,`col-sm-2 text-center`);
+let eliWLcM = ev('img','cT0ff'+iiHzTq,null,`src`,`${project.image || FAVICON}`,`class`,`project-image`,`title`,`${project.name}`,`alt`,`${project.name}`);
 ec('div');
-let elZk2AL = eo('div','XOxff'+iiqssR,null,`class`,`col-sm-6 metadata`);
-let elVMc7g = eo('h3','qS0ff'+iiqssR,null,`class`,`name`);
+let el_juBE = eo('div','Woaff'+iiHzTq,null,`class`,`col-sm-6 metadata`);
+let elRJKSk = eo('h3','8hhff'+iiHzTq,null,`class`,`name`);
 text(project.name);
 ec('h3');
-let elMUyFa = eo('p','1czff'+iiqssR,null,`class`,`short-description`);
-let cmpW8My = this._lc('cCvVG8p42', {parent:component,parentTop:layout,props:{content:project.about.readMoreChars(100)},state:'ste7ech',insideLoop:true,index:"" +iiqssR});
+let el5KQfw = eo('p','Bzxff'+iiHzTq,null,`class`,`short-description`);
+let cmpfXWz = this._lc('cvm_aCYyF', {parent:component,parentTop:layout,props:{content:project.about.readMoreChars(100)},state:'stVsL7t',insideLoop:true,index:"" +iiHzTq});
 ec('p');
-let cndhBp8 = ! Is.empty(project.tags);
-this.setState('stt0eFS', cndhBp8);
-if (cndhBp8) { 
-let elsHxsj = eo('div','qArff'+iiqssR);
-let elGGe17 = eo('h6','17Xff'+iiqssR,null,`class`,`bold m-t-2 m-b-1`);
+let cnd1zNx = ! Is.empty(project.tags);
+this.setState('stZsijE', cnd1zNx);
+if (cnd1zNx) { 
+let els98Nv = eo('div','hmSff'+iiHzTq);
+let elfRuwS = eo('h6','WL1ff'+iiHzTq,null,`class`,`bold m-t-2 m-b-1`);
 text(`Technologies and Techniques used in this project`);
 ec('h6');
 for (let i in Array.chunk(project.tags.slice(0, 6), 4)) {
 let tags = Array.chunk(project.tags.slice(0, 6), 4)[i]; 
- let iipNFM = 'lXCa0uX' + i;
-let eljYVN4 = eo('div','LzujqnND4ONR' + i+iiqssR+iipNFM,null,`class`,`tags-list m-t-2 text-justify`);
+ let iitTd6 = 'hNotxSj' + i;
+let elGwbVw = eo('div','yqDQA4P29c_J' + i+iiHzTq+iitTd6,null,`class`,`tags-list m-t-2 text-justify`);
 for (let i in tags) {
 let tag = tags[i]; 
- let iigUkV = 'Jumvotz' + i;
-let elSZHip = eo('span','brf82L_5i_4n' + i+iiqssR+iipNFM+iigUkV,null,`class`,`tag mr-2`);
-let el4Cgp4 = ev('img','Accff'+iiqssR+iipNFM+iigUkV,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
-let elqUX8i = eo('span','P0iff'+iiqssR+iipNFM+iigUkV,null,`class`,`name`);
+ let iiFV34 = 'sTQftWA' + i;
+let elnEAH1 = eo('span','2ZoNuIeoDb7j' + i+iiHzTq+iitTd6+iiFV34,null,`class`,`tag mr-2`);
+let eld4SXy = ev('img','5aEff'+iiHzTq+iitTd6+iiFV34,null,`src`,`${tag.image}`,`title`,`${tag.name}`,`alt`,`${tag.name}`);
+let ellAq9P = eo('span','knHff'+iiHzTq+iitTd6+iiFV34,null,`class`,`name`);
 text(tag.name);
 ec('span');
 ec('span');
 }
 ec('div');
 }
-let cndKx05 = project.tags.length > 6;
-this.setState('stzvyJ8', cndKx05);
-if (cndKx05) { 
-let elGVG_k = eo('small','MPfff'+iiqssR);
+let cndY54x = project.tags.length > 6;
+this.setState('stSPhK0', cndY54x);
+if (cndY54x) { 
+let elXaE3k = eo('small','iI7ff'+iiHzTq);
 text(`And ${ project.tags.length - 6 } more...`);
 ec('small');
 }ec('div');
-}let elxEZdm = eo('a','mhcff'+iiqssR,null,`href`,`${URLS.project(project, '')}`,`class`,`btn btn-gray bold m-t-2`);
+}let elV0Oxz = eo('a','SM9ff'+iiHzTq,null,`href`,`${URLS.project(project, '')}`,`class`,`btn btn-gray bold m-t-2`);
 text(`VIEW DETAILS`);
 ec('a');
 ec('div');
-let elHn7bh = eo('div','rQpff'+iiqssR,null,`class`,`col summary`);
-let el1KVci = eo('div','yY5ff'+iiqssR,null,`class`,`gray-text bold m-b-1`);
-let elz0mLH = eo('span','2Hbff'+iiqssR,null,`title`,``);
-let elmBa1c = eo('i','SNCff'+iiqssR,null,`class`,`${fas('users')} mr-2 icon`);
+let elnum2j = eo('div','SqOff'+iiHzTq,null,`class`,`col summary`);
+let elvlo_4 = eo('div','fc0ff'+iiHzTq,null,`class`,`gray-text bold m-b-1`);
+let eljAonK = eo('span','_M8ff'+iiHzTq,null,`title`,``);
+let elalmPb = eo('i','w88ff'+iiHzTq,null,`class`,`${fas('users')} mr-2 icon`);
 ec('i');
-let el6DLxE = eo('span','UIdff'+iiqssR);
+let el6vrQ1 = eo('span','HgUff'+iiHzTq);
 text(`${ project.members.length }/${ project.maxMembers }`);
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elz0mLH;
+                        let $el = eljAonK;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Members')}`});
         ;
                     }, 20);                
                 ec('div');
-let elw6rxG = eo('div','EDNff'+iiqssR,null,`class`,`gray-text bold m-b-1`);
-let elCwKzV = eo('span','enzff'+iiqssR,null,`title`,``);
-let ellC52X = eo('i','xbHff'+iiqssR,null,`class`,`${fas('people-carry')} mr-2 icon`);
+let elruaMM = eo('div','S0mff'+iiHzTq,null,`class`,`gray-text bold m-b-1`);
+let elOtEyE = eo('span','VQCff'+iiHzTq,null,`title`,``);
+let el77dyp = eo('i','yETff'+iiHzTq,null,`class`,`${fas('people-carry')} mr-2 icon`);
 ec('i');
-let el86_vW = eo('span','R2Nff'+iiqssR);
+let elD0vgF = eo('span','FR4ff'+iiHzTq);
 text(`${ project.teams.length }/${ project.maxTeams }`);
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elCwKzV;
+                        let $el = elOtEyE;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Teams')}`});
         ;
                     }, 20);                
                 ec('div');
-let elXJzKz = eo('div','1lnff'+iiqssR,null,`class`,`gray-text bold m-b-1`);
-let eleb9K1 = eo('span','BMhff'+iiqssR,null,`title`,``);
-let elsBVW2 = eo('i','Pknff'+iiqssR,null,`class`,`${fas('briefcase')} mr-2 icon`);
+let elzSLdr = eo('div','g_0ff'+iiHzTq,null,`class`,`gray-text bold m-b-1`);
+let el5gfGa = eo('span','DH_ff'+iiHzTq,null,`title`,``);
+let elbwzdv = eo('i','Jdxff'+iiHzTq,null,`class`,`${fas('briefcase')} mr-2 icon`);
 ec('i');
-let cnd7QsG = project.settings.openRecruitment;
-this.setState('stoD1Va', cnd7QsG);
-if (cnd7QsG) { 
-let el9fqJT = eo('i','aFWff'+iiqssR,null,`class`,`${fas('check')} green-text mr-2 icon`);
+let cndIUoo = project.settings.openRecruitment;
+this.setState('st7jpTN', cndIUoo);
+if (cndIUoo) { 
+let eltkS03 = eo('i','2Dfff'+iiHzTq,null,`class`,`${fas('check')} green-text mr-2 icon`);
 ec('i');
-}let cndXC5Y = ! project.settings.openRecruitment;
-this.setState('stcaYkB', cndXC5Y);
-if (cndXC5Y) { 
-let el6ZX6U = eo('i','1GWff'+iiqssR,null,`class`,`${fas('times')} red-text mr-2 icon`);
+}let cndqy_Z = ! project.settings.openRecruitment;
+this.setState('st8ytWa', cndqy_Z);
+if (cndqy_Z) { 
+let elJaN1U = eo('i','bHtff'+iiHzTq,null,`class`,`${fas('times')} red-text mr-2 icon`);
 ec('i');
 }ec('span');
 
                     setTimeout(function () {
-                        let $el = eleb9K1;
+                        let $el = el5gfGa;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Recruiting')}`});
         ;
                     }, 20);                
                 ec('div');
-let elfWq4H = eo('div','ZKUff'+iiqssR,null,`class`,`gray-text bold m-b-1`);
-let elQvCqF = eo('span','uxlff'+iiqssR,null,`title`,``);
-let el9UJz_ = eo('i','ejpff'+iiqssR,null,`class`,`${fas('chart-line')} mr-2 icon`);
+let elTr1r1 = eo('div','krQff'+iiHzTq,null,`class`,`gray-text bold m-b-1`);
+let eloziF6 = eo('span','pFjff'+iiHzTq,null,`title`,``);
+let elWzzYu = eo('i','80Iff'+iiHzTq,null,`class`,`${fas('chart-line')} mr-2 icon`);
 ec('i');
-let elPgrqi = eo('span','ltXff'+iiqssR,null,`class`,`text-capitalize`);
+let eloaspj = eo('span','QUhff'+iiHzTq,null,`class`,`text-capitalize`);
 text(project.status);
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elQvCqF;
+                        let $el = eloziF6;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Status')}`});
         ;
                     }, 20);                
                 ec('div');
-let el1XBH3 = eo('div','yRbff'+iiqssR,null,`class`,`gray-text bold m-b-1`);
-let elr8216 = eo('span','v6Lff'+iiqssR,null,`title`,``);
-let elJxF1s = eo('i','2D3ff'+iiqssR,null,`class`,`${fas('coins')} mr-2 icon`);
+let el6YsZR = eo('div','rhoff'+iiHzTq,null,`class`,`gray-text bold m-b-1`);
+let elrI6_X = eo('span','RW0ff'+iiHzTq,null,`title`,``);
+let elT8lIH = eo('i','LmSff'+iiHzTq,null,`class`,`${fas('coins')} mr-2 icon`);
 ec('i');
-let el1teO6 = eo('span','YXCff'+iiqssR);
+let elskUsI = eo('span','lyHff'+iiHzTq);
 text( project.fund.format() );
 ec('span');
 ec('span');
 
                     setTimeout(function () {
-                        let $el = elr8216;
+                        let $el = elrI6_X;
                         
             true && tippyTooltip($el, {arrow:true,content:`${trans('Project Fund')}`});
         ;

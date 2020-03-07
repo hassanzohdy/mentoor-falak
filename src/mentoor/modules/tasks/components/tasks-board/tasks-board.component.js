@@ -20,12 +20,6 @@ class TasksBoard {
         }
     }
 
-    ready() {
-        this.selectDefaultParticipant();
-
-        this.defaultParticipant = null;
-    }
-
     async quickAdd(form) {
         this.isSubmitting = true;
         let formHandler = form.formHandler;
@@ -205,7 +199,6 @@ class TasksBoard {
         });
 
         this.filterBy('participants', this.defaultParticipant);
-
     }
 
     updateTasksList(tasks) {

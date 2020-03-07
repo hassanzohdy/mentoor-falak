@@ -4,39 +4,39 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['user','openModal','track','adminUsersService'],
-                children: {c6ZM7iwXs:'flk-dropdown-list',cCgNswgzQ:'flk-modal'},
+                children: {coNmzdfFX:'flk-dropdown-list',czS0Gle2t:'flk-modal'},
                 render: function (component) {
-                    let cndT5kD = component.user.accountType == 'admin';
-this.setState('st3Qi2g', cndT5kD);
-if (cndT5kD) { 
-let elqceio = eo('div','hovf',null,`class`,`text-center`);
-let elr7P9N = eo('button','3gXf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal = true;}]},`type`,`button`,`class`,`btn btn-sm bold btn-info`);
+                    let cndPltm = component.user.accountType == 'admin';
+this.setState('st19EtS', cndPltm);
+if (cndPltm) { 
+let elIBKHl = eo('div','tL4f',null,`class`,`text-center`);
+let elwWd9m = eo('button','Jptf',null, eventListeners, {onclick:[function(e) {var $el = this;component.openModal = true;}]},`type`,`button`,`class`,`btn btn-sm bold btn-info`);
 text(`Assign
             moderator.`);
 ec('button');
 ec('div');
-}let cndUnGr = component.openModal;
-this.setState('stBulKd', cndUnGr);
-if (cndUnGr) { 
-let cmpXTlD = this._lc('cCgNswgzQ', {parent:component,content:(flkModal) => {let elD6H7M = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
+}let cndeGkV = component.openModal;
+this.setState('stDVlhz', cndeGkV);
+if (cndeGkV) { 
+let cmpABVJ = this._lc('czS0Gle2t', {parent:component,content:(flkModal) => {let elNBM79 = eo('form',null,null, eventListeners, {onsubmit:[function(e) {
             this.formHandler.validate(e);
         },function(e) {e.preventDefault();e.stopImmediatePropagation(); if (typeof component.isValidForm != 'undefined' && ! component.isValidForm) return false;}]});
 
-                if (! elD6H7M.formHandler) {
-                    window.cfrmdlr = elD6H7M.formHandler = new FormHandler(elD6H7M, component);
+                if (! elNBM79.formHandler) {
+                    window.cfrmdlr = elNBM79.formHandler = new FormHandler(elNBM79, component);
                 } else {
-                    window.cfrmdlr = elD6H7M.formHandler;
+                    window.cfrmdlr = elNBM79.formHandler;
                 }
-            let elnlWfC = ev('input',null,null, eventListeners, {oninput:[function(e) {component.track.id = this.value;}]},`value`,`${fval(component.track.id)}`,`name`,`${(`trackId`).toInputName()}`,`type`,`hidden`);
-elnlWfC.value = fval(component.track.id);
-let cmpYXa_ = this._lc('c6ZM7iwXs', {parent:component,parentTop:flkModal,props:{lazyLoading:true,multiple:true,service:component.adminUsersService},boolAttrs:{multiple:true},attrs:{name:`${(`moderators`).toInputName()}`},state:'stBulKd'});
-let elVLPMj = eo('div',null,null,`class`,`text-center`);
-let elnlhwk = eo('button',null,null,`class`,`btn btn-success`);
+            let elbNtA6 = ev('input',null,null, eventListeners, {oninput:[function(e) {component.track.id = this.value;}]},`value`,`${fval(component.track.id)}`,`name`,`${(`trackId`).toInputName()}`,`type`,`hidden`);
+elbNtA6.value = fval(component.track.id);
+let cmpqU1Z = this._lc('coNmzdfFX', {parent:component,parentTop:flkModal,props:{lazyLoading:true,multiple:true,service:component.adminUsersService},boolAttrs:{multiple:true},attrs:{name:`${(`moderators`).toInputName()}`},state:'stDVlhz'});
+let elGVGfW = eo('div',null,null,`class`,`text-center`);
+let elwEU_0 = eo('button',null,null,`class`,`btn btn-success`);
 text(`Save`);
 ec('button');
 ec('div');
 ec('form');
-},attrs:{id:'moderators-modal',header:'Manage moderators'},state:'stBulKd'});
+},attrs:{id:'moderators-modal',header:'Manage moderators'},state:'stDVlhz'});
 }
                     this.isReadyToGo();
                 }

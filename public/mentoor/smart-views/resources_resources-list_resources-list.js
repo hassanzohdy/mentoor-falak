@@ -4,56 +4,56 @@ _Component({
                 unique: false, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['canAdd','resourceType','availableResources','setNewResource','resourcesList','resourcesTypes','project','openResourceModal','resource','onClose','adjustResource'],
-                children: {c7uEmjfaA:'flk-dropdown-list',cfwIb7hPa:'resource-list-item',cCHsMILPi:'resource-list-item',c7Vksamyc:'resource-modal'},
+                children: {cb9Jx3dxs:'flk-dropdown-list',cVAuDXeIn:'resource-list-item',cNv97mDNH:'resource-list-item',clzPcT2TF:'resource-modal'},
                 render: function (component) {
-                    let elDDJB9 = eo('section',null,null,`id`,`resources-list`);
-let cndoBZW = component.canAdd;
-this.setState('sttoRXt', cndoBZW);
-let cnd2F0X = !(cndoBZW);
-this.setState('stW0TYZ', cnd2F0X);
-if (cndoBZW) { 
-let elgnpsl = eo('div','n_qf',null,`class`,`float-right new-resource-wrapper`);
-let cmpATKP = this._lc('c7uEmjfaA', {parent:component,props:{searchable:false,value:component.resourceType,items:component.availableResources},events:{onselect:function(e) {let $el = this; component.setNewResource(e.value)}},attrs:{heading:'+ Resource'},state:'sttoRXt'});
+                    let elcuBSV = eo('section',null,null,`id`,`resources-list`);
+let cndRBAv = component.canAdd;
+this.setState('stMrBjW', cndRBAv);
+let cndZ8Yi = !(cndRBAv);
+this.setState('stqYPYE', cndZ8Yi);
+if (cndRBAv) { 
+let elTWUq2 = eo('div','8mkf',null,`class`,`float-right new-resource-wrapper`);
+let cmpzjUt = this._lc('cb9Jx3dxs', {parent:component,props:{searchable:false,value:component.resourceType,items:component.availableResources},events:{onselect:function(e) {let $el = this; component.setNewResource(e.value)}},attrs:{heading:'+ Resource'},state:'stMrBjW'});
 ec('div');
-}let elq5l5S = eo('div',null,null,`class`,`clearfix`);
+}let elHNvMp = eo('div',null,null,`class`,`clearfix`);
 ec('div');
-let cndphMm = Is.empty(component.resourcesList);
-this.setState('stZkTce', cndphMm);
-let cndncWt = !(cndphMm);
-this.setState('str16be', cndncWt);
-if (cndphMm) { 
-let el_Hh7E = eo('div','0DRf',null,`class`,`m-t-2 text-center simple-card bold`);
+let cnd4MSs = Is.empty(component.resourcesList);
+this.setState('st42C67', cnd4MSs);
+let cndPzuU = !(cnd4MSs);
+this.setState('st_iPvt', cndPzuU);
+if (cnd4MSs) { 
+let elonh0M = eo('div','kyJf',null,`class`,`m-t-2 text-center simple-card bold`);
 text(`No Resources Yet`);
 ec('div');
 }else { 
-let elXotnn = eo('div',null,null,`class`,`m-t-2`);
-let cndCoMm = ! Is.empty(component.resourcesList.pinned);
-this.setState('stERokU', cndCoMm);
-if (cndCoMm) { 
-let elrfer1 = eo('section','wgyf',null,`class`,`pinned-resources`);
-let elEdPHA = eo('h3','9TUf',null,`class`,`heading`);
+let elTvnNr = eo('div',null,null,`class`,`m-t-2`);
+let cndPODi = ! Is.empty(component.resourcesList.pinned);
+this.setState('stPkdfk', cndPODi);
+if (cndPODi) { 
+let elqNPFo = eo('section','e1Ef',null,`class`,`pinned-resources`);
+let el4we2h = eo('h3','YRpf',null,`class`,`heading`);
 text(`Pinned`);
 ec('h3');
 for (let index in component.resourcesList.pinned) {
 let resource = component.resourcesList.pinned[index]; 
- let iig_S9 = resource.id+ index;
-let cmpw9im = this._lc('cfwIb7hPa', {parent:component,props:{resourcesTypes:component.resourcesTypes,project:component.project,resource:resource,index:index},state:'stERokU',insideLoop:true,index:"" +iig_S9});
+ let iiQIUO = resource.id+ index;
+let cmpu5OM = this._lc('cVAuDXeIn', {parent:component,props:{resourcesTypes:component.resourcesTypes,project:component.project,resource:resource,index:index},state:'stPkdfk',insideLoop:true,index:"" +iiQIUO});
 }
 ec('section');
-}let cndEd_R = ! Is.empty(component.resourcesList.normal);
-this.setState('stAfMWC', cndEd_R);
-if (cndEd_R) { 
+}let cndvrU6 = ! Is.empty(component.resourcesList.normal);
+this.setState('sto_a48', cndvrU6);
+if (cndvrU6) { 
 for (let index in component.resourcesList.normal) {
 let resource = component.resourcesList.normal[index]; 
- let iiWLlX = resource.id+ index;
-let cmpoqte = this._lc('cCHsMILPi', {parent:component,props:{resourcesTypes:component.resourcesTypes,project:component.project,resource:resource,index:index},state:'stAfMWC',insideLoop:true,index:"" +iiWLlX});
+ let iiNQzk = resource.id+ index;
+let cmpgasf = this._lc('cNv97mDNH', {parent:component,props:{resourcesTypes:component.resourcesTypes,project:component.project,resource:resource,index:index},state:'sto_a48',insideLoop:true,index:"" +iiNQzk});
 }
 }ec('div');
 }ec('section');
-let cnd4Xe2 = component.openResourceModal;
-this.setState('stqgUhq', cnd4Xe2);
-if (cnd4Xe2) { 
-let cmpXEyh = this._lc('c7Vksamyc', {parent:component,props:{type:component.resourceType,resource:component.resource,project:component.project},events:{onclose:function(e) {let $el = this; component.onClose()},onsave:function(e) {let $el = this; component.adjustResource(e)}},state:'stqgUhq'});
+let cnd4i6n = component.openResourceModal;
+this.setState('stXUw_J', cnd4i6n);
+if (cnd4i6n) { 
+let cmpSc0M = this._lc('clzPcT2TF', {parent:component,props:{type:component.resourceType,resource:component.resource,project:component.project},events:{onclose:function(e) {let $el = this; component.onClose()},onsave:function(e) {let $el = this; component.adjustResource(e)}},state:'stXUw_J'});
 }
                     this.isReadyToGo();
                 }

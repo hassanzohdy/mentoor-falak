@@ -15,7 +15,7 @@ class TaskDetailsPage {
 
     rate(rateValue) {
         let {id} = this.task;
-        this.tasksService.rateTask(this.task.id, {id, rateValue});    
+        this.tasksService.rateTask(this.task.id, {rating: rateValue});    
     }
 
     /**

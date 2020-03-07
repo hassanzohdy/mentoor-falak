@@ -4,49 +4,49 @@ _Component({
                 unique: true, // flag to determine if the component object will be unique or not
                 observable: true,
                 observe: ['title','isLoading','users','user'],
-                children: {cWeesMTGS:'flk-spinner',cbSRQEq8Y:'user-online',cKq4wOfQ6:'gold-icon',cLB1Rsq48:'layout'},
+                children: {c_RgXxGLB:'flk-spinner',cGF9Acnrp:'user-online',cWXXJmyEX:'gold-icon',cvp9HzKYD:'layout'},
                 render: function (component) {
-                    let cmpYBru = this._lc('cLB1Rsq48', {parent:component,content:(layout) => {let elRDY3q = eo('h1',null,null,`class`,`bold`);
+                    let cmpWxzW = this._lc('cvp9HzKYD', {parent:component,content:(layout) => {let el8O4iO = eo('h1',null,null,`class`,`bold`);
 text(trans(component.title));
 ec('h1');
-let cndHq_z = component.isLoading;
-this.setState('stC3e4b', cndHq_z);
-let cndZKxY = !(cndHq_z);
-this.setState('stQ5k2j', cndZKxY);
-if (cndHq_z) { 
-let cmpJCMZ = this._lc('cWeesMTGS', {parent:component,parentTop:layout,state:'stC3e4b'});
+let cndj3Sv = component.isLoading;
+this.setState('stocd8g', cndj3Sv);
+let cndxN54 = !(cndj3Sv);
+this.setState('st595GI', cndxN54);
+if (cndj3Sv) { 
+let cmpBQ4i = this._lc('c_RgXxGLB', {parent:component,parentTop:layout,state:'stocd8g'});
 }else { 
-let elMDPu2 = eo('table',null,null,`class`,`table table-bordered m-t-2`);
-let eljhz40 = eo('thead');
-let eltQVHV = eo('tr');
-let elhVhnb = eo('th',null,null,`class`,`text-left`);
+let eljcXD8 = eo('table',null,null,`class`,`table table-bordered m-t-2`);
+let elF_8VT = eo('thead');
+let elqKqE1 = eo('tr');
+let elegwWH = eo('th',null,null,`class`,`text-left`);
 text(`User`);
 ec('th');
-let elZtVFO = eo('th');
+let elXPYts = eo('th');
 text(`Gold`);
 ec('th');
 ec('tr');
 ec('thead');
-let elMkMto = eo('tbody');
+let elJOxRo = eo('tbody');
 for (let index in component.users) {
 let user = component.users[index]; 
- let ii3_oZ = 'hdbRjEL' + index;
-let elGz9rL = eo('tr','nuoMJ6Abg1K1' + index+ii3_oZ);
-let el5x3yU = eo('td','rm_ff'+ii3_oZ);
-let elh3yDj = eo('span','HkYff'+ii3_oZ,null,`class`,`mr-1`);
-let elhWbyl = eo('span','T6Yff'+ii3_oZ);
+ let iipict = 'BQMsgIZ' + index;
+let eltNKHh = eo('tr','A4fp3jdXbuiQ' + index+iipict);
+let elSzK7r = eo('td','PgIff'+iipict);
+let elGcDqo = eo('span','RSeff'+iipict,null,`class`,`mr-1`);
+let el3vWv5 = eo('span','Vltff'+iipict);
 text(Number(Number(index) + 1).format());
 ec('span');
 text(`-`);
 ec('span');
-let elBB2uV = ev('img','9vPff'+ii3_oZ,null,`src`,`${userImage(user)}`,`class`,`u-image img-thumbnail`,`title`,`${userName(user)}`,`alt`,`${userName(user)}`);
-let el6eqsh = eo('span','vzBff'+ii3_oZ,null,`class`,`bold mr-1 ${cls({'orange-text': user.id == component.user.id})}`);
+let elYkgM1 = ev('img','nqGff'+iipict,null,`src`,`${userImage(user)}`,`class`,`u-image img-thumbnail`,`title`,`${userName(user)}`,`alt`,`${userName(user)}`);
+let eltbPBZ = eo('span','Hwmff'+iipict,null,`class`,`bold mr-1 ${cls({'orange-text': user.id == component.user.id})}`);
 text(userName(user));
 ec('span');
-let cmpKrfJ = this._lc('cbSRQEq8Y', {parent:component,parentTop:layout,props:{id:user.id},attrs:{id:`${user.id}`},state:'stQ5k2j',insideLoop:true,index:"" +ii3_oZ});
+let cmpMmjF = this._lc('cGF9Acnrp', {parent:component,parentTop:layout,props:{id:user.id},attrs:{id:`${user.id}`},state:'st595GI',insideLoop:true,index:"" +iipict});
 ec('td');
-let elOJ1by = eo('td','Benff'+ii3_oZ,null,`class`,`total-reward`);
-let cmpR_Gn = this._lc('cKq4wOfQ6', {parent:component,parentTop:layout,props:{coins:user.gold},state:'stQ5k2j',insideLoop:true,index:"" +ii3_oZ});
+let elnkqeG = eo('td','JWlff'+iipict,null,`class`,`total-reward`);
+let cmprXlL = this._lc('cWXXJmyEX', {parent:component,parentTop:layout,props:{coins:user.gold},state:'st595GI',insideLoop:true,index:"" +iipict});
 ec('td');
 ec('tr');
 }
