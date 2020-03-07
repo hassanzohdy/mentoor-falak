@@ -3,33 +3,33 @@
     <table class="table buttoned simple-card">
         <thead>
             <tr>
-                <th><button (click)="this.sortTasksBy('id')" [tooltip]="true" title="Sort By ID">#</button></th>
-                <th> <button (click)="this.sortTasksBy('title')" [tooltip]="true" title="Sort By Title">Task</button>
-                    <if condition="this.sort"></if>
-                </th>
+                <th (click)="this.sortTasksBy('id')" [tooltip]="true" title="Sort By ID">#</th>
+                <th (click)="this.sortTasksBy('title')" [tooltip]="true" title="Sort By Title">Task</th>
                 <th> <button (click)="this.sortTasksBy('progress.completed')" [tooltip]="true"
                         title="Sort By Progress">Progress</button> </th>
                 <th *if="! this.isInProjectPage">Project</th>
-                <th tooltip title="Sort by status">
-                    <button (click)="this.sortTasksCustom(['notStarted', 'inProgress', 'inReview', 'autoFailed', 'completed', 'archived'], 'status')"> Status </button>
+                <th tooltip title="Sort by status" (click)="this.sortTasksBy('status')">
+                    Status
                 </th>
-                <th>Remaining Time</th>
-                <th tooltip title="Sort by participant">
-                    <button (click)="this.sortTasksBy('participant.id')"> Participant </button>
+                <th tooltip title="Remaining Time">R Time</th>
+                <th tooltip title="Sort By Participant" (click)="this.sortTasksBy('participant.name')">
+                    Participant
                 </th>
-                <th>Supervisors</th>
-                <th class="text-center" tooltip title="Sort by Module">
-                    <button (click)="this.sortTasksBy('module.name')"> Module </button>
+                <th>
+                    Supervisors
                 </th>
-                <th class="text-center" tooltip title="Sort by Priority">
-                    <button (click)="this.sortTasksCustom(['low', 'medium', 'high'], 'priority')"> Priority </button>
+                <th class="text-center" tooltip title="Sort by Module" (click)="this.sortTasksBy('module.name')">
+                    Module
+                </th>
+                <th class="text-center" tooltip title="Sort by Priority"  (click)="this.sortTasksBy('priority')">
+                    Priority
                 </th>
                 <!-- <th class="text-center">Sprint</th> -->
                 <th>Control</th>
             </tr>
         </thead>
         <tbody>
-            <tr *for="let task, index of this.tasksList" *key="task.id">
+            <tr *for="let task, index of this.tasksList" *key="task.id" [class]="{'alert-danger': task.priority == 'high', 'alert-warning': task.priority == 'medium', 'alert-info': task.priority == 'low'}">
                 <td [html]="task.id"></td>
                 <td>
                     <a [href]="URLS.task(task)" class="title" tooltip [title]="task.title"

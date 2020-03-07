@@ -42,14 +42,13 @@
     </table>
 </project-layout>
 
-<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+<flk-modal *if="this.modalIsOpened" *as="modal" size="full" (close)="this.modalIsOpened = null" size="small"
     [heading]="this.modalHeading">
     <form (submit)="this.submit($el)">
         <input type="hidden" name="project" [value]="this.project.id" />
         <form-input type="text" name="title" [value]="this.record.title" label="Meeting Title" required
             class="form-control"></form-input>
-        <form-input type="textarea" name="mom" required [value]="this.record.mom" label="MoM"
-            class="form-control"></form-input>
+        <markdown-input name="mom" [required]="true" [value]="this.record.mom" label="MoM"></markdown-input>
 
             <div class="row">
                 <div class="col">                    

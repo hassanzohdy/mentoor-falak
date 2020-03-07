@@ -23,8 +23,7 @@ class EinsteinCategoryCard {
      * @returns boolean
      */
     canUnlock() {
-        return !this.categoryIsUnlocked(this.category) && this.user.gold >= this.category.cost
-        //  && this.user.total.academy.answers.approved >= this.category.requiredAnswers;
+        return !this.categoryIsUnlocked(this.category) && this.user.gold >= this.category.cost && Object.get(this.user, 'total.academy.answers.approved') >= this.category.requiredAnswers;
     }
 
     /**

@@ -22,7 +22,9 @@
                 <td colspan="3" text-center>No Modules Yet</td>
             </tr>
             <tr *else *for="let record, index of this.project.modules">
-                <td [html]="record.name"></td>
+                <td>
+                    <a [href]="URLS.project(this.project, 'modules', record)" [html]="record.name"></a>
+                </td>
                 <td [html]="record.parent.name || 'N/a'"></td>
                 <td *if="this.project.isHigherAuthority || this.project.isTeamLeader">
                     <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan" tooltip

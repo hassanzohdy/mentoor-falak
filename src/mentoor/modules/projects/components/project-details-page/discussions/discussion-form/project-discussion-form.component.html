@@ -17,9 +17,10 @@
         [items]="this.getTeamsList()"
         [none]="true"
     ></flk-dropdown-list>
-    
-    <form-input type="textarea" name="discussion" rows="15" [value]="this.record.discussion" label="Discussion Content"
-        required class="form-control"></form-input>
+
+    <div class="m-t-1">
+        <markdown-input name="discussion" [value]="this.record.discussion" [required]="true" label="Discussion Content"></markdown-input>
+    </div>
 
     <div class="m-t-1 text-right">
         <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>

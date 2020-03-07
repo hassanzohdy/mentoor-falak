@@ -7,8 +7,12 @@ class Project {
         this.projectsService = DI.resolve('projectsService');
         this.session = DI.resolve('session');
         this.title = '';
-        this.query = {};
+        this.query = null;
         this.defaultSchema = {};
+    }
+
+    queryOptions() {
+        return {};
     }
 
     async init() {
@@ -16,6 +20,10 @@ class Project {
         this.isLoading = true;
         this.modalIsOpened = false;
         this.isValidForm = true;
+
+        if (! this.query) {
+            this.query = this.queryOptions();
+        }
 
         this.project = null;
 

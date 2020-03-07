@@ -32,7 +32,12 @@ class Header {
     }
 
     navigateToProject(projectId) {       
+        this.disableAutoDetection();
         this.projectId = projectId;
+        this.currentProjectId = projectId;
+        this.shareable.share('project', {
+            id: projectId,
+        });
         this.router.navigateTo(URLS.project({ id: projectId }));
     }
 

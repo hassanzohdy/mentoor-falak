@@ -33,7 +33,7 @@
                 </a>
             </li>
 
-            <li class="nav-item" *if="this.user.id == 1">
+            <li class="nav-item" *if="Config.get('app.env') == 'development'">
                 <a class="nav-link pink-text bold" href="/courses"
                     [class]="{active: this.activeLink('/courses', STARTING_WITH_ROUTE)}">
                     <fa icon="suitcase mr-2"></fa>
@@ -92,7 +92,7 @@
                     <fa icon="university"></fa> Academy
                 </a>
             </li>
-            <li class="nav-item" *if="this.user.isLoggedIn();">
+            <li class="nav-item" *if="Config.get('app.env') == 'development' && this.user.isLoggedIn();">
                 <a class="nav-link" href="/arena" [class]="{active: this.activeLink('/arena')}">
                     <fa icon="biohazard"></fa>
                     Arena

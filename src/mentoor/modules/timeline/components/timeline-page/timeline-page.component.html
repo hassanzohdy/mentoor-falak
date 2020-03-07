@@ -14,30 +14,34 @@
         <!-- <post-placeholder></post-placeholder> -->
         <h1 *if="Is.empty(this.posts)" class="bold text-center">No posts yet!</h1>
         <else>
-            <div *for="let post of this.posts" class="post">
-                <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
-                <div class="meta">
-                    <a href="{{ URLS.post(post) }}" class="title" [html]="post.title"></a>
-                    <div class="meta-info">
-                        <span class="user-name" [html]="post.createdBy.name"></span>
-                        <user-online [id]="post.createdBy.id"></user-online>
-                        <flk-time-ago *if="this.lastP && this.lastP.id == post.id"
-                            [timestamp]="this.lastP.createdAt.timestamp" class="created-at"></flk-time-ago>
-                        <flk-time-ago *else [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
-                    </div>
+            <div class="row">
+                <div *for="let post of this.posts" class="col-6">
+                    <div class="post">
+                        <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
+                        <div class="meta">
+                            <a href="{{ URLS.post(post) }}" class="title" [html]="post.title"></a>
+                            <div class="meta-info">
+                                <span class="user-name" [html]="post.createdBy.name"></span>
+                                <user-online [id]="post.createdBy.id"></user-online>
+                                <flk-time-ago *if="this.lastP && this.lastP.id == post.id"
+                                    [timestamp]="this.lastP.createdAt.timestamp" class="created-at"></flk-time-ago>
+                                <flk-time-ago *else [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
+                            </div>
+                        </div>
+                        <article>
+                            <!-- Content -->
+                            <markdown [content]="post.content.split('\n').slice(0, 10).join('\n')"></markdown>
+                            <a *if="post.content.split('\n').length > 10" href="{{ URLS.post(post) }}">Continue reading</a>
+                            <!-- Tags list -->
+                            <section class="tags">
+                                <span *for="let tag of post.tags" class="tag">
+                                    <img [src]="tag.image" [alt]="tag.name" />
+                                    <span [html]="'#' + tag.name"></span>
+                                </span>
+                            </section>
+                        </article>
+                    </div>                    
                 </div>
-                <article>
-                    <!-- Content -->
-                    <markdown [content]="post.content.split('\n').slice(0, 10).join('\n')"></markdown>
-                    <a *if="post.content.split('\n').length > 10" href="{{ URLS.post(post) }}">Continue reading</a>
-                    <!-- Tags list -->
-                    <section class="tags">
-                        <span *for="let tag of post.tags" class="tag">
-                            <img [src]="tag.image" [alt]="tag.name" />
-                            <span [html]="'#' + tag.name"></span>
-                        </span>
-                    </section>
-                </article>
             </div>
         </else>
     </else>

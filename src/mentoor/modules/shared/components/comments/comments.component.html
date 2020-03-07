@@ -100,7 +100,7 @@
             <button class="btn btn-pink bold m-t-1" [disabled]="this.isSending || ! this.isValidForm">Comment</button>
         </form>
 
-        <h2 class="sub-comments-heading">
+        <h2 *if="comment.comments" class="sub-comments-heading">
             <span (click)="this.toggleSubComment(comment)">
                 <span>Replies</span>
                 ({{ comment.comments.length }})

@@ -41,13 +41,13 @@
             </div>
 
             <div class="col">
-                <flk-dropdown-list name="priority" label="Task priority" required [items]="this.taskLevels"></flk-dropdown-list>
+                <flk-dropdown-list name="priority" [required]="true" label="Task priority" required [items]="this.taskLevels"></flk-dropdown-list>
             </div>
         </div>
         <form-input type="text" class="form-control" required label="title" name="title" [value]="this.data.title">
         </form-input>
-        <form-input type="textarea" class="form-control" label="description" name="description"
-            [value]="this.data.description"></form-input>
+        <markdown-input name="description" [value]="this.data.description" placeholder="Description" label="Description"></markdown-input>
+            
         <div class="row">
             <div class="col-6">
                 <form-input type="number" class="form-control" required label="reward" name="reward"

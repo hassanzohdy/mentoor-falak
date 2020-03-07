@@ -80,6 +80,8 @@ DI.resolve('events').subscribe('router.collecting', router => {
             routerGroup.add('/reminders', ProjectRemindersPage);
             // Project Details/project Modules Page page
             routerGroup.add('/modules', ProjectModulesPage);
+            // Project Module Details page
+            routerGroup.add('/modules/{:moduleId}', ProjectModuleDetailsPage);
             
             // Project Details/project Change Requests Page page
             routerGroup.add('/change-requests', ProjectChangeRequestsPage);            
@@ -98,7 +100,7 @@ DI.resolve('events').subscribe('router.collecting', router => {
             routerGroup.add('/test-cases/{:testCaseId}', TestCasePage);
             // Project Details/resources/project Resources Page page
             routerGroup.add('/resources', ProjectResourcesPage);
-            // end of routes
+		// end of routes
         });
     });
 });

@@ -1,0 +1,34 @@
+<project-layout [project]="this.project" [is-loading]="this.isLoading">
+    <h1 class="bold" [html]="this.module.name + ' Module'"></h1>
+    <!-- API -->
+
+    <flk-tabs>
+        <flk-tab heading="API">
+            <if condition="! this.isEditingApi">
+                <button (click)="this.isEditingApi = true" class="btn-action float-right">
+                    <fa icon="edit"></fa>
+                    Edit
+                </button>
+                <json-api-preview [json]="this.module.api"></json-api-preview>
+            </if>
+            <else>
+                <form *as="apiForm" (submit)="this.updateModuleApi($el)">
+                    <div class="row m-0 p-1">
+                        <div class="col col-sm-6 p-l-0">
+                            <form-input type="textarea" rows="10" name="api" class="form-control" (input)="this.validateApiJsonFormat($el.value)" [value]="this.module.api"></form-input>
+                            <div *if="this.apiFormatError" class="bold m-y-1 red-text" [html]="this.apiFormatError"></div>        
+                        </div>
+                        <div class="col col-sm-6 p-r-0">
+                            <json-api-preview [json]="this.module.api"></json-api-preview>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-danger bold" (click)="this.isEditingApi = false">Cancel</button>
+                    <button class="btn btn-info bold" [disabled]="this.apiFormatError">Save</button>
+                </form>
+            </else>
+        </flk-tab>
+    </flk-tabs>
+
+    <!-- Pages -->
+</project-layout>

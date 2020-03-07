@@ -5,10 +5,11 @@ class NewProjectPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(user, events, router, usersService, projectsService) {
+    constructor(user, events, router, tagsService, usersService, projectsService) {
         this.user = user;
         this.events = events;
         this.router = router;
+        this.tagsService = tagsService;
         this.usersService = usersService;
         this.projectsService = projectsService;
         this.name = 'new-project';

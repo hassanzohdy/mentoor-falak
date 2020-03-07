@@ -48,10 +48,10 @@ class TasksService extends Endpoint.Service {
 
     /**
      * @param {string} taskId
-     * @param {object} rateObject
+     * @param {object} data
      */
-    rateTask(taskId, rateObject) {
-        return this.endpoint.patch(this.path(`/${taskId}`), rateObject);
+    rateTask(taskId, data) {
+        return this.endpoint.patch(this.path(`/${taskId}/rate`), data);
     }
 
     /**

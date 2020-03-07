@@ -1,0 +1,10 @@
+<for loop="let route of this.json">
+    <if condition="route.list">
+        <flk-accordion [expanded]="this.json.length == 1" [heading]="route.name">
+                        
+        </flk-accordion>
+    </if>
+    <else>
+
+    </else>
+</for>
