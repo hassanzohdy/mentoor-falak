@@ -19,7 +19,7 @@
         </div>
 
         <div class="challenge-btn w-100 h-100 text-center my-5">
-            <a class="btn btn-primary btn-xl" href="{{this.puzzle ? '/einstein-chamber/puzzles/' + this.puzzle.id : ''}}">Start a challenge</a>
+            <a class="btn btn-primary btn-xl" *if="this.puzzle" href="{{'/einstein-chamber/puzzles/' + this.puzzle.id}}">Start a challenge</a>
         </div>
 
         <flk-spinner *if="this.isLoading"></flk-spinner>
