@@ -1,1 +1,9 @@
-<h1>course-details-page component is ready</h1>
+<layout>
+  <flk-spinner *if="this.isLoading"></flk-spinner>
+
+  <else>
+      <h1 [html]="this.course.title"></h1>
+
+      <markdown [content]="this.course.description" class="card p-3"></markdown>
+  </else>
+</layout>
