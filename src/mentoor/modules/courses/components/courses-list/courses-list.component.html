@@ -1,0 +1,11 @@
+<flk-spinner *if="this.isLoading"></flk-spinner>
+
+<else>
+  <section *if="!Is.empty(this.coursesList)" class="row courses-list mt-5">
+    <div class="col-6" *for="let course of this.coursesList">
+      <course-card [course]="course"></course-card>
+    </div>
+  </section>
+
+  <p *else>No courses yet !</p>
+</else>

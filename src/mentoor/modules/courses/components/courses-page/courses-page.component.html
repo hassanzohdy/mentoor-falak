@@ -1,8 +1,17 @@
 <layout>
-    <a href="/courses/new" title="Create new project" class="btn float-sm-right d-sm-inline-block btn-success bold">
-        <fa icon="plus mr-2"></fa>
-        Course
-    </a>
-    <h1 [html]="this.title"></h1>
-    <p>This section of the application will contain various courses with different levels and categories.</p>
+  <a
+    href="/courses/new"
+    title="Create new project"
+    class="btn float-sm-right d-sm-inline-block btn-success bold"
+  >
+    <fa icon="plus mr-2"></fa>
+    Course
+  </a>
+  <h1 [html]="this.title"></h1>
+  <p>
+    This section of the application will contain various courses with different
+    levels and categories.
+  </p>
+
+  <courses-list></courses-list>
 </layout>
