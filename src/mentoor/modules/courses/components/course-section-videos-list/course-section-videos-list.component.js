@@ -12,6 +12,7 @@ class CourseSectionVideosList {
      */
     init() {
         this.videos = this.prop('videos');
+        this.isViewer = this.prop('isViewer');
     }
 
     /**

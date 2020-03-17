@@ -15,7 +15,7 @@
         <h1 *if="Is.empty(this.posts)" class="bold text-center">No posts yet!</h1>
         <else>
             <div class="row">
-                <div *for="let post of this.posts" class="col-6">
+                <div *for="let post of this.posts" class="col-md-6">
                     <div class="post">
                         <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image" />
                         <div class="meta">

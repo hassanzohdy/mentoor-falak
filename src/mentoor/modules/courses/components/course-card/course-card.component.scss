@@ -1,0 +1,18 @@
+.course-card {
+  .card-body {
+    padding: 0;
+
+    .course-image-container {
+      width: 45%;
+      height: 19rem;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .created {
+      font-size: 1.3rem;
+    }
+  }
+}

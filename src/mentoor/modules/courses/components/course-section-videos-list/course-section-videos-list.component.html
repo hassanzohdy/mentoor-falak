@@ -1,8 +1,22 @@
-<table *if="! Is.empty(this.videos)" class="table table-bordered">
-    <tbody>
-        <tr *for="let video of this.videos">
-            <td [html]="video.title"></td>
-            <td [html]="String(video.duration.minutes).padStart(2, '0') + ':' + String(video.duration.seconds).padStart(2, '0')"></td>
-        </tr>
-    </tbody>
+<table *if="!Is.empty(this.videos)" class="table table-bordered">
+  <tbody>
+    <tr *for="let video of this.videos">
+      <td [html]="video.title" tooltip [title]="video.description"></td>
+      <td
+        [html]="
+          String(video.duration.minutes).padStart(2, '0') +
+          ':' +
+          String(video.duration.seconds).padStart(2, '0')
+        "
+      ></td>
+
+      <td *if="this.isViewer">
+        <button (click)="this.isModalOpen = true; this.currentVideoUrl = video.url" class="btn">Start</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<flk-modal *if="this.isModalOpen" (close)="this.isModalOpen = false">
+  <flk-youtube-video style="width: 100%; height: 400px" [src]="this.currentVideoUrl"></flk-youtube-video>
+</flk-modal>

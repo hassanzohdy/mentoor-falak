@@ -1,0 +1,55 @@
+<article class="card course-card mb-3">
+  <div class="card-body row justify-content-around">
+    <div class="d-flex col-10">
+      <div class="course-image-container">
+        <a [href]="'courses/' + this.course.id">
+          <img
+            [src]="this.course.image"
+            [alt]="
+              this.course.title
+                ? this.course.title
+                : 'No title specified to this course'
+            "
+            width="100%"
+            class="course-image"
+          />
+        </a>
+      </div>
+
+      <div class="meta ml-3">
+        <h2 class="title">
+          <a
+            [href]="'courses/' + this.course.id"
+            [html]="this.course.title"
+          ></a>
+        </h2>
+        <div class="created text-muted">
+          <span *if="!Is.empty(this.course.createdBy)" class="by">
+            By
+            <span [html]="' ' + this.course.createdBy.name + ' '"></span>
+            <!-- <for loop="let name of this.course.createdBy">
+                </for> -->
+          </span>
+          <flk-time-ago
+            class="at"
+            [timestamp]="this.course.createdAt.timestamp"
+          ></flk-time-ago>
+        </div>
+
+        <markdown
+          *if="this.course.shortDescription"
+          class="description mt-3"
+          [content]="this.course.shortDescription"
+        >
+        </markdown>
+      </div>
+    </div>
+
+    <section class="col-2 p-1">
+      <gold-icon
+        *if="this.course.price"
+        [coins]="this.course.price"
+      ></gold-icon>
+    </section>
+  </div>
+</article>
