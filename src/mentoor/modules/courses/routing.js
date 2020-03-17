@@ -15,6 +15,8 @@ DI.resolve('events').subscribe('router.collecting', router => {
 		routerGroup.add('/{:id}/sections', CourseSectionsPage);
 		// Course Play page
 		routerGroup.add('/{:id}/play', CoursePlayPage);
+		// Video Play page
+		routerGroup.add('/{:id}/{:vidId}', VideoPlayPage);
 		// end of routes
     });
 });

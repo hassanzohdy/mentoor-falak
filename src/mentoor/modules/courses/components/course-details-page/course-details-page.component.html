@@ -2,8 +2,24 @@
   <flk-spinner *if="this.isLoading"></flk-spinner>
 
   <else>
-      <h1 [html]="this.course.title"></h1>
+      <div class="d-flex justify-content-between">
+        <section>
+            <h1 class="d-inline-block">
+                {{this.course.title}} 
+              </h1>
+              <span class="ml-5 badge badge-dark d-inline-block"> {{this.formatDuration(this.course.duration)}} </span>
+              <a [href]="'/courses/' + this.course.id + '/sections'" *if="this.course.createdBy.id === this.user.id" class="btn btn-dark"> <fa icon="edit"></fa> </a>
+        </section>
+          <a href="/courses" class="btn btn-secondary"> Back to Courses list </a>
+      </div>
 
-      <markdown [content]="this.course.description" class="card p-3"></markdown>
+      <markdown [content]="this.course.description" class="card p-3 mt-5"></markdown>
+
+      <div class="simple-card pb-2 m-t-1">
+        <flk-accordion *for="let section, index of this.course.sections" *key="section.id"
+            [heading]="section.title + '   (' + this.formatDuration(section.duration) + ')'">
+
+            <course-section-videos-list [is-viewer]="true" [videos]="section.videos"></course-section-videos-list>
+        </flk-accordion>
   </else>
 </layout>
