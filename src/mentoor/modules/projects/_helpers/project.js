@@ -5,7 +5,7 @@ class Project {
         this.router = DI.resolve('router');
         this.shareable = DI.resolve('shareable');
         this.projectsService = DI.resolve('projectsService');
-        this.session = DI.resolve('session');
+        this.cache = DI.resolve('session');
         this.title = '';
         this.query = null;
         this.defaultSchema = {};
@@ -31,8 +31,10 @@ class Project {
         //     delete this.project[this.itemKey];
         // }
 
-        if (this.session.has('project') && !this.forceLoad) {
-            let project = this.session.get('project');
+        if (this.cache.has('project.' + projectId) && !this.forceLoad) {
+            let project = this.cache.get('project.' + projectId);
+
+            this.boot(project);
 
             // if (project.id == projectId && (!this.itemKey || this.itemKey && project[this.itemKey])) {
             //     this.boot(project);
@@ -120,15 +122,15 @@ class Project {
         this.project = project;
         this.title = (this.prependName ? `[${this.prependName.capitalize()}]` : '') + project.name;
 
-        this.cache();
+        this.cacheProject();
 
         this.onProjectLoad();
     }
 
-    cache() {
+    cacheProject() {
         this.shareable.share('project', this.project);
 
-        // this.session.set('project', this.project);
+        this.cache.set('project.' + this.project, this.project);
     }
 
     getMember(memberId) {

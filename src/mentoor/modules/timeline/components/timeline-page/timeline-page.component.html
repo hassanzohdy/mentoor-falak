@@ -17,7 +17,7 @@
             <div class="row">
                 <div *for="let post of this.posts" class="col-6">
                     <div class="post">
-                        <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image">
+                        <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image" />
                         <div class="meta">
                             <a href="{{ URLS.post(post) }}" class="title" [html]="post.title"></a>
                             <div class="meta-info">

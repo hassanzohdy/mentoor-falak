@@ -3,8 +3,8 @@ class ProjectModuleDetailsPage extends Project {
     * Constructor
     * Put your required dependencies in the constructor parameters list  
     */
-    constructor() {
-        super();
+    constructor(projectModulesService) {
+        super(projectModulesService);
         this.name = 'project-module-details';
         this.prependName = 'Module Details';
     }
@@ -17,12 +17,27 @@ class ProjectModuleDetailsPage extends Project {
 
     onProjectLoad() {
         this.module = this.project.module;
+
+        try {
+
+            this.isEditingApi = true;
+            if (this.cache.get('jsonData')) {
+                this.module.api = this.cache.get('jsonData');
+                this.module.apiJson = JSON.parse(this.module.api);
+            }
+        } catch (error) {
+            echo(error)
+        }
     }
 
     validateApiJsonFormat(value) {
         this.apiFormatError = '';
 
         const error = msg => this.apiFormatError = msg;
+
+        const parentIndex = (index, parent) => {
+            return `${parent}_${+index + 1}`;
+        };
 
         if (Is.empty(value)) {
             return error('This input is required');
@@ -38,7 +53,7 @@ class ProjectModuleDetailsPage extends Project {
             return error('API content must be in an array');
         }
 
-        let requiredProperties = ['route', 'name', 'description'],
+        let requiredProperties = ['route', 'name', 'title', 'description'],
             requestMethods = ['GET', 'POST', 'DELETE', 'PATCH', 'OPTIONS', 'PUT'],
             requiredDataProperties = ['name', 'type', 'description'];
 
@@ -55,8 +70,20 @@ class ProjectModuleDetailsPage extends Project {
             };
 
             const validateBodyItem = (bodyItem, index, bodyType, parentIndex) => {
+                if (Is.string(bodyItem)) {
+                    bodyItem = JSON.parse(bodyItem);
+                }
+
+                if (Is.array(bodyItem)) {
+                    for (let i = 0; i < bodyItem.length; i++) {
+                        validateBodyItem(bodyItem[i], i, bodyType, index);
+                    }
+                    return;
+                }
+
                 for (let key of ['name', 'type']) {
                     if (!bodyItem[key]) {
+                        console.trace()
                         return msg(`${bodyType} Body #${parentIndex} Item #${index} ${key} attribute is required`);
                     }
 
@@ -67,7 +94,7 @@ class ProjectModuleDetailsPage extends Project {
 
                 if (Is.array(bodyItem.value)) {
                     for (let i = 0; i < bodyItem.value.length; i++) {
-                        if (! validateBodyItem(value, i + 1 , bodyType, parentIndex + '_' + index));
+                        if (!validateBodyItem(bodyItem.value[i], i + 1, bodyType, parentIndex + '_' + index));
                     }
                 }
 
@@ -164,6 +191,11 @@ class ProjectModuleDetailsPage extends Project {
             let item = jsonData[i];
 
             validateItem(item, i);
+        }
+
+        if (!this.apiFormatError) {
+            this.module.apiJson = jsonData;
+            this.cache.set('jsonData', value);
         }
     }
 }

@@ -13,6 +13,8 @@ class ProjectDiscussionForm {
      * This method is triggered before rendering the component
      */
     init() {
+        this.isValidForm = true;
+        this.isSending = false;
         this.record = this.inputs.getProp('discussion', {});
 
         this.project = this.inputs.getProp('project');

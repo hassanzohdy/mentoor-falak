@@ -23,7 +23,6 @@ class ResourceDetailsPage {
 
         try {
             let {record: resource} = await this.resourcesService.get(this.router.params.id);
-            echo(resource)         
 
             this.resource = resource;
 

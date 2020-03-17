@@ -121,6 +121,9 @@
         "offline-courses",
         "resources",
         "arena",
-        "json-api-preview"
+        "json-api-preview",
+        "json-preview",
+        "pdf-preview",
+        "json-api-preview-route"
     ]
 }

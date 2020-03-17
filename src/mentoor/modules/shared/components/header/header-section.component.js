@@ -31,14 +31,17 @@ class Header {
         });
     }
 
-    navigateToProject(projectId) {       
+    navigateToProject(projectId) {
         this.disableAutoDetection();
         this.projectId = projectId;
         this.currentProjectId = projectId;
         this.shareable.share('project', {
             id: projectId,
         });
-        this.router.navigateTo(URLS.project({ id: projectId }));
+
+        setTimeout(() => {
+            this.router.navigateTo(URLS.project({ id: projectId }));
+        }, 100);
     }
 
     /**

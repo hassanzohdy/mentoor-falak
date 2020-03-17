@@ -14,10 +14,8 @@ class ProjectTeamsPage extends Project {
         this.excludedTeams = this.project.teams.map(team => team.type);
 
         this.availableTeamLeaders = this.project.members.map(member => member.member);
-    }
 
-    teamsList() {
-        return FLAGS.projects.teams.filter(team => !this.excludedTeams.includes(team)).map(team => {
+        this.teamsList = FLAGS.projects.teams.filter(team => !this.excludedTeams.includes(team)).map(team => {
             return {
                 text: team.capitalize() + ' Team',
                 value: team,

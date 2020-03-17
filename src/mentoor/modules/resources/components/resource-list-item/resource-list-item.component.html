@@ -50,6 +50,11 @@
             target="_blank" 
             [html]="Array.end(this.resource.attachment.split('/'))">                                        
         </a>
+
+        <button *if="this.resource.jsonContent" (click)="this.previewJson = true" type="button" class="btn bold btn-blue">
+            <fa icon="eye mr-2"></fa>
+            Preview
+        </button>
     </div>
     <a *elseif="this.resource.type == 'link'" target="_blank" class="btn btn-cyan bold" [href]="this.resource.settings.link">Open Link</a>
     
@@ -59,6 +64,14 @@
 
     <button *if="['ftp', 'website', 'email'].includes(this.resource.type)" (click)="this.viewResource = true;" class="btn bold" [class]="this.resourceStyle()">View Details</button>
 </div>
+
+<flk-modal
+    *if="this.previewJson"
+    (close)="this.previewJson = false"
+    [heading]="this.resource.title"
+>
+    <json-preview [json]="this.resource.jsonContent"></json-preview>
+</flk-modal>
 
 <flk-alert 
     *if="this.isAboutToRemove" 
@@ -97,7 +110,7 @@
 </if>
 <elseif condition="this.resource.type == 'website'">
     <h1>
-        {{this.resource.settings.website.name}} Website
+        {{ this.resource.settings.website.name }} Website
         (<span [html]="this.resource.title"></span>)
     </h1>
 

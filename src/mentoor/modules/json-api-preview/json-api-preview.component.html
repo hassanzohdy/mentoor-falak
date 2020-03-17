@@ -1,10 +1,8 @@
 <for loop="let route of this.json">
     <if condition="route.list">
-        <flk-accordion [expanded]="this.json.length == 1" [heading]="route.name">
-                        
+        <flk-accordion [expanded]="this.json.length == 1" [heading]="route.description">
+            <json-api-preview-route *for="let subRoute of route.list" [route]="subRoute"></json-api-preview-route>
         </flk-accordion>
     </if>
-    <else>
-
-    </else>
+    <json-api-preview-route *else [route]="route"></json-api-preview-route>
 </for>

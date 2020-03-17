@@ -2,13 +2,15 @@
     {
         "route": "/admin",
         "name": "adminRoutes",
+        "title": "Admin Routes",
         "description": "Admin Routes API",
         "list": [
             {
                 "route": "/users",
                 "name": "adminUsers",
                 "method": "GET",
-                "description": "Users List",
+                "title": "Users List",
+                "description": "Users List Request",
                 "query": [
                     {
                         "name": "id",

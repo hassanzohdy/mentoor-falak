@@ -1,4 +1,4 @@
-class JsonApiPreview {
+class PdfPreview {
     /**
      * Constructor
      * Put your required dependencies in the constructor parameters list  
@@ -12,9 +12,7 @@ class JsonApiPreview {
      * Initialize the component
      * This method is triggered before rendering the component
      */
-    init() {
-        this.json = this.prop('json');
-    }
+    init() {}
 
     /**
      * The component is ready to do any action after being rendered in dom

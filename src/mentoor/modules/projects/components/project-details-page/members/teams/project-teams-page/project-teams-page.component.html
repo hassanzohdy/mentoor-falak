@@ -39,7 +39,13 @@
 
 <flk-modal *if="this.openTeamModal" *as="teamModal" (close)="this.openTeamModal = null" size="small" header="Add New Team">
     <form (submit)="this.submit($el, 'add')">
-        <flk-dropdown-list name="type" [items]="this.teamsList()" required label="Team Type"></flk-dropdown-list>
+        <flk-dropdown-list 
+            name="type" 
+            [items]="this.teamsList" 
+            required="1" 
+            label="Team Type"
+            heading="Team Type"
+            ></flk-dropdown-list>
         
         <flk-dropdown-list     
             name="teamLeader" 

@@ -78,9 +78,13 @@ class ResourcesList {
     }
 
     adjustResource(resource) {
-        this.resources.unshift(resource);
-        this.prepareResourcesList();
+        if (this.index) {
+            this.resources[this.index] = resource;
+        } else {
+            this.resources.unshift(resource);
+        }
 
+        this.prepareResourcesList();
     }
 
     /**

@@ -1,6 +1,6 @@
 <li class="panel-item" [class]="{unseen: notification.seen === false}">
     <a [href]="this.commentUrl(notification.extra)" (click)="this.markAsSeen(notification)">
-        <img [src]="this.imageUrl(notification.extra.project?.image) || FAVICON" class="image" />
+        <img [src]="this.imageUrl(notification.extra.project.image) || FAVICON" class="image" />
         <div class="content">
             <span [html]="notification.title"></span>
             <small class="d-block" [html]="notification.description"></small>

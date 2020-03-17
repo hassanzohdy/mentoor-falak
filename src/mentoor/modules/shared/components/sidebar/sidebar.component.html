@@ -60,14 +60,14 @@
                     <span class="new">NEW</span>
                 </a>
             </li>
-            <li class="nav-item" *if="this.user.isLoggedIn();">
+            <li class="nav-item" *if="this.user.isLoggedIn()">
                 <a class="nav-link" href="/training-ground"
                     [class]="{active: this.activeLink('/training-ground', STARTING_WITH_ROUTE)}">
                     <img [src]="assets('images/target.png')" class="target-icon small mr-2" />
                     Training ground
                 </a>
             </li>
-            <li class="nav-item" *if="this.user.isLoggedIn();">
+            <li class="nav-item" *if="this.user.isLoggedIn()">
                 <a class="nav-link" href="/tasks" [class]="{active: this.activeLink('/tasks')}">
                     <fa icon="tasks"></fa>
                     Tasks Board
@@ -92,7 +92,7 @@
                     <fa icon="university"></fa> Academy
                 </a>
             </li>
-            <li class="nav-item" *if="Config.get('app.env') == 'development' && this.user.isLoggedIn();">
+            <li class="nav-item" *if="Config.get('app.env') == 'development' && this.user.isLoggedIn()">
                 <a class="nav-link" href="/arena" [class]="{active: this.activeLink('/arena')}">
                     <fa icon="biohazard"></fa>
                     Arena
