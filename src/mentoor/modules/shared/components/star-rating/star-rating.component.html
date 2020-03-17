@@ -3,10 +3,9 @@
   <div>
     <span
       *for="let star, index of this.starsRateArray"
-      [class]="{ active: star.active }"
       (click)="this.rate(index)"
     >
-      <fa icon="star"></fa>
+      <fa [class]="{'orange-text': star.active}" icon="star"></fa>
     </span>
   </div>
 </section>
