@@ -20,7 +20,14 @@
     ></course-video-form>
 
     <else>
-      <h1 [html]="this.course.title"></h1>
+      <div class="d-flex">
+        <h1 [html]="this.course.title"></h1>
+        <section class="course-settings ml-3">
+          <button class="btn btn-danger btn-sm" (click)="this.removeCourse()">
+            <fa icon="trash"></fa>
+          </button>
+        </section>
+      </div>
 
       <div class="simple-card p-0 m-t-1">
         <flk-accordion
