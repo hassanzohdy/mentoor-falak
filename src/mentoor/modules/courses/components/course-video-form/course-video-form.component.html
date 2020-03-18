@@ -79,6 +79,13 @@
     [value]="this.video.duration.length"
   />
 
+  <flk-checkbox
+    label="Free"
+    name="isFree"
+    [checked]="this.isFree"
+    (change)="this.isFree = $el.checked;"
+  ></flk-checkbox>
+
   <div class="m-t-1">
     <button [disabled]="this.isSending" class="btn bold btn-primary">
       Save

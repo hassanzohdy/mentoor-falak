@@ -11,8 +11,20 @@
       }
     }
 
+    .meta {
+      h2 {
+        margin-top: 1rem;
+      }
+    }
+
     .created {
       font-size: 1.3rem;
+    }
+
+    .course-additional-data {
+      text-align: center;
+
+      padding-top: 1rem;
     }
   }
 }

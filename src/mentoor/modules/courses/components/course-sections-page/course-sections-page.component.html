@@ -61,35 +61,25 @@
           >
             <fa icon="trash"></fa>
           </button>
+          <button
+            type="button"
+            (click)="this.newVideo = true; this.currentSection = section"
+            class="btn btn-purple btn-circle btn-sm"
+            tooltip
+            title="New Video"
+          >
+            <fa icon="plus"></fa>
+          </button>
 
           <hr />
 
           <h4 class="m-t-1">Content</h4>
-
+          
           <course-section-videos-list
             [videos]="section.videos"
+            (edit)="this.updateVideo = true; this.currentSection = section; this.currentVideo = e"
           ></course-section-videos-list>
-
-          <button
-            type="button"
-            (click)="this.newVideo = true; this.currentSection = section"
-            class="m-y-2 btn btn-sm btn-purple"
-            tooltip
-            title="New Video"
-          >
-            <fa icon="plus" 2x></fa>
-          </button>
         </flk-accordion>
-
-        <button
-          type="button"
-          (click)="this.newSection = true"
-          class="m-y-2 btn btn-sm btn-success"
-          tooltip
-          title="New Section"
-        >
-          <fa icon="plus" 2x></fa>
-        </button>
       </div>
     </else>
   </div>

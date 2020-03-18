@@ -3,7 +3,8 @@ class CourseSectionVideosList {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor() {
+    constructor(user) {
+        this.user = user;
     }
     
     /**
@@ -13,6 +14,7 @@ class CourseSectionVideosList {
     init() {
         this.videos = this.prop('videos');
         this.isViewer = this.prop('isViewer');
+        this.edit = this.event('edit');
     }
 
     /**

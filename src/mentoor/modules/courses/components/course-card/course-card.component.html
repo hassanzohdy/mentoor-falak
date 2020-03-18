@@ -1,6 +1,6 @@
 <article class="card course-card mb-3">
-  <div class="card-body row justify-content-around">
-    <div class="d-flex col-10">
+  <div class="card-body row">
+    <div class="d-flex col-9 course-main-content">
       <div class="course-image-container">
         <a [href]="'courses/' + this.course.id">
           <img
@@ -45,11 +45,14 @@
       </div>
     </div>
 
-    <section class="col-2 p-1">
+    <section class="col-3 course-additional-data">
       <gold-icon
         *if="this.course.price"
         [coins]="this.course.price"
+        class="course-price"
       ></gold-icon>
+
+      <p class="ml-2 text-muted"> {{this.getTotalNumberOfCourseVideos()}} videos </p>
     </section>
   </div>
 </article>
