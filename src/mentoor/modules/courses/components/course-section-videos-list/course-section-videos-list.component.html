@@ -1,22 +1,32 @@
-<table *if="!Is.empty(this.videos)" class="table table-bordered">
-  <tbody>
-    <tr *for="let video of this.videos">
-      <td [html]="video.title" tooltip [title]="video.description"></td>
-      <td
-        [html]="
-          String(video.duration.minutes).padStart(2, '0') +
-          ':' +
-          String(video.duration.seconds).padStart(2, '0')
-        "
-      ></td>
-
-      <td *if="this.isViewer">
-        <button (click)="this.isModalOpen = true; this.currentVideoUrl = video.url" class="btn">Start</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<ul *if="!Is.empty(this.videos)" class="course-videos-list list-unstyled">
+  <li
+    *for="let video of this.videos"
+    class="course-video-item d-flex justify-content-between border"
+  >
+    <p
+      class="video-title"
+      [html]="video.title"
+      tooltip
+      [title]="video.description"
+    ></p>
+    <button
+      (click)="this.isModalOpen = true; this.currentVideoUrl = video.url"
+      class="btn btn-primary btn-sm"
+      tooltip
+      [title]="
+        String(video.duration.minutes).padStart(2, '0') +
+        ':' +
+        String(video.duration.seconds).padStart(2, '0')
+      "
+    >
+      <fa icon="play"></fa>
+    </button>
+  </li>
+</ul>
 
 <flk-modal *if="this.isModalOpen" (close)="this.isModalOpen = false">
-  <flk-youtube-video style="width: 100%; height: 400px" [src]="this.currentVideoUrl"></flk-youtube-video>
+  <flk-youtube-video
+    style="width: 100%; height: 400px"
+    [src]="this.currentVideoUrl"
+  ></flk-youtube-video>
 </flk-modal>
