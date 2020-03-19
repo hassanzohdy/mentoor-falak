@@ -3,13 +3,37 @@ class CourseSectionsPage {
    * Constructor
    * Put your required dependencies in the constructor parameters list
    */
-  constructor(user, router, coursesService, courseSectionsService) {
+  constructor(
+    user,
+    router,
+    coursesService,
+    courseSectionsService,
+    courseVideosService
+  ) {
     this.user = user;
     this.router = router;
     this.coursesService = coursesService;
     this.courseSectionsService = courseSectionsService;
+    this.courseVideosService = courseVideosService;
     this.name = "course-sections";
     this.title = trans("course-sections");
+  }
+
+  async deleteVideo(id, section) {
+    let video = section.videos.find(video => {
+      return video.id === id;
+    });
+    let videoIndex = section.videos.indexOf(video);
+
+    try {
+      let response = await this.courseVideosService.delete(id);
+      console.log(videoIndex)
+      if (response.body.success) {
+        section.videos.splice(videoIndex, 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   /**

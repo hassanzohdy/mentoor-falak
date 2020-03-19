@@ -78,6 +78,7 @@
           <course-section-videos-list
             [videos]="section.videos"
             (edit)="this.updateVideo = true; this.currentSection = section; this.currentVideo = e"
+            (delete)="this.deleteVideo(e, section)"
           ></course-section-videos-list>
         </flk-accordion>
       </div>

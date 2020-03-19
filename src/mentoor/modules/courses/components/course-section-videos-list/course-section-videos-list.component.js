@@ -15,6 +15,7 @@ class CourseSectionVideosList {
         this.videos = this.prop('videos');
         this.isViewer = this.prop('isViewer');
         this.edit = this.event('edit');
+        this.delete = this.event('delete');
     }
 
     /**
