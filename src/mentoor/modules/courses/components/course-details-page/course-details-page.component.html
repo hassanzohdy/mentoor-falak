@@ -28,7 +28,7 @@
               *if="this.course.duration"
               class="ml-5 mt-3 badge badge-dark d-inline-block"
             >
-              {{ this.formatDuration(this.course.duration) }}
+              {{ this.course.duration.hours }} hours {{ this.course.duration.minutes }} minutes
             </p>
 
             <markdown

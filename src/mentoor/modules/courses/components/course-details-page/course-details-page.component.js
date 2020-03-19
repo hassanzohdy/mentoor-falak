@@ -28,27 +28,30 @@ class CourseDetailsPage {
   }
 
   subscribeToCourse() {
-    if (! this.user.isLoggedIn()) {
-        this.router.navigateTo('/login');
-        return;
+    if (!this.user.isLoggedIn()) {
+      this.router.navigateTo("/login");
+      return;
     }
     if (this.user.gold < Number(this.course.price)) {
-        playAudio(Sounds.NOT_ENOUGH_GOLD_RANDOM());
-        alert('You don\'t have enough gold');
-        return;
+      playAudio(Sounds.NOT_ENOUGH_GOLD_RANDOM());
+      alert("You don't have enough gold");
+      return;
     }
-    
+
     this.isSubscribing = true;
-    this.coursesService.applyToCourse(this.course.id).then(response => {
+    this.coursesService
+      .applyToCourse(this.course.id)
+      .then(response => {
         playAudio(Sounds.PAY_COINS);
-        this.user.update('gold', response.user.gold);
+        this.user.update("gold", response.user.gold);
         this.course = response.record;
         this.isSubscribing = false;
-    }).catch(response => {
+      })
+      .catch(response => {
         this.errorMessage = response.error;
         this.isSubscribing = false;
-    });
-}
+      });
+  }
 
   getTotalNumberOfCourseVideos() {
     let videosNumber = 0;
@@ -57,7 +60,9 @@ class CourseDetailsPage {
       videosNumber += this.getTotalNumberOfSectionVideos(section);
     }
 
-    return videosNumber !== 1 ? videosNumber + ' videos' : videosNumber + ' video';
+    return videosNumber !== 1
+      ? videosNumber + " videos"
+      : videosNumber + " video";
   }
 
   getTotalNumberOfSectionVideos(section) {
@@ -65,14 +70,9 @@ class CourseDetailsPage {
   }
 
   renderSectionTitle(section) {
-    return (
-      section.title +
-      "   (" +
-      this.formatDuration(section.duration) +
-      ") - " +
-      this.getTotalNumberOfSectionVideos(section) +
-      this.getRightSectionVideosCountPrefix(section)
-    );
+    return `${section.title}  (${section.duration.hours} hours ${
+      section.duration.minutes
+    } minutes) - ${this.getRightSectionVideosCountPrefix(section)}`;
   }
 
   getRightSectionVideosCountPrefix(section) {

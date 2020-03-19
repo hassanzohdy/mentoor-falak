@@ -49,6 +49,19 @@
     <div class="col">
       <form-input
         type="number"
+        name="duration.hours"
+        (input)="this.calculateVideoLength()"
+        min="0"
+        max="59"
+        class="form-control"
+        [required]="true"
+        [value]="this.video.duration.hours"
+        label="hours"
+      ></form-input>
+    </div>
+    <div class="col">
+      <form-input
+        type="number"
         name="duration.minutes"
         (input)="this.calculateVideoLength()"
         min="0"
