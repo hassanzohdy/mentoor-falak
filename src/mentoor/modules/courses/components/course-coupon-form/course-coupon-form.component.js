@@ -26,7 +26,7 @@ class CourseCouponForm {
    * The component is ready to do any action after being rendered in dom
    */
   async submit(form) {
-    this.isSending = true;
+    // this.isSending = true;
 
     let coupon;
 
@@ -35,14 +35,16 @@ class CourseCouponForm {
         this.coupon.id,
         form
       );
-      this.isSending = false;
+      // this.isSending = false;
 
       coupon = record;
+      location.reload()
     } else {
       let { record } = await this.courseCouponsService.create(form);
-      this.isSending = false;
+      // this.isSending = false;
 
       coupon = record;
+      location.reload()
     }
 
     this.event("save")(coupon);

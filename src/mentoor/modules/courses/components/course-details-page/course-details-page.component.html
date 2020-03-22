@@ -1,7 +1,6 @@
 <layout>
   <flk-spinner *if="this.isLoading"></flk-spinner>
 
-  <else>
     <div class="row">
       <section class="col-sm-9">
         <div class="d-flex">
@@ -91,6 +90,26 @@
                 {{ this.course.type.join(",") }}
               </p>
             </div>
+
+            <form (submit)="this.applyCoupon(this.couponCode)">
+              <div class="input-group mb-3">
+                <form-input
+                  type="text"
+                  placeholder="Coupon code"
+                  tooltip
+                  title="Enter your coupon and get a discount"
+                  name="code"
+                  [value]="this.couponCode"
+                  class="form-control p-1"
+                ></form-input>
+                <div class="input-group-append">
+                  <button class="btn btn-info coupon-apply-btn" type="submit">
+                    <flk-spinner *if="this.isApplying"></flk-spinner>
+                    <span *else>Apply</span>
+                  </button>
+                </div>
+              </div>
+            </form>
             <flk-alert
               *if="this.confirmSubscribe"
               message="Are you sure you want to subscribe to '{{
@@ -115,7 +134,6 @@
         </div>
       </section>
     </div>
-  </else>
 </layout>
 
 <flk-message *if="this.errorMessage" (close)="this.errorMessage = null">

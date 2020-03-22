@@ -3,11 +3,12 @@ class CourseDetailsPage {
    * Constructor
    * Put your required dependencies in the constructor parameters list
    */
-  constructor(coursesService, router, user) {
+  constructor(coursesService, router, user, courseCouponsService) {
     this.name = "course-details";
     this.title = trans("course-details");
 
     this.coursesService = coursesService;
+    this.courseCouponsService = courseCouponsService;
 
     this.router = router;
     this.user = user;
@@ -25,6 +26,18 @@ class CourseDetailsPage {
       this.course = response.record;
       this.isLoading = false;
     });
+  }
+
+  async applyCoupon(code) {
+    this.isApplying = true;
+
+    let { record } = await this.courseCouponsService.apply(
+      this.course.id,
+      code
+    );
+    this.course.price = (this.course.price * record.discount) / 100;
+    this.isApplying = false;
+    this.couponCode = '';
   }
 
   subscribeToCourse() {
