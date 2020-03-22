@@ -25,9 +25,9 @@
                             <div class="meta-info">
                                 <span class="user-name" [html]="post.createdBy.name"></span>
                                 <user-online [id]="post.createdBy.id"></user-online>
-                                <flk-time-ago *if="this.lastP && this.lastP.id == post.id"
+                                <flk-time-ago *if="this.lastP && this.lastP.id == post.id && this.lastP.createdAt"
                                     [timestamp]="this.lastP.createdAt.timestamp" class="created-at ml-3"></flk-time-ago>
-                                <flk-time-ago *else [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
+                                <flk-time-ago *elseif="post.createdAt" [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
                             </div>
                         </div>
                         <article>
