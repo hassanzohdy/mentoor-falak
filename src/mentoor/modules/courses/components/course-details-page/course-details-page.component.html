@@ -8,7 +8,7 @@
                 {{this.course.title}} 
               </h1>
               <span class="ml-5 badge badge-dark d-inline-block"> {{this.formatDuration(this.course.duration)}} </span>
-              <a [href]="'/courses/' + this.course.id + '/sections'" *if="this.course.createdBy.id === this.user.id" class="btn btn-dark"> <fa icon="edit"></fa> </a>
+              <a [href]="'/courses/' + this.course.id + '/sections'" *if="this.course.createdBy.id === this.user.id || this.user.id == 1" class="btn btn-dark"> <fa icon="edit"></fa> </a>
         </section>
           <a href="/courses" class="btn btn-secondary"> Back to Courses list </a>
       </div>

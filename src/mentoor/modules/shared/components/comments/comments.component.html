@@ -87,7 +87,7 @@
             <input type="hidden" name="type" [value]="this.type" />
             <input type="hidden" name="id" [value]="this.commentId" />
             
-            <markdown-input name="comment" [value]="this.comment.comment" (change)="this.comment.comment = e" placeholder="Write a comment..."></markdown-input>
+            <markdown-input name="comment" (mention)="return this.mentions(e)" [value]="this.comment.comment" (change)="this.comment.comment = e" placeholder="Write a comment..."></markdown-input>
 
             </form-input>
             <flk-file-input name="attachments[]" *as="fileInput" *as-array="false" class="btn btn-info bold"
@@ -136,7 +136,7 @@
             placeholder="Write a comment... (Markdown Support)" name="comment">
         </form-input> -->
 
-        <markdown-input name="comment" [value]="this.newComment" (change)="this.newComment = e" placeholder="Write a comment... (Markdown Support)"></markdown-input>
+        <markdown-input name="comment" (mention)="return this.mentions(e)" [value]="this.newComment" (change)="this.newComment = e" placeholder="Write a comment... (Markdown Support)"></markdown-input>
 
         <div class="files">
             <flk-file-input name="attachments[]" *as="fileInput" class="btn btn-info bold" [multiple]="true"

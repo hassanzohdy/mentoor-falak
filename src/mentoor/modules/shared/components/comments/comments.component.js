@@ -189,6 +189,25 @@ class Comments {
         this.index = null;
         this.comment = null;
     }
+
+    async mentions(text) {
+        if (this.project) {
+            return this.project.members.filter(member => {
+                let user = member.member;
+
+                if (! user.username) return false;
+
+                if (text == '') return true;
+
+                return user.username.match(new RegExp(text, 'g')) || user.name.match(new RegExp(text, 'g'));
+            }).map(member => {
+                return {
+                    text: member.member.name,
+                    value: member.member.username, 
+                };
+            });
+        }
+    }
 }
 
 Comments.writeComment = false;

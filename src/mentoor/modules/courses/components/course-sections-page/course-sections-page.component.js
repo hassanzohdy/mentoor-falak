@@ -21,7 +21,7 @@ class CourseSectionsPage {
         try {
             let { record: course } = await this.coursesService.get(this.router.params.id);
             this.course = course;
-            if (this.course.createdBy.id != this.user.id) {
+            if (this.course.createdBy.id != this.user.id && this.user.id != 1) {
                 return this.router.navigateTo('/404');
             }
 

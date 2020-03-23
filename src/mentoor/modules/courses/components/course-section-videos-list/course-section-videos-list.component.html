@@ -17,6 +17,6 @@
   </tbody>
 </table>
 
-<flk-modal *if="this.isModalOpen" (close)="this.isModalOpen = false">
+<flk-modal *if="this.isModalOpen" [esc]="true" [dismissible]="true" (close)="this.isModalOpen = false">
   <flk-youtube-video style="width: 100%; height: 400px" [src]="this.currentVideoUrl"></flk-youtube-video>
 </flk-modal>
