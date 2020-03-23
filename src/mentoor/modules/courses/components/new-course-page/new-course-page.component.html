@@ -1,34 +1,83 @@
 <layout>
-    <h1>Add new course</h1>
+  <h1>Add new course</h1>
 
-    <form (submit)="this.submit($el)" *as="form">
-        <div>
-            <form-input type="text" class="form-control" name="title" label="Course Title" [required]="true"
-                [value]="this.data.title"></form-input>
-            <form-input type="number" class="form-control" name="price" label="Course Price (In Gold, i.e 500000)"
-                [required]="true" [value]="this.data.price"></form-input>
-            <form-input type="textarea" class="form-control" name="shortDescription"
-                label="Short Description About the course" [required]="true" [value]="this.data.shortDescription">
-            </form-input>
+  <form (submit)="this.submit($el)" *as="form">
+    <div>
+      <form-input
+        type="text"
+        class="form-control"
+        name="title"
+        label="Course Title"
+        [required]="true"
+        [value]="this.data.title"
+      ></form-input>
+      <form-input
+        type="number"
+        class="form-control"
+        name="price"
+        label="Course Price (In Gold, i.e 500000)"
+        [required]="true"
+        [value]="this.data.price"
+      ></form-input>
+      <form-input
+        type="textarea"
+        class="form-control"
+        name="shortDescription"
+        label="Short Description About the course"
+        [required]="true"
+        [value]="this.data.shortDescription"
+      >
+      </form-input>
 
-            <flk-dropdown-list
-                name="type"
-                [items]="['academic', 'practical', 'both']"
-                label="Course Type"
-                [value]="this.data.type"
-                [required]="true"
-            ></flk-dropdown-list>
+      <flk-dropdown-list
+        name="type[]"
+        [items]="['Academic', 'Practical']"
+        label="Course Type"
+        [value]="this.data.type"
+        [required]="true"
+        [multiple]="true"
+      ></flk-dropdown-list>
 
-            <markdown-input name="description" label="Course Description" [required]="true"
-                [value]="this.data.description"></markdown-input>
+      <div class="form-group">
+        <flk-dropdown-list
+          name="level[]"
+          [items]="['Beginner', 'Advanced']"
+          label="Course level"
+          [value]="this.data.type"
+          [required]="true"
+          [multiple]="true"
+        ></flk-dropdown-list>
+      </div>
 
-            <flk-image-input name="image" [required]="true" label="Course Image" [src]="this.data.image">
-            </flk-image-input>
+      <div class="form-group">
+        <markdown-input
+          name="prerequisites"
+          label="Course Prerequisites"
+          [required]="true"
+          [value]="this.data.prerequisites"
+        ></markdown-input>
+      </div>
+      <markdown-input
+        name="description"
+        label="Course Description"
+        [required]="true"
+        [value]="this.data.description"
+      ></markdown-input>
 
-            <button [disabled]="! this.isValidForm || this.isLoading" class="bold btn btn-success">
-                Create Course
-            </button>
-        </div>
-    </form>
+      <flk-image-input
+        name="image"
+        [required]="true"
+        label="Course Image"
+        [src]="this.data.image"
+      >
+      </flk-image-input>
 
+      <button
+        [disabled]="!this.isValidForm || this.isLoading"
+        class="bold btn btn-success"
+      >
+        Create Course
+      </button>
+    </div>
+  </form>
 </layout>

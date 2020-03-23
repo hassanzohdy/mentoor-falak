@@ -10,13 +10,13 @@ DI.resolve('events').subscribe('router.collecting', router => {
         routerGroup.add('/new', NewCoursePage);
 		// Course Details page
 		routerGroup.add('/{:id}', CourseDetailsPage);
-    
-        // Course Sections page
-		routerGroup.add('/{:id}/sections', CourseSectionsPage);
+
 		// Course Play page
 		routerGroup.add('/{:id}/play', CoursePlayPage);
 		// Video Play page
 		routerGroup.add('/{:id}/{:vidId}', VideoPlayPage);
+		// Course Dashboard page
+		routerGroup.add('/{:id}/dashboard', CourseDashboardPage);
 		// end of routes
     });
 });

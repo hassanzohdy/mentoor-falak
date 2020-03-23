@@ -122,8 +122,8 @@
         "resources",
         "arena",
         "json-api-preview",
-        "json-preview",
-        "pdf-preview",
-        "json-api-preview-route"
+        "course-sections",
+        "course-coupons",
+        "course-sidebar"
     ]
 }

@@ -16,8 +16,6 @@ class StarRating {
     this.isReadOnly = this.prop("readonly", false);
     this.totalStars = this.prop("maxStars", 5);
 
-    console.log(this.stars)
-
     this.starsRateArray = [];
 
     for (let i = 1; i <= this.totalStars; i++) {

@@ -17,15 +17,17 @@
             <div class="row">
                 <div *for="let post of this.posts" class="col-md-6">
                     <div class="post">
-                        <img [src]="post.createdBy.image" [alt]="post.createdBy.name" class="user-image" />
+                        <img [src]="post.createdBy.image" width="70px" height="70px" [alt]="post.createdBy.name" class="user-image">
                         <div class="meta">
-                            <a href="{{ URLS.post(post) }}" class="title" [html]="post.title"></a>
+                            <h2>
+                                <a href="{{ URLS.post(post) }}" class="post-title" [html]="post.title"></a>
+                            </h2>
                             <div class="meta-info">
                                 <span class="user-name" [html]="post.createdBy.name"></span>
                                 <user-online [id]="post.createdBy.id"></user-online>
-                                <flk-time-ago *if="this.lastP && this.lastP.id == post.id"
-                                    [timestamp]="this.lastP.createdAt.timestamp" class="created-at"></flk-time-ago>
-                                <flk-time-ago *else [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
+                                <flk-time-ago *if="this.lastP && this.lastP.id == post.id && this.lastP.createdAt"
+                                    [timestamp]="this.lastP.createdAt.timestamp" class="created-at ml-3"></flk-time-ago>
+                                <flk-time-ago *elseif="post.createdAt" [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
                             </div>
                         </div>
                         <article>

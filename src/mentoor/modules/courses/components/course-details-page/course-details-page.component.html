@@ -1,25 +1,145 @@
 <layout>
   <flk-spinner *if="this.isLoading"></flk-spinner>
 
-  <else>
-      <div class="d-flex justify-content-between">
-        <section>
-            <h1 class="d-inline-block">
-                {{this.course.title}} 
-              </h1>
-              <span class="ml-5 badge badge-dark d-inline-block"> {{this.formatDuration(this.course.duration)}} </span>
-              <a [href]="'/courses/' + this.course.id + '/sections'" *if="this.course.createdBy.id === this.user.id || this.user.id == 1" class="btn btn-dark"> <fa icon="edit"></fa> </a>
-        </section>
-          <a href="/courses" class="btn btn-secondary"> Back to Courses list </a>
+  <div class="row">
+    <section class="col-sm-9">
+      <div class="d-flex">
+        <img
+          [src]="this.course.image"
+          width="200px"
+          height="200px"
+          alt="The course intro"
+        />
+        <header class="course-intro">
+          <section class="course-title d-flex align-items-start">
+            <h1 class="d-inline-block ml-2">
+              {{ this.course.title }}
+            </h1>
+            <a
+              [href]="'/courses/' + this.course.id + '/dashboard'"
+              *if="this.course.createdBy.id === this.user.id"
+              class="btn btn-dark btn-sm ml-3"
+            >
+              <fa icon="cog"></fa>
+            </a>
+          </section>
+          <p
+            *if="this.course.duration"
+            class="ml-5 mt-3 badge badge-dark d-inline-block"
+          >
+            {{ this.course.duration.hours }} hours
+            {{ this.course.duration.minutes }} minutes
+          </p>
+
+          <markdown
+            *if="this.course.shortDescription"
+            class="short-description mt-3 ml-3"
+            [content]="this.course.shortDescription"
+          >
+          </markdown>
+        </header>
       </div>
 
-      <markdown [content]="this.course.description" class="card p-3 mt-5"></markdown>
+      <markdown
+        *if="this.course.prerequisites"
+        [content]="this.course.prerequisites"
+        class="card p-3 mt-5"
+      ></markdown>
+      <markdown
+        *if="this.course.description"
+        [content]="this.course.description"
+        class="card p-3 mt-5"
+      ></markdown>
 
       <div class="simple-card pb-2 m-t-1">
-        <flk-accordion *for="let section, index of this.course.sections" *key="section.id"
-            [heading]="section.title + '   (' + this.formatDuration(section.duration) + ')'">
-
-            <course-section-videos-list [is-viewer]="true" [videos]="section.videos"></course-section-videos-list>
+        <flk-accordion
+          *for="let section, index of this.course.sections"
+          *key="section.id"
+          [heading]="this.renderSectionTitle(section)"
+        >
+          <course-section-videos-list
+            [is-viewer]="true"
+            [videos]="section.videos"
+          ></course-section-videos-list>
         </flk-accordion>
-  </else>
+      </div>
+    </section>
+    <section class="col-3">
+      <a href="/courses" class="btn btn-secondary"> Back to Courses list </a>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title bold">Course summary</div>
+          <div class="d-flex justify-content-between pt-4 pb-4">
+            <span>
+              <i class="ti ti-list"></i>
+              {{ this.getTotalNumberOfCourseVideos() }}
+            </span>
+            <span title="Cost">
+              <gold-icon [coins]="this.course.price"></gold-icon>
+              <strong class="pink-text" *if="this.course.price == 0"
+                >FREE!</strong
+              >
+            </span>
+          </div>
+          <div class="pt-4 pb-4">
+            <p *if="this.course.level">
+              <i class="ti ti-list"></i>
+              {{ this.course.level.join(",") }}
+            </p>
+            <p title="Cost" *if="this.course.type">
+              {{ this.course.type.join(",") }}
+            </p>
+          </div>
+
+          <form (submit)="this.applyCoupon(this.couponCode)">
+            <div class="input-group mb-3">
+              <form-input
+                type="text"
+                placeholder="Coupon code"
+                tooltip
+                title="Enter your coupon and get a discount"
+                name="code"
+                [value]="this.couponCode"
+                class="form-control p-1"
+              ></form-input>
+              <div class="input-group-append">
+                <button class="btn btn-info coupon-apply-btn" type="submit">
+                  <flk-spinner *if="this.isApplying"></flk-spinner>
+                  <span *else>Apply</span>
+                </button>
+              </div>
+
+            </div>
+                <span *if="this.couponError" class="red-text d-block text-center">
+                  {{ this.couponError }}
+                </span>
+          </form>
+          <flk-alert
+            *if="this.confirmSubscribe"
+            message="Are you sure you want to subscribe to '{{
+              this.course.title
+            }}'"
+            (confirm)="this.subscribeToCourse()"
+            (close)="this.confirmSubscribe = false"
+          ></flk-alert>
+          <div class="text-center">
+            <button
+              *if="!this.course.isSubscribed && !this.isSubscribing"
+              class="btn btn-primary text-uppercase"
+              (click)="this.confirmSubscribe = true"
+              trans="subscribe"
+            ></button>
+            <flk-spinner *elseif="this.isSubscribing"></flk-spinner>
+            <div *else class="text-center" title="subscribed">
+              <fa icon="check subscribed-icon"></fa>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </layout>
+
+<flk-message *if="this.errorMessage" (close)="this.errorMessage = null">
+  {{ this.errorMessage }}
+</flk-message>

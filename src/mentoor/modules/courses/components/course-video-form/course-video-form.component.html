@@ -1,42 +1,107 @@
 <button type="button" tooltip title="Back" (click)="this.event('close')()">
-    <fa icon="arrow-left"></fa>
+  <fa icon="arrow-left"></fa>
 </button>
-    <form (submit)="this.submit($el)">
-        <input type="hidden" name="course" [value]="this.course.id" />
-        <input type="hidden" name="section" [value]="this.section.id" />
+<form (submit)="this.submit($el)">
+  <input type="hidden" name="course" [value]="this.course.id" />
+  <input type="hidden" name="section" [value]="this.section.id" />
 
-        <form-input type="text" name="title" [value]="this.video.title" class="form-control" [required]="true" label="Video Title"></form-input>
-        <form-input type="textarea" name="description" [value]="this.video.description" class="form-control" label="Video Description"></form-input>
+  <form-input
+    type="text"
+    name="title"
+    [value]="this.video.title"
+    class="form-control"
+    [required]="true"
+    label="Video Title"
+  ></form-input>
+  <form-input
+    type="textarea"
+    name="description"
+    [value]="this.video.description"
+    class="form-control"
+    label="Video Description"
+  ></form-input>
 
-        <flk-dropdown-list
-            name="type"
-            [items]="this.videoTypes"
-            [value]="this.video.type"
-            label="Video Type"
-            heading="Video Type"
-            (select)="this.video.type = e.value"
-            [required]="true"
-        ></flk-dropdown-list>
+  <flk-dropdown-list
+    name="type"
+    [items]="this.videoTypes"
+    [value]="this.video.type"
+    label="Video Type"
+    heading="Video Type"
+    (select)="this.video.type = e.value"
+    [required]="true"
+  ></flk-dropdown-list>
 
-        <div *if="this.video.type == 'youtubeUrl'" class="m-t-1">
-            <form-input type="text" name="url" [value]="this.video.url" class="form-control" [required]="true" label="Youtube Url"></form-input>
-        </div>
+  <div *if="this.video.type == 'youtubeUrl'" class="m-t-1">
+    <form-input
+      type="text"
+      name="url"
+      [value]="this.video.url"
+      class="form-control"
+      [required]="true"
+      label="Youtube Url"
+      pattern="/v=/"
+    ></form-input>
+  </div>
 
-        <h3 class="m-t-1">Video Length</h3>
+  <h3 class="m-t-1">Video Length</h3>
 
-        <div class="row">
-            <div class="col">
-                <form-input type="number" name="duration.minutes" (input)="this.calculateVideoLength()" min="0" max="59" class="form-control" [required]="true" [value]="this.video.duration.minutes" label="Minutes"></form-input>
-            </div>
-            <div class="col">   
-                <form-input type="number" name="duration.seconds" (input)="this.calculateVideoLength()" min="0" max="59" class="form-control" [required]="true" [value]="this.video.duration.seconds" label="Seconds"></form-input>
-            </div>
-        </div>
-        <input type="hidden" name="duration.length" [value]="this.video.duration.length" />
+  <div class="row">
+    <div class="col">
+      <form-input
+        type="number"
+        name="duration.hours"
+        (input)="this.calculateVideoLength()"
+        min="0"
+        max="59"
+        class="form-control"
+        [required]="true"
+        [value]="this.video.duration.hours"
+        label="hours"
+      ></form-input>
+    </div>
+    <div class="col">
+      <form-input
+        type="number"
+        name="duration.minutes"
+        (input)="this.calculateVideoLength()"
+        min="0"
+        max="59"
+        class="form-control"
+        [required]="true"
+        [value]="this.video.duration.minutes"
+        label="Minutes"
+      ></form-input>
+    </div>
+    <div class="col">
+      <form-input
+        type="number"
+        name="duration.seconds"
+        (input)="this.calculateVideoLength()"
+        min="0"
+        max="59"
+        class="form-control"
+        [required]="true"
+        [value]="this.video.duration.seconds"
+        label="Seconds"
+      ></form-input>
+    </div>
+  </div>
+  <input
+    type="hidden"
+    name="duration.length"
+    [value]="this.video.duration.length"
+  />
 
-        <div class="m-t-1">
-            <button [disabled]="this.isSending" class="btn bold btn-primary">
-                Save
-            </button>                
-        </div>
-    </form>
+  <flk-checkbox
+    label="Free"
+    name="isFree"
+    [checked]="this.isFree"
+    (change)="this.isFree = $el.checked;"
+  ></flk-checkbox>
+
+  <div class="m-t-1">
+    <button [disabled]="this.isSending" class="btn bold btn-primary">
+      Save
+    </button>
+  </div>
+</form>

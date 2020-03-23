@@ -1,0 +1,67 @@
+<section class="course-section p-1">
+  <h2>Sections</h2>
+  <button
+    type="button"
+    (click)="this.newSection = true"
+    class="btn btn-purple btn-circle btn-sm"
+    tooltip
+    title="New Section"
+  >
+    <fa icon="plus"></fa>
+  </button>
+  <flk-accordion
+    *for="let section, index of this.course.sections"
+    *key="section.id"
+    [heading]="section.title"
+  >
+    <button
+      type="button"
+      tooltip
+      title="Edit"
+      (click)="
+        this.editSection = true;
+        this.currentSection = section;
+        this.index = index
+      "
+      class="btn btn-circle btn-info btn-sm"
+    >
+      <fa icon="edit"></fa>
+    </button>
+    <button
+      type="button"
+      tooltip
+      title="Delete"
+      (click)="
+        this.deleteSection = true;
+        this.currentSection = section;
+        this.index = index
+      "
+      class="btn btn-circle btn-danger btn-sm"
+    >
+      <fa icon="trash"></fa>
+    </button>
+    <button
+      type="button"
+      (click)="this.newVideo = true; this.currentSection = section"
+      class="btn btn-purple btn-circle btn-sm"
+      tooltip
+      title="New Video"
+    >
+      <fa icon="plus"></fa>
+    </button>
+
+    <hr />
+
+    <h4 class="m-t-1">Content</h4>
+
+    <course-section-videos-list
+      [videos]="section.videos"
+      (edit)="
+        this.updateVideo = true;
+        this.currentSection = section;
+        this.currentVideo = e
+      "
+      (delete)="this.deleteVideo(e, section)"
+    ></course-section-videos-list>
+  </flk-accordion>
+</section>

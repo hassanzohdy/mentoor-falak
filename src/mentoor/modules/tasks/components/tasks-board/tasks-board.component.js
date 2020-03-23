@@ -447,7 +447,7 @@ class TasksBoard {
 
     adjustTaskResponse(task) {
         if (this.currentType == 'add') {
-            this.tasks.push(task);
+            this.tasks.unshift(task);
         } else {
             for (let i = 0; i < this.tasks.length; i++) {
                 let oldTask = this.tasks[i];

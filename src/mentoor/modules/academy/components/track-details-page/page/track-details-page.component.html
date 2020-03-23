@@ -9,7 +9,7 @@
                         <h2 class="mt-0 text-capitalize bold" [trans]="this.track.name"></h2>
                         <small class="text-muted d-block mt-2">
                             <i class="ti ti-time"></i>
-                            <flk-time-ago [timestamp]="this.track.createdAt.timestamp"></flk-time-ago>
+                            <flk-time-ago *if="this.track.createdAt" [timestamp]="this.track.createdAt.timestamp"></flk-time-ago>
                         </small>
 
                         <flk-facebook-share></flk-facebook-share>
