@@ -31,13 +31,24 @@ class CourseDetailsPage {
   async applyCoupon(code) {
     this.isApplying = true;
 
-    let { record } = await this.courseCouponsService.apply(
-      this.course.id,
-      code
-    );
-    this.course.price = (this.course.price * record.discount) / 100;
-    this.isApplying = false;
-    this.couponCode = '';
+    try {
+      let { record } = await this.courseCouponsService.apply(
+        this.course.id,
+        code
+      );
+      this.course.price = (this.course.price * record.discount) / 100;
+      this.isApplying = false;
+      this.couponCode = '';
+      this.couponId = record.id;
+    } catch (err) {
+      this.couponError = err.error
+
+      this.isApplying = false;
+
+      setTimeout(() => {
+        this.couponError = null;
+      }, 5000)
+    }
   }
 
   subscribeToCourse() {
@@ -53,7 +64,7 @@ class CourseDetailsPage {
 
     this.isSubscribing = true;
     this.coursesService
-      .applyToCourse(this.course.id)
+      .applyToCourse(this.course.id, this.couponId)
       .then(response => {
         playAudio(Sounds.PAY_COINS);
         this.user.update("gold", response.user.gold);

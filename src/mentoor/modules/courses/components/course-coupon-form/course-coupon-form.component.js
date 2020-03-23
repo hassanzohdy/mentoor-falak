@@ -1,5 +1,5 @@
 class CourseCouponForm {
-      /**
+  /**
    * Constructor
    * Put your required dependencies in the constructor parameters list
    */
@@ -19,7 +19,8 @@ class CourseCouponForm {
     this.course = this.prop("course");
     this.coupon = this.prop("coupon", {});
 
-    this.heading = this.coupon && this.coupon.id ? "Edit coupon" : "Add New coupon";
+    this.heading =
+      this.coupon && this.coupon.id ? "Edit coupon" : "Add New coupon";
   }
 
   /**
@@ -38,13 +39,20 @@ class CourseCouponForm {
       // this.isSending = false;
 
       coupon = record;
-      location.reload()
-    } else {
-      let { record } = await this.courseCouponsService.create(form);
-      // this.isSending = false;
 
-      coupon = record;
-      location.reload()
+      this.couponId = coupon.id;
+    } else {
+      try {
+        let { record } = await this.courseCouponsService.create(form);
+        // this.isSending = false;
+
+        coupon = record;
+
+        this.couponId = coupon.id;
+      } catch (err) {
+        console.log(err);
+        this.error = err;
+      }
     }
 
     this.event("save")(coupon);

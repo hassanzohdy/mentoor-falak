@@ -1,40 +1,27 @@
 <layout>
-  <flk-spinner *if="this.isLoading"></flk-spinner>
+  <course-sidebar></course-sidebar>
+  <section class="col-12 col-sm-9 col-lg-10 d-md-block offset-md-2 col-md-10">
+    <flk-spinner *if="this.isLoading"></flk-spinner>
 
-  <div *else>
-    <course-video-form
-      *if="this.newVideo"
-      (close)="this.newVideo = false"
-      (save)="this.currentSection.videos.push(e)"
-      [course]="this.course"
-      [section]="this.currentSection"
-    ></course-video-form>
+    <div *else>
+      <course-video-form
+        *if="this.newVideo"
+        (close)="this.newVideo = false"
+        (save)="this.currentSection.videos.push(e)"
+        [course]="this.course"
+        [section]="this.currentSection"
+      ></course-video-form>
 
-    <course-video-form
-      *elseif="this.updateVideo"
-      (close)="this.updateVideo = false"
-      (save)="this.currentSection[index] = e"
-      [video]="this.currentVideo"
-      [course]="this.course"
-      [section]="this.currentSection"
-    ></course-video-form>
+      <course-video-form
+        *elseif="this.updateVideo"
+        (close)="this.updateVideo = false"
+        (save)="this.currentSection[index] = e"
+        [video]="this.currentVideo"
+        [course]="this.course"
+        [section]="this.currentSection"
+      ></course-video-form>
 
-    <course-coupon-form
-      *if="this.newCoupon"
-      (close)="this.newCoupon = false"
-      (save)="this.course.coupons.push(e)"
-      [course]="this.course"
-    ></course-coupon-form>
 
-    <course-coupon-form
-      *elseif="this.updateCoupon"
-      (close)="this.updateCoupon = false"
-      (save)="this.currentCoupon[index] = e"
-      [coupon]="this.currentCoupon"
-      [course]="this.course"
-    ></course-coupon-form>
-
-    <else>
       <div class="d-flex">
         <h1 [html]="this.course.title"></h1>
         <section class="course-settings ml-3">
@@ -45,109 +32,12 @@
       </div>
 
       <div class="simple-card p-0 m-t-1">
-        <flk-accordion
-          *for="let section, index of this.course.sections"
-          *key="section.id"
-          [heading]="section.title"
-        >
-          <button
-            type="button"
-            tooltip
-            title="Edit"
-            (click)="
-              this.editSection = true;
-              this.currentSection = section;
-              this.index = index
-            "
-            class="btn btn-circle btn-info btn-sm"
-          >
-            <fa icon="edit"></fa>
-          </button>
-          <button
-            type="button"
-            tooltip
-            title="Delete"
-            (click)="
-              this.deleteSection = true;
-              this.currentSection = section;
-              this.index = index
-            "
-            class="btn btn-circle btn-danger btn-sm"
-          >
-            <fa icon="trash"></fa>
-          </button>
-          <button
-            type="button"
-            (click)="this.newVideo = true; this.currentSection = section"
-            class="btn btn-purple btn-circle btn-sm"
-            tooltip
-            title="New Video"
-          >
-            <fa icon="plus"></fa>
-          </button>
-
-          <hr />
-
-          <h4 class="m-t-1">Content</h4>
-
-          <course-section-videos-list
-            [videos]="section.videos"
-            (edit)="
-              this.updateVideo = true;
-              this.currentSection = section;
-              this.currentVideo = e
-            "
-            (delete)="this.deleteVideo(e, section)"
-          ></course-section-videos-list>
-        </flk-accordion>
-
+        <course-sections *if="this.activeTab === 'sections'"></course-sections>
         <hr />
-
-        <section class="coupons-list">
-          <h2>Coupons</h2>
-          <button
-            type="button"
-            (click)="this.newCoupon = true"
-            class="btn btn-purple btn-circle btn-sm"
-            tooltip
-            title="New Coupon"
-          >
-            <fa icon="plus"></fa>
-          </button>
-
-          <ul
-            *if="!Is.empty(this.course.coupons)"
-            class="course-coupons-list list-unstyled"
-          >
-            <li
-              *for="let coupon of this.course.coupons"
-              class="course-coupon-item border p-1 mb-2"
-            >
-              <section class="d-flex justify-content-between">
-                <p class="coupon-code" [html]="coupon.code"></p>
-                <span class="coupon-controls d-inline-block">
-                  <button
-                    class="btn btn-info btn-sm btn-circle item-edit-btn"
-                    (click)="
-                      this.currentCoupon = coupon; this.updateCoupon = true
-                    "
-                  >
-                    <fa icon="edit"></fa>
-                  </button>
-                  <button
-                    class="btn btn-danger btn-sm btn-circle item-edit-btn"
-                    (click)="this.removeCoupon(coupon.id)"
-                  >
-                    <fa icon="trash"></fa>
-                  </button>
-                </span>
-              </section>
-            </li>
-          </ul>
-        </section>
+        <course-coupons *if="this.activeTab === 'coupons'"></course-coupons>
       </div>
-    </else>
-  </div>
+    </div>
+  </section>
 </layout>
 
 <course-section-form

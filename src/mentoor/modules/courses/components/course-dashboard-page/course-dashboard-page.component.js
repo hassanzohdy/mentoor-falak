@@ -44,21 +44,17 @@ class CourseDashboardPage {
    */
   async init() {
     this.isLoading = true;
-    try {
-      let { record: course } = await this.coursesService.get(
-        this.router.params.id
-      );
-      this.course = course;
-      if (this.course.createdBy.id != this.user.id) {
-        return this.router.navigateTo("/404");
-      }
-
-      this.isLoading = false;
-    } catch (error) {
-      console.log(error);
-
-      this.router.navigateTo("/404");
+    let { record: course } = await this.coursesService.get(
+      this.router.params.id
+    );
+    this.course = course;
+    if (this.course.createdBy.id != this.user.id) {
+      return this.router.navigateTo("/404");
     }
+
+    this.isLoading = false;
+
+    this.activeTab = "sections";
   }
 
   async removeCourse() {
@@ -83,6 +79,6 @@ class CourseDashboardPage {
   removeCoupon(id) {
     this.courseCouponsService.delete(id);
 
-    this.course.coupons.splice(this.index, 1);
+    this.course.coupons.splice(this.couponIndex, 1);
   }
 }

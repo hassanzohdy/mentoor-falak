@@ -31,7 +31,7 @@ class NewCoursePage {
         // this.isLoading = true;
         let {record: course} = await this.coursesService.create(form);
 
-        this.router.navigateTo(URLS.course(course, 'sections'));
+        this.router.navigateTo(URLS.course(course, 'dashboard'));
     }
 
     next() {

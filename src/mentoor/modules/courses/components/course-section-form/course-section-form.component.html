@@ -1,16 +1,23 @@
 <flk-modal
-    (close)="this.event('close')()"
-    [heading]="this.heading"
-    size="small"
-    *as="modal"
+  (close)="this.event('close')()"
+  [heading]="this.heading"
+  size="small"
+  *as="modal"
 >
-    <form (submit)="this.submit($el)">
-        <input type="hidden" name="course" [value]="this.course.id" />
+  <form (submit)="this.submit($el)">
+    <input type="hidden" name="course" [value]="this.course.id" />
 
-        <form-input type="text" name="title" [value]="this.section.title" class="form-control" [required]="true" label="Section Title"></form-input>
+    <form-input
+      type="text"
+      name="title"
+      [value]="this.section.title"
+      class="form-control"
+      [required]="true"
+      label="Section Title"
+    ></form-input>
 
-        <button [disabled]="this.isSending" class="btn bold btn-primary">
-            Save
-        </button>
-    </form>
+    <button [disabled]="this.isSending" class="btn bold btn-primary">
+      Save
+    </button>
+  </form>
 </flk-modal>

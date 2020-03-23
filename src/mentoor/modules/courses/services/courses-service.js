@@ -6,8 +6,10 @@ class CoursesService extends Endpoint.Service {
     this.setRoute("/courses");
   }
 
-  applyToCourse(courseID) {
-    return this.endpoint.patch(this.path("/" + courseID + "/subscribe"));
+  applyToCourse(courseID, couponId) {
+    return this.endpoint.post(this.path("/" + courseID + "/subscribe"), {
+      couponId
+    });
   }
 }
 

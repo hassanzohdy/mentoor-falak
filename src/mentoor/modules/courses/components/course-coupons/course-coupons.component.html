@@ -1,0 +1,55 @@
+<section class="coupons-list">
+  <h2>Coupons</h2>
+  <button
+    type="button"
+    (click)="this.newCoupon = true"
+    class="btn btn-purple btn-circle btn-sm"
+    tooltip
+    title="New Coupon"
+  >
+    <fa icon="plus"></fa>
+  </button>
+
+  <course-coupon-form
+    *if="this.newCoupon"
+    (close)="this.newCoupon = false"
+    (save)="this.course.coupons.push(e)"
+    [course]="this.course"
+  ></course-coupon-form>
+
+  <course-coupon-form
+    *elseif="this.updateCoupon"
+    (close)="this.updateCoupon = false"
+    (save)="this.currentCoupon[index] = e"
+    [coupon]="this.currentCoupon"
+    [course]="this.course"
+  ></course-coupon-form>
+  
+  <ul
+    *if="!Is.empty(this.course.coupons)"
+    class="course-coupons-list list-unstyled"
+  >
+    <li
+      *for="let coupon, index of this.course.coupons"
+      class="course-coupon-item border p-1 mb-2"
+    >
+      <section class="d-flex justify-content-between">
+        <p class="coupon-code" [html]="coupon.code"></p>
+        <span class="coupon-controls d-inline-block">
+          <button
+            class="btn btn-info btn-sm btn-circle item-edit-btn"
+            (click)="this.currentCoupon = coupon; this.updateCoupon = true"
+          >
+            <fa icon="edit"></fa>
+          </button>
+          <button
+            class="btn btn-danger btn-sm btn-circle item-edit-btn"
+            (click)="this.removeCoupon(coupon.id); this.couponIndex = index"
+          >
+            <fa icon="trash"></fa>
+          </button>
+        </span>
+      </section>
+    </li>
+  </ul>
+</section>
