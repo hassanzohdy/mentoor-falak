@@ -121,9 +121,6 @@
         "offline-courses",
         "resources",
         "arena",
-        "json-api-preview",
-        "course-sections",
-        "course-coupons",
-        "course-sidebar"
+        "json-api-preview"
     ]
 }
