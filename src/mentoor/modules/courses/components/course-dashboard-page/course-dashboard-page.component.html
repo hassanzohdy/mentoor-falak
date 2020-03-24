@@ -21,13 +21,21 @@
         [section]="this.currentSection"
       ></course-video-form>
 
-
       <div class="d-flex">
         <h1 [html]="this.course.title"></h1>
         <section class="course-settings ml-3">
-          <button class="btn btn-danger btn-sm" (click)="this.removeCourse()">
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="this.confirmCourseRemove = true"
+          >
             <fa icon="trash"></fa>
           </button>
+          <flk-alert
+            *if="this.confirmCourseRemove"
+            message="Are you sure you want to remove the course ?"
+            (confirm)="this.removeCourse()"
+            (close)="this.confirmCourseRemove = false"
+          ></flk-alert>
         </section>
       </div>
 
@@ -55,6 +63,21 @@
   [section]="this.currentSection"
 >
 </course-section-form>
+
+<course-coupon-form
+  *if="this.newCoupon"
+  (close)="this.newCoupon = false"
+  (save)="this.course.coupons.push(e)"
+  [course]="this.course"
+></course-coupon-form>
+
+<course-coupon-form
+  *elseif="this.updateCoupon"
+  (close)="this.updateCoupon = false"
+  (save)="this.currentCoupon[this.couponIndex] = e"
+  [coupon]="this.currentCoupon"
+  [course]="this.course"
+></course-coupon-form>
 
 <flk-alert
   *if="this.deleteSection"

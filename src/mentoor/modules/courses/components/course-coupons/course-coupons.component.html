@@ -9,21 +9,6 @@
   >
     <fa icon="plus"></fa>
   </button>
-
-  <course-coupon-form
-    *if="this.newCoupon"
-    (close)="this.newCoupon = false"
-    (save)="this.course.coupons.push(e)"
-    [course]="this.course"
-  ></course-coupon-form>
-
-  <course-coupon-form
-    *elseif="this.updateCoupon"
-    (close)="this.updateCoupon = false"
-    (save)="this.currentCoupon[index] = e"
-    [coupon]="this.currentCoupon"
-    [course]="this.course"
-  ></course-coupon-form>
   
   <ul
     *if="!Is.empty(this.course.coupons)"

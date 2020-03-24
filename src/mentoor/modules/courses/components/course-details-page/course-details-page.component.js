@@ -38,16 +38,16 @@ class CourseDetailsPage {
       );
       this.course.price = (this.course.price * record.discount) / 100;
       this.isApplying = false;
-      this.couponCode = '';
+      this.couponCode = "";
       this.couponId = record.id;
     } catch (err) {
-      this.couponError = err.error
+      this.couponError = err.error;
 
       this.isApplying = false;
 
       setTimeout(() => {
         this.couponError = null;
-      }, 5000)
+      }, 5000);
     }
   }
 
@@ -94,9 +94,12 @@ class CourseDetailsPage {
   }
 
   renderSectionTitle(section) {
-    return `${section.title}  (${section.duration.hours} hours ${
-      section.duration.minutes
-    } minutes) - ${this.getRightSectionVideosCountPrefix(section)}`;
+    if (section.duration)
+      return `${section.title}  (${section.duration.hours} hours ${
+        section.duration.minutes
+      } minutes) - ${this.getRightSectionVideosCountPrefix(section)}`;
+
+    else return `${section.title}`
   }
 
   getRightSectionVideosCountPrefix(section) {
