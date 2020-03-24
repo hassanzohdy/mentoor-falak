@@ -36,7 +36,7 @@ class CourseDetailsPage {
         this.course.id,
         code
       );
-      this.course.price = (this.course.price * record.discount) / 100;
+      this.course.price = this.course.price - (this.course.price * record.discount) / 100;
       this.isApplying = false;
       this.couponCode = "";
       this.couponId = record.id;
@@ -68,7 +68,6 @@ class CourseDetailsPage {
       .then(response => {
         playAudio(Sounds.PAY_COINS);
         this.user.update("gold", response.user.gold);
-        this.course = response.record;
         this.isSubscribing = false;
       })
       .catch(response => {
