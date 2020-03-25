@@ -23,9 +23,21 @@
               <fa icon="cog"></fa>
             </a>
           </section>
+          <div class="ml-2 created text-muted">
+            <span *if="!Is.empty(this.course.createdBy)" class="by">
+              By
+              <span [html]="' ' + this.course.createdBy.name + ' '"></span>
+              <!-- <for loop="let name of this.course.createdBy">
+                  </for> -->
+            </span>
+            <flk-time-ago
+              class="at"
+              [timestamp]="this.course.createdAt.timestamp"
+            ></flk-time-ago>
+          </div>
           <p
             *if="this.course.duration"
-            class="ml-5 mt-3 badge badge-dark d-inline-block"
+            class="ml-2 mt-3 badge badge-dark d-inline-block"
           >
             {{ this.course.duration.hours }} hours
             {{ this.course.duration.minutes }} minutes
@@ -76,19 +88,29 @@
       <div class="card">
         <div class="card-body">
           <div class="card-title bold">Course summary</div>
-          <div class="d-flex justify-content-between pt-4 pb-4">
-            <span>
+          <div class="d-flex justify-content-between pt-4">
+            <span class="d-block">
               <i class="ti ti-list"></i>
               {{ this.getTotalNumberOfCourseVideos() }}
             </span>
-            <span title="Cost">
+            <span
+              title="Cost"
+              [class]="{ removed: this.discount }"
+              class="d-block"
+            >
               <gold-icon [coins]="this.course.price"></gold-icon>
               <strong class="pink-text" *if="this.course.price == 0"
                 >FREE!</strong
               >
             </span>
           </div>
-          <div class="pt-4 pb-4">
+          <section *if="this.discount" class="discount-details">
+            <span class="font-weight-bold red-text">
+              Price After Discount:
+            </span>
+            <gold-icon [coins]="this.priceAfterDiscount"></gold-icon>
+          </section>
+          <div>
             <p *if="this.course.level">
               <span class="font-weight-bold"> Level: </span>
               <i class="ti ti-list"></i>
@@ -110,14 +132,28 @@
                 name="code"
                 [value]="this.couponCode"
                 class="form-control p-1"
+                (input)="this.removeCouponError()"
               ></form-input>
               <div class="input-group-append">
-                <button class="btn btn-info coupon-apply-btn" type="submit">
-                  <flk-spinner *if="this.isApplying"></flk-spinner>
+                <button
+                  [disabled]="this.isApplying"
+                  class="btn btn-info coupon-apply-btn"
+                  type="submit"
+                >
+                  <fa *if="this.isApplying" spin="spinner"></fa>
                   <span *else>Apply</span>
                 </button>
               </div>
             </div>
+            <section class="d-flex justify-content-between">
+              <span *if="this.discount" class="red-text d-inline-block">
+                -{{ this.discount }}%
+              </span>
+              <span *if="this.discount" class="red-text d-inline-block">
+                <span class="font-weight-bold"> Amount of discount: </span>
+                {{ this.amountOfDiscount }}
+              </span>
+            </section>
             <span *if="this.couponError" class="red-text d-block text-center">
               {{ this.couponError }}
             </span>
@@ -136,6 +172,7 @@
               class="btn btn-primary text-uppercase"
               (click)="this.confirmSubscribe = true"
               trans="subscribe"
+              [disabled]="this.isSubscribing"
             ></button>
             <flk-spinner *elseif="this.isSubscribing"></flk-spinner>
             <div *else class="text-center" title="subscribed">

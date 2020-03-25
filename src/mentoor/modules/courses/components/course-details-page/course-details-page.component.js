@@ -32,11 +32,15 @@ class CourseDetailsPage {
     this.isApplying = true;
 
     try {
+      this.removeCouponError();
       let { record } = await this.courseCouponsService.apply(
         this.course.id,
         code
       );
-      this.course.price = this.course.price - (this.course.price * record.discount) / 100;
+
+      this.discount = record.discount;
+      this.amountOfDiscount = (this.course.price * this.discount) / 100;
+      this.priceAfterDiscount = this.course.price - this.amountOfDiscount;
       this.isApplying = false;
       this.couponCode = "";
       this.couponId = record.id;
@@ -44,11 +48,11 @@ class CourseDetailsPage {
       this.couponError = err.error;
 
       this.isApplying = false;
-
-      setTimeout(() => {
-        this.couponError = null;
-      }, 5000);
     }
+  }
+
+  removeCouponError() {
+    this.couponError = null;
   }
 
   subscribeToCourse() {
@@ -63,6 +67,7 @@ class CourseDetailsPage {
     }
 
     this.isSubscribing = true;
+    this.removeCouponError();
     this.coursesService
       .applyToCourse(this.course.id, this.couponId)
       .then(response => {
@@ -97,8 +102,7 @@ class CourseDetailsPage {
       return `${section.title}  (${section.duration.hours} hours ${
         section.duration.minutes
       } minutes) - ${this.getRightSectionVideosCountPrefix(section)}`;
-
-    else return `${section.title}`
+    else return `${section.title}`;
   }
 
   getRightSectionVideosCountPrefix(section) {
