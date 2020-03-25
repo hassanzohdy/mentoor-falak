@@ -21,17 +21,13 @@ class NewCoursePage {
     };
 
     this.phase = 1;
-
-    this.formData = {};
-
+    
     this.errors = {};
     this.id = this.router.queryString.get("id")
       ? this.router.queryString.get("id")
       : undefined;
     let { record } = await this.coursesService.get(this.id);
-    if (record) this.formData = record;
-
-    console.log(this.formData)
+    if (record) this.data = record;
   }
 
   async submit(form) {

@@ -9,7 +9,7 @@
         name="title"
         label="Course Title"
         [required]="true"
-        [value]="this.formData.title"
+        [value]="this.data.title"
       ></form-input>
       <form-input
         type="number"
@@ -17,7 +17,7 @@
         name="price"
         label="Course Price (In Gold, i.e 500000)"
         [required]="true"
-        [value]="this.formData.price"
+        [value]="this.data.price"
       ></form-input>
       <form-input
         type="textarea"
@@ -25,7 +25,7 @@
         name="shortDescription"
         label="Short Description About the course"
         [required]="true"
-        [value]="this.formData.shortDescription"
+        [value]="this.data.shortDescription"
       >
       </form-input>
 
@@ -33,7 +33,7 @@
         name="type[]"
         [items]="['Academic', 'Practical']"
         label="Course Type"
-        [value]="this.formData.type"
+        [value]="this.data.type"
         [required]="true"
         [multiple]="true"
       ></flk-dropdown-list>
@@ -43,7 +43,7 @@
           name="level[]"
           [items]="['Beginner', 'Advanced']"
           label="Course level"
-          [value]="this.formData.type"
+          [value]="this.data.type"
           [required]="true"
           [multiple]="true"
         ></flk-dropdown-list>
@@ -54,31 +54,37 @@
           name="status"
           [items]="['published', 'disabled']"
           label="Course Status"
-          [value]="this.formData.status"
+          [value]="this.data.status"
         ></flk-dropdown-list>
       </div>
 
-      <div class="form-group">
-        <markdown-input
-          name="prerequisites"
-          label="Course Prerequisites"
-          [required]="true"
-          [value]="this.formData.prerequisites"
-        ></markdown-input>
-      </div>
-      <markdown-input
-        name="description"
+      <form-input
+        label="Course Prerequisites"
+        type="textarea"
+        rows="4"
+        class="form-control m-y-2"
+        name="prerequisites"
+        required
+        [value]="this.data.prerequisites"
+      >
+      </form-input>
+
+      <form-input
         label="Course Description"
-        [required]="true"
-        [value]="this.formData.description"
-      ></markdown-input>
+        type="textarea"
+        rows="4"
+        class="form-control m-y-2"
+        name="description"
+        required
+        [value]="this.data.description"
+      >
+      </form-input>
 
       <flk-image-input
         name="image"
         [required]="true"
         label="Course Image"
-        [value]="this.formData.image"
-        [src]="this.formData.image"
+        [src]="this.data.image"
       >
       </flk-image-input>
 
