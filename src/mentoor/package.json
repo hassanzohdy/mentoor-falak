@@ -13,6 +13,7 @@
         "@flk/layout",
         "@flk/events",
         "@flk/cache",
+        "@flk/db",
         "@flk/locale",
         "@flk/endpoint-service",
         "@flk/form",
