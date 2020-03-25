@@ -9,7 +9,7 @@
         name="title"
         label="Course Title"
         [required]="true"
-        [value]="this.data.title"
+        [value]="this.formData.title"
       ></form-input>
       <form-input
         type="number"
@@ -17,7 +17,7 @@
         name="price"
         label="Course Price (In Gold, i.e 500000)"
         [required]="true"
-        [value]="this.data.price"
+        [value]="this.formData.price"
       ></form-input>
       <form-input
         type="textarea"
@@ -25,7 +25,7 @@
         name="shortDescription"
         label="Short Description About the course"
         [required]="true"
-        [value]="this.data.shortDescription"
+        [value]="this.formData.shortDescription"
       >
       </form-input>
 
@@ -33,7 +33,7 @@
         name="type[]"
         [items]="['Academic', 'Practical']"
         label="Course Type"
-        [value]="this.data.type"
+        [value]="this.formData.type"
         [required]="true"
         [multiple]="true"
       ></flk-dropdown-list>
@@ -43,7 +43,7 @@
           name="level[]"
           [items]="['Beginner', 'Advanced']"
           label="Course level"
-          [value]="this.data.type"
+          [value]="this.formData.type"
           [required]="true"
           [multiple]="true"
         ></flk-dropdown-list>
@@ -54,7 +54,7 @@
           name="status"
           [items]="['published', 'disabled']"
           label="Course Status"
-          [value]="this.data.status"
+          [value]="this.formData.status"
         ></flk-dropdown-list>
       </div>
 
@@ -63,21 +63,22 @@
           name="prerequisites"
           label="Course Prerequisites"
           [required]="true"
-          [value]="this.data.prerequisites"
+          [value]="this.formData.prerequisites"
         ></markdown-input>
       </div>
       <markdown-input
         name="description"
         label="Course Description"
         [required]="true"
-        [value]="this.data.description"
+        [value]="this.formData.description"
       ></markdown-input>
 
       <flk-image-input
         name="image"
         [required]="true"
         label="Course Image"
-        [src]="this.data.image"
+        [value]="this.formData.image"
+        [src]="this.formData.image"
       >
       </flk-image-input>
 

@@ -22,6 +22,7 @@
             >
               <fa icon="cog"></fa>
             </a>
+            
           </section>
           <div class="ml-2 created text-muted">
             <span *if="!Is.empty(this.course.createdBy)" class="by">
@@ -52,35 +53,37 @@
         </header>
       </div>
 
-      <section class="course-prerequisites">
+      <section class="course-prerequisites mt-5">
         <h2>Prerequisites</h2>
         <markdown
           *if="this.course.prerequisites"
           [content]="this.course.prerequisites"
-          class="card p-3 mt-5"
+          class="card p-3"
         ></markdown>
       </section>
 
-      <section class="course-description">
+      <section class="course-description mt-5">
         <h2>Description</h2>
         <markdown
           *if="this.course.description"
           [content]="this.course.description"
-          class="card p-3 mt-5"
+          class="card p-3"
         ></markdown>
       </section>
 
       <div class="simple-card pb-2 m-t-1">
-        <flk-accordion
-          *for="let section, index of this.course.sections"
-          *key="section.id"
-          [heading]="this.renderSectionTitle(section)"
-        >
-          <course-section-videos-list
-            [is-viewer]="true"
-            [videos]="section.videos"
-          ></course-section-videos-list>
-        </flk-accordion>
+        <for loop="let section, index of this.course.sections">
+          <flk-accordion
+            *key="section.id"
+            [heading]="this.renderSectionTitle(section)"
+            *if="!Is.empty(section.videos)"
+          >
+            <course-section-videos-list
+              [is-viewer]="true"
+              [videos]="section.videos"
+            ></course-section-videos-list>
+          </flk-accordion>
+        </for>
       </div>
     </section>
     <section class="col-3">

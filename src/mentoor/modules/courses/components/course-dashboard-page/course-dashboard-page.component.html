@@ -30,6 +30,12 @@
           >
             <fa icon="trash"></fa>
           </button>
+          <a
+            class="btn btn-dark btn-sm"
+            href="/courses/new?id={{ this.course.id }}"
+          >
+            <fa icon="edit"></fa>
+          </a>
           <flk-alert
             *if="this.confirmCourseRemove"
             message="Are you sure you want to remove the course ?"
