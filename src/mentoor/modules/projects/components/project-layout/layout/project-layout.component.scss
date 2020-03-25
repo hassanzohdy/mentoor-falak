@@ -1,5 +1,69 @@
 #project-layout {
-    // Picasso is ready to draw :)
+    $project-sidebar-width: 25rem;
+    position: relative;
+
+    .close-sidebar-btn {
+        position: fixed;
+        top: 0.5rem;
+        right: 1rem;
+        z-index: 10;
+    }
+
+    #project-sidebar-wrapper {
+        position: fixed;
+        width: 22rem;
+        top: 55px;
+        transition: all 0.3s ease-in-out;
+        height: 100%;
+        overflow: auto;
+        bottom: 0;
+        right: 0;
+        left: -#{$project-sidebar-width};
+
+        &.opened {
+            left: 1rem;
+            @include responsive((
+                1024: (
+                    width: 100%,
+                    top: 0,
+                    left: 0,
+                    z-index: 10000,
+                )
+            ), max);
+            
+            #project-sidebar {
+                padding-left: 1.5rem;
+                @include responsive((
+                    0: (
+                        padding-top: 0rem,                           
+                        background: #eee,                     
+                    ),
+                    1024: (
+                        background: transparent,                         
+                    )
+                ));
+                position: relative;
+            }
+        }
+    }
+
+    #project-container {
+        transition: all 0.3s ease-in-out;
+        float: left;        
+        max-width: 100%;
+
+        @include responsive((
+            1024: (
+                width: calc(100% - #{$project-sidebar-width}),
+                margin-left: #{$project-sidebar-width},                
+            )
+        ), min);
+
+        &.expanded {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
 }
 
 body,#project-sidebar {

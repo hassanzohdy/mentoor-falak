@@ -2,12 +2,12 @@
     href="/projects/new" 
     title="Create new project"
     class="btn float-right d-sm-inline-block bold"
-    [class]="{'btn-success': this.user.hasCreatedProjectBefore === true, 'btn-pink': this.user.hasCreatedProjectBefore === false}"
+    [class]="{'btn-success': ! Is.empty(this.user.projects), 'btn-pink': Is.empty(this.user.projects)}"
 >
     <fa icon="plus mr-2"></fa>
-    <span *if="this.user.hasCreatedProjectBefore === false" class="mr-2">FREE</span>
+    <span *if="Is.empty(this.user.projects)" class="mr-2">FREE</span>
     Project
-    <div *if="this.user.hasCreatedProjectBefore">
+    <div *if="! Is.empty(this.user.projects)">
         <gold-icon [coins]="FLAGS.projects.pricing.basic"></gold-icon>
     </div>
 </a>

@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
         <fa icon="plus mr-1"></fa>
         Change-request
@@ -49,8 +49,8 @@
         <input type="hidden" name="project" [value]="this.project.id" />
         <form-input type="text" name="title" [value]="this.record.title" label="Change request Title" required
             class="form-control"></form-input>
-        <form-input type="textarea" name="description"  [value]="this.record.description" label="Change request Description (Markdown Support)" required
-            class="form-control"></form-input>
+        <markdown-input  name="description"  [value]="this.record.description" label="Change request Description" required
+            class="form-control"></markdown-input>
 
             <flk-datepicker name="requestDate" required [value]="this.record.requestDate" label="Request Date" [date-time]="true"
             class="form-control"></flk-datepicker>

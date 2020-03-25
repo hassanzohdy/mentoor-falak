@@ -10,7 +10,7 @@
 <flk-modal *if="this.newPoll" (close)="this.newPoll = null" heading="New Poll">
     <form (submit)="this.submit($el)">
         <form-input type="text" label="Title" required class="form-control" name="title"></form-input>
-        <form-input type="textarea" placeholder="Write some description (Markdown Support)" rows="12" required class="form-control" name="description"></form-input>
+        <markdown-input  placeholder="Write some description" rows="12" required class="form-control" name="description"></markdown-input>
 
         <div class="row m-y-2">
             <div class="col-sm-6">                

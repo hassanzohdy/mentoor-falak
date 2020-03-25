@@ -1,3 +1,24 @@
+.simple-post {
+    .created-at {
+        font-size: 1rem;
+        // font-weight: bold;
+        color: #999;
+        margin-left: 0.4rem;
+    }
+
+    .tags-list {
+        float: right;
+
+        .tag {
+            padding: 0 0.2rem;
+            background: none;
+            img {   
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}
 .posts-list {
     .post {
         margin-bottom: 2rem;

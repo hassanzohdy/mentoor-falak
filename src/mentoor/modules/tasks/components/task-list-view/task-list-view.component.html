@@ -1,4 +1,4 @@
-<div class="tasks-list-view">
+<div class="tasks-list-view table-responsive">
   <h3 class="task-heading simple-card">
     Tasks List ({{ this.tasksList.length }})
   </h3>
@@ -75,10 +75,14 @@
       >
         <td [html]="task.id"></td>
         <td>
-          <a [href]="URLS.task(task)" class="title" tooltip [title]="task.title"
-            >{{ task.title.readMoreChars(30) }} <fa icon="star mx-2" sm></fa>
-            {{ task.rating ? task.rating : 0 }}</a
-          >
+          <a [href]="URLS.task(task)" class="title" tooltip [title]="task.title">
+            <span *if="task.rating" class="mr-2">
+              <span class="mr-1" [html]="task.rating"></span>
+              <fa icon="star orange-text" sm></fa>
+            </span>
+            <span [html]="task.title.readMoreChars(30)"></span>
+            </a>
+
           <span
             *if="!Is.empty(task.comments)"
             tooltip
@@ -125,33 +129,21 @@
           <strong *else>N/a</strong>
         </td>
         <td class="status-column">
-          <span
-            (click)="
-              task.canUserControl
-                ? (task.openStatusChanger = !task.openStatusChanger)
-                : null
-            "
+          <span 
+            (click)="task.canUserControl && (task.openStatusChanger = !task.openStatusChanger) && this.detectChanges()"
+            class="badge"
+            [class]="taskStatus(task)"
+            [html]="task.status"
           >
-            <span
-              class="badge"
-              [class]="taskStatus(task)"
-              [html]="task.status"
-            ></span>
-            <fa
-              *if="task.canUserControl"
-              icon="caret-down"
-              title="Change Task Status"
-              tooltip
-            ></fa>
           </span>
-          <div *if="task.openStatusChanger" class="status-changer">
+          <!-- <div *if="task.openStatusChanger" class="status-changer">
             <flk-dropdown-list
               [items]="getAllowedTaskStatuses(task)"
               [searchable]="false"
               [except]="task.status"
               (select)="this.updateTaskStatus(task, e.value)"
             ></flk-dropdown-list>
-          </div>
+          </div> -->
         </td>
         <td>
           <div *if="task.status == 'completed'">

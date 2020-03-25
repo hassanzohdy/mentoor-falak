@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <div class="row">
         <div class="col-12">
             <button class="float-right btn btn-purple bold" (click)="this.goBack()">Back To The Board</button>
@@ -60,8 +60,8 @@
                 class="form-control">
             </form-input>
 
-            <form-input type="textarea" maxlength="500" name="scenario" rows="10" [value]="this.record.scenario"
-                label="Scenario (Acceptance Criteria)" required class="form-control"></form-input>
+            <markdown-input maxlength="500" name="scenario" rows="10" [value]="this.record.scenario"
+                label="Scenario (Acceptance Criteria)" required class="form-control"></markdown-input>
 
             <!-- <flk-dropdown-list name="taskMember" [value]="this.record.task?.participant?.id" [items]="this.projectMembers" label="Assign as a task to">
             </flk-dropdown-list> -->

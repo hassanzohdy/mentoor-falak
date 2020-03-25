@@ -327,7 +327,7 @@ $darkColor: #343a40;
             // flex: 0 0 250px,
         ),
         768: (
-            flex: 0 0 250px,
+            // flex: 0 0 200px,
         )
     ));
 
@@ -346,13 +346,18 @@ $darkColor: #343a40;
                 padding-top: 1rem,
             ),
             768: (
-                padding-top: 2rem,
+                padding-top: 1.7rem,
             ),
         ));
     }
 
     .dropdown-list .items-list {
-        margin-top: 1rem;
+        @include responsive((
+            1024: (
+                margin-top: 1rem                
+            )
+        ));
+        min-width: 250px;
 
         .empty-results {
             color: #000 !important;

@@ -1,9 +1,28 @@
 #project-details-bugs-page {
     // Picasso is ready to draw :)
 
+    .bugs-container {
+        transition: all 0.5s ease-in;
+        transform: scaleY(0);
+        transform-origin: 100% 0;
+        position: absolute;
+
+        &.opened {
+            position: static;
+            transform: scaleY(1);
+        }        
+    }
+
     table {
         .title-column {
             // width: 200px !important;
+            .bug-title {
+                background: $petrol-color;
+                color: #FFF;
+                border-radius: 3px;
+                padding: 0.2rem 0.5rem;
+                font-size: 1rem;
+            }
         }
 
         td {

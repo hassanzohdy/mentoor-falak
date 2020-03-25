@@ -3,11 +3,11 @@ class TimelinePage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(user, postsService) {
+    constructor(user, shareable, postsService) {
         this.user = user;
-        this.name = 'timeline';
-        
+        this.shareable = shareable;
         this.postsService = postsService;
+        this.name = 'timeline';
         this.title = this.siteName = trans('site-name');
     }
     
@@ -16,11 +16,13 @@ class TimelinePage {
      * This method is triggered before rendering the component
      */
     async init() {        
-        this.isLoading = true;
+        this.isLoading = Is.empty(this.posts);
 
         let { records: posts } = await this.postsService.list();
 
         this.posts = collect(posts).sortByDesc('id').toArray();
+
+        this.shareable.shareMany('posts', this.posts);
 
         this.isLoading = false;
     }

@@ -67,7 +67,8 @@
     "externals": {
         "css": {
             "ltr": [
-                "https://fonts.googleapis.com/css?family=Raleway"
+                "https://fonts.googleapis.com/css?family=Raleway",
+                "https://fonts.googleapis.com/css?family=Lato&display=swap"
             ],
             "common": [
                 "https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -121,9 +122,6 @@
         "offline-courses",
         "resources",
         "arena",
-        "json-api-preview",
-        "course-sections",
-        "course-coupons",
-        "course-sidebar"
+        "json-api-preview"
     ]
 }

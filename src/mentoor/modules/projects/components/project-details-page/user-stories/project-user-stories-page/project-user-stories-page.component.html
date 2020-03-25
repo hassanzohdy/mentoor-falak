@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <a [href]="URLS.project(this.project, 'user-stories') + '/new'" class="float-right btn btn-success bold" (click)="this.openModal('add', Object.clone(this.defaultSchema))">
         <fa icon="plus mr-1"></fa>
         User story

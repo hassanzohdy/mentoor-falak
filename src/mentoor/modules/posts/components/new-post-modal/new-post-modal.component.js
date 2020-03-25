@@ -29,9 +29,9 @@ class NewPostModal {
 
         this.cachedPostValue = this.cache.get('t-post', ''); // t-post => timeline post
 
-        this.onSave = this.inputs.getEvent('save');
-        this.onClose = this.inputs.getEvent('close');
-        this.data = this.inputs.getProp('post', this.schema);
+        this.onSave = this.event('save');
+        this.onClose = this.event('close');
+        this.data = Object.clone(this.prop('post', this.schema));
 
         if (! this.data.content) {
             this.data.content = this.cachedPostValue;

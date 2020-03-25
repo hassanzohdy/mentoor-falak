@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
     <button *if="this.currentSprintIsRunning" [disabled]="true" class="float-right btn btn-danger bold">
         Can't add new sprints until current running sprint is completed.
     </button>
@@ -59,9 +59,6 @@
         <form-input type="text" name="name" [value]="this.record.name" label="Sprint Name" required
             class="form-control"></form-input>
 
-        <form-input type="textarea" rows="10" name="goal" [value]="this.record.goal" label="Sprint Goal" required
-            class="form-control"></form-input>
-
         <div class="row">
             <div class="col-sm-6">
                 <flk-datepicker
@@ -93,6 +90,11 @@
         ></flk-dropdown-list>
 
         <div *else class="bold green-text">Completed Sprint</div>
+
+        <div class="m-t-1">
+            <markdown-input name="goal" [value]="this.record.goal" label="Sprint Goal" required
+                class="form-control"></markdown-input>
+        </div>
 
         <div class="m-t-1 text-center">
             <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>

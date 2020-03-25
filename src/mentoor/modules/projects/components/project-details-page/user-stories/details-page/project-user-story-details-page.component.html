@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <div class="row">
         <div class="col-sm-9" *if="! Is.empty(this.userStories)">
             <user-stories-board [user-stories]="this.userStories" (change)="this.userStories = e" [project]="this.project"></user-stories-board>

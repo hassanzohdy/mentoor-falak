@@ -68,6 +68,10 @@ class Project {
                 return this.router.navigateTo('/projects');
             }
 
+            if (Is.mobile.any()) {
+                this.projectLayout.sidebarIsVisible = false;
+            }
+    
             this.isLoading = false;
         } catch (response) {
             if (response.statusCode == 400) {

@@ -6,8 +6,8 @@
         <form-input type="text" name="title" [value]="this.record.title" label="Title" required class="form-control">
         </form-input>
 
-        <form-input type="textarea" name="description" [value]="this.record.description" label="Description (Markdown)"
-            required class="form-control"></form-input>
+        <markdown-input (input)="echo($el.value)" name="description" [value]="this.record.description" label="Description"
+            required class="form-control"></markdown-input>
 
         <form-input type="textarea" name="stepsToReproduce" [value]="this.record.stepsToReproduce"
             label="Steps To Reproduce (Each step in one line without numbering the line)" required class="form-control">

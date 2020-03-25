@@ -1,12 +1,13 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
     <button class="float-right btn btn-success bold" (click)="this.openModal('add', {status: 'active'})">
         <fa icon="plus mr-1"></fa>
         Bug
     </button>
-    <h1 class="m-y-1 purple-text">
-        {{ this.project.name }} 
-        
-        <img [src]="assets('images/bug.jpg')" tooltip title="bug" style="width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem" />
+    <h1 class="m-y-1 teal-text">
+        {{ this.project.name }}
+
+        <img [src]="assets('images/bug.jpg')" tooltip title="bug"
+            style="width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem" />
         <span class="bold red-text mr-2">s</span>
         ({{ this.project.bugs.length }})
     </h1>
@@ -20,7 +21,7 @@
             <fa *if="bugsOptions.opened" icon="angle-down ml-2"></fa>
             <fa *else icon="angle-up ml-2"></fa>
         </h4>
-        <div *if="bugsOptions.opened" class="table-responsive">
+        <div class="bugs-container table-responsive" [class]="{opened: bugsOptions.opened}">
             <table class="table buttoned simple-card">
                 <thead>
                     <tr>
@@ -41,19 +42,18 @@
                     <tr *for="let record, index of bugsOptions.bugs" *key="record.id">
                         <td [html]="record.id"></td>
                         <td class="title-column">
-                            <a [href]="URLS.project(this.project, 'bugs', record)" 
-                                class="bold"
-                                tooltip
-                                [title]="record.title"
-                                [html]="record.title.readMoreChars(20)">
+                            <a [href]="URLS.project(this.project, 'bugs', record)" class="bug-title" tooltip
+                                [title]="record.title" [html]="record.title.readMoreChars(20)">
                             </a>
                         </td>
                         <td>
                             <flk-time-ago [timestamp]="record.createdAt.timestamp"></flk-time-ago>
                         </td>
                         <td>
-                            <strong [html]="record.comments.length" class="gray-text"></strong>
-                            <fa far="comments ml-2 gray-text"></fa>
+                            <div *if="record.comments.length > 0" class="text-center">
+                                <strong [html]="record.comments.length" class="gray-text"></strong>
+                                <fa far="comments ml-2 gray-text"></fa>
+                            </div>
                         </td>
                         <td class="text-center">
                             <img [src]="record.createdBy.image" class="small mr-2 circle" tooltip
@@ -66,11 +66,11 @@
                                     [alt]="assignee.name" />
                             </span>
                         </td>
-                        <td class="bold gray-text" [html]="record.module ? record.module.name : 'N/a'"></td>
+                        <td class="bold gray-text" [html]="record.module ? record.module.name : ''"></td>
                         <td>
                             <span class="badge priority {{ record.priority }}" [html]="record.priority"></span>
                         </td>
-                        <th class="text-center" [html]="record.sprint.name || 'N/a'"></th>
+                        <th class="text-center gray-text bold" [html]="record.sprint.name || ''"></th>
                         <!-- <td class="status {{ record.status }}" [html]="record.status"></td> -->
                         <td>
                             <if condition="record.canBeModified">
@@ -91,13 +91,8 @@
     </for>
 </project-layout>
 
-<bug-modal
-    *if="this.modalIsOpened"
-    [record]="this.record"
-    [project]="this.project"
-    (close)="this.modalIsOpened = null;"
-    (save)="this.onSubmit(e)"
-></bug-modal>
+<bug-modal *if="this.modalIsOpened" [record]="this.record" [project]="this.project" (close)="this.modalIsOpened = null;"
+    (save)="this.onSubmit(e)"></bug-modal>
 
 <flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
 </flk-alert>

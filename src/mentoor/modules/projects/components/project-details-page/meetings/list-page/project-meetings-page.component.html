@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
         <fa icon="plus mr-1"></fa>
         Meeting

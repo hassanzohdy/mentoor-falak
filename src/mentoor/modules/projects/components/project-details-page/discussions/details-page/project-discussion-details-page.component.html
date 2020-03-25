@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <div *if="this.discussion && ! this.isInEditMode" class="discussion">
         <div *if="this.discussion.canBeModified" class="status">
             <button *if="this.discussion.status == 'opened'" type="button" class="btn bold badge badge-danger"

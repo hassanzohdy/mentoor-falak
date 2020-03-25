@@ -1,7 +1,7 @@
 <div class="simple-card user-card" *as="userCard">
     <flk-spinner theme="black" *if="this.isLoading"></flk-spinner>
     <div *else>
-        <img [src]="apiImageUrl(this.user.image)" [alt]="this.user.name">
+        <img [src]="apiImageUrl(this.user.image)" [alt]="this.user.name" />
         <div class="meta">
             <span class="name" [html]="this.user.name"></span>
             <span *if="this.user.username" class="username" [html]="'@' + this.user.username"></span>

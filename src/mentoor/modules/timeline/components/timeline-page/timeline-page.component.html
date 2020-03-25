@@ -15,9 +15,23 @@
         <h1 *if="Is.empty(this.posts)" class="bold text-center">No posts yet!</h1>
         <else>
             <div class="row">
-                <div *for="let post of this.posts" class="col-md-6">
+                <div *for="let post of this.posts" *key="post.id" class="col-12 m-b-1">
+                    <a [href]="URLS.post(post)" class="card gray-text simple-post">
+                        <div class="card-body">
+                            <span [html]="post.title" class="bold"></span>
+                            <flk-time-ago [timestamp]="post.createdAt.timestamp" class="created-at"></flk-time-ago>
+                            <div class="tags-list">
+                                <span *for="let tag of post.tags" *key="tag.id" class="tag">
+                                    <img [src]="tag.image" tooltip [title]="tag.name" [alt]="tag.name" />
+                                    <!-- <span [html]="'#' + tag.name"></span> -->
+                                </span>                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div *for="let post of this.posts" class="col-md-6 d-none">
                     <div class="post">
-                        <img [src]="post.createdBy.image" width="70px" height="70px" [alt]="post.createdBy.name" class="user-image">
+                        <img [src]="post.createdBy.image" width="70px" height="70px" [alt]="post.createdBy.name" class="user-image" />
                         <div class="meta">
                             <h2>
                                 <a href="{{ URLS.post(post) }}" class="post-title" [html]="post.title"></a>

@@ -17,10 +17,10 @@ class ProjectLayout {
     init() {
         this.sidebarIsVisible = this.cache.has(this.cacheKey) ? this.cache.get(this.cacheKey) : Is.desktop();
         this.isLoading = this.inputs.getProp('isLoading');
-        this.project = this.inputs.getProp('project');
-        this.shareable.observe('project', project => {
-            this.project = project;
-        });
+        this.project = this.prop('project');
+        // this.shareable.observe('project', project => {
+        //     this.project = project;
+        // });
     }
 
     toggleSidebar() {

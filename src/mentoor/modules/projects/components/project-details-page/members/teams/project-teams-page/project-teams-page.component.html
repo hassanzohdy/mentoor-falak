@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <button *if="this.project.maxTeams > this.project.teams.length && this.project.isHigherAuthority" [disabled]="this.project.maxTeams <= this.project.teams.length && this.project.fund < FLAGS.projects.pricing.extra.team" (click)="this.openTeamModal = true" class="float-right btn btn-pink bold">
         <fa icon="plus mr-1"></fa>
         TEAM

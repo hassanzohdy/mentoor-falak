@@ -1,4 +1,4 @@
-<project-layout [project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <div class="text-right m-b-1">
         <a [href]="URLS.project(this.project, 'bugs')" class="btn bold btn-purple">
             <fa icon="arrow-left mr-2"></fa>

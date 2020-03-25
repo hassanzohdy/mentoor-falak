@@ -18,7 +18,7 @@
     <if condition="this.user.isLoggedIn()">
         <img [src]="this.user.image" class="user-image-input" [alt]="this.user.name" />
         <form-input type="textarea" (keyup)="this.setComment($el, event)" [value]="this.comment"
-            [disabled]="this.isPostingComment" placeholder="Write a comment... (markdown supported)" class="comment-input">
+            [disabled]="this.isPostingComment" placeholder="Write a comment..." class="comment-input">
         </form-input>
     </if>
 </section>

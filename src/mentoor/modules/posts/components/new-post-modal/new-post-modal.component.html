@@ -3,9 +3,13 @@
         <form-input type="text" class="form-control" (input)="this.data.slug = seo($el.value);" name="title" required
             [value]="this.data.title" placeholder="Post title"></form-input>
         <input type="hidden" name="slug" [value]="this.data.slug" />
-        <form-input type="textarea" (input)="this.cache.set('t-post', $el.value)" rows="20" class="form-control m-y-2"
-            name="content" required [value]="this.data.content" placeholder="Write post content (Markdown)">
-        </form-input>
+
+        <div class="m-t-1">
+            <markdown-input  label="Content" (input)="this.cache.set('t-post', $el.value)" class="m-y-2"
+                name="content" required [value]="this.data.content" placeholder="Write post content (Markdown)">
+            </markdown-input>
+        </div>
+        
         <div class="row">
             <div class="col-6">
                 <flk-dropdown-list label="Tags" (select)="echo(e);this.data.tags = e.map(tag => tag.value)" [imageable]="true" position="top"

@@ -29,11 +29,11 @@ const SCROLL_TOP_OFFSET = 80;
             rooms: {}
         };
     }).on('endpoint.done', response => {
-        if (!Object.get(response, 'originalResponse.user')) return true;
+        if (!response.me) return true;
 
         let user = DI.resolve('user');
 
-        user.update(response.originalResponse.user);
+        user.update(response.me);
 
         if (!window.userSocket) {
             onlineUser(user);
@@ -89,27 +89,6 @@ const SCROLL_TOP_OFFSET = 80;
             flags.globalize();
         }
 
-        // let [userResponse, flagsResponse] = await Promise.all([await meService.info(), await endpoint.get('/flags')]);
-
-        meService.info().then(response => {
-            response.user.hasCreatedProjectBefore = Boolean(
-                Array.get(response.user.projects, project => project.creator === true)            
-            );
-
-            // response.user.hasCreatedProjectBefore = ! Is.empty(response.user.projects);
-
-            user.update(response.user);
-            let layout = DI.resolve('layout');
-            flags.cache(response.flags);
-            layout.detectChanges();
-        }).catch(e => {
-
-            if (Config.get('app.env') == 'development') return;
-
-            let router = DI.resolve('router');
-            user.logout();
-            router.navigateTo('/login');
-        });
     }).on('router.navigating', router => {
         // Log every request
         if (Config.get('app.env') == 'development') return;

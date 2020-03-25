@@ -1,1 +1,1 @@
-<timeline-page></timeline-page>
+<timeline-page *if="! this.user.isLoggedIn() || this.user.homePage == '/timeline'"></timeline-page>

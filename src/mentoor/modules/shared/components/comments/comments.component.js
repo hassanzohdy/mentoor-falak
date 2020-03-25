@@ -3,10 +3,11 @@ class Comments {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(router, commentsService) {
+    constructor(router, user, usersService, commentsService) {
         this.router = router;
+        this.usersService = usersService;
         this.service = commentsService;
-        this.user = DI.resolve('user');
+        this.user = user;
         this.maxCommentLines = 10;
     }
 
@@ -146,6 +147,12 @@ class Comments {
         this.confirmDelete = true;
     }
 
+    cancelRemoving() {
+        this.comment = null;
+        this.index = null;
+        this.confirmDelete = null;
+    }
+
     toggleParentComments() {
         if (!this.parentComment) return;
 
@@ -190,23 +197,38 @@ class Comments {
         this.comment = null;
     }
 
-    async mentions(text) {
-        if (this.project) {
-            return this.project.members.filter(member => {
-                let user = member.member;
+    mentions(text) {
+        return this.event('mention', async (e) => {
+            if (this.project.members) {
+                return this.project.members.filter(member => {
+                    let user = member.member;
+    
+                    if (! user.username) return false;
+    
+                    if (text == '') return true;
+    
+                    return user.username.match(new RegExp(text, 'g')) || user.name.match(new RegExp(text, 'g'));
+                }).map(member => {
+                    return {
+                        text: member.member.name,
+                        value: member.member.username, 
+                    };
+                });
+            } else {
+                if (! text) return [];
+                let {records} = await this.usersService.list({
+                    username: text,
+                    limit: 5,
+                });
 
-                if (! user.username) return false;
-
-                if (text == '') return true;
-
-                return user.username.match(new RegExp(text, 'g')) || user.name.match(new RegExp(text, 'g'));
-            }).map(member => {
-                return {
-                    text: member.member.name,
-                    value: member.member.username, 
-                };
-            });
-        }
+                return records.map(user => {
+                    return {
+                        text: user.name,
+                        value: user.username,
+                    };
+                });     
+            }           
+        })(text);
     }
 }
 

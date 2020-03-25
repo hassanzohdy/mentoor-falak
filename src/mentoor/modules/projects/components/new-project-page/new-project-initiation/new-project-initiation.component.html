@@ -2,10 +2,10 @@
     <form-input type="text" name="name" [value]="this.data.name" [required]="true" class="form-control"
         label="Project name">
     </form-input>
-    <form-input type="textarea" name="about" [value]="this.data.about" required class="form-control"
+    <markdown-input  name="about" [value]="this.data.about" required class="form-control"
         label="About the project"
-        placeholder="About the project (Markdown support), if the project is not private, this content will be visible to everyone.">
-    </form-input>
+        placeholder="About the project, if the project is not private, this content will be visible to everyone.">
+    </markdown-input>
     <div class="row">
         <div class="col-sm-6">
             <flk-dropdown-list name="type[]" [multiple]="true" label="This project contains" heading="types"

@@ -4,10 +4,10 @@
         <input *if="this.project" type="hidden" name="project" [value]="this.project.id" />
         <form-input type="text" name="title" label="Resource Title" [value]="this.record.title" required
             class="form-control"></form-input>
-        <form-input type="textarea" name="description" label="Description" [value]="this.record.description"
-            class="form-control"></form-input>
+        <markdown-input name="description" label="Description" [value]="this.record.description"
+            class="form-control"></markdown-input>
             
-        <div class="pl-2">
+        <div class="pl-4">
             <flk-mdb-checkbox
                 name="pinned"
                 value="1"

@@ -50,8 +50,8 @@
                 <input type="hidden" name="typeId" [value]="this.typeId" />
                 <input type="hidden" name="type" [value]="this.type" />
                 <input type="hidden" name="id" [value]="this.commentId" />
-                <form-input type="textarea" class="form-control" [value]="this.comment.comment" required
-                    placeholder="Write a comment... (Markdown Support)" name="comment"></form-input>
+                <markdown-input  class="form-control" [value]="this.comment.comment" required
+                    placeholder="Write a comment..." name="comment"></markdown-input>
                 <flk-file-input name="attachments[]" *as="fileInput" *as-array="false" class="btn btn-info bold"
                     [multiple]="true" label="Attachments">
                     <fa icon="cloud-upload-alt"></fa>

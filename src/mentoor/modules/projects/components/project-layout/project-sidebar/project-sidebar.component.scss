@@ -1,27 +1,9 @@
-#project-sidebar {
-    background: #ecf0f3;
-    left: 0;
-    height: 100%;
+#project-sidebar-nav {    
     overflow: auto;
     z-index: 100;
     padding-top: 1rem;
     padding-bottom: 50px;
     color: #2d3e50;
-
-    @include responsive((
-        768: (
-            top: 50px,
-            position: fixed,
-        )
-    ));
-
-    .project-name {
-        @include responsive((
-            1024: (
-                padding-top: 3rem,
-            )
-        ), max);
-    }
 
     ul {
         padding: 0;

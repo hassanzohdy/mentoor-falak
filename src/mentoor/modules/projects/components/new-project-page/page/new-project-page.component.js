@@ -177,7 +177,7 @@ class NewProjectPage {
 
         this.finalCost = this.projectCost;
 
-        if (this.user.hasCreatedProjectBefore === false) {
+        if (Is.empty(this.user.projects)) {
             this.firstProjectDiscount = this.projectCost - this.data.fund;
             this.finalCost = this.data.fund;
         } 

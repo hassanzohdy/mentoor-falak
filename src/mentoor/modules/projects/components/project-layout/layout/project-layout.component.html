@@ -1,11 +1,16 @@
 <layout>
-    <div class="row">
-        <project-sidebar *if="this.sidebarIsVisible" [project]="this.project"></project-sidebar>
-        <div class="col-12" [class]="{'offset-md-2': this.sidebarIsVisible, 'col-md-10': this.sidebarIsVisible}">
-            <div *if="! this.project" class="m-t-5">
+    <div id="project-layout">
+        <section *if="this.project" id="project-sidebar-wrapper" [class]="{opened: this.sidebarIsVisible}">
+            <div id="project-sidebar">
+                <project-sidebar [project]="this.project"></project-sidebar>
+            </div>
+            <fa icon="times close-sidebar-btn d-block d-sm-none" 2x (click)="this.sidebarIsVisible = ! this.sidebarIsVisible;"></fa>
+        </section>
+        <section id="project-container" [class]="{expanded: ! this.sidebarIsVisible}">
+            <div *if="! this.project" class="m-t-5 text-center">
                 <flk-spinner></flk-spinner>
             </div>
             <content *else></content>
-        </div>
+        </section>
     </div>
 </layout>
