@@ -3,8 +3,9 @@ class CoursesList {
    * Constructor
    * Put your required dependencies in the constructor parameters list
    */
-  constructor(coursesService) {
+  constructor(coursesService, db) {
     this.coursesService = coursesService;
+    this.db = db;
   }
 
   /**

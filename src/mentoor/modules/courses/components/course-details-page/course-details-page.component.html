@@ -1,7 +1,7 @@
 <layout>
   <flk-spinner *if="this.isLoading"></flk-spinner>
 
-  <div class="row">
+  <div *else class="row">
     <section class="col-sm-9">
       <div class="d-flex">
         <img
@@ -40,16 +40,23 @@
         </header>
       </div>
 
-      <markdown
-        *if="this.course.prerequisites"
-        [content]="this.course.prerequisites"
-        class="card p-3 mt-5"
-      ></markdown>
-      <markdown
-        *if="this.course.description"
-        [content]="this.course.description"
-        class="card p-3 mt-5"
-      ></markdown>
+      <section class="course-prerequisites">
+        <h2>Prerequisites</h2>
+        <markdown
+          *if="this.course.prerequisites"
+          [content]="this.course.prerequisites"
+          class="card p-3 mt-5"
+        ></markdown>
+      </section>
+
+      <section class="course-description">
+        <h2>Description</h2>
+        <markdown
+          *if="this.course.description"
+          [content]="this.course.description"
+          class="card p-3 mt-5"
+        ></markdown>
+      </section>
 
       <div class="simple-card pb-2 m-t-1">
         <flk-accordion
@@ -83,11 +90,13 @@
           </div>
           <div class="pt-4 pb-4">
             <p *if="this.course.level">
+              <span class="font-weight-bold"> Level: </span>
               <i class="ti ti-list"></i>
-              {{ this.course.level.join(",") }}
+              {{ " " + this.course.level.join(",") }}
             </p>
             <p title="Cost" *if="this.course.type">
-              {{ this.course.type.join(",") }}
+              <span class="font-weight-bold"> Type: </span>
+              {{ " " + this.course.type.join(",") }}
             </p>
           </div>
 
@@ -108,11 +117,10 @@
                   <span *else>Apply</span>
                 </button>
               </div>
-
             </div>
-                <span *if="this.couponError" class="red-text d-block text-center">
-                  {{ this.couponError }}
-                </span>
+            <span *if="this.couponError" class="red-text d-block text-center">
+              {{ this.couponError }}
+            </span>
           </form>
           <flk-alert
             *if="this.confirmSubscribe"

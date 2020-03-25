@@ -1,72 +1,79 @@
-<button type="button" tooltip title="Back" (click)="this.event('close')()">
-  <fa icon="arrow-left"></fa>
-</button>
-<form (submit)="this.submit($el)">
-  <input type="hidden" name="course" [value]="this.course.id" />
+<flk-modal
+  (close)="this.event('close')()"
+  [heading]="'Add a new coupon'"
+  size="small"
+  *as="modal"
+>
+  <form (submit)="this.submit($el)">
+    <input type="hidden" name="course" [value]="this.course.id" />
 
-  <form-input
-    type="text"
-    name="code"
-    [value]="this.coupon.code"
-    class="form-control"
-    [required]="true"
-    label="Coupon Code"
-  ></form-input>
+    <form-input
+      type="text"
+      name="code"
+      [value]="this.coupon.code"
+      class="form-control"
+      [required]="true"
+      label="Coupon Code"
+    ></form-input>
 
-  <form-input
-    type="number"
-    name="discount"
-    min="0"
-    max="100"
-    class="form-control"
-    [required]="true"
-    [value]="this.coupon.discount"
-    label="Discount"
-    placeholder="e.g: 15"
-  ></form-input>
+    <form-input
+      type="number"
+      name="discount"
+      min="0"
+      max="100"
+      class="form-control"
+      [required]="true"
+      [value]="this.coupon.discount"
+      label="Discount"
+      placeholder="e.g: 15"
+    ></form-input>
 
-  <input type="hidden" name="startsAt" [value]="this.coupon.startsAt" />
-  <input type="hidden" name="endsAt" [value]="this.coupon.endsAt" />
-  <flk-datepicker
-    [required]="true"
-    class="form-control"
-    mode="range"
-    [date-time]="true"
-    [min-date]="this.coupon.startsAt"
-    [max-date]="this.coupon.endsAt"
-    required
-    label="Coupon Active Duration"
-    placeholder="Coupon Active Duration"
-    (select)="this.coupon.startsAt = e[0]; this.coupon.endsAt = e[1]"
-  >
-  </flk-datepicker>
+    <input type="hidden" name="startsAt" [value]="this.coupon.startsAt" />
+    <input type="hidden" name="endsAt" [value]="this.coupon.endsAt" />
+    <flk-datepicker
+      [required]="true"
+      class="form-control"
+      mode="range"
+      [date-time]="true"
+      [min-date]="this.coupon.startsAt"
+      [max-date]="this.coupon.endsAt"
+      required
+      label="Coupon Active Duration"
+      placeholder="Coupon Active Duration"
+      (select)="this.coupon.startsAt = e[0]; this.coupon.endsAt = e[1]"
+    >
+    </flk-datepicker>
 
-  <flk-dropdown-list
-    name="type"
-    [items]="['primary', 'individual']"
-    [value]="this.coupon.type"
-    label="Coupon Type"
-    heading="Coupon Type"
-    (select)="this.couponType = e.value"
-    [required]="true"
-  ></flk-dropdown-list>
+    <flk-dropdown-list
+      name="type"
+      [items]="['primary', 'individual']"
+      [value]="this.coupon.type"
+      label="Coupon Type"
+      heading="Coupon Type"
+      (select)="this.couponType = e.value"
+      [required]="true"
+    ></flk-dropdown-list>
 
-  <flk-dropdown-list
-    *if="this.couponType === 'individual'"
-    [remote-search]="true"
-    query="user"
-    [lazy-loading]="true"
-    label="User"
-    [service]="this.usersService"
-    [value]="this.coupon.user"
-    required
-    name="user"
-  >
-  </flk-dropdown-list>
+    <flk-dropdown-list
+      *if="this.couponType === 'individual'"
+      [remote-search]="true"
+      query="user"
+      [lazy-loading]="true"
+      label="User"
+      [service]="this.usersService"
+      [value]="this.coupon.user"
+      required
+      name="user"
+    >
+    </flk-dropdown-list>
 
-  <div class="m-t-1">
-    <button [disabled]="this.isSending" class="coupon-submit-btn btn bold btn-primary">
-      Save
-    </button>
-  </div>
-</form>
+    <div class="m-t-1">
+      <button
+        [disabled]="this.isSending"
+        class="coupon-submit-btn btn bold btn-primary"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</flk-modal>

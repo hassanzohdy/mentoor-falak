@@ -31,15 +31,21 @@
       type="button"
       tooltip
       title="Delete"
-      (click)="
-        this.deleteSection = true;
-        this.currentSection = section;
-        this.index = index
-      "
+      (click)="this.confirmSectionRemove = true"
       class="btn btn-circle btn-danger btn-sm"
     >
       <fa icon="trash"></fa>
     </button>
+    <flk-alert
+      *if="this.confirmSectionRemove"
+      message="Are you sure you want to remove the course ?"
+      (confirm)="
+        this.deleteSection = true;
+        this.currentSection = section;
+        this.index = index
+      "
+      (close)="this.confirmSectionRemove = false"
+    ></flk-alert>
     <button
       type="button"
       (click)="this.newVideo = true; this.currentSection = section"
