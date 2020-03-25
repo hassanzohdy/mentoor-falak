@@ -19,9 +19,6 @@ class CoursesList {
     this.isLoading = true;
 
     this.coursesService.list().then(response => {
-      this.db.get("fake", "data").then(data => {
-        console.log(data)
-      })
       this.coursesList = response.records;
       this.isLoading = false;
     });
