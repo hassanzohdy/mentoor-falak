@@ -11,7 +11,7 @@
 
     #project-sidebar-wrapper {
         position: fixed;
-        width: 22rem;
+        width: 24rem;
         top: 55px;
         transition: all 0.3s ease-in-out;
         height: 100%;
@@ -32,7 +32,7 @@
             ), max);
             
             #project-sidebar {
-                padding-left: 1.5rem;
+                padding-left: 0rem;
                 @include responsive((
                     0: (
                         padding-top: 0rem,                           

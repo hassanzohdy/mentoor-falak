@@ -16,8 +16,8 @@
               {{ this.course.title }}
             </h1>
             <a
-              [href]="'/courses/' + this.course.id + '/dashboard'"
               *if="this.course.createdBy.id === this.user.id"
+              [href]="URLS.course(this.course, 'dashboard')"
               class="btn btn-dark btn-sm ml-3"
             >
               <fa icon="cog"></fa>

@@ -1,0 +1,67 @@
+<section class="json-api-route">
+    <flk-accordion [heading]="this.headingElement">
+        <p class="my-1" [html]="this.route.description"></p>
+
+        <for loop="let key of ['query', 'body']" *key="key">
+            <div *if="! Is.empty(this.route[key])" class="table-responsive">
+                <h3 class="bold m-y-1" [html]="key == 'query' ? 'Query Params' : 'Request Body'"></h3>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Type</td>
+                            <td>Default</td>
+                            <td>Options</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *for="let item of this.route[key]" *key="item + key">
+                            <td [html]="item.name"></td>
+                            <td>
+                                <code [html]="item.type"></code>
+                            </td>
+                            <td [html]="item.default"></td>
+                            <td [html]="item.options ? item.options.join(' | ') : ''"></td>
+                            <td [html]="item.description"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </for>
+        
+        <div class="table-responsive">
+            <h3 class="bold m-t-1 m-b-2">Response Body</h3>
+            <for loop="let response of this.route.response" *key="response.code">
+                <h5 class="m-t-1">
+                    Response Code: <strong class="ml-3 badge" [class]="{'badge-success': response.code == 200, 'badge-danger': response.code == 400, 'badge-warning': response.code == 401}" [html]="response.code"></strong>
+                </h5>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Type</td>
+                            <td>Value</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *for="let item of response.body" *key="item.name + response.code">
+                            <td [html]="item.name"></td>
+                            <td>
+                                <code [html]="item.type"></code>
+                            </td>
+                            <td>
+                                <span *if="Is.scalar(item.value)" [html]="item.value"></span>
+                                <button *elseif="Is.array(item.value)" type="button" class="badge btn-pink" (click)="this.preview = item.value">Preview</button>
+                            </td>
+                            <td [html]="item.description"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </for>
+        </div>
+    </flk-accordion>
+</section>
+
+<json-api-preview-route-item *if="this.preview" (close)="this.preview = null" [item]="this.preview"></json-api-preview-route-item>

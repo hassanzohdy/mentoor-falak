@@ -9,14 +9,14 @@ DI.resolve('events').subscribe('router.collecting', router => {
         // New course page
         routerGroup.add('/new', NewCoursePage);
 		// Course Details page
-		routerGroup.add('/{:id}', CourseDetailsPage);
+		routerGroup.add('/{:id}/{slug}', CourseDetailsPage);
 
 		// Course Play page
-		routerGroup.add('/{:id}/play', CoursePlayPage);
+		routerGroup.add('/{:id}/{slug}/play', CoursePlayPage);
 		// Video Play page
-		routerGroup.add('/{:id}/{:vidId}', VideoPlayPage);
+		routerGroup.add('/{:id}/{slug}/{:vidId}', VideoPlayPage);
 		// Course Dashboard page
-		routerGroup.add('/{:id}/dashboard', CourseDashboardPage);
+		routerGroup.add('/{:id}/{slug}/dashboard', CourseDashboardPage);
 		// end of routes
     });
 });

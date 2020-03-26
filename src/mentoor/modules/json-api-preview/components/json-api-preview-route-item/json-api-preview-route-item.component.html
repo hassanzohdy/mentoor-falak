@@ -1,0 +1,26 @@
+<flk-modal (close)="this.event('close')()" heading="Preview Item">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Value</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *for="let item of this.item" *key="item.name + item.value">
+                <td [html]="item.name"></td>                
+                <td>
+                    <code [html]="item.type"></code>
+                </td>              
+                <td>
+                    <span *if="Is.scalar(item.value)" [html]="item.value"></span>
+                    <button *elseif="Is.array(item.value)" type="button" class="badge btn-pink" (click)="this.preview = item.value">Preview</button>
+                </td>  
+                <td [html]="item.description"></td>
+            </tr>
+        </tbody>
+    </table>
+</flk-modal>
+<json-api-preview-route-item *if="this.preview" (close)="this.preview = null" [item]="this.preview"></json-api-preview-route-item>

@@ -2,7 +2,7 @@
   <div class="card-body row">
     <div class="d-flex col-9 course-main-content">
       <div class="course-image-container">
-        <a [href]="'courses/' + this.course.id">
+        <a [href]="URLS.course(this.course)">
           <img
             [src]="this.course.image"
             [alt]="
@@ -19,7 +19,7 @@
       <div class="meta ml-3">
         <h2 class="title">
           <a
-            [href]="'courses/' + this.course.id"
+            [href]="URLS.course(this.course)"
             [html]="this.course.title"
           ></a>
         </h2>

@@ -13,25 +13,32 @@ class JsonApiPreviewRoute {
      * This method is triggered before rendering the component
      */
     init() {
-        this.route = this.prop('route');
+        this.handler.onChange('route', this.update.bind(this));
+
+        this.update(this.prop('route'));
+    }
+
+    update(route) {
+        this.route = route;
 
         let color = this.getHeadingClassBasedOnRequestMethod();
 
-        this.headingElement = el('div', {
-            class: 'request-heading ' + color,
+        this.headingElement = el('span', {
+            class: 'request-heading',
         },
             el('strong', {
                 class: 'method white-text ' + color,
             }, this.route.method),
             el('strong', {
-                class: 'route',
+                class: 'route p-x-1',
             }, this.route.route),
             el('span', {
-                class: 'grey-text title ' + color,
+                class: 'grey-text small title',
             }, this.route.title),
+            el('span', {
+                class: 'teal-text bold small name',
+            }, ' (' + this.route.name + ')'),
         );
-
-        echo(this.headingElement)
     }
 
     getHeadingClassBasedOnRequestMethod() {
@@ -44,6 +51,8 @@ class JsonApiPreviewRoute {
                 return 'orange';
             case 'DELETE':
                 return 'red';
+            case 'PATCH':
+                return 'pink';
             case 'OPTIONS':
                 return 'grey';
         }

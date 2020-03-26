@@ -47,7 +47,13 @@ class CourseDashboardPage {
     let { record: course } = await this.coursesService.get(
       this.router.params.id
     );
+
     this.course = course;
+
+    if (! this.course.coupons) {
+      this.course.coupons = [];
+    } 
+
     if (this.course.createdBy.id != this.user.id) {
       return this.router.navigateTo("/404");
     }

@@ -22,8 +22,10 @@
       ></course-video-form>
 
       <div class="d-flex">
-        <h1 [html]="this.course.title"></h1>
-        <section class="course-settings ml-3">
+        <h1 class="m-y-1">
+          <a [href]="URLS.course(this.course)" [html]="this.course.title"></a>
+        </h1>
+        <section class="course-settings m-t-1 ml-3">
           <button
             class="btn btn-danger btn-sm"
             (click)="this.confirmCourseRemove = true"

@@ -36,13 +36,16 @@ html {
 
 body {
     font-size: 1.6rem;
-    font-family: Raleway;
     font-family: Lato;
     @include responsive((
         1024: (
             overflow-x: hidden,            
         )
     ), max);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 // $lock-icon-color: $deep-orange-accent-4;

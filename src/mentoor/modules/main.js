@@ -122,7 +122,7 @@ function initializeUrls() {
                 extra = '/' + extra.ltrim('/');
             }
             
-            return `/courses/${course.id}${extra}`;
+            return `/courses/${course.id}/${seo(course.title)}${extra}`;
         },
         poll(poll) {
             return `/polls/${poll.id}`;

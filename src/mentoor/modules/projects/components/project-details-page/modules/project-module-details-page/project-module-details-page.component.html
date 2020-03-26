@@ -1,8 +1,6 @@
 <project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">    
     <h1 class="bold" [html]="this.module.name + ' Module'"></h1>
     <!-- API -->
-
-    @echo(512)
     <flk-tabs>
         <flk-tab heading="API">
             <if condition="! this.isEditingApi">
