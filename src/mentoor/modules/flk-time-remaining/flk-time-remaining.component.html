@@ -3,6 +3,6 @@
     class="remaining-time {{ this.inputs.getAttr('class') }}" 
     [tooltip]="this.tooltip" 
     [title]="this.title"
-    [class]="{'time-up': this.timeUp}" 
+    [class]="{'time-up': this.timeUp, 'd-none': this.timeUp && this.hideWhen}" 
     *as="timer"
 ></span>

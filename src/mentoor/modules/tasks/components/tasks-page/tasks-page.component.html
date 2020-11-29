@@ -1,9 +1,9 @@
 <layout>
-    <h1 class="heading">
+    <!-- <h1 class="heading">
         <fa icon="tasks mr-2"></fa>
-        Tasks
-        <small class="teal-text bold" [html]="this.title"></small>
-    </h1>
+        My Tasks
+        <small class="teal-text bold">Manage your mind and time!</small>
+    </h1> -->
     <div *if="! this.user.isLoggedIn()" class="m-t-2">
         <p>Manage your mind, and time in sequence of tasks set for you based on your needs!</p>
         <p>Each task you complete before the date time, you ean more <gold-icon></gold-icon>, but also you <strong
@@ -24,11 +24,11 @@
         </div>
     </div>
     <else>
-        <button *if="this.user.id == 1" class="btn btn-success bold" (click)="this.openTaskModal('add')">
+        <!-- <button *if="this.user.id == 1" class="btn btn-success bold" (click)="this.openTaskModal('add')">
             <fa icon="plus mr-2"></fa>
             Task
-        </button>
-        <tasks-board></tasks-board>
+        </button> -->
+        <tasks-board [addable]="false" heading="My Tasks"></tasks-board>
     </else>
 </layout>
 

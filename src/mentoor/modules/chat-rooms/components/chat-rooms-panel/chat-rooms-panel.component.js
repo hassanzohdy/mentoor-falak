@@ -33,6 +33,10 @@ class ChatRoomsPanel {
             for (let chatRoom of this.chatRooms) {
                 if (chatRoom.id != roomId) continue;
 
+                if (message.createdBy) {
+                    message.sender = message.createdBy;
+                }
+
                 chatRoom.messages.push(message);
 
                 if ((!this.openedRoom || this.openedRoom.id != chatRoom) && message.sender.id != this.user.id) {
@@ -125,7 +129,13 @@ class ChatRoomsPanel {
 
         let response = await this.chatRoomsService.messages(this.openedRoom.id);
 
-        this.openedRoom.messages = response.messages;
+        this.openedRoom.messages = response.messages.map(message => {
+            if (Is.empty(message.sender)) {
+                message.sender = message.createdBy;
+            }
+
+            return message;
+        });
 
         this.clearUnseenNotifications(false);
 
@@ -158,6 +168,7 @@ class ChatRoomsPanel {
         let messageObject = {
             message,
             sender: this.user.info,
+            createdBy: this.user.info,
             createdAt: {
                 format: new Date,
                 timestamp: Date.now() / 1000,
@@ -183,7 +194,7 @@ class ChatRoomsPanel {
     }
 
     scrollToLastMessage() {
-        if (this.scrolled) return;
+        // if (this.scrolled) return;
         this.messagesList.scrollTop = this.messagesList.scrollHeight;
 
         this.scrolled = true;

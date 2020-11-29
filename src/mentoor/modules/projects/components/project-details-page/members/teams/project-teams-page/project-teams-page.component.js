@@ -15,7 +15,17 @@ class ProjectTeamsPage extends Project {
 
         this.availableTeamLeaders = this.project.members.map(member => member.member);
 
-        this.teamsList = FLAGS.projects.teams.filter(team => !this.excludedTeams.includes(team)).map(team => {
+        this.data = {
+            teamLeader: {
+                member: {
+                    id: null,
+                }
+            }
+        };
+    }
+
+    getTeams(teamType) {
+        return FLAGS.projects.teams.filter(team => team.type ==teamType || !this.excludedTeams.includes(team)).map(team => {
             return {
                 text: team.capitalize() + ' Team',
                 value: team,
@@ -31,7 +41,15 @@ class ProjectTeamsPage extends Project {
 
                 this.project = record;
             } catch (error) {
-                alert(error.error);
+                console.log(error.error);
+            }
+        } else {
+            try {
+                let { record } = await this.projectsService.editTeam(this.project.id, this.data.id, form);
+
+                this.project = record;
+            } catch (error) {
+                console.log(error.error);
             }
         }
 

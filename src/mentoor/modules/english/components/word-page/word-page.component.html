@@ -40,7 +40,6 @@
                 <div *elseif="! this.word.isUnlocked" id="action-btn">
                     <div class="cost">
                         <gold-icon color="green" [coins]="this.word.cost"></gold-icon>
-                        <strong class="pink-text" *if="this.word.cost == 0">FREE!</strong>
                     </div>
                     <button type="button" (click)="this.confirmPurchase = true"
                         class="btn purchase-btn btn-sm bold btn-danger">
@@ -67,7 +66,7 @@
             </h3>
             <div class="words-sort-wrapper">
                 <label class="mr-2 bold teal-text">Sort</label>
-                <flk-dropdown-list class="dropdown" (select)="this.sortBy(e.value)"
+                <flk-dropdown-list class="dropdown" (select)="this.sortBy(e.value);"
                     [items]="['Chronologically', 'Alphabetically']" [searchable]="false" [value]="this.defaultSort">
                 </flk-dropdown-list>
             </div>
@@ -96,35 +95,38 @@
                 </div>
             </div> -->
 
-            <table class="table table-bordered table-striped">
-                <tbody>
-                    <tr *for="let words of Array.chunk(this.word.words, this.wordsPerLine)">
-                        <for loop="let word, index of words">
-                            <td class="word-wrapper">
-                                <div class="word">
-                                    <img *if="word.image" [src]="word.image" [alt]="word.word" />
-                                    <span [html]="word.word"></span>
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="translation" [html]="word.translation.word"></td>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr *for="let words of Array.chunk(this.word.words, this.wordsPerLine)" *key="word.id">
+                            <for loop="let word, index of words">
+                                <td class="word-wrapper">
+                                    <div class="word text-capitalize">
+                                        <img *if="word.image" [src]="word.image" [alt]="word.word" />
+                                        <span [html]="word.word"></span>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="translation" [html]="word.translation.word"></td>
+    
+                                <td *if="this.user.accountType == 'admin'">
+                                    <fa *if="word.published" tooltip title="Published" icon="check-circle blue-text"></fa>                                
+                                    <button (click)="this.delete(word, index)" type="button"
+                                        class="btn btn-circle btn-danger">
+                                        <fa icon="trash"></fa>
+                                    </button>
+                                    <button 
+                                        (click)="this.currentWord = word; this.openModal('edit');" type="button"
+                                        class="btn btn-circle btn-primary">
+                                        <fa icon="edit"></fa>
+                                    </button>
+                                </td>
+                            </for>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                            <td *if="this.user.accountType == 'admin'">
-                                <fa *if="word.published" tooltip title="Published" icon="check-circle blue-text"></fa>                                
-                                <button (click)="this.delete(word, index)" type="button"
-                                    class="btn btn-circle btn-danger">
-                                    <fa icon="trash"></fa>
-                                </button>
-                                <button 
-                                    (click)="this.currentWord = word; this.openModal('edit');" type="button"
-                                    class="btn btn-circle btn-primary">
-                                    <fa icon="edit"></fa>
-                                </button>
-                            </td>
-                        </for>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </layout>

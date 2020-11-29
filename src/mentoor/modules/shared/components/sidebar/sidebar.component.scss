@@ -18,7 +18,7 @@
     width: 100%;
     z-index: 1000;
     height: 100%;
-    padding-top: .5rem;
+    // padding-top: .5rem;
 
     .overlay {
         background: rgba(0, 0, 0, 0.5);
@@ -43,24 +43,25 @@
 
     #sidebar-content {
         overflow-y: auto;
-        padding-top: 1rem;
         position: relative;
+        height: 100vh;
         overflow-x: hidden;
         background: $body-background;
         @include responsive(
             (0: (
                 width: 60%,
-                top: 60px,
-                height: calc(100vh - 65px),
+                // top: 60px,
+                // height: calc(100vh - 65px),
             ),
             768: (width: 20%,
-                top: 50px,
-                height: calc(100vh - 50px),
+                // top: 50px,
+                // height: calc(100vh - 50px),
             )
         ));
         
         a {
-            color: #333;
+            color: #333;        
+            font-weight: normal;
 
             &.active {
                 color: #fff !important;
@@ -115,17 +116,17 @@
 }
 
 
-[role="main"] {
-    @include responsive((
-        0: (            
-            padding-top: 100px,
-        ),
-        768: (            
-            padding-top: 48px,
-        )
-    ));
-    /* Space for fixed navbar */
-}
+// [role="main"] {
+//     @include responsive((
+//         0: (            
+//             padding-top: 100px,
+//         ),
+//         768: (            
+//             padding-top: 48px,
+//         )
+//     ));
+//     /* Space for fixed navbar */
+// }
 
 
 .new {

@@ -10,7 +10,7 @@
     </tr>
 </admin-table>
 
-<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal()">
+<flk-modal *if="this.openModal" [heading]="this.crudOptions.heading" *as="modal" (close)="this.closeModal()">
     <form (submit)="this.submit($el)">
         <div class="form-group">
             <form-input required type="text" [value]="this.formObject.name" placeholder="Tag name"

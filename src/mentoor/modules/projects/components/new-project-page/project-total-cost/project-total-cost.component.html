@@ -5,7 +5,6 @@
             <div class="col" [html]="costKey"></div>
             <div class="col">
                 <gold-icon [coins]="cost"></gold-icon>
-                <span *if="cost == 0" class="bold pink-text">FREE!</span>
             </div>
         </div>
     </for>
@@ -27,7 +26,6 @@
         <strong class="col">Total:</strong>
     <div class="col">
             <gold-icon [coins]="this.finalCost"></gold-icon>
-            <span *if="this.finalCost == 0" class="bold pink-text">FREE!</span>
         </div>
     </div>
 </div>

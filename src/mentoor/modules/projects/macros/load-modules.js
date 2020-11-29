@@ -22,6 +22,7 @@ Macros.create('loadModules', function () {
 
                 return {
                     text,
+                    application: projectModule.application,
                     value: projectModule.id,
                 };
             });

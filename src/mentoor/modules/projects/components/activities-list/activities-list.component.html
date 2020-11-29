@@ -1,0 +1,85 @@
+<flk-spinner *if="this.isLoading"></flk-spinner>
+<!-- <h3 *elseif="Is.empty(this.activities)" class="text-center">No Activities Yet</h3> -->
+<else>
+    <div class="activities-list">
+        <h3 *if="this.type" class="m-y-1 text-capitalize">{{ this.type }} Activities</h3>
+        <div *for="let activity of this.activities" *key="activity.id" class="simple-card m-b-1">
+            <div class="activity">
+                <span *if="! this.type" class="type {{ activity.type }}"
+                    [html]="'[' + activity.type.ucfirst() + ']'"></span>
+                <span *elseif="this.type && activity.settings.key && activity.settings.key" class="type"
+                    [html]="'[' + activity.settings.key.ucfirst() + ']'"></span>
+
+                <span *if="activity.system" class="system">
+                    [System]
+                </span>
+                <span *else class="user">
+                    <user-avatar-image [user]="activity.createdBy" />
+                    </user-avatar-image>
+                    <span [html]="activity.createdBy.name"></span>
+                </span>
+
+                <span class="action mx-1">
+                    <if condition="activity.comment">
+                        <span *if="activity.mode == 'created'" class="comment">wrote a comment
+                            <span *if="! this.type" class="ml-2">on</span>
+                        </span>
+                        <span *elseif="activity.mode == 'updated'" class="comment">updated his/her comment
+                            <span *if="! this.type" class="ml-2">on</span>
+                        </span>
+                        <span *elseif="activity.mode == 'deleted'" class="comment red-text">deleted his/her
+                            comment</span>
+                    </if>
+                    <span *elseif="activity.settings.key == 'status'" class="mx-1">
+                        <if condition="activity.settings.old == activity.settings.new">
+                            has set status to
+                            <span class="badge mx-2" [class]="taskStatus({status: activity.settings.new})"
+                                [html]="activity.settings.new"></span>
+                        </if>
+                        <else>
+                            has changed status from
+
+                            <span class="badge mx-2" [class]="taskStatus({status: activity.settings.old})"
+                                [html]="activity.settings.old"></span>
+                            to
+                            <span class="badge mx-2" [class]="taskStatus({status: activity.settings.new})"
+                                [html]="activity.settings.new"></span>
+                        </else>
+                    </span>
+                    <span *elseif="this.type && activity.settings.key">
+                        <span class="mx-2 line-through grey-text" [html]="this.displayData(activity.settings.old)"></span>
+                        <fa icon="arrow-right" />
+                        <span class="mx-2 bold" [html]="this.displayData(activity.settings.new)"></span>
+                    </span>
+                    <span *elseif="! activity.comment && activity.mode !== 'status'" class="mx-2 {{ activity.mode }}">
+                        has {{ activity.mode }}
+                        <span *if="this.type" class="ml-2">the {{ this.type }}</span>
+                    </span>
+                </span>
+                <if
+                    condition="!this.type && activity.mode != 'deleted' && ! ['project', 'member'].includes(activity.type)">
+                    <a *if="activity.type == 'resource'" [href]="URLS.resource(activity.settings.resource)"
+                        [html]="activity.settings.resource.title"></a>
+                    <a *elseif="activity.type == 'task'" [href]="URLS.task(activity.settings.task)"
+                        [html]="activity.settings.task.title"></a>
+                    <a *elseif="activity.settings && activity.settings[activity.type]"
+                        [href]="URLS.project(this.project, pluralize(activity.type), activity.settings[activity.type])">
+                        {{ activity.settings[activity.type].name || activity.settings[activity.type].title }}
+                    </a>
+                </if>
+                <elseif condition="activity.type == 'member'">
+                    New Member
+                    <span *if="activity.settings.member" class="ml-1 bold teal-text"
+                        [html]="activity.settings.member.name"></span>
+                </elseif>
+                <elseif condition="activity.type == 'project' && activity.mode == 'created'">
+                    New Project {{ this.project.name }}
+                </elseif>
+                <span *elseif="! this.type && activity.settings && activity.settings[activity.type]" class="text-only"
+                    [html]="activity.settings[activity.type].name || activity.settings[activity.type].title"></span>
+
+                <flk-time-ago class="created-at" [timestamp]="activity.createdAt.timestamp"></flk-time-ago>
+            </div>
+        </div>
+    </div>
+</else>

@@ -18,7 +18,7 @@
             </button>
 
             <button type="button" *if="! this.comment || this.comment.id != comment.id"
-                (click)="echo(comment); this.confirmRemoving(comment, index); this.detectChanges();">
+                (click)="this.confirmRemoving(comment, index); this.detectChanges();">
                 <fa icon="times mr-2"></fa>
                 Delete
             </button>

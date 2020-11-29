@@ -1,4 +1,5 @@
 class PostsService extends Endpoint.Service {
+    // @macro(increaseViews)
     /**
      * {@inheritDoc} 
      */

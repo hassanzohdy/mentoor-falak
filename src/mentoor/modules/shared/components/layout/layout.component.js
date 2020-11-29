@@ -28,7 +28,9 @@ class LayoutWrapper {
             response.user.dailyReward = null;
             this.user.update(response.user);
             this.dailyRewardModal.close();
+            this.dc();            
         });
+
     }
 
     ready() {

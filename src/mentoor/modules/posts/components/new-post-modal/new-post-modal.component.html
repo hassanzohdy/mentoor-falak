@@ -5,16 +5,39 @@
         <input type="hidden" name="slug" [value]="this.data.slug" />
 
         <div class="m-t-1">
-            <markdown-input  label="Content" (input)="this.cache.set('t-post', $el.value)" class="m-y-2"
+            <markdown-input  label="Content" (input)="this.cache.set('t-post', e); this.data.content = e;" class="m-y-2"
                 name="content" required [value]="this.data.content" placeholder="Write post content (Markdown)">
             </markdown-input>
         </div>
-        
+
         <div class="row">
+          <h4 class="col-12">
+            Series Options
+            <fa icon="question-circle black-text mx-2" tooltip [title]="this.seriesTitle"></fa>
+          </h4>
+          <div class="col-6">
+            <form-input type="text" class="form-control" name="series.name"
+            [value]="this.data.series.name" placeholder="Series Name"></form-input>            
+          </div>
+          <div class="col-6">
+            <form-input type="number" class="form-control" name="series.order"
+            [value]="this.data.series.order" placeholder="Series Order"></form-input>            
+          </div>
+        </div>
+        
+        <div class="row m-t-1">
             <div class="col-6">
-                <flk-dropdown-list label="Tags" (select)="echo(e);this.data.tags = e.map(tag => tag.value)" [imageable]="true" position="top"
-                    [multiple]="true" required name="tagsIds[]" [lazy-loading]="true" [service]="this.tagsService"
-                    [value]="this.data.tags"></flk-dropdown-list>
+                <flk-dropdown-list 
+                  label="Tags"  
+                  [imageable]="true" 
+                  position="top"
+                  [multiple]="true" 
+                  required 
+                  name="tagsIds[]" 
+                  (select)="this.data.tags = e"
+                  [lazy-loading]="true" 
+                  [service]="this.tagsService"
+                  [value]="this.data.tags"></flk-dropdown-list>
             </div>
             <div class="col-6">
                 <label for="image">Post image (Optional)</label>
@@ -26,12 +49,21 @@
                 class="btn btn-purple bold" (click)="this.preview = true">Next</button>
         </div>
 
-        <flk-modal *if="this.preview" (close)="this.preview = null" header="Post Preview">
-            <markdown [content]="this.data.content"></markdown>
+    <flk-modal
+      *if="this.preview"
+      (close)="this.preview = null"
+      header="Post Preview"
+    >
+      <markdown [content]="this.data.content"></markdown>
 
-            <div class="text-right">
-                <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Post</button>
-            </div>
-        </flk-modal>
-    </form>
+      <div class="text-right">
+        <button
+          [disabled]="!this.isValidForm || this.isSending"
+          class="btn btn-success bold"
+        >
+          Post
+        </button>
+      </div>
+    </flk-modal>
+  </form>
 </flk-modal>

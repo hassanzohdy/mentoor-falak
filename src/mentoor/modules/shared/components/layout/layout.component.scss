@@ -2,7 +2,7 @@ main {
     padding: 2.25rem 1rem;
     @include responsive((
         768: (
-            padding-top: 60px !important,
+            // padding-top: 60px !important,
         )
     ));
 }

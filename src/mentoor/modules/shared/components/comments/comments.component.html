@@ -1,16 +1,20 @@
-<div class="comments-list" [class]="{child: this.parentComment}">
-    <h2 class="bold m-y-2 heading" (click)="this.toggleParentComments()">
-        <span *if="! this.parentComment">
+<div *if="this.user.isLoggedIn()" class="comments-list" [class]="{child: this.parentComment}">
+    <h2 *if=" ! this.parentComment" class="bold m-y-2 heading" (click)="this.toggleParentComments()">
+        <span>
             Comments
-            ({{ this.commentsList.length }})
+            <if condition="this.commentsList.length">
+                ({{ this.commentsList.length }})
+            </if>
         </span>
+        <flk-spinner *if="this.isLoading"></flk-spinner>
     </h2>
+
     <div *for="let comment, index of this.commentsList" *key="comment.id" [id]="'cmnt' + comment.id"
         class="comment p-1 m-b-1"
-        [class]="{active: Boolean(this.activeComment && this.activeComment.id == comment.id)}">
+        [class]="{mine: comment.createdBy.id == this.user.id, active: Boolean(this.activeComment && this.activeComment.id == comment.id)}">
         <span class="action-btns" *if="this.project.isHigherAuthority || comment.createdBy.id == this.user.id">
             <button type="button" *if="! this.comment || this.comment.id != comment.id"
-                (click)="this.comment = comment; this.index = index; this.editMode = true">
+                (click)="this.comment = comment; this.index = index; this.editMode = true; this.fileInput = null">
                 <fa icon="edit"></fa>
                 Edit
             </button>
@@ -26,24 +30,23 @@
             </button>
         </span>
         <div class="w-100">
-            <div (click)="this.previewBy($el, comment, 'previewUserFromImage')"
-                class="relative d-inline-block v-top">
-                <img [src]="comment.createdBy.image" [alt]="comment.createdBy.name" class="user-image" />
+            <div (click)="this.previewBy($el, comment, 'previewUserFromImage')" class="relative d-inline-block v-top">
+                <user-avatar-image [user]="comment.createdBy"></user-avatar-image>
 
-                <user-card *if="comment.previewUserFromImage"
-                    (close)="comment.previewUserFromImage = false" [user]="comment.createdBy">
+                <user-card *if="comment.previewUserFromImage" (close)="comment.previewUserFromImage = false"
+                    [user]="comment.createdBy">
                 </user-card>
             </div>
 
             <div class="meta-comment">
-                <div class="relative d-inline-block">
+                <div class="relative comment-header d-inline-block">
                     <span (click)="this.previewBy($el, comment, 'previewUserFromName')"
                         [html]="comment.createdBy.name"></span>
-                    <a [href]="this.currentRoute + '?comment=' + comment.tree" tooltip title="Comment url">
+                    <a [href]="this.currentRoute + '?comment=' + comment.tree" tooltip class="comment-url"
+                        title="Comment url">
                         <fa icon="link"></fa>
                     </a>
-                    <user-card *if="comment.previewUserFromName"
-                        (close)="comment.previewUserFromName = false"
+                    <user-card *if="comment.previewUserFromName" (close)="comment.previewUserFromName = false"
                         [user]="comment.createdBy"></user-card>
                 </div>
                 <div class="m-b-1">
@@ -60,7 +63,7 @@
 
                         <div>...</div>
                         <button type="button" class="bold orange-text"
-                            (click)="comment.isExpanded = true;">Continue Reading...</button>
+                            (click)="comment.isExpanded = true; this.detectChanges();">Continue Reading...</button>
                     </else>
                 </div>
 
@@ -69,15 +72,7 @@
                 </div>
             </div>
         </div>
-        <div *if="! Is.empty(comment.attachments)">
-            <h4 class="bold">Attachments ({{ comment.attachments.length }})</h4>
-
-            <a *for="let attachment of comment.attachments" [href]="attachment" target="_blank">
-                <img *if="isImage(attachment)" [src]="attachment" [alt]="comment.comment" width="100px" height="100px"
-                    class="img-thumbnail m-l-1" />
-                <button *else class="btn btn-sm bold btn-pink">Open Attachment</button>
-            </a>
-        </div>
+        <attachments-previewer [alt]="comment.comment" [attachments]="comment.attachments"></attachments-previewer>
 
         <form *if="this.comment && this.comment.id == comment.id && this.editMode" class="m-t-1"
             (submit)="this.submitComment($el)">
@@ -86,20 +81,20 @@
             <input type="hidden" name="typeId" [value]="this.typeId" />
             <input type="hidden" name="type" [value]="this.type" />
             <input type="hidden" name="id" [value]="this.commentId" />
-            
-            <markdown-input name="comment" (mention)="return this.mentions(e)" [value]="this.comment.comment" (change)="this.comment.comment = e" placeholder="Write a comment..."></markdown-input>
 
-            </form-input>
-            <flk-file-input name="attachments[]" *as="fileInput" *as-array="false" class="btn btn-info bold"
-                [multiple]="true" label="Attachments">
+            <markdown-input name="comment" (mention)="return this.mentions(e)" [value]="this.comment.comment"
+                (change)="this.comment.comment = e" placeholder="Write a comment..."></markdown-input>
+            <flk-file-input name="attachments[]" *as="fileInput" class="btn btn-info bold" [multiple]="true"
+                label="Attachments">
                 <fa icon="cloud-upload-alt"></fa>
                 <strong class="ml-2">Attachments</strong>
             </flk-file-input>
-            <record-audio-input *if="! this.isSending" *as="editRecordAudio" *as-array="false"></record-audio-input>
+            <record-audio-input *if="! this.isSending" *as="editRecordAudio"></record-audio-input>
 
             <button class="btn btn-pink bold m-t-1" [disabled]="this.isSending || ! this.isValidForm">Comment</button>
         </form>
 
+        <!-- Children Comments -->
         <h2 *if="comment.comments" class="sub-comments-heading">
             <span (click)="this.toggleSubComment(comment)">
                 <span>Replies</span>
@@ -108,22 +103,20 @@
 
             <button *if="Comments.writeComment === false" (click)="this.openCommentReply(comment)"
                 class="btn btn btn-sm btn-gray cc">Reply</button>
-
         </h2>
 
         <comments *if="comment.commentsAreOpened" [disable-comments]="this.disableComments" [parent]="comment"
             [comments]="comment.comments" [type]="this.type" [type-id]="this.typeId" [project]="this.project">
         </comments>
-
     </div>
 
     <!-- New Comment -->
     <div *if="this.disableComments && ! this.parentComment" class="text-center bold petrol-text closed-comments">
-        Comments Are Closed
+        Comments are disabled to this post.
     </div>
     <!-- <div *elseif="this.disableComments && this.parentComment"></div> -->
     <button *elseif="Comments.writeComment === false && ! this.parentComment"
-        (click)="this.detectChanges(e => Comments.writeComment = this.parentComment)"
+        (click)="this.detectChanges(e => Comments.writeComment = this.parentComment); this.inputs.parent.detectChanges()"
         class="btn btn btn-gray">Reply</button>
     <form *elseif="Comments.writeComment === this.parentComment" (ready)="this.scrollToForm($el)"
         (submit)="this.submitComment($el)" class="m-t-4">
@@ -135,7 +128,8 @@
             placeholder="Write a comment... (Markdown Support)" name="comment">
         </form-input> -->
 
-        <markdown-input name="comment" (mention)="return this.mentions(e)" [value]="this.newComment" (change)="this.newComment = e" placeholder="Write a comment..."></markdown-input>
+        <markdown-input name="comment" (mention)="return this.mentions(e)" [value]="this.newComment"
+            (change)="this.newComment = e" placeholder="Write a comment..."></markdown-input>
 
         <div class="files">
             <flk-file-input name="attachments[]" *as="fileInput" class="btn btn-info bold" [multiple]="true"
@@ -151,12 +145,12 @@
         <button class="btn btn-pink bold m-t-1"
             [disabled]="(! this.newComment && ! this.recordAudio.recordData && this.fileInput.fileInput.files.length == 0) || this.isSending || ! this.isValidForm || this.isRecording">Comment</button>
 
-        <button type="button" (click)="this.detectChanges(e => Comments.writeComment = false)"
+        <button type="button"
+            (click)="this.detectChanges(e => Comments.writeComment = false); this.inputs.parent.detectChanges()"
             class="btn btn-light">Cancel</button>
     </form>
 </div>
 
 
-<flk-alert *if="this.confirmDelete" (close)="this.cancelRemoving()"
-    (confirm)="this.remove()">
+<flk-alert *if="this.confirmDelete" (close)="this.cancelRemoving()" (confirm)="this.remove()">
 </flk-alert>

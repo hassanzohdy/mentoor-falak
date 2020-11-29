@@ -1,0 +1,13 @@
+<div *if="! Is.empty(this.attachments)">
+    <h4 class="bold">Attachments ({{ this.attachments.length }})</h4>
+    <a *for="let attachment of this.attachments" *key="attachment" [href]="attachment" target="_blank">
+        <img *if="isImage(attachment)" [src]="attachment" [alt]="this.alt" width="100px" height="100px"
+            class="img-thumbnail m-l-1" />
+        <div *elseif="attachment.extension() === 'mp4'">
+            <video controls [style]="{height: '250px', maxWidth: '250px'}">
+                <source [src]="attachment" type="video/mp4">
+            </video>
+        </div>
+        <button *else class="btn btn-sm bold btn-pink">Open Attachment</button>
+    </a>
+</div>

@@ -18,8 +18,16 @@ class CoursesList {
 
     this.isLoading = true;
 
-    this.coursesService.list().then(response => {
-      this.coursesList = response.records;
+    this.db.get('courses', e => {
+      return this.coursesService.list();
+    }, this.db.recache).then(response => {
+      this.coursesList = response.records.map(course => {
+        this.db.set(`course-${course.id}`, {
+          record: course,
+        });
+
+        return course;
+      });
       this.isLoading = false;
     });
   }

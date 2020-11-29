@@ -18,7 +18,7 @@
                 [resources-types]="this.resourcesTypes"
                 [project]="this.project"
                 [resource]="resource" 
-                [index]="index"
+                [index]="this.resources.indexOf(resource)"
             ></resource-list-item>
         </section>
         <if condition="! Is.empty(this.resourcesList.normal)">    
@@ -28,7 +28,7 @@
                 [resources-types]="this.resourcesTypes"
                 [project]="this.project"
                 [resource]="resource" 
-                [index]="index"
+                [index]="this.resources.indexOf(resource)"
             ></resource-list-item>
         </if>
     </div>

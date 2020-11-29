@@ -31,8 +31,8 @@
                 <div class="card-hover">
                     <span class="arrow"></span>
                     <p [html]="trainingGround.shortDescription"></p>
-                    <div class="text-center">
-                        <div *for="let tag of trainingGround.tags" class="technology">
+                    <div class="text-center d-flex">
+                        <div *for="let tag of trainingGround.tags" *key="tag" class="technology">
                             <img [src]="tag.image" [alt]="tag.name" />
                             <div [html]="tag.name" class="bold indigo-text"></div>
                         </div>

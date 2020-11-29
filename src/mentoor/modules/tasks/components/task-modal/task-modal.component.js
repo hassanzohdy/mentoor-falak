@@ -1,10 +1,11 @@
 class TaskModal {
-    // @macro(loadModules)
+    // @macro(loadModules,loadComponents)
     /**
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(router, usersService, tasksService) {
+    constructor(user, router, usersService, tasksService) {
+        this.user = user;
         this.router = router;
         this.usersService = usersService;
         this.tasksService = tasksService;
@@ -26,24 +27,38 @@ class TaskModal {
             { text: "Low", value: "low" },
         ]
 
-        this.participants = this.inputs.getProp('participants');
-        this.supervisors = this.inputs.getProp('supervisors');
-        this.project = this.inputs.getProp('project');
-        this.displayStatusList = this.inputs.getProp('displayStatusList');
+        this.participants = this.prop('participants');
+        this.project = this.prop('project');
+        this.supervisors = this.prop('supervisors', this.project && this.project.is.higherAuthority && this.project.members.map(member => member.member));
+        this.displayStatusList = this.prop('displayStatusList');
+
+        if (Is.empty(this.participants) && ! Is.empty(this.project)) {
+            this.participants = this.project.members.map(member => member.member);
+        }
 
         if (this.displayStatusList) {
             this.statuses = TASK_STATUSES;
         }
 
-        this.data = this.inputs.getProp('task', {
-            penaltyRatio: 2,
-            reward: 10000,
-        });
-        
-        this.close = this.inputs.getEvent('close');
-        this.save = this.inputs.getEvent('save', e => {
-            this.router.refresh();
-        });
+        this.data = this.prop('task');
+
+        if (Is.empty(this.data)) {
+            this.data = {
+                penaltyRatio: 2,
+                reward: 10000,
+                duration: '00:00',
+                status: 'notStarted',
+                participant: {
+                    // id: this.user.get('id'),
+                },
+            }
+        }
+
+        this.close = this.event('close');
+        // this.save = this.event('save', e => {
+        //     this.router.refresh();
+        // });
+        this.save = this.event('save');
     }
 
     /**
@@ -68,13 +83,17 @@ class TaskModal {
             let { record } = await this.tasksService.update(this.data.id, form);
 
             taskInfo = record;
+            userSocket.trigger('task.update', taskInfo);  
         } else {
             let { record } = await this.tasksService.create(form);
 
             taskInfo = record;
+
+            userSocket.trigger('task.create', taskInfo);  
         }
 
         this.modal.close();
+        
         this.save(taskInfo);
     }
 }

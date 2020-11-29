@@ -3,7 +3,9 @@
     "production": {
         "baseUrl": "https://mentoor.io",
         "https": true,
-        "prerender": true,
+        "prerender": {    
+            "externalUrl": "https://apps.mentoor.io/restful/prerender"
+        },
         "sitemap": {
             "route": "feed/sitemap.xml",
             "location": "../static-files/sitemap.xml"

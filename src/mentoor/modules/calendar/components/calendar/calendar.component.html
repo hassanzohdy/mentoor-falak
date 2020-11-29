@@ -24,7 +24,7 @@
                 <span class="number" [class]="{current: day.date == this.calendarOptions.today.date}"
                     [html]="day.number"></span>
                 <span *if="day.month != this.calendarOptions.current.monthName" [html]="day.month" class="month"></span>
-                <calendar-schedule-item *for="let scheduleItem of day.schedule"></calendar-schedule-item>
+                <calendar-schedule-item *for="let scheduleItem of day.schedule" *key="scheduleItem.id" [item]="scheduleItem"></calendar-schedule-item>
             </div>
         </div>
     </div>

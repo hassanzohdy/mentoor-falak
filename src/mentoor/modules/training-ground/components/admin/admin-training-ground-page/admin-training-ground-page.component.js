@@ -13,7 +13,7 @@ class AdminTrainingGroundPage extends CRUD {
         this.title = 'Training ground';
         
         this.crudOptions = {
-            columns: ['ID', 'title', 'Image', 'Live Preview', 'Prize',  'Cocktail', 'dependsOn', 'Tags', 'Level', 'Sort order', 'Display', 'Control'],
+            columns: ['ID', 'title', 'Image', 'Live Preview', 'Prize',  'Cocktail', 'dependsOn', 'Level', 'Sort order', 'Display', 'Control'],
             heading: 'training ground', 
             dataSchema: {
                 title: null,

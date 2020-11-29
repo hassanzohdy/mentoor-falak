@@ -1,5 +1,13 @@
 .flk-accordion {
+    margin-bottom: 1rem;
     .accordion-heading {
         padding: 1rem;
+        background: #f9f9f9;
+        border: solid 1px #e8e9eb;
+        font-weight: normal;
+    }
+
+    &.flk-accordion .accordion-heading {
+        border: solid 1px #e8e9eb;
     }
 }

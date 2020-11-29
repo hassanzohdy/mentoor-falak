@@ -2,6 +2,7 @@ class Project {
     constructor(service) {
         this.service = service;
         this.user = DI.resolve('user');
+        this.db = DI.resolve('db');
         this.router = DI.resolve('router');
         this.shareable = DI.resolve('shareable');
         this.projectsService = DI.resolve('projectsService');
@@ -16,67 +17,102 @@ class Project {
     }
 
     async init() {
-        let projectId = this.router.params.id;
+        this.projectId = this.router.params.id;
         this.isLoading = true;
         this.modalIsOpened = false;
         this.isValidForm = true;
+        this.activitiesLoaded = false;
 
-        if (! this.query) {
+        if (!this.query) {
             this.query = this.queryOptions();
         }
 
         this.project = null;
 
+        if (this.lastProjectActivities != this.projectId) {
+            this.activities = null;
+        }
+
+        // this.activities = null;
+
         // if (this.project && this.itemKey) {
         //     delete this.project[this.itemKey];
         // }
 
-        if (this.cache.has('project.' + projectId) && !this.forceLoad) {
-            let project = this.cache.get('project.' + projectId);
+        this.load();
+    }
 
-            this.boot(project);
+    loadData() {
+        return this.projectsService.get(this.projectId, this.query);
+    }
 
-            // if (project.id == projectId && (!this.itemKey || this.itemKey && project[this.itemKey])) {
-            //     this.boot(project);
-            //     if (this.stopExecuting) return;
-            // }
-        }
+    recache() {
+        this.loadData().then(response => {
+            this.db.set(this.cache, response);
+        });
+    }
 
-        // if (this.shareable.isSharing('project')) {
-        //     let project = this.shareable.getShared('project');
+    load() {
+        // check for privacy
 
-        //     if (project.id == projectId && (!this.itemKey || this.itemKey && project[this.itemKey])) {
-        //         this.boot(project);
-        //     }
-        // }
-
+        this.cacheKey = `project-${this.projectId}-${JSON.stringify(this.query)}`;
         try {
-            let { record } = await this.projectsService.get(projectId, this.query);
+            // this.db.get(this.cacheKey, e => {
+            //     return this.loadData();
+            // }, this.db.recache).then(response => {
+            this.loadData().then(response => {
+                let { record } = response;
+                if (!record) {
+                    return this.router.navigateTo('/404');
+                }
 
-            if (!record) {
-                return this.router.navigateTo('/404');
-            }
+                this.boot(record);
 
-            this.boot(record);
+                if (this.stopExecuting) return;
 
-            if (this.stopExecuting) return;
+                if (!this.project) return;
 
-            if (!this.project) return;
+                let isHigherAuthority = userCanJoinAnyProjectIn(currentUserCompany());
 
-            // check for privacy
-            if (!this.project.isPublic && !this.project.isMember) {
-                return this.router.navigateTo('/projects');
-            }
+                if (isHigherAuthority) {
+                    this.project.is.member = true;
+                    this.project.is.higherAuthority = true;
+                }
 
-            if (Is.mobile.any()) {
-                this.projectLayout.sidebarIsVisible = false;
-            }
-    
-            this.isLoading = false;
+                if (!this.project.isPublic && !this.project.isMember && !this.query.discussion && ! isBot()) {
+                    return this.router.navigateTo('/projects');
+                }
+
+                if (Is.mobile.any()) {
+                    this.projectLayout.sidebarIsVisible = false;
+                }
+
+                this.isLoading = false;
+            });
         } catch (response) {
+            echo(response)
             if (response.statusCode == 400) {
                 this.router.navigateTo('/404');
             }
+        }
+    }
+
+    async cacheMany(queryName, items) {
+        let itemWrapper = Object.clone(this.project);
+
+        delete itemWrapper[pluralize(queryName)];
+
+        for (let item of items) {
+            itemWrapper[queryName] = item;
+            let response = {
+                record: itemWrapper,
+            }
+
+            let query = {
+                [queryName]: String(item.id),
+            };
+
+            await this.db.set(`project-${this.project.id}-${JSON.stringify(query)}`, response);
         }
     }
 
@@ -100,7 +136,8 @@ class Project {
         project.teamLeaders = project.members.filter(member => member.role == 'teamLeader');
         project.membersList = project.members.map(member => member.member);
 
-        project.isPublic = !project.settings.private;
+        // project.isPublic = !project.settings.private;
+        project.isPublic = false;
 
         project.isProjectManager = Boolean(
             Array.get(project.members, member => member.role == 'projectManager' && member.member.id == this.user.id)
@@ -118,8 +155,16 @@ class Project {
 
         project.isModerator = project.isHigherAuthority || project.isTeamLeader;
 
+        let isHigherAuthority = userCanJoinAnyProjectIn(currentUserCompany());
+
+        if (isHigherAuthority) {
+            project.isMember = true;
+            project.is.member = true;
+            project.is.higherAuthority = true;
+        }
+
         // if (this.router.route() != `/projects/${project.id}` && !project.isMember) {
-        if (!project.isMember) {
+        if (!project.isMember && !this.query.discussion && ! isBot() && ! isHigherAuthority) {
             return this.router.navigateTo('/projects');
         }
 
@@ -134,7 +179,7 @@ class Project {
     cacheProject() {
         this.shareable.share('project', this.project);
 
-        this.cache.set('project.' + this.project, this.project);
+        this.cache.set('project.' + this.project.id, this.project);
     }
 
     getMember(memberId) {
@@ -151,7 +196,7 @@ class Project {
         this.isSending = false;
         this.currentType = type;
 
-        let singleName = pluralize(this.itemKey.capitalize(), 1);
+        let singleName = pluralize((this.itemKey || '').capitalize(), 1);
 
         this.modalHeading = type == 'add' ? 'Add New ' + singleName : 'Edit ' + singleName;
 
@@ -179,7 +224,7 @@ class Project {
 
             updatedProject = project;
 
-            Object.get(this.project, this.itemKey).unshift(record);
+            (Object.get(this.project, this.itemKey) || []).unshift(record);
         } else {
             let { record, project } = await this.service.update(this.record.id, form);
 
@@ -201,6 +246,8 @@ class Project {
         }
 
         this.onSubmit(updatedRecord);
+
+        this.recache();
 
         setTimeout(() => {
             this.isSending = false;

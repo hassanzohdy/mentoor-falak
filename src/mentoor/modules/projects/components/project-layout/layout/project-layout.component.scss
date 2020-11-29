@@ -1,5 +1,5 @@
 #project-layout {
-    $project-sidebar-width: 25rem;
+    $project-sidebar-width: 240px;
     position: relative;
 
     .close-sidebar-btn {
@@ -18,10 +18,15 @@
         overflow: auto;
         bottom: 0;
         right: 0;
+        top: 0;
+        background: #f1f5f8;
+        width: $project-sidebar-width;
         left: -#{$project-sidebar-width};
+        &.opened {
+            left: 0;
+        }
 
         &.opened {
-            left: 1rem;
             @include responsive((
                 1024: (
                     width: 100%,
@@ -33,12 +38,15 @@
             
             #project-sidebar {
                 padding-left: 0rem;
+                min-height: 100%;
                 @include responsive((
                     0: (
-                        padding-top: 0rem,                           
+                        padding-top: 0rem,     
+                        padding-left: 1rem,                      
                         background: #eee,                     
                     ),
                     1024: (
+                        padding-left: 0,
                         background: transparent,                         
                     )
                 ));

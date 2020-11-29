@@ -1,58 +1,34 @@
-<article class="card course-card mb-3">
-  <div class="card-body row">
-    <div class="d-flex col-9 course-main-content">
-      <div class="course-image-container">
-        <a [href]="URLS.course(this.course)">
-          <img
-            [src]="this.course.image"
-            [alt]="
-              this.course.title
-                ? this.course.title
-                : 'No title specified to this course'
-            "
-            width="100%"
-            class="course-image"
-          />
-        </a>
+<div class="card course-card mb-3">
+  <div class="course-image-container">
+    <a [href]="URLS.course(this.course)">
+      <img [src]="this.course.image" [alt]="this.course.title" class="course-image" />
+    </a>
+  </div>
+  <div class="card-body">
+    <h2 class="title">
+      <a [href]="URLS.course(this.course)" [html]="this.course.title"></a>
+      <span *if="this.course.totalSubscriptions > 0" class="ml-2 text-muted badge green d-inline-block"> {{ this.course.totalSubscriptions }} Enrolled </span>
+
+    </h2>
+    <div>
+      <small [html]="this.course.createdBy.name "></small>
+    </div>
+    <div class="row">
+      <div class="col">
+        <gold-icon [coins]="this.course.price" class="course-price"></gold-icon>
       </div>
 
-      <div class="meta ml-3">
-        <h2 class="title">
-          <a
-            [href]="URLS.course(this.course)"
-            [html]="this.course.title"
-          ></a>
-        </h2>
-        <div class="created text-muted">
-          <span *if="!Is.empty(this.course.createdBy)" class="by">
-            By
-            <span [html]="' ' + this.course.createdBy.name + ' '"></span>
-            <!-- <for loop="let name of this.course.createdBy">
-                </for> -->
-          </span>
-          <flk-time-ago
-            class="at"
-            [timestamp]="this.course.createdAt.timestamp"
-          ></flk-time-ago>
-        </div>
+      <div class="col-3">
+        <div class="ml-2 text-muted badge pink d-inline-block"> {{ this.getTotalNumberOfCourseVideos() }} videos </div>
+      </div>
 
-        <markdown
-          *if="this.course.shortDescription"
-          class="description mt-3"
-          [content]="this.course.shortDescription"
-        >
-        </markdown>
+      <div *if="this.course.duration" class="col">
+        <div class="ml-2 mt-1 badge badge-dark d-inline-block">
+          {{ this.course.duration.hours }} hours
+          {{ this.course.duration.minutes }} minutes
+        </div>
       </div>
     </div>
 
-    <section class="col-3 course-additional-data">
-      <gold-icon
-        *if="this.course.price"
-        [coins]="this.course.price"
-        class="course-price"
-      ></gold-icon>
-
-      <p class="ml-2 text-muted"> {{this.getTotalNumberOfCourseVideos()}} videos </p>
-    </section>
   </div>
-</article>
+</div>

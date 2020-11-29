@@ -16,6 +16,16 @@ class TasksService extends Endpoint.Service {
     }
 
     /**
+     * Send testing request
+     * 
+     * @param {number} taskId
+     * @returns {Promise}
+     */
+    requestTesting(taskId) {
+        return this.endpoint.patch(this.path(`/${taskId}/request-testing`));
+    }
+
+    /**
      * Add New COmment
      * 
      * @param {integer} taskId 
@@ -32,8 +42,15 @@ class TasksService extends Endpoint.Service {
      * @param string newStatus
      * @returns Promise 
      */
-    updateTaskStatus(taskId, newStatus) {
-        return this.endpoint.patch(this.path(`/${taskId}/update-status/${newStatus}`));
+    updateTaskStatus(taskId, newStatus, data = {}) {
+        return this.endpoint.patch(this.path(`/${taskId}/update-status/${newStatus}`), data);
+    }
+
+    /**
+     * Get Tasks Filters 
+     */
+    getFilters(data) {
+        return this.endpoint.get(this.path('/filters'), { data });
     }
 
     /**

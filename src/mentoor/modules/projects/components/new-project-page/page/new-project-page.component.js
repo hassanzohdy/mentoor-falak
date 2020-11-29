@@ -38,14 +38,15 @@ class NewProjectPage {
         this.data = {
             name: null,
             about: null,
-            for: null,
+            for: 'business',
             fund: 0,
             startDate: '',
             endDate: '',
             image: null,
-            types: [],
+            types: ['website'],
             supervisors: [],
             membersSize: null,
+            status: 'planning',
             extra: {
                 tasksBoard: true,
                 privacy: false,
@@ -96,7 +97,6 @@ class NewProjectPage {
         if (!this.formHandler.hasErrors()) {
             this.currentStep++;
         } else {
-            echo(this.formHandler.getErrors())
         }
     }
 
@@ -197,6 +197,6 @@ class NewProjectPage {
 
         this.user.update(user);
 
-        this.router.navigateTo('/projects/' + record.id);
+        this.router.navigateTo('/projects/' + record.id + '/members');
     }
 }

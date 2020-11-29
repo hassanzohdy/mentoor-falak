@@ -10,8 +10,8 @@ class ProjectsService extends Endpoint.Service {
         return this.endpoint.post(this.path(`/${projectId}/teams`), data);
     }
 
-    editTeam(projectId, data) {
-        return this.endpoint.put(this.path(`/${projectId}/teams`), data);
+    editTeam(projectId, teamId, data) {
+        return this.endpoint.put(this.path(`/${projectId}/teams/${teamId}`), data);
     }
 
     deleteTeam(projectId, teamType) {
@@ -56,6 +56,10 @@ class ProjectsService extends Endpoint.Service {
 
     dismissMember(projectId, memberId) {
         return this.endpoint.patch(this.path(`/${projectId}/dismiss/${memberId}`));
+    } 
+
+    latestActivities(projectId) {
+        return this.endpoint.get(this.path(`/${projectId}/activities`));
     } 
 }
 

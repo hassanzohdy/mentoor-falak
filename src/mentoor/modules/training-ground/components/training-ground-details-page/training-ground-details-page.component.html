@@ -19,11 +19,11 @@
                     <markdown [content]="this.trainingGround.description"></markdown>
                 </section>
             </div>
-            <div class="col-5">
+            <div class="col-sm-5">
                 <section>
                     <h3 class="bold">Technologies you should use</h3>
-                    <div id="technologies-list">
-                        <div *for="let tag of this.trainingGround.tags" class="technology">
+                    <div id="technologies-list" class="row">
+                        <div *for="let tag of this.trainingGround.tags" class="col-3 m-b-1 technology">
                             <img [src]="tag.image" [alt]="tag.name" />
                             <div [html]="tag.name" class="bold indigo-text"></div>
                         </div>
@@ -40,7 +40,7 @@
                         </markdown>
                     </section>
             </div>
-            <div class="col-3">
+            <div class="col-sm-3">
                 <div class="card">
                     <div class="text-center m-t-1">
                         <div class="pink-text bold">Reward</div>
@@ -92,13 +92,11 @@
     message="PLease paste the Github repository url."></flk-alert>
 
 <flk-modal *if="this.githubNotes" (close)="this.githubNotes = false" header="GITHUB notes">
-    <h3 class="m-y-1">Please consider the following notes when pushing to Github.</h3>
-    <ul>
-        <li>Make sure you organize your files in its proper folder, i.e don't put different types in folder.</li>
-        <li>Always commit the changes you made in the file and write a proper commit message based on your change, i.e
-            DO not use <code class="ml-2">git add .</code> but use <code class="mx-2">git add my-file.html</code>
-            instead.
-        </li>
-        <li>Always write a <strong class="mx-2">Change Log</strong> at the end of the readme.md file to define what updates have you done in the repository.</li>
-    </ul>
+    <markdown>
+### Please consider the following notes when pushing to Github.
+- Make sure you organize your files in its proper folder, i.e don't put different types in folder.
+- Always commit the changes you made in the file and write a proper commit message based on your change, i.e
+- DO not use `git add .` but use `git add my-file.html` instead.
+- Always write a `Change Log` at the end of the readme.md file to define what updates have you done in the repository.
+</markdown>
 </flk-modal>

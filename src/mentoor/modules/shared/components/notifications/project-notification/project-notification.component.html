@@ -1,6 +1,7 @@
 <li class="panel-item" [class]="{unseen: notification.seen === false}">
     <a href="/projects/{{ notification.extra.project.id }}" (click)="this.markAsSeen(notification)">
-        <img [src]="notification.extra.project.image || FAVICON" class="image" />
+        <img [src]="notification.extra.project.image && notification.extra.project.image != 'https://apps.mentoor.io/restful/' ? notification.extra.project.image : FAVICON"
+            class="image" />
         <div class="content">
             <span *if="notification.extra.type == 'dismissed'" class="red-text bold mr-2">[DISMISSED]</span>
             <span *else class="green-text bold mr-2">[NEW]</span>

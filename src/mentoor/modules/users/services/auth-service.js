@@ -13,7 +13,7 @@ class AuthService extends Endpoint.Service {
      * @returns Promise 
      */
     login(form) {
-        return this.endpoint.post(this.path('/login'), form);
+        return this.endpoint.post(this.path('/login') + '/', form);
     }
 
     /**

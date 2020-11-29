@@ -64,6 +64,13 @@ class MeService extends Endpoint.Service {
     }
 
     /**
+     * Mark all notifications as seen
+     */
+    markAllNotificationsAsSeen() {
+        return this.endpoint.patch(this.path('/notifications/all-seen'));
+    }
+
+    /**
      * Remove the given notification
      */
     removeNotification(notificationId) {

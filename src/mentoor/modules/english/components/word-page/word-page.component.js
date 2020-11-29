@@ -80,6 +80,8 @@ class WordPage {
         }
 
         this.word.words = words.toArray();
+
+        this.detectChanges();
     }
 
     validateAsUnique(word) {

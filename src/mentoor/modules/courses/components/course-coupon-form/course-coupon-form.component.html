@@ -1,6 +1,6 @@
 <flk-modal
   (close)="this.event('close')()"
-  [heading]="this.coupon.id ? 'Edit Coupon' + this.coupon.code: 'Add a new coupon'"
+  [heading]="this.coupon.id ? 'Edit Coupon ' + this.coupon.code: 'Add a new coupon'"
   size="small"
   *as="modal"
 >
@@ -28,8 +28,8 @@
       placeholder="e.g: 15"
     ></form-input>
 
-    <input type="hidden" name="startsAt" [value]="this.coupon.startsAt" />
-    <input type="hidden" name="endsAt" [value]="this.coupon.endsAt" />
+    <input type="hidden" name="startsAt" [value]="this.coupon.startsAt.format" />
+    <input type="hidden" name="endsAt" [value]="this.coupon.endsAt.format" />
     <flk-datepicker
       [required]="true"
       class="form-control"
@@ -41,7 +41,7 @@
       required
       label="Coupon Active Duration"
       placeholder="Coupon Active Duration"
-      (select)="this.coupon.startsAt = e[0]; this.coupon.endsAt = e[1]"
+      (select)="this.coupon.startsAt.format = e[0]; this.coupon.endsAt.format = e[1]"
     >
     </flk-datepicker>
 

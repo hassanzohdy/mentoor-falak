@@ -2,27 +2,29 @@
     <form (submit)="this.submit($el)">
         <div class="row">
             <div class="col">
-                <input *if="this.project" type="hidden" name="project" [value]="this.project.id" />
-                <flk-dropdown-list *if="! Is.empty(this.participants)" label="Assignee" [items]="this.participants"
-                    [value]="this.data.participant?.id" required name="participant">
+                <input *if="this.project" type="hidden" none name="project" [value]="this.project.id" />
+                <flk-dropdown-list *if="! Is.empty(this.participants)" label="Assign To" [items]="this.participants"
+                    [value]="this.data.participant?.id" none name="participant">
                 </flk-dropdown-list>
 
-                <flk-dropdown-list *else [remote-search]="true" query="name" [lazy-loading]="true" label="Assignee"
-                    [service]="this.usersService" [value]="this.data.participant?.id" required name="participant">
+
+                <flk-dropdown-list *else [remote-search]="true" none query="name" [lazy-loading]="true" label="Assignee"
+                    [service]="this.usersService" [value]="this.data.participant?.id" name="participant">
                 </flk-dropdown-list>
             </div>
             <div class="col">
-                <flk-dropdown-list *if="! Is.empty(this.supervisors)" label="Supervisors" [items]="this.supervisors"
-                    [value]="this.data.supervisors" required [multiple]="true" name="supervisors[]">
+                <flk-dropdown-list *if="! Is.empty(this.supervisors)" none label="Supervisors"
+                    [items]="this.supervisors" [value]="this.data.supervisors" [multiple]="true" name="supervisors[]">
                 </flk-dropdown-list>
                 <flk-dropdown-list *else [remote-search]="true" query="name" [lazy-loading]="true" label="Supervisors"
-                    [service]="this.usersService" [value]="this.data.supervisors" required [multiple]="true"
+                    [service]="this.usersService" [value]="this.data.supervisors" [multiple]="true"
                     name="supervisors[]">
                 </flk-dropdown-list>
             </div>
 
-            <div *if="this.statuses" class="col">
-                <flk-dropdown-list label="Task Status" [except]="'autoFailed'" [items]="this.statuses"
+            <!-- <flk-dropdown-list label="Task Status" [except]="'autoFailed'" [items]="this.statuses" -->
+            <div *if="! this.data.id" class="col">
+                <flk-dropdown-list label="Task Status" [except]="'autoFailed'" [items]="['notStarted', 'inProgress']"
                     [value]="this.data.status" name="status">
                 </flk-dropdown-list>
             </div>
@@ -34,41 +36,54 @@
                 </flk-dropdown-list>
             </div>
             <div class="col">
-                <flk-dropdown-list name="userStory" label="User Story" [required]="false"
-                    [value]="this.data.userStory?.id" [lazy-loading]="true"
+                <flk-dropdown-list name="component" [none]="true" label="Component" [value]="this.data.component?.id"
+                    [lazy-loading]="true" [request]="this.loadComponents.bind(this)">
+                </flk-dropdown-list>
+            </div>
+        </div>
+        <div class="row m-b-1">
+            <div class="col">
+                <flk-dropdown-list name="userStory" label="User Story" [value]="this.data.userStory?.id"
+                    [lazy-loading]="true"
                     [request]="loadUserStories.bind(this, 'withNoTaskAttached', Object.get(this.data, 'userStory.id'))">
                 </flk-dropdown-list>
             </div>
-
             <div class="col">
-                <flk-dropdown-list name="priority" [required]="true" label="Task priority" required [items]="this.taskLevels"></flk-dropdown-list>
+                <flk-dropdown-list none name="priority" label="Task priority" [value]="this.data.priority"
+                    [items]="this.taskLevels"></flk-dropdown-list>
             </div>
         </div>
-        <form-input type="text" class="form-control" required label="title" name="title" [value]="this.data.title">
+        <form-input type="text" class="form-control" label="Title" required name="title" [value]="this.data.title">
         </form-input>
-        <markdown-input name="description" [value]="this.data.description" placeholder="Description" label="Description"></markdown-input>
-            
-        <div class="row">
+        <markdown-input name="description" [value]="this.data.description" placeholder="Description"
+            label="Description"></markdown-input>
+
+        <!-- <div class="row">
             <div class="col-6">
-                <form-input type="number" class="form-control" required label="reward" name="reward"
+                <form-input type="number" class="form-control" label="reward" name="reward"
                     [value]="this.data.reward">
                 </form-input>
             </div>
             <div class="col-6">
-                <form-input type="number" class="form-control" required label="penaltyRatio" name="penaltyRatio"
+                <form-input type="number" class="form-control" label="penaltyRatio" name="penaltyRatio"
                     [value]="this.data.penaltyRatio"></form-input>
             </div>
-        </div>
+        </div> -->
         <div class="row m-t-1">
-            <div class="col-sm-6">
+            <div class="col">
                 <input type="hidden" name="startsAt" [value]="this.data.startsAt" />
                 <input type="hidden" name="endsAt" [value]="this.data.endsAt" />
-                <flk-datepicker [required]="true" class="form-control" mode="range" [date-time]="true"
-                    [min-date]="this.data.startsAt" [max-date]="this.data.endsAt" required label="Start date"
-                    placeholder="Task Due Date" (select)="this.data.startsAt = e[0]; this.data.endsAt = e[1];">
+                <flk-datepicker class="form-control" mode="range" [date-time]="true" [min-date]="this.data.startsAt"
+                    [max-date]="this.data.endsAt" label="Task Due Date" placeholder="Task Due Date"
+                    (select)="this.data.startsAt = e[0]; this.data.endsAt = e[1];">
                 </flk-datepicker>
             </div>
-            <div class="col-sm-6">
+            <div class="col">
+                <form-input type="text" placeholder="HH:MM" class="form-control" label="Task Duration" name="duration"
+                    [value]="this.data.duration">
+                </form-input>
+            </div>
+            <div class="col">
                 <flk-dropdown-list *if="! this.project" label="Parent Task (Search By Id only)"
                     [value]="this.data.parent?.id" name="parent" heading="Parent Task" [lazy-loading]="true"
                     [remote-search]="true" [except]="this.data.id" [service]="this.tasksService" query="id">
@@ -83,6 +98,11 @@
         </div>
 
         <record-audio-input [data]="this.data" *as="recordAudio"></record-audio-input>
+
+        <flk-file-input name="attachments[]" multiple class="btn btn-cyan bold" label="Attachments">
+            <fa icon="cloud-upload-alt"></fa>
+            <strong class="ml-1">Add Attachments</strong>
+        </flk-file-input>
         <button class="btn btn-success bold" [disabled]="this.isSending">Save</button>
     </form>
 </flk-modal>

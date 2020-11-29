@@ -150,6 +150,11 @@ class CRUD {
         } else {
             await this.service.create(form);
         }
+
+        if (this.modal) {
+            this.modal.close();
+        }
+
         this.init();
     }
 

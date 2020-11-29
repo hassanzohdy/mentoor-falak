@@ -52,7 +52,6 @@ class EinsteinCategoryCard {
             this.user.update(response.user);
             this.isPurchasing = false;
         } catch (response) {
-            echo(response);
         }
     }
 }

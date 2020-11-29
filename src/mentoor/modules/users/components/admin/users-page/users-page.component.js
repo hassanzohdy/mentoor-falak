@@ -11,7 +11,7 @@ class UsersPage extends CRUD {
         this.name = 'users';
         this.title = trans('users-page');
         this.crudOptions = {
-            columns: ['ID', 'Name', 'Gold', 'Total answers', 'Email', 'Account type', 'Control'],
+            columns: ['ID', 'Name', 'Gold', 'Created', 'Email', 'Account type', 'Control'],
             heading: 'User'
         };
         this.tableHeading = "Users";
@@ -24,10 +24,13 @@ class UsersPage extends CRUD {
     }
 
     openAsUser(user) {
-        let accessToken = user.accessToken;
-        this.user.update(user);
-        this.user.refreshAccessToken(accessToken);
-        this.router.navigateTo('/');
+        this.service.requestAccessTokenFor(user.id).then(response => {
+            user.accessToken = response.accessToken;
+            let accessToken = user.accessToken;
+            this.user.update(user);
+            this.user.refreshAccessToken(accessToken);
+            this.router.navigateTo('/');    
+        });
     }
 
     /**

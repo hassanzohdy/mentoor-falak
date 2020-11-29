@@ -3,14 +3,16 @@ class ProjectBugDetailsPage extends Project {
     * Constructor
     * Put your required dependencies in the constructor parameters list  
     */
-    constructor(projectBugsService) {
+    constructor(projectBugsService, meta) {
         super(projectBugsService);
+        this.meta = meta;
         this.name = 'project-bug-details';
         this.prependName = 'Bugs Details';
     }
 
     init() {
         this.isChangeable = true;
+   
         this.query = {
             bug: this.router.params.bugId,
         };
@@ -24,6 +26,16 @@ class ProjectBugDetailsPage extends Project {
 
     onProjectLoad() {
         this.prepareBug(this.project.bug);
+
+        this.meta.setTitle('[Bug] ' + this.project.bug.title + ' | ' + this.project.name);
+
+        if (this.project.bug.description) {
+            this.meta.setDescription(this.project.bug.description);
+        }
+
+        if (! Is.empty(this.project.bug.attachments) && isImage(this.project.bug.attachments[0])) {
+            this.meta.setImage(this.project.bug.attachments[0]);
+        }
     }
 
     prepareBug(bug) {
@@ -88,17 +100,17 @@ class ProjectBugDetailsPage extends Project {
 
     bugStatusCanBeChanged() {
         if (! this.isChangeable) return false;
-
+        
         if (this.isSuperiorUser) return true;
-
+        
         if (! this.bug.isAssignee && ! this.bug.isTester) return false;
-
+        
         if (this.bug.isAssignee && ['active', 'reopened', 'deferred', 'inProgress'].includes(this.bug.status)) return true;
-
+        
         if ((this.bug.isTester) && ['duplicated', 'rejected', 'notBug', 'retesting', 'fixed'].includes(this.bug.status)) return true;
-
+        
         if (['verified', 'closed'].includes(this.bug.status)) return true;
-
+        
         return false;
     }
 

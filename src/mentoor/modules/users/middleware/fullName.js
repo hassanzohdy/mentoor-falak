@@ -19,10 +19,10 @@ class FullNameMiddleware {
      * {@inheritDoc}
      */
     handle() {
-        if (this.user.isLoggedIn() && this.isImagePlaceholder(this.user.image) && this.router.route() != '/me') {
-            window.requireImageChange = true;
-            return this.router.navigateTo('/me');
-        }
+        // if (this.user.isLoggedIn() && this.isImagePlaceholder(this.user.image) && this.router.route() != '/me') {
+        //     window.requireImageChange = true;
+        //     return this.router.navigateTo('/me');
+        // }
         //
         return Middleware.NEXT;
     }

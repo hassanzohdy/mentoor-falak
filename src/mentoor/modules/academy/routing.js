@@ -2,7 +2,6 @@
 DI.resolve('events').subscribe('router.collecting', router => {
     router.group({
         prefix: '/academy',
-        middleware: MIDDLEWARE_LIST.loggedIn
     }, routerGroup => {
         routerGroup.add('/', TracksListPage);
         routerGroup.add('/{track}', TrackDetailsPage);

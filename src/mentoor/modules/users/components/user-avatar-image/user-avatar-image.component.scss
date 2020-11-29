@@ -1,0 +1,26 @@
+.avatar-wrapper {
+    display: inline-block;
+
+    &.small {
+        .user-avatar-name {
+            $smallSize: 30px;
+            width: $smallSize;
+            height: $smallSize;
+            line-height: $smallSize;
+        }
+    }
+
+    .user-avatar-name {
+        $size: 40px;
+        width: $size;
+        height: $size;
+        line-height: $size;
+        display: inline-block;
+        border-radius: 50%;
+        color: #FFF;
+        font-weight: bold;
+        background-color: #333;
+        text-align: center;
+        margin-right: 0.4rem;
+    }
+}

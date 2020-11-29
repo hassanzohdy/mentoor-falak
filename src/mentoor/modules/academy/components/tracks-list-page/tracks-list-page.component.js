@@ -3,10 +3,11 @@ class TracksListPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(tracksService, cache) {
+    constructor(db, shareable, tracksService) {
         this.name = 'tracks';
         this.title = 'Academy';
-        this.cache = cache;
+        this.db = db;
+        this.shareable = shareable;
         this.tracksService = tracksService;
     }
 
@@ -24,15 +25,21 @@ class TracksListPage {
         //     this.shareTracks();
         // }
 
-        let {records: tracks} = await this.tracksService.list();
+        
+        this.db.get('tracks', e => {
+            return this.tracksService.list();
+        }, this.db.recache).then(response => {
+            let {records: tracks} = response;
+    
+            this.tracks = collect(tracks).sortBy('sortOrder').toArray();
+    
+            // this.cache.set('tracks', this.tracks);
+    
+            this.shareTracks();
+    
+            this.isLoading = false;
+        });
 
-        this.tracks = collect(tracks).sortBy('sortOrder').toArray();
-
-        // this.cache.set('tracks', this.tracks);
-
-        this.shareTracks();
-
-        this.isLoading = false;
     }
 
     /**
@@ -40,7 +47,8 @@ class TracksListPage {
      */
     shareTracks() {
         for (let track of this.tracks) {
-            // this.cache.set('track-' + track.id, track);
+            this.db.set('track-' + track.slug, track);
+            this.shareable.share('track-' + track.slug, track);
         }
     }
 

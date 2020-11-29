@@ -1,0 +1,25 @@
+<li class="panel-item" 
+    (click)="this.inputs.parent.markAsSeen(this.notification)"
+    [class]="{unseen: this.notification.seen === false}">
+    <a [href]="URLS.course(this.course, '?coupon=' + this.coupon.code)" (click)="this.inputs.parent.markAsSeen(this.notification)">
+        <img *if="this.course.image" [src]="this.course.image" class="image" />
+
+        <div class="content">
+            Congratulations! you just got a coupon discount 
+            <span class="green-text bold mx-2" [html]="this.coupon.discount + '%'"></span>
+            For 
+            <span class="orange-text bold ml-2" [html]="this.course.title"></span>
+        </div>        
+    </a>
+    <div class="buttons">
+        <a [href]="URLS.course(this.course, '?coupon=' + this.coupon.code)" class="btn btn-outline-default waves-effect">Open</a>
+        <button (click)="copyToClipboard(this.coupon.code); this.success = true" class="btn btn-outline-primary waves-effect">Copy Coupon</button>
+    </div>
+    <button class="remove-btn" tooltip title="Remove Notification" (click)="this.inputs.parent.removeNotification(this.notification, this.index)">
+        <fa icon="times"></fa>
+    </button>    
+</li>
+
+<flk-message *if="this.success" (close)="this.success = null">
+    Coupon Code has been copied successfully.
+</flk-message>

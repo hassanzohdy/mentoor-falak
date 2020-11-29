@@ -1,4 +1,5 @@
 class CoursesService extends Endpoint.Service {
+  // @macro(increaseViews)
   /**
    * {@inheritDoc}
    */
@@ -10,6 +11,10 @@ class CoursesService extends Endpoint.Service {
     return this.endpoint.post(this.path("/" + courseID + "/subscribe"), {
       couponId
     });
+  }
+
+  orderSections(id, sectionsWithOrder) {
+    return this.endpoint.post(this.path(`/${id}/reorder-sections`), {sections: sectionsWithOrder});
   }
 }
 

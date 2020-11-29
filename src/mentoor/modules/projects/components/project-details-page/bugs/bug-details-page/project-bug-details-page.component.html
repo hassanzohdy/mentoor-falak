@@ -1,40 +1,45 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
-    <div class="text-right m-b-1">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <div class="text-right m-b-1 float-right">
         <a [href]="URLS.project(this.project, 'bugs')" class="btn bold btn-purple">
             <fa icon="arrow-left mr-2"></fa>
             Back to
             <span class="mx-2">
                 <img [src]="assets('images/bug.jpg')" style="width: 20px; height: 30px; border-radius: 50%;" />
-                <span class="bold red-text">s</span>
+                <!-- <span class="bold red-text">s</span> -->
             </span>
             List
         </a>
     </div>
+    <h1 *if="this.bug" [html]="'#' + this.bug.id + ' ' + this.bug.title" class="title m-b-0"></h1>
+    <div class="clearfix"></div>
+
     <div *if="this.bug" class="bug row">
         <div class="col col-sm-9 order-12 order-sm-1">
             <!-- <h1 [html]="this.bug.title + ' #' + this.bug.id"></h1> -->
-            <h1 [html]="'#' + this.bug.id + ' ' + this.bug.title" class="title"></h1>
-            <img [src]="this.bug.createdBy.image" [alt]="this.bug.createdBy.name" class="user-image" />
-            <div class="d-inline-block">
-                <div [html]="this.bug.createdBy.name"></div>
-                <div>
-                    <flk-time-ago class="ago" [timestamp]="this.bug.createdAt.timestamp"></flk-time-ago>
+            <div class="m-b-1">
+                <user-avatar-image position="top" [user]="this.bug.createdBy"></user-avatar-image>
+                <div class="d-inline-block">
+                    <div [html]="this.bug.createdBy.name"></div>
+                    <div>
+                        <flk-time-ago class="ago" [timestamp]="this.bug.createdAt.timestamp"></flk-time-ago>
+                    </div>
                 </div>
+                <div *if="this.bugCanBeEdited" class="d-inline-block v-top">
+                    <button type="button" (click)="this.editBug = true"
+                        class="btn btn-sm btn-success bold">Edit</button>
+                </div>            
             </div>
-
-            <div class="simple-card p-1 m-y-1">
+            <div *if="this.bug.description" class="simple-card p-1 m-y-1">
                 <div class="result-heading">Description</div>
                 <markdown [content]="this.bug.description"></markdown>
                 <flk-audio-player *if="this.bug.record" [src]="this.bug.record"></flk-audio-player>
             </div>
-
             <div *if="this.bug.stepsToReproduce" class="simple-card p-1 m-b-1">
                 <div class="result-heading">Steps To Reproduce</div>
                 <ol class="steps-list">
                     <li *for="let step of this.bug.stepsToReproduce.split('\n')" [html]="step"></li>
                 </ol>
             </div>
-
             <div *if="this.bug.expectedBehavior" class="simple-card p-1 m-b-1">
                 <div class="result-heading">Expected Result</div>
                 <markdown [content]="this.bug.expectedBehavior"></markdown>
@@ -71,7 +76,7 @@
                 </thead>
                 <tbody>
                     <tr *for="let status of this.bug.statuses">
-                        <td [html]="status.status.capitalize()"></td>
+                        <td [trans]="status.status"></td>
                         <td [html]="status.createdBy.name"></td>
                         <td>
                             <flk-time-ago [timestamp]="status.createdAt.timestamp"></flk-time-ago>
@@ -89,19 +94,17 @@
                     </tr>
                 </tbody>
             </table>
+
+            <activities-list type="bug" [type-id]="this.bug.id"></activities-list>
         </div>
 
         <div class="col col-sm-3 order-1">
             <div class="simple-card">
-                <h2 class="text-center">Bug Information</h2>
-                <div *if="this.bugCanBeEdited" class="text-center">
-                    <button type="button" (click)="this.editBug = true" class="btn btn-sm btn-success bold">Edit</button>
-                </div>
                 <table class="table m-t-2">
                     <tbody>
                         <tr>
                             <td>Status</td>
-                            <th class="bold status {{ this.bug.status }}" [html]="this.bug.status"></th>
+                            <th class="bold status {{ this.bug.status }}" [trans]="this.bug.status"></th>
                         </tr>
                         <tr *if="this.bug.priority">
                             <td>Priority</td>
@@ -130,10 +133,11 @@
                         <tr *if="this.bug.testingUrl">
                             <th>Testing Url</th>
                             <td>
-                                <a class="btn btn-sm bold btn-orange" [href]="this.bug.testingUrl" target="_blank">Open Link</a>
+                                <a class="btn btn-sm bold btn-orange" [href]="this.bug.testingUrl" target="_blank">Open
+                                    Link</a>
                             </td>
                         </tr>
-                        <tr *if="this.bug.sprint">
+                        <tr *if="this.bug.sprint?.id">
                             <td>Sprint</td>
                             <th>
                                 <a [href]="URLS.project(this.project, 'sprints', this.bug.sprint)" class="bold"
@@ -147,7 +151,7 @@
                                     [html]="this.bug.testCase.title"></a>
                             </th>
                         </tr>
-                        <tr *if="this.bug.module">
+                        <tr *if="this.bug.module?.id">
                             <td>Module</td>
                             <th>
                                 <!-- <a href="#" class="bold" -->
@@ -161,22 +165,19 @@
             <div *if="! Is.empty(this.bug.assignee)" class="simple-card mt-2">
                 <h2 class="text-center">Assigned To</h2>
                 <div *for="let member of this.bug.assignee" class="m-t-1">
-                    <img [src]="member.image" [alt]="member.name" width="60px" height="60px" class="rounded-circle" />
+                    <user-avatar-image [user]="member" />
                     <strong class="ml-3 teal-text" [html]="member.name"></strong>
                 </div>
             </div>
 
             <div *if="this.bugStatusCanBeChanged()" class="simple-card mt-2">
                 <h2 class="text-center m-b-1">Bug Status</h2>
-                <div 
+                <!-- <div 
                     *if="this.bug.status == 'fixed' && this.project.currentSprint?.id && this.bug.sprint?.id && this.bug.sprint?.id == this.project.currentSprint?.id" 
                     class="red-text text-center bold">
                     Can not retest bug in same project sprint.
-                </div>
-                <flk-dropdown-list 
-                    *else 
-                    [value]="this.bug.status" 
-                    heading="Change Bug Status"
+                </div> -->
+                <flk-dropdown-list [value]="this.bug.status" heading="Change Bug Status"
                     [items]="this.getProperStatuses()"
                     (select)="this.oldStatus = this.bug.status; this.confirmStatusChange = e.value != this.bug.status; this.newStatus = e.value">
                 </flk-dropdown-list>
@@ -190,11 +191,5 @@
     [required]="this.isRequiringValue()" (close)="this.confirmStatusChange = null;" (confirm)="this.updateStatus(e)">
 </flk-alert>
 
-
-<bug-modal
-    *if="this.editBug"
-    [record]="this.bug"
-    [project]="this.project"
-    (close)="this.editBug = null;"
-    (save)="this.prepareBug(e)"
-></bug-modal>
+<bug-modal *if="this.editBug" [record]="this.bug" [project]="this.project" (close)="this.editBug = null;"
+    (save)="this.prepareBug(e)"></bug-modal>

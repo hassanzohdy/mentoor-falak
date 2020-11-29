@@ -4,17 +4,22 @@
     table {
         margin-top: 2rem;
 
+        .meta-column {
+            width: 40%;
+        }
+
         .room-row {
             .image {
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
-                vertical-align: text-bottom;
+                vertical-align: top;
             }
 
             .meta {
                 display: inline-block;
                 margin-left: 1rem;
+                width: calc(100% - 60px);
 
                 .name {
                     font-weight: bold;

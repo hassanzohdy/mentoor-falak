@@ -39,15 +39,11 @@ class NewChallengePage {
     }
 
     createChallenge(form) {
-
         this.isSending = true;
-        echo(this.challenges);
         this.challenges.create(form).then(res => {
             this.isSending = false;
-            echo(res)
             this.router.navigateTo(URLS.arena(res.record.id));
         }).catch(err => {
-            echo(err);
             this.error = err;
         });
     }

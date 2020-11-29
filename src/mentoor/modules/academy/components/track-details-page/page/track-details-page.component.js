@@ -3,11 +3,12 @@ class TrackDetailsPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(meta, router, tracksService, user, cache) {
+    constructor(meta, router, tracksService, user, db, shareable) {
+        this.db = db;
         this.meta = meta;
         this.user = user;
         this.router = router;
-        this.cache = cache;
+        this.shareable = shareable;
         this.tracksService = tracksService;
 
         this.name = 'track';
@@ -31,15 +32,16 @@ class TrackDetailsPage {
         this.track = {};
         let trackSlug = this.router.params.track;
 
-        if (this.cache.has('track-' + trackSlug)) {
-            // this.setTrack(this.cache.get('track-' + trackSlug));
+        if (this.shareable.isSharing('track-' + trackSlug)) {
+            this.setTrack(this.shareable.getShared('track-' + trackSlug));
+        } else {
+            this.db.get(`track-${trackSlug}`, e => {
+                return this.tracksService.getTrack(trackSlug);
+            }, this.db.recache).then(response => {
+                this.isSubscribing = false;
+                this.setTrack(response.record || response);
+            });
         }
-
-        this.isSubscribing = false;
-        this.tracksService.getTrack(trackSlug).then(response => {
-            this.setTrack(response.record);
-            // this.cache.set('track-' + trackSlug, response.record);
-        });
     }
 
     /**
@@ -96,6 +98,13 @@ class TrackDetailsPage {
         this.totalAnsweredTopics = totalAnsweredTopics;
 
         this.userCanSuggestNewTopics = this.totalAnsweredTopics >= this.track.suggestTopic.requires;
+
+        this.recache();
+    }
+
+    recache() {
+        this.shareable.share(`track-${this.track.slug}`, this.track);
+        this.db.set(`track-${this.track.slug}`, this.track);
     }
 
     /**

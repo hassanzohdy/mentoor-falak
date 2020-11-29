@@ -34,7 +34,6 @@ class FlkTimer {
     toDate(date) {
         // let formatElements = date.split(/-|\s|\:|_/g);
 
-        echo(date.replaceAll('-', '/'))
         return new Date(date.replaceAll('-', '/'))
     }
 

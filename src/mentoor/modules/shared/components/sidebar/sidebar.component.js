@@ -3,9 +3,10 @@ class Sidebar {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(user, router) {
+    constructor(user, router, shareable) {
         this.user = user;
         this.router = router;
+        this.shareable = shareable;
         this.toggleMenu = false;
     }
 
@@ -17,6 +18,8 @@ class Sidebar {
 
     toggle() {
         this.toggleMenu = !this.toggleMenu;
+
+        this.shareable.share('sidebarToggled', this.toggleMenu);
         
         $(this.element).fadeToggle();
     }

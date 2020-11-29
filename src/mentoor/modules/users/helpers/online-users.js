@@ -30,6 +30,10 @@ function onlineUser(user) {
         }
     });
 
+    // let socket = {
+    //     emit: () => {},
+    // };
+
     window.socket = socket;
 
     window.userSocket = new UserSocket(user, socket);

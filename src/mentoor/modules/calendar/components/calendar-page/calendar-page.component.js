@@ -36,8 +36,8 @@ class CalendarPage {
         this.newStatus = null;
         this.currentScheduleItem = null;
         this.isLoading = true;
-        let { records } = await this.calendarService.list();
-        this.originalCalendar = records;
+        // let { records } = await this.calendarService.list();
+        // this.originalCalendar = records;
 
         this.distributeCalendarSchedule();
 
@@ -60,7 +60,8 @@ class CalendarPage {
     }
 
     distributeCalendarSchedule() {
-        this.calendar = this.originalCalendar.filter(schedule => this.statusList[schedule.status] === true).map(schedule => {
+        // this.calendar = this.originalCalendar.filter(schedule => this.statusList[schedule.status] === true).map(schedule => {
+        this.calendar = this.originalCalendar.map(schedule => {
             schedule.date = moment(schedule.deadline, 'DD-MM-YYYY HH:II');
             schedule.viewDetails = false;
             return schedule;

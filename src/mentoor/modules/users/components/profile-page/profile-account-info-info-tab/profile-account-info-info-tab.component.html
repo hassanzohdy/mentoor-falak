@@ -5,7 +5,7 @@
                 <th>Account id</th>
                 <td [html]="this.user.id"></td>
             </tr>
-            <tr (mouseover)="this.editMode = 'email'" (mouseout)="this.editMode = null">
+            <tr (mouseover)="this.editMode = 'email';" (mouseout)="this.editMode = null">
                 <th>Email address</th>
                 <td>
                     <span *if="this.inEditMode != 'email'" [html]="this.user.email"></span>
@@ -29,7 +29,7 @@
                 </td>
             </tr>
 
-            <tr (mouseover)="this.editMode = 'username'" (mouseout)="this.editMode = null">
+            <tr (mouseover)="this.editMode = 'username';" (mouseout)="this.editMode = null">
                 <th>Username</th>
                 <td>
                     <span *if="this.inEditMode != 'username'" [html]="this.user.username || 'N/a'"></span>
@@ -52,13 +52,13 @@
                                 <div class="bold">Username creation criteria</div>
                                 <small>
                                     Must starts with English letter (lowercase).
-                                    <br>
+                                    <br />
                                     Can contain only English letters, Numbers, dot or underscore.
-                                    <br>
+                                    <br />
                                     No more than one dot or underscore can be written after each other.
-                                    <br>
+                                    <br />
                                     No whitespaces allowed.
-                                    <br>
+                                    <br />
                                 </small>
                             </div>
                         </div>

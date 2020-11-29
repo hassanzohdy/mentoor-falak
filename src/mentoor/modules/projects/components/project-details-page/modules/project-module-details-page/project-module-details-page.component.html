@@ -2,28 +2,34 @@
     <h1 class="bold" [html]="this.module.name + ' Module'"></h1>
     <!-- API -->
     <flk-tabs>
+        <flk-tab heading="Description">
+            <markdown [content]="this.module.description"></markdown>
+        </flk-tab>
         <flk-tab heading="API">
             <if condition="! this.isEditingApi">
                 <button (click)="this.isEditingApi = true" class="btn-action float-right">
                     <fa icon="edit"></fa>
                     Edit
                 </button>
-                <json-api-preview [json]="this.module.apiJson"></json-api-preview>
+                <div *if="this.module.apiJson" class="m-t-3">
+                    <json-api-preview  [json]="this.module.apiJson"></json-api-preview>
+                </div>
             </if>
             <else>
-                <form *as="apiForm" (submit)="this.updateModuleApi($el)">
+                <form *as="apiForm" (submit)="this.updateModuleApi()">
                     <div class="row m-0 p-1">
                         <div class="col col-sm-6 p-l-0">
-                            <form-input type="textarea" rows="10" name="api" class="form-control" (input)="this.validateApiJsonFormat($el.value)" [value]="this.module.api"></form-input>
+                            <form-input type="textarea" rows="10" name="api" class="form-control" (input)="this.validateApiJsonFormat($el.value)" [value]="this.moduleApi"></form-input>
                             <div *if="this.apiFormatError" class="bold m-y-1 red-text" [html]="this.apiFormatError"></div>        
                         </div>
+                        
                         <div class="col col-sm-6 p-r-0">
                             <json-api-preview *if="this.module.apiJson" [json]="this.module.apiJson"></json-api-preview>
                         </div>
                     </div>
 
                     <button class="btn btn-danger bold" type="button" (click)="this.isEditingApi = false">Cancel</button>
-                    <button class="btn btn-info bold" [disabled]="this.apiFormatError">Save</button>
+                    <button class="btn btn-info bold" [disabled]="! Is.empty(this.apiFormatError)">Save</button>
                 </form>
             </else>
         </flk-tab>

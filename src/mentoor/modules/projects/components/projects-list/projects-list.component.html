@@ -2,70 +2,110 @@
 <else>
     <h3 *if="Is.empty(this.projects)" class="pink-text bold text-center">No Projects Yet</h3>
     <else>
+        <h3 class="text-center m-y-2">
+            <span>Projects List</span>
+            <span class="ml-2 mt-2" [html]="'(' + this.projectsList.length + ')'"></span>
+        </h3>
         <div class="projects-list">
-
-            <div *for="let project of this.projects" class="row simple-card m-b-2 project">
-                <div class="col-sm-2 text-center">
-                    <img [src]="project.image || FAVICON" class="project-image" [alt]="project.name" />
+            <div class="row m-b-1">
+                <div class="col col-sm-3">
+                    <form-input type="text" placeholder="Search For Project" class="d-block form-control" autofocus
+                        (keyup)="this.filter($el.value)" />
                 </div>
-                <div class="col-sm-6 metadata">
-                    <h3 [html]="project.name" class="name"></h3>
-
-                    <p class="short-description">
-                        <markdown [content]="project.about.readMoreChars(100)"></markdown>
-                    </p>
-
-                    <div *if="! Is.empty(project.tags)">
-                        <h6 class="bold m-t-2 m-b-1">Technologies and Techniques used in this project</h6>
-                        <div *for="let tags of Array.chunk(project.tags.slice(0, 6), 4)" class="tags-list m-t-2 text-justify">
-                            <span *for="let tag of tags" class="tag mr-2">
-                                <img [src]="tag.image" [alt]="tag.name" />
-                                <span [html]="tag.name" class="name"></span>
-                            </span>
-                        </div>
-
-                        <small *if="project.tags.length > 6">
-                            And {{ project.tags.length - 6 }} more...
-                        </small>
-
-                    </div>
-
-                    <a [href]="URLS.project(project, '')" class="btn btn-gray bold m-t-2">VIEW DETAILS</a>
+                <div class="col col-sm-3">
+                    <flk-dropdown-list placeholder="Technology" [items]="this.tags" imageable none
+                        (select)="this.filter(e.value, 'tag')"></flk-dropdown-list>
                 </div>
-                <div class="col summary">
-                    <div class="gray-text bold m-b-1">
-                        <span tooltip title="Project Members">
-                            <fa icon="users mr-2"></fa>
-                            <span>{{ project.members.length }}/{{ project.maxMembers }}</span>
-                        </span>
-                    </div>
-                    <div class="gray-text bold m-b-1">
-                        <span tooltip title="Project Teams">
-                            <fa icon="people-carry mr-2"></fa>
-                            <span>{{ project.teams.length }}/{{ project.maxTeams }}</span>
-                        </span>
-                    </div>
-                    <div class="gray-text bold m-b-1">
-                        <span tooltip title="Recruiting">
-                            <fa icon="briefcase mr-2"></fa>
-                            <fa *if="project.settings.openRecruitment" icon="check green-text mr-2"></fa>
-                            <fa *if="! project.settings.openRecruitment" icon="times red-text mr-2"></fa>
-                        </span>
-                    </div>
-                    <div class="gray-text bold m-b-1">
-                        <span tooltip title="Project Status">
-                            <fa icon="chart-line mr-2"></fa>
-                            <span class="text-capitalize" [html]="project.status"></span>
-                        </span>
-                    </div>
-                    <div class="gray-text bold m-b-1">
-                        <span tooltip title="Project Fund">
-                            <fa icon="coins mr-2"></fa>
-                            <span>{{ project.fund.format() }}</span>
-                        </span>
-                    </div>
+                <div class="col col-sm-3">
+                    <flk-dropdown-list none placeholder="Project Status" [items]="this.statuses"
+                        (select)="this.filter(e.value, 'status')"></flk-dropdown-list>
+                </div>
+                <div class="col col-sm-3">
+                    <flk-dropdown-list placeholder="Member" [items]="this.members" imageable none
+                        (select)="this.filter(e.value, 'member')"></flk-dropdown-list>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-6 col-sm-4 col-md-3" *for="let project of this.projectsList" *key="project.id">
+                    <div class="simple-card m-b-2 project text-center">
+                        <a [href]="URLS.project(project, '')" class="project-image">
+                            <img [src]="project.image || FAVICON" [alt]="project.name" />
+                        </a>
+                        <div class="metadata">
+                            <!-- <p *if="project.about" class="short-description">
+                                <markdown [content]="project.about.readMoreChars(100)"></markdown>
+                            </p> -->
+
+                            <div class="tags-list">
+                                <span *for="let tag of (project.tags || []).slice(0, 5)" tooltip [title]="tag.name"
+                                    class="tag mr-2">
+                                    <img [src]="tag.image" [alt]="tag.name" />
+                                    <!-- <span [html]="tag.name" class="name"></span> -->
+                                </span>
+                            </div>
+                            <div class="m-t-1 text-capitalize" [trans]="project.status"></div>
+                        </div>
+
+                        <div *if="project.deadline" class="mb-1 project-bar">
+                            <fa icon="skull red-text" tooltip title="Deadline" />
+                            <div class="progress-wrapper">
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" tooltip
+                                        [title]="'Project Deadline: ' + project.deadline.remainingDays + 'd (' + project.deadline.takenTimePercentage + '%)'"
+                                        [style]="{width: (project.deadline.takenTimePercentage >= 100 ? 100 : project.deadline.takenTimePercentage) + '%' }">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *if="Object.get(project, 'total.completion.tasks.total') > 0" class="project-bar">
+                            <fa icon="tasks green-text" tooltip title="Tasks Completion" />
+                            <div class="progress-wrapper">
+                                <div class="progress" tooltip
+                                    [title]="'Tasks Completion: ' + project.total.completion.tasks.completePercentage + '% (' + project.total.completion.tasks.completed + '/' + project.total.completion.tasks.total + ')'">
+                                    <div class="progress-bar"
+                                        [style]="{width: project.total.completion.tasks.completePercentage + '%' }"
+                                        [class]="{'bg-success': project.total.completion.tasks.completePercentage === 100, 'bg-info': project.total.completion.tasks.completePercentage < 100}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a [href]="URLS.project(project, '')" class="btn btn-gray bold m-t-2" [html]="project.name"></a>
+                        <a *if="project.projectUrl" target="_blank" [href]="project.projectUrl"
+                            class="btn btn-gray bold m-t-2" tooltip title="Project Website">
+                            <fa icon="globe" />
+                        </a>
+                    </div>
+                    <!-- <div class="col summary">
+                            <div class="gray-text bold m-b-1">
+                                <span tooltip title="Project Members">
+                                    <fa icon="users mr-2"></fa>
+                                    <span>{{ project.members.length }}/{{ project.maxMembers }}</span>
+                                </span>
+                            </div>
+                            <div class="gray-text bold m-b-1">
+                                <span tooltip title="Project Teams">
+                                    <fa icon="people-carry mr-2"></fa>
+                                    <span>{{ project.teams.length }}/{{ project.maxTeams }}</span>
+                                </span>
+                            </div>
+                            <div class="gray-text bold m-b-1">
+                                <span tooltip title="Recruiting">
+                                    <fa icon="briefcase mr-2"></fa>
+                                    <fa *if="project.settings.openRecruitment" icon="check green-text mr-2"></fa>
+                                    <fa *if="! project.settings.openRecruitment" icon="times red-text mr-2"></fa>
+                                </span>
+                            </div>
+                            <div class="gray-text bold m-b-1">
+                                <span tooltip title="Project Status">
+                                    <fa icon="chart-line mr-2"></fa>
+                                    <span class="text-capitalize" [html]="project.status"></span>
+                                </span>
+                            </div>
+                        </div> -->
+                </div>
+            </div>
+        </div>
         </div>
     </else>
 </else>

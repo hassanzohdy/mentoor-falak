@@ -1,0 +1,713 @@
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+html.dark {
+    $darkColor: #222;
+    // $darkColor: #242526;
+    $projectSidebarColor: #151b26;
+
+    body {
+        background: $darkColor;
+        color: #FFF;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .bg-dark {
+        background-color: $darkColor !important;
+    }
+
+    .lime-text {
+        color: #11dbdb !important;
+    }
+
+    // sidebar 
+    #sidebar-content {
+        background: $darkColor;
+        color: #FFF;
+
+        a {
+            color: #FFF;
+        }
+    }
+
+    .card,
+    .simple-card,
+    .posts-list .post {
+        box-shadow: 0 1px 6px #111;
+        background: $darkColor;
+        color: #FFF;
+    }
+
+    // notifications 
+    .panel-wrapper .panel-item a:hover {
+        color: #948d8d;
+    }
+
+    .panel-wrapper .panel-item.unseen {
+        background: #242526;
+        color: #eee;
+    }
+
+    #notifications-list .footer {
+        border: none;
+    }
+
+    .panel-wrapper {
+        box-shadow: 0px 0px 2px 1px #111;
+        border: none;
+    }
+
+    .panel-wrapper .panel-item {
+        border-bottom-color: #312e2e;
+    }
+
+    .table thead th {
+        background: #212121;
+        color: #FFF;
+        border-color: #111;
+    }
+
+    .table th,
+    .table td,
+    table td {
+        border-color: #111;
+    }
+
+    .panel-wrapper,
+    .admin-table,
+    .table {
+        background: #242526 !important;
+        color: #FFF;
+        border-color: #111;
+    }
+
+    table.table-hover tbody tr:hover {
+        color: #eee;
+    }
+
+    // academy 
+    .list-group-item,
+    .track-card .card .trackInfo {
+        background: $darkColor;
+        color: #FFF;
+        box-shadow: 0px 0px 3px 1px #111;
+    }
+
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    .text-muted,
+    h6 {
+        color: #FFF !important;
+    }
+
+    .dark-mode.darked * {
+        color: #FFF !important;
+    }
+
+    // dropdown list
+    .dropdown-list {
+        .heading {
+            background: $darkColor;
+            color: #FFF;
+            border: 1px solid #191717;
+        }
+
+        .items-list {
+            background: $darkColor;
+
+            .list-item {
+                color: #FFF;
+                border: none !important;
+                border-bottom: 1px solid #191717 !important;
+
+                &:hover {
+                    background: #1d1d1d;
+                }
+            }
+
+            .list-item.search-item input {
+                background: #191717;
+                color: #FFF;
+                border: 1px solid #191717;
+                border-top: none;
+            }
+        }
+    }
+
+    #projects-list-dropdown .dropdown-list .items-list .list-item {
+        border-bottom: 1px solid #444 !important;
+
+    }
+
+    #projects-list-dropdown .dropdown-list .items-list .empty-results {
+        color: #FFF !important;
+    }
+
+    // tasks list filter 
+    .tasks-list-filter .filter-container .filter-list {
+        border: none;
+    }
+
+    button {
+        color: #FFF;
+    }
+
+    .tasks-list-view .task-progress {
+        background: #444;
+        color: #FFF;
+    }
+
+    .tasks-list-view .task-progress .completed {
+        background: #7daf1d;
+    }
+
+    .btn:hover {
+        color: #999;
+    }
+
+    .gray-text {
+        color: #FFF !important;
+    }
+
+    // spinner 
+    .primary-spinner-theme .bounce {
+        background: #FFF !important;
+    }
+
+    .plyr--audio .plyr__controls {
+        background: #444;
+    }
+
+    .tasks-stats {
+        background: #2d2c2c;
+        box-shadow: 0px 0px 2px 1px #111;
+
+        .task-stat {
+            border-bottom: 1px solid #3a3a3a;
+        }
+    }
+
+
+    // project sidebar 
+    #project-layout #project-sidebar-wrapper {
+        #project-sidebar {
+            #project-sidebar-nav {
+                color: #FFF;
+                background: $projectSidebarColor;
+                color: #cbd4db;
+
+                .form-control {
+                    background: #242b35 !important;
+                }
+
+                ul li {
+                    a {
+                        // height: 22px;
+                        border-bottom: none;
+                        font-size: 14px;
+                        position: relative;
+
+                        .bug-s {
+                            position: absolute;
+                            font-size: 3rem;
+                            margin-top: -1rem;
+                        }
+
+                        &:hover,
+                        &.active {
+                            color: #cbd4db;
+                            background: rgba(255, 255, 255, .2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // modal 
+    .flk-modal .modal_content {
+        background: rgba(0, 0, 0, 0.5);
+        background: #1d1c1c;
+        color: #FFF;
+
+        .modal_heading {
+            box-shadow: 0px 0px 8px 1px #818181;
+            box-shadow: 0px 0px 3px 1px #333;
+            background: #181717;
+        }
+    }
+
+    .flk-modal .modal_content .close_button {
+        color: #FFF;
+    }
+
+    #course-sidebar {
+        background: $darkColor;
+        color: #FFF;
+
+        a {
+            color: #FFF !important;
+        }
+
+        ul li:hover,
+        ul li.active {
+            background: #444;
+            color: #eee;
+            border-color: $darkColor2;
+        }
+    }
+
+    .form-control {
+        background: $darkColor;
+        color: #FFF;
+        border-color: #111;
+
+        &:focus {
+            border-color: #111;
+        }
+    }
+
+    // markdown 
+    .mdContent {
+        color: #FFF;
+
+        a {
+            color: #c5dcee;
+        }
+    }
+
+    .mdContent blockquote p {
+        background: #272727;
+        color: #8697a9;
+    }
+
+    .CodeMirror .CodeMirror-selected,
+    span.CodeMirror-selectedtext {
+        background: #333;
+    }
+
+    .CodeMirror-cursor {
+        border-color: #eee;
+    }
+
+    // mentions list
+    .markdown-input-wrapper .suggestions-list li:hover {
+        background: #333;
+    }
+
+    .markdown-input-wrapper .suggestions-list {
+        background: $darkColor;
+    }
+
+    .markdown-input-wrapper .suggestions-list li {
+        border-color: #111;
+        font-weight: lighter;
+    }
+
+    .panel-wrapper .arrow-up {
+        border-color: $darkColor $darkColor transparent transparent;
+    }
+
+    .editor-toolbar a {
+        color: #FFF !important;
+        background: $darkColor;
+
+        &:hover,
+        &.active {
+            // color: $darkColor !important;
+        }
+    }
+
+    .btn-cyan:hover {
+        color: #FFF !important;
+    }
+
+    // resources 
+    #resources-list .pinned-resources .heading {
+        color: #FFF;
+    }
+
+    .purple-text {
+        color: #ecbdff !important;
+    }
+
+    .CodeMirror,
+    textarea {
+        background: $darkColor;
+        color: #FFF;
+        border-color: #111;
+    }
+
+    // activities 
+    .activities-list .activity .created-at {
+        color: #999;
+    }
+
+    .activities-list .activity .action .comment {
+        color: #a0ff37;
+    }
+
+    #post-page {
+        #post-wrapper {
+            background: $darkColor !important;
+            box-shadow: 0px 0px 4px 1px #333;
+            border-color: #111;
+        }
+
+        fieldset {
+            border-color: #444 !important;
+
+            a {
+                color: #FFF !important;
+            }
+        }
+    }
+
+    // comments 
+    .comments-list .comment {
+        // background: $darkColor;
+        background-image: linear-gradient(315deg, #2f5435 0%, #283b36 74%);
+        color: #FFF;
+        border-color: #333;
+        box-shadow: 0px 0px 4px 1px #040404;
+
+        &:not(.mine) {
+            // background: #333;
+            background-color: #485461;
+            background-image: linear-gradient(315deg, #424c56 0%, #1e2023 74%);
+        }
+
+        &.active {
+            background: #524317 !important;
+            box-shadow: 0px 0px 2px 1px #f8e3a4 !important;
+        }
+    }
+
+    // tags 
+    .tag {
+        background: #3d3939;
+
+        span {
+            color: #FFF
+        }
+    }
+
+    .btn-light {
+        background: $darkColor !important;
+
+        &:hover {
+            color: #FFF !important;
+        }
+    }
+
+    // code 
+    .mdContent p code,
+    .mdContent li code {
+        background: $darkColor;
+        color: #FFF;
+        border-color: #f0c472;
+    }
+
+    // accordion
+    .flk-accordion.flk-accordion .accordion-heading {
+        background: $darkColor;
+        border-color: #111;
+    }
+
+    .progress {
+        background-color: #3e3f3f;
+    }
+
+    // courses 
+    #course-details-page .completed-section h2.accordion-heading {
+        background: #1d7f59;
+    }
+
+    .course-video-item.completed {
+        background: #208b63;
+        border-color: #76cf76 !important;
+    }
+
+    // task board 
+    .task-board-view-wrapper .status-wrapper .task-card {
+        background: #333;
+        color: #ddd;
+        box-shadow: 0 1px 0 #101113;
+    }
+
+    .remaining-time.time-up {
+        color: pink;
+    }
+
+    // auth 
+    .authLayout .auth {
+        background: transparent;
+        box-shadow: 0px 0px 4px 1px #444;
+    }
+
+    #notifications-list .footer .remove-all-btn,
+    .red-text,
+    .error-msg {
+        color: #ec5e5e;
+    }
+
+    .projects-list .project-image img {
+        border: none;
+        box-shadow: 0px 0px 4px 1px #000;
+    }
+
+    .flk-tabs-wrapper .flk-tabs li {
+        background: transparent !important;
+        border: 1px solid #000;
+
+        &.active {
+            background: #000 !important;
+        }
+    }
+
+    .flk-tabs-wrapper .flk-tab-content-wrapper {
+        border-color: #000 !important;
+    }
+
+
+    // timeline post placeholder 
+    $placeholder-background: #111;
+    $grey-nuance-lighter: #111;
+    $grey-nuance-darker: $darkColor;
+    $fade-grey: #2222;
+
+    .placeload {
+        background: $darkColor;
+        border-color: $fade-grey;
+
+        .loads {
+            background: -webkit-linear-gradient(to right, $grey-nuance-lighter 8%, $grey-nuance-darker 18%, $grey-nuance-lighter 33%);
+            background: linear-gradient(to right, $grey-nuance-lighter 8%, $grey-nuance-darker 18%, $grey-nuance-lighter 33%);
+        }
+    }
+
+    a {
+        color: #FFF;
+    }
+
+    .btn-lime {
+        background: #98b73f !important;
+    }
+
+    .btn-primary {
+        background-color: #374444 !important;
+    }
+
+    .btn-primary:not([disabled]):not(.disabled):active,
+    .btn-primary:not([disabled]):not(.disabled).active,
+    .show>.btn-primary.dropdown-toggle {
+        background-color: #252d2d !important;
+    }
+
+    .authLayout .authLink .forgetLink {
+        color: greenyellow;
+    }
+
+    a:hover {
+        color: #ddd;
+    }
+
+    // auth 
+    .authLayout .auth button,
+    .authLayout .auth button:active {
+        background: #262727 !important;
+    }
+
+    .authLayout .auth input {
+        border-color: #111;
+    }
+
+
+
+    // chat rooms
+    #chat-rooms-panel {
+        .head {
+            background: $darkColor;
+        }
+
+        #messenger-btn {
+            color: #2196f3;
+        }
+
+        .welcome-msg {
+            color: #FFF;
+        }
+
+        .close-btn {
+            color: #444;
+        }
+
+        #chat-rooms-wrapper {
+            background-color: $darkColor;
+        }
+
+        #heading {
+            #heading-text {
+                color: $primary-color;
+            }
+        }
+
+        #rooms-list {
+            background: $darkColor;
+
+            .room-btn {
+                background: $darkColor;
+                border-top-color: #000;
+
+                &:hover {
+                    background: $darkColor;
+                }
+
+                &.active {
+                    background: #2b2b2b;
+                }
+            }
+        }
+
+        .chat-body {
+            .system-message {
+                color: #eee;
+                text-shadow: 0px 0px 1px #41a6cd;
+            }
+
+            .messages-list {
+                .room-message {
+                    box-shadow: 0 1px 0.5px rgba(0, 0, 0, .9);
+                    background: $darkColor;
+
+                    .user {
+                        .u-name {
+                            color: teal;
+                        }
+                    }
+
+                    .message-body {
+                        .created-at {
+                            color: #999;
+                        }
+                    }
+                }
+            }
+        }
+
+        .message-input-wrapper {
+            background: $darkColor;
+
+            .message-input {
+                box-shadow: 0 1px 0.5px rgba(0, 0, 0, .13);
+                border-color: #333;
+            }
+        }
+    }
+
+    #chat-rooms-panel .chat-body {
+        height: calc(100vh - 75px);
+        display: flex;
+        width: 100%;
+    }
+
+    #chat-rooms-panel .chat-body .messages-list {
+        padding-bottom: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    #chat-rooms-page table .room-row .meta .name {
+        color: #e0e0e0;
+    }
+
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* button */
+    ::-webkit-scrollbar-button {
+        background: #222;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) !important;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #666;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #000;
+    }
+
+    // todo 
+    #todo-list-modal .modal_content .item,
+    #todo-list-modal .modal_content .items-list,
+    #todo-list-modal .modal_content .category-wrapper,
+    #todo-list-modal .modal_content .btns-list {
+        border-color: #131212;
+    }
+
+    #todo-list-modal .modal_content .categories-filter {
+        border-color: #484848;
+    }
+
+    #todo-list-modal .modal_content {
+        background: linear-gradient(315deg, #706c6c 0%, #0a0c0e 74%)
+    }
+
+    // calendar 
+    #calendar .block {
+        background: #232323;
+        border-color: #403f3f;
+
+        &.blocked {
+            background: #404040;
+        }
+    }
+
+    #calendar-page .schedule .details .info:before {
+        $border-color: #404040;
+        border-color: transparent transparent $border-color $border-color;
+    }
+
+    #calendar .block.heading {
+        border-color: #333;
+    }
+
+    #calendar-page .schedule .details .info {
+        background: #2f2f2f;
+        color: #eee;
+        border-top: 1px solid #484747;
+    }
+
+
+    /* The track NOT covered by the handle.
+::-webkit-scrollbar-track-piece {
+    background: #000;
+}
+
+ 
+/* Corner */
+    ::-webkit-scrollbar-corner {
+        background: #999;
+    }
+
+    /* Resizer */
+    ::-webkit-resizer {
+        background: #111;
+    }
+}

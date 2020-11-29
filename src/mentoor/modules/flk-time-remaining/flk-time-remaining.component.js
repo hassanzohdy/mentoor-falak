@@ -24,6 +24,8 @@ class FlkTimeRemaining {
 
         this.endsAt = this.inputs.getProp('endsAt');
 
+        this.hideWhen = this.prop('hideWhen');
+
         this.start();
     }
 

@@ -28,6 +28,12 @@
                 </div>
 
 
+                <div *if="this.userStory.module" class="m-t-1">
+                    <span>Module:</span>
+                    <strong [html]="this.userStory.module.name"></strong>
+                </div>
+
+
                 <div *if="this.userStory.task" class="m-t-1">
                     <span>Task:</span>
                     <a [href]="URLS.task(this.userStory.task)" class="ml-2 bold badge green"

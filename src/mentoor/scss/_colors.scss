@@ -84,3 +84,7 @@ $red-color: #dc3545;
 $purple-color: #6f42c1;
 $blue-color: #007bff;
 $petrol-color: #576574;
+$petrol-dark-color: #37404a;
+
+
+@include color(petrol , $petrol-color, $petrol-dark-color);

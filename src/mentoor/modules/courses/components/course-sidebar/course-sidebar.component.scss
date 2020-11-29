@@ -32,6 +32,7 @@
     padding: 0;
     li {
       list-style: none;
+      cursor: pointer;
       padding-top: 1rem;
       color: inherit;
       display: block;
@@ -52,7 +53,7 @@
       &:hover,
       &.active {
         color: $lime-color-dark;
-        background-color: #ccc;
+        background-color: #eee;
       }
     }
   }

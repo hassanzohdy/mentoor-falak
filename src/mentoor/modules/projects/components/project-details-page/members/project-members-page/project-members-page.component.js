@@ -19,6 +19,36 @@ class ProjectMembersPage extends Project {
                                         this.project.members.length;
 
         this.exceptMembers = this.project.members.map(member => member.member.id);
+
+        this.positionsList = [
+            'backendDeveloper',
+            'frontEndDeveloper',
+            'fullStackDeveloper',
+            // 'angularDeveloper',
+            // 'reactJsDeveloper',
+            // 'laravelDeveloper',
+            // 'opencartDeveloper',
+            // 'wordpressDeveloper',
+            // 'codeigniterDeveloper',  
+            'androidDeveloper',
+            'iosdDeveloper',
+            'flutterdDeveloper',
+            'reactNativeDeveloper',
+            'softwareTester',
+            'graphicDesigner',
+            'motionGraphicDesigner',
+            'supervisor',
+            'systemAnalyst',
+            'productOwner',
+            'projectManager',
+            'customerService',
+            'sales',
+            'marketeer',
+        ];
+
+        this.data = {
+            position: '',
+        }
     }
 
     async addNewMember(form) {

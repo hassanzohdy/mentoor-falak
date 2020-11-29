@@ -1,4 +1,4 @@
-<flk-modal [overlay]="false" [esc]="false" *as="modal" (close)="this.inputs.getEvent('close')()"
+<flk-modal [overlay]="false" [esc]="false" [backdrop]="false" *as="modal" (close)="this.inputs.getEvent('close')()"
     size="medium" [heading]="this.modalHeading">
     <form (submit)="this.submit($el)">
         <input type="hidden" name="project" [value]="this.project.id" />
@@ -6,39 +6,50 @@
         <form-input type="text" name="title" [value]="this.record.title" label="Title" required class="form-control">
         </form-input>
 
-        <markdown-input (input)="echo($el.value)" name="description" [value]="this.record.description" label="Description"
-            required class="form-control"></markdown-input>
-
-        <form-input type="textarea" name="stepsToReproduce" [value]="this.record.stepsToReproduce"
-            label="Steps To Reproduce (Each step in one line without numbering the line)" required class="form-control">
-        </form-input>
-
-        <form-input type="textarea" name="expectedBehavior" [value]="this.record.expectedBehavior"
-            label="Expected Behavior" required class="form-control"></form-input>
-
-        <form-input type="textarea" name="actualResult" [value]="this.record.actualResult" label="Actual Result"
-            required class="form-control"></form-input>
-
-        <form-input type="text" name="testingUrl" [value]="this.record.testingUrl"
-            label="Testing Url" class="form-control"></form-input>
+        <markdown-input name="description" [value]="this.record.description" label="Description" class="form-control">
+        </markdown-input>
 
         <div class="row">
             <div class="col">
-                <flk-dropdown-list name="assignee[]" label="Assign To" [multiple]="true"
-                    [items]="this.project.membersList" [value]="this.record.assignee"></flk-dropdown-list>
+                <form-input type="textarea" label="Steps To Reproduce" name="stepsToReproduce"
+                    [value]="this.record.stepsToReproduce"
+                    placeholder="Steps To Reproduce (Each step in one line without numbering the line)"
+                    class="form-control">
+                </form-input>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form-input type="textarea" name="expectedBehavior" [value]="this.record.expectedBehavior"
+                    label="Expected Behavior" class="form-control"></form-input>
             </div>
             <div class="col">
-                <flk-dropdown-list name="priority" label="Priority" required [items]="this.priorities"
+                <form-input type="textarea" name="actualResult" [value]="this.record.actualResult" label="Actual Result"
+                    class="form-control"></form-input>
+            </div>
+        </div>
+
+        <form-input type="text" name="testingUrl" [value]="this.record.testingUrl" label="Testing Url"
+            class="form-control"></form-input>
+
+        <div class="row">
+            <div class="col">
+                <flk-dropdown-list name="assignee[]" label="Assign To" [multiple]="true" [items]="this.projectMembers"
+                    [value]="this.record.assignee"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="priority" label="Priority" [items]="this.priorities"
                     [value]="this.record.priority"></flk-dropdown-list>
             </div>
             <div class="col">
-                <flk-dropdown-list 
-                    name="sprint" 
-                    label="Sprint" 
-                    [value]="this.record.sprint?.id" 
-                    [lazy-loading]="true"
+                <flk-dropdown-list name="sprint" label="Sprint" [value]="this.record.sprint?.id" [lazy-loading]="true"
                     [request]="this.loadSprints.bind(this)">
                 </flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="classification" label="classification" [items]="this.classifications"
+                    [value]="this.record.classification"></flk-dropdown-list>
             </div>
         </div>
 
@@ -53,23 +64,79 @@
                     [value]="this.record.department"></flk-dropdown-list>
             </div> -->
             <div class="col">
-                <flk-dropdown-list name="module" [required]="true" label="Module" [value]="this.record.module?.id" [lazy-loading]="true"
+                <flk-dropdown-list name="module" label="Module" [value]="this.record.module?.id" [lazy-loading]="true"
                     [request]="this.loadModules.bind(this)"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="component" label="Component" [value]="this.record.component?.id"
+                    [lazy-loading]="true" [request]="this.loadComponents.bind(this)"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="severity" label="severity" [items]="this.severities"
+                    [value]="this.record.severity"></flk-dropdown-list>
             </div>
         </div>
 
         <div class="row m-y-1">
             <div class="col">
-                <flk-dropdown-list name="severity" label="severity" [items]="this.severities"
-                    [value]="this.record.severity"></flk-dropdown-list>
-            </div>
-            <div class="col">
-                <flk-dropdown-list name="classification" label="classification" [items]="this.classifications"
-                    [value]="this.record.classification"></flk-dropdown-list>
-            </div>
-            <div class="col">
                 <flk-dropdown-list name="reproducible" label="How Much Reproducible It Is" heading="Reproducible"
                     [items]="this.reproducibleOptions" [value]="this.record.reproducible"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <form-input type="text" name="windowWidth" [value]="this.record.windowWidth" label="Window Width"
+                    class="form-control"></form-input>
+            </div>
+            <div class="col">
+                <form-input type="text" name="windowHeight" [value]="this.record.windowHeight" label="Window Height"
+                    class="form-control"></form-input>
+            </div>
+        </div>
+
+        <h1>Test Environment</h1>
+
+        <flk-dropdown-list name="testEnvironment" placeholder="Test Environment"
+            [value]="this.record.testEnvironment?.id" [lazy-loading]="true"
+            [request]="this.loadTestEnvironments.bind(this)" (select)="this.setTestEnvironment(e)"></flk-dropdown-list>
+
+
+        <div class="row m-y-1">
+            <div class="col-3">
+                <flk-dropdown-list name="deviceType" [none]="true" label="Device Type" [value]="this.record.deviceType"
+                    [items]="DEVICE_TYPES">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="deviceBrand" [value]="this.record.deviceBrand" label="Device Brand"
+                    class="form-control"></form-input>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="deviceModel" [value]="this.record.deviceModel" label="Device Model"
+                    class="form-control"></form-input>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="applicationVersion" [value]="this.record.applicationVersion"
+                    label="Application Version" class="form-control"></form-input>
+            </div>
+        </div>
+
+        <div class="row m-b-1">
+            <div class="col-3">
+                <flk-dropdown-list name="operatingSystem" [none]="true" label="Operating System"
+                    [value]="this.record.operatingSystem" [items]="OPERATING_SYSTEMS">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="operatingSystemVersion" [value]="this.record.operatingSystemVersion"
+                    label="Operating System Version" class="form-control"></form-input>
+            </div>
+            <div class="col-3">
+                <flk-dropdown-list name="browser" imageable [none]="true" label="Browser" [value]="this.record.browser"
+                    [items]="BROWSERS_LIST">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="browserVersion" [value]="this.record.browserVersion"
+                    label="Browser Version" class="form-control"></form-input>
             </div>
         </div>
 
@@ -83,6 +150,7 @@
                 <record-audio-input [data]="this.record" *as="recordAudio"></record-audio-input>
             </span>
         </div>
+
 
         <div class="m-t-1 text-center">
             <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>

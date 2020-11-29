@@ -63,7 +63,6 @@ class EinsteinPuzzlePage {
                 .setDescription(this.puzzle.quest.split("\n")[0] + ', Can you solve it?')
                 .setImage(this.puzzle.category.image);
         } catch (e) {
-            echo(e);
             if (e.error) {
                 return this.router.navigateTo('/einstein-chamber');
             }
@@ -104,7 +103,6 @@ class EinsteinPuzzlePage {
             this.puzzle = response.puzzle;
             this.isSending = false;
         } catch (response) {
-            echo(response);
             this.isSending = false;
         }
     }

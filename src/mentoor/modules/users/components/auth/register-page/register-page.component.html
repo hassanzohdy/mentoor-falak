@@ -11,7 +11,7 @@
             <form-input placeholder="Last Name" type="text" name="lastName" [value]="this.lastName" required
                 class="form-control">
             </form-input>
-            <input type="hidden" name="name" value="{{ this.firstName + ' ' + this.lastName }}">
+            <input type="hidden" name="name" value="{{ this.firstName + ' ' + this.lastName }}" />
             <form-input placeholder="Email" type="email" name="email" required class="form-control"></form-input>
 
             <div class="row">
@@ -23,7 +23,7 @@
                         name="username" 
                         class="form-control">
                     </form-input>
-                    <div *if="this.errors.username" class="alert alert-danger" [html]="this.errors.username"></div>
+                    <!-- <div *if="this.errors.username" class="alert alert-danger" [html]="this.errors.username"></div> -->
                 </div>
                 <fa icon="question-circle col-1 username-help gray-text" tooltip [title]="this.usernameRules.join('<br />- ')"></fa>
             </div>

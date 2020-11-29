@@ -1,79 +1,79 @@
-<div class="schedule {{ scheduleItem.type }}" (click)="scheduleItem.viewDetails = ! scheduleItem.viewDetails"
-    [title]="scheduleItem.type">
+<div class="schedule {{ this.scheduleItem.type }}" (click)="this.scheduleItem.viewDetails = ! this.scheduleItem.viewDetails"
+    [title]="this.scheduleItem.type">
     <div class="label pointer">
-        <span [html]="scheduleItem.subject.readMoreChars(13)"></span>
-        <fa *if="scheduleItem.status == 'active'" [title]="scheduleItem.status" icon="hourglass-half icon"></fa>
-        <fa *elseif="scheduleItem.status == 'completed'" [title]="scheduleItem.status" icon="check icon"></fa>
-        <fa *elseif="scheduleItem.status == 'failed'" [title]="scheduleItem.status" icon="frown-open icon"></fa>
-        <fa *elseif="scheduleItem.status == 'autoFailed'" [title]="scheduleItem.status" icon="frown icon"></fa>
+        <span [html]="this.scheduleItem.subject.readMoreChars(13)"></span>
+        <fa *if="this.scheduleItem.status == 'active'" [title]="this.scheduleItem.status" icon="hourglass-half icon"></fa>
+        <fa *elseif="this.scheduleItem.status == 'completed'" [title]="this.scheduleItem.status" icon="check icon"></fa>
+        <fa *elseif="this.scheduleItem.status == 'failed'" [title]="this.scheduleItem.status" icon="frown-open icon"></fa>
+        <fa *elseif="this.scheduleItem.status == 'autoFailed'" [title]="this.scheduleItem.status" icon="frown icon"></fa>
     </div>
 
-    <div class="details" [class]="{open: scheduleItem.viewDetails}">
+    <div class="details" [class]="{open: this.scheduleItem.viewDetails}">
         <div class="info">
-            <div class="subject" [html]="scheduleItem.subject"></div>
+            <div class="subject" [html]="this.scheduleItem.subject"></div>
             <div class="date detail">
                 <strong>Ends at:</strong>
-                <span [html]="scheduleItem.deadline"></span>
+                <span [html]="this.scheduleItem.deadline"></span>
             </div>
 
             <div class="type detail">
                 <strong>Type:</strong>
-                <span [html]="scheduleItem.type" class="bold {{scheduleItem.type}}"></span>
+                <span [html]="this.scheduleItem.type" class="bold {{this.scheduleItem.type}}"></span>
             </div>
             <div class="status detail">
                 <strong>Status:</strong>
-                <fa *if="scheduleItem.status == 'active'" [title]="scheduleItem.status" icon="hourglass-half v-middle">
+                <fa *if="this.scheduleItem.status == 'active'" [title]="this.scheduleItem.status" icon="hourglass-half v-middle">
                 </fa>
-                <fa *elseif="scheduleItem.status == 'completed'" [title]="scheduleItem.status" icon="check v-middle">
+                <fa *elseif="this.scheduleItem.status == 'completed'" [title]="this.scheduleItem.status" icon="check v-middle">
                 </fa>
-                <fa *elseif="scheduleItem.status == 'failed'" [title]="scheduleItem.status" icon="frown-open v-middle">
+                <fa *elseif="this.scheduleItem.status == 'failed'" [title]="this.scheduleItem.status" icon="frown-open v-middle">
                 </fa>
-                <fa *elseif="scheduleItem.status == 'autoFailed'" [title]="scheduleItem.status" icon="frown v-middle">
+                <fa *elseif="this.scheduleItem.status == 'autoFailed'" [title]="this.scheduleItem.status" icon="frown v-middle">
                 </fa>
-                <span class="ml-2" [html]="scheduleItem.status"></span>
+                <span class="ml-2" [html]="this.scheduleItem.status"></span>
             </div>
 
-            <p *if="scheduleItem.notes" class="notes">
+            <p *if="this.scheduleItem.notes" class="notes">
                 &#10077;
-                <span [html]="scheduleItem.notes"></span>
+                <span [html]="this.scheduleItem.notes"></span>
                 &#10078;
             </p>
 
-            <div *if="scheduleItem.task" class="custom-type task-details">
+            <div *if="this.scheduleItem.task" class="custom-type task-details">
                 <h4 class="bold text-center">Task details</h4>
                 <div class="detail title">
                     <strong>Title:</strong>
-                    <span [html]="scheduleItem.task.title"></span>
+                    <span [html]="this.scheduleItem.task.title"></span>
                 </div>
                 <div class="detail ends-at">
                     <strong>Ends at:</strong>
-                    <span [html]="scheduleItem.task.endsAt"></span>
+                    <span [html]="this.scheduleItem.task.endsAt"></span>
                 </div>
-                <div class="detail reward">
+                <!-- <div class="detail reward">
                     <strong>Reward:</strong>
                     <gold-icon [coins]="scheduleItem.task.reward"></gold-icon>
                     <span class="bold red-text" [html]="scheduleItem.task.penaltyRatio + 'x'"
                         title="Penalty Ratio"></span>
-                </div>
+                </div> -->
 
-                <a [href]="URLS.task(scheduleItem.task)" class="btn btn-cyan bold d-block text-center">View Task</a>
+                <a [href]="URLS.task(this.scheduleItem.task)" class="btn btn-cyan bold d-block text-center">View Task</a>
             </div>
-            <div *elseif="scheduleItem.todo" class="custom-type todo-details">
+            <div *elseif="this.scheduleItem.todo" class="custom-type todo-details">
                 <h4 class="bold text-center">Todo details</h4>
                 <div class="detail title">
                     <strong class="m-r-2">Item:</strong>
-                    <span [html]="scheduleItem.todo.item"></span>
+                    <span [html]="this.scheduleItem.todo.item"></span>
                 </div>
                 <div class="detail category">
                     <strong class="m-r-2">Category:</strong>
-                    <span [html]="scheduleItem.todo.category.name"></span>
+                    <span [html]="this.scheduleItem.todo.category.name"></span>
                 </div>
             </div>
 
-            <div *if="['active', 'autoFailed'].includes(scheduleItem.status)" class="text-center m-t-1">
-                <button type="button" (click)="this.currentScheduleItem = scheduleItem; this.newStatus = 'completed'" title="Mark as Completed" class="btn bold btn-success">Complete</button>
-                <button type="button" (click)="this.currentScheduleItem = scheduleItem; this.newStatus = 'failed'" title="Mark as Failed" class="btn bold btn-danger">Failed</button>
-            </div>
+            <!-- <div *if="['active', 'autoFailed'].includes(this.scheduleItem.status)" class="text-center m-t-1">
+                <button type="button" (click)="this.inputs.parent.currentScheduleItem = this.scheduleItem; this.inputs.parent.newStatus = 'completed'" title="Mark as Completed" class="btn bold btn-success">Complete</button>
+                <button type="button" (click)="this.inputs.parent.currentScheduleItem = this.scheduleItem; this.inputs.parent.newStatus = 'failed'" title="Mark as Failed" class="btn bold btn-danger">Failed</button>
+            </div> -->
         </div>
     </div>
 </div>

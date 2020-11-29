@@ -22,9 +22,67 @@ class ProjectsPage {
 
         let { records } = await this.projectsService.list();
 
-        this.projects = records;
+        this.projects = records.map(project => {
+            projectDeadline(project);            
+
+            return project;
+        });
+
+        this.tags = collect(this.projects.reduce((tags, project) => {
+            return tags.concat(project.tags || []);
+        }, [])).unique('id').toArray();
+
+        this.statuses = collect(this.projects).pluck('status').unique().toArray();
+
+        const members = [];
+
+        this.members = this.projects.reduce((members, project) => {
+            return members.concat((project.members || []).map(member => member.member));
+        }, []).filter(member => {
+            if (members.includes(member.id)) return false;
+
+            members.push(member.id);
+
+            return true;
+        });
+
+        this.filteringText = '';
+
+        this.filter('');
 
         this.isLoading = false;
+    }
+
+    filter(search, type = 'name') {
+        if (!search) {
+            this.projectsList = [].concat(this.projects);
+            return;
+        }
+
+        this.filteringText = search;
+
+        let exceptions = ['tag', 'member', 'name'];
+
+        this.projectsList = this.projects.filter(project => {
+            let matched = true;
+            if (type === 'name') {
+                matched = matched && Boolean(project.name.match(new RegExp(search, 'i')));
+            }
+
+            if (type == 'tag') {
+                matched = matched && Boolean((project.tags || []).find(tag => Number(tag.id) == Number(search)));
+            }
+
+            if (type == 'member') {
+                matched = matched && Boolean((project.members || []).find(member => Number(member.member.id) == Number(search)));
+            }
+
+            if (!exceptions.includes(type) && project[type]) {
+                matched = matched && project[type] === search;
+            }
+
+            return matched;
+        });
     }
 
     /**

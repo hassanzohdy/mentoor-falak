@@ -1,33 +1,41 @@
-<layout>
+<project-layout [projectId]="((this.task || {}).project || {}).id">
   <flk-spinner *if="!this.task"></flk-spinner>
   <div *else class="row">
     <div class="col order-12 order-sm-1">
-      <h1
-        class="m-b-1"
-        [html]="'#' + this.task.id + ' ' + this.task.title"
-      ></h1>
+      <h1 class="m-b-1">
+        <span [html]="'#' + this.task.id + ' ' + this.task.title"></span>
+        <span class="task-status badge ml-2" [class]="this.getTaskStatus()" [trans]="this.task.status"></span>
+      </h1>      
+
+      <div class="m-b-1 bold">
+        <span tooltip title="Created By">
+          <user-avatar-image [user]="this.task.createdBy"></user-avatar-image>
+          <span class="ml-1" [html]="this.task.createdBy.name"></span>
+        </span>      
+
+        <small [tooltip]="true" class="ml-2" title="Created At">
+          <flk-time-ago [time-format]="this.task.createdAt.format" [timestamp]="this.task.createdAt.timestamp">
+          </flk-time-ago>
+        </small>
+        <task-score *if="this.task.rating > 0" [task]="this.task"></task-score>
+      </div>
+
       <div class="teal-text bold" *if="this.task.startsAt">
-        {{ this.task.startsAt }}
+        <span [html]="this.task.startsAt"></span>
         <if condition="this.task.endsAt">
-          -
-          {{ this.task.endsAt }}
+          <fa icon="angle-double-right mx-2" />
+          <span [html]="this.task.endsAt"></span>
         </if>
       </div>
-      <star-rating
-        [stars]="this.task.rating"
-        class="form-group"
-        [readonly]="!this.isSupervisor() || !this.isTaskRateable()"
-        (select)="this.rate(e)"
-      >
+      <button *if="this.taskStatusCanBeChanged()" class="btn btn-success m-b-1 d-inline-block"
+        (click)="this.editTask = true">
+        <fa icon="edit" />
+        <span class="ml-2">Edit</span>
+      </button>
+      <star-rating [stars]="this.task.rating" class="form-group"
+        [readonly]="! this.isSupervisor() && ! this.task.project.is.higherAuthority && !this.isTaskRateable()"
+        (select)="this.rate(e)">
       </star-rating>
-
-      <span [tooltip]="true" title="Created At">
-        <flk-time-ago
-          [time-format]="this.task.createdAt.format"
-          [timestamp]="this.task.createdAt.timestamp"
-        >
-        </flk-time-ago>
-      </span>
 
       <if condition="this.task.description">
         <h2 class="bold m-y-2">Details</h2>
@@ -37,42 +45,39 @@
       </if>
 
       <div class="card my-3">
-        <flk-audio-player
-          *if="this.task.descriptionRecord"
-          [src]="this.task.descriptionRecord"
-        >
+        <flk-audio-player *if="this.task.descriptionRecord" [src]="this.task.descriptionRecord">
         </flk-audio-player>
       </div>
 
       <div *if="this.task.participantNotes" class="card p-1 m-y-2">
         <h3 class="bold pink-text">{{ this.task.participant.name }}</h3>
 
-        <flk-time-ago
-          [time-format]="this.task.submittedAt.format"
-          [timestamp]="this.task.submittedAt.timestamp"
-          class="brown-text bold"
-        >
+        <flk-time-ago [time-format]="this.task.submittedAt.format" [timestamp]="this.task.submittedAt.timestamp"
+          class="brown-text bold">
         </flk-time-ago>
 
         <p class="description m-y-2">
           <markdown [content]="this.task.participantNotes"></markdown>
         </p>
 
-        <flk-audio-player
-          *if="this.task.participantRecord"
-          [src]="this.task.participantRecord"
-        >
+        <flk-audio-player *if="this.task.participantRecord" [src]="this.task.participantRecord">
         </flk-audio-player>
       </div>
 
       <task-checklist [task]="this.task"></task-checklist>
 
-      <comments
-        [comments]="this.task.comments"
-        [project]="this.task.project"
-        type="task"
-        [type-id]="this.task.id"
-      ></comments>
+      <div *if="! Is.empty(this.task.attachments)" class="m-b-2">
+        <h2>Attachments ({{ this.task.attachments.length }})</h2>
+
+        <a *for="let attachment of this.task.attachments" [href]="attachment" target="_blank">
+          <img *if="isImage(attachment)" [src]="attachment" [alt]="this.task.title" width="100px" height="100px"
+            class="img-thumbnail m-l-1" />
+          <button *else class="btn btn-pink">Open Attachment</button>
+        </a>
+      </div>
+
+      <comments [comments]="this.task.comments" [project]="this.task.project" type="task" [type-id]="this.task.id">
+      </comments>
 
       <h3 class="bold m-t-2 m-b-1">Task Status Change Log</h3>
 
@@ -82,104 +87,101 @@
             <th>Status</th>
             <th>Created By</th>
             <th>Created</th>
+            <th>Time Taken</th>
+            <th>Extra</th>
           </tr>
         </thead>
         <tbody>
           <tr *for="let status of this.task.statusLog">
             <td>
-              <span
-                [trans]="status.status"
-                class="bold btn btn-sm status"
-                [class]="taskStatus(status)"
-              ></span>
+              <span [trans]="status.status" class="bold btn btn-sm status" [class]="taskStatus(status)"></span>
             </td>
-            <td
-              [html]="
+            <td [html]="
                 status.status != 'autoFailed' ? status.createdBy.name : 'System'
-              "
-            ></td>
+              "></td>
             <td>
-              <flk-time-ago
-                [timestamp]="status.createdAt.timestamp"
-              ></flk-time-ago>
+              <flk-time-ago [timestamp]="status.createdAt.timestamp"></flk-time-ago>
+            </td>
+            <td>
+              <div *if="status.timeTaken">
+                <span *if="status.timeTaken.years" class="mx-1 bold" tooltip [title]="status.timeTaken.years + ' Years'"
+                  [html]="status.timeTaken.years + 'y'"></span>
+                <span *if="status.timeTaken.months" class="mx-1 bold" tooltip
+                  [title]="status.timeTaken.months + ' Months'" [html]="status.timeTaken.months + 'M'"></span>
+                <span *if="status.timeTaken.days" class="mx-1 bold" tooltip [title]="status.timeTaken.days + ' Days'"
+                  [html]="status.timeTaken.days + 'd'"></span>
+                <span *if="status.timeTaken.hours" class="mx-1 bold" tooltip [title]="status.timeTaken.hours + ' Hours'"
+                  [html]="status.timeTaken.hours + 'h'"></span>
+                <span *if="status.timeTaken.minutes" class="mx-1 bold" tooltip
+                  [title]="status.timeTaken.minutes + ' Minutes'" [html]="status.timeTaken.minutes + 'm'"></span>
+                <span *if="status.timeTaken.seconds" class="mx-1 bold" tooltip
+                  [title]="status.timeTaken.seconds + ' Seconds'" [html]="status.timeTaken.seconds + 's'"></span>
+              </div>
+            </td>
+            <td>
+              <strong *if="status.reason" [html]="status.reason"></strong>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <!-- Task Activities Log -->
+      <activities-list type="task" [type-id]="this.task.id"></activities-list>
     </div>
     <!-- Sidebar -->
     <div class="col-sm-3 order-1">
-      <a
-        *if="this.task.project?.id"
-        class="btn bold btn-purple m-b-1"
-        [href]="URLS.project(this.task.project, 'tasks-board')"
-        >Back to Tasks Board</a
-      >
-      <div class="card">
+      <a *if="this.task.project?.id" class="btn bold btn-purple m-b-1"
+        [href]="URLS.project(this.task.project, 'tasks-board')">Back to Tasks Board</a>
+      <div class="card p-t-1">
         <div class="text-center">
-          <div
-            class="task-status badge"
-            [class]="this.getTaskStatus()"
-            [trans]="this.task.status"
-          ></div>
-          <div tooltip title="Task Reward">
-            <gold-icon [coins]="this.task.reward"></gold-icon>
-          </div>
-          <div class="m-b-1" title="Penalty ratio" tooltip>
-            <strong
-              class="red-text"
-              [html]="this.task.penaltyRatio + 'x'"
-            ></strong>
-          </div>
-
-          <div
-            *if="this.task.endsAtTimestamp"
-            class="m-b-2"
-            [tooltip]="true"
-            [title]="
+          <div *if="this.task.endsAtTimestamp" class="m-b-2" [tooltip]="true" [title]="
               this.task.endsAtTimestamp - this.task.startsAtTimestamp <= 0
                 ? 'Time up'
                 : 'Remaining Time'
-            "
-          >
+            ">
             <fa icon="clock mr-2"></fa>
-            <flk-time-remaining
-              class="bold"
-              [starts-at]="this.task.startsAtTimestamp"
-              [ends-at]="this.task.endsAtTimestamp"
-            >
+            <flk-time-remaining class="bold" [starts-at]="this.task.startsAtTimestamp"
+              [ends-at]="this.task.endsAtTimestamp">
             </flk-time-remaining>
           </div>
         </div>
       </div>
-      <div *if="!Is.empty(this.task.parent)" class="card p-1">
+      <div *if="Object.get(this.task, 'parent.id')" class="card p-1">
         <div class="bold text-center m-b-1">
           <fa icon="folder-open mr-2"></fa>
           Parent Task
         </div>
-        <a
-          [href]="URLS.task(this.task.parent)"
-          class="btn btn-cyan bold"
-          [html]="this.task.parent.title"
-        ></a>
+        <a [href]="URLS.task(this.task.parent)" class="btn btn-cyan bold" [html]="this.task.parent.title"></a>
+      </div>
+      <div *if="Object.get(this.task, 'durationSettings.hours') || Object.get(this.task, 'durationSettings.minutes')" class="card p-1">
+        <div class="bold text-center m-b-1">
+          <fa icon="clock mr-2"></fa>
+          Task Duration
+        </div>
+        <div class="bold text-center">
+          <span [html]="this.task.durationSettings.hours" tooltip title="Hours"></span>:
+          <span [html]="this.task.durationSettings.minutes" tooltip title="Minutes"></span>
+        </div>
       </div>
       <div class="card p-1">
         <div class="bold text-center m-b-1">
           <fa icon="user mr-2"></fa>
           Participant
         </div>
-        <div class="bold teal-text" [html]="this.task.participant.name"></div>
+        <div *if="this.task.participant" class="bold teal-text">
+          <user-avatar-image [user]="this.task.participant"></user-avatar-image>
+          <span [html]="this.task.participant.name"></span>
+        </div>
       </div>
-      <div class="card p-1">
+      <div *if="! Is.empty(this.task.supervisors)" class="card p-1">
         <div class="bold text-center m-b-1">
           <fa icon="user-secret mr-2"></fa>
           Supervisors
         </div>
-        <div
-          *for="let supervisor of this.task.supervisors"
-          class="bold green-text"
-          [html]="supervisor.name"
-        ></div>
+        <div *for="let supervisor of this.task.supervisors" *key="supervisor.id" class="bold green-text">
+          <user-avatar-image [user]="supervisor"></user-avatar-image>
+          <span [html]="supervisor.name"></span>
+        </div>
       </div>
 
       <div *if="this.task.project" class="card p-1">
@@ -187,43 +189,37 @@
           <fa icon="suitcase mr-2"></fa>
           Project
         </div>
-        <div *if="this.task.module">
+        <div *if="Object.get(this.task, 'module.id')">
           <span class="mr-2">Module:</span>
           <if condition="this.task.module.parent.id">
-            <strong>{{ this.task.module.parent.name }} » </strong>
+            <strong>
+              {{ this.task.module.parent.name }}
+              <fa icon="angle-double-right mx-2" />
+            </strong>
           </if>
           <strong [html]="this.task.module.name"></strong>
         </div>
-        <a
-          [href]="URLS.project(this.task.project)"
-          class="btn btn-teal bold"
-          [html]="this.task.project.name"
-        ></a>
+        <a [href]="URLS.project(this.task.project)" class="btn btn-teal bold" [html]="this.task.project.name"></a>
       </div>
 
-      <div *if="this.task.userStory" class="card p-1">
+      <div *if="Object.get(this.task, 'userStory.id')" class="card p-1">
         <div class="bold text-center m-b-1">
           <fa icon="sticky-note mr-2"></fa>
           User Story
         </div>
-        <a
-          [href]="
+        <a [href]="
             URLS.project(this.task.project, 'user-stories', this.task.userStory)
-          "
-          class="btn btn-pink bold"
-          [html]="this.task.userStory.title"
-        ></a>
+          " class="btn btn-pink bold" [html]="this.task.userStory.title"></a>
       </div>
 
       <div *if="this.taskStatusCanBeChanged()" class="card p-1">
         <div class="text-center bold m-b-1 purple-text">Mark task as</div>
-        <flk-dropdown-list
-          [items]="this.getAllowedTaskStatuses()"
-          heading="Mark Task As.."
-          (select)="this.updateTaskStatus(e.value)"
-          [value]="this.task.status"
-        ></flk-dropdown-list>
+        <flk-dropdown-list [items]="this.getAllowedTaskStatuses()" heading="Mark Task As.." *as="taskStatusDropdown"
+          (select)="this.updateTaskStatus(e.value)" [value]="this.task.status"></flk-dropdown-list>
       </div>
     </div>
   </div>
-</layout>
+</project-layout>
+
+<task-modal *if="this.editTask" [task]="this.task" [project]="this.task.project" (close)="this.editTask = false"
+  (save)="this.task = e"></task-modal>

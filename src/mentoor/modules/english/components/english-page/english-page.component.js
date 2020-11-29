@@ -3,10 +3,12 @@ class EnglishPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(user, englishService) {
+    constructor(user, db, router, englishService) {
         this.name = 'english';
         this.title = 'English';
+        this.db = db;
         this.user = user;
+        this.router = router;
         this.englishService = englishService;
     }
 
@@ -23,22 +25,24 @@ class EnglishPage {
 
         this.isLoading = true;
 
-        let { records } = await this.englishService.list({
-            type: 'category',
+        this.db.get('english', () => {
+            return this.englishService.list({
+                type: 'category',
+            });
+        }, this.db.recache).then(response => {
+            this.response = response.records;
+
+            this.sortBy(this.defaultSort);
+
+            this.totalWords = this.categories.reduce((total, category) => {
+                if (category.total) {
+                    total += category.total.words;
+                }
+                return total;
+            }, 0);
+
+            this.isLoading = false;
         });
-
-        this.response = records;
-
-        this.sortBy(this.defaultSort);
-
-        this.totalWords = this.categories.reduce((total, category) => {
-            if (category.total) {
-                total += category.total.words;
-            }
-            return total;
-        }, 0);
-
-        this.isLoading = false;
     }
 
     sortBy(type) {

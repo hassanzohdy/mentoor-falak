@@ -6,93 +6,14 @@
     <h1 class="m-y-1 teal-text">
         {{ this.project.name }}
 
-        <img [src]="assets('images/bug.jpg')" tooltip title="bug"
+        <img [src]="assets('images/bug.jpg')" tooltip title="Bugs"
             style="width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem" />
-        <span class="bold red-text mr-2">s</span>
-        ({{ this.project.bugs.length }})
+        <!-- <span class="bold red-text mr-2">s</span> -->
+        <!-- ({{ this.project.bugs.length }}) -->
     </h1>
 
-    <bugs-filter></bugs-filter>
-
-    <for loop="let status, bugsOptions in this.bugs">
-        <h4 class="text-capitalize m-t-2 pointer gray-text simple-card"
-            (click)="bugsOptions.opened = ! bugsOptions.opened; this.detectChanges();">
-            <span [html]="status + ' Bugs (' + bugsOptions.bugs.length + ')'"></span>
-            <fa *if="bugsOptions.opened" icon="angle-down ml-2"></fa>
-            <fa *else icon="angle-up ml-2"></fa>
-        </h4>
-        <div class="bugs-container table-responsive" [class]="{opened: bugsOptions.opened}">
-            <table class="table buttoned simple-card">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th class="title-column">Title</th>
-                        <th>Created</th>
-                        <th>Comments</th>
-                        <th>Issued By</th>
-                        <th>Assigned To</th>
-                        <th>Module</th>
-                        <th>Priority</th>
-                        <th>Sprint</th>
-                        <!-- <th>Status</th> -->
-                        <th>Control</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *for="let record, index of bugsOptions.bugs" *key="record.id">
-                        <td [html]="record.id"></td>
-                        <td class="title-column">
-                            <a [href]="URLS.project(this.project, 'bugs', record)" class="bug-title" tooltip
-                                [title]="record.title" [html]="record.title.readMoreChars(20)">
-                            </a>
-                        </td>
-                        <td>
-                            <flk-time-ago [timestamp]="record.createdAt.timestamp"></flk-time-ago>
-                        </td>
-                        <td>
-                            <div *if="record.comments.length > 0" class="text-center">
-                                <strong [html]="record.comments.length" class="gray-text"></strong>
-                                <fa far="comments ml-2 gray-text"></fa>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <img [src]="record.createdBy.image" class="small mr-2 circle" tooltip
-                                [title]="record.createdBy.name" [alt]="record.createdBy.name" />
-                            <!-- <span [html]="record.createdBy.name"></span> -->
-                        </td>
-                        <td class="text-center">
-                            <span *for="let assignee of record.assignee" class="mx-1">
-                                <img [src]="assignee.image" class="small mr-2 circle" tooltip [title]="assignee.name"
-                                    [alt]="assignee.name" />
-                            </span>
-                        </td>
-                        <td class="bold gray-text" [html]="record.module ? record.module.name : ''"></td>
-                        <td>
-                            <span class="badge priority {{ record.priority }}" [html]="record.priority"></span>
-                        </td>
-                        <th class="text-center gray-text bold" [html]="record.sprint.name || ''"></th>
-                        <!-- <td class="status {{ record.status }}" [html]="record.status"></td> -->
-                        <td>
-                            <if condition="record.canBeModified">
-                                <button type="button" (click)="this.openModal('edit', record, index)"
-                                    class="btn btn-sm btn-cyan" tooltip title="Edit Bug">
-                                    <fa icon="edit"></fa>
-                                </button>
-                                <button type="button" (click)="this.confirmRemoving(record, index)"
-                                    class="btn btn-sm btn-danger" tooltip title="Delete Bug">
-                                    <fa icon="trash"></fa>
-                                </button>
-                            </if>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </for>
+    <bugs-list *as="bugsList" [project]="this.project"></bugs-list>
 </project-layout>
 
 <bug-modal *if="this.modalIsOpened" [record]="this.record" [project]="this.project" (close)="this.modalIsOpened = null;"
     (save)="this.onSubmit(e)"></bug-modal>
-
-<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
-</flk-alert>

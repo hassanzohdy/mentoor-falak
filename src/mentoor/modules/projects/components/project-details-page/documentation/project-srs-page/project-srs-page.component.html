@@ -1,16 +1,18 @@
 <project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
     <h1>
         Software Requirements Specifications [SRS]
-        <button *if="this.project.isProjectManager" (click)="this.inEditMode = !!!this.inEditMode" type="button" class="btn btn-sm btn-teal bold">Edit</button>
+        <button *if="this.project.is.higherAuthority" (click)="this.inEditMode = !!!this.inEditMode" type="button" class="btn btn-sm btn-teal bold">Edit</button>
     </h1>
 
     <form *if="this.inEditMode" (submit)="this.submit($el)">
-        <markdown-input name="srs" [value]="this.projectSrs" class="form-control" label="SRS" placeholder="Write project Software Requirements Specifications"></markdown-input>
+        <div class="m-t-1">
+            <markdown-input name="srs" (change)="this.projectSrs = e" [value]="this.projectSrs" class="form-control" placeholder="Write project Software Requirements Specifications"></markdown-input>
+        </div>
         <div class="text-center m-t-3">
             <button type="button" (click)="this.inEditMode = false" class="btn btn-danger bold">Cancel</button>
             <button class="btn btn-success bold">Save</button>
         </div>
     </form>
-    <markdown *else [content]="this.projectSrs"></markdown>
+    <markdown *else [content]="this.projectSrs || this.project.srs"></markdown>
 
 </project-layout>

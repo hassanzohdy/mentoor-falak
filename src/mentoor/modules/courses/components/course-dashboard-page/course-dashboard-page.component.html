@@ -7,7 +7,7 @@
       <course-video-form
         *if="this.newVideo"
         (close)="this.newVideo = false"
-        (save)="this.currentSection.videos.push(e)"
+        (save)="this.currentSection.videos.push(e); this.recache()"
         [course]="this.course"
         [section]="this.currentSection"
       ></course-video-form>
@@ -15,7 +15,7 @@
       <course-video-form
         *elseif="this.updateVideo"
         (close)="this.updateVideo = false"
-        (save)="this.currentSection[index] = e"
+        (save)="this.currentSection[this.index] = e; this.recache()"
         [video]="this.currentVideo"
         [course]="this.course"
         [section]="this.currentSection"
@@ -32,6 +32,12 @@
           >
             <fa icon="trash"></fa>
           </button>
+          <a
+            class="btn btn-dark btn-sm"
+            [href]="URLS.course(this.course, 'edit')"
+          >
+            <fa icon="edit"></fa>
+          </a>
           <flk-alert
             *if="this.confirmCourseRemove"
             message="Are you sure you want to remove the course ?"
@@ -53,14 +59,14 @@
 <course-section-form
   *if="this.newSection"
   (close)="this.newSection = false"
-  (save)="this.course.sections.push(e)"
+  (save)="this.course.sections.push(e); this.recache()"
   [course]="this.course"
 ></course-section-form>
 
 <course-section-form
   *if="this.editSection"
   (close)="this.editSection = false"
-  (save)="this.course.sections[this.index] = e"
+  (save)="this.course.sections[this.index] = e; this.recache()"
   [course]="this.course"
   [section]="this.currentSection"
 >
@@ -69,14 +75,14 @@
 <course-coupon-form
   *if="this.newCoupon"
   (close)="this.newCoupon = false"
-  (save)="this.course.coupons.push(e)"
+  (save)="this.course.coupons.push(e); this.recache()"
   [course]="this.course"
 ></course-coupon-form>
 
 <course-coupon-form
   *elseif="this.updateCoupon"
   (close)="this.updateCoupon = false"
-  (save)="this.currentCoupon[this.couponIndex] = e"
+  (save)="this.currentCoupon[this.couponIndex] = e; this.recache()"
   [coupon]="this.currentCoupon"
   [course]="this.course"
 ></course-coupon-form>

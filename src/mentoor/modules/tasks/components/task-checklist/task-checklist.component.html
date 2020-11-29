@@ -44,7 +44,7 @@
             <button class="btn btn-sm btn-primary bold" [disabled]="this.isSending || ! this.isValidForm">Create
                 Checklist</button>
         </form>
-        <div class="row">
+        <div class="row m-x-0">
             <div *for="let checklist,index of this.task.checklists" *key="checklist.id"
                 class="col-sm-6 checklist m-t-2 p-0">
                 <div class="bold">

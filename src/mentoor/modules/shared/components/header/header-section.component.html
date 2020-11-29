@@ -1,8 +1,11 @@
-<header class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow fixed-top">
+<header class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow" [class]="{shrink: this.shrinkHeader}">
     <div class="navbar-brand col-lg-2 col-md-3 m-0 p-0">
-        <a href="/" id="head-logo"></a>
+        <a href="/" id="head-logo">
+            <span id="m">M</span>
+            <span id="mentoor">mentoor.io</span>
+        </a>
 
-        <a 
+        <!-- <a 
             href="/change-log" 
             id="app-version" 
             [class]="{'update-text': this.userHasNotSeenLastVersion()}" 
@@ -11,25 +14,16 @@
         >
             <strong [html]="Config.get('version')"></strong>
             <span *if="this.userHasNotSeenLastVersion()" class="update-label">UPDATE</span>
-        </a>
+        </a> -->
 
-        <span 
-            (click)="this.sidebar.toggle()" 
-            class="sidebar-toggle"
-            tooltip
-            title="Toggle Sidebar"
-        >
-            <fa *if="! this.sidebar.toggleMenu" icon="align-justify"></fa>
+        <span (click)="this.sidebar.toggle()" class="sidebar-toggle" tooltip title="Toggle Sidebar">
+            <fa *if="! this.sidebarToggled" icon="align-justify"></fa>
             <fa *else icon="times"></fa>
         </span>
 
-        <if condition="this.isProjectRoute()">
-            <span 
-            (click)="this.projectLayout.toggleSidebar()" 
-            class="sidebar-toggle project-sidebar-toggle lime-text"
-            tooltip
-            title="Toggle Project Sidebar"
-            >
+        <if condition="this.inProjectLayout()">
+            <span (click)="this.projectLayout.toggleSidebar()" class="sidebar-toggle project-sidebar-toggle lime-text"
+                tooltip title="Toggle Project Sidebar">
                 <fa icon="suitcase mr-1"></fa>
                 <if condition="! this.projectLayout.sidebarIsVisible">
                     <fa icon="align-justify"></fa>
@@ -37,18 +31,22 @@
                 <fa *else icon="times"></fa>
             </span>
         </if>
-        
-        <div *if="! Is.empty(this.user.projects)" id="projects-list-dropdown">
-            <flk-dropdown-list            
-                [imageable]="true"
-                heading="My Projects"
-                [value]="this.currentProjectId"
-                [items]="this.user.projects"
-                (select)="this.navigateToProject(e.value)"
-            ></flk-dropdown-list>
+
+        <div *if="! Is.empty(this.projectsList)" id="projects-list-dropdown">
+            <flk-dropdown-list [imageable]="true" heading="My Projects" [value]="this.currentProjectId"
+                [items]="this.projectsList" (select)="this.navigateToProject(e.value)"></flk-dropdown-list>
+            <a href="/projects/new" class="new-project"tooltip title="Create new project">
+                <fa icon="plus"></fa>
+            </a>
         </div>
     </div>
     <ul class="navbar-nav px-3">
+        <li class="nav-item">
+            <button (click)="this.openTodoList = true" [class]="{'new-text': ! this.hasSeen('todo')}" class="nav-link text-capitalize affiliate-btn">
+                <fa icon="check-double icon"></fa>
+                <span class="bold d-none d-sm-inline">Todo list</span>
+            </button>
+        </li>
         <!-- <li class="nav-item">
             <a href="/chat-rooms" title="Chat rooms" class="nav-link chat-rooms-btn">
                 <fa icon="comments icon"></fa>
@@ -56,27 +54,37 @@
                 <span class="bold d-none d-sm-inline">Change Log</span>
             </a>
         </li>  -->
-        <!-- <li class="nav-item">
-            <button (click)="this.openTodoList = true" [class]="{'new-text': ! this.hasSeen('todo')}" class="nav-link text-capitalize affiliate-btn">
-                <fa icon="check-double icon"></fa>
-                <span class="bold d-none d-sm-inline">Todo list</span>
-            </button>
-        </li>
-        <li class="nav-item">
+        
+        <li class="nav-item" *if="this.user.id == 1">
             <a class="nav-link" href="/calendar" tooltip title="Calendar">
-                <span *if="! this.hasSeen('calendar')" class="new-label">NEW</span>
+                <!-- <span *if="! this.hasSeen('calendar')" class="new-label">NEW</span> -->
                 <fa icon="calendar calendar-color"></fa>
-                <span class="bold d-none d-sm-inline">Calendar</span>
+                <!-- <span class="bold d-none d-sm-inline">Calendar</span> -->
             </a>
-        </li> -->
-        <li *if="this.user.id == 1" class="nav-item">
-            <a class="nav-link" href="/top-users" tooltip title="Top Users">
-                <fa icon="signal orange-text"></fa>
+        </li>
+
+        <li *if="this.user.isLoggedIn() && ! Is.empty(this.projectsList)" class="nav-item">
+            <a class="nav-link bugs" href="/bugs" tooltip title="Bugs">
+                <span *if="this.totalBugs && this.totalBugs > 0" class="bold badge badge-danger total"
+                    [html]="this.totalBugs"></span>
+                <img [src]="assets('images/bug.jpg')"
+                    style="width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem" />
+            </a>
+        </li>
+        <li *if="this.user.isLoggedIn() && ! Is.empty(this.projectsList)" class="nav-item">
+            <a class="nav-link" href="/projects" tooltip title="Projects">
+                <fa icon="project-diagram pink-text"></fa>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/help" tooltip title="Help">
                 <fa icon="question-circle"></fa>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dark-mode" [class]="{darked: this.darkMode}" tooltip title="Dark Mode"
+                (click)="this.switchDarkMode()">
+                <fa icon="moon"></fa>
             </a>
         </li>
         <li class="nav-item">
@@ -100,12 +108,38 @@
         </if>
         <else>
             <li class="nav-item notifications" tooltip title="Notifications">
-                <a class="nav-link" *as="notificationButton" (click)="this.showNotifications = ! this.showNotifications;">
+                <a class="nav-link" *as="notificationButton"
+                    (click)="this.showNotifications = ! this.showNotifications;">
                     <fa icon="bell bell" [class]="{empty: this.user.notifications == 0}"></fa>
                     <span *if="this.user.notifications > 0" class="bold badge badge-danger total"
                         [html]="this.user.notifications"></span>
                 </a>
-                <notifications-list *if="this.showNotifications"></notifications-list>
+            </li>
+            <li class="nav-item rewards">
+                <a class="nav-link" tooltip title="Rewards Panel"
+                    (click)="this.rewardsPanelIsOpened = ! this.rewardsPanelIsOpened">
+                    <span *if="this.user.total?.rewards > 0" class="bold badge badge-danger total">
+                        <if condition="this.user.total.rewards > 99">
+                            99+
+                        </if>
+                        <else>
+                            {{ this.user.total.rewards }}
+                        </else>
+                    </span>
+
+                    <img class="userCoins" [src]="assets('images/money-bag.svg')" alt="coins" />
+                    <span class="coins v-middle">
+                        <if condition="this.user.gold >= 1000000">
+                            {{ round(this.user.gold / 1000000).toFixed(1).format() }}m
+                        </if>
+                        <elseif condition="this.user.gold >= 10000">
+                            {{ round(this.user.gold / 1000).format() }}k
+                        </elseif>
+                        <else>
+                            {{ (this.user.gold).format() }}
+                        </else>
+                    </span>
+                </a>
             </li>
             <li class="nav-item">
                 <a href="/me" tooltip title="View Profile" class="nav-link text-capitalize">
@@ -117,37 +151,15 @@
                         [html]="this.user.firstName && this.user.lastName ? this.user.firstName[0] + this.user.lastName[0] : this.user.name[0]"></span>
                 </a>
             </li>
-            <li class="nav-item rewards">
-                <a class="nav-link" tooltip title="Rewards Panel" (click)="this.rewardsPanelIsOpened = ! this.rewardsPanelIsOpened">
-                    <span *if="this.user.total.rewards > 0" class="bold badge badge-danger total">
-                        <if condition="this.user.total.rewards > 99">
-                            99+
-                        </if>
-                        <else>
-                            {{ this.user.total.rewards }}
-                        </else>
-                    </span>
-
-                    <img class="userCoins" [src]="assets('images/money-bag.svg')" alt="coins" />
-                    <if condition="this.user.gold >= 1000000">
-                        {{ round(this.user.gold / 1000000).toFixed(1).format() }}m
-                    </if>
-                    <elseif condition="this.user.gold >= 10000">
-                        {{ round(this.user.gold / 1000).format() }}k
-                    </elseif>
-                    <else>
-                        {{ (this.user.gold).format() }}
-                    </else>
-                </a>
-                <rewards-panel *if="this.rewardsPanelIsOpened"></rewards-panel>
-            </li>
             <li class="nav-item" id="logout-item">
-                <a class="nav-link" (click)="this.logOut()">
-                    <fa icon="directions"></fa>
-                    <span class="d-none d-sm-inline">Logout</span>
+                <a class="nav-link" tooltip title="Logout" (click)="this.logOut()">
+                    <fa icon="directions v-bottom"></fa>
+                    <!-- <span class="d-none d-sm-inline">Logout</span> -->
                 </a>
             </li>
         </else>
     </ul>
 </header>
+<rewards-panel *if="this.rewardsPanelIsOpened"></rewards-panel>
+<notifications-list *if="this.showNotifications"></notifications-list>
 <todo-list-modal *if="this.openTodoList" (close)="this.openTodoList = null"></todo-list-modal>

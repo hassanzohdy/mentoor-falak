@@ -1,41 +1,87 @@
-<section class="panel-wrapper" *as="notificationContainer" id="notifications-list" [class]="{ empty: Is.empty(this.user.notifications)}">
+<section class="panel-wrapper" *as="notificationContainer" id="notifications-list"
+    [class]="{ empty: Is.empty(this.user.notifications)}">
     <span class="arrow-up"></span>
-    <flk-spinner *if="this.isLoading" theme="black"></flk-spinner>
-    <div *elseif="! Is.empty(this.notifications)" class="list-wrapper">
-        <ul class="list">
-            <for loop="let notification, index of this.notifications">
-                <rejected-answer-notification
-                    *if="notification.type == 'answer' && notification.extra.status == 'rejected'">
-                </rejected-answer-notification>
-                <moderator-answer-notification
-                    *elseif="notification.type == 'answer' && ['new', 'update'].includes(notification.extra.status)">
-                </moderator-answer-notification>
-                <failed-task-notification
-                    *elseif="notification.type == 'task' && notification.extra.status == 'failed'">
-                </failed-task-notification>
-                <new-task-notification *elseif="notification.type == 'task'"></new-task-notification>
-                <rejected-einstein-notification
-                    *elseif="notification.type == 'einstein' && notification.extra.status == 'rejected'">
-                </rejected-einstein-notification>
-                <einstein-puzzle-answered-notification
-                    *elseif="notification.type == 'einstein' && notification.extra.status == 'pending'">
-                </einstein-puzzle-answered-notification>
-                <chat-room-notification *elseif="notification.type == 'chatRooms'"></chat-room-notification>
-                <timeline-post-notification *elseif="notification.type == 'post'"></timeline-post-notification>
-                <comment-notification *elseif="notification.type == 'comment'"></comment-notification>
-                <project-notification *elseif="notification.type == 'project'"></project-notification>
-                <project-bug-notification *elseif="notification.type == 'bug'"></project-bug-notification>
-            </for>
-        </ul>
-        <section class="footer">
-            <button class="remove-all-btn" tooltip title="Remove All Notifications"
-                (click)="this.confirmRemoving = true">
-                <fa icon="trash mr-2"></fa>
-                <span>Remove All</span>
-            </button>
-        </section>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
+    <div *elseif="! Is.empty(this.notifications)">
+        <flk-tabs>
+            <flk-tab *for="let notificationsList of this.notificationsTypes" badgeColor="red" [badge]="notificationsList.unseen" [heading]="pluralize(notificationsList.type.ucfirst())">
+                <if condition="notificationsList.extra.statusList">
+                    <div class="with-status-list">
+                        <flk-tabs>
+                            <flk-tab *for="let tasksList of notificationsList.extra.statusList"  [badgeColor]="this.getStatusHeadingColor(tasksList)" [badge]="tasksList.unseen" [heading]="trans(tasksList.status)">
+                                <div class="list-wrapper">
+                                    <ul class="list">
+                                        <for loop="let notification of tasksList.notifications" *key="notification.id">
+                                            <new-task-notification></new-task-notification>
+                                        </for>
+                                    </ul>
+                                    <section class="footer">
+                                        <button class="mark-as-seen-btn teal-text" tooltip title="Mark All As seen"
+                                            (click)="this.markAllAsSeen()">
+                                            <fa icon="eye mr-2"></fa>
+                                            <span>Mark All As Seen</span>
+                                        </button>
+                                        <button class="remove-all-btn" tooltip title="Remove All Notifications"
+                                            (click)="this.confirmRemoving = true">
+                                            <fa icon="trash mr-2"></fa>
+                                            <span>Remove All</span>
+                                        </button>
+                                    </section>
+                                </div>
+                            </flk-tab>
+                        </flk-tabs>
+                    </div>
+                </if>
+
+                <div *else class="list-wrapper">
+                    <ul class="list">
+                        <for loop="let notification, index of notificationsList.notifications" *key="notification.id">
+                            <rejected-answer-notification
+                                *if="notification.type == 'answer' && notification.extra.status == 'rejected'">
+                            </rejected-answer-notification>
+                            <moderator-answer-notification
+                                *elseif="notification.type == 'answer' && ['new', 'update'].includes(notification.extra.status)">
+                            </moderator-answer-notification>
+                            <rejected-einstein-notification
+                                *elseif="notification.type == 'einstein' && notification.extra.status == 'rejected'">
+                            </rejected-einstein-notification>
+                            <einstein-puzzle-answered-notification
+                                *elseif="notification.type == 'einstein' && notification.extra.status == 'pending'">
+                            </einstein-puzzle-answered-notification>
+                            <!-- Courses Notifications -->
+                            <course-coupon-notification
+                                *elseif="notification.type == 'course' && notification.extra.coupon"
+                                [course]="notification.extra.course" [notification]="notification" [index]="notification.index"
+                                [coupon]="notification.extra.coupon">
+                            </course-coupon-notification>
+
+                            <!--/ Courses Notifications -->
+                            <chat-room-notification *elseif="notification.type == 'chatRooms'"></chat-room-notification>
+                            <timeline-post-notification *elseif="notification.type == 'post'">
+                            </timeline-post-notification>
+                            <comment-notification *elseif="notification.type == 'comment'"></comment-notification>
+                            <project-notification *elseif="notification.type == 'project'"></project-notification>
+                            <project-bug-notification *elseif="notification.type == 'bug'"></project-bug-notification>
+                        </for>
+                    </ul>
+                    <section class="footer">
+                        <button class="mark-as-seen-btn teal-text" tooltip title="Mark All As seen"
+                            (click)="this.markAllAsSeen()">
+                            <fa icon="eye mr-2"></fa>
+                            <span>Mark All As Seen</span>
+                        </button>
+                        <button class="remove-all-btn" tooltip title="Remove All Notifications"
+                            (click)="this.confirmRemoving = true">
+                            <fa icon="trash mr-2"></fa>
+                            <span>Remove All</span>
+                        </button>
+                    </section>
+                </div>
+            </flk-tab>
+        </flk-tabs>
     </div>
     <div *else class="no-results">You don't have any notifications yet.</div>
 </section>
 
-<flk-alert *if="this.confirmRemoving" (close)="this.confirmRemoving = null" (confirm)="this.removeAllNotifications()"></flk-alert>
+<flk-alert *if="this.confirmRemoving" (close)="this.confirmRemoving = null" (confirm)="this.removeAllNotifications()">
+</flk-alert>

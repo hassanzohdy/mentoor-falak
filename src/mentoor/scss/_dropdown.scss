@@ -9,7 +9,7 @@
     &.opened {
         .heading {
             // background: #fbfbfb;
-            border-bottom: none; 
+            border-bottom: none;
         }
     }
 
@@ -24,11 +24,21 @@
             // border-top-color: #bdc3c7 !important;
             // border-bottom-color: #7f8c8d !important;
             border: none !important;
+
+            border-bottom: 1px solid #eee !important;            
+            &:last-child {                
+                border-bottom: none !important;
+            }
+
             transition: none;
 
             &:hover {
                 background: rgba(0, 0, 0, .04);
                 // color: #FFF;
+            }
+
+            .text {
+                white-space: normal !important;
             }
 
             img {

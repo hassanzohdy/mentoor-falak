@@ -1,83 +1,104 @@
 <layout>
-  <h1>Add new course</h1>
+  <flk-spinner *if="this.isLoadingCourse"></flk-spinner>
+  <else>
 
-  <form (submit)="this.submit($el)" *as="form">
-    <div>
-      <form-input
-        type="text"
-        class="form-control"
-        name="title"
-        label="Course Title"
-        [required]="true"
-        [value]="this.data.title"
-      ></form-input>
-      <form-input
-        type="number"
-        class="form-control"
-        name="price"
-        label="Course Price (In Gold, i.e 500000)"
-        [required]="true"
-        [value]="this.data.price"
-      ></form-input>
-      <form-input
-        type="textarea"
-        class="form-control"
-        name="shortDescription"
-        label="Short Description About the course"
-        [required]="true"
-        [value]="this.data.shortDescription"
-      >
-      </form-input>
-
-      <flk-dropdown-list
-        name="type[]"
-        [items]="['Academic', 'Practical']"
-        label="Course Type"
-        [value]="this.data.type"
-        [required]="true"
-        [multiple]="true"
-      ></flk-dropdown-list>
-
-      <div class="form-group">
+    <h1>
+      {{ this.data.id ? 'Edit ' + this.data.title : 'Add new course' }}
+    </h1>
+  
+    <form (submit)="this.submit($el)" *as="form">
+      <div>
+        <form-input
+          type="text"
+          class="form-control"
+          name="title"
+          label="Course Title"
+          [required]="true"
+          [value]="this.data.title"
+        ></form-input>
+        <form-input
+          type="number"
+          class="form-control"
+          name="price"
+          label="Course Price (In Gold, i.e 500000)"
+          [required]="true"
+          [value]="this.data.price"
+        ></form-input>
+        <form-input
+          type="textarea"
+          class="form-control"
+          name="shortDescription"
+          label="Short Description About the course"
+          [required]="true"
+          [value]="this.data.shortDescription"
+        >
+        </form-input>
+  
         <flk-dropdown-list
-          name="level[]"
-          [items]="['Beginner', 'Advanced']"
-          label="Course level"
+          name="type[]"
+          [items]="['academic', 'practical']"
+          label="Course Type"
           [value]="this.data.type"
           [required]="true"
           [multiple]="true"
         ></flk-dropdown-list>
-      </div>
-
-      <div class="form-group">
+  
+        <div class="form-group">
+          <flk-dropdown-list
+            name="level[]"
+            [items]="['beginner', 'advanced']"
+            label="Course level"
+            [value]="this.data.level"
+            [required]="true"
+            [multiple]="true"
+          ></flk-dropdown-list>
+        </div>
+  
+        <div class="form-group">
+          <flk-dropdown-list
+            name="status"
+            [items]="['published', 'disabled']"
+            label="Course Status"
+            [value]="this.data.status"
+          ></flk-dropdown-list>
+        </div>
+  
         <markdown-input
-          name="prerequisites"
           label="Course Prerequisites"
-          [required]="true"
+          type="textarea"
+          rows="4"
+          class="form-control m-y-2"
+          name="prerequisites"
+          required
           [value]="this.data.prerequisites"
-        ></markdown-input>
+        >
+        </markdown-input>
+  
+        <markdown-input
+          label="Course Description"
+          rows="4"
+          class="form-control m-y-2"
+          name="description"
+          required
+          [value]="this.data.description"
+        >
+        </markdown-input>
+  
+        <flk-image-input
+          name="image"
+          [required]="true"
+          label="Course Image"
+          [src]="this.data.image"
+        >
+        </flk-image-input>
+  
+        <button
+          [disabled]="!this.isValidForm || this.isLoading"
+          class="bold btn btn-success"
+        >
+          {{ this.data.id ? 'Save' : 'Create Course' }}
+        </button>
       </div>
-      <markdown-input
-        name="description"
-        label="Course Description"
-        [required]="true"
-        [value]="this.data.description"
-      ></markdown-input>
-
-      <flk-image-input
-        name="image"
-        [required]="true"
-        label="Course Image"
-        [src]="this.data.image"
-      >
-      </flk-image-input>
-
-      <button
-        [disabled]="!this.isValidForm || this.isLoading"
-        class="bold btn btn-success"
-      >
-        Create Course
-      </button>
-    </div>
-  </form>
+    </form>
+  </else>
 </layout>

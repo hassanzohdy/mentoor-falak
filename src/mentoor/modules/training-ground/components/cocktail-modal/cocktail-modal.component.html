@@ -38,7 +38,6 @@
                         <!-- Cocktails unlock and cost -->
                         <div class="cost" [class]="{gray: this.isLocked(cocktail) }">
                             <gold-icon [coins]="cocktail.cost"></gold-icon>
-                            <span *if="cocktail.cost == 0" class="pink-text bold">FREE!</span>
                             <button class="unlock-btn" *if="! cocktail.unlocked" [disabled]="! cocktail.canBeUnlocked"
                                 (click)="this.hasCocktailToBeUnlocked = cocktail;">Unlock</button>
                             <fa *else title="Unlocked" icon="check green-text unlocked"></fa>

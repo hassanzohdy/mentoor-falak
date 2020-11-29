@@ -1,0 +1,77 @@
+.activities-list {
+    .activity {
+        .system {
+            color: #FFF;
+            color: $secondaryColor;
+            // padding: 0.3rem 0.5rem;
+            // font-size: 1.2rem;
+            // background-color: $secondaryColor;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        * {
+            margin-right: 0.2rem;
+        }
+
+        .type {
+            font-weight: bold;
+            margin-right: 0.5rem;
+
+            &.resource {
+                color: $teal-color;
+            }
+
+            &.task {
+                color: $pink-color;
+            }
+
+            &.module {
+                color: $orange-color;
+            }
+
+            &.bug {
+                color: $red-color;
+            }
+
+            &.discussion {
+                color: $lime-color-dark;
+            }
+
+        }
+
+        .text-only {
+            color: $blue-color;
+        }
+
+        .created-at {
+            font-size: 1rem;
+            color: #444;
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .action {
+            font-weight: bold;
+
+            .comment {
+                color: $navy-color;
+            }
+
+            .deleted {
+                color: $red-color;
+            }
+        }
+
+        .user {
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                margin-right: 0.5rem;
+            }
+
+            span {}
+        }
+    }
+}

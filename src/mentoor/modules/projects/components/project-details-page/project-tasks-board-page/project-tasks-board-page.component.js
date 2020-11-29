@@ -11,7 +11,7 @@ class ProjectTasksBoardPage extends Project {
         this.prependName = 'Tasks';
         this.itemKey = 'tasks';
         this.query = {
-            tasks: true,
+            // tasks: true,
         };
 
         this.statuses = TASK_STATUSES;
@@ -33,6 +33,7 @@ class ProjectTasksBoardPage extends Project {
     }
 
     updateTasksList(tasks) {
+        return;
         this.project.tasks = tasks;
         // this.totalTasks = this.project.tasks.filter(task => ! task.archived).length;
 
@@ -42,16 +43,14 @@ class ProjectTasksBoardPage extends Project {
     }
 
     adjustTaskResponse(task) {
-        if (this.currentType == 'add') {
-            Object.get(this.project, this.itemKey).push(task);
-        } else {
-            Object.set(this.project, this.itemKey + '.' + this.index, task);
-        }
+        // if (this.currentType == 'add') {
+        //     Object.get(this.project, this.itemKey).push(task);
+        // } else {
+        //     Object.set(this.project, this.itemKey + '.' + this.index, task);
+        // }
 
-        this.tasksBoard.updateTasksList(this.project.tasks);
+        // this.tasksBoard.updateTasksList(this.project.tasks);
 
-        this.onProjectLoad();
-
-        this.cache();
+        // this.onProjectLoad();
     }
 }

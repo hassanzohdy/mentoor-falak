@@ -1,9 +1,8 @@
 <section class="simple-card p-3 project-section" [class]="{active: this.currentStep == 0}">
-    <form-input type="text" name="name" [value]="this.data.name" [required]="true" class="form-control"
+    <form-input type="text" name="name" autofocus [value]="this.data.name" required class="form-control"
         label="Project name">
     </form-input>
-    <markdown-input  name="about" [value]="this.data.about" required class="form-control"
-        label="About the project"
+    <markdown-input name="about" [value]="this.data.about" class="form-control" label="About the project"
         placeholder="About the project, if the project is not private, this content will be visible to everyone.">
     </markdown-input>
     <div class="row">
@@ -22,46 +21,53 @@
     <div class="row m-t-1">
         <div class="col-sm-6">
             <flk-datepicker name="startDate" [value]="this.data.startDate" label="Starting Date"
-                placeholder="Starting Date" class="form-control" required></flk-datepicker>
+                placeholder="Starting Date" class="form-control"></flk-datepicker>
         </div>
         <div class="col-sm-6">
             <flk-datepicker name="endDate" [value]="this.data.endDate" label="End Date" placeholder="End Date"
-                class="form-control" required></flk-datepicker>
+                class="form-control"></flk-datepicker>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
             <flk-dropdown-list name="status" label="Current Project Status" heading="Status" [value]="this.data.status"
-                required [items]="FLAGS.projects.status">
+                [items]="FLAGS.projects.status">
             </flk-dropdown-list>
         </div>
         <div class="col-sm-6">
-                <flk-dropdown-list 
-                    name="tags[]" 
-                    [multiple]="true" 
-                    label="Tags" 
-                    [imageable]="true"
-                    heading="Tags List" 
-                    [value]="this.data.tags"
-                    [lazy-loading]="true"
-                    [service]="this.tagsService" 
-                    >
-                </flk-dropdown-list>
+            <flk-dropdown-list name="tags[]" [multiple]="true" label="Tags" [imageable]="true" heading="Tags List"
+                [value]="this.data.tags" [lazy-loading]="true" [service]="this.tagsService">
+            </flk-dropdown-list>
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="image">
-            Project Image
-            <span class="required">*</span>
-        </label>
-        <flk-image-input [required]="true" name="image" id="image"></flk-image-input>
+    <div class="row m-t-1">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="image">
+                    Project Image
+                </label>
+                <flk-image-input name="image" id="image"></flk-image-input>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <flk-dropdown-list name="settings.features[]" [multiple]="true" label="Project Features"
+                heading="Project Features" [value]="['taskBoard', 'resources', 'bugs', 'srs']" required [items]="PROJECT_FEATURES">
+            </flk-dropdown-list>
+            <form-input name="projectUrl" type="text" label="Project URL" class="form-control"></form-input>
+        </div>
     </div>
+
     <div class="text-right">
-        <button type="button" (click)="this.next()" class="btn btn-purple bold">
+        <!-- <button type="button" (click)="this.next()" class="btn btn-purple bold">
             NEXT
             <fa icon="arrow-right"></fa>
+        </button> -->
+
+        <button class="btn btn-success bold" [disabled]="this.isCreating">
+            <fa icon="plus mr-2"></fa>
+            Create
         </button>
     </div>
 </section>

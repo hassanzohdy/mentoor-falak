@@ -1,0 +1,4 @@
+<div *if="! Is.empty(this.userInfo)" class="avatar-wrapper" [data-name]="this.userInfo.name" tooltip [title]="this.userInfo.name">
+    <img *if="this.userInfo.image" [src]="this.userInfo.image" class="small mr-2 circle" [alt]="this.userInfo.name" />
+    <span *else class="user-avatar-name" [style]="{background: this.userInfo.color}" [html]="this.initialsOnly"></span>
+</div>

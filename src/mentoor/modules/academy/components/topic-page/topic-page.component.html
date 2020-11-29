@@ -4,14 +4,15 @@
         <div class="col-lg-9 col-md-8">
             <section>
                 <header class="topicTitle">
+                    <a [href]="URLS.track(this.topic.track)">
+                        <!-- <img *if="this.topic.track.image" [src]="this.topic.track.image" class="mr-2 v-top" [alt]="this.topic.track.name" /> -->
+                        <span class="mr-2" [html]="this.topic.track.name"></span>
+                    </a>
+
                     <h2 class="text-capitalize bold trackImage">
-                        <a [href]="URLS.track(this.topic.track)">
-                            <img [src]="this.topic.track.image" class="mr-2 v-top" [alt]="this.topic.track.name" />
-                        </a>
                         <div class="d-inline-block">
                             {{ this.topic.title }}
-                            <div class="text-muted dateFont mt-1 font-weight-normal">
-                                <!-- <fa icon="calendar"></fa> {{this.topic.createdAt.format}} -->
+                            <div *if="this.topic.createdAt" class="text-muted dateFont mt-1 font-weight-normal">
                                 <fa icon="calendar mx-2"></fa>
                                 <flk-time-ago [timestamp]="this.topic.createdAt.timestamp"></flk-time-ago>
                                 <div class="m-t-1">
@@ -66,7 +67,7 @@
                 <flk-alert *if="this.form" (confirm)="this.submitAnswer(this.form)" (close)="this.form = null">
                 </flk-alert>
                 <form *if="this.openAnswerText" (submit)="this.form = $el;">
-                    <markdown-input (input)="this.storeAnswer(e)" placeholder="Write your answer ;)" type="textarea"
+                    <markdown-input name="answer" (input)="this.storeAnswer(e)" placeholder="Write your answer ;)"
                         [value]="this.answerData" required></markdown-input>
                     <button class="btn btn-primary float-right" [disabled]="!this.isValidForm || this.isSending">
                         Send
@@ -107,17 +108,17 @@
                                         <fa *elseif="answer.display == HIDDEN" title="Semi display"
                                             icon="plus float-right fa-2x"></fa>
                                     </span>
-                                    <small class="text-muted d-block">
+                                    <small *if="answer.createdAt" class="text-muted d-block">
                                         {{ answer.createdAt.format }}
                                     </small>
                                 </div>
                             </div>
                             <if condition="answer.display == SEMI_DISPLAYED">
-                                <markdown [content]="answer.answer.split('\n').slice(0, 10).join('\n')"></markdown>
-                                <p *if="answer.answer.split('\n').length > 10" class="pointer bold pink-text"
+                                <markdown [content]="String(answer.answer).split('\n').slice(0, 10).join('\n')"></markdown>
+                                <p *if="String(answer.answer).split('\n').length > 10" class="pointer bold pink-text"
                                     (click)="this.handleAnswerDisplay(answer)">Read more...</p>
                             </if>
-                            <markdown *elseif="answer.display == DISPLAYED" [content]="answer.answer"></markdown>
+                            <markdown *elseif="answer.display == DISPLAYED" [content]="String(answer.answer)"></markdown>
                         </div>
                     </div>
                 </else>

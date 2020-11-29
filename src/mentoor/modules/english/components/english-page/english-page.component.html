@@ -5,8 +5,7 @@
             <fa icon="hand-point-right"></fa>
             Top participants
         </a>
-        <button *if="this.user.id == 1" (click)="this.openModal('add')" type="button"
-            class="btn btn-circle btn-success">
+        <button (click)="this.openModal('add')" type="button" class="btn btn-circle btn-success">
             <fa icon="plus"></fa>
         </button>
     </h1>
@@ -17,9 +16,10 @@
     <p>For the time being, this section of the application will be for <strong
             class="teal-text mx-2">Arabic</strong>people who wants to learn English.</p>
     <p class="bold">
-        Topics with  
+        Topics with
         <fa icon="sort-amount-up purple-text mx-1" tooltip title="Incremental Cost"></fa>
-        Incremental cost flag, will start with free gold and increase accordingly whenever the topic gets more new words.
+        Incremental cost flag, will start with free gold and increase accordingly whenever the topic gets more new
+        words.
     </p>
     <div *if="this.totalWords" class="text-center">
         <h2 class="total-words">
@@ -31,7 +31,7 @@
     <section class="m-t-2">
         <h2 class="text-center m-b-2 bold">Topics List</h2>
         <flk-spinner *if="this.isLoading"></flk-spinner>
-        <div *else class="row">
+        <div *else class="row m-0">
             <div class="words-sort-wrapper">
                 <label class="mr-2 bold teal-text">Sort</label>
                 <flk-dropdown-list class="dropdown" (select)="this.sortBy(e.value)"
@@ -39,9 +39,7 @@
                 </flk-dropdown-list>
             </div>
 
-            <div class="w-100"></div>
-
-            <div *for="let category, index of this.categories" class="category col-sm-6 col-lg-4 px-1 m-b-1">
+            <!-- <div *for="let category, index of this.categories" *key="category.id" class="category col-sm-6 col-lg-4 px-1 m-b-1">
                 <div class="simple-card">
                     <div class="row">
                         <div class="col-3 m-t-1">
@@ -60,15 +58,11 @@
                                     *if="this.user.accountType == 'admin' && category.words && category.words.filter(word => ! word.published).length > 0"
                                     class="ml-2 bold btn btn-warning"
                                     [html]="category.words.filter(word => ! word.published).length.format()"></span>
-                                <!-- <span class="pronunciation teal-text"
-                                    [html]="'(' + category.pronunciation + ')'"></span> -->
                             </h3>
                             <p class="description" [html]="category.description"></p>
 
                             <div class="ar">
                                 <span [html]="category.translation.word"></span>
-                                <!-- <span class="pronunciation translation pink-text bold"
-                                    [html]="'(' + category.translation.pronunciation + ')'"></span> -->
                             </div>
                             <div class="ar description" [html]="category.translation.description"></div>
 
@@ -94,7 +88,54 @@
                             </section>
                         </div>
                     </div>
-                    <!-- End of Row -->
+                </div>
+            </div> -->
+            <div *for="let category, index of this.categories" *key="category.id" class="col-sm-6 col-lg-4 px-1 m-b-1">
+                <!-- <div  class="background" [alt]="category.word"></div>                     -->
+                <div class="category" [background-image]="category.image">
+                    <a [href]="URLS.english(category)" class="meta">
+                        <fa *if="category.incrementalCost" tooltip icon="sort-amount-up orange-text float-right incremental-icon"
+                            title="Incremental Cost"></fa>
+                        <span
+                            *if="this.user.accountType == 'admin' && category.words && category.words.filter(word => ! word.published).length > 0"
+                            class="ml-2 bold btn btn-warning pending-words"
+                            [html]="category.words.filter(word => ! word.published).length.format()"></span>
+
+                        <div class="word">
+                            <div class="en">
+                                <span class="text" [html]="category.word"></span>
+                                <span *if="category?.total?.words" class="ml-2"
+                                    [html]="'(' + category.total.words.format() + ')'"></span>
+                            </div>
+                            <div class="ar">
+                                <span [html]="category.translation.word"></span>
+                            </div>
+
+                            <div *if="! category.isUnlocked" class="cost">
+                                <gold-icon color="lime" [coins]="category.cost"></gold-icon>
+                            </div>
+                            <fa *else tooltip title="Unlocked" icon="check lime-text">
+                            </fa>
+                        </div>
+                    </a>
+
+
+                    <section class="footer">
+                        <!-- <a *if="category.isUnlocked" [href]="URLS.english(category)"
+                            class="btn btn-success btn-sm bold float-right">DETAILS</a> -->
+
+                        <button *if="! category.isUnlocked" type="button"
+                            (click)="this.currentCategory = category; this.confirmPurchase = true"
+                            class="btn btn-sm bold float-right btn-danger">
+                            <fa icon="lock mr-2"></fa>
+                            Purchase
+                        </button>
+                        <button *if="this.user.accountType == 'admin'"
+                            (click)="this.currentCategory = category; this.openModal('edit', index)"
+                            class="btn btn-circle btn-purple" type="button">
+                            <fa icon="edit"></fa>
+                        </button>
+                    </section>
                 </div>
             </div>
         </div>

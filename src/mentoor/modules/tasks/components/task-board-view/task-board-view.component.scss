@@ -1,3 +1,118 @@
-#task-board-view {
+.btn-analyzing {
+    background-color: #90bb82;
+    color: #FFF;
+}
+.tasks-board {
     // Picasso is ready to draw :)
+
+    .tasks-group {
+        &.inProgress {
+            border-top: 3px solid #9b59b6;
+        }
+
+        &.analyzing {
+            // border-top: 3px solid #9ff184;
+            border-top: 3px solid #90bb82;
+        }
+
+        &.completed {
+            border-top: 3px solid #00c851;
+        }
+
+        &.notStarted {
+            border-top: 3px solid skyblue;
+        }
+
+        &.inReview {
+            border-top: 3px solid #fa0;
+        }
+
+        &.testing {
+            border-top: 3px solid #16c1ae;
+        }
+
+        &.hold {
+            border-top: 3px solid #8f4800;
+        }
+
+        &.failed {
+            border-top: 3px solid #ff4f5e;
+        }
+
+        &.autoFailed {
+            border-top: 3px solid red;
+        }
+
+        &.archived {
+            border-top: 3px solid #902525;
+        }
+    }
+
+    .view-archived-btn {
+        // margin-top: 1rem;
+        font-weight: bold;
+        font-size: 3rem;
+    }
+}
+
+.task-board-view-wrapper {
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 2rem 1rem;
+
+    .task-group-heading {
+        padding: 0.5rem;
+    }
+
+    .status-wrapper {
+        width: 300px;
+        margin: 0 1rem;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+        white-space: nowrap;
+
+        .tasks-list-container {
+            // max-height: 500px;
+            // position: relative;
+            height: 500px !important;
+            overflow-y: auto;
+
+            .tasks-list {
+                height: 100%;
+            }
+        }
+
+        .task-card {
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+            cursor: pointer;
+            display: block;
+            margin-bottom: 8px;
+            max-width: 300px;
+            min-height: 20px;
+            position: relative;
+            text-decoration: none;
+            z-index: 0;
+            color: #172b4d;
+
+            &.involved {
+                border-left: 2px solid yellow;
+            }
+            
+            &.isSupervisor {
+                border-left: 2px solid #7bef32;
+            }
+
+            .task-title {
+                color: inherit;
+                overflow: hidden;
+                white-space: break-spaces;
+                position: relative;
+                z-index: 10;
+                font-weight: normal;
+            }
+        }
+    }
 }

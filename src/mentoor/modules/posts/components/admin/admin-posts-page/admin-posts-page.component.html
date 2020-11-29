@@ -1,9 +1,13 @@
 <admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
     [table-heading]="this.tableHeading">
-    <tr *for="let post, index of this.items" id="{{ post.id }}">
-        <td>{{ post.id }}</td>
+    <tr *for="let post, index of this.items" *key="post.id" [id]="post.id">
+        <td [html]="post.id"></td>
         <td [html]="post.title"></td>
-        <td><img class="small-image" [src]="post.image" alt="" /></td>
+        <td [html]="post.createdBy.name"></td>
+        <td>
+            <flk-time-ago [tooltip]="post.createdAt.format" [timestamp]="post.createdAt.timestamp"></flk-time-ago>
+        </td>
+        <td><img class="small-image" *if="post.image" [src]="post.image" alt="" /></td>
         <td>
             <gold-icon [coins]="post.prize"></gold-icon>
         </td>
@@ -31,8 +35,13 @@
                 name="slug"></form-input>
         </div>
         <div class="form-group">
-            <form-input type="textarea" rows="6" required name="content" [value]="this.formObject.content"
-                placeholder="Content" class="form-control"></form-input>
+            <markdown-input 
+                name="content" 
+                required
+                placeholder="Content" 
+                class="form-control"
+                [value]="this.formObject.content"
+            ></markdown-input>
         </div>
         <div class="form-group">
             <div class="row">
@@ -41,7 +50,7 @@
                         [value]="this.formObject.prize"></form-input>
                 </div>
                 <div class="col-md-6">
-                    <flk-dropdown-list class="form-control" [items]="this.answerStatus" name="status" [value]="this.formObject.status"></form-input>
+                    <flk-dropdown-list [items]="this.answerStatus" name="status" [value]="this.formObject.status"></form-input>
                 </div>
                 <div class="col-md-6">
                     <flk-dropdown-list [service]="this.tagsService" [lazy-loading]="true" [multiple]="true"

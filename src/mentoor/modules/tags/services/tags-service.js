@@ -4,7 +4,7 @@ class TagsService extends Endpoint.Service {
      */
     boot() {
         this.setRoute('/tags');
-    }
+    }   
 }
 
 DI.register({

@@ -1,7 +1,10 @@
-<div class="row m-x-0 m-t-2 tasks-board">
-    <flk-spinner *if="this.isLoading"></flk-spinner>
-    <else>
-        <div class="style-switcher text-right m-y-2 col-12">
+<h1 class="m-y-1 overflow-hidden">
+    {{ this.heading }}    
+    <div class="float-right style-switcher text-right">            
+        <button *if="this.addable" class="btn btn-success bold" (click)="this.record = {}; this.currentType = 'add' ;this.modalIsOpened = true">
+            <fa icon="plus mr-1"></fa>
+            Task
+        </button>
             <button (click)="this.switchTo('board')" class="btn btn-sm btn-cyan" title="Board Mode" tooltip>
                 <fa icon="th-large" 2x></fa>
             </button>
@@ -9,8 +12,17 @@
                 <fa icon="th-list" 2x></fa>
             </button>
         </div>
-        <div *if="! this.isViewingArchivedTasks" class="row m-x-0 w-100">
-            <tasks-board-filter *if="this.displayMode == 'list'"></tasks-board-filter>
+</h1>
+
+<div class="clearfix"></div>
+
+<div class="row m-x-0 m-t-2 tasks-board">
+    <div *if="this.isLoading" class="text-center w-100">
+        <flk-spinner></flk-spinner>
+    </div>
+    <else>
+        <div *if="! this.isViewingArchivedTasks" class="m-x-0 w-100">
+            <tasks-board-filter></tasks-board-filter>
             <task-board-view *if="this.displayMode == 'board'"></task-board-view>
             <task-list-view *elseif="this.displayMode == 'list'"></task-list-view>
         </div>
@@ -19,15 +31,15 @@
     </else>
 </div>
 
-<task-modal *if="this.modalIsOpened" 
-            *as="modal" 
-            [display-status-list]="this.record.id"
-            (close)="this.modalIsOpened = null" 
-            [participants]="this.participants" 
-            [supervisors]="this.supervisors"
-            [project]="this.project" 
-            (save)="this.adjustTaskResponse(e)" 
-            [task]="this.record">
+<task-modal 
+    *if="this.modalIsOpened" 
+    *as="modal" 
+    (close)="this.modalIsOpened = null" 
+    [participants]="this.participants" 
+    [supervisors]="this.supervisors"
+    [project]="this.project || (this.record || {}).project" 
+    (save)="this.adjustTaskResponse(e)" 
+    [task]="this.record">
 </task-modal>
 
 <flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">

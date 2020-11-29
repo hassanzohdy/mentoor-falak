@@ -3,8 +3,9 @@ class ResourcesList {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(resourcesService) {
-        this.resourcesService = resourcesService;            
+    constructor(db, resourcesService) {
+        this.db = db;
+        this.resourcesService = resourcesService;
         this.resourcesTypes = {
             link: 'External Link',
             attachment: 'Attachment',
@@ -14,10 +15,11 @@ class ResourcesList {
             ftp: 'FTP Account',
             email: 'Email Account',
             website: 'Website Account',
+            mobile: 'Mobile Account',
             youtube: 'Youtube Video',
         };
     }
-    
+
     /**
      * Initialize the component
      * This method is triggered before rendering the component
@@ -25,17 +27,23 @@ class ResourcesList {
     async init() {
         this.resources = this.inputs.getProp('resources');
         this.project = this.inputs.getProp('project');
-        this.canAdd = this.inputs.getProp('canAdd');        
+        this.canAdd = this.inputs.getProp('canAdd');
         this.availableResources = {};
 
         this.prepareResourcesList();
+
+        this.resources.map(resource => {
+            this.db.set(`resource-${resource.id}`, {
+                record: resource,
+            });
+        });
 
         if (this.canAdd) {
             if (this.canAdd === true) {
                 this.availableResources = this.resourcesTypes;
             } else if (Is.array(this.canAdd)) {
                 for (let resource of this.canAdd) {
-                    this.availableResources[resource] = this.resourcesTypes[resource]; 
+                    this.availableResources[resource] = this.resourcesTypes[resource];
                 }
             }
         }
@@ -44,8 +52,8 @@ class ResourcesList {
     remove(resource) {
         this.resourcesService.delete(resource.id);
 
-        this.resources = Array.remove(this.resources, resourceItem => resourceItem.id == resource.id);  
-        
+        this.resources = Array.remove(this.resources, resourceItem => resourceItem.id == resource.id);
+
         this.prepareResourcesList();
 
         this.inputs.getEvent('remove')(this.resources);
@@ -73,12 +81,12 @@ class ResourcesList {
     prepareResourcesList() {
         this.resourcesList = {
             pinned: this.resources.filter(resource => resource.pinned),
-            normal: this.resources.filter(resource => ! resource.pinned),
+            normal: this.resources.filter(resource => !resource.pinned),
         };
     }
 
     adjustResource(resource) {
-        if (this.index) {
+        if (this.index !== undefined) {
             this.resources[this.index] = resource;
         } else {
             this.resources.unshift(resource);
@@ -90,5 +98,5 @@ class ResourcesList {
     /**
      * The component is ready to do any action after being rendered in dom
      */
-    ready() {}
+    ready() { }
 }

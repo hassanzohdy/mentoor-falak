@@ -1,6 +1,6 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
-    <button *if="this.project.isHigherAuthority || this.project.isTeamLeader" class="float-right btn btn-success bold"
-        (click)="this.openModal('add')">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <!-- <button *if="this.project.isHigherAuthority || this.project.isTeamLeader" class="float-right btn btn-success bold" -->
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
         <fa icon="plus mr-1"></fa>
         Module
     </button>
@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Application</th>
                 <th>Parent</th>
                 <th *if="this.project.isHigherAuthority">Control</th>
             </tr>
@@ -25,8 +26,10 @@
                 <td>
                     <a [href]="URLS.project(this.project, 'modules', record)" [html]="record.name"></a>
                 </td>
+                <td [html]="record.application || 'N/a'"></td>
                 <td [html]="record.parent.name || 'N/a'"></td>
-                <td *if="this.project.isHigherAuthority || this.project.isTeamLeader">
+                <!-- <td *if="this.project.isHigherAuthority || this.project.isTeamLeader"> -->
+                <td>
                     <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan" tooltip
                         title="Edit Module">
                         <fa icon="edit"></fa>
@@ -42,15 +45,28 @@
     </table>
 </project-layout>
 
-<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="small"
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="medium"
     [heading]="this.modalHeading">
     <form (submit)="this.submit($el)">
         <input type="hidden" name="project" [value]="this.project.id" />
         <form-input type="text" name="name" [value]="this.record.name" label="Module Name" required
             class="form-control"></form-input>
 
-        <flk-dropdown-list name="parent" [none]="true" label="Parent Module" [value]="this.record.parent?.id"
-            [except]="this.record.id" [items]="this.project.modules"></flk-dropdown-list>
+        <div class="row m-b-1">
+            <div class="col-6">
+                <flk-dropdown-list name="application" [none]="true" label="Application"
+                    [value]="this.record.application"
+                    [items]="PROJECT_APPLICATIONS">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-6">
+                <flk-dropdown-list name="parent" [none]="true" label="Parent Module" [value]="this.record.parent?.id"
+                    [except]="this.record.id" [items]="this.project.modules"></flk-dropdown-list>
+            </div>
+        </div>
+
+        <markdown-input name="description" label="Description" [value]="this.record.description">
+        </markdown-input>
 
         <div class="m-t-1 text-center">
             <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>

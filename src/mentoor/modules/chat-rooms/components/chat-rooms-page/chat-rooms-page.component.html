@@ -14,7 +14,7 @@
             <table class="table table-bordered">
                 <tbody>
                     <tr *for="let room, index of this.chatRooms" class="room-row">
-                        <td>
+                        <td class="meta-column">
                             <img [src]="room.image || FAVICON" class="image" [alt]="room.name" />
                             <div class="meta">
                                 <span class="name" [html]="room.name"></span>
@@ -43,17 +43,15 @@
                             <fa *if="room.type == 'custom'" icon="globe-asia fa-2x pink-text" title="Custom room">
                             </fa>
                         </td>
-                        <td class="text-center v-middle" title="Requires">
-                            <span *if="room.acceptanceCost == 0" class="bold pink-text">FREE!</span>
-                            <else>
-                                <gold-icon [coins]="room.acceptanceCost"></gold-icon>
-                            </else>
-                        </td>
+                        <!-- <td class="text-center v-middle" title="Requires">
+                            <gold-icon [coins]="room.acceptanceCost"></gold-icon>
+                        </td> -->
                         <td class="text-center v-middle">
                             <if condition="this.user.isLoggedIn()">
                                 <if condition="! this.userIsMemberOf(room) && ! this.userIsRequestingToJoin(room)">
                                     <fa *if="room.acceptanceCriteria && this.user.gold > room.acceptanceCost"
                                         title="Has an acceptance criteria"
+                                        tooltip
                                         icon="question-circle mr-2 fa-2x v-middle grey-text"></fa>
 
                                     <button [disabled]="this.user.gold < room.acceptanceCost" type="button"
@@ -135,7 +133,7 @@
 
 <flk-modal *as="confirmingModal" *if="this.confirmJoin" (close)="this.confirmJoin = null; this.joiningRoom = null" header="{{ this.joiningRoom.name }} room rules">
     <h1 class="m-b-1">Please read carefully the rules below to avoid any unhappy actions.</h1>
-    <markdown [content]="this.joiningRoom.rules"></markdown>
+    <markdown [content]="(this.joiningRoom || {}).rules"></markdown>
 
     <div class="text-center m-t-1" id="confirming-btns">
         <button type="button" (click)="this.confirmingModal.close(); this.joinRoom();" class="btn btn-success btn-sm bold">I Agree</button>

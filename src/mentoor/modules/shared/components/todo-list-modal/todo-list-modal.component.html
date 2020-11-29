@@ -17,19 +17,22 @@
     <flk-spinner *elseif="this.isLoading" theme="black"></flk-spinner>
     <else>
         <if condition="! Is.empty(this.todo.categories)">
-            <span (click)="this.filterBy(TodoListModal.ALL)" [class]="{active: TodoListModal.ALL == this.currentStatus}"
-                class="badge badge-purple">All
-                ({{ this.totalItems() }})</span>
-            <span (click)="this.filterBy(TodoListModal.PENDING)"
-                [class]="{active: TodoListModal.PENDING == this.currentStatus}" class="badge badge-primary">Pending
-                ({{ this.totalPending() }})</span>
-            <span (click)="this.filterBy(TodoListModal.COMPLETED)"
-                [class]="{active: TodoListModal.COMPLETED == this.currentStatus}" class="badge badge-success">Completed
-                ({{ this.totalCompleted() }})</span>
-
+            <span class="statuses-list d-block d-sm-inline-block text-center">
+                <span (click)="this.filterBy(TodoListModal.ALL)"
+                    [class]="{active: TodoListModal.ALL == this.currentStatus}" class="badge badge-purple">All
+                    ({{ this.totalItems() }})</span>
+                <span (click)="this.filterBy(TodoListModal.PENDING)"
+                    [class]="{active: TodoListModal.PENDING == this.currentStatus}" class="badge badge-primary">Pending
+                    ({{ this.totalPending() }})</span>
+                <span (click)="this.filterBy(TodoListModal.COMPLETED)"
+                    [class]="{active: TodoListModal.COMPLETED == this.currentStatus}"
+                    class="badge badge-success">Completed
+                    ({{ this.totalCompleted() }})</span>
+            </span>
             <div class="categories-filter">
                 <flk-dropdown-list *as="categoriesDropdown" [items]="this.getCategories()" heading="Categories"
-                    placeholder="Filter by category" [multiple]="true" (select)="this.filterBy(this.currentStatus, e.map(cat => cat.text))">
+                    placeholder="Filter by category" [multiple]="true"
+                    (select)="this.filterBy(this.currentStatus, e.map(cat => cat.text))">
                 </flk-dropdown-list>
             </div>
 
@@ -43,7 +46,8 @@
                     </h1>
                     <!-- Items list -->
                     <if condition="! Is.empty(category.items)">
-                        <div *for="let item of category.items" *key="item.id + item.done + category.id" class="row item">
+                        <div *for="let item of category.items" *key="item.id + item.done + category.id"
+                            class="row item">
                             <div class="col-9" [html]="item.item"></div>
                             <div class="col check-item">
                                 <label>
@@ -59,7 +63,8 @@
                     <h1 *else class="m-y-2 text-center">No items here.</h1>
                     <!-- Add todo item button -->
                     <button class="btn btn-circle btn-success m-y-2"
-                        (click)="this.isAdding = true; this.currentCategoryIndex = index;" tooltip title="Add todo item">
+                        (click)="this.isAdding = true; this.currentCategoryIndex = index;" tooltip
+                        title="Add todo item">
                         <fa icon="plus mr-1"></fa>
                         <!-- <strong>Todo</strong> -->
                     </button>

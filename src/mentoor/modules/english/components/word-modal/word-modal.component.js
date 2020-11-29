@@ -121,6 +121,7 @@ class WordModal {
             record = response.record;
             this.onSave(record);
             this.modal.close();
+            return;
         } else {
             // let response = await this.englishService.create(form);
             // record = response.record;

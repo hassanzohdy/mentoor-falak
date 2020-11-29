@@ -21,7 +21,7 @@ DI.resolve('events').subscribe('router.collecting', router => {
 
         routerGroup.group({
             prefix: '/{:id}',
-            middleware: MIDDLEWARE_LIST.loggedIn,
+            // middleware: MIDDLEWARE_LIST.loggedIn,
         }, routerGroup => {
             // Project teams page page
             routerGroup.add('/teams', ProjectTeamsPage);
@@ -67,9 +67,9 @@ DI.resolve('events').subscribe('router.collecting', router => {
             // project Tasks Board Page page
             routerGroup.add('/tasks-board', ProjectTasksBoardPage);
             // project Documentations Page page
-            routerGroup.add('/documentation', ProjectDocumentationsPage);
+            routerGroup.add('/documentations', ProjectDocumentationsPage);
             // Project Documentation Details page
-            routerGroup.add('/documentation/{:documentationId}', ProjectDocumentationDetailsPage);
+            routerGroup.add('/documentations/{:documentationId}', ProjectDocumentationDetailsPage);
             // project Discussions Page page
             routerGroup.add('/discussions', ProjectDiscussionsPage);
             // Project Discussion Details page
@@ -82,9 +82,9 @@ DI.resolve('events').subscribe('router.collecting', router => {
             routerGroup.add('/modules', ProjectModulesPage);
             // Project Module Details page
             routerGroup.add('/modules/{:moduleId}', ProjectModuleDetailsPage);
-            
+
             // Project Details/project Change Requests Page page
-            routerGroup.add('/change-requests', ProjectChangeRequestsPage);            
+            routerGroup.add('/change-requests', ProjectChangeRequestsPage);
             // Change Request Details page
             routerGroup.add('/change-requests/{:changeRequestId}', ChangeRequestDetailsPage);
 
@@ -100,7 +100,13 @@ DI.resolve('events').subscribe('router.collecting', router => {
             routerGroup.add('/test-cases/{:testCaseId}', TestCasePage);
             // Project Details/resources/project Resources Page page
             routerGroup.add('/resources', ProjectResourcesPage);
-		// end of routes
+            // Project Details/project Features Page page
+            routerGroup.add('/features', ProjectFeaturesPage);
+            // Project Components page
+            routerGroup.add('/components', ProjectComponentsPage);
+            // Project Test Environments page
+            routerGroup.add('/test-environments', ProjectTestEnvironmentsPage);
+            // end of routes
         });
     });
 });

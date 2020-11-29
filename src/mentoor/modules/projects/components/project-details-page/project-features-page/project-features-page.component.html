@@ -1,0 +1,95 @@
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        feature
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} features
+        ({{ this.project.features.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Requested Date</th>
+                <th>Parent Feature</th>
+                <th>Module</th>
+                <th *if="this.project.isHigherAuthority">Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.features)">
+                <td colspan="{{ 4 + (this.project.isHigherAuthority ? 1 : 0) }}" text-center>No features Yet</td>
+            </tr>
+            <tr *else *for="let record, index of this.project.features" *key="record.id">
+                <td>
+                    <button type="button" (click)="this.viewFeature = record;" class="label btn-petrol"
+                        [html]="record.name.readMoreChars(40)"></button>
+                    <!-- <a [href]="URLS.project(this.project, 'features', record)" [html]="record.name"></a> -->
+                </td>
+                <td [html]="record.date?.format"></td>
+                <td [html]="record.parent?.name"></td>
+                <td [html]="record.module.name || 'N/a'"></td>
+                <td *if="this.project.isHigherAuthority || this.project.isTeamLeader">
+                    <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan" tooltip
+                        title="Edit feature">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)" class="btn btn-danger" tooltip
+                        title="Delete feature">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.viewFeature" size="medium" (close)="this.viewFeature = false" [heading]="this.viewFeature.name">
+    <markdown [content]="this.viewFeature.description"></markdown>
+</flk-modal>
+
+<flk-modal *if="this.modalIsOpened" size="medium" *as="modal" (close)="this.modalIsOpened = null" size="medium"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="feature Name" required
+            class="form-control"></form-input>
+
+        <markdown-input name="description" label="Description" [value]="this.record.description">
+        </markdown-input>
+
+        <div class="row">
+            <div class="col">
+                <flk-dropdown-list name="status" label="Feature Status" [value]="this.record.status"
+                    [items]="this.statuses"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-dropdown-list name="module" label="Module" [value]="this.record.module?.id" [lazy-loading]="true"
+                    [request]="this.loadModules.bind(this)"></flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="row m-t-1">
+            <div class="col">
+                <flk-dropdown-list name="parent" [except]="this.record.id" label="Parent Feature" [value]="this.record.parent?.id" [lazy-loading]="true"
+                    [request]="this.loadFeatures.bind(this)"></flk-dropdown-list>
+            </div>
+            <div class="col">
+                <flk-datepicker class="form-control" name="date" required label="Date"
+                    placeholder="Feature Request Date"
+                    [value]="this.record.date?.format">
+                </flk-datepicker>
+            </div>            
+        </div>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

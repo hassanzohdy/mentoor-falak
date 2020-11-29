@@ -1,14 +1,18 @@
 <layout>
   <post-placeholder *if="this.isLoading"></post-placeholder>
-  <div *else id="post-wrapper">
-    <button *if="this.post.createdBy.id == this.user.id || this.user.id == 1" (click)="this.editMode = true"
+  <div *else>
+    
+    <div id="post-wrapper" [class]="{'beside-image': this.post.image}">
+      <button *if="this.post.createdBy.id == this.user.id || this.user.id == 1" (click)="this.editMode = true"
       class="post-edit-btn">
       <fa icon="edit"></fa>
       Edit
     </button>
-    <section class="mt-4">
+    
+    <section class="content-wrapper">
+      
       <section class="metadata">
-        <img [src]="this.post.createdBy.image" [alt]="this.post.createdBy.name" class="user-image" />
+        <user-avatar-image [user]="this.post.createdBy"></user-avatar-image>
         <div class="meta">
           <h1 class="title m-b-1">
             <span [html]="this.post.title"></span>
@@ -22,15 +26,32 @@
               class="created-at"></flk-time-ago>
             <flk-time-ago *else [timestamp]="this.post.createdAt.timestamp" class="created-at mr-2">
             </flk-time-ago>
+            <fa icon="eye" tooltip title="Views"></fa>
+            <span class="ml-1" [html]="Number(this.post.views || 0).format()"></span>
             <flk-facebook-share></flk-facebook-share>
           </div>
         </div>
       </section>
-      <img *if="this.post.image" [src]="this.post.image" class="image" [alt]="this.post.title" />
     </section>
+    <div *if="this.post.image" class="text-center post-image">      
+      <img [src]="this.post.image" class="image" [alt]="this.post.title" />
+    </div>
     <article>
       <!-- Content -->
       <markdown [content]="this.post.content"></markdown>
+
+      <!-- Series List -->
+      <section *if="! Is.empty(this.postSeries)" class="m-t-3 series-list">
+        <fieldset class="border p-2">
+          <legend class="w-auto bold" [html]="this.post.series.name + ' series'"></legend>
+          <a *for="let post, index of this.postSeries" 
+          *key="post.id"
+          class="d-block m-b-1 black-text"
+          [class]="{'colored': post.id == this.post.id}" 
+          [href]="URLS.post(post)" [html]="index + 1 + ' - ' + post.title"></a>
+        </fieldset>
+      </section>
+      <!-- /Series List -->
 
       <!-- Tags list -->
       <section class="tags">
@@ -40,9 +61,11 @@
         </span>
       </section>
     </article>
-    <comments [comments]="this.post.comments" type="post"></comments>
+    <comments [comments]="this.post.comments" [type-id]="this.post.id" type="post"></comments>
+
+    </div>
   </div>
 </layout>
 
-<new-post-modal *if="this.editMode" [post]="this.post" (save)="this.post = e" (close)="this.editMode = false">
+<new-post-modal *if="this.editMode" [post]="Object.clone(this.post)" (save)="this.setPost(e)" (close)="this.editMode = false">
 </new-post-modal>

@@ -17,6 +17,8 @@ class ResourceListItem {
         this.resourcesTypes = this.inputs.getProp('resourcesTypes');
         this.parent = this.inputs.parent;
 
+        this.handler.onChange('resource', this.prepareResource.bind(this));
+
         this.prepareResource();
     }
 
@@ -29,6 +31,7 @@ class ResourceListItem {
             'btn-pink': this.resource.type == 'pdf', 
             'btn-pink': this.resource.type == 'image', 
             'btn-gray': this.resource.type == 'website', 
+            'btn-blue': this.resource.type == 'mobile', 
             'btn-danger': this.resource.type == 'youtube', 
             'btn-teal': this.resource.type == 'attachment', 
             'btn-orange': this.resource.type == 'ftp', 

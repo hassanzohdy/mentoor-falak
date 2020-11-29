@@ -1,18 +1,13 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
-    <button *if="this.project.maxTeams > this.project.teams.length && this.project.isHigherAuthority" [disabled]="this.project.maxTeams <= this.project.teams.length && this.project.fund < FLAGS.projects.pricing.extra.team" (click)="this.openTeamModal = true" class="float-right btn btn-pink bold">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <button *if="this.project.isHigherAuthority" (click)="this.openTeamModal = true"
+        class="float-right btn btn-pink bold">
         <fa icon="plus mr-1"></fa>
         TEAM
-    </button>
-    <button *elseif="this.project.isHigherAuthority" class="float-right btn btn-success bold" (click)="this.openTeamModal = true">
-        <fa icon="plus mr-1"></fa>
-        TEAM
-        <br>
-        <gold-icon [coins]="FLAGS.projects.pricing.extra.team"></gold-icon>
     </button>
 
     <h1 class="m-y-1">Project Teams ({{ this.project.teams.length }})</h1>
 
-    <table class="m-t-2 table table-bordered">
+    <table class="m-t-2 table table-bordered buttoned">
         <thead>
             <tr>
                 <th>Team</th>
@@ -25,39 +20,43 @@
             <tr *if="Is.empty(this.project.teams)">
                 <td class="text-center" colspan="4">No teams yet.</td>
             </tr>
-            <tr *for="let team of this.project.teams">
+            <tr *for="let team, index of this.project.teams" *key="team.id">
                 <td>
                     <a [href]="URLS.project(this.project, 'teams/' + team.type + '/members')" [html]="team.type"></a>
                 </td>
                 <td [html]="team.members.length + '/' + team.maxMembers"></td>
                 <td [html]="this.getTeamLeaderName(team)"></td>
-                <td></td>
+                <td>
+                    <!-- <button type="button" (click)="this.openTeamModal = true; this.data = team; this.index = index; echo(team)" class="btn btn-cyan" tooltip -->
+                    <button type="button" (click)="this.data = team; this.index = index;this.openTeamModal = true;"
+                        class="btn btn-cyan" tooltip title="Edit Module">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)" class="btn btn-danger" tooltip
+                        title="Delete Module">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
 </project-layout>
 
-<flk-modal *if="this.openTeamModal" *as="teamModal" (close)="this.openTeamModal = null" size="small" header="Add New Team">
-    <form (submit)="this.submit($el, 'add')">
-        <flk-dropdown-list 
-            name="type" 
-            [items]="this.teamsList" 
-            required="1" 
-            label="Team Type"
-            heading="Team Type"
-            ></flk-dropdown-list>
-        
-        <flk-dropdown-list     
-            name="teamLeader" 
-            label="Team Leader"
-            [items]="this.availableTeamLeaders"
-            heading="Select Team Leader"
-            placeholder="Enter username to select"
-        >
+<flk-modal *if="this.openTeamModal" *as="teamModal" (close)="this.openTeamModal = null; this.data = {};" size="small"
+    [header]="this.data.id ? 'Edit Team' : 'Add New Team'">
+    <form (submit)="this.submit($el, this.data.id ? 'edit': 'add')">
+        <flk-dropdown-list name="type" [value]="this.data.type" [items]="this.getTeams()" required="1" label="Team Type" heading="Team Type">
         </flk-dropdown-list>
 
+        <div class="m-t-1">
+            <flk-dropdown-list name="teamLeader" label="Team Leader" [items]="this.availableTeamLeaders"
+                heading="Select Team Leader" [value]="this.data?.teamLeader?.member?.id" placeholder="Enter username to select">
+            </flk-dropdown-list>
+        </div>
+
         <div class="m-t-1 text-center">
-            <button [disabled]="this.isSending" class="btn btn-success bold">Create</button>
+            <button [disabled]="this.isSending" class="btn btn-success bold">Save</button>
         </div>
     </form>
 </flk-modal>

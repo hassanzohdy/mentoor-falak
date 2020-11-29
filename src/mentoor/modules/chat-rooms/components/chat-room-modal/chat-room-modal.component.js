@@ -35,19 +35,22 @@ class ChatRoomModal {
         this.modal = null;
         this.onSave = this.inputs.getEvent('save');
         this.close = this.inputs.getEvent('close');
-        this.sizes = Object.keys(FLAGS.chatRooms.sizes);
+        // this.sizes = Object.keys(FLAGS.chatRooms.sizes);
         this.room = this.inputs.getProp('room', this.defaultSchema);
     }
 
     setCurrentSize(currentSize) {
-        this.cost = FLAGS.chatRooms.sizes[currentSize].cost;
-        this.maxMembers = FLAGS.chatRooms.sizes[currentSize].maxMembers;
+        // this.cost = FLAGS.chatRooms.sizes[currentSize].cost;
+        this.cost = 0;
+        // this.maxMembers = FLAGS.chatRooms.sizes[currentSize].maxMembers;
+        this.maxMembers = 100;
 
-        if (this.user.gold < this.cost) {
-            this.formHandler.addError('cost', null, `Insufficient gold.`);
-        } else {
-            this.formHandler.removeError('cost');
-        }   
+        // if (this.user.gold < this.cost) {
+        //     this.formHandler.addError('cost', null, `Insufficient gold.`);
+        // } else {
+        //     this.formHandler.removeError('cost');
+        // }   
+        this.formHandler.removeError('cost');
     }
 
     /**
@@ -67,7 +70,6 @@ class ChatRoomModal {
             this.onSave(response.record);
             this.modal.close();
         } catch (e) {
-            echo(e);
         }
     }
 }

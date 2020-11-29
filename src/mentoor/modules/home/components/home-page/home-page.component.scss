@@ -151,111 +151,111 @@
     }
 }
 
-.post {
-    margin-top: 3rem;
-    background: #FFF;
-    box-shadow: 0px 0px 4px 1px #eee;
-    border: 1px solid #ddd;
-    padding: 1rem;
+// .post {
+//     margin-top: 3rem;
+//     background: #FFF;
+//     box-shadow: 0px 0px 4px 1px #eee;
+//     border: 1px solid #ddd;
+//     padding: 1rem;
 
-    .user-image {
-        border-radius: 50%;
-        width: 90px;
-        height: 90px;
-        display: inline-block;
-        vertical-align: top;
-    }
+//     .user-image {
+//         border-radius: 50%;
+//         width: 90px;
+//         height: 90px;
+//         display: inline-block;
+//         vertical-align: top;
+//     }
 
-    .meta {
-        display: inline-block;
-        margin-left: 1rem;
+//     .meta {
+//         display: inline-block;
+//         margin-left: 1rem;
 
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-        }
+//         .title {
+//             font-size: 3rem;
+//             font-weight: bold;
+//         }
 
-    }
+//     }
 
-    .meta-info {
-        color: #888;
-        font-weight: bold;
-        margin-bottom: 1rem;
+//     .meta-info {
+//         color: #888;
+//         font-weight: bold;
+//         margin-bottom: 1rem;
 
-        .user {
-            img {
-                width: 30px;
-                height: 30px;
-                margin-right: 1rem;
-            }
+//         .user {
+//             img {
+//                 width: 30px;
+//                 height: 30px;
+//                 margin-right: 1rem;
+//             }
 
-            .user-name {
-                font-size: 1.3rem;
-                text-transform: capitalize;
-            }
-        }
+//             .user-name {
+//                 font-size: 1.3rem;
+//                 text-transform: capitalize;
+//             }
+//         }
 
-        .created-at {
-            // margin-left: 0.5rem;
-            color: #ccc;
-            float: right;
-            margin-top: 0.5rem;
-            font-size: 1rem;
-        }
-    }
-    article {
-        margin: 1rem auto;
+//         .created-at {
+//             // margin-left: 0.5rem;
+//             color: #ccc;
+//             float: right;
+//             margin-top: 0.5rem;
+//             font-size: 1rem;
+//         }
+//     }
+//     article {
+//         margin: 1rem auto;
 
-        .tags {
-            margin: 2rem auto 0; 
-        }
-    }
+//         .tags {
+//             margin: 2rem auto 0; 
+//         }
+//     }
 
-    .image {
-        margin-top: 1rem;
-        height: 150px;
-        width: 100%;
-    }
+//     .image {
+//         margin-top: 1rem;
+//         height: 150px;
+//         width: 100%;
+//     }
 
-    .link {
-        display: block;
-        font-weight: bold;
-        .title {
-            margin-top: 1rem;
-            height: 40px;
-        }
-    }
+//     .link {
+//         display: block;
+//         font-weight: bold;
+//         .title {
+//             margin-top: 1rem;
+//             height: 40px;
+//         }
+//     }
 
-    .footer {
-        margin-top: 1rem;
+//     .footer {
+//         margin-top: 1rem;
 
-        .tag {
-            margin-right: 1rem;
-            padding: 0.2rem 0.6rem 0.8rem;
+//         .tag {
+//             margin-right: 1rem;
+//             padding: 0.2rem 0.6rem 0.8rem;
 
-            @include responsive((
-                0: (
-                    display: block,
-                    margin-bottom: 1rem,
-                ),
-                768: (
-                    display: inline-block,
-                )
-            ));
+//             @include responsive((
+//                 0: (
+//                     display: block,
+//                     margin-bottom: 1rem,
+//                 ),
+//                 768: (
+//                     display: inline-block,
+//                 )
+//             ));
 
-            span {
-                font-size: 1rem;
-                font-weight: bold;
-            }
+//             span {
+//                 font-size: 1rem;
+//                 font-weight: bold;
+//             }
 
-            img {
-                margin: auto;
-                $tag-size: 20px;
-                width: $tag-size;
-                height: $tag-size;
-                margin-right: 0.3rem;
-                // vertical-align: middle;
-            }
-        }
-    }
-}
+//             img {
+//                 margin: auto;
+//                 $tag-size: 20px;
+//                 width: $tag-size;
+//                 height: $tag-size;
+//                 margin-right: 0.3rem;
+//                 // vertical-align: middle;
+//             }
+//         }
+//     }
+// }

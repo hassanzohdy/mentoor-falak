@@ -1,17 +1,42 @@
 #notifications-list {
-    @include responsive((0: (width: 32rem,
-                margin-left: 16rem,
+    @include responsive((0: (width: 100%,
+                left: 0,
             ),
-            375: (width: 37rem,
-                margin-left: 16rem,
+            768: (width: 42rem,
+                left: 33rem,
+                margin-left: auto,
             ),
-            425: (width: 42rem,
-                margin-left: 16rem,
+            1024: (right: 5rem,
+                width: 50rem,
+                // margin-left: -29rem
             ),
-            768: (width: 50rem,
-                margin-left: -29rem),
-            1024: (margin-left: -26rem),
         ));
+
+    .flk-tabs-wrapper .flk-tabs {
+        display: block !important;
+
+        li {
+            display: inline-block;
+            position: relative;
+
+            .badge {
+                position: absolute;
+                top: -0.5rem;
+                left: 40%;
+            }
+        }
+    }
+
+    .with-status-list {
+        .heading {
+            border-radius: 50%;
+            line-height: normal;
+            padding: .1rem .5rem;
+            margin-left: 0.5rem;
+            font-size: 1rem;
+            // font-weight: bold;
+        }
+    }
 
     .arrow-up {
         @include responsive((0: (left: 38%,
@@ -51,7 +76,7 @@
 
         .remove-btn {
             position: absolute;
-            top: -0.5rem;
+            top: 0.5rem;
             right: 0.5rem;
 
             .icon {
@@ -65,9 +90,11 @@
         margin-right: 1rem;
         border-top: 1px solid #eee;
         padding: 0.5rem;
+
         .remove-all-btn {
             font-weight: bold;
             color: rgb(172, 37, 37);
+
             .icon {
                 color: inherit;
             }

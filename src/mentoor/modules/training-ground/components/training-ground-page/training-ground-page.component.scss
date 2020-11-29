@@ -100,7 +100,7 @@
             z-index: 4;
 
             .technology img {
-                width: 30px;
+                // max-width: 30px;
             }
 
             .arrow {
@@ -134,16 +134,19 @@
 
 
 .technology {
-    display: inline-block;
-    margin-right: 2.5rem;
-    text-align: center;
+    // display: inline-block;
+    // margin-right: 2.5rem;
+    // text-align: center;
 
     img {
         width: 40px;
+        height: 40px;
     }
 
     div {
+        margin-top: 0.5rem;
         font-size: 1.2rem;
         text-transform: uppercase;
+        // text-align: center;
     }
 }

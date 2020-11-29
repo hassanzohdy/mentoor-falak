@@ -15,7 +15,7 @@
     class="course-coupons-list list-unstyled"
   >
     <li
-      *for="let coupon, index of this.course.coupons"
+      *for="let coupon, index of this.course.coupons" *key="coupon.id"
       class="course-coupon-item border p-1 mb-2"
     >
       <section class="d-flex justify-content-between">

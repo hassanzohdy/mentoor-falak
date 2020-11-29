@@ -15,8 +15,30 @@ $darkColor: #2c2f3b;
 $margin-20: 20px;
 $white: #fff;
 $mainColor: #5dcfe3;
+$mainColor: #11dbdb;
+$mainColor: #0cbfbf;
+$secondaryColor: #3a5169;
 $secondColor: #73a1ff;
 $fontSm: 1.2rem;
+
+.primary-spinner-theme {
+    .bounce {
+        background: $secondaryColor;
+    }
+}
+
+.colored {
+    color: $mainColor !important;
+}
+
+.btn-success {
+    background: $secondaryColor !important;
+}
+
+button,
+a {
+    font-weight: bold;
+}
 
 $primaryColor: $mainColor;
 $primary-color: $mainColor;
@@ -122,6 +144,11 @@ p {
     height: auto !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: bold;
 }

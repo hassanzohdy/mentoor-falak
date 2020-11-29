@@ -39,14 +39,14 @@
                                     [alt]="this.openedRoom.name" />
                                 <div class="d-inline-block m-l-2" [html]="this.openedRoom.name"></div>
                             </section>
-                            <div *if="this.isLoadingMessages" class="text-center m-t-10">
+                            <div *if="this.isLoadingMessages" class="text-center w-100 m-t-10">
                                 <flk-spinner></flk-spinner>
                             </div>
                             <else>
                                 <div (ready)="this.messagesList = $el; this.scrollToLastMessage();"
                                     (click)="this.clearUnseenNotifications()" class="messages-list">
                                     <for loop="let message of this.openedRoom.messages">
-                                        <div class="system-message" *if="message.sender.id == 0">
+                                        <div class="system-message" *if="message.sender.id == 0 || message.system">
                                             <span class="message" [html]="message.message"></span>
                                             <flk-time-ago [timestamp]="message.createdAt.timestamp"></flk-time-ago>
                                             <!-- <span class="created-at" [html]="this.formatDate(message.createdAt)">
@@ -55,8 +55,7 @@
                                         <div *else class="room-message" [title]="message.createdAt.format"
                                             [class]="{sender: this.user.id == message.sender.id}">
                                             <div class="user">
-                                                <img [src]="message.sender.image" [alt]="message.sender.name"
-                                                    class="u-image" />
+                                                <user-avatar-image [user]="message.sender"></user-avatar-image>
                                                 <div class="info">
                                                     <div class="u-name d-inline-block" [html]="message.sender.name">
                                                     </div>
@@ -79,7 +78,7 @@
                             </else>
                         </div>
                         <div class="message-input-wrapper">
-                            <img [src]="this.user.image" class="user-image-input" [alt]="this.user.name" />
+                            <user-avatar-image position="top" [user]="this.user.info"></user-avatar-image>
                             <form-input autofocus [class]="{ar: !!this.writingIsArabic}"
                                 (click)="this.clearUnseenNotifications()" [value]="this.input" type="textarea"
                                 (input)="this.writingIsArabic = $el.value.startsWithArabic()"
@@ -111,6 +110,6 @@
         <span *if="this.user.unseenRoomsNotifications.total > 0"
             [title]="this.user.unseenRoomsNotifications.total == 1 ? 'You have new message' : this.user.unseenRoomsNotifications.total + ' new messages'"
             class="badge badge-danger unseen" [html]="this.user.unseenRoomsNotifications.total"></span>
-        <fa icon="facebook-messenger" fab></fa>
+        <fa fab="facebook-messenger"></fa>
     </button>
 </section>

@@ -3,14 +3,22 @@ class TaskDetailsPage {
    * Constructor
    * Put your required dependencies in the constructor parameters list
    */
-  constructor(user, cache, router, shareable, tasksService) {
+  constructor(user, cache, router, shareable, meta, tasksService) {
     this.user = user;
     this.cache = cache;
     this.router = router;
+    this.meta = meta;
     this.shareable = shareable;
     this.tasksService = tasksService;
     this.name = "task-details";
     this.title = "Task";
+
+    userSocket.on('task.update', task => {
+      if (task.id !== this.task.id) return;
+
+      this.task = task;
+      this.detectChanges();
+    });
   }
 
   rate(rateValue) {
@@ -43,21 +51,54 @@ class TaskDetailsPage {
     //     this.setTask(this.cache.get(this.cacheKey))
     // }
 
-    let { record } = await this.tasksService.get(this.taskId);
+    try {
 
-    this.setTask(record);
+      let { record } = await this.tasksService.get(this.taskId);
+
+      if (record.project) {
+        this.shareable.share('project', record.project);
+      }
+
+      this.setTask(record);
+    } catch (error) {
+      echo(error)
+      this.router.navigateTo('/404');
+    }
+
 
     // this.cache.set(this.cacheKey, this.task);
   }
 
   participantCanChangeTaskStatus() {
-    return ["notStarted", "inReview", "inProgress"].includes(this.task.status);
+    return ["notStarted", "inReview", 'failed', 'hold', "inProgress"].includes(this.task.status);
+  }
+
+  taskStatusCanBeChanged() {
+    return canUserControl(this.task);
+    return (
+      (this.isSupervisor() ||
+        (this.isParticipant() && this.participantCanChangeTaskStatus()) ||
+        (this.task.project && this.task.project.is.higherAuthority)) &&
+
+      this.changeable
+    );
   }
 
   getAllowedTaskStatuses() {
+    if (this.isParticipant()) {
+      if (this.task.status == "notStarted") {
+        return ["inProgress"];
+      } else if (this.task.status == "inProgress") {
+        return ["inReview", 'hold'];
+      } else if (["failed", 'hold', 'inReview'].includes(this.task.status)) {
+        return ["inProgress"];
+      }
+    }
+
     if (
-      this.isSupervisor() ||
-      (this.task.project && this.task.project.is.higherAuthority)
+      canUserControl(this.task)
+      // this.isSupervisor() ||
+      // (this.task.project && this.task.project.is.higherAuthority)
     ) {
       // get all task statuses except the auto failed
       let statusesList = [];
@@ -70,28 +111,27 @@ class TaskDetailsPage {
 
       return statusesList;
     }
-
-    if (this.isParticipant()) {
-      if (this.task.status == "notStarted") {
-        return ["inProgress"];
-      } else if (this.task.status == "inProgress") {
-        return ["inReview"];
-      } else if (this.task.status == "inReview") {
-        return ["inProgress"];
-      }
-    }
   }
 
   setTask(task) {
     this.disableAutoDetection();
-    this.task = task;
+    this.task = prepareTask(task);
 
     this.title = this.task.title;
 
+    if (this.task.description) {
+      this.meta.setDescription(this.task.description);
+    }
+
+    if (!Is.empty(this.task.attachments) && isImage(this.task.attachments[0])) {
+      this.meta.setImage(this.task.attachments[0]);
+    }
     if (
-      !this.isParticipant() &&
-      !this.isSupervisor() &&
+      !isBot() &&
+      // !this.isParticipant() &&
+      // !this.isSupervisor() &&
       !this.isProjectMember()
+      && ! userCanJoinAnyProjectIn(currentUserCompany())
     ) {
       return this.router.navigateTo("/tasks");
     }
@@ -118,11 +158,21 @@ class TaskDetailsPage {
   }
 
   async updateTaskStatus(newStatus) {
-    if (
+    let reason;
+    if (newStatus === 'hold') {
+      reason = prompt('Please Write down the reason of holding the task');
+
+      if (!reason) {
+        this.taskStatusDropdown.updateCurrentValue(this.task.status);
+        return;
+      }
+    } else if (
       confirm(`Are you sure you want to change task status to ${newStatus}`) ===
       false
-    )
+    ) {
+      this.taskStatusDropdown.updateCurrentValue(this.task.status);
       return;
+    }
 
     this.task.status = newStatus;
 
@@ -130,22 +180,17 @@ class TaskDetailsPage {
 
     let response = await this.tasksService.updateTaskStatus(
       this.task.id,
-      newStatus
+      newStatus,
+      { reason },
     );
+
     this.task = response.task;
+
+    userSocket.trigger('task.update', this.task);
 
     this.changeable = true;
     // this.cache.set(this.cacheKey, this.task);
     // this.detectChanges();
-  }
-
-  taskStatusCanBeChanged() {
-    return (
-      (this.isSupervisor() ||
-        (this.isParticipant() && this.participantCanChangeTaskStatus()) ||
-        (this.task.project && this.task.project.is.higherAuthority)) &&
-      this.changeable
-    );
   }
 
   getTaskStatus() {
@@ -153,7 +198,7 @@ class TaskDetailsPage {
   }
 
   isParticipant(user = this.user) {
-    return this.task.participant.id == user.id;
+    return this.task.participant && this.task.participant.id == user.id;
   }
 
   isSupervisor(user = this.user) {

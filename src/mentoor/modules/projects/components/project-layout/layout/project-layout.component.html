@@ -1,10 +1,13 @@
 <layout>
     <div id="project-layout">
-        <section *if="this.project" id="project-sidebar-wrapper" [class]="{opened: this.sidebarIsVisible}">
+        <section id="project-sidebar-wrapper"  *as="projectSidebar" [class]="{opened: this.sidebarIsVisible}">
             <div id="project-sidebar">
                 <project-sidebar [project]="this.project"></project-sidebar>
             </div>
-            <fa icon="times close-sidebar-btn d-block d-sm-none" 2x (click)="this.sidebarIsVisible = ! this.sidebarIsVisible;"></fa>
+            <fa icon="times close-sidebar-btn d-sm-none" 
+                [class]="{'d-none': ! this.sidebarIsVisible, 'd-block': this.sidebarIsVisible}"
+                2x
+                (click)="this.sidebarIsVisible = ! this.sidebarIsVisible;"></fa>
         </section>
         <section id="project-container" [class]="{expanded: ! this.sidebarIsVisible}">
             <div *if="! this.project" class="m-t-5 text-center">

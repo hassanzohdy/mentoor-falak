@@ -1,5 +1,6 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
-    <button *if="this.project.isProjectManager" (click)="this.openAddMember = true; this.isSending = false;" class="float-right btn bold"
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <button *if="this.project.is.higherAuthority || this.user.id == 1" (click)="this.openAddMember = true; this.isSending = false;"
+        class="float-right btn bold"
         [class]="{'btn-success': this.project.maxMembers <= this.project.members.length, 'btn-pink': this.project.maxMembers > this.project.members.length}">
         <fa icon="plus mr-1"></fa>
         Member
@@ -24,13 +25,13 @@
         <tbody>
             <tr *for="let member, index of this.project.members">
                 <td [html]="member.member.name"></td>
-                <td [html]="member.role"></td>
+                <td [html]="member.role == 'teamLeader' ? trans('teamLeaderOf', trans(Object.get(member, 'extra.team'))) : trans(member.role)"></td>
                 <td [html]="member.createdBy.name"></td>
                 <td>
                     <flk-time-ago [timestamp]="member.createdAt.timestamp"></flk-time-ago>
                 </td>
                 <td>
-                    <if condition="this.project.is.higherAuthority">
+                    <if condition="this.project.is.higherAuthority || this.user.id === 1">
                         <button type="button" (click)="this.confirmRemoving(member, index)"
                             class="btn btn-sm btn-danger" tooltip title="Dismiss Member">
                             <fa icon="trash"></fa>
@@ -45,9 +46,15 @@
 <flk-modal *if="this.openAddMember" *as="addMemberModal" (close)="this.openAddMember = null" size="small"
     header="Add New Member">
     <form (submit)="this.addNewMember($el)">
-        <flk-dropdown-list name="memberId" heading="Member" [lazy-loading]="true" [remote-search]="true"
-            query="username" [except]="this.exceptMembers" [service]="this.usersService"
+        <flk-dropdown-list name="memberId" heading="Select Member By Username" [lazy-loading]="true"
+            [remote-search]="true" query="username" [except]="this.exceptMembers" [service]="this.usersService"
             (map)="return this.mapUser(e)" placeholder="Enter @username to add"></flk-dropdown-list>
+
+        <div class="m-t-1">
+            <flk-dropdown-list name="position" heading="Member Position" [items]="this.positionsList"
+                [value]="this.data.position"></flk-dropdown-list>
+
+        </div>
 
         <div class="m-t-1 text-center">
             <button [disabled]="this.isSending" class="btn btn-success bold">Add</button>

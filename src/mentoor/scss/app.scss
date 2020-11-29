@@ -6,6 +6,8 @@
 @import 'table';
 @import 'accordion';
 @import 'buttons';
+@import 'markdown-content';
+@import 'dark-theme';
 
 $latest-news-bar-size: 50px;
 
@@ -15,6 +17,11 @@ button:focus {
 
 .relative {
     position: relative;
+}
+
+.rtl {
+    direction: rtl;
+    text-align: right;
 }
 
 // import your app files instead of writing code directly here!
@@ -68,7 +75,7 @@ $lock-icon-color: #0cc7ff;
 }
 
 li {
-    list-style-position: inside;
+    // list-style-position: inside;
 }
 
 body {
@@ -208,9 +215,6 @@ img,
         }
 
         p {
-            display: inline-block;
-            margin-bottom: 0;
-            margin-left: -1rem;
         }
 
         ul {
@@ -249,6 +253,9 @@ img,
 }
 
 // Arabic
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
 
 $arabic-font: Cairo;
 

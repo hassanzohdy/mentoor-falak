@@ -9,22 +9,45 @@ class Comments {
         this.service = commentsService;
         this.user = user;
         this.maxCommentLines = 10;
+
+        setTimeout(() => {
+            this.handler.observe('type', 'typeId').onChange('typeId', typeId => {
+                if (this.typeId == typeId) return;
+                this.init();
+            })
+        }, 100);
     }
 
     /**
      * Initialize the component
      * This method is triggered before rendering the component
      */
-    init() {
+    async init() {
+        this.isLoading = false;
         this.isEmptyComment = true;
         this.editMode = false;
         this.isRecording = false;
-        this.project = this.inputs.getProp('project', {});
-        this.disableComments = this.inputs.getProp('disableComments');
-        this.type = this.inputs.getOption('type');
-        this.typeId = this.inputs.getProp('typeId');
-        this.parentComment = this.inputs.getProp('parent', null);
-        this.commentsList = collect(this.inputs.getProp('comments'));
+        this.project = this.prop('project', {});
+        this.disableComments = this.prop('disableComments');
+        this.type = this.prop('type');
+        this.typeId = this.prop('typeId');
+        this.parentComment = this.prop('parent', null);
+        this.commentsList = [];
+
+        if (!this.parentComment) {
+            this.isLoading = true;
+            const { records } = await this.service.list({
+                type: this.type,
+                typeId: this.typeId,
+                parentOnly: true,
+            });
+
+            this.isLoading = false;
+
+            this.commentsList = collect(records);
+        } else {
+            this.commentsList = collect(this.prop('comments', []));
+        }
 
         this.currentRoute = this.router.route();
         this.activeCommentTreeId = this.router.queryString.get('comment');
@@ -44,6 +67,8 @@ class Comments {
 
             if (this.activeCommentTreeId && comment.tree == this.activeCommentTreeId) {
                 this.activeComment = comment;
+                // echo(this.activeComment)
+                this.scrollToActiveComment();
             }
 
             return comment;
@@ -66,7 +91,7 @@ class Comments {
         comment[type] = true;
     }
 
-    stopPreviewingBy(e, comment, type) {        
+    stopPreviewingBy(e, comment, type) {
         // let currentEvent = e;
         // let currentHoveringElement = currentEvent.toElement || currentEvent.relatedTarget;
 
@@ -82,8 +107,9 @@ class Comments {
         // }, 0);
     }
 
-    ready() {
-        if (this.activeComment) {
+    scrollToActiveComment() {    
+        if (! this.activeComment) return;
+        setTimeout(() => {
             let commentElement = document.getElementById(`cmnt${this.activeComment.id}`);
             scrollTo(
                 commentElement,
@@ -93,10 +119,9 @@ class Comments {
 
             setTimeout(() => {
                 this.activeComment = null;
-
                 // this.detectChanges();
             }, 2000);
-        }
+        }, 400);
     }
 
     async submitComment(form) {
@@ -132,7 +157,13 @@ class Comments {
             this.commentsList[this.index] = record;
         }
 
-        this.fileInput.reset();
+        if (Is.array(this.fileInput)) {
+            for (let input of this.fileInput) {
+                input.reset();
+            }
+        } else {
+            this.fileInput.reset();
+        }
 
         Comments.writeComment = false;
 
@@ -169,6 +200,7 @@ class Comments {
         }
 
         this.detectChanges();
+        this.inputs.parent.detectChanges();
     }
 
     openCommentReply(comment) {
@@ -200,23 +232,36 @@ class Comments {
     mentions(text) {
         return this.event('mention', async (e) => {
             if (this.project.members) {
-                return this.project.members.filter(member => {
+                let members = [].concat(this.project.members);
+
+                for (let higherMember of companyStaffThatCanJoinAnyProject()) {
+                    if (members.find(member => member.id === higherMember.user.id)) continue;
+
+                    higherMember.user.isSpecialUser = true;
+
+                    members.push({
+                        member: higherMember.user,
+                    });
+                }
+
+                return members.filter(member => {
                     let user = member.member;
-    
-                    if (! user.username) return false;
-    
+
+                    if (!user.username) return false;
+
                     if (text == '') return true;
-    
+
                     return user.username.match(new RegExp(text, 'g')) || user.name.match(new RegExp(text, 'g'));
                 }).map(member => {
                     return {
                         text: member.member.name,
-                        value: member.member.username, 
+                        value: member.member.username,
+                        isSpecialUser: member.member.isSpecialUser,
                     };
                 });
             } else {
-                if (! text) return [];
-                let {records} = await this.usersService.list({
+                if (!text) return [];
+                let { records } = await this.usersService.list({
                     username: text,
                     limit: 5,
                 });
@@ -226,8 +271,8 @@ class Comments {
                         text: user.name,
                         value: user.username,
                     };
-                });     
-            }           
+                });
+            }
         })(text);
     }
 }

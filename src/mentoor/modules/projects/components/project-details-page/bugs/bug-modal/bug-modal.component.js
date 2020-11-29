@@ -1,5 +1,5 @@
 class BugModal {
-    // @macro(loadSprints, loadModules)
+    // @macro(loadSprints, loadModules, loadComponents, loadTestEnvironments)
     /**
      * Constructor
      * Put your required dependencies in the constructor parameters list  
@@ -29,6 +29,7 @@ class BugModal {
             'uiUsability',
             'feature',
             'enhancement',
+            'function',
             'other',
         ];
 
@@ -40,6 +41,87 @@ class BugModal {
             'neverTried',
             'notApplicable',
         ];
+
+        // New
+
+
+        this.devices = [
+            'desktop',
+            'tablet',
+            'mobile',
+        ];
+
+        this.mobileOS = [
+            {
+                text: 'Andriod',
+                value: 'andriod',
+                image: assets('images/andriod.png'),
+            },
+            {
+                text: 'iOS',
+                value: 'ios',
+                image: assets('images/ios.svg'),
+            },
+        ];
+
+        this.desktopOperatingSystems = [
+            {
+                text: 'Windows 7',
+                value: 'windows-7',
+                image: assets('images/windows-7.webp'),
+            },
+            {
+                text: 'Windows 10',
+                value: 'windows-10',
+                image: assets('images/windows-10.png'),
+            },
+            {
+                text: 'Ubuntu',
+                value: 'ubuntu',
+                image: assets('images/ubuntu.svg'),
+            },
+            {
+                text: 'MacOS',
+                value: 'mac',
+                image: assets('images/mac.png'),
+            },
+        ];
+
+        this.browsers = [
+            {
+                text: 'Google Chrome',
+                value: 'chrome',
+                image: assets('images/chrome.png'),
+            },
+            {
+                text: 'Firefox',
+                value: 'firefox',
+                image: assets('images/firefox.png'),
+            },
+            {
+                text: 'Edge',
+                value: 'edge',
+                image: assets('images/edge.png'),
+            },
+            {
+                text: 'Safari',
+                value: 'safari',
+                image: assets('images/safari.svg'),
+            },
+            {
+                text: 'Opera',
+                value: 'opera',
+                image: assets('images/opera.png'),
+            },
+        ];
+    }
+
+    setTestEnvironment(testEnvironment) {
+        for (let key of [, 'deviceType', 'deviceBrand', 'deviceModel', 'operatingSystem', 'operatingSystemVersion', 'browser', 'browserVersion', 'applicationVersion']) {
+            this.record[key] = testEnvironment[key];
+        }
+
+        this.detectChanges();
     }
 
     /**
@@ -52,6 +134,8 @@ class BugModal {
         this.record = this.inputs.getProp('record');
         this.project = this.inputs.getProp('project');
         this.modalHeading = this.record.id ? 'Edit Bug' : 'Add New Bug';
+
+        this.projectMembers = this.project.members.map(member => member.member);
 
         if (! this.record.id && this.project.currentSprint) {
             this.record.sprint = this.project.currentSprint;

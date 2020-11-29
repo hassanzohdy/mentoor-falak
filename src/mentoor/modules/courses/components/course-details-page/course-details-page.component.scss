@@ -2,3 +2,48 @@
   height: 100%;
   margin: 0;
 }
+
+.removed {
+  strong {
+    text-decoration: line-through;
+  }
+}
+
+.sections-list {
+  .flk-accordion {
+    .accordion-heading {
+      color: #505763;
+      font-weight: bold;
+      border: solid 1px #cacbce;
+    }
+  }
+}
+
+#course-details-page {
+  .completed-section h2.accordion-heading {
+    background: #d0efe3;
+    border-color: #76cf76;
+  }
+
+  .progress-wrapper {
+    overflow: hidden;
+    position: relative;
+
+    .progress {
+      &.transition {
+        position: relative;
+        transition: width 0.3s ease-in-out;
+      }
+
+      &.base {
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+
+  .course-image {
+    @include responsive((1024: (max-width: 200px,
+        )));
+  }
+}

@@ -12,18 +12,20 @@
         <thead>
             <tr>
                 <th>Meeting</th>
+                <th>Date</th>
                 <th>Type</th>
                 <th>Control</th>
             </tr>
         </thead>
         <tbody>
             <tr *if="Is.empty(this.project.meetings)">
-                <td colspan="3" text-center>No Meetings Yet</td>
+                <td colspan="4" text-center>No Meetings Yet</td>
             </tr>
             <tr *else *for="let meeting, index of this.project.meetings">
                 <td>
                     <a [href]="URLS.project(this.project, 'meetings', meeting)" [html]="meeting.title"></a>
                 </td>
+                <td [html]="meeting.date"></td>
                 <td [html]="meeting.type"></td>
                 <td>
                     <if condition="this.project.isHigherAuthority || meeting.createdBy.id == this.user.id">
@@ -46,11 +48,11 @@
     [heading]="this.modalHeading">
     <form (submit)="this.submit($el)">
         <input type="hidden" name="project" [value]="this.project.id" />
-        <form-input type="text" name="title" [value]="this.record.title" label="Meeting Title" required
+        <form-input type="text" name="title" [value]="this.record.title" label="Meeting Title" 
             class="form-control"></form-input>
         <markdown-input name="mom" [required]="true" [value]="this.record.mom" label="MoM"></markdown-input>
 
-            <div class="row">
+            <div class="row m-0">
                 <div class="col">                    
                     <flk-dropdown-list
                         label="Meeting Type"
@@ -66,7 +68,7 @@
                 </div>
             </div>
 
-        <div class="row m-t-1">
+        <div class="row m-y-0 m-t-1">
             <div class="col">                
                 <flk-dropdown-list
                     label="Participating Members"
@@ -81,7 +83,6 @@
                 <flk-dropdown-list
                     label="Client Representatives"
                     name="clientRepresentatives[]"
-                    [required]="true"
                     [value]="this.meetingRepresentatives()"
                     [multiple]="true"
                     [items]="this.project.client.representatives"

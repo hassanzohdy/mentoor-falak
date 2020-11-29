@@ -1,4 +1,8 @@
 function validateUsername(username) {
+    if (this.user.id == 1) {
+        return;
+    }
+    
     if (Is.empty(username)) {
         return this.form.formHandler.addError(`username`, 'required', trans('validation.required'));
     }
@@ -14,7 +18,7 @@ function validateUsername(username) {
     let regex = '^';
     regex += '[a-z_]'; // starts with English letter Or Underscore
     regex += '([a-z0-9]+'; // May contain one ore more English letter|number
-    regex += '(\.|_)?)*';// may contain underscore or dot, at most one time between letters 
+    regex += '(\\.|\\_)?)*';// may contain underscore or dot, at most one time between letters 
     regex += '[a-z0-9]{2,}'; // should ends with two English letters|numbers 
     regex += '$';
 
@@ -25,7 +29,6 @@ function validateUsername(username) {
     if (!username.match(regex)) {
         formHandler.addError(`username`, 'regex', 'Invalid username');
     } else {
-        echo(2)
         formHandler.removeError(`username`);
     }
 

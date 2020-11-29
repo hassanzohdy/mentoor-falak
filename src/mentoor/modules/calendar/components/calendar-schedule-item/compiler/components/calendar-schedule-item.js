@@ -1,10 +1,10 @@
-const ChildComponent = require(CHILD_COMPONENT_CLASS_PATH);
+const Component = require(COMPONENT_CLASS_PATH);
 
-class CalendarScheduleItemComponent extends ChildComponent {}
+class CalendarScheduleItemComponent extends Component {}
 
 module.exports = {
     selector: 'calendar-schedule-item',
-    isChild: true,
+    isChild: false,
     contentToString: false,
     parseContent: true,
     handler: CalendarScheduleItemComponent,

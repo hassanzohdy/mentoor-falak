@@ -9,7 +9,7 @@ class AdminPostsPage extends CRUD {
         this.name = 'admin-posts';
         this.title = trans('tracks-page');
         this.crudOptions = {
-            columns: ['ID', 'Title', 'image', 'Prize', 'status', 'tags', 'Control'],
+            columns: ['ID', 'Title', 'Author', 'Created At', 'image', 'Prize', 'status', 'tags', 'Control'],
             heading: 'post', 
             dataSchema: {
                 title: null,

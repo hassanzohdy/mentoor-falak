@@ -1,5 +1,4 @@
-<layout>
-
+<project-layout [project]="(this.resource || {}).project">
     <flk-spinner *if="this.isLoading"></flk-spinner>
 
     <else>
@@ -21,8 +20,8 @@
         <if condition="this.resource.type == 'link'">
             <h2> The link to open </h2>
             <p class="p-2">
-                <a class="btn btn-red" href="{{this.resource.settings.link}}"
-                    [html]="Array.end(this.resource.settings.link.split('/'))"></a>
+                <a class="btn btn-primary text-lowercase" [href]="this.resource.settings.link"
+                    [html]="this.resource.settings.link"></a>
             </p>
         </if>
 
@@ -35,15 +34,17 @@
             </p>
         </elseif>
 
-
-        <elseif condition="['attachment', 'pdf'].includes(this.resource.type)">
+        <elseif condition="['attachment', 'pdf'].includes(this.resource.type) && this.resource.attachment">
+            <div *if="this.resource.mdContent || this.resource.jsonContent" class="simple-card">
+                <h4>Attachment Content ({{ this.resource.attachment.split('/').pop() }})</h4>
+                <markdown *if="this.resource.mdContent" [content]="this.resource.mdContent"></markdown>
+                <json-preview *if="this.resource.jsonContent" [json]="this.resource.jsonContent"></json-preview>
+            </div>
             <h2>Attachment</h2>
             <p class="p-2">
-                <a class="btn btn-red" href="{{this.resource.attachment}}" target="_blank"
+                <a class="btn btn-primary" href="{{this.resource.attachment}}" target="_blank"
                     [html]="Array.end(this.resource.attachment.split('/'))"></a>
             </p>
-
-            <json-preview *if="this.resource.jsonContent" [json]="this.resource.jsonContent"></json-preview>
         </elseif>
 
         <elseif condition="this.resource.type == 'youtube'">
@@ -64,7 +65,9 @@
                 <tbody>
                     <tr>
                         <th>FTP Host</th>
-                        <th [html]="this.resource.settings.ftp.host"></th>
+                        <th>
+                            <a [href]="this.resource.settings.ftp.host" [html]="this.resource.settings.ftp.host"></a>
+                        </th>
                     </tr>
                     <tr>
                         <th>FTP Username</th>
@@ -83,20 +86,22 @@
         </elseif>
 
         <elseif condition="this.resource.type == 'website'">
-            <h1>
+            <!-- <h1>
                 {{this.resource.settings.website.name}} Website
                 (<span [html]="this.resource.title"></span>)
-            </h1>
+            </h1> -->
 
             <table class="table table-bordered table-striped resource-table">
                 <tbody>
-                    <tr>
+                    <tr *if="this.resource.settings.website.name">
                         <th>Website</th>
                         <th [html]="this.resource.settings.website.name"></th>
                     </tr>
                     <tr>
                         <th>Website Url</th>
-                        <th [html]="this.resource.settings.website.url"></th>
+                        <th>
+                            <a [href]="this.resource.settings.website.url" [html]="this.resource.settings.website.url"></a>
+                        </th>
                     </tr>
                     <tr>
                         <th>Username</th>
@@ -105,6 +110,29 @@
                     <tr>
                         <th>Password</th>
                         <th [html]="this.resource.settings.website.password"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </elseif>
+
+        <elseif condition="this.resource.type == 'mobile'">
+            <h1>
+                <span [html]="this.resource.title"></span>
+            </h1>
+
+            <table class="table table-bordered table-striped resource-table">
+                <tbody>
+                    <tr>
+                        <th>Application Name</th>
+                        <th [html]="this.resource.settings?.mobile?.name"></th>
+                    </tr>
+                    <tr>
+                        <th>Username</th>
+                        <th [html]="this.resource.settings.mobile.username"></th>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <th [html]="this.resource.settings.mobile.password"></th>
                     </tr>
                 </tbody>
             </table>
@@ -120,7 +148,9 @@
                 <tbody>
                     <tr>
                         <th>Webmail url</th>
-                        <th [html]="this.resource.settings.email.url"></th>
+                        <th>
+                            <a [href]="this.resource.settings.email.url" [html]="this.resource.settings.email.url"></a>
+                        </th>
                     </tr>
                     <tr>
                         <th>Email Address</th>
@@ -134,7 +164,6 @@
             </table>
         </elseif>
 
-        <comments [comments]="this.resource.comments" type="resource" [type-id]="this.resource.id"></comments>
 
         <table class="table table-bordered mt-1" id="status-table">
             <thead>
@@ -144,7 +173,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr>                    
                     <td [html]="this.resource.createdBy.name"></td>
                     <td>
                         <flk-time-ago [timestamp]="this.resource.createdAt.timestamp"></flk-time-ago>
@@ -152,5 +181,6 @@
                 </tr>
             </tbody>
         </table>
+        <comments [comments]="this.resource.comments" type="resource" [type-id]="this.resource.id"></comments>
     </else>
-</layout>
+</project-layout>

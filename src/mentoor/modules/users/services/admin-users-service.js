@@ -16,6 +16,10 @@ class AdminUsersService extends Endpoint.Service {
     giveReward(userId, data) {
         return this.endpoint.post(this.path(`/${userId}/give-reward`), data);
     }
+
+    requestAccessTokenFor(userId) {
+        return this.endpoint.patch(this.path(`/${userId}/request-access-token`));
+    }
 }
 
 DI.register({

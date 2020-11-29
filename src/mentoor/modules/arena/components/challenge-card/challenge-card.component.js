@@ -13,8 +13,7 @@ class ChallengeCard {
      * This method is triggered before rendering the component
      */
     init() {
-        this.challenge = this.inputs.getProp("challenge");
-        echo(this.challenge)
+        this.challenge = this.inputs.getProp("challenge");        
     }
 
     /**

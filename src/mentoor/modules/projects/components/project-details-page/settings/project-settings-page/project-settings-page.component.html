@@ -1,10 +1,10 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
     <h1>
         <fa spin="cog mr-2"></fa>
         {{ this.project.name }} Settings
     </h1>
 
-    <h1 *if="! this.project.isProjectManager" class="text-center m-y-3 red-text">
+    <h1 *if="! this.project.is.higherAuthority" class="text-center m-y-3 red-text">
         You don't have permissions to access this area of the project!
     </h1>
 
@@ -12,8 +12,7 @@
         <form-input type="text" name="name" [value]="this.project.name" [required]="true" class="form-control"
             label="Project name">
         </form-input>
-        <markdown-input  name="about" [value]="this.project.about" required class="form-control"
-            label="About the project"
+        <markdown-input name="about" [value]="this.project.about" class="form-control" label="About the project"
             placeholder="About the project, if the project is not private, this content will be visible to everyone.">
         </markdown-input>
         <div class="row">
@@ -32,11 +31,11 @@
         <div class="row m-t-1">
             <div class="col-sm-6">
                 <flk-datepicker name="startDate" [value]="this.project.startDate" label="Starting Date"
-                    placeholder="Starting Date" class="form-control" required></flk-datepicker>
+                    placeholder="Starting Date" class="form-control"></flk-datepicker>
             </div>
             <div class="col-sm-6">
                 <flk-datepicker name="endDate" [value]="this.project.endDate" label="End Date" placeholder="End Date"
-                    class="form-control" required></flk-datepicker>
+                    class="form-control"></flk-datepicker>
             </div>
         </div>
 
@@ -48,12 +47,12 @@
             </div>
             <div class="col-sm-6">
                 <flk-dropdown-list name="tags[]" [multiple]="true" label="Tags" [imageable]="true" heading="Tags List"
-                    [value]="this.project.tags" required [lazy-loading]="true" service="tagsService">
+                    [value]="this.project.tags" [lazy-loading]="true" [service]="this.tagsService">
                 </flk-dropdown-list>
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row mx-0">
             <div class="col-sm-6">
                 <flk-mdb-checkbox name="settings.private" [disabled]="! this.project.extra.includes('privacy')"
                     [checked]="this.project.settings.private" label="Private Project">
@@ -71,9 +70,9 @@
                     </small>
                 </flk-mdb-checkbox>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <div class="row m-t-1">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="image">Project Image</label>
@@ -81,8 +80,28 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <button class="btn bold btn-cyan">UPDATE</button>
+                <flk-dropdown-list name="settings.features[]" [multiple]="true" label="Project Features" heading="Project Features"
+                    [value]="this.project.settings?.features" [items]="PROJECT_FEATURES">
+                </flk-dropdown-list>
+                <form-input name="projectUrl" [value]="this.project.projectUrl" type="text" label="Project URL"
+                    class="form-control"></form-input>
             </div>
+        </div>
+        <button [disabled]="this.isSaving || ! this.isValidForm" class="btn bold btn-cyan">UPDATE</button>
+
+        <div class="m-t-4">
+            <button type="button" (click)="this.confirmingTermination = true;" class="btn btn-danger">
+                <fa icon="times m-r-1"></fa>
+                Terminate Project
+            </button>
         </div>
     </form>
 </project-layout>
+
+<flk-alert *if="this.confirmingTermination" (close)="this.confirmingTermination = false"
+    (confirm)="this.terminateProject()"></flk-alert>
+
+
+<flk-message *if="this.successUpdate" (close)="this.successUpdate = null">
+    Settings Has Been Updated Successfully
+</flk-message>

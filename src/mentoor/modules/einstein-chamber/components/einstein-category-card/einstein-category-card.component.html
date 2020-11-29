@@ -18,7 +18,6 @@
                 {{ this.category.requiredAnswers.format() }}
             </span>
             <span class="cost" title="Required gold">     
-                <span *if="this.category.cost == 0" class="bold pink-text">FREE!</span>           
                 <gold-icon [coins]="this.category.cost"></gold-icon>
             </span>
         </div>
@@ -33,7 +32,6 @@
                 {{ this.category.requiredAnswers.format() }}
             </span>
             <span class="cost" title="Required gold">
-                <span *if="this.category.cost == 0" class="bold pink-text">FREE!</span>           
                 <gold-icon [coins]="this.category.cost"></gold-icon>
             </span>
         </div>

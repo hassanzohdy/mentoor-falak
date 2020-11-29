@@ -1,0 +1,11 @@
+.task-score {
+    text-shadow: 0px 0px 3px #000;
+
+    &.green-text {
+        color: #32ff2f !important;
+    }
+
+    &.dark-red-text {
+        color: darkred;
+    }
+}

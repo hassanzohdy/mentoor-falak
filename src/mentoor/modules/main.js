@@ -1,7 +1,16 @@
 let events = DI.resolve('events'),
+    cache = DI.resolve('cache'),
     endpoint = DI.resolve('endpoint');
 
 const SCROLL_TOP_OFFSET = 80;
+
+function timeAgo(timestamp) {
+    return timeago.format(timestamp * 1000, Config.get('app.localeCode'));
+}
+
+if (cache.get('dark', true)) {
+    document.documentElement.classList.add('dark');
+}
 
 //Just for testing
 
@@ -29,16 +38,32 @@ const SCROLL_TOP_OFFSET = 80;
             rooms: {}
         };
     }).on('endpoint.done', response => {
+        if (response.flags) {
+            flags.cache(response.flags);
+        }
+
         if (!response.me) return true;
 
         let user = DI.resolve('user');
+
+        if (response.me.notifications != user.get('notifications')) {
+            events.trigger('notifications.totalChange', response.me.notifications);
+        }
 
         user.update(response.me);
 
         if (!window.userSocket) {
             onlineUser(user);
         }
-        userSocket.updateUserInfo();
+        userSocket.updateUserInfo && userSocket.updateUserInfo();
+    }).on('endpoint.error', response => {
+        let user = DI.resolve('user');
+        let router = DI.resolve('router');
+
+        if (response.statusCode === 422 && user.isLoggedIn()) {
+            user.logout();
+            router.navigateTo('/login');
+        }
     }).on('title.change', (title, meta) => {
         let user = DI.resolve('user');
 
@@ -49,12 +74,31 @@ const SCROLL_TOP_OFFSET = 80;
         }
 
         return title;
-    }).on('app.ready', async () => {
-        let user = DI.resolve('user'),
-            meta = DI.resolve('meta'),
+    }).on('app.ready', async (app) => {
+        let meta = DI.resolve('meta'),
             cache = DI.resolve('cache'),
-            router = DI.resolve('router'),
-            meService = DI.resolve('meService');
+            user = DI.resolve('user'),
+            router = DI.resolve('router');
+
+        if (router.queryString.get('darkMode')) {
+            document.documentElement.classList.add('dark');
+        }
+
+        if (flags.areCached()) {
+            flags.globalize();
+        } else {
+            flags.cache({});
+        }
+
+        if (!user.isLoggedIn()) {
+            window.userSocket = {
+                on: function () { },
+                trigger: function () { },
+                emit: function () { },
+            }
+        }
+
+        updateUserCompany();
 
         router.scrollTopOffset = SCROLL_TOP_OFFSET;
 
@@ -81,26 +125,21 @@ const SCROLL_TOP_OFFSET = 80;
             }, 4000); // wait 4 seconds first to make sure all components are loaded
         }
 
-        if (!user.isLoggedIn()) {
-            return await collectFlags();
-        }
-
-        if (flags.areCached()) {
-            flags.globalize();
-        }
-
     }).on('router.navigating', router => {
         // Log every request
         if (Config.get('app.env') == 'development') return;
-        let referrer = document.referrer;
-        setTimeout(() => {
-            endpoint.post('/log', {
-                path: router,
-                ref: referrer,
-            });
-        }, 3000);
+        // let referrer = document.referrer;
+        // setTimeout(() => {
+        //     endpoint.post('/log', {
+        //         path: router,
+        //         ref: referrer,
+        //     });
+        // }, 3000);
+    }).on('endpoint.sending', (route, options) => {
+        sendCompanyInHeader(options);
     });
 })();
+
 
 function googleVerification() {
     let googleMeta = document.getElementById('gsvtion');
@@ -109,19 +148,28 @@ function googleVerification() {
 }
 
 function apiImageUrl(image) {
-    if (! image) return null;
+    if (!image) return null;
     if (Is.url(image)) return image;
-    
+
     return Config.get('http.endpoint.baseUrl') + '/images/cache/' + image.ltrim('/');
+}
+
+function youtubeId(url) {
+    let regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    let match = url.match(regExp);
+    return (match && match[7].length == 11) ? match[7] : false;
 }
 
 function initializeUrls() {
     _const('URLS', {
-        course(course, extra = null) {
+        resource(resource) {
+            return `/resources/${resource.id}`;
+        },
+        course(course, extra = '') {
             if (extra) {
                 extra = '/' + extra.ltrim('/');
             }
-            
+
             return `/courses/${course.id}/${seo(course.title)}${extra}`;
         },
         poll(poll) {
@@ -139,16 +187,16 @@ function initializeUrls() {
         task(task) {
             return `/tasks/${task.id}`;
         },
-        arena(challenge){
+        arena(challenge) {
             return `/arena/challenges/${challenge}`;
         },
         project(project, extend = '', extra) {
-            if (! project) return '';
+            if (!project) return '';
             if (extend) {
                 extend = '/' + extend;
             }
 
-            if (extra  && Is.plainObject(extra)) {
+            if (extra && Is.plainObject(extra)) {
                 extend += '/' + extra.id;
             }
 
@@ -169,8 +217,6 @@ function globalConstants() {
     _const('ARABIC_PATTERN', /[\u0600-\u06FF]/);
 }
 
-let cache = DI.resolve('cache');
-
 let flags = {
     cacheKey: 'f',
     areCached() {
@@ -182,26 +228,14 @@ let flags = {
     cache(flags) {
         cache.set(this.cacheKey, flags);
         this.globalize();
+        DI.resolve('layout').detectChanges();
     },
     globalize() {
         _global('FLAGS', this.list());
     }
 }
 
-function collectFlags() {
-    return new Promise(async resolve => {
-        if (flags.areCached()) {
-            _global('FLAGS', flags.list());
-            resolve();
-        }
 
-        let flagsResponse = await endpoint.get('/flags');
-
-        flags.cache(flagsResponse.flags);
-
-        resolve();
-    });
-}
 
 // user in page
 function checkUserInPage() {

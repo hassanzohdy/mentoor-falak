@@ -1,10 +1,30 @@
 <li class="panel-item task-item" [class]="{unseen: notification.seen === false}">
     <a href="/tasks/{{ notification.extra.id }}" (click)="this.markAsSeen(notification)">
-        <fa icon="tasks green-text bold mr-2 fa-2x v-top" tooltip title="New Task"></fa>
-        <div class="d-inline-block task-meta">
+        <span class="task-image">
+            <img *if="Object.get(notification, 'extra.project.image')" [src]="notification.extra.project.image"
+                class="image-circle" />
+            <fa *else icon="tasks green-text bold mr-2 fa-2x" tooltip title="Task"></fa>
+            <br />
+            <span *if="notification.extra.priority" tooltip [title]="notification.extra.priority.ucfirst() + ' Priority'" class="mx-2">
+                <span [html]="notification.extra.priority[0].toUpperCase()" class="badge"
+                    [class]="{'badge-danger': notification.extra.priority == 'high', 'badge-info': notification.extra.priority == 'low', 'badge-warning': notification.extra.priority == 'medium'}"></span>
+            </span>
+        </span>
+        <div class="content task-meta {{ notification.extra.priority ? 'v-top p-t-0' : '' }}">
             <!-- <span class="green-text bold mr-2">[NEW]</span> -->
             <span [html]="notification.title" class="task-title"></span>
-            <small class="d-block" [html]="notification.description"></small>
+            <small class="d-block">
+                <user-avatar-image size="small" [user]="notification.createdBy"></user-avatar-image>
+                <strong *if="Object.get(notification, 'extra.project.name')" class="teal-text mx-2"
+                    [html]="'[' + Object.get(notification, 'extra.project.name') + ']'"></strong>
+                
+                <if condition="notification.description.endsWith('to ' + notification.extra.status + '.')">
+                    <span [html]="notification.description.replace('to ' + notification.extra.status + '.', 'to ')"></span>
+                    <small class="badge" [class]="taskStatus(notification.extra)" [trans]="notification.extra.status"></small>
+                    .
+                </if>
+                <span *else [html]="notification.description"></span>
+            </small>
             <flk-time-ago [timestamp]="notification.createdAt.timestamp" class="time"></flk-time-ago>
         </div>
     </a>

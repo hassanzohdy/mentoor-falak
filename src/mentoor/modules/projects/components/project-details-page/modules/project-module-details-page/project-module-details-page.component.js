@@ -18,16 +18,17 @@ class ProjectModuleDetailsPage extends Project {
     onProjectLoad() {
         this.module = this.project.module;
 
-        try {
+        this.moduleApi = this.module.api;
 
-            this.isEditingApi = true;
-            if (this.cache.get('jsonData')) {
-                this.module.api = this.cache.get('jsonData');
-                this.module.apiJson = JSON.parse(this.module.api);
-            }
-        } catch (error) {
-            echo(error)
+        if (this.moduleApi) {
+            this.module.apiJson = JSON.parse(this.moduleApi);
         }
+    }
+
+    updateModuleApi() {
+        this.service.updateModuleApi(this.module.id, this.moduleApi);
+
+        this.isEditingApi = false;
     }
 
     validateApiJsonFormat(value) {

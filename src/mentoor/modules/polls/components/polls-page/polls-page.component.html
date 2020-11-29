@@ -33,7 +33,6 @@
             </div> -->
         </div>
 
-        <!-- @echo(this.answersList) -->
         <div *for="let answer, index of this.answersList" class="row m-b-1">
             <div class="col-sm-10">
                 <form-input type="text" name="answers.{{ index }}" [required]="true" class="form-control" placeholder="Poll Answer {{ Number(index) + 1 }}" [value]="this.answersList[index]"></form-input>

@@ -1,54 +1,82 @@
 <div class="simple-card m-b-2 col-12 tasks-list-filter">
     <div class="row">
-        <div *if="! Is.empty(this.filterOptions.participants)" class="col-sm-3 filter-container">
+        <div *if="! Is.empty(this.filters.participants)" class="col-sm-3 filter-container">
             <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.participants" heading="Participants"
-                    [value]="this.filteredData.participants" (select)="this.filterBy('participants', e);"
+                <flk-dropdown-list none [items]="this.filters.participants" heading="Participants"
+                    [value]="this.filterOptions.participants" (select)="this.filterBy('participants', e);"
+                    imageable multiple></flk-dropdown-list>
+            </div>
+        </div>
+        <div *if="! Is.empty(this.filters.supervisors)" class="col-sm-3 filter-container">
+            <div class="filter-list">
+                <flk-dropdown-list none [items]="this.filters.supervisors" heading="Supervisors"
+                    [value]="this.filterOptions.supervisors" (select)="this.filterBy('supervisors', e);"
                     [imageable]="true" [multiple]="true"></flk-dropdown-list>
             </div>
         </div>
-        <div *if="! Is.empty(this.filterOptions.supervisors)" class="col-sm-3 filter-container">
+        <div *if="! this.isInProjectPage && ! Is.empty(this.filters.projects)" class="col-sm-3 filter-container">
             <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.supervisors" heading="Supervisors"
-                    [value]="this.filteredData.supervisors" (select)="this.filterBy('supervisors', e);"
-                    [imageable]="true" [multiple]="true"></flk-dropdown-list>
-            </div>
-        </div>
-        <div *if="! this.isInProjectPage && ! Is.empty(this.filterOptions.projects)" class="col-sm-3 filter-container">
-            <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.projects" heading="Projects"
-                    [value]="this.filteredData.projects" (select)="this.filterBy('projects', e);" [imageable]="true"
+                <flk-dropdown-list none [items]="this.filters.projects" heading="Projects"
+                    [value]="this.filterOptions.projects" (select)="this.filterBy('projects', e);" [imageable]="true"
                     [multiple]="true"></flk-dropdown-list>
             </div>
         </div>
-        <div *if="! Is.empty(this.filterOptions.statuses)" class="col-sm-3 filter-container">
+        <div class="col-sm-3 filter-container">
             <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.statuses" heading="Task Status"
-                    [value]="this.filteredData.statuses" (select)="this.filterBy('statuses', e);" [multiple]="true">
+                <flk-dropdown-list none [items]="TASK_STATUSES" heading="Task Status"
+                    [value]="this.filterOptions.statuses" (select)="this.filterBy('statuses', e);" [multiple]="true">
                 </flk-dropdown-list>
             </div>
         </div>
-        <div *if="! Is.empty(this.filterOptions.modules)" class="col-sm-3 filter-container">
+        <div *if="! Is.empty(this.filters.modules)" class="col-sm-3 filter-container">
             <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.modules" heading="Project Module"
-                    [value]="this.filteredData.modules" (select)="this.filterBy('modules', e);" [multiple]="true">
+                <flk-dropdown-list none [items]="this.mapModules()" heading="Project Module"
+                    [value]="this.filterOptions.modules" (select)="this.filterBy('modules', e);" [multiple]="true">
                 </flk-dropdown-list>
             </div>
         </div>
-        <div *if="! Is.empty(this.filterOptions.userStories)" class="col-sm-3 filter-container">
+        <div *if="! Is.empty(this.filters.roles)" class="col-sm-3 filter-container">
             <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.userStories" heading="User Stories"
-                    [value]="this.filteredData.userStories" (select)="this.filterBy('userStories', e);"
+                <flk-dropdown-list none [items]="this.filters.roles" heading="Member Roles"
+                    [value]="this.filterOptions.roles" (select)="this.filterBy('roles', e);"
                     [multiple]="true"></flk-dropdown-list>
             </div>
         </div>
 
-        <div *if="! Is.empty(this.filterOptions.priorities)" class="col-sm-3 filter-container">
+        <div *if="! Is.empty(this.filters.userStories)" class="col-sm-3 filter-container">
             <div class="filter-list">
-                <flk-dropdown-list [items]="this.filterOptions.priorities" heading="Priority"
-                    [value]="this.filteredData.priorities" (select)="this.filterBy('priorities', e);" [multiple]="true">
+                <flk-dropdown-list none [items]="this.filters.userStories" heading="User Stories"
+                    [value]="this.filterOptions.userStories" (select)="this.filterBy('userStories', e);"
+                    [multiple]="true"></flk-dropdown-list>
+            </div>
+        </div>
+
+        <div *if="! Is.empty(this.filters.priorities)" class="col-sm-3 filter-container">
+            <div class="filter-list">
+                <flk-dropdown-list none [items]="this.filters.priorities" heading="Priority"
+                    [value]="this.filterOptions.priorities" (select)="this.filterBy('priorities', e);" [multiple]="true">
                 </flk-dropdown-list>
             </div>
+        </div>
+
+        <div class="col-sm-3 filter-container">
+            <div class="filter-list">
+                <flk-dropdown-list [items]="this.ratings" none heading="Task Score"
+                    [value]="this.filterOptions.rating" (select)="this.filterBy('rating', e);" [multiple]="true">
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="col-sm-3 filter-container">
+            <div class="filter-list">
+                <flk-dropdown-list [items]="['testing', 'requesting']" none heading="Testing Status"
+                    [value]="this.filterOptions.testingStatus" (select)="this.filterBy('testingStatus', e);" multiple>
+                </flk-dropdown-list>
+            </div>
+        </div>
+
+        <div class="col">
+            <button (click)="this.resetFilter()" class="btn d-inline-block m-t-1 bold">Reset</button>
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
                         Account info
                     </a>
                 </li>
-                <li *if="this.user.total.tracks > 0" class="nav-item">
+                <li *if="this.user.total?.tracks > 0" class="nav-item">
                     <a class="nav-link" (click)="this.loadTracks()" data-toggle="tab" data-target="#academy-tracks-tab">
                         <fa icon="university mr-1"></fa>
                         Academy tracks
@@ -63,4 +63,6 @@
         </div>
     </form>
 </layout>
-<flk-message *if="this.updateMessage" (close)="this.updateMessage = null" [html]="this.updateMessage"></flk-message>
+<flk-message *if="this.updateMessage" (close)="this.updateMessage = null">
+    Profile Has been updated successfully.
+</flk-message>

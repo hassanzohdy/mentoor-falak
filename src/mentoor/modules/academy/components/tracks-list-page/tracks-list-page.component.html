@@ -5,8 +5,10 @@
         <p>Here you'll learn how to enhance your search, how to write, read English and Code.</p>
         <flk-facebook-share></flk-facebook-share>
 
-        <div *if="! Is.empty(this.tracks)" class="row allTracks">
-            <track-card *for="let track of this.tracks" [track]="track" class="col-lg-3 col-md-6"></track-card>
+        <div *if="! Is.empty(this.tracks)" class="row m-x-0 allTracks">
+            <div *for="let track of this.tracks" *key="track.id" class="col-lg-3 col-md-6">
+                <track-card [track]="track"></track-card>
+            </div>
         </div>
         <h1 *else class="bold text-center">No tracks yet!</h1>
     </else>

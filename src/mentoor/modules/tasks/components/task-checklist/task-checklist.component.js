@@ -3,11 +3,17 @@ class TaskChecklist {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(taskChecklistsService, taskChecklistItemsService) {    
-        this.taskChecklistsService = taskChecklistsService;    
-        this.taskChecklistItemsService = taskChecklistItemsService;    
+    constructor(taskChecklistsService, taskChecklistItemsService) {
+        this.taskChecklistsService = taskChecklistsService;
+        this.taskChecklistItemsService = taskChecklistItemsService;
+        userSocket.on('task.update', task => {
+          if (task.id !== this.task.id) return;
+
+          this.task = task;
+          this.detectChanges();
+        });
     }
-    
+
     /**
      * Initialize the component
      * This method is triggered before rendering the component
@@ -19,7 +25,6 @@ class TaskChecklist {
     }
 
     addNewChecklist() {
-
         this.isValidForm = true;
 
         this.items = [];
@@ -27,22 +32,28 @@ class TaskChecklist {
         this.items.push('');
 
         this.checklistName = `Checklist ${this.task.checklists.length + 1}`;
+
+        this.addChecklistForm = true;
     }
 
     async submitChecklist(form) {
         this.isSending = true;
         if (this.currentItem) {
-            let {record: checklist} = await this.taskChecklistsService.update(this.currentItem.id, form);
+            let { record: checklist } = await this.taskChecklistsService.update(this.currentItem.id, form);
 
             this.task.checklists[this.index] = checklist;
+
+            userSocket.trigger('task.update', this.task);
 
             this.currentItem = false;
 
             this.isInEditMode = false;
         } else {
-            let {record: checklist} = await this.taskChecklistsService.create(form);
+            let { record: checklist } = await this.taskChecklistsService.create(form);
 
-            this.task.checklists.push(checklist);    
+            this.task.checklists.push(checklist);
+
+            userSocket.trigger('task.update', this.task);
         }
 
         this.isSending = false;
@@ -54,7 +65,7 @@ class TaskChecklist {
 
         this.isSuggestingItemControl = true;
     }
-    
+
     unsuggestCheckItemModification() {
         this.modifyingChecklistItem = null;
 
@@ -64,6 +75,8 @@ class TaskChecklist {
     changeItemStatus(item, done) {
         item.done = done;
         this.taskChecklistItemsService.changeStatus(item.id, Number(done));
+       
+        userSocket.trigger('task.update', this.task);
     }
 
     addChecklistItem(checklist, index) {
@@ -76,14 +89,18 @@ class TaskChecklist {
 
     async submitItem(form) {
         this.isSending = true;
-        let {record: item} = await this.taskChecklistItemsService.create(form);
+        let { record: item } = await this.taskChecklistItemsService.create(form);
 
         this.currentChecklist.items.push(item);
 
         this.isSending = false;
         this.isAddingChecklistItem = false;
+    
+        let checkListIndex = this.task.checklists.indexOf(this.currentChecklist);
 
-        // this.task.checklists[this.currentChecklistIndex] = this.currentChecklist;
+        this.task.checklists[checkListIndex] = this.currentChecklist
+
+        userSocket.trigger('task.update', this.task);
     }
 
     allowEditing(checklist, index, type) {
@@ -122,5 +139,7 @@ class TaskChecklist {
 
             // this.task.checklists[this.index] = ;
         }
+            
+        userSocket.trigger('task.update', this.task);
     }
 }

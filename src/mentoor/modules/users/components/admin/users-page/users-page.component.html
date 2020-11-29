@@ -1,6 +1,6 @@
 <admin-table [columns]="this.crudOptions.columns" [records]="this.items" [add-heading]="this.crudOptions.heading"
     [table-heading]="this.tableHeading">
-    <tr *for="let user, index of this.items">
+    <tr *for="let user, index of this.items" *key="user.id">
         <td>{{user.id}}</td>
         <td>
             <span [html]="user.name"></span>
@@ -8,7 +8,9 @@
             <div *if="user.username" [html]="'@' + user.username"></div>
         </td>
         <td [html]="user.gold.format()"></td>
-        <td [html]="user.total?.academy?.answers?.approved"></td>
+        <td>
+            <flk-time-ago [tooltip]="user.createdAt.format" [timestamp]="user.createdAt.timestamp"></flk-time-ago>
+        </td>
         <td [html]="user.email"></td>
         <td [html]="user.accountType"></td>
         <td>
@@ -20,7 +22,7 @@
         </td>
     </tr>
 </admin-table>
-<flk-modal *if="this.openModal" [modal-header]="this.crudOptions.heading" (close)="this.closeModal();">
+<flk-modal *if="this.openModal" [heading]="this.crudOptions.heading" (close)="this.closeModal();">
     <form (submit)="this.submit($el)">
         <div class="form-group">
             <form-input required type="email" [value]="this.formObject.email" placeholder="Email" class="form-control"

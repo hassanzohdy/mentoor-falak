@@ -9,6 +9,14 @@ class ProjectBugsService extends Endpoint.Service {
     updateStatus(data) {
         return this.endpoint.patch(this.path(`/status`), data);
     }
+
+    getFilters(data) {
+        return this.endpoint.get(this.path('/filters'), { data });
+    }
+
+    total(data) {
+        return this.endpoint.get(this.path('/total'), { data });
+    }
 }
 
 DI.register({

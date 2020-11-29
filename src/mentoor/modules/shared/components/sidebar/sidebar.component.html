@@ -18,22 +18,22 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <li *if="this.user.isLoggedIn()" class="nav-item">
+            <!-- <li *if="this.user.isLoggedIn()" class="nav-item">
                 <a class="nav-link" href="/dashboard" [class]="{active: this.activeLink('/dashboard')}">
                     <fa icon="home"></fa>
                     Dashboard
                     <span class="sr-only">(current)</span>
                 </a>
-            </li>
-            <li *if="this.user.isLoggedIn()" class="nav-item">
+            </li> -->
+            <!-- <li *if="this.user.isLoggedIn()" class="nav-item">
                 <a class="nav-link" href="/projects/me" [class]="{active: this.activeLink('/projects/me')}">
                     <fa icon="suitcase mr-2"></fa>
                     My Projects
                     <span class="sr-only">(current)</span>
                 </a>
-            </li>
+            </li> -->
 
-            <li class="nav-item" *if="Config.get('app.env') == 'development'">
+            <li class="nav-item">
                 <a class="nav-link pink-text bold" href="/courses"
                     [class]="{active: this.activeLink('/courses', STARTING_WITH_ROUTE)}">
                     <fa icon="suitcase mr-2"></fa>
@@ -57,7 +57,7 @@
                     <span>Projects [PMS]</span>
 
                     <!-- <span class="alpha">ALPHA</span> -->
-                    <span class="new">NEW</span>
+                    <!-- <span class="new">NEW</span> -->
                 </a>
             </li>
             <li class="nav-item" *if="this.user.isLoggedIn()">
@@ -66,7 +66,7 @@
                     <img [src]="assets('images/target.png')" class="target-icon small mr-2" />
                     Training ground
                 </a>
-            </li>
+            </li>   
             <li class="nav-item" *if="this.user.isLoggedIn()">
                 <a class="nav-link" href="/tasks" [class]="{active: this.activeLink('/tasks')}">
                     <fa icon="tasks"></fa>

@@ -10,11 +10,30 @@
     <form-input
       type="text"
       name="title"
+      autofocus
       [value]="this.section.title"
       class="form-control"
       [required]="true"
       label="Section Title"
     ></form-input>
+
+    <form-input
+      type="number"
+      name="order"
+      [value]="this.section.order"
+      class="form-control"
+      label="Section Order In Course"
+    ></form-input>
+
+    
+    <div class="mx-4">
+      <flk-mdb-checkbox
+      label="Published"
+      name="published"
+      [checked]="this.section.published"
+      (change)="this.section.published = $el.checked;"
+       ></flk-mdb-checkbox>    
+    </div>
 
     <button [disabled]="this.isSending" class="btn bold btn-primary">
       Save

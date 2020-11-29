@@ -9,6 +9,7 @@ DI.resolve('events').subscribe('router.collecting', router => {
         // New course page
         routerGroup.add('/new', NewCoursePage);
 		// Course Details page
+		routerGroup.add('/{:id}/{slug}/edit', NewCoursePage);
 		routerGroup.add('/{:id}/{slug}', CourseDetailsPage);
 
 		// Course Play page

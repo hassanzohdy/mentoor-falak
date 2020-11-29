@@ -1,0 +1,49 @@
+<flk-modal (close)="this.event('close')()" heading="General Project Settings">
+    <form id="project-settings-form" (submit)="this.update($el)">
+        <flk-tabs>
+            <!-- <flk-tab heading="General">
+                Go
+            </flk-tab> -->
+            <flk-tab heading="Bugs" [active]="this.prop('tab') === 'bugs'">
+                <div class="row m-x-0">
+                    <div class="col-6">
+                        <div class="m-b-1">
+                            <flk-dropdown-list name="projectSettings.bugs.totalInHeader[]"
+                                heading="Total Bugs In Header" [items]="BUGS_STATUSES"
+                                [value]="this.user.get('projectSettings.bugs.totalInHeader')" none multiple>
+                            </flk-dropdown-list>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="m-b-1">
+                            <flk-mdb-checkbox name="projectSettings.bugs.totalInHeaderOnlyMe"
+                                label="Show only Bugs I'm involved in"
+                                value="1"
+                                [checked]="Boolean(this.user.get('projectSettings.bugs.totalInHeaderOnlyMe'))" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-x-0">
+                    <div class="col-6">
+                        <div class="m-b-1">
+                            <flk-dropdown-list name="projectSettings.bugs.list.statuses[]"
+                                heading="Bugs Statuses Auto Select in Bugs Page" [items]="BUGS_STATUSES"
+                                [value]="this.user.get('projectSettings.bugs.list.statuses')" none multiple></flk-dropdown-list>
+                        </div>        
+                    </div>
+                </div>
+            </flk-tab>
+        </flk-tabs>
+
+        <div class="text-right">
+            <button class="btn btn-success" [disabled]="this.isSaving">
+                <fa *if="this.isSaving" spin="spinner" />
+                <span *else>Save</span>
+            </button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-message *if="this.successMessage" (close)="this.successMessage = null">
+    Project Settings Has Been Updated Successfully
+</flk-message>

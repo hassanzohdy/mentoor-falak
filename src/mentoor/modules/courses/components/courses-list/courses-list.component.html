@@ -2,7 +2,7 @@
 
 <else>
   <section *if="!Is.empty(this.coursesList)" class="row courses-list mt-5">
-    <div class="col-6" *for="let course of this.coursesList">
+    <div *for="let course of this.coursesList" *key="course.id" class="col-12 col-sm-4 col-md-3">
       <course-card [course]="course"></course-card>
     </div>
   </section>

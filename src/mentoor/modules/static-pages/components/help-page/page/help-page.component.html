@@ -17,7 +17,6 @@
             <help-what-to-buy-with-gold></help-what-to-buy-with-gold>
             <p class="bold pink-text">Please note this page could be changed anytime without prior notifications.</p>
         </div>
-        @echo(this.user.isLoggedIn())
         <div class="col" *if="this.user.isLoggedIn()">
             <div class="simple-card text-center">
                 <a href="/me" class="btn bold btn-pink">

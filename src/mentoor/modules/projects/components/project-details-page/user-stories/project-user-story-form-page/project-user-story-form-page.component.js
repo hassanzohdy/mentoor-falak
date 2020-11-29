@@ -1,5 +1,5 @@
 class ProjectUserStoryFormPage extends Project {
-    // @macro(loadSprints)
+    // @macro(loadSprints, loadModules)    
     /**
      * Constructor
      * Put your required dependencies in the constructor parameters list  
@@ -100,6 +100,9 @@ class ProjectUserStoryFormPage extends Project {
             priority: 'mustHave',
             color: Array.random(this.colors),
             parent: {
+                id: null,
+            },
+            module: {
                 id: null,
             },
             task: {},

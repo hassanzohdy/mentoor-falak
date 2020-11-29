@@ -1,6 +1,6 @@
 <section class="panel-wrapper dark" id="rewards-panel">
     <span class="arrow-up"></span>
-    <flk-spinner theme="white" *if="this.isLoading"></flk-spinner>
+    <flk-spinner *if="this.isLoading"></flk-spinner>
     <else>
         <if condition="! Is.empty(this.rewards)">
             <ul class="list">
@@ -52,8 +52,8 @@
                             <div *elseif="reward.type == 'reward' && reward.for == 'post'" class="post">
                                 <fa icon="mug-hot fa-2x v-top"></fa>
                                 <div class="d-inline-block">
-                                    <span class="description bold ml-2 teal-text">
-                                        <span [html]="reward.settings.post.title" class="mx-2"></span>
+                                    <span class="description bold ml-2 teal-text" tooltip [title]="reward.settings.post.title">
+                                        <span [html]="reward.settings.post.title.readMoreChars(30)" class="mx-2"></span>
                                         <span> post.</span>
                                     </span>
                                     <fa icon="check green-text success-icon"></fa>

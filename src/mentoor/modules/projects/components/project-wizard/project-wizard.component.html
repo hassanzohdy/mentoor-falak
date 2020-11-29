@@ -1,0 +1,7 @@
+<div id="project-wizard">
+    <flk-modal *if="this.isOpen" (open)="this.searchInput.focus()" (close)="this.isOpen = false"
+        [heading]="false">
+        <h1>The Bloody Wizard</h1>
+        <form-input type="text" placeholder="Search" (keyup)="this.analyzeText($el.value)" *as="searchInput" class="form-control" autofocus></form-input>
+    </flk-modal>
+</div>

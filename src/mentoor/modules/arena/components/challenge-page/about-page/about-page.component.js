@@ -24,7 +24,6 @@ class AboutPage {
     
         this.challengesService.get(id).then(res => {
             this.challenge = res.record;
-            console.log(res)
             this.isLoading = false;
         })
     }

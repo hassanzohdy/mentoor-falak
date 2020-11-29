@@ -8,6 +8,16 @@
         }
     }
 
+    .comment-header {
+        .comment-url {
+            display: none;
+        }
+
+        &:hover .comment-url {
+            display: inline-block;
+        }
+    }
+
     .meta-comment {
         // display: inline-block;
         // width: calc(100% - 24rem);

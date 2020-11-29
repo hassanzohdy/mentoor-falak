@@ -5,16 +5,37 @@
     padding-bottom: 50px;
     color: #2d3e50;
 
+    height: 100vh;
+    overflow:auto;
+    h1 {
+        font-size: 15px;
+
+        .project-image {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+        }
+    }
+
+    .sidebar-tag {
+        width: 20px;
+        height: 20px;
+        margin: 0 0.4rem;
+    }
+
     ul {
         padding: 0;
         li {
             list-style: none;
             a {
+                font-weight: normal;
                 padding-top: 1rem;
                 color: inherit;
                 display: block;
                 padding-bottom: 1rem;
                 border-bottom: 1px solid #ccc;
+                padding-left: 1rem;
 
                 span {
                     padding-left: 0.5rem;

@@ -17,7 +17,11 @@ class CourseCouponForm {
    */
   init() {
     this.course = this.prop("course");
-    this.coupon = this.prop("coupon", {});
+    this.coupon = this.prop("coupon", {
+      startsAt: {},
+      endsAt: {},
+      type: null,
+    });
 
     this.heading =
       this.coupon && this.coupon.id ? "Edit coupon" : "Add New coupon";
@@ -30,6 +34,7 @@ class CourseCouponForm {
     // this.isSending = true;
 
     let coupon;
+    
 
     if (this.coupon.id) {
       let { record } = await this.courseCouponsService.update(

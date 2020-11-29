@@ -7,8 +7,8 @@
         }
 
         .title {
-            background: #576574;
-            color: #FFF !important;
+            // background: #576574;
+            // color: #FFF !important;
             border-radius: 5px;
             padding: 0.2rem 1rem;
         }
@@ -17,10 +17,16 @@
     .status-column {
         position: relative;
         .status-changer {
-            position: absolute;
+            // position: absolute;
             z-index: 1000;
             top: 100%;
-            width: 150px;
+            .arrow {
+                margin-left: 0.4rem;
+            }
+            // width: 150px;
+            .items-list.expanded {
+                width: 200px;
+            }
         }
     } 
 

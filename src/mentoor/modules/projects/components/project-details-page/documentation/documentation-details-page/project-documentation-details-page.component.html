@@ -1,8 +1,18 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
-    <h1 class="heading" [html]="this.documentation.title"></h1>
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
 
-    <div class="simple-card">
-        <markdown [content]="this.documentation.content"></markdown>
+    <div class="m-x-1 m-t-1">    
+        <user-avatar-image [user]="this.documentation.createdBy" />
+        <div class="d-inline-block">
+            <div [html]="this.documentation.createdBy.name"></div>
+            <div>
+                <flk-time-ago class="ago" [timestamp]="this.documentation.createdAt.timestamp"></flk-time-ago>
+            </div>
+        </div>
+        
+        <div class="m-t-1 simple-card">
+            <h1 class="heading" [html]="this.documentation.title"></h1>
+            <markdown [content]="this.documentation.content"></markdown>
+        </div>
     </div>
 
 </project-layout>

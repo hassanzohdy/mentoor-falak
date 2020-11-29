@@ -39,7 +39,7 @@
                 Edit
             </button>
         </div>
-        <gold-icon [coins]="this.user.gold"></gold-icon>
+        <gold-icon *if="this.user.gold" [coins]="this.user.gold"></gold-icon>
     </div>
     <!-- Totals -->
     <div id="totals" class="text-center">

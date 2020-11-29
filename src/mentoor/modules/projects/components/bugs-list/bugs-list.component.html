@@ -1,0 +1,107 @@
+<flk-spinner *if="this.isLoading"></flk-spinner>
+<div *else id="bugs-list-container">
+    <bugs-filter></bugs-filter>
+    <h2>
+        Bugs
+        ({{ this.bugsList.length }}/{{ this.paginationInfo.totalRecords }})
+
+        <button *if="this.paginationInfo.numberOfPages > this.paginationInfo.currentPage" (click)="this.loadMoreBugs()"
+            [disabled]="this.isPaginating" class="m-l-1 btn">
+            <span *if="! this.isPaginating">Load More Bugs</span>
+            <fa spin="spinner" *else />
+        </button>
+    </h2>
+    <for loop="let status, bugsOptions in this.bugs">
+        <h4 class="text-capitalize m-t-2 pointer gray-text simple-card"
+            (click)="this.togglePanel(status, bugsOptions)">
+            <span [html]="status + ' Bugs (' + bugsOptions.bugs.length + ')'"></span>
+            <fa *if="bugsOptions.opened" icon="angle-down ml-2"></fa>
+            <fa *else icon="angle-up ml-2"></fa>
+        </h4>
+        <div class="bugs-container table-responsive" [class]="{opened: bugsOptions.opened}">
+            <table class="table buttoned simple-card">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th colspan="2" class="title-column">Title</th>
+                        <th *if="Is.empty(this.project)">Project</th>
+                        <th>Created</th>
+                        <th>Issued By</th>
+                        <th>Assigned To</th>
+                        <th>Module</th>
+                        <th>Priority</th>
+                        <th>Sprint</th>
+                        <!-- <th>Status</th> -->
+                        <th>Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *for="let record, index of bugsOptions.bugs" *key="record.id">
+                        <td [html]="record.id"></td>
+                        <td colspan="2" class="title-column">
+                            <a [href]="URLS.project(record.project, 'bugs', record)" class="bug-title" tooltip
+                                [title]="record.title">
+                                <span [html]="record.title.readMoreChars(40)"></span>
+                            </a>
+
+                            <span *if="record.totalComments > 0" tooltip title="Comments" class="ml-2">
+                                <strong [html]="record.totalComments" class="gray-text"></strong>
+                                <fa far="comments ml-2 gray-text"></fa>
+                            </span>
+                        </td>
+                        <td *if="Is.empty(this.project)">
+                            <a [href]="URLS.project(record.project, 'bugs')" class="ml-3 teal-text" tooltip
+                                [title]="record.project.name" class="mx-3">
+                                <img *if="record.project.image" class="small circle" [src]="record.project.image" />
+                                <fa *else icon="suitcase"></fa>
+                            </a>
+                        </td>
+                        <td>
+                            <flk-time-ago [timestamp]="record.createdAt.timestamp"></flk-time-ago>
+                        </td>
+                        <td class="text-center">
+                            <user-avatar-image [user]="record.createdBy"></user-avatar-image>
+
+                            <!-- <img [src]="record.createdBy.image" class="small mr-2 circle" tooltip
+                                    [title]="record.createdBy.name" [alt]="record.createdBy.name" /> -->
+                            <!-- <span [html]="record.createdBy.name"></span> -->
+                        </td>
+                        <td class="text-center">
+                            <span *for="let assignee of record.assignee" class="mx-1">
+                                <user-avatar-image [user]="assignee"></user-avatar-image>
+                                <!-- <img [src]="assignee.image" class="small mr-2 circle" tooltip [title]="assignee.name"
+                                        [alt]="assignee.name" /> -->
+                            </span>
+                        </td>
+                        <td class="bold gray-text" [html]="record.module ? record.module.name : ''"></td>
+                        <td>
+                            <span class="badge priority {{ record.priority }}" [html]="record.priority"></span>
+                        </td>
+                        <th class="text-center gray-text bold" [html]="Object.get(record, 'sprint.name')"></th>
+                        <!-- <td class="status {{ record.status }}" [html]="record.status"></td> -->
+                        <td>
+                            <if condition="record.canBeModified">
+                                <button type="button" (click)="this.editBug(record, record.originalIndex)" class="btn btn-sm btn-cyan"
+                                    tooltip title="Edit Bug">
+                                    <fa icon="edit"></fa>
+                                </button>
+                                <button type="button" (click)="this.confirmRemoving(record, record.originalIndex)"
+                                    class="btn btn-sm btn-danger" tooltip title="Delete Bug">
+                                    <fa icon="trash"></fa>
+                                </button>
+                            </if>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </for>
+</div>
+
+
+<bug-modal *if="this.editingBug" [record]="this.bug" [project]="this.bug.project" (close)="this.editingBug = null;"
+    (save)="this.onSave(e)"></bug-modal>
+
+    
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

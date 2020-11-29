@@ -18,12 +18,11 @@
                     [html]="this.resourcesTypes[this.resource.type]"></button>                            
                 </div>
             </div>
-            <img [src]="this.resource.createdBy.image" [alt]="this.resource.createdBy.name"
-                class="img-thumbnail circle creator-image" />
-
+            <user-avatar-image [user]="this.resource.createdBy"></user-avatar-image>
+            
             <div class="meta">
                 <h3 class="title">
-                    <a [href]="'resources/' + this.resource.id" [html]="this.resource.title"></a>
+                    <a [href]="URLS.resource(this.resource)" [html]="this.resource.title"></a>
                 </h3>
                 <div class="created">
                     <span class="by">
@@ -62,7 +61,7 @@
         <flk-youtube-video  width="100%" height="400px" [src]="this.resource.settings.youtube"></flk-youtube-video>
     </div>
 
-    <button *if="['ftp', 'website', 'email'].includes(this.resource.type)" (click)="this.viewResource = true;" class="btn bold" [class]="this.resourceStyle()">View Details</button>
+    <button *if="['ftp', 'website', 'mobile', 'email'].includes(this.resource.type)" (click)="this.viewResource = true;" class="btn bold" [class]="this.resourceStyle()">View Details</button>
 </div>
 
 <flk-modal
@@ -93,9 +92,11 @@
 
     <table class="table table-bordered table-striped resource-table">   
         <tbody>
-            <tr>
+            <tr *if="this.resource.settings.email.url">
                 <th>Webmail url</th>
-                <th [html]="this.resource.settings.email.url"></th>
+                <th>
+                    <a [href]="this.resource.settings.email.url" target="_blank" [html]="this.resource.settings.email.url"></a>
+                </th>
             </tr>
             <tr>
                 <th>Email Address</th>
@@ -110,19 +111,21 @@
 </if>
 <elseif condition="this.resource.type == 'website'">
     <h1>
-        {{ this.resource.settings.website.name }} Website
-        (<span [html]="this.resource.title"></span>)
+        <span *if="this.resource.settings.website.name" [html]="this.resource.settings.website.name + ': '"></span>
+        <span [html]="this.resource.title"></span>
     </h1>
 
     <table class="table table-bordered table-striped resource-table">
         <tbody>
-            <tr>
+            <tr *if="this.resource.settings.website.name">
                 <th>Website</th>
                 <th [html]="this.resource.settings.website.name"></th>
             </tr>
             <tr>
                 <th>Website Url</th>
-                <th [html]="this.resource.settings.website.url"></th>
+                <th>
+                    <a [href]="this.resource.settings.website.url" target="_blank" [html]="this.resource.settings.website.url"></a>
+                </th>
             </tr>
             <tr>
                 <th>Username</th>
@@ -131,6 +134,24 @@
             <tr>
                 <th>Password</th>
                 <th [html]="this.resource.settings.website.password"></th>
+            </tr>
+        </tbody>
+    </table>
+</elseif>
+<elseif condition="this.resource.type == 'mobile'">
+    <h1 *if="this.resource?.settings?.mobile?.name">
+        <span [html]="this.resource?.settings?.mobile?.name"></span>
+    </h1>
+
+    <table class="table table-bordered table-striped resource-table">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <th [html]="this.resource.settings.mobile.username"></th>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <th [html]="this.resource.settings.mobile.password"></th>
             </tr>
         </tbody>
     </table>

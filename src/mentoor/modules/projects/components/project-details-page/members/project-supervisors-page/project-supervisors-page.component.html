@@ -2,11 +2,8 @@
     <button 
         class="float-right btn btn-success bold" 
         (click)="this.openModal('add')"
-        [disabled]="this.newSupervisorCost > this.project.fund"
         >
         <fa icon="plus mr-1"></fa>
-        <gold-icon [coins]="this.newSupervisorCost"></gold-icon>
-        <br>
         Supervisor
     </button>
 

@@ -69,6 +69,7 @@
         "css": {
             "ltr": [
                 "https://fonts.googleapis.com/css?family=Raleway",
+                "https://fonts.googleapis.com/css?family=Roboto",
                 "https://fonts.googleapis.com/css?family=Lato&display=swap"
             ],
             "common": [
@@ -76,6 +77,7 @@
             ]
         },
         "js": [
+            "https://www.youtube.com/iframe_api",
             "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
             "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
         ]
@@ -89,12 +91,56 @@
         "fonts",
         "media"
     ],
+    "lazyModules": {
+        "main": [
+            "shared",
+            "home",
+            "users",
+            "flk-time-remaining",
+            "record-audio-input",
+            "flk-timer",
+            "dashboard"
+        ],
+        "posts": [
+            "tags",
+            "posts",
+            "timeline"
+        ],
+        "tasks": [
+            "tasks"
+        ],
+        "projects": [
+            "@tasks",
+            "resources",
+            "json-preview",
+            "json-api-preview"
+        ],
+        "courses": [
+            "courses"
+        ],
+        "trainingGround": [
+            "training-ground",
+            "cocktails"
+        ],
+        "misc": [
+            "static-pages",
+            "change-log"
+        ],
+        "english": [
+            "english"
+        ],
+        "arena": [
+            "arena"
+        ],
+        "academy": [
+            "academy"
+        ]
+    },
     "modules": [
         "shared",
         "home",
         "users",
         "static-pages",
-        "einstein-chamber",
         "einstein-chamber",
         "academy",
         "users",
@@ -104,25 +150,25 @@
         "cocktails",
         "tasks",
         "users",
-        "facebook-cover-page",
         "dashboard",
         "posts",
-        "tutorial-maker",
         "change-log",
         "english",
         "projects",
         "shopping-mall",
-        "misc",
         "calendar",
         "courses",
         "flk-time-remaining",
         "flk-timer",
         "timeline",
         "record-audio-input",
-        "polls",
-        "offline-courses",
         "resources",
         "arena",
-        "json-api-preview"
+        "json-preview",
+        "json-api-preview",
+        "bugs",
+        "screen-recorder",
+        "companies",
+        "attachments-previewer"
     ]
 }

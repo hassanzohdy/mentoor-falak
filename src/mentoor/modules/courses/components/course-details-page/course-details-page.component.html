@@ -1,119 +1,149 @@
 <layout>
   <flk-spinner *if="this.isLoading"></flk-spinner>
 
-  <div *else class="row">
-    <section class="col-sm-9">
-      <div class="d-flex">
-        <img
-          [src]="this.course.image"
-          width="200px"
-          height="200px"
-          alt="The course intro"
-        />
+  <div *else class="row flex-column-reverses">
+    <section class="col-sm-9 order-sm-1 order-2">
+      <div class="d-sm-flex">
+        <img [src]="this.course.image" class="course-image" [alt]="this.course.title" />
         <header class="course-intro">
           <section class="course-title d-flex align-items-start">
             <h1 class="d-inline-block ml-2">
               {{ this.course.title }}
             </h1>
-            <a
-              *if="this.course.createdBy.id === this.user.id"
-              [href]="URLS.course(this.course, 'dashboard')"
-              class="btn btn-dark btn-sm ml-3"
-            >
+            <a *if="this.course.createdBy.id === this.user.id" [href]="URLS.course(this.course, 'dashboard')"
+              class="btn btn-dark btn-sm ml-3">
               <fa icon="cog"></fa>
             </a>
+
           </section>
-          <p
-            *if="this.course.duration"
-            class="ml-5 mt-3 badge badge-dark d-inline-block"
-          >
+          <div class="ml-2 created text-muted">
+            <span *if="!Is.empty(this.course.createdBy)" class="by">
+              By
+              <span [html]="' ' + this.course.createdBy.name + ' '"></span>
+              <!-- <for loop="let name of this.course.createdBy">
+                  </for> -->
+            </span>
+            <flk-time-ago class="at" [timestamp]="this.course.createdAt.timestamp"></flk-time-ago>
+          </div>
+          <p *if="this.course.duration" class="ml-2 mt-3 badge badge-dark d-inline-block">
             {{ this.course.duration.hours }} hours
             {{ this.course.duration.minutes }} minutes
           </p>
 
-          <markdown
-            *if="this.course.shortDescription"
-            class="short-description mt-3 ml-3"
-            [content]="this.course.shortDescription"
-          >
+          <markdown *if="this.course.shortDescription" class="short-description mt-3 ml-3"
+            [content]="this.course.shortDescription">
           </markdown>
         </header>
       </div>
+      <div *if="this.course.isAccessible" class="simple-card m-y-2">
+        <h2>
+          Course Progress
+          (
+          <span [html]="this.course.completedVideosProgress.completed.length"></span>
+          /
+          <span [html]="this.course.completedVideosProgress.all.length"></span>
+          )
 
-      <section class="course-prerequisites">
-        <h2>Prerequisites</h2>
-        <markdown
-          *if="this.course.prerequisites"
-          [content]="this.course.prerequisites"
-          class="card p-3 mt-5"
-        ></markdown>
+        </h2>
+        <div class="progress-wrapper">
+          <div class="progress base"></div>
+          <div class="progress transition {{ this.completedVideoProgressColor(this.course.completedVideosProgress) }}"
+            [style]="{width: this.course.completedVideosProgress.completedPercentage + '%'}"
+            [tooltip]="this.course.completedVideos"
+            [title]="this.course.completedVideosProgress.completedPercentage + '%'"></div>
+        </div>
+      </div>
+
+      <section *if="this.course.prerequisites" class="course-prerequisites mt-5">
+        <h2 class="m-b-1">Prerequisites</h2>
+        <markdown [content]="this.course.prerequisites" class="card p-1"></markdown>
       </section>
 
-      <section class="course-description">
-        <h2>Description</h2>
-        <markdown
-          *if="this.course.description"
-          [content]="this.course.description"
-          class="card p-3 mt-5"
-        ></markdown>
+      <section *if="this.course.description" class="course-description mt-5">
+        <h2 class="m-b-1">Description</h2>
+        <markdown [content]="this.course.description" class="card p-1"></markdown>
       </section>
 
-      <div class="simple-card pb-2 m-t-1">
-        <flk-accordion
-          *for="let section, index of this.course.sections"
-          *key="section.id"
-          [heading]="this.renderSectionTitle(section)"
-        >
-          <course-section-videos-list
-            [is-viewer]="true"
-            [videos]="section.videos"
-          ></course-section-videos-list>
-        </flk-accordion>
+      <div *if="! Is.empty(this.course.sections)" class="pb-2 m-t-1">
+        <h2 class="m-b-1">Course Sections</h2>
+        <div class="simple-card sections-list">
+          <for loop="let section, index of this.course.sections" *key="section.id">
+            <div 
+              *if="this.course.isAccessible && section.completedVideos && section.completedVideos.completedPercentage < 100" 
+              class="progress-wrapper">
+              <div class="progress base"></div>
+              <div class="progress transition {{ this.completedVideoProgressColor(section.completedVideos) }}"
+                [style]="{width: section.completedVideos.completedPercentage + '%'}" [tooltip]="section.completedVideos"
+                [title]="section.completedVideos.completedPercentage + '%'"></div>
+            </div>
+
+            <div [class]="{'completed-section': section.completedVideos.completedPercentage == 100}">
+              <flk-accordion [expanded]="this.currentOpenedSection == section.id"
+                [heading]="this.renderSectionTitle(section)">
+                <course-section-videos-list (watched)="this.updateCompletedVideosInSections(); this.dc()"
+                  [course]="this.course" [section]="section" [videos]="section.videos">
+                </course-section-videos-list>
+              </flk-accordion>
+            </div>
+          </for>
+        </div>
       </div>
     </section>
-    <section class="col-3">
-      <a href="/courses" class="btn btn-secondary"> Back to Courses list </a>
+    <section class="col-sm-3 order-1 order-sm-2">
+      <!-- <a href="/courses" class="btn btn-secondary"> Back to Courses list </a> -->
       <div class="card">
         <div class="card-body">
-          <div class="card-title bold">Course summary</div>
-          <div class="d-flex justify-content-between pt-4 pb-4">
-            <span>
-              <i class="ti ti-list"></i>
-              {{ this.getTotalNumberOfCourseVideos() }}
-            </span>
-            <span title="Cost">
-              <gold-icon [coins]="this.course.price"></gold-icon>
-              <strong class="pink-text" *if="this.course.price == 0"
-                >FREE!</strong
-              >
-            </span>
-          </div>
-          <div class="pt-4 pb-4">
+          <div class="card-title text-center bold">Course summary</div>
+          <div>
             <p *if="this.course.level">
               <span class="font-weight-bold"> Level: </span>
               <i class="ti ti-list"></i>
-              {{ " " + this.course.level.join(",") }}
+              <span class="text-capitalize ml-2">
+                <span *for="let level of this.course.level" *key="level" 
+                class="badge mr-2" [class]="{red: level == 'advanced', 'green': level == 'beginner', blue: level == 'intermediate'}" 
+                [html]="level"></span>
+              </span>
             </p>
-            <p title="Cost" *if="this.course.type">
-              <span class="font-weight-bold"> Type: </span>
-              {{ " " + this.course.type.join(",") }}
+            <p *if="this.course.type">
+              <span class="font-weight-bold">Course Type: </span>
+              <span *for="let type of this.course.type" *key="type" class="badge mx-2 btn-petrol text-capitalize"
+                [html]="type"></span>
             </p>
+
+            <div *if="this.course.totalSubscriptions > 0" class="petrol-text mb-1">
+              <small>
+                <strong class="mr-1" [html]="this.course.totalSubscriptions.format()"></strong> 
+                <span class="bold mx-1">Students Enrolled</span>
+              </small>
+            </div>
           </div>
 
-          <form (submit)="this.applyCoupon(this.couponCode)">
+          <div class="justify-content-between m-b-1 pt-4">
+            <div title="Cost" [class]="{ removed: this.discount, 'red-text': this.discount }" class="d-block">
+              <strong>Price: </strong>
+              <gold-icon [coins]="this.course.price"></gold-icon>
+            </div>
+
+            <div *if="this.discount" class="m-y-1 green-text">
+              <strong>Discount:</strong>
+              <gold-icon [coins]="this.amountOfDiscount"></gold-icon>
+              ( {{ this.discount }}% )
+            </div>
+
+            <section *if="this.discount" class="discount-details">
+              <strong>Sub Total:</strong>
+              <gold-icon [coins]="this.priceAfterDiscount"></gold-icon>
+            </section>
+          </div>
+
+          <form *if="! this.course.isSubscribed && ! this.course.isAuthor" (submit)="this.applyCoupon(this.couponCode)">
             <div class="input-group mb-3">
-              <form-input
-                type="text"
-                placeholder="Coupon code"
-                tooltip
-                title="Enter your coupon and get a discount"
-                name="code"
-                [value]="this.couponCode"
-                class="form-control p-1"
-              ></form-input>
+              <form-input type="text" placeholder="Coupon code" tooltip title="Enter your coupon and get a discount"
+                name="code" [value]="this.couponCode" class="form-control p-1" (input)="this.removeCouponError()">
+              </form-input>
               <div class="input-group-append">
-                <button class="btn btn-info coupon-apply-btn" type="submit">
-                  <flk-spinner *if="this.isApplying"></flk-spinner>
+                <button [disabled]="this.isApplying" class="btn btn-info coupon-apply-btn" type="submit">
+                  <fa *if="this.isApplying" spin="spinner"></fa>
                   <span *else>Apply</span>
                 </button>
               </div>
@@ -122,26 +152,48 @@
               {{ this.couponError }}
             </span>
           </form>
-          <flk-alert
-            *if="this.confirmSubscribe"
-            message="Are you sure you want to subscribe to '{{
+          <flk-alert *if="this.confirmSubscribe" message="Are you sure you want to subscribe to '{{
               this.course.title
-            }}'"
-            (confirm)="this.subscribeToCourse()"
-            (close)="this.confirmSubscribe = false"
-          ></flk-alert>
+            }}'" (confirm)="this.subscribeToCourse()" (close)="this.confirmSubscribe = false"></flk-alert>
           <div class="text-center">
-            <button
-              *if="!this.course.isSubscribed && !this.isSubscribing"
-              class="btn btn-primary text-uppercase"
-              (click)="this.confirmSubscribe = true"
-              trans="subscribe"
-            ></button>
+            <button *if="!this.course.isSubscribed && !this.isSubscribing && ! this.course.isAuthor"
+              class="btn btn-danger text-uppercase" (click)="this.confirmSubscribe = true"
+              [disabled]="this.isSubscribing || this.isApplying">
+              Enroll Now 
+            </button>
             <flk-spinner *elseif="this.isSubscribing"></flk-spinner>
-            <div *else class="text-center" title="subscribed">
+            <div *if="this.course.isSubscribed" class="text-center" tooltip title="subscribed">
               <fa icon="check subscribed-icon"></fa>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div *if="this.course.isAccessible" class="m-t-1 card">
+        <div class="card-body">
+          <div class="petrol-text card-title text-center bold">
+            Your Progress
+            <strong class="badge ml-1 {{ this.completedVideoProgressColor(this.course.completedVideosProgress) }}" [html]="this.course.completedVideosProgress.completedPercentage + '%'"></strong>
+          </div>
+          <div class="m-b-1 bold">
+            <small class="bold mr-2">Watched Videos:</small> 
+            <span class="badge btn-petrol" [html]="this.course.completedVideos.length"></span>
+            <span class="mx-1">/</span>
+            <span class="badge btn-petrol" [html]="this.course.completedVideosProgress.all.length"></span>
+            <span></span>
+          </div>
+          <div class="m-b-1 bold">
+            <small class="bold mr-2">Watch Time</small> 
+            <span *for="let key, value in this.course.totalWatchedTime" *key="key" class="badge btn-petrol mx-1" [html]="value + ' ' + key[0]"></span>
+          </div>
+          <div class="m-b-1 bold">
+            <small class="bold mr-2">Completed Sections:</small> 
+            <span class="badge btn-petrol" [html]="this.course.completedSections"></span>
+            <span class="mx-1">/</span>
+            <span class="badge btn-petrol" [html]="this.course.sections.length"></span>
+            <span></span>
+          </div>
+          
         </div>
       </div>
     </section>

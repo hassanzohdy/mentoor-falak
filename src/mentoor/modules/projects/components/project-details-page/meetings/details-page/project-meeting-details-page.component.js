@@ -20,10 +20,10 @@ class ProjectMeetingDetailsPage extends Project {
     onProjectLoad() {
         this.meeting = this.project.meeting;
 
-        let isMeetingMember = this.project.is.higherAuthority || collect(this.meeting.members).pluck('id').toArray().includes(this.user.id);
+        // let isMeetingMember = this.project.is.higherAuthority || collect(this.meeting.members).pluck('id').toArray().includes(this.user.id);
 
-        if (! isMeetingMember) {
-            return this.router.navigateTo('/404');
-        }
+        // if (! isMeetingMember) {
+        //     return this.router.navigateTo('/404');
+        // }
     }
 }

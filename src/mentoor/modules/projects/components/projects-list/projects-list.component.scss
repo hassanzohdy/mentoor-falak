@@ -4,84 +4,76 @@
     .project-image {
         // max-height: 100px;
         // vertical-align: middle;
+        text-align: center;
+        display: inline-block;
+
+        img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 1px 2px #eee;
+            padding: 5px;
+        }
     }
 
+
     .metadata {
-        @include responsive((
-            767: (
-                text-align: center,
-            )
-        ), max);
+        @include responsive((767: (text-align: center,
+                )), max);
     }
 
     .name {
-        @include responsive((
-            767: (
-                margin-top: 1rem,
-            )
-        ), max);        
+        @include responsive((767: (margin-top: 1rem,
+                )), max);
     }
 
     .tags-list {
-        @include responsive((
-            767: (
-                display: flex,
-                flex-wrap: wrap,
-                align-items: center,
-                justify-content: center,
-                flex-direction: row,
-                width: 100%,
-                padding: 0,
-            )
-        ), max);
+        height: 30px;
+        margin-top: 1rem;
+
         .tag {
-            padding: 0.4rem 0;
+            padding: 0.4rem;
             display: inline-block;
-            width: 140px;
+            // width: 140px;
+
             text-align: center;
+            border-radius: 50%;
+
             img {
                 width: 20px;
                 height: 20px;
-                @include responsive((
-                    767: (
-                        // width: 10px,
-                        // height: 10px,
-                        display: block,
-                        margin: auto,
-                    )
-                ), max);
+                margin: 0;
+                @include responsive((767: ( // width: 10px,
+                            // height: 10px,
+                            display: block,
+                            margin: auto,
+                        )), max);
             }
 
             .name {
-                @include responsive((
-                    767: (
-                        font-size: 1.3rem,                        
-                    )
-                ), max);
+                @include responsive((767: (font-size: 1.3rem,
+                        )), max);
             }
-
-            @include responsive((
-                767: (
-                    // flex-grow: 1,
-                    display: flex,
-                    flex-direction: column,
-                    flex-basis: 100%,
-                    flex: 0 0 30%,
-                    max-width: 30%,
-                    margin-bottom: 1rem,
-                    padding: 0.5rem !important,
-                )
-            ), max);
         }
     }
 
     .summary {
         text-align: right;
-        @include responsive((
-            767: (
-                margin-top: 1rem,
-                text-align: center,
-            )
-        ), max);
+        @include responsive((767: (margin-top: 1rem,
+                    text-align: center,
+                )), max);
+    }
+}
+
+.project-bar {
+    .icon {
+        display: inline-block;
+        width: 30px;
+    }
+
+    .progress-wrapper {
+        display: inline-block;
+        width: calc(100% - 30px);
     }
 }

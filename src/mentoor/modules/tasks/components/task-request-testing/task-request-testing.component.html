@@ -1,0 +1,9 @@
+<span *if="this.taskCanBeTested" (click)="this.requestTesting()" tooltip title="Request Testing" class="pointer mx-1">
+    <fa icon="bell" />
+</span>
+<span *elseif="this.task.testingStatus == 'testing'" tooltip title="Testing Request Sent" class="mx-1">
+    <fa icon="bell blue-text" />
+</span>
+<span *elseif="this.task.testingStatus == 'requesting'" tooltip title="Waiting For Testing" class="mx-1">
+    <fa icon="bell orange-text" />
+</span>

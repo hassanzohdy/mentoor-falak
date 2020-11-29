@@ -3,15 +3,17 @@ class ResourceDetailsPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(meta, router, user, resourcesService) {
+    constructor(db, meta, router, user, shareable, resourcesService) {
+        this.db = db;
         this.meta = meta;
         this.user = user;
         this.router = router;
+        this.shareable = shareable;
         this.resourcesService = resourcesService;
         this.name = 'resource-details';
         this.title = trans('resource-details');
     }
-    
+
     /**
      * Initialize the component
      * This method is triggered before rendering the component
@@ -22,13 +24,26 @@ class ResourceDetailsPage {
         this.resource = null;
 
         try {
-            let {record: resource} = await this.resourcesService.get(this.router.params.id);
+            // this.db.get(`resource-${this.router.params.id}`, e => {
+            //     return this.resourcesService.get(this.router.params.id);
+            // }, this.db.recache).then(response => {
+            this.resourcesService.get(this.router.params.id).then(response => {
+                let { record: resource } = response;
 
-            this.resource = resource;
+                this.resource = resource;
 
-            this.meta.setTitle(this.resource.title);
+                // if (resource.project) {
+                //     this.shareable.share('project', resource.project);
+                // }
 
-            this.isLoading = false;
+                this.meta.setTitle(`[Resource] ${this.resource.title} | ${this.resource.project.name}`);
+
+                if (this.resource.project.image) {
+                    this.meta.setImage(this.resource.project.image);
+                }
+
+                this.isLoading = false;
+            });
         } catch (error) {
             if (error && error.status) {
                 this.router.navigateTo('/404');
@@ -39,5 +54,5 @@ class ResourceDetailsPage {
     /**
      * The component is ready to do any action after being rendered in dom
      */
-    ready() {}
+    ready() { }
 }

@@ -2,7 +2,6 @@
 DI.resolve('events').subscribe('router.collecting', router => {
     router.group({
         prefix: '/english',
-        middleware: MIDDLEWARE_LIST.loggedIn
     }, routerGroup => {
         // English page
         routerGroup.add('/', EnglishPage);

@@ -1,0 +1,13 @@
+.avatar-wrapper {
+    display: inline-block;
+}
+.user-avatar-name {
+    $size: 40px;
+    width: $size;
+    height: $size;
+    line-height: $size;
+    display: inline-block;
+    border-radius: 50%;
+    color: #FFF;
+    font-weight: bold;
+}

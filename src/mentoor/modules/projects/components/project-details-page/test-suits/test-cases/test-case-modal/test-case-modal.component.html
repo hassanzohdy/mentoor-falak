@@ -46,7 +46,7 @@
                 [value]="this.testCase.priority"></flk-dropdown-list>
         </div>               
     </div>
-    <div class="row">
+    <div class="row m-t-1">
         <div class="col-sm-6">
             <form-input type="textarea" name="postConditions" [value]="this.testCase.postConditions"
                 label="Test case PostConditions" class="form-control"></form-input>
@@ -57,19 +57,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col">
             <form-input type="textarea" name="stepsToReproduce" [value]="this.testCase.stepsToReproduce"
                 label="Steps To Reproduce" placeholder="Steps To Reproduce (Each step in one line without numbering the line)" required
                 class="form-control"></form-input>
         </div>
-        <div class="col-sm-4">
+        <div class="col">
             <form-input type="textarea" name="expectedBehavior" [value]="this.testCase.expectedBehavior"
                 label="Expected Behavior" required class="form-control"></form-input>
         </div>
-        <div class="col-sm-4">
+        <!-- <div class="col-sm-4">
             <form-input type="textarea" name="actualResult" [value]="this.testCase.actualResult"
                 label="Actual Result" class="form-control"></form-input>
-        </div>
+        </div> -->
     </div>
     <div class="m-t-2">            
         <flk-file-input name="attachment" class="btn btn-cyan bold" label="Test Case Automation File">

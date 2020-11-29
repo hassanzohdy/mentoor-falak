@@ -6,6 +6,7 @@ Locale.extend('en', {
     'about-us': 'About us',
     noResults: 'No Results Found',
     completed: 'Completed',
+    analyzing: 'Analyzing',
     inProgress: 'In Progress',
     pending: 'Pending',
     inReview: 'Waiting For Review',

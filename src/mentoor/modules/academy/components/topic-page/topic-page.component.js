@@ -3,12 +3,14 @@ class TopicPage {
      * Constructor
      * Put your required dependencies in the constructor parameters list  
      */
-    constructor(meta, router, user, topicService, cache) {
-        this.meta = meta;
-        this.router = router;
+    constructor(meta, router, cache, user, topicService, db, shareable) {
+        this.db = db;
         this.user = user;
-        this.topicService = topicService;
+        this.meta = meta;
         this.cache = cache;
+        this.router = router;
+        this.topicService = topicService;
+        this.shareable = shareable;
 
         this.openAnswerText = false;
         this.approveMsg = {
@@ -50,15 +52,14 @@ class TopicPage {
         this.trackID = this.router.params.track;
         this.answerCacheKey = `topic-answer.${this.topicSlug}`;
 
-        // if (this.cache.has('topic-' + this.topicSlug)) {
-        //     this.setTopic(this.cache.get('topic-' + this.topicSlug));
-        // }
+        this.cacheKey = 'topic-' + this.topicSlug;
 
-        this.topicService.getTopic(this.trackSlug, this.topicSlug).then(response => {
-            this.setTopic(response.record);
-            // this.cache.set('topic-' + this.topicSlug, response.record);
+        this.db.get(this.cacheKey, e => {
+            return this.topicService.getTopic(this.trackSlug, this.topicSlug);
+        }, this.db.recache).then(response => {
+            this.setTopic(response.record || response);
         }).catch(e => {
-            this.router.navigateTo('/academy');
+            // this.router.navigateTo('/academy');
         });
     }
 
@@ -88,7 +89,15 @@ class TopicPage {
             show: true,
             status: this.currentUserAnswer.status,
         };
+
         this.disableQuestBtn = true;
+
+        this.recache();
+    }
+
+    recache() {
+        this.shareable.share(this.cacheKey, this.topic);
+        this.db.set(this.cacheKey, this.topic);
     }
 
     showQuestAnswer() {

@@ -1,73 +1,43 @@
 <section class="course-section p-1">
   <h2>Sections</h2>
-  <button
-    type="button"
-    (click)="this.newSection = true"
-    class="btn btn-purple btn-circle btn-sm"
-    tooltip
-    title="New Section"
-  >
+
+  <button type="button" (click)="this.newSection = true" class="btn btn-purple m-b-1 btn-circle btn-sm" tooltip
+    title="New Section">
     <fa icon="plus"></fa>
   </button>
-  <flk-accordion
-    *for="let section, index of this.course.sections"
-    *key="section.id"
-    [heading]="section.title"
-  >
-    <button
-      type="button"
-      tooltip
-      title="Edit"
-      (click)="
+  <div class="sections-container" (ready)="this.draggableSections($el)">
+    <div *for="let section, index of this.course.sections" class="section-item" [id]="section.id" *key="section.id">
+      <flk-accordion [heading]="section.title + ' (' + section.videos.length + ')'">
+        <button type="button" tooltip title="Edit" (click)="
         this.editSection = true;
         this.currentSection = section;
-        this.index = index
-      "
-      class="btn btn-circle btn-info btn-sm"
-    >
-      <fa icon="edit"></fa>
-    </button>
-    <button
-      type="button"
-      tooltip
-      title="Delete"
-      (click)="this.confirmSectionRemove = true"
-      class="btn btn-circle btn-danger btn-sm"
-    >
-      <fa icon="trash"></fa>
-    </button>
-    <flk-alert
-      *if="this.confirmSectionRemove"
-      message="Are you sure you want to remove the course ?"
-      (confirm)="
+        this.index = index" class="btn btn-circle btn-info btn-sm">
+          <fa icon="edit"></fa>
+        </button>
+        <button type="button" tooltip title="Delete" (click)="this.confirmSectionRemove = true"
+          class="btn btn-circle btn-danger btn-sm">
+          <fa icon="trash"></fa>
+        </button>
+        <flk-alert *if="this.confirmSectionRemove" message="Are you sure you want to remove the course ?" (confirm)="
         this.deleteSection = true;
         this.currentSection = section;
         this.index = index
-      "
-      (close)="this.confirmSectionRemove = false"
-    ></flk-alert>
-    <button
-      type="button"
-      (click)="this.newVideo = true; this.currentSection = section"
-      class="btn btn-purple btn-circle btn-sm"
-      tooltip
-      title="New Video"
-    >
-      <fa icon="plus"></fa>
-    </button>
+      " (close)="this.confirmSectionRemove = false"></flk-alert>
+        <button type="button" (click)="this.newVideo = true; this.currentSection = section"
+          class="btn btn-purple btn-circle btn-sm" tooltip title="New Video">
+          <fa icon="plus"></fa>
+        </button>
 
-    <hr />
+        <hr />
 
-    <h4 class="m-t-1">Content</h4>
+        <h4 class="m-t-1">Content</h4>
 
-    <course-section-videos-list
-      [videos]="section.videos"
-      (edit)="
+        <course-section-videos-list [controllable]="this.controllable" [course]="this.course" [videos]="section.videos" (edit)="
         this.updateVideo = true;
         this.currentSection = section;
         this.currentVideo = e
-      "
-      (delete)="this.deleteVideo(e, section)"
-    ></course-section-videos-list>
-  </flk-accordion>
+      " (delete)="this.deleteVideo(e, section)"></course-section-videos-list>
+      </flk-accordion>
+    </div>
+  </div>
 </section>

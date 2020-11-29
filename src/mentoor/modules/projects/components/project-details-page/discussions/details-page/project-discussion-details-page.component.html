@@ -22,7 +22,7 @@
             <span *if="this.discussion.status == 'opened'" class="badge ml-2 badge-success">Opened</span>
             <span *elseif="this.discussion.status == 'closed'" class="badge ml-2 badge-danger">Closed</span>
         </h1>
-        <img [src]="this.discussion.createdBy.image" [alt]="this.discussion.createdBy.name" class="user-image" />
+        <user-avatar-image position="top" [user]="this.discussion.createdBy"></user-avatar-image>
         <div class="d-inline-block">
             <div [html]="this.discussion.createdBy.name"></div>
             <div>

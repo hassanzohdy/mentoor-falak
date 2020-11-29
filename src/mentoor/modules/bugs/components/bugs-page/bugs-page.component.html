@@ -1,0 +1,19 @@
+<layout>
+    <h1 class="m-y-1 teal-text">
+        <img [src]="assets('images/bug.jpg')" tooltip title="Bugs"
+            style="width: 20px; height: 30px; border-radius: 50%; margin-left: 0.3rem; margin-right: 0.2rem" />
+        <span class="m-x-1">List</span>
+
+        <button class="btn btn-sm" tooltip title="Edit Bugs Settings" (click)="this.bugsSettingsIsOpened = true">
+            <fa icon="cog" />
+        </button>
+    </h1>
+
+    <bugs-list></bugs-list>
+</layout>
+
+<user-project-settings
+    *if="this.bugsSettingsIsOpened"
+    tab="bugs"
+    (close)="this.bugsSettingsIsOpened = false"
+></user-project-settings>

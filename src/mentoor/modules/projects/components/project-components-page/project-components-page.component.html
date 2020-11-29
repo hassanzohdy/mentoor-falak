@@ -1,0 +1,89 @@
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <!-- <button *if="this.project.isHigherAuthority || this.project.isTeamLeader" class="float-right btn btn-success bold" -->
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Component
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} Components
+        ({{ this.project.components.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Application</th>
+                <th>Parent</th>
+                <th>Module</th>
+                <th>Layout Screen</th>
+                <th *if="this.project.isHigherAuthority">Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.components)">
+                <td colspan="6" text-center>No Components Yet</td>
+            </tr>
+            <tr *else *for="let record, index of this.project.components">
+                <!-- <td>
+                    <a [href]="URLS.project(this.project, 'components', record)" [html]="record.name"></a>
+                </td> -->
+                <td [html]="record.name"></td>
+                <td [html]="record.application || 'N/a'"></td>
+                <td [html]="record.parent.name || 'N/a'"></td>
+                <td [html]="record.module.name || 'N/a'"></td>
+                <td [html]="record.isLayout ? 'Yes' : 'No'"></td>
+                <td>
+                    <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan" tooltip
+                        title="Edit Component">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)" class="btn btn-danger" tooltip
+                        title="Delete Component">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="medium"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="Component Name" required
+            class="form-control"></form-input>
+
+        <div class="row m-b-1">
+            <div class="col-4">
+                <flk-dropdown-list name="module" [none]="true" label="Module" [value]="this.record.module?.id"
+                    [lazy-loading]="true" (select)="this.setApplication(e)" [request]="this.loadModules.bind(this)">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <flk-dropdown-list name="application" [none]="true" label="Application"
+                    [value]="this.record.application" [items]="PROJECT_APPLICATIONS">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <flk-dropdown-list name="parent" [none]="true" label="Parent Component" [value]="this.record.parent?.id"
+                    [except]="this.record.id" [items]="this.project.components"></flk-dropdown-list>
+            </div>
+            <div class="col-2 m-t-2">
+                <flk-mdb-checkbox name="isLayout" label="Layout Screen" [checked]="this.record.isLayout" (checked)="this.record.isLayout = $el.checkbox" />
+            </div>
+        </div>
+
+        <markdown-input name="description" label="Description" [value]="this.record.description">
+        </markdown-input>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

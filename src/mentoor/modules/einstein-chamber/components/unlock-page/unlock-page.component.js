@@ -39,7 +39,6 @@ class EinsteinChamberUnlocker {
 
             this.router.navigateTo('/einstein-chamber/shop');
         } catch (response) {
-            echo(response)
         }
     }
 }

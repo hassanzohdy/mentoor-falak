@@ -70,7 +70,9 @@
         .categories-filter {
             @include responsive((
                 0: (
-                    width: 10rem,
+                    // width: 10rem,                    
+                    width: 100%,
+                    margin: 2rem 0,
                 ),
                 768: (
                     width: 30rem,

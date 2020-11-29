@@ -20,17 +20,23 @@ class LoginPage {
         this.errorMsg = null;
         this.isValidForm = true;
         this.isLoggingIn = false;
+
+        // DI.resolve('endpoint').get('/users')
     }
 
     login(form) {
         this.errorMsg = null;
         this.isLoggingIn = true;
-        
+
         this.authService.login(form).then(response => {
             this.user.login(response.user);
+
+            if (userHasCompany()) {
+                updateUserCompany();
+            }
+
             this.router.navigateBack();
         }).catch(response => {
-            echo(response)
             this.isLoggingIn = false;
             if (response.errors) {
                 form.formHandler.setErrors(response.errors);

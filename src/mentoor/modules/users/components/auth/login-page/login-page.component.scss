@@ -3,6 +3,16 @@
 }
 
 .authLayout {
+    // width: 60%;
+    margin: auto;
+    padding: 2.5rem 4rem;
+
+    @include responsive((
+        768: (
+            padding: 2.5rem 1rem,
+        )
+    ), max);
+
     .loginImg {
         width: 30px;
         margin: 0 10px;
@@ -14,9 +24,24 @@
         .forgetLink {
             color: $secondColor;
         }
-    }
 
-    padding: 2.5rem 4rem;
+        
+        @include responsive((
+            768: (
+                display: block !important,
+            )
+        ), max);
+
+        & * {
+            @include responsive((
+                768: (
+                    display: block,
+                    width: 100%,
+                    text-align: center
+                )
+            ), max);
+        }
+    }
 
     .auth {
         min-height: 89vh;
@@ -26,13 +51,17 @@
         @include border-radius(5px);
 
         input {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             font-family: Roboto, sans-serif !important;
             outline: 0 !important;
             border-width: 1px;
             padding: 1.5rem;
             transition: all .5s ease-in-out;
             border-color: #dadfe6;
+        }
+
+        .error-msg {
+            margin-bottom: 1rem;
         }
 
         button,

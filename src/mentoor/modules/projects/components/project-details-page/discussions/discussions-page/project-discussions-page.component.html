@@ -1,4 +1,4 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
     <if condition="! this.modalIsOpened">
         <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
             <fa icon="plus mr-1"></fa>
@@ -13,7 +13,7 @@
 
         <div *else *for="let discussion, index of this.project.discussions" class="discussion m-t-2 simple-card row">
             <div class="col-1 text-right">
-                <img [src]="discussion.createdBy.image" [alt]="discussion.createdBy.name" class="user-image" />
+                <user-avatar-image [user]="discussion.createdBy"></user-avatar-image>
             </div>
             <span class="col">
                 <span class="action-btns float-right"

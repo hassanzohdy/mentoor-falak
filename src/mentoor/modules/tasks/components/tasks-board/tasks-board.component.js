@@ -11,6 +11,20 @@ class TasksBoard {
         this.usersService = usersService;
         this.statuses = TASK_STATUSES;
 
+        this.tasks = [];
+        this.project = {};
+
+        this.tasksBoardView = {};
+
+        this.ratings = [];
+
+        for (let i = 1; i <= 5; i++) {
+            this.ratings.push({
+                value: i,
+                text: i * 20 + '%',
+            });
+        }
+
         this.displayModeCacheKey = 'tbdm'; // tasks board display mode
 
         this.openQuickForm = {};
@@ -18,6 +32,73 @@ class TasksBoard {
         for (let status of this.statuses) {
             this.openQuickForm[status] = false;
         }
+
+        this.defaultFilterOptions = {
+            // statuses: ['inProgress', 'notStarted', 'hold'],
+            statuses: [],
+            participants: [],
+            supervisors: [],
+            projects: [],
+            modules: [],
+            userStories: [],
+            priorities: []
+        };
+
+        userSocket.on('task.update', newTask => {
+            if (this.samePage) {
+                this.samePage = null;
+                return;
+            }
+
+            if (!Is.empty(this.project) && Object.get(newTask, 'project.id') != this.project.id) return;
+
+            let oldTask = Array.get(this.tasks || [], task => task.id == newTask.id);
+
+            let index = (this.tasks || []).indexOf(oldTask);
+
+            if (index === -1) return;
+
+            this.tasks[index] = newTask;
+
+            this.prepareTasks();
+        }).on('task.create', newTask => {
+            if (this.samePage) {
+                this.samePage = null;
+                return;
+            }
+
+            if (!Is.empty(this.project) && Object.get(newTask, 'project.id') != this.project.id) return;
+
+            if ((this.tasks || []).find(task => task.id == newTask.id)) return;
+
+            const task = this.prepareSingleTask(newTask);
+
+            if (!task.canUserControl) return;
+
+            this.tasks.unshift(task);
+
+            this.prepareTasks();
+        }).on('task.delete', deletingTask => {
+            if (this.samePage) {
+                this.samePage = null;
+                return;
+            }
+
+            if (!Is.empty(this.project) && Object.get(deletingTask, 'project.id') != this.project.id) return;
+
+            for (let i = 0; i < (this.tasks || []).length; i++) {
+                let task = this.tasks[i];
+                if (task.id != deletingTask.id) continue;
+
+                delete this.tasks[i];
+
+                this.tasks = Array.reset(this.tasks);
+
+                this.prepareTasks();
+
+                break;
+            }
+        });
     }
 
     async quickAdd(form) {
@@ -27,6 +108,11 @@ class TasksBoard {
         this.participantId = true;
 
         let { record } = await this.tasksService.create(form);
+
+        // for socketing
+        this.samePage = true;
+
+        userSocket.trigger('task.create', record);
 
         this.tasks.push(record);
 
@@ -46,43 +132,91 @@ class TasksBoard {
     async init() {
         this.isLoading = true;
 
-        this.displayMode = this.cache.get(this.displayModeCacheKey, 'list');
+        this.displayMode = this.cache.get(this.displayModeCacheKey, 'board');
 
         this.isInProjectPage = this.router.route().includes('/projects');
 
         this.isViewingArchivedTasks = false;
 
-        this.project = this.inputs.getProp('project');
-        this.supervisors = this.inputs.getProp('supervisors');
-        this.participants = this.inputs.getProp('participants');
+        this.addable = this.prop('addable', true);
+        this.project = this.prop('project');
+        this.supervisors = this.prop('supervisors');
+        this.participants = this.prop('participants');
 
         this.now = Math.floor(Date.now() / 1000);
 
-        let tasks = this.inputs.getProp('tasks');
+        this.tasksFilterCacheKey = `tasks-filter${this.project ? '-' + this.project.id : ''}`;
 
-        if (!tasks) {
-            let { records } = await this.tasksService.list({
-                me: true,
-                project: this.project ? this.project.id : null,
-            });
+        this.filterOptions = cache.get(this.tasksFilterCacheKey, Object.clone(this.defaultFilterOptions));
 
-            tasks = records;
+        // this.filterOptions = {
+        //     statuses: ['inProgress', 'notStarted', 'hold'],
+        //     participants: [],
+        //     supervisors: [],
+        //     projects: [],
+        //     modules: [],
+        //     userStories: [],
+        //     priorities: []
+        // };
+
+        // if (this.project) {
+        //     if (!this.project.isHigherAuthority) {
+        //         // this.filterOptions.participants.push(this.user.id);
+        //     } else {
+        //         // this.filterOptions.statuses.push('inReview');
+        //     }
+        // }
+
+        let tasks = this.prop('tasks');
+
+        this.currentPage = 1;
+
+        this.mandatoryData = {
+            me: true,
+            project: this.project ? this.project.id : null,
+        };
+
+        if (userCanJoinAnyProjectIn(currentUserCompany())) {
+            delete this.mandatoryData.me;
         }
 
-        this.tasks = tasks;
+        this.filters = {};
 
-        // to get reference to the original tasks
-        this.originalTasks = tasks;
+        this.isPaginating = false;
 
-        this.prepareTasks();
+        this.tasks = [];
 
-        this.isLoading = false;
+        if (!tasks) {
+            const [tasksResponse, tasksFilter] = await Promise.all([await this.filter(), this.tasksService.getFilters(this.mandatoryData)]);
+            this.filters = tasksFilter.filters;
+        } else {
+            this.tasks = tasks;
+
+            // to get reference to the original tasks
+            this.originalTasks = tasks;
+
+            this.prepareTasks();
+
+            this.isLoading = false;
+        }
 
         this.isStatusSortOpened = false;
         this.isPartSortOpened = false;
         this.isSuperSortOpened = false;
         this.isModuleSortOpened = false;
         this.isPrioritySortOpened = false;
+    }
+
+    mapModules() {
+        return this.filters.modules.map(moduleData => {
+            const projectName = this.project ? '' : moduleData.project.name + ' > ';
+            const moduleParent = !Is.empty(moduleData.parent) ? moduleData.parent.name + ' > ' : '';
+
+            return {
+                value: moduleData.id,
+                text: projectName + moduleParent + moduleData.name,
+            }
+        });
     }
 
     sortObjects(key, subKey, val) {
@@ -143,18 +277,18 @@ class TasksBoard {
                         return -1;
                     } else if (taskA.status != status && taskB.status == status) {
                         return 1;
-                    } 
+                    }
                 }
-                                    
+
                 return 0;
             });
         } else if (key == 'remainingTime') {
             tasksList = tasksList.sort((taskA, taskB) => {
-                let timeA = moment(taskA.endsAt, 'DD-MM-YYYY LT').unix() - 
-                            moment().unix();
-                
-                let timeB = moment(taskB.endsAt, 'DD-MM-YYYY LT').unix() - 
-                            moment().unix();
+                let timeA = moment(taskA.endsAt, 'DD-MM-YYYY LT').unix() -
+                    moment().unix();
+
+                let timeB = moment(taskB.endsAt, 'DD-MM-YYYY LT').unix() -
+                    moment().unix();
 
                 if (timeA < 0 && timeB < 0) return 0;
 
@@ -215,93 +349,82 @@ class TasksBoard {
     filterBy(key, selectedValue) {
         if (Is.array(selectedValue)) {
             selectedValue = collect(selectedValue).pluck('value').toArray();
-            this.filteredData[key] = selectedValue;
+            this.filterOptions[key] = selectedValue;
+            this.cache.set(this.tasksFilterCacheKey, this.filterOptions);
+            this.currentPage = 1; // reset pagination
             return this.filter();
         }
     }
 
-    filter() {
-        this.tasksList = this.tasks.filter(task => {
-            let filtered = true;
+    resetFilter() {
+        this.filterOptions = Object.clone(this.defaultFilterOptions);
 
-            if (!Is.empty(this.filteredData.statuses)) {
-                filtered &= this.filteredData.statuses.includes(task.status);
+        this.currentPage = 1;
+        this.cache.set(this.tasksFilterCacheKey, this.filterOptions);
+
+        this.filter();
+    }
+
+    async filter(appendData) {
+        // this.isLoading = true;
+        const filterBy = {
+            page: this.currentPage,
+            ...this.mandatoryData,
+            ...this.filterOptions,
+        }
+
+        this.tasksService.list(filterBy).then(response => {
+            if (appendData) {
+                this.tasks = this.tasks.concat(response.records);
+            } else {
+                this.tasks = response.records;
             }
 
-            if (!Is.empty(this.filteredData.participants)) {
-                filtered &= this.filteredData.participants.includes(String(task.participant.id));
+            this.paginationInfo = response.paginationInfo;
+
+            this.isLoading = false;
+
+            this.prepareTasks();
+
+            this.isPaginating = false;
+
+            this.paginate();
+        });
+    }
+
+    paginate() {
+        window.addEventListener('scroll', async () => {
+            if (this.isPaginating || this.paginationInfo.numberOfPages === this.currentPage) return;
+
+            this.lazyLoadingWhenReachingThisElement = $('.task-row').eq(-20);
+
+            if (!this.lazyLoadingWhenReachingThisElement || !this.lazyLoadingWhenReachingThisElement.offset()) return;
+
+            let topOfElement = this.lazyLoadingWhenReachingThisElement.offset().top;
+            let bottomOfElement = this.lazyLoadingWhenReachingThisElement.offset().top + this.lazyLoadingWhenReachingThisElement.outerHeight();
+            let bottomOfScreen = $(window).scrollTop() + $(window).innerHeight();
+            let topOfScreen = $(window).scrollTop();
+
+            if ((bottomOfScreen > topOfElement) && (topOfScreen < bottomOfElement)) {
+                // the element is visible, do something
+                this.loadMoreTasks();
             }
+        });
+    }
 
-            if (!Is.empty(this.filteredData.projects)) {
-                filtered &= task.project && this.filteredData.projects.includes(String(task.project.id));
-            }
+    loadMoreTasks() {
+        this.isPaginating = true;
 
-            if (!Is.empty(this.filteredData.modules)) {
-                filtered &= task.module && this.filteredData.modules.includes(String(task.module.id));
-            }
+        this.currentPage++;
 
-            if (!Is.empty(this.filteredData.userStories)) {
-                filtered &= task.userStory && this.filteredData.userStories.includes(String(task.userStory.id));
-            }
-
-            if (!Is.empty(this.filteredData.supervisors)) {
-                let found = false;
-                for (let supervisor of task.supervisors) {
-                    if (this.filteredData.supervisors.includes(String(supervisor.id))) {
-                        found = true;
-                        break;
-                    }
-                }
-
-                filtered &= found;
-            }
-
-            if (!Is.empty(this.filteredData.priorities)) {
-                filtered &= this.filteredData.priorities.includes(task.priority);
-            }
-
-            return filtered;
-        }).map(this.prepareSingleTask.bind(this));
+        this.filter(true);
     }
 
     prepareSingleTask(task) {
-        task.dropdown = false;
+        task = prepareTask(task);
 
-        task.isSupervisor = Boolean(
-            Array.get(task.supervisors, supervisor => supervisor.id == this.user.id)
-        );
-
-        task.isParticipant = task.participant.id == this.user.id;
-
-        task.openStatusChanger = false;
-
-        task.canUserControl = (
-            this.user.id == 1 ||
-            task.isSupervisor ||
-            (this.project && (this.project.isHigherAuthority)) ||
-            (task.isParticipant && ['notStarted', 'inProgress'].includes(task.status))
-        );
-
-        task.progress = {
-            total: 1,
-            completed: task.status == 'completed' ? 1 : 0,
-            percentage: (task.status == 'completed' ? 1 : 0) * 100,
-        };
-
-        if (!Is.empty(task.checklists)) {
-            let totalChecklistItems = 0,
-                totalCompletedChecklistItems = 0;
-
-            for (let checklist of task.checklists) {
-                totalChecklistItems += checklist.items.length;
-                totalCompletedChecklistItems += checklist.items.filter(item => item.done).length;
-            }
-
-            task.progress = {
-                total: totalChecklistItems,
-                completed: totalCompletedChecklistItems,
-                percentage: totalCompletedChecklistItems * 100 / totalChecklistItems,
-            };
+        if (this.filterOptions.participants.length == 0 || this.filterOptions.participants.find(participantId => Number(participantId) == currentUser.id)) {
+            task.currentUserIsInvolvedIn = task.participant && task.participant.id === currentUser.id;
         }
 
         return task;
@@ -310,95 +433,14 @@ class TasksBoard {
     prepareTasks() {
         this.archivedTasks = [];
 
-        this.filterOptions = {
-            statuses: [],
-            participants: [],
-            supervisors: [],
-            projects: [],
-            modules: [],
-            userStories: [],
-            priorities: []
-        };
-
-        this.filteredData = Object.clone(this.filterOptions);
-
-        let currentUserId = this.user.id;
-
-        let currentUserIsParticipant = false;
-
-        let currentUserIsParticipantAndHasInProgressTasks = false;
-
-        this.tasksList = collect(this.tasks).filter(task => {
-            if (task.archived) {
-                this.archivedTasks.push(task);
-            }
-
-            if (task.participant.id == currentUserId) {
-                currentUserIsParticipant = true;
-            }
-
-
-            if (task.participant.id == currentUserId && task.status == 'inProgress') {
-                currentUserIsParticipantAndHasInProgressTasks = true;
-            }
-
-            // add status to filter
-            Array.pushOnce(this.filterOptions.statuses, task.status);
-
-            // add projects to filter
-            if (task.project && task.project.id) {
-                Array.pushOnce(this.filterOptions.projects, task.project, 'id');
-            }
-
-            // add modules to filter
-            if (task.module && task.module.id) {
-                Array.pushOnce(this.filterOptions.modules, task.module, 'id');
-            }
-
-            // add modules to filter
-            if (task.userStory && task.userStory.id) {
-                Array.pushOnce(this.filterOptions.userStories, task.userStory, 'id');
-            }
-
-            // add participants to filter
-            if (task.participant.id) {
-                Array.pushOnce(this.filterOptions.participants, task.participant, 'id');
-            }
-
-            // add priorities to filter
-            if (task.priority) {
-                Array.pushOnce(this.filterOptions.priorities, task.priority);
-            }
-
-            // add supervisors
-            for (let supervisor of task.supervisors) {
-                Array.pushOnce(this.filterOptions.supervisors, supervisor, 'id');
-            }
-
-            return true
-
-            return !task.archived;
-        }).map(this.prepareSingleTask.bind(this)).sortBy('sortOrder');
-
-        if (currentUserIsParticipantAndHasInProgressTasks) {
-            this.filteredData.statuses.push('inProgress');
-            this.filteredData.participants.push(String(this.user.id));
-        }
-
-        // if (this.filterOptions.statuses.includes('inProgress')) {
-        //     this.filteredData.statuses.push('inProgress');
-        // }
-
-        // display by default current user tasks 
-        // if (currentUserIsParticipant) {
-        //     this.filteredData.participants.push(String(this.user.id));
-        // }
+        this.tasksList = collect(this.tasks).map(this.prepareSingleTask.bind(this)).sortBy('sortOrder');
 
         this.tasksBoardView = this.tasksList.groupBy('status').all();
 
         this.tasksList = this.tasksList.toArray();
+    }
 
-        this.filter();
+    niceScroll(wrapper) {
     }
 
     statusIcon(status) {
@@ -437,6 +479,11 @@ class TasksBoard {
 
         this.inputs.getEvent('change')(this.tasks);
 
+        // for socketing
+        this.samePage = true;
+
+        userSocket.trigger('task.delete', this.record);
+
         this.tasksService.delete(this.record.id);
 
         this.index = null;
@@ -458,7 +505,9 @@ class TasksBoard {
             }
         }
 
-        this.filter();
+        this.currentType = null;
+
+        this.prepareTasks();
     }
 
     confirmArchiving(task) {
@@ -511,6 +560,21 @@ class TasksBoard {
         this.confirmDelete = true;
     }
 
+    displayActualTime(task) {
+        if (task.timeTakenText) return task.timeTakenText;
+        let time = '';
+
+        let actualTime = task.totalTimeTaken.actual;
+
+        for (let dateType in actualTime) {
+            if (dateType == 'total') continue;
+            if (actualTime[dateType] == 0) continue;
+            time += `${actualTime[dateType]}${dateType[0]} `;
+        }
+
+        return task.timeTakenText = `Time Taken: ${time}`;
+    }
+
     draggable(tasksContainer) {
         if (tasksContainer.draggable) return;
 
@@ -519,6 +583,10 @@ class TasksBoard {
         Sortable.create(tasksContainer, {
             // filter: '.disabled',
             sort: true,
+            forceFallback: true,
+            setData: function (dataTransfer, el) {
+                el.classList.add('flyingTask');
+            },
             group: {
                 name: 'tasks',
                 clone: false,
@@ -536,21 +604,30 @@ class TasksBoard {
 
                 let taskId = Number(item.getAttribute('data-id'));
 
-                let task = Array.get(this.tasks, task => task.id == taskId);
+                let task = Array.get(this.tasks || [], task => task.id == taskId);
 
-                if (task.isParticipant && !task.isSupervisor && ['failed', 'completed', 'autoFailed'].includes(task.status)) return false;
+                // if (task.isParticipant && !task.isSupervisor && ['failed', 'completed', 'autoFailed'].includes(task.status)) return false;
 
                 return task.canUserControl;
             },
             onEnd: e => {
                 let taskElement = e.item;
+
                 let newList = e.to;
 
                 let newStatus = newList.getAttribute('data-status');
 
+                let reason = '';
+
+                if (newStatus === 'hold') {
+                    reason = prompt('Please Write down the reason of holding the task');
+
+                    if (!reason.trim()) return false;
+                }
+
                 let taskId = Number(taskElement.getAttribute('data-id'));
 
-                let task = Array.get(this.tasks, task => task.id == taskId);
+                let task = Array.get(this.tasks || [], task => task.id == taskId);
 
                 if (task.status == newStatus) {
                     // sort tasks...later
@@ -571,7 +648,14 @@ class TasksBoard {
 
                 task.status = newStatus;
                 this.prepareTasks();
-                this.tasksService.updateTaskStatus(taskId, newStatus);
+                this.tasksService.updateTaskStatus(taskId, newStatus, {
+                    reason
+                });
+
+                // for socketing
+                this.samePage = true;
+
+                userSocket.trigger('task.update', task);
             }
         });
     }
@@ -584,6 +668,8 @@ class TasksBoard {
         task.openStatusChanger = false;
         this.tasksService.updateTaskStatus(task.id, newStatus);
 
-        this.filter();
+        this.detectChanges();
+
+        // this.filter();
     }
 }

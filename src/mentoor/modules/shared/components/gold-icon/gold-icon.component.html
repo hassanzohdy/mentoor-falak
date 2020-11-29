@@ -1,3 +1,4 @@
-<img [src]="assets('images/coins.svg')" [class]="{large: this.large}"
+<img [src]="assets('images/coins.svg')" [class]="{large: this.large, free: this.coins === 0}"
     class="coin-img {{ this.inputs.getAttr('class', '') }}" alt="coins" />
 <strong *if="this.coins" class="{{ this.textColor }}" [html]="this.coins.format()"></strong>
+<strong *elseif="this.coins === 0" class="pink-text"> FREE</strong>

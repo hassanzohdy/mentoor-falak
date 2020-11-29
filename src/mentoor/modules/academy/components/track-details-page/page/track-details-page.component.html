@@ -92,7 +92,6 @@
                         </span>
                         <span class="trackSingleMeta" title="Cost">
                             <gold-icon [coins]="this.track.cost"></gold-icon>
-                            <strong class="pink-text" *if="this.track.cost ==0">FREE!</strong>
                         </span>
                     </div>
                     <flk-alert *if="this.confirmSubscribe" message="Are you sure you want to subscribe to {{ this.track.name }}" (confirm)="this.subscribeToTrack()" (close)="this.confirmSubscribe = false;"></flk-alert>

@@ -10,6 +10,30 @@ class CourseVideoForm {
     this.router = router;
   }
 
+  calculateYoutubeDuration(youtubeUrl) {
+    let videoId = youtubeId(youtubeUrl);
+    if ( ! videoId) {
+      return this.form.formHandler.addError('url', null, 'Invalid Url');
+    }
+
+    this.form.formHandler.removeError('url');
+
+    let player = new YT.Player('youtube-player', {
+      height: '390',
+      width: '640',
+      videoId: videoId,
+      events: {
+        'onReady': this.onPlayerReady.bind(this),
+      }
+    });
+  }
+
+  onPlayerReady(event) {
+    if (! event.target) return;
+    this.video.duration = secondsToHms(event.target.getDuration());
+  }
+
+
   /**
    * Initialize the component
    * This method is triggered before rendering the component
@@ -19,6 +43,7 @@ class CourseVideoForm {
     this.section = this.prop("section");
     this.video = this.prop("video", {
       type: "youtubeUrl",
+      published: true,
       duration: {
         minutes: 0,
         seconds: 0
@@ -30,6 +55,7 @@ class CourseVideoForm {
 
   calculateVideoLength() {
     this.video.duration.length =
+      Number(this.video.duration.hours) * 3600 +
       Number(this.video.duration.minutes) * 60 +
       Number(this.video.duration.seconds);
   }
@@ -49,12 +75,10 @@ class CourseVideoForm {
       );
 
       video = record;
-      location.reload();
     } else {
       let { record } = await this.courseVideosService.create(form);
 
       video = record;
-      location.reload();
     }
 
     this.event("save")(video);

@@ -1,28 +1,97 @@
-<project-layout *as="projectLayout"[project]="this.project" [is-loading]="this.isLoading">
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
     <div class="row">
-        <div class="col-sm-3">
+        <div *if="this.project.image" class="col-sm-2">
             <img [src]="this.project.image" [alt]="this.project.name">
-
-            <div *if="! Is.empty(this.project.tags)" class="tags-list">
-                <h4 class="bold m-t-2 m-b-1">Technologies and Techniques used in this project</h4>
-                <div *for="let tags of Array.chunk(this.project.tags, 2)" class="row m-b-2 text-justify">
-                    <span *for="let tag of tags" class="tag col-sm-6">
-                        <img [src]="tag.image" [alt]="tag.name" />
-                        <span [html]="tag.name" class="name"></span>
-                    </span>
-                </div>
-            </div>
-
         </div>
         <div class="col">
             <h1 [html]="this.project.name"></h1>
+            <div *if="! Is.empty(this.project.tags)" class="m-y-1">
+                <!-- <h4 class="bold m-t-2 m-b-1">Technologies and Techniques used in this project</h4> -->
+                <span *for="let tag of this.project.tags" class="tag project-tag" *key="tag.id" tooltip
+                    [title]="tag.name">
+                    <img [src]="tag.image" class="" [alt]="tag.name" />
+                    <!-- <span [html]="tag.name" class="name"></span> -->
+                </span>
+            </div>
             <markdown [content]="this.project.about" class="m-t-2"></markdown>
+            <div *if="this.project.projectUrl" class="m-t-1">
+                <a [href]="this.project.projectUrl" class="bold btn btn-success" target="_blank">
+                    <fa icon="globe mr-2" />
+                    <span>Visit Website</span>
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="m-t-3" *if="this.project.isMember">
-        <h3>Tasks Board</h3>
-        <tasks-board [project]="this.project" [tasks]="this.project.tasks" [supervisors]="this.supervisors"
-            [participants]="this.participants"></tasks-board>
+    <div *if="this.project.deadline" class="m-y-1">
+        <h1>Project Deadline</h1>
+        <div class="project-bar">
+            <fa icon="skull red-text" tooltip title="Deadline" />
+            <div class="progress-wrapper">
+                <div class="progress">
+                    <div class="progress-bar bg-danger" tooltip
+                        [title]="'Project Deadline: ' + this.project.deadline.remainingDays + 'd (' + this.project.deadline.takenTimePercentage + '%)'"
+                        [style]="{width: (this.project.deadline.takenTimePercentage >= 100 ? 100 : this.project.deadline.takenTimePercentage) + '%' }">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div *if="Object.get(this.project, 'total.completion.tasks.total') > 0" class="m-1">
+        <div class="row">
+            <div class="col-12" *if="this.project.total.timeTaken.tasks.total > 0">
+                <h1>Working Hours</h1>
+                <div class="m-y-1">
+                    <for loop="let timeText, time in this.project.total.timeTaken.tasks" *key="timeText">
+                        <div *if="timeText !== 'total' && time > 0" tooltip [title]="timeText + ' ' + time"
+                            class="bold btn btn-success btn-sm">
+                            {{ time }} {{ timeText }}
+                        </div>
+                    </for>
+                </div>
+            </div>
+            <div *if="this.project.total" class="col">
+                <h1>Tasks Completion
+                    ({{this.project.total.completion.tasks.completed + '/' + this.project.total.completion.tasks.total}})
+                </h1>                
+                <div class="project-bar">
+                    <fa icon="tasks green-text" tooltip title="Tasks Completion" />
+                    <div class="progress-wrapper">
+                        <div class="progress">
+                            <div class="progress-bar" tooltip
+                                [title]="'Tasks Completion: ' + this.project.total.completion.tasks.completePercentage + '% (' + this.project.total.completion.tasks.completed + '/' + this.project.total.completion.tasks.total + ')'"
+                                [style]="{width: this.project.total.completion.tasks.completePercentage + '%' }"
+                                [class]="{'bg-success': this.project.total.completion.tasks.completePercentage === 100, 'bg-info': this.project.total.completion.tasks.completePercentage < 100}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *if="Object.get(this.project, 'total.completion.tasks.total') > 0" class="m-y-1 tasks-stats">
+        <h1>Tasks Stats</h1>
+        <div *for="let status of collect(this.project.total.tasks).sortByDesc('status').toArray()"
+            class="row m-b-1 task-stat">
+            <span class="col-2" [trans]="status.status"></span>
+            <div class="col-10 m-t-1">
+                <div class="progress">
+                    <div class="progress-bar" tooltip
+                        [title]="round(status.total * 100 / this.project.total.completion.tasks.total, 2) + '% (' + status.total + '/' + this.project.total.completion.tasks.total + ')'"
+                        [style]="{width: round(status.total * 100 / this.project.total.completion.tasks.total, 2) + '%' }"
+                        [class]="taskStatus(status)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *if="this.project.isMember" class="m-t-3 activities-list">
+        <h3 class="m-b-1">Recent Activities</h3>
+
+        <activities-list [project]="this.project"></activities-list>
     </div>
 </project-layout>

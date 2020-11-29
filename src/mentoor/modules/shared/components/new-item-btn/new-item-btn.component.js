@@ -15,8 +15,6 @@ class NewItemBtn {
     this.icon = this.prop("icon");
     this.link = this.prop("link");
     this.color = this.prop("color");
-
-    echo(this.color)
   }
   
   /**

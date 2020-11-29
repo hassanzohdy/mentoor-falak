@@ -1,0 +1,5 @@
+<span *if="this.task.rating > 0" class="mx-2 task-score" tooltip title="Task Score" [class]="getTaskScoreStyle(this.task)">
+    <fa *if="this.task.rating >= 4" icon="angle-double-up" />
+    <fa *if="this.task.rating < 3" icon="angle-double-down" />
+    <strong [html]="displayTaskScore(this.task)"></strong>
+</span>

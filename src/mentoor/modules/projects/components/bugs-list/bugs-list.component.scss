@@ -1,0 +1,112 @@
+#bugs-list-container {
+    // Picasso is ready to draw :)
+
+    .bugs-container {
+        transition: all 0.2s ease-in-out;
+        transform: scaleY(0);
+        transform-origin: 100% 0;
+        position: absolute;
+
+        &.opened {
+            position: static;
+            transform: scaleY(1);
+        }
+    }
+
+    table {
+        .title-column {
+            min-width: 200px;
+
+            .bug-title {
+                background: $petrol-color;
+                color: #FFF;
+                border-radius: 3px;
+                padding: 0.2rem 0.5rem;
+                font-size: 1.3rem;
+            }
+        }
+
+        td {
+            // border-bottom: 1px solid #ddd;
+            // border-top: 1px solid #333;
+        }
+
+        .status {
+            color: #FFF;
+            // font-weight: bold;
+            text-align: center;
+            text-transform: capitalize;
+
+            &.reopened,
+            &.active {
+                background: #5da5e3;
+            }
+
+
+            &.retesting {
+                background: darkcyan;
+            }
+
+            &.verified {
+                background: #79b579;
+            }
+
+            &.fixed {
+                background: coral;
+            }
+
+            &.failed {
+                background: red;
+            }
+
+            &.rejected,
+            &.duplicated {
+                background: brown;
+            }
+
+            &.closed {
+                background: #516f6f;
+            }
+
+            &.notBug,
+            &.deferred {
+                background: rosybrown;
+            }
+
+            &.inProgress {
+                background: #9b59b6;
+            }
+        }
+
+        .priority {
+            text-transform: capitalize;
+            color: #FFF;
+            font-weight: bold;
+            text-align: center;
+
+            &.high {
+                // background: rgb(179, 7, 7);
+                background: #e2445c;
+            }
+
+            &.medium {
+                // background: rgb(236, 203, 14);
+                // background: #c2c509;
+                background: #e4a61b;
+            }
+
+            &.low {
+                // background: rgb(7, 165, 204);
+                // background: #44e2ad;
+                // background: #5fbf9f;
+                background: #35a5bf;
+            }
+        }
+    }
+
+    table.table td {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 30px;
+    }
+}

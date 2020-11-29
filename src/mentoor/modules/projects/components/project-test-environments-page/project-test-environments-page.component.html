@@ -1,0 +1,102 @@
+<project-layout *as="projectLayout" [project]="this.project" [is-loading]="this.isLoading">
+    <!-- <button *if="this.project.isHigherAuthority || this.project.isTeamLeader" class="float-right btn btn-success bold" -->
+    <button class="float-right btn btn-success bold" (click)="this.openModal('add')">
+        <fa icon="plus mr-1"></fa>
+        Test Environment
+    </button>
+    <h1 class="m-y-1">
+        {{ this.project.name }} Test Environments
+        ({{ this.project.testEnvironments.length }})
+    </h1>
+
+    <table class="table table-striped buttoned">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Device</th>
+                <th>Browser</th>
+                <th>Operating System</th>
+                <th *if="this.project.isHigherAuthority">Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *if="Is.empty(this.project.testEnvironments)">
+                <td colspan="5" text-center>No Test Environments Yet</td>
+            </tr>
+            <tr *else *for="let record, index of this.project.testEnvironments">
+                <td [html]="record.name"></td>                
+                <td [html]="this.displayDeviceInfo(record)"></td>                
+                <td>
+                    <img *if="record.browser" class="image-circle" [src]="getBrowserIcon(record)" [alt]="record.browser" />
+                    <span [html]="this.displayBrowserInfo(record)"></span>
+                </td>                
+                <td [html]="this.displayOperatingSystemInfo(record)"></td>                
+                <td>
+                    <button type="button" (click)="this.openModal('edit', record, index)" class="btn btn-cyan" tooltip
+                        title="Edit Test Environment">
+                        <fa icon="edit"></fa>
+                    </button>
+
+                    <button type="button" (click)="this.confirmRemoving(record, index)" class="btn btn-danger" tooltip
+                        title="Delete Test Environment">
+                        <fa icon="trash"></fa>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</project-layout>
+
+<flk-modal *if="this.modalIsOpened" *as="modal" (close)="this.modalIsOpened = null" size="medium"
+    [heading]="this.modalHeading">
+    <form (submit)="this.submit($el)">
+        <input type="hidden" name="project" [value]="this.project.id" />
+        <form-input type="text" name="name" [value]="this.record.name" label="Test Environment Name" required
+        class="form-control"></form-input>
+
+        <div class="row m-b-1">
+            <div class="col-3">
+                <flk-dropdown-list name="deviceType" [none]="true" label="Device Type" [value]="this.record.deviceType" [items]="this.deviceTypes">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="deviceBrand" [value]="this.record.deviceBrand" label="Device Brand" 
+                class="form-control"></form-input>     
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="deviceModel" [value]="this.record.deviceModel" label="Device Model" 
+                class="form-control"></form-input>        
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="applicationVersion" [value]="this.record.applicationVersion" label="Application Version" 
+                class="form-control"></form-input>        
+            </div>
+        </div>
+
+        <div class="row m-b-1">
+            <div class="col-3">
+                <flk-dropdown-list name="operatingSystem" [none]="true" label="Operating System" [value]="this.record.operatingSystem" [items]="this.operatingSystems">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="operatingSystemVersion" [value]="this.record.operatingSystemVersion" label="Operating System Version" 
+                class="form-control"></form-input>    
+            </div>
+            <div class="col-3">
+                <flk-dropdown-list name="browser" imageable [none]="true" label="Browser" [value]="this.record.browser" [items]="this.browsers">
+                </flk-dropdown-list>
+            </div>
+            <div class="col-3">
+                <form-input type="text" name="browserVersion" [value]="this.record.browserVersion" label="Browser Version" 
+                class="form-control"></form-input>    
+            </div>
+        </div>
+
+        <div class="m-t-1 text-center">
+            <button [disabled]="! this.isValidForm || this.isSending" class="btn btn-success bold">Save</button>
+        </div>
+    </form>
+</flk-modal>
+
+<flk-alert *if="this.confirmDelete" (close)="this.confirmDelete = null" (confirm)="this.remove()">
+</flk-alert>

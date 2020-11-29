@@ -11,13 +11,6 @@
         <td [html]="record.prize.format()"></td>
         <td [html]="record.cocktail.name"></td>
         <td [html]="record.dependsOn?.title"></td>
-        <td>
-            <div *for="let tag of record.tags">
-                <div class="m-b-1">
-                    <tag-badge [small]="true" [tag]="tag"></tag-badge>
-                </div>
-            </div>
-        </td>
         <td [html]="record.level"></td>
         <td [html]="record.sortOrder"></td>
         <td [html]="record.display"></td>
